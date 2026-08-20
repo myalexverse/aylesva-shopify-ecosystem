@@ -1,0 +1,349 @@
+<div id="ayl-testimonials-{{ section.id }}" class="ayl-testimonials-wrapper">
+  <div class="ayl-testimonials-container">
+    {% if section.settings.eyebrow != blank %}
+      <div class="ayl-testimonials-eyebrow">{{ section.settings.eyebrow }}</div>
+    {% endif %}
+    {% if section.settings.headline != blank %}
+      <h2 class="ayl-testimonials-headline">{{ section.settings.headline }}</h2>
+    {% endif %}
+
+    <div class="ayl-testimonials-grid">
+      {% for block in section.blocks %}
+        <div class="ayl-testimonial-card" {{ block.shopify_attributes }}>
+          <div class="ayl-testimonial-stars">
+            {%- assign rating = block.settings.rating | default: 5 -%}
+            {% for i in (1..5) %}
+              <svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg" class="ayl-star-icon {% if i <= rating %}filled{% else %}empty{% endif %}">
+                <path d="M10 0L13.09 6.26L20 7.27L15 12.14L16.18 19L10 15.75L3.82 19L5 12.14L0 7.27L6.91 6.26L10 0Z" fill="currentColor"/>
+              </svg>
+            {% endfor %}
+          </div>
+          <div class="ayl-testimonial-quote">
+            "{{ block.settings.quote }}"
+          </div>
+          <div class="ayl-testimonial-author">
+            <div class="ayl-testimonial-avatar">
+              {% if block.settings.author_image %}
+                <img src="{{ block.settings.author_image | image_url: width: 96 }}" alt="{{ block.settings.author_name }}" width="48" height="48" loading="lazy">
+              {% else %}
+                <span class="ayl-avatar-initials">{{ block.settings.author_initials }}</span>
+              {% endif %}
+            </div>
+            <div class="ayl-testimonial-meta">
+              <div class="ayl-testimonial-name">{{ block.settings.author_name }}</div>
+              <div class="ayl-testimonial-role">{{ block.settings.author_role }}</div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<style>
+  #ayl-testimonials-{{ section.id }} {
+    --ayl-bg: #FAFAF8;
+    --ayl-ink: #1A1A1A;
+    --ayl-stone: #6B6B6B;
+    --ayl-gold: #C5A47E;
+    --ayl-border: rgba(0,0,0,0.06);
+    
+    background-color: #FFFFFF;
+    padding: 80px 20px;
+    font-family: 'Poppins', sans-serif;
+    color: var(--ayl-ink);
+    overflow: hidden;
+  }
+
+  #ayl-testimonials-{{ section.id }} .ayl-testimonials-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  #ayl-testimonials-{{ section.id }} .ayl-testimonials-eyebrow {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ayl-stone);
+    margin-bottom: 16px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  #ayl-testimonials-{{ section.id }} .ayl-testimonials-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: 38px;
+    line-height: 1.2;
+    color: var(--ayl-ink);
+    margin: 0 0 48px 0;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s, transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s;
+  }
+
+  #ayl-testimonials-{{ section.id }} .ayl-testimonials-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    text-align: left;
+  }
+
+  #ayl-testimonials-{{ section.id }} .ayl-testimonial-card {
+    background-color: var(--ayl-bg);
+    border: 1px solid var(--ayl-border);
+    border-radius: 16px;
+    padding: 36px 28px;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  #ayl-testimonials-{{ section.id }}.is-visible .ayl-testimonials-eyebrow,
+  #ayl-testimonials-{{ section.id }}.is-visible .ayl-testimonials-headline {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  #ayl-testimonials-{{ section.id }}.is-visible .ayl-testimonial-card {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  #ayl-testimonials-{{ section.id }} .ayl-testimonial-card:hover {
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transform: translateY(-4px);
+  }
+
+  #ayl-testimonials-{{ section.id }} .ayl-testimonial-stars {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 24px;
+    color: var(--ayl-gold);
+  }
+
+  #ayl-testimonials-{{ section.id }} .ayl-star-icon.empty {
+    color: var(--ayl-border);
+  }
+
+  #ayl-testimonials-{{ section.id }} .ayl-testimonial-quote {
+    font-size: 15.5px;
+    line-height: 1.7;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--ayl-ink);
+    margin-bottom: 32px;
+    flex-grow: 1;
+  }
+
+  #ayl-testimonials-{{ section.id }} .ayl-testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: auto;
+  }
+
+  #ayl-testimonials-{{ section.id }} .ayl-testimonial-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: #EAEAEA;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  #ayl-testimonials-{{ section.id }} .ayl-testimonial-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  #ayl-testimonials-{{ section.id }} .ayl-avatar-initials {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--ayl-stone);
+    text-transform: uppercase;
+  }
+
+  #ayl-testimonials-{{ section.id }} .ayl-testimonial-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ayl-ink);
+    margin-bottom: 2px;
+  }
+
+  #ayl-testimonials-{{ section.id }} .ayl-testimonial-role {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--ayl-stone);
+  }
+
+  @media (min-width: 768px) {
+    #ayl-testimonials-{{ section.id }} {
+      padding: 100px 40px;
+    }
+    
+    #ayl-testimonials-{{ section.id }} .ayl-testimonials-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    #ayl-testimonials-{{ section.id }} .ayl-testimonial-card:nth-child(3) {
+      grid-column: span 2;
+      max-width: 50%;
+      margin: 0 auto;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    #ayl-testimonials-{{ section.id }} .ayl-testimonials-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    
+    #ayl-testimonials-{{ section.id }} .ayl-testimonial-card:nth-child(3) {
+      grid-column: span 1;
+      max-width: 100%;
+      margin: 0;
+    }
+  }
+</style>
+
+<script>
+  (function() {
+    document.addEventListener('DOMContentLoaded', function() {
+      const section = document.getElementById('ayl-testimonials-{{ section.id }}');
+      if (!section) return;
+
+      const cards = section.querySelectorAll('.ayl-testimonial-card');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            section.classList.add('is-visible');
+            cards.forEach((card, index) => {
+              setTimeout(() => {
+                card.style.transition = 'opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+              }, 200 + (index * 150));
+            });
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.15,
+        rootMargin: '0px 0px -50px 0px'
+      });
+
+      observer.observe(section);
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Ayl Testimonials",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Text",
+      "default": "LO QUE DICEN NUESTROS CLIENTES"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Historias de crecimiento real."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "range",
+          "id": "rating",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "label": "Rating",
+          "default": 5
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote",
+          "default": "El servicio es increíble y superó mis expectativas."
+        },
+        {
+          "type": "image_picker",
+          "id": "author_image",
+          "label": "Author Image"
+        },
+        {
+          "type": "text",
+          "id": "author_initials",
+          "label": "Author Initials (fallback)",
+          "default": "MG"
+        },
+        {
+          "type": "text",
+          "id": "author_name",
+          "label": "Author Name",
+          "default": "María G."
+        },
+        {
+          "type": "text",
+          "id": "author_role",
+          "label": "Author Role / Company",
+          "default": "Emprendedora Digital"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ayl Testimonials",
+      "blocks": [
+        {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "quote": "Gracias a Aylesva pude lanzar mi tienda en línea en menos de una semana. El equipo me acompañó en todo el proceso.",
+            "author_initials": "MG",
+            "author_name": "María G.",
+            "author_role": "Emprendedora Digital"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "quote": "El financiamiento que obtuve a través de Aylesva Recursos me permitió expandir mi negocio a dos nuevas ciudades.",
+            "author_initials": "CR",
+            "author_name": "Carlos R.",
+            "author_role": "CEO de LogiTrack"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "quote": "Invertir en Global Estates fue la mejor decisión financiera que he tomado. El retorno ha superado mis expectativas.",
+            "author_initials": "AL",
+            "author_name": "Ana L.",
+            "author_role": "Inversionista"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

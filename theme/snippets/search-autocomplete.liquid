@@ -1,0 +1,92 @@
+{% comment %} Width of results box {% endcomment %}
+{% assign results_box_width = '100%' %}
+{% comment %} Background color of results box {% endcomment %}
+{% assign results_box_background_color = '#fff' %}
+{% comment %} Border color of results box {% endcomment %}
+{% assign results_box_border_color = '#e5e5e5' %}
+<script>
+  $(function() {
+    var currentAjaxRequest = null;
+    var searchForms = $('form[action="/search"]').css('position', 'relative').each(function() {
+        var input = $(this).find('input[name="q"]');
+        var offSet = input.position().top + input.innerHeight();
+        $('<ul class="search-results"></ul>').css({
+              'position': 'absolute',
+              'display': 'flex',
+              'flex-wrap': 'wrap',
+              'left': '0px',
+              'top': offSet
+
+        }).appendTo($(this)).hide();
+        input.attr('autocomplete', 'off').bind('keyup change', function() {
+            var term = $(this).val();
+            var form = $(this).closest('form');
+            var searchURL = '/search?type=product&q=' + term;
+            $('.input-group-field').addClass('s-loading');
+            $("body").addClass("search-open");
+            var resultsList = form.find('.search-results');
+            if (term.length > 2 && term != $(this).attr('data-old-term')) {
+                $(this).attr('data-old-term', term);
+                if (currentAjaxRequest != null) currentAjaxRequest.abort();
+                currentAjaxRequest = $.getJSON(searchURL + '&view=json', function(data) {
+                  console.log(data)
+                    resultsList.empty();
+                    if (data.results_count == 0) {
+                        resultsList.html('<li class="no-result"><span class="title">{{ "general.ajaxsearch.no_result" | t }}</span></li>');
+                        resultsList.fadeIn(200);
+                        $('.input-group-field').removeClass('s-loading')
+                    } else {
+                        $('.input-group-field').removeClass('s-loading');
+                          var userSelected = document.querySelector('[name="collection"]')
+                          var value = userSelected.selectedOptions[0].value
+                          var collectionHandle = value.split('/')[2]
+                          var filterProducts = value === 'all' ? data.results : data.results.filter(item => item.url.includes(`/collections/${collectionHandle}`))
+                        if (filterProducts.length === 0 ) {
+                          resultsList.html('<li class="no-result"><span class="title">{{ "general.ajaxsearch.no_result" | t }}</span></li>');
+                        resultsList.fadeIn(200);
+                        $('.input-group-field').removeClass('s-loading')
+                        }
+                        $.each(filterProducts, function(index, item) {
+                            var link = $('<a></a>').attr('href', item.url);
+                            link.append('<span class="thumbnail"><img src="' + item.thumbnail + '" /></span>');
+                            var linka = $('<div class="name-price"></div>')
+                            linka.append('<span class="title">' + item.title + '</span>');
+                            if (item.compare_price != null) {
+                                linka.append('<span class="price-wrap"><span class="price">' + item.price + '</span><s class="product-price__price compare_price">' + item.compare_price + '</s></span>')
+                            } else {
+                                linka.append('<span class="price-wrap"><span class="price">' + item.price + '</span></span>')
+                            }
+                            var abc = linka.wrap('<div class="title-wrap"></div>');
+                            link.append(abc);
+                            link.append('</div>');
+                            link.wrap('<li></li>');
+                            resultsList.append(link.parent());
+                            $(".search-results li").mouseenter(function() {
+                                if ($(".search-results li").hasClass('ac_over')) {
+                                    $('.search-results li').removeClass('ac_over');
+                                    $(this).addClass('ac_over')
+                                } else {
+                                    $(this).addClass('ac_over')
+                                }
+                            })
+                        });
+                        if (filterProducts.length > 8) {
+                            resultsList.append('<li class="total"><span class="title"><a href="' + searchURL + '">{{ "general.ajaxsearch.all_result" | t }} (' + data.results_count + ')</a></span></li>')
+                        }
+                        resultsList.fadeIn(200);
+                        $('.input-group-field').removeClass('s-loading')
+                    }
+                })
+            }
+        })
+    });
+    $('body').bind('click', function() {
+        $('.search-results').hide();
+        $('.input-group-field').removeClass('s-loading');
+        $("body").removeClass("search-open");
+    })
+});
+</script>
+
+<!-- Some styles to get you started. -->
+<style>.search-results {width: {{ results_box_width }};background: {{ results_box_background_color }};border: 1px solid {{ results_box_border_color }};}.search-results .title {width: {{ results_box_width}};}</style>

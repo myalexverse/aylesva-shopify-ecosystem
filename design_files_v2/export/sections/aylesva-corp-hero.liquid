@@ -1,0 +1,60 @@
+{% comment %} Aylesva · Hero corporativo universal (Gold & Ink) {% endcomment %}
+<section class="ay ay-hero" style="position:relative;overflow:hidden;background:var(--ay-ink-900)">
+  {% if section.settings.image %}
+    <div style="position:absolute;inset:0;background-image:url({{ section.settings.image | image_url: width: 2400 }});background-size:cover;background-position:{{ section.settings.focal }}"></div>
+  {% endif %}
+  <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(2,6,23,{{ section.settings.overlay | divided_by: 100.0 }}) 0%,rgba(2,6,23,{{ section.settings.overlay | minus: 18 | divided_by: 100.0 }}) 48%,rgba(2,6,23,.35) 100%)"></div>
+
+  <div class="ay-wrap" style="position:relative;padding-bottom:0">
+    <div style="max-width:780px">
+      {% if section.settings.eyebrow != blank %}<p class="ay-eyebrow ay-eyebrow--dark">{{ section.settings.eyebrow }}</p>{% endif %}
+      <h1 class="ay-h1" style="color:#fff">{{ section.settings.title }}</h1>
+      {% if section.settings.subtitle != blank %}
+        <p class="ay-lead" style="color:rgba(255,255,255,.74);max-width:52ch;margin-bottom:38px">{{ section.settings.subtitle }}</p>
+      {% endif %}
+      <div style="display:flex;gap:16px;flex-wrap:wrap">
+        {% if section.settings.cta1_label != blank %}<a class="ay-btn ay-btn--gold" href="{{ section.settings.cta1_link }}">{{ section.settings.cta1_label }}</a>{% endif %}
+        {% if section.settings.cta2_label != blank %}<a class="ay-btn ay-btn--ghost-dark" href="{{ section.settings.cta2_link }}">{{ section.settings.cta2_label }}</a>{% endif %}
+      </div>
+    </div>
+
+    {% if section.blocks.size > 0 %}
+      <div style="display:grid;grid-template-columns:repeat({{ section.blocks.size }},1fr);gap:1px;background:rgba(255,255,255,.14);margin-top:92px;border-top:1px solid rgba(197,164,126,.5)">
+        {% for block in section.blocks %}
+          <div style="padding:30px 32px 36px;background:rgba(2,6,23,.55)" {{ block.shopify_attributes }}>
+            <div style="font-family:var(--ay-font-display);font-size:36px;font-weight:300;color:#fff;letter-spacing:-.02em">{{ block.settings.value }}</div>
+            <div style="font-family:var(--ay-font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:8px">{{ block.settings.label }}</div>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div style="height:var(--ay-pad-y)"></div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Aylesva · Hero",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Imagen de fondo (2400px de ancho)" },
+    { "type": "select", "id": "focal", "label": "Encuadre", "default": "center", "options": [
+      {"value":"center","label":"Centro"},{"value":"top","label":"Arriba"},{"value":"bottom","label":"Abajo"}] },
+    { "type": "range", "id": "overlay", "label": "Opacidad del velo ink (%)", "min": 60, "max": 96, "step": 2, "default": 92 },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Aylesva Capital" },
+    { "type": "textarea", "id": "title", "label": "Titular", "default": "Confianza que se construye" },
+    { "type": "textarea", "id": "subtitle", "label": "Subtítulo" },
+    { "type": "text", "id": "cta1_label", "label": "CTA primario", "default": "Solicitar asesoría" },
+    { "type": "url", "id": "cta1_link", "label": "Enlace CTA primario" },
+    { "type": "text", "id": "cta2_label", "label": "CTA secundario", "default": "Ver soluciones" },
+    { "type": "url", "id": "cta2_link", "label": "Enlace CTA secundario" }
+  ],
+  "blocks": [
+    { "type": "stat", "name": "Cifra", "limit": 4, "settings": [
+      { "type": "text", "id": "value", "label": "Cifra", "default": "72 h" },
+      { "type": "text", "id": "label", "label": "Etiqueta", "default": "Respuesta" }
+    ]}
+  ],
+  "presets": [{ "name": "Aylesva · Hero" }]
+}
+{% endschema %}

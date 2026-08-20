@@ -1,0 +1,193 @@
+{% comment %}
+  Refactored Product Media Snippet
+  Handles galleries for designs 1-5
+{% endcomment %}
+
+{% if section.settings.product_layout == 'design_1' or section.settings.product_layout == 'design_4' %}
+  <div class="demo col-xs-12{% if section.settings.product_layout == 'design_1' %} col-sm-5{% endif %}
+              {% if section.settings.product_layout == 'design_4' %} col-sm-6 {% endif %} text-center product-wrapper-owlslider">
+    <div class="product-image-content">
+      {% if product.images.size == 0 %}
+        <div class="product-photo-container">
+          <img loading="lazy" src="{{ '' | product_img_url: 'grande' }}">
+        </div>
+      {% else %}
+        <div class="product-single__photos" id="productPhoto">
+          {% assign featured_media = product.selected_or_first_available_variant.featured_media | default: product.featured_media %}  
+          {%- assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' -%}
+          {% for media in product.media %}
+            <div data-product-single-media-wrapper class="product-single__media-wrapper{% unless featured_media == media %} hide {% endunless %}{% if media.media_type != 'image' %} product__media-item--full{% endif %}{% if section.settings.hide_variants and variant_images contains media.src %} product__media-item--variant{% endif %}" data-media-id="{{ section.id }}-{{ media.id }}" tabindex="-1">
+              {% case media.media_type %}
+                {% when 'image' %}
+                  {%- assign img_url = media | img_url: section.settings.pro_img_widthheight -%}
+                  <div class="product__media media{% if enable_image_zoom %} js-zoom-enabled{% endif %}"{% if enable_image_zoom %} data-image-zoom-wrapper data-zoom="{{ media | img_url: product_image_zoom_size, scale: image_scale }}"{% endif %}>
+                    <img loading="lazy" id="productPhotoImg" src="{{ img_url }}" {% if enable_image_zoom %} data-image-zoom {% endif %}>
+                  </div>
+                {% when 'external_video' %}
+                  <div class="product__media media">
+                    {{ media | external_video_tag: class: 'media-video', image_size: image_size, controls: true, autoplay: true }}
+                  </div>
+                {% when 'video' %}
+                  <div class="product__media media">
+                    {{ media | video_tag: class: 'media-video', image_size: image_size, controls: true, autoplay: true }}
+                  </div>
+                {% when 'model' %}
+                  <div class="product__media media" style="padding-top: 100%">
+                    {{ media | model_viewer_tag: image_size: image_size, reveal: 'interaction', toggleable: true, data-model-id: media.id }}
+                  </div>
+                {% else %}
+                  <div class="product__media media" style="padding-top: {{ 1 | divided_by: media.aspect_ratio | times: 100 }}%;">
+                    {{ media | media_tag: class: 'media-item', image_size: image_size }}
+                  </div>
+              {% endcase %}
+            </div>
+          {% endfor %} 
+
+          {% if product.compare_at_price > product.price %}
+            <span class="product-price__sale-label">{{ 'products.product.on_sale' | t }}</span>
+          {% endif %}
+          {% assign my_fields = product.metafields.my_fields %}
+          {% if my_fields.custom_label != nil %}
+            <span class="custom_label">{{ product.metafields.my_fields.custom_label }}</span>
+          {% endif %}
+          
+          <div class="product-image-btn">
+            <div class="gallery">
+              {% for image in product.images %}
+                {% if featured_image != image.src %}
+                  <a class="product-lightbox-btn tip-top img_{{ image.id }}" data-id="img_{{ image.id }}" href="{{ image.src | img_url: 'master' }}">
+                    <i class="mdi mdi-magnify"></i></a>
+                {% endif %}
+              {% endfor %}
+              <a class="product-lightbox-btn tip-top img_{{ featured_image.id }}" data-id="img_{{ featured_image.id }}" data-tip="Zoom" href="{{ featured_image | img_url: 'master' }}"><i class="mdi mdi-magnify"></i></a>
+            </div>
+          </div>
+        </div>
+        {% assign first_3d_model = product.media | where: "media_type", "model" | first %}
+        {%- if first_3d_model -%}
+          <button aria-label="{{ 'products.product.view_in_space_label' | t }}" class="product-single__view-in-space" data-shopify-xr data-shopify-model3d-id="{{ first_3d_model.id }}" data-shopify-title="{{ product.title | escape }}" data-shopify-xr-hidden>
+            <span class='product-single__view-in-space-text'>{{ 'products.product.view_in_space' | t }}</span>
+          </button>
+        {%- endif -%}
+          {% if product.images.size >= 1 %}
+            <div class="aylesva-gallery-dots visible-xs">
+              {% for media in product.media %}
+                <span class="ayl-dot {% if forloop.first %}active{% endif %}" data-index="{{ forloop.index0 }}"></span>
+              {% endfor %}
+            </div>
+            <script>
+              document.addEventListener('DOMContentLoaded', function() {
+                var gallery = document.getElementById('productPhoto');
+                var dots = document.querySelectorAll('.ayl-dot');
+                if (gallery && dots.length > 0) {
+                  gallery.addEventListener('scroll', function() {
+                    var index = Math.round(gallery.scrollLeft / gallery.clientWidth);
+                    dots.forEach(function(dot, i) {
+                      if (i === index) dot.classList.add('active');
+                      else dot.classList.remove('active');
+                    });
+                  });
+                }
+              });
+            </script>
+          {% endif %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+{% if section.settings.product_layout == 'design_2' or section.settings.product_layout == 'design_3' %}
+  <div class="col-xs-12 col-sm-5 product-images product-images-fixed demo text-center product-wrapper-owlslider" data-id="{{ product.id }}" data-product-single-media-group>
+    <div class="product-image-content">
+      {% if product.images.size == 0 %}
+        <div class="product-photo-container">
+          <img loading="lazy" src="{{ '' | product_img_url: 'grande' }}">
+        </div>
+      {% else %}
+        {% if product.images.size >= 1 %}
+          <div class="product-block">
+            {%- for media in product.media -%}
+              <div class="product-single__media-wrapper" data-media-id="{{ section.id }}-{{ media.id }}">
+                {% case media.media_type %}
+                  {% when 'image' %}
+                    <div class="{% if section.settings.product_layout == 'design_3' %}col-xs-6 {% endif %}pro_img image{% if media == featured_image %} variant-active{% endif %}" data-image-id="{{ media.id }}" data-src="{{ media.src | img_url: 'master' }}">
+                      <div class="product-single__photo-wrapper">
+                        <div class="product-single__thumb">
+                          <img loading="lazy" class="product-single__photo" id="productPhotoImg" src="{{ media.src | img_url: section.settings.pro_img_widthheight }}" {% if settings.product_zoom_enable %}data-mfp-src="{{ media.src | img_url: '1024x1024' }}"{% endif %} alt="{{ media.alt | escape }}" data-image-id="{{ media.id }}">
+                          <div class="product-image-btn">
+                            <a class="product-lightbox-btn tip-top" data-tip="Zoom" href="{{ media.src | img_url: 'master' }}"><i class="mdi mdi-magnify"></i></a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  {% when 'external_video' %}
+                    <div class="{% if section.settings.product_layout == 'design_3' %}col-xs-6 {% endif %} pro_img extra-video" data-image-id="{{ media.id }}">
+                      {{ media | external_video_tag }}
+                    </div>
+                  {% when 'video' %}
+                    <div class="{% if section.settings.product_layout == 'design_3' %}col-xs-6 {% endif %} pro_img video" data-image-id="{{ media.id }}">
+                      <div class="video-source" data-id="img_{{ media.id }}">
+                        {{ media | video_tag: class: 'media-video', image_size: "1024x", autoplay: true }}   
+                      </div>
+                    </div>
+                  {% when 'model' %}
+                    <div class="{% if section.settings.product_layout == 'design_3' %}col-xs-6 {% endif %} pro_img model" data-image-id="{{ media.id }}">
+                      <div class="model-view" data-id="img_{{ media.id }}">
+                        {{ media | model_viewer_tag }}
+                      </div>
+                    </div>
+                {% endcase %}
+              </div>
+            {%- endfor -%}
+          </div>
+        {% endif %}
+      {% endif %}
+    </div>
+  </div>
+{% endif %}
+
+{% if section.settings.product_layout == 'design_5' %}
+  <div class="demo text-center product-wrapper-owlslider" data-id="{{ product.id }}">
+    {% if product.images.size == 0 %}
+      <div class="product-photo-container">
+        <img loading="lazy" src="{{ '' | product_img_url: 'grande' }}">
+      </div>
+    {% else %}
+      <div class="product-block demo">
+        <div class="product-img owl-carousel owl-theme full_gallery_slider">
+          {%- for media in product.media -%}
+            {% case media.media_type %}
+              {% when 'image' %}
+                <div class="pro_img image" data-src="{{ media.src | img_url: 'master' }}" data-position="{{ media.position }}">
+                  <a href="{{ media.src | img_url: 'master' }}" class="product-single__thumb">
+                    <img loading="lazy" height="auto" id="productPhotoImg"  src="{{ media.src | img_url: section.settings.pro_img_widthheight  }}" alt="{{ media.alt | escape }}">
+                    <div class="num"></div>
+                  </a>
+                </div>
+              {% when 'external_video' %}
+                <div class="pro_img extra-video">
+                  {{ media | external_video_tag }}
+                  <div class="num"></div>
+                </div>
+              {% when 'video' %}
+                <div class="pro_img video">
+                  <div class="video-source" data-id="img_{{ media.id }}">
+                    {{ media | video_tag: class: 'media-video', image_size: "1024x", autoplay: true }}   
+                  </div>
+                  <div class="num"></div>
+                </div>
+              {% when 'model' %}
+                <div class="pro_img model">
+                  <div class="model-view" data-id="img_{{ media.id }}">
+                    {{ media | model_viewer_tag }}
+                  </div>
+                  <div class="num"></div>
+                </div>
+            {% endcase %}
+          {%- endfor -%}
+        </div>
+      </div>
+    {% endif %}
+  </div>
+{% endif %}

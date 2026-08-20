@@ -1,0 +1,300 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "wrapper": "div#main",
+  "sections": {
+    "hero": {
+      "type": "aylesva-intro-hero",
+      "blocks": {
+        "slide1": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Gemini_Generated_Image_4m4fah4m4fah4m4f.png",
+            "image_mobile": "shopify:\/\/shop_images\/pomelli_photoshoot_image_9_16_0410_4.png",
+            "image_alignment": "center",
+            "sub_title": "DULZURA Y SEGURIDAD",
+            "title": "MUNDO\nBEBÉ",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 25,
+            "btn1_txt": "Ver Ropa",
+            "btn1_link": "shopify:\/\/collections\/ropa-bebe",
+            "btn_bg_color": "#ffb300",
+            "btn_txt_color": "#000000",
+            "btn2_txt": "Pañales e Higiene",
+            "btn2_link": "shopify:\/\/collections\/ropa-interior-y-panaleria"
+          }
+        }
+      },
+      "block_order": [
+        "slide1"
+      ],
+      "settings": {
+        "desktop_height": 80,
+        "mobile_height": 60,
+        "autoplay": true,
+        "autoplay_speed": 6,
+        "show_arrows": true
+      }
+    },
+    "bubbles": {
+      "type": "aylesva-category-bubbles",
+      "blocks": {
+        "b1": {
+          "type": "category",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/pomelli_photoshoot_image_9_16_0410.png",
+            "label": "Ropa",
+            "link": "shopify:\/\/collections\/ropa-bebe"
+          }
+        },
+        "b2": {
+          "type": "category",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/swaddled-baby.jpg",
+            "label": "Pañales e Higiene",
+            "link": "shopify:\/\/collections\/ropa-interior-y-panaleria"
+          }
+        },
+        "b3": {
+          "type": "category",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/bottle-feeding-baby.jpg",
+            "label": "Alimentación",
+            "link": "shopify:\/\/collections\/alimentacion-bebe"
+          }
+        },
+        "b4": {
+          "type": "category",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/baby-toes.jpg",
+            "label": "Cunas",
+            "link": "shopify:\/\/collections\/muebles-bebe"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ],
+      "settings": {
+        "title": "TODO PARA TU BEBÉ",
+        "bg_color": "#ffffff"
+      }
+    },
+    "gender_cards": {
+      "type": "aylesva-gender-cards",
+      "blocks": {
+        "c1": {
+          "type": "card",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/pomelli_photoshoot_image_9_16_0410_6.png",
+            "label": "Carriolas",
+            "link": "shopify:\/\/collections\/seguridad-bebe"
+          }
+        },
+        "c2": {
+          "type": "card",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/pomelli_photoshoot_image_9_16_0410_5.png",
+            "label": "Juguetes Bebé",
+            "link": "shopify:\/\/collections\/juguetes-bebe"
+          }
+        },
+        "c3": {
+          "type": "card",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/pomelli_photoshoot_image_9_16_0410_1.png",
+            "label": "aprende",
+            "link": "shopify:\/\/collections\/estimulacion-temprana"
+          }
+        },
+        "c4": {
+          "type": "card",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/pomelli_photoshoot_image_9_16_0410_7.png",
+            "label": "Regalos",
+            "link": "shopify:\/\/collections\/bebe"
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4"
+      ],
+      "settings": {
+        "title": "PARA SUS PRIMEROS PASOS",
+        "bg_color": "#ffffff"
+      }
+    },
+    "main": {
+      "type": "page",
+      "disabled": true,
+      "settings": {}
+    },
+    "aylesva_cooler_carousel_wR4hBq": {
+      "type": "aylesva-cooler-carousel",
+      "name": "Cooler Carrusel",
+      "settings": {
+        "title": "Ofertas Destacadas",
+        "collection": "bebe",
+        "product_limit": 12,
+        "animation_speed": 25,
+        "margin_top": 30,
+        "margin_bottom": 30
+      }
+    },
+    "simbibannercooler_TgjHyf": {
+      "type": "simbibannercooler",
+      "name": "Simbi Banner Cooler",
+      "settings": {
+        "bg_color": "#006847",
+        "video_url": "",
+        "image_fallback": "shopify:\/\/shop_images\/3dgifmaker09805.gif",
+        "title": "LA PÁGINA DE MÉXICO",
+        "text": "<p>Con el respaldo del e-commerce #1 de Latinoamérica<\/p>",
+        "logo_text": "Queremos hacer historia y crear la pagina de e-comerce numero 1 de mexico.",
+        "button_label": "EMPIEZA A COMPRAR",
+        "button_link": "shopify:\/\/collections"
+      }
+    },
+    "aylesva_cooler_carousel_cJhmMk": {
+      "type": "aylesva-cooler-carousel",
+      "name": "Cooler Carrusel",
+      "settings": {
+        "title": "Ofertas Destacadas",
+        "collection": "accesorios-bebe",
+        "product_limit": 12,
+        "animation_speed": 25,
+        "margin_top": 30,
+        "margin_bottom": 30
+      }
+    },
+    "aylesva_cuadro_colecciones_4fADnP": {
+      "type": "aylesva-cuadro-colecciones",
+      "blocks": {
+        "collection_item_ADXVLz": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "mujer",
+            "image": "shopify:\/\/shop_images\/long-blonde-hair-at-carnival.jpg",
+            "title": "Mujer"
+          }
+        },
+        "collection_item_CYrwVt": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "hombre",
+            "image": "shopify:\/\/shop_images\/man-puts-his-hand-inside-his-jacket.jpg",
+            "title": ""
+          }
+        },
+        "collection_item_fFe8t8": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "nino",
+            "image": "shopify:\/\/shop_images\/little-boy-ready-for-school-looking-up.jpg",
+            "title": ""
+          }
+        },
+        "collection_item_c9iUAE": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "nina",
+            "image": "shopify:\/\/shop_images\/girl-framed-by-heart.jpg",
+            "title": ""
+          }
+        },
+        "collection_item_nkaJTJ": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "bebe",
+            "image": "shopify:\/\/shop_images\/cute-baby-girl-with-pink-bow-headband.jpg",
+            "title": ""
+          }
+        },
+        "collection_item_xkeiUN": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "artesanal",
+            "image": "shopify:\/\/shop_images\/pomelli-image_cd766c49-22f0-4171-859e-c22f786b7b86.png",
+            "title": ""
+          }
+        },
+        "collection_item_UJ8Xc9": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "hogar",
+            "image": "shopify:\/\/shop_images\/sunlight-creeps-through-a-bright-living-room.jpg",
+            "title": ""
+          }
+        },
+        "collection_item_tCVM7f": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "alimentos",
+            "image": "shopify:\/\/shop_images\/hamburger-and-fries.jpg",
+            "title": ""
+          }
+        },
+        "collection_item_tf3K49": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "electronicos",
+            "image": "shopify:\/\/shop_images\/mobile-phone-and-gimbal-in-hand.jpg",
+            "title": ""
+          }
+        },
+        "collection_item_NiN3QF": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "vehiculos",
+            "image": "shopify:\/\/shop_images\/red-sports-car-wheel-close-up.jpg",
+            "title": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_item_ADXVLz",
+        "collection_item_CYrwVt",
+        "collection_item_fFe8t8",
+        "collection_item_c9iUAE",
+        "collection_item_nkaJTJ",
+        "collection_item_xkeiUN",
+        "collection_item_UJ8Xc9",
+        "collection_item_tCVM7f",
+        "collection_item_tf3K49",
+        "collection_item_NiN3QF"
+      ],
+      "name": "Cuadro Colecciones LOL",
+      "settings": {
+        "title": "Categorías",
+        "view_all_text": "Mostrar todas las categorías",
+        "view_all_link": "",
+        "margin_top": 30,
+        "margin_bottom": 30
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "bubbles",
+    "gender_cards",
+    "main",
+    "aylesva_cooler_carousel_wR4hBq",
+    "simbibannercooler_TgjHyf",
+    "aylesva_cooler_carousel_cJhmMk",
+    "aylesva_cuadro_colecciones_4fADnP"
+  ]
+}

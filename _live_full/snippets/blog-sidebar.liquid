@@ -1,0 +1,65 @@
+{% if settings.show_recent_articles %}
+<div class="widget recent_article">
+  <h4 class="widget-title">{{ 'blogs.sidebar.recent_articles' | t }}<span class="right"></span></h4>
+  <ul>
+    {% for article in blogs[blog.handle].articles limit: settings.blog_article_limit %}
+
+    <li class="col-xs-12 padding_0">
+      {% if settings.show_recent_articles_img %}
+      {% if article.image %}
+      <div class="artical-image col-xs-4 col-sm-3 padding_0">
+        {% assign image_alt = article.title | escape %}
+        {{ article | img_url: '600x800' | img_tag: image_alt, 'article__image' | link_to: article.url }}
+      </div>
+      {% endif %}
+      {% endif %}
+
+      {% assign month = article.published_at | date: "%b" %}
+      {% assign day = article.published_at | date: "%d" %}
+      {% assign year = article.published_at | date: "%Y" %}
+      {% assign iso = article.published_at | date: "%F" %}
+
+      <div class="article-detail col-xs-8 col-sm-9 blog-content padding_right_0">
+        <h5 class="article__title">
+          <a href="{{ article.url }}">{{ article.title }}</a></h5>
+        <div class="article__meta">
+          <div class="article_date"><i class="mdi mdi-calendar-blank"></i> <time datetime="{{ iso }}">{{ month }} {{ day }}, {{ year }}</time></div>        
+
+          <!---<p>{{ article.content | strip_html | truncatewords: 10 }}</p> -->
+        </div>
+      </div>
+    </li>
+
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}
+
+{% if settings.show_blog_tags %}
+{% if blog.all_tags.size > 0 %}
+<div class="widget widget_categories">
+  <h4 class="widget-title">{{ 'blogs.sidebar.categories' | t }}<span class="right"></span></h4>
+  <ul>
+    {% for tag in blog.all_tags %}
+    {% if current_tags contains tag %}
+    <li>{{ tag }}</li>
+    {% else %}
+    <li><i></i>{{ tag | link_to_tag: tag }}</li>
+    {% endif %}
+    {% endfor %}
+  </ul>
+
+</div>
+{% endif %}
+{% endif %}
+
+{% if settings.show_footer_tweets %}
+<div class="widget widget-blog tweetbox">
+  <h4 class="widgettitle yellow_sketch"> {{ settings.tweet_heading}} </h4>
+  {% if settings.tweet_embcode  != blank %}
+  <div id="tweets_container">
+    {{ settings.tweet_embcode }}
+  </div>
+  {% endif %}
+</div>
+{% endif %}

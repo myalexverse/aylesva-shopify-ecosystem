@@ -1,0 +1,382 @@
+<!-- Google Fonts Import for high-end boutique aesthetics -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  .saldos-cta-section {
+    position: relative;
+    padding: {{ section.settings.padding_top_desktop }}px 0 {{ section.settings.padding_bottom_desktop }}px 0;
+    background: #fafafa;
+    font-family: 'Outfit', sans-serif;
+  }
+
+  .saldos-cta-container {
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 25px;
+  }
+
+  /* Black panel with rounded corners and absolute background box images */
+  .saldos-cta-banner {
+    position: relative;
+    background: #0d0d0d;
+    border-radius: 16px;
+    overflow: hidden;
+    min-height: 160px;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    align-items: center;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+  }
+
+  /* Right-aligned cardboard boxes image block */
+  .saldos-cta-bg-image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
+  }
+  .saldos-cta-bg-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  /* Dark charcoal gradient overlay to fuse boxes smoothly into text background */
+  .saldos-cta-bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background: linear-gradient(
+      to right,
+      #0d0d0d 0%,
+      #0d0d0d 45%,
+      rgba(13, 13, 13, 0.9) 60%,
+      rgba(13, 13, 13, 0.25) 100%
+    );
+  }
+
+  /* Front Content grid layer */
+  .saldos-cta-content {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 60px;
+    grid-column: 1 / -1;
+    width: 100%;
+    box-sizing: border-box;
+    gap: 30px;
+  }
+
+  /* Left columns: badge, title and subtext */
+  .saldos-cta-text-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-grow: 1;
+  }
+
+  .saldos-cta-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #C5A47E;
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+  }
+  .saldos-cta-icon svg {
+    width: 100%;
+    height: 100%;
+    stroke-width: 1.5;
+  }
+
+  .saldos-cta-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .saldos-cta-headline {
+    font-size: 19px;
+    font-weight: 700;
+    color: #C5A47E;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    line-height: 1.25;
+    margin: 0 0 6px 0;
+  }
+
+  .saldos-cta-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 13.5px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.4;
+    margin: 0;
+  }
+
+  /* Right columns: CTA Action Button */
+  .saldos-cta-action {
+    flex-shrink: 0;
+  }
+
+  .saldos-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 28px;
+    background: #C5A47E;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    border-radius: 4px;
+    border: 1px solid #C5A47E;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+  }
+  .saldos-cta-btn:hover {
+    background: #ffffff;
+    border-color: #ffffff;
+    color: #0d0d0d;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(197, 164, 126, 0.2);
+  }
+  .saldos-cta-btn svg {
+    width: 14px;
+    height: 14px;
+    stroke-width: 2.5;
+    transition: transform 0.3s ease;
+  }
+  .saldos-cta-btn:hover svg {
+    transform: translateX(3px);
+  }
+
+  /* RESPONSIVE TABLETS & MOBILES BREAKPOINTS */
+  @media (max-width: 991px) {
+    .saldos-cta-content {
+      padding: 35px 40px;
+    }
+    .saldos-cta-headline {
+      font-size: 17px;
+    }
+    .saldos-cta-subtitle {
+      font-size: 13px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .saldos-cta-section {
+      padding: {{ section.settings.padding_top_mobile }}px 0 {{ section.settings.padding_bottom_mobile }}px 0;
+      background: #fafafa;
+    }
+    .saldos-cta-container {
+      padding: 0 15px;
+    }
+    .saldos-cta-banner {
+      grid-template-columns: 1fr;
+      min-height: auto;
+      border-radius: 12px;
+    }
+    .saldos-cta-bg-image {
+      width: 100%;
+      opacity: 0.35;
+    }
+    .saldos-cta-bg-overlay {
+      background: rgba(13, 13, 13, 0.85); /* Solid dark mask for readability */
+    }
+    .saldos-cta-content {
+      flex-direction: column;
+      text-align: center;
+      padding: 35px 20px;
+      gap: 25px;
+    }
+    .saldos-cta-text-wrapper {
+      flex-direction: column;
+      gap: 15px;
+    }
+    .saldos-cta-icon {
+      width: 42px;
+      height: 42px;
+    }
+    .saldos-cta-info {
+      align-items: center;
+    }
+    .saldos-cta-headline {
+      font-size: 16px;
+      text-align: center;
+    }
+    .saldos-cta-subtitle {
+      font-size: 12.5px;
+      text-align: center;
+    }
+    .saldos-cta-action {
+      width: 100%;
+    }
+    .saldos-cta-btn {
+      width: 100%;
+      padding: 14px 20px;
+      box-sizing: border-box;
+    }
+  }
+</style>
+
+<div class="saldos-cta-section" id="SaldosCtaSection-{{ section.id }}">
+  <div class="saldos-cta-container">
+    <div class="saldos-cta-banner">
+
+      <!-- Background cardboard boxes graphic -->
+      <div class="saldos-cta-bg-image">
+        {% if section.settings.bg_image != blank %}
+          <img loading="lazy" src="{{ section.settings.bg_image | img_url: '1000x' }}" alt="{{ section.settings.title | escape }}">
+        {% else %}
+          <!-- Premium default image of boxes generated previously -->
+          <img loading="lazy" src="{{ 'aylesva-saldos-boxes.png' | asset_url }}" alt="Aylesva Mx boxes">
+        {% endif %}
+      </div>
+
+      <!-- Linear gradient mask overlay -->
+      <div class="saldos-cta-bg-overlay"></div>
+
+      <!-- Forefront content row -->
+      <div class="saldos-cta-content">
+        <div class="saldos-cta-text-wrapper">
+          
+          <!-- Golden Wallet outline SVG badge icon -->
+          <div class="saldos-cta-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="4" width="20" height="16" rx="2" ry="2"/>
+              <path d="M12 4v16"/>
+              <path d="M2 10h20"/>
+              <circle cx="7" cy="15" r="2"/>
+              <circle cx="17" cy="15" r="2"/>
+            </svg>
+          </div>
+
+          <div class="saldos-cta-info">
+            <h2 class="saldos-cta-headline">{{ section.settings.title }}</h2>
+            <p class="saldos-cta-subtitle">{{ section.settings.subtitle }}</p>
+          </div>
+
+        </div>
+
+        <div class="saldos-cta-action">
+          <a href="{{ section.settings.btn_link | default: '#' }}" class="saldos-cta-btn">
+            {{ section.settings.btn_label }}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Saldos CTA Banner",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título Banner",
+      "default": "¿LISTO PARA EMPRENDER TU MARCA COUNTRY?"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtítulo Banner",
+      "default": "Elige tu pack y comienza tu negocio hoy mismo."
+    },
+    {
+      "type": "text",
+      "id": "btn_label",
+      "label": "Texto del Botón",
+      "default": "VER TODOS LOS PACKS"
+    },
+    {
+      "type": "url",
+      "id": "btn_link",
+      "label": "Enlace del Botón",
+      "default": "/collections/all"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Imagen de Cajas (Fondo)"
+    },
+    {
+      "type": "header",
+      "content": "Espaciado de Sección (Desktop)"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Padding Superior Desktop",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 40,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Padding Inferior Desktop",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 10,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Espaciado de Sección (Móvil)"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding Superior Móvil",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 30,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding Inferior Móvil",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 10,
+      "unit": "px"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Saldos CTA Banner",
+      "category": "Promotional"
+    }
+  ]
+}
+{% endschema %}

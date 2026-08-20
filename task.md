@@ -1,0 +1,6 @@
+- `[x]` Crear la plantilla unificada `theme/templates/page.ninos.json`
+- `[x]` Modificar `theme/sections/header-style-2.liquid` para integrar "Niños" (handle: `ninos`) y su submenú estructurado
+- `[x]` Crear y ejecutar un script para dar de alta la página `/pages/ninos` en Shopify retail
+- `[x]` Subir los archivos del tema modificados a producción en la tienda retail de MX
+- `[x]` Subir los archivos del tema modificados a la tienda de mayoreo
+- `[x]` Verificar el correcto funcionamiento en producción

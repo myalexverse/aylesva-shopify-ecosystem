@@ -1,0 +1,483 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="ie9 no-js"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> 
+<html  lang="{{ shop.locale }}" class="no-js{% if shop.locale == 'ar' or shop.locale == 'he' or shop.locale == 'ur' %} rtl {% endif %}"> <!--<![endif]-->
+{% assign is_landing = false %}
+{% assign landing_terms = 'home,aylesva,globalestates,globalstates,direct,recursos,care,lanza,voluntad,hombre,mujer,ninos,ninas,bebe,artesanal,hogar,alimentos,electronicos,vehiculos,intro,landing,coleccion,servicios,nino,nina,ofertas,saldos' | split: ',' %}
+{% if template.name == 'index' or template == 'index' or template.name == 'page' %}
+  {% assign is_landing = true %}
+{% else %}
+  {% for term in landing_terms %}
+    {% if template contains term or page.handle contains term or template.suffix contains term %}
+      {% assign is_landing = true %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+  <head>
+  <!-- AYL_FORCE_READY -->
+  {{ 'ayl-cart-drawer.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'ayl-cart-drawer.js' | asset_url }}?v=1776791234" defer="defer"></script>
+  
+  {% comment %} Preload Logo & Fonts for LCP optimization {% endcomment %}
+  <link rel="preload" as="image" href="{{ 'aylesva-logo-mx-v1.png' | asset_url }}" fetchpriority="high">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <!-- Basic page needs ================================================== -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="theme-color" content="">
+    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+    <meta name="google-site-verification" content="aRUexk9YClD4QH2OsCAhC2OXdLPdRX0eyttGuu5WvAE" />
+    {% if settings.favicon %}
+    <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png" />
+    {% endif %}
+    <!-- Title and description ================================================== -->
+    <title>
+      {{ page_title }}{% if current_tags %}{% assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags }}{% endif %}{% if current_page != 1 %} &ndash; {{ 'general.meta.page' | t: page: current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
+    </title>
+    {% if page_description %}
+    <meta name="description" content="{{ page_description | escape }}">
+    {% endif %}
+
+    <!-- Social meta ================================================== -->
+    {% render 'social-meta-tags' %}
+    <!-- Helpers ================================================== -->
+    <link rel="canonical" href="{{ canonical_url }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    {% render 'css-variables' %}
+    <!-- CSS ================================================== -->
+    {{ 'owl.carousel.css' | asset_url | stylesheet_tag }} 
+    {{ 'bootstrap.min.css' | asset_url | stylesheet_tag }} 
+    {{ 'materialdesignicons.min.css' | asset_url | stylesheet_tag }}
+    {{ 'magnific-popup.css' | asset_url | stylesheet_tag }} 
+    {{ 'slick.css' | asset_url | stylesheet_tag }}  
+                  {% if settings.enable_animation != blank %}
+      {{ 'aos.css' | asset_url | stylesheet_tag }}
+    {% endif %}
+    {{ 'animate.css' | asset_url | stylesheet_tag }}
+    {{ 'theme.css' | asset_url | stylesheet_tag | media:'print' }}
+    {% render 'google-fonts' %}
+    <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
+    <!-- Header hook for plugins ================================================== -->
+    {{ content_for_header }}
+    {% render 'oldIE-js' %}  
+    {% if template.directory == 'customers' %}
+    {{ 'shopify_common.js' | shopify_asset_url | script_tag }}
+    {{ 'customer_area.js'  | shopify_asset_url | script_tag }}
+    {% endif %}
+    <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'modernizr.min.js' | asset_url }}"></script>
+    <script src="{{ 'jquery.min.js' | asset_url }}"></script>
+    <script src="{{ 'theme.js' | asset_url  }}"></script> 
+    <script src="{{ 'jquery-cookie.min.js' | asset_url }}"></script>  
+    <script src="{{ 'api.jquery.js' | shopify_asset_url  }}"></script>
+    <script src="{{ 'countdown.js' | asset_url }}" async="async"></script> 
+    <script src="{{ 'owl.carousel.min.js' | asset_url }}" defer="defer"></script>  
+    <script src="{{ 'bootstrap.min.js' | asset_url }}"></script> 
+    {% if settings.enable_animation != blank %}
+      <script src="{{ 'aos.js' | asset_url  }}" defer="defer"></script>
+    {% endif %}
+    <script src="{{ 'jquery.flexslider.min.js' | asset_url }}" defer="defer"></script> 
+    <script src="{{ 'jquery.history.js' | asset_url }}" defer="defer"></script>    
+    <script src="{{ 'slick.min.js' | asset_url }}" defer="defer"></script>    
+    <script src="{{ 'imagesLoaded.min.js' | asset_url }}" defer="defer"></script>    
+    <script src="{{ 'magnific-popup.min.js' | asset_url }}" defer="defer"></script>    
+    <script src="{{ 'jquery.sticky-kit.js' | asset_url }}" defer="defer"></script>    
+    <script src="{{ 'shop.js' | asset_url }}"></script>    
+    <script src="{{ 'ResizeSensor.min.js' | asset_url }}" defer="defer"></script>    
+    <script src="{{ 'theia-sticky-sidebar.min.js' | asset_url }}" defer="defer"></script>    
+    <script src="{{ 'custom-js.js' | asset_url }}" defer="defer"></script>      
+    {% if shop.locale == 'ar' or shop.locale == 'he' or shop.locale == 'ur' %} 
+    {{ 'rtl.css' | asset_url | stylesheet_tag }} 
+    <script>window.rtltrue = "rtltrue";</script>  
+    <style>.customNavigation .navigation_wrap,.customNavigation,.owl-carousel .owl-wrapper-outer,.flexslider .slides,.owl-carousel,.flexslider .slides>li,.flexslider{direction: ltr !important;}</style>
+    {% endif %}
+    <script>window.money_format = "{{shop.money_with_currency_format}}";window.shop_currency = "{{ shop.currency }}";window.show_multiple_currencies = {{settings.enable_multiple_currencies}};window.many_in_stock="{{ 'products.product.many_in_stock' | t  }}";window.out_of_stock="{{ 'products.product.out_of_stock' | t  }}";window.in_stock="{{ 'products.product.in_stock' | t  }}";window.unavailable="{{ 'products.product.unavailable' | t  }}";</script>  
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <!-- Tailwind CDN moved to footer for performance -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#14422D",
+              "primary-dark": "#0A2418",
+              "secondary": "#5f5e5e",
+              "surface": "#fbf9f8",
+              "on-surface": "#1b1c1c",
+              "primary-container": "#2d5a43",
+              "on-primary": "#ffffff",
+              "outline-variant": "#c0c9c1",
+              "surface-container-low": "#f6f3f2",
+              "surface-container-highest": "#e4e2e1",
+              "surface-container-lowest": "#ffffff"
+            },
+            fontFamily: {
+              "headline": ["Inter", "sans-serif"],
+              "body": ["Inter", "sans-serif"],
+              "label": ["Inter", "sans-serif"]
+            }
+          },
+        },
+      }
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+      }
+    {% comment %} Sistema de Diseño Amazon Premium {% endcomment %}
+    {{ 'ayl-amazon-product-style.css' | asset_url | stylesheet_tag }}
+
+    <style>
+      /* --- AYLESVA STRUCTURAL FIX V3: ELIMINAR GAP (WEB & MÓVIL) --- */
+      .template-index .main-content, 
+      .template-collection .main-content, 
+      .template-index .site-inner, 
+      .template-collection .site-inner,
+      .template-search .main-content,
+      .template-search .site-inner,
+      [class*="template-page-"] .main-content,
+      [class*="template-page-"] .site-inner,
+      [class*="template-page-"] #page.container,
+      .template-page-mujer #page.container,
+      .template-page-hombre #page.container,
+      .template-index #page.container {
+        padding-top: 0 !important;
+        margin-top: 0 !important;
+      }
+      
+      /* Target the hidden margin in theme.css line 982 & container desktop */
+      .template-index .site-inner #content .wrap,
+      .template-collection .site-inner #content .wrap,
+      [class*="template-page-"] .site-inner #content .wrap,
+      .template-index #page.container,
+      [class*="template-page-"] #page.container {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+      }
+
+      .template-index .breadcrumb-wrapper, 
+      .template-collection .breadcrumb-wrapper,
+      .template-search .breadcrumb-wrapper,
+      [class*="template-page-"] .breadcrumb-wrapper {
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+        display: none !important; /* Force hide breadcrumb on hero pages */
+      }
+      .main-content { padding-top: 15px; } /* Default for standard pages */
+      @media (max-width: 767px) {
+        .template-collection .main-content, .template-search .main-content, 
+        [class*="template-page-"] .main-content {
+          padding-top: 0 !important;
+        }
+      }
+    </style>
+  <style>
+    /* 1. Global Header Height Crush - DEFINITIVE OVERRIDE */
+    .site-header, 
+    header.site-header, 
+    #shopify-section-header, 
+    .header_2.site-header,
+    .header_style_2 header.site-header,
+    .desktop-only-header {
+      min-height: 0 !important;
+      height: auto !important;
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+      border: none !important;
+      background-color: #000 !important;
+    }
+
+    /* 2. Global Space Reset - Targets the containers below the header */
+    .site-inner, 
+    .main-content, 
+    #content, 
+    #main, 
+    .shopify-section,
+    .index-section,
+    #page.container {
+      margin-top: 0 !important;
+      padding-top: 0 !important;
+      margin-bottom: 0 !important;
+      padding-bottom: 0 !important;
+      border-top: none !important;
+      border-bottom: none !important;
+    }
+
+    /* Target specific landing section wrappers to kill gaps on sub-pages */
+    .template-index div[id*="shopify-section"],
+    [class*="template-page-"] div[id*="shopify-section"],
+    .template-collection div[id*="shopify-section"],
+    body.template-page .shopify-section,
+    body[class*="template-page-"] .shopify-section {
+      margin-bottom: 0 !important;
+      padding-bottom: 0 !important;
+    }
+
+    /* 3. Global Breadcrumb Suppression */
+    .breadcrumb-wrapper, .breadcrumb-wrap, .breadcrumb, [class*="breadcrumb"] {
+      display: none !important;
+      height: 0 !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      visibility: hidden !important;
+    }
+
+    /* Only show breadcrumbs on Product & Collection Pages (Re-enable specifically) */
+    body.template-product .breadcrumb-wrapper, 
+    body[class*="template-product"] .breadcrumb-wrapper,
+    body.template-collection .breadcrumb-wrapper, 
+    body[class*="template-collection"] .breadcrumb-wrapper {
+      display: block !important;
+      height: auto !important;
+      visibility: visible !important;
+      margin-bottom: 20px !important;
+    }
+
+    /* 1. UNIVERSAL BODY/UI HOMOGENIZATION (INTER) - REfined to avoid overriding headers */
+    body, html, p, span, a, div, li, input, select, textarea {
+      font-family: 'Inter', sans-serif !important;
+    }
+
+    /* 2. HEADER FLEXIBILITY (Allow Section Overrides) */
+    h1, h2, h3, h4, h5, h6, .h1, .h2, .h3 {
+      font-family: 'Inter', sans-serif; 
+    }
+  </style>
+
+  {% render 'aylesva-corp-tokens' %}
+
+</head>
+  <body id="{{ page_title | handle }}" class="{{ settings.toggle_menu_position }} header_{{ settings.header_style_1 }} {% if shop.locale == 'ar' or shop.locale == 'he' or shop.locale == 'ur' %}rtl {% endif %} {{ page_title | handle }}  {{ sticky_class }} {% if customer %}customer-logged-in {% endif %}template-{{ template | handle }} template-{{ template | replace: '.', '-' | handle }}">
+  <script>console.log("%cAYLESVA CART SYSTEM: ACTIVE", "color: #ff0000; font-weight: bold; font-size: 16px;");</script>    <div style="display:none !important;" class="ayl-theme-modals-container" aria-hidden="true">
+      {% render 'modal-box' %}
+      <div class="quick-view"></div> 
+      <div class="compare-model">
+        <div class="modal fade" id="modalCompare1" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-dialog white-modal modal-sm">
+            <div class="modal-content">              
+              <div class="modal-body">
+                <div class="modal-header">
+                  <p class="max_compare">
+                    Maximum products to compare. Limit is 3!
+                  </p>  
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span class="mdi mdi-close"></span>
+                  </button>
+                </div>
+                <div class="compare-content">
+                  <div class="compare-img">
+                    <img loading="lazy" class="img-responsive" src="#" alt="" />
+                  </div>
+                  <div class="compare-title">
+                    <p class="product-title"></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% comment %} Preloader desactivado por petición del usuario {% endcomment %}
+    {% if false %}
+          {% if settings.display_preloader != blank %}
+      {% if settings.preloader_pages == blank and template == 'index' %}
+        <div class="ttloader">
+          <span class="rotating"></span>
+        </div>
+      {% elsif settings.preloader_pages != blank %}
+        <div class="ttloader">
+          <span class="rotating"></span>
+        </div>
+      {% endif %}
+      <style>
+        .ttloader {
+          background-color: {{ settings.preloader_bg | default: '#000000' }};
+          height: 100vh;
+          left: 0;
+          position: fixed;
+          top: 0;
+          width: 100vw;
+          z-index: 9999999;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .rotating {
+          background-image: url('{{ "preloader-custom.gif" | asset_url }}');
+          background-position: center center;
+          background-repeat: no-repeat;
+          background-size: contain;
+          width: 250px;
+          height: 250px;
+          display: block;
+        }
+        @media (max-width: 767px) {
+          .rotating {
+            width: 150px;
+            height: 150px;
+          }
+        }
+      </style>
+    {% endif %}
+    {% endif %}
+    <input type="hidden" name="type" value="{{shop.url}}" id="shop-url">
+    <div class="page-wrapper page-element">
+      {% if settings.display_bxolayout %} 
+      <div id="page" class="container">
+        {% endif %}
+
+    {% section 'announcement-bar' %}
+        
+        {% section 'header-ecosystem' %}
+        <div class="site-inner">
+        <main class="main-content" role="main">
+          {% comment %} FORCE REMOVAL OF BREADCRUMBS TO KILL THE WHITE LINE {% endcomment %}
+          {% if template contains 'product' or template contains 'collection' %}
+            {% if settings.enable_breadcrumb != blank %}
+              {% render 'breadcrumb' %} 
+            {% endif %}
+          {% endif %}
+          {{ content_for_layout }}
+        </main>
+      </div>
+        {% section 'custom-footer' %}
+        {% render 'site-cookie' %}
+        {% section 'recomendation-product' %}
+        {% if template.name == 'product' %}
+        {{ 'jquery.zoom.min.js' | asset_url | script_tag }}
+        {% endif %}
+        <script>window.ajax_cart = {{ settings.use_ajax_cart }};</script>  
+        {% render 'quick-veiw' %}
+        {% if template == 'index' %}
+        {% render 'popup-newsletter' %}
+        {% endif %}
+        <a href="#" id="GotoTop"><span id="toTopHover"></span><i class="mdi mdi-chevron-up"></i></a>
+        {% if settings.display_bxolayout %}  
+      </div>
+      {% endif %}
+    </div>
+    <script>/* Product Tag Filters - Good for any number of filters on any type of collection pages */var collFilters = jQuery('.coll-filter');collFilters.change(function() {var newTags = [];collFilters.each(function() {if (jQuery(this).val()) {newTags.push(jQuery(this).val());}});if (newTags.length) {var query = newTags.join('+');window.location.href = jQuery('{{ 'tag' | link_to_tag: 'tag' }}').attr('href').replace('/' + 'tag', '/' + query);}else {
+          {% if collection.handle %}window.location.href = '/collections/{{ collection.handle }}';{% elsif collection.products.first.type == collection.title %}window.location.href = '{{ collection.title | url_for_type }}';{% elsif collection.products.first.vendor == collection.title %}window.location.href = '{{ collection.title | url_for_vendor }}';{% endif %}}});</script>    
+    {% render 'currencies' %}   
+    {% render 'search-autocomplete' %}
+    <!-- Begin Recently Viewed Products -->
+    {{ 'jquery.tmpl.min.js' | asset_url | script_tag }}
+    {{ 'jQuery.products.min.js' | asset_url | script_tag }}
+    {% if template contains 'product' %}
+    <script>Shopify.Products.recordRecentlyViewed();</script>
+    {% endif %}
+    <link rel="alternate" hreflang ="{{ request.locale.iso_code }}" href="{{canonical_url}}" />
+    <script>
+      jQuery(function() {
+        jQuery('.swatch :radio').change(function() {
+          var optionIndex = jQuery(this).closest('.swatch').attr('data-option-index');
+          var optionValue = jQuery(this).val();
+          jQuery(this)
+          .closest('form')
+          .find('.single-option-selector')
+          .eq(optionIndex)
+          .val(optionValue)
+          .trigger('change');
+        });
+      });
+    </script>
+    <script>
+      window.routes = {
+        cart_add_url: '{{ routes.cart_add_url }}',
+        cart_change_url: '{{ routes.cart_change_url }}',
+        cart_update_url: '{{ routes.cart_update_url }}'
+      };
+      window.cartStrings = {
+        error: `{{ 'cart.general.cart_error' | t }}`
+      }
+      window.variantStrings = {
+        addToCart: `{{ 'products.product.add_to_cart' | t }}`,
+        soldOut: `{{ 'products.product.sold_out' | t }}`,
+        unavailable: `{{ 'products.product.unavailable' | t }}`,
+      }
+      window.accessibilityStrings = {
+        shareSuccess: `{{ 'general.share.success_message' | t }}`,
+      }
+    </script>
+
+                {% if settings.enable_animation != blank %}
+      <script>
+      $(document).ready(function () {
+        // Debounce AOS para no bloquear el hilo principal
+        setTimeout(function() {
+          AOS.init({ duration: 1200, once: true });
+        }, 1500);
+      });
+      </script>
+    {% endif %}
+    
+  
+<!-- AYLESVA MX — Colección navega directo al seleccionar -->
+<script>
+(function() {
+  function initCollectionSelect() {
+    // Buscar el select de colecciones en el buscador
+    var selects = document.querySelectorAll(
+      'select[name="type"], .search-bar select, .search__select, ' +
+      'select.collection-select, select[data-type="collection"], ' +
+      'header select, .site-header select'
+    );
+
+    selects.forEach(function(sel) {
+      if (sel.dataset.aylFixed) return;
+      sel.dataset.aylFixed = '1';
+
+      sel.addEventListener('change', function() {
+        var val = this.value;
+        if (!val || val === '' || val === 'product') return;
+
+        // Si el valor es un handle de colección, navegar directo
+        if (val.indexOf('/collections/') === 0) {
+          window.location.href = val;
+        } else if (val !== 'article' && val !== 'page') {
+          window.location.href = '/collections/' + val;
+        }
+      });
+    });
+  }
+
+  // Ejecutar cuando carga la página
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCollectionSelect);
+  } else {
+    initCollectionSelect();
+  }
+
+  // También observar cambios dinámicos con Debounce para evitar bloqueos (Freeze)
+  var aylMutationTimeout;
+  var observer = new MutationObserver(function() {
+    clearTimeout(aylMutationTimeout);
+    aylMutationTimeout = setTimeout(function() {
+      initCollectionSelect();
+    }, 300); // Esperar 300ms de calma antes de ejecutar
+  });
+  observer.observe(document.body, { childList: true, subtree: true });
+})();
+</script>
+
+  {% section 'aylesva-bottom-nav' %}
+  {% render 'ayl-cart-drawer' %}
+  
+  {% comment %} Tailwind CDN - Moved to bottom to prevent blocking the main thread {% endcomment %}
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+</body>
+</html>

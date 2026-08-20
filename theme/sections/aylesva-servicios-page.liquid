@@ -1,0 +1,1084 @@
+{% comment %}
+  ============================================================
+  Aylesva Servicios Page — Versión Claros Premium (Aesthetic Light)
+  Características:
+  1. Fondo Dinámico Claro Interactivo (Scroll-based Light Color Transition).
+     - Transiciona entre Blanco/Crema (Hero), Verde Menta Pálido (Personas) y Dorado Arena Pálido (Empresas).
+  2. Elementos 3D Flotantes en Paralaje con sombras suaves.
+  3. Sección de Ecosistema Aylesva (Introducción en 3 Pasos).
+  4. Rediseño de Tarjetas: Estructura ¿Qué resolvemos? (Problema) vs. Solución.
+  5. CTAs Personalizados y Badges de Categoría en Global Estates.
+  ============================================================
+{% endcomment %}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Outfit:wght@500;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+  #as-page-root {
+    --as-gold: #C5A47E;
+    --as-gold-hover: #b08d65;
+    --as-gold-gradient: linear-gradient(135deg, #C5A47E 0%, #E5C49E 50%, #C5A47E 100%);
+    --as-dark: #1A1A1A;
+    --as-muted: #556070;
+    --as-bg-hero: #FFFFFF;
+    --as-bg-personas: #F3F7F5; /* Verde menta ultra pálido */
+    --as-bg-empresas: #FAF6F0; /* Dorado arena ultra pálido */
+    --as-white: #ffffff;
+    --as-border: #e8e8e8;
+    --as-radius: 24px;
+    --as-radius-img: 16px;
+    
+    font-family: 'Manrope', sans-serif;
+    padding: 0 0 120px 0;
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+    scroll-behavior: smooth;
+    
+    /* Transición de Fondo Claro Fluida */
+    background-color: var(--as-bg-hero);
+    color: var(--as-dark);
+    transition: background-color 1.2s cubic-bezier(0.25, 1, 0.5, 1), 
+                color 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  #as-page-root * {
+    box-sizing: border-box;
+  }
+
+  /* ---------- ESTADOS DE FONDO CLARO EN EL SCROLL ---------- */
+  #as-page-root.as-theme-dark-hero {
+    background-color: var(--as-bg-hero);
+  }
+  #as-page-root.as-theme-light-personas {
+    background-color: var(--as-bg-personas);
+  }
+  #as-page-root.as-theme-dark-empresas {
+    background-color: var(--as-bg-empresas);
+  }
+
+  /* ---------- AURORA GLOW BACKGROUNDS (VERSIÓN CLARA) ---------- */
+  .as-aurora {
+    position: absolute;
+    width: clamp(300px, 50vw, 600px);
+    height: clamp(300px, 50vw, 600px);
+    border-radius: 50%;
+    filter: blur(140px);
+    opacity: 0.08; /* Muy sutil sobre fondos claros */
+    pointer-events: none;
+    z-index: 1;
+    transition: opacity 1s;
+  }
+  .as-aurora-gold { top: 5%; left: -10%; background: radial-gradient(circle, var(--as-gold) 0%, transparent 70%); }
+  .as-aurora-emerald { top: 40%; right: -10%; background: radial-gradient(circle, #2D5A43 0%, transparent 70%); }
+  .as-aurora-crimson { bottom: 10%; left: 20%; background: radial-gradient(circle, #7C1922 0%, transparent 70%); }
+
+  /* ---------- ELEMENTOS 3D DECORATIVOS FLOTANTES ---------- */
+  .as-float-shape {
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.75;
+    animation: floatAnimation 12s ease-in-out infinite;
+    transform-style: preserve-3d;
+  }
+  
+  @keyframes floatAnimation {
+    0% { transform: translateY(0px) rotate(0deg) scale(1); }
+    50% { transform: translateY(-30px) rotate(180deg) scale(1.05); }
+    100% { transform: translateY(0px) rotate(360deg) scale(1); }
+  }
+
+  .as-shape-sphere {
+    top: 12%;
+    right: 5%;
+    background: radial-gradient(circle at 35% 35%, #FFF0D4 0%, #C5A47E 40%, #5E4730 85%, #2a1c0d 100%);
+    border-radius: 50%;
+    box-shadow: inset -5px -5px 15px rgba(0,0,0,0.3), 10px 15px 35px rgba(197, 164, 126, 0.2);
+  }
+  .as-shape-prism {
+    top: 58%;
+    left: -2%;
+    background: linear-gradient(135deg, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.2) 100%);
+    border: 1px solid rgba(197, 164, 126, 0.3);
+    border-radius: 20px;
+    transform: rotateX(45deg) rotateY(45deg);
+    box-shadow: 10px 15px 35px rgba(0,0,0,0.06);
+    backdrop-filter: blur(8px);
+  }
+  .as-shape-torus {
+    bottom: 12%;
+    right: 3%;
+    border: 24px solid #C5A47E;
+    border-radius: 50%;
+    box-shadow: 
+      0 10px 25px rgba(197,164,126,0.15),
+      inset 0 4px 8px rgba(255,255,255,0.8),
+      inset 0 -6px 15px rgba(0,0,0,0.1);
+    background: transparent;
+  }
+
+  /* ---------- CONTAINER ---------- */
+  .as-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ---------- HERO HEADER ---------- */
+  .as-hero-section {
+    padding: clamp(80px, 10vw, 140px) 0 clamp(60px, 8vw, 100px);
+    position: relative;
+    border-bottom: 1px solid var(--as-border);
+    background-image: 
+      radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  .as-hero-grid {
+    display: grid;
+    grid-template-columns: 1.25fr 0.75fr;
+    gap: 40px;
+    align-items: center;
+  }
+  .as-hero-text { text-align: left; }
+  .as-hero-eyebrow {
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--as-gold);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 18px;
+    display: inline-block;
+    padding: 6px 14px;
+    background: rgba(197, 164, 126, 0.08);
+    border: 1px solid rgba(197, 164, 126, 0.15);
+    border-radius: 100px;
+  }
+  .as-hero-title {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 900;
+    font-size: clamp(38px, 5.8vw, 66px);
+    color: var(--as-dark);
+    margin: 0 0 24px;
+    letter-spacing: -2px;
+    line-height: 1.05;
+  }
+  .as-hero-title span {
+    background: var(--as-gold-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .as-hero-subtitle {
+    font-size: clamp(16px, 2vw, 19px);
+    color: var(--as-muted);
+    margin: 0 0 40px;
+    line-height: 1.6;
+  }
+  .as-hero-buttons {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .as-btn-hero {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 32px;
+    border-radius: 100px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none !important;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+  }
+  .as-btn-hero--primary {
+    background: var(--as-gold-gradient);
+    color: var(--as-white) !important;
+    box-shadow: 0 8px 24px rgba(197, 164, 126, 0.15);
+  }
+  .as-btn-hero--primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(197, 164, 126, 0.3);
+  }
+  .as-btn-hero--secondary {
+    background-color: rgba(0, 0, 0, 0.02);
+    color: var(--as-dark) !important;
+    border: 1.5px solid var(--as-border);
+  }
+  .as-btn-hero--secondary:hover {
+    background-color: var(--as-dark);
+    color: var(--as-white) !important;
+  }
+
+  /* ---------- HERO 3D DIGITAL CARD MOCKUP ---------- */
+  .as-hero-graphic {
+    display: flex;
+    justify-content: center;
+    position: relative;
+  }
+  .as-card-3d-wrap {
+    perspective: 1000px;
+    width: 100%;
+    max-width: 380px;
+  }
+  .as-card-3d {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.6) 100%);
+    border: 1px solid rgba(197, 164, 126, 0.3);
+    border-radius: 24px;
+    padding: 30px;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.06);
+    backdrop-filter: blur(20px);
+    transform: rotateX(12deg) rotateY(-20deg) rotateZ(4deg);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .as-card-3d::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(197, 164, 126, 0.1) 0%, transparent 60%);
+    transform: rotate(45deg);
+    pointer-events: none;
+  }
+  .as-card-3d:hover {
+    transform: rotateX(5deg) rotateY(-8deg) rotateZ(1deg) translateY(-5px);
+    box-shadow: 0 30px 60px rgba(197, 164, 126, 0.2);
+  }
+  .as-c3d-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 60px;
+  }
+  .as-c3d-logo {
+    font-family: 'Outfit', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--as-dark);
+    letter-spacing: -0.5px;
+  }
+  .as-c3d-logo span { color: var(--as-gold); }
+  .as-c3d-chip {
+    width: 40px;
+    height: 30px;
+    background: linear-gradient(135deg, #e5c49e 0%, #b08d65 100%);
+    border-radius: 6px;
+  }
+  .as-c3d-number {
+    font-family: monospace;
+    font-size: 18px;
+    letter-spacing: 3px;
+    color: var(--as-muted);
+    margin-bottom: 30px;
+  }
+  .as-c3d-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .as-c3d-holder {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--as-muted);
+  }
+  .as-c3d-holder div {
+    font-size: 13px;
+    color: var(--as-dark);
+    font-weight: 700;
+    margin-top: 4px;
+  }
+
+  /* ---------- FASE 1: SECCIÓN ECOSISTEMA ---------- */
+  .as-ecosystem-section {
+    padding: clamp(60px, 8vw, 100px) 0;
+    border-bottom: 1px solid var(--as-border);
+    position: relative;
+    z-index: 2;
+  }
+  .as-eco-header {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  .as-eco-header h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin: 0 0 12px;
+    color: var(--as-dark);
+  }
+  .as-eco-header p {
+    font-size: 16px;
+    color: var(--as-muted);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .as-eco-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+  .as-eco-step {
+    background: var(--as-white);
+    border: 1px solid var(--as-border);
+    border-radius: 20px;
+    padding: 36px 30px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.01);
+    transition: all 0.3s;
+  }
+  .as-eco-step:hover {
+    transform: translateY(-4px);
+    border-color: var(--as-gold);
+    box-shadow: 0 10px 30px rgba(197,164,126,0.08);
+  }
+  .as-eco-step-num {
+    font-family: 'Outfit', sans-serif;
+    font-size: 36px;
+    font-weight: 900;
+    background: var(--as-gold-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 16px;
+  }
+  .as-eco-step h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 19px;
+    font-weight: 700;
+    margin: 0 0 12px;
+    color: var(--as-dark);
+  }
+  .as-eco-step p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--as-muted);
+    margin: 0;
+  }
+
+  /* ---------- SECTIONS TITLES ---------- */
+  .as-section-header {
+    margin: 100px 0 45px;
+    text-align: left;
+    position: relative;
+    padding-left: 20px;
+    scroll-margin-top: 120px;
+  }
+  .as-section-header::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 4px;
+    bottom: 4px;
+    width: 5px;
+    background: var(--as-gold-gradient);
+    border-radius: 3px;
+  }
+  .as-section-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    margin: 0 0 8px;
+    letter-spacing: -0.5px;
+    color: var(--as-dark);
+  }
+  .as-section-subtitle {
+    font-size: 16px;
+    color: var(--as-muted);
+    margin: 0;
+  }
+
+  /* ---------- GRIDS ---------- */
+  .as-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 30px;
+  }
+
+  /* ---------- PREMIUM WHITE CARD ITEM ---------- */
+  .as-service-card {
+    background: var(--as-white);
+    border: 1px solid var(--as-border);
+    border-radius: var(--as-radius);
+    padding: 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                border-color 0.3s ease;
+    height: 100%;
+    position: relative;
+  }
+  .as-service-card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: var(--as-radius);
+    background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+  .as-service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 36px rgba(197, 164, 126, 0.1);
+    border-color: var(--as-gold);
+  }
+
+  /* ---------- CARD IMAGE & BADGES DE FASE 3 ---------- */
+  .as-card-image-container {
+    width: 100%;
+    height: 200px;
+    border-radius: var(--as-radius-img);
+    overflow: hidden;
+    margin-bottom: 24px;
+    position: relative;
+    border: 1px solid #f0f0f0;
+    z-index: 2;
+  }
+  .as-card-image {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .as-service-card:hover .as-card-image {
+    transform: scale(1.08);
+  }
+
+  /* Badges superiores visuales sobre las fotos de Global Estates */
+  .as-card-tag {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    z-index: 10;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+  .as-tag-personas {
+    background-color: #2D5A43;
+    color: var(--as-white);
+  }
+  .as-tag-empresas {
+    background-color: var(--as-gold);
+    color: var(--as-white);
+  }
+
+  /* ---------- CARD TEXT ---------- */
+  .as-service-card h3 {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--as-dark);
+    margin: 0 0 12px;
+    z-index: 2;
+  }
+
+  /* ---------- FASE 2: BLOQUE ¿QUÉ RESOLVEMOS? ---------- */
+  .as-card-problem {
+    font-size: 13.5px;
+    line-height: 1.55;
+    background: #fbfbfb;
+    border: 1px dashed #e2e8f0;
+    border-radius: 12px;
+    padding: 12px 16px;
+    margin-bottom: 20px;
+    color: var(--as-muted);
+    width: 100%;
+    z-index: 2;
+    transition: all 0.3s;
+  }
+  .as-card-problem strong {
+    color: var(--as-dark);
+    display: block;
+    margin-bottom: 4px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
+
+  /* ---------- CREATIVE DIDACTIC BADGES ---------- */
+  .as-card-features-badges {
+    width: 100%;
+    margin: 0 0 28px;
+    padding: 18px 0 0;
+    border-top: 1px solid #f0f0f0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    z-index: 2;
+  }
+  .as-feature-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 100px;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--as-dark);
+    background: #FAF6F0;
+    border: 1px solid rgba(197, 164, 126, 0.15);
+    transition: all 0.3s;
+  }
+  .as-feature-badge svg {
+    width: 13px;
+    height: 13px;
+    color: var(--as-gold);
+  }
+  
+  .as-service-card:hover .as-feature-badge {
+    border-color: var(--as-gold);
+    background: #FFFBF5;
+  }
+
+  /* ---------- BUTTONS ---------- */
+  .as-action-container {
+    width: 100%;
+    margin-top: auto;
+    z-index: 2;
+  }
+  .as-btn-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 14px 24px;
+    border-radius: 100px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none !important;
+    transition: all 0.3s;
+    background-color: var(--as-dark);
+    color: var(--as-white) !important;
+    border: none;
+    cursor: pointer;
+  }
+  .as-btn-link:hover {
+    background: var(--as-gold-gradient);
+    color: var(--as-white) !important;
+    box-shadow: 0 6px 20px rgba(197, 164, 126, 0.35);
+  }
+  .as-btn-link svg {
+    width: 14px;
+    height: 14px;
+    transition: transform 0.3s;
+    stroke: currentColor;
+  }
+  .as-btn-link:hover svg {
+    transform: translateX(4px);
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width: 991px) {
+    .as-hero-grid {
+      grid-template-columns: 1fr;
+      text-align: center;
+      gap: 50px;
+    }
+    .as-hero-text { text-align: center; }
+    .as-hero-buttons { justify-content: center; }
+    .as-hero-graphic { order: -1; }
+    .as-float-shape { display: none; }
+    .as-eco-grid { grid-template-columns: 1fr; gap: 20px; }
+  }
+
+  @media(max-width: 767px) {
+    .as-section-header {
+      margin: 60px 0 24px;
+    }
+  }
+
+  /* ---------- DISCLOSURE STYLING ---------- */
+  .as-disclosure-box {
+    background: var(--as-white);
+    border: 1px solid var(--as-border);
+    border-radius: var(--as-radius);
+    padding: 30px;
+    margin-top: 80px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--as-muted);
+    transition: background-color 1.2s, border-color 1.2s;
+    text-align: left;
+  }
+  .as-theme-light-personas .as-disclosure-box {
+    background: rgba(0, 0, 0, 0.015);
+    border-color: rgba(0, 0, 0, 0.05);
+  }
+  .as-theme-dark-empresas .as-disclosure-box {
+    background: rgba(255, 255, 255, 0.02);
+    border-color: rgba(255, 255, 255, 0.05);
+  }
+  .as-disclosure-box h4 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    margin: 0 0 16px;
+    color: var(--as-dark);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid var(--as-border);
+    padding-bottom: 8px;
+    transition: color 1.2s, border-color 1.2s;
+  }
+  .as-disclosure-item {
+    margin-bottom: 16px;
+  }
+  .as-disclosure-item:last-child {
+    margin-bottom: 0;
+  }
+  .as-disclosure-item strong {
+    color: var(--as-dark);
+    display: block;
+    margin-bottom: 4px;
+    font-size: 12px;
+    transition: color 1.2s;
+  }
+  .as-disclosure-item ul {
+    margin: 4px 0 0 18px;
+    padding: 0;
+  }
+  .as-service-card:hover img {
+    transform: scale(1.06);
+  }
+</style>
+
+<div id="as-page-root">
+  
+  <!-- BACKGROUND EFFECTS -->
+  <div class="as-aurora as-aurora-gold"></div>
+  <div class="as-aurora as-aurora-emerald"></div>
+  <div class="as-aurora as-aurora-crimson"></div>
+
+  <!-- ELEMENTOS 3D FLOTANTES -->
+  <div class="as-float-shape as-shape-sphere"></div>
+  <div class="as-float-shape as-shape-prism"></div>
+  <div class="as-float-shape as-shape-torus"></div>
+
+  <!-- HERO BANNER ULTRA CREATIVE -->
+  <section class="as-hero-section">
+    <div class="as-container">
+      <div class="as-hero-grid">
+        
+        <!-- COLUMNA TEXTO -->
+        <div class="as-hero-text">
+          <span class="as-hero-eyebrow">Aylesva Global Services</span>
+          <h1 class="as-hero-title">Lleva tu vida y negocio al <span>siguiente nivel</span></h1>
+          <p class="as-hero-subtitle">Descubre una gama exclusiva de soluciones integrales diseñadas estratégicamente para el crecimiento comercial, logístico y de seguridad familiar en el entorno transfronterizo.</p>
+          
+          <div class="as-hero-buttons">
+            <a href="#servicios-personas" class="as-btn-hero as-btn-hero--primary">Servicios para Personas</a>
+            <a href="#servicios-empresas" class="as-btn-hero as-btn-hero--secondary">Servicios para Empresas</a>
+          </div>
+        </div>
+
+        <!-- COLUMNA TARJETA 3D -->
+        <div class="as-hero-graphic">
+          <div class="as-card-3d-wrap">
+            <div class="as-card-3d">
+              <div class="as-c3d-header">
+                <div class="as-c3d-logo">Aylesva<span>Global</span></div>
+                <div class="as-c3d-chip"></div>
+              </div>
+              <div class="as-c3d-number">•••• •••• •••• 2026</div>
+              <div class="as-c3d-footer">
+                <div class="as-c3d-holder">
+                  Cardholder
+                  <div>EXECUTIVE CLIENT</div>
+                </div>
+                <div style="font-size: 12px; font-weight: 800; color: var(--as-gold);">MEMBERSHIP</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FASE 1: CÓMO FUNCIONA EL ECOSISTEMA -->
+  <section class="as-ecosystem-section">
+    <div class="as-container">
+      <div class="as-eco-header">
+        <h2>¿Cómo funciona el Ecosistema Aylesva?</h2>
+        <p>Simplificamos tus necesidades transfronterizas mediante una infraestructura de servicios de confianza unificada.</p>
+      </div>
+      
+      <div class="as-eco-grid">
+        <div class="as-eco-step">
+          <div class="as-eco-step-num">01</div>
+          <h3>Conexión de Necesidades</h3>
+          <p>Identificamos tus requerimientos residenciales, médicos o de importación en cualquiera de los dos lados de la frontera.</p>
+        </div>
+        <div class="as-eco-step">
+          <div class="as-eco-step-num">02</div>
+          <h3>Análisis & Planificación</h3>
+          <p>Evaluamos la viabilidad legal, financiera o logística del caso para estructurar la ruta de ejecución óptima.</p>
+        </div>
+        <div class="as-eco-step">
+          <div class="as-eco-step-num">03</div>
+          <h3>Ejecución Transfronteriza</h3>
+          <p>Activamos el respaldo médico, la importación de mercancías o la adquisición de inmuebles bajo un sello unificado de garantía.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS PARA PERSONAS -->
+  <section class="as-container">
+    <div class="as-section-header" id="servicios-personas">
+      <h2 class="as-section-title">Para Personas</h2>
+      <p class="as-section-subtitle">Soluciones residenciales, familiares y de asistencia transfronteriza.</p>
+    </div>
+    
+    <div class="as-cards-grid">
+      
+      <!-- AYLESVA CARE -->
+      <div class="as-service-card">
+        <div class="as-card-image-container">
+          <div class="as-card-image" style="background-image: url('https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?q=80&w=800&auto=format&fit=crop');"></div>
+        </div>
+        <h3>Aylesva Care</h3>
+        
+        <div class="as-card-problem">
+          <strong>¿Qué resolvemos?</strong>
+          La falta de acceso médico oportuno en el extranjero y la dificultad para gestionar traslados de urgencia transfronterizos coordinados.
+        </div>
+        
+        <div class="as-card-features-badges">
+          <span class="as-feature-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Telemedicina 24/7
+          </span>
+          <span class="as-feature-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Traslados Médicos
+          </span>
+          <span class="as-feature-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Soporte en Farmacia
+          </span>
+        </div>
+
+        <div class="as-action-container">
+          <a href="/pages/aylesva-care" class="as-btn-link">
+            Consultar Cobertura Médica
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- GLOBAL ESTATES (RESIDENCIAL) -->
+      <div class="as-service-card">
+        <div class="as-card-image-container">
+          <span class="as-card-tag as-tag-personas">Hogar y Familia</span>
+          <div class="as-card-image" style="background-image: url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?q=80&w=800&auto=format&fit=crop');"></div>
+        </div>
+        <h3>Global Estates (Residencial)</h3>
+        
+        <div class="as-card-problem">
+          <strong>¿Qué resolvemos?</strong>
+          La incertidumbre jurídica y el riesgo financiero al comprar, vender o rentar casas familiares en otros países sin representación calificada.
+        </div>
+        
+        <div class="as-card-features-badges">
+          <span class="as-feature-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Búsqueda de Casas
+          </span>
+          <span class="as-feature-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Validación de Escrituras
+          </span>
+          <span class="as-feature-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Trámites Notariales
+          </span>
+        </div>
+
+        <div class="as-action-container">
+          <a href="/pages/globalestates" class="as-btn-link">
+            Buscar Propiedad Residencial
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- MI ULTIMA VOLUNTAD -->
+      <div class="as-service-card">
+        <div class="as-card-image-container">
+          <div class="as-card-image" style="background-image: url('https://images.unsplash.com/photo-1464998857633-50e59fbf2fe6?q=80&w=800&auto=format&fit=crop');"></div>
+        </div>
+        <h3>Mi Última Voluntad (MUV)</h3>
+        
+        <div class="as-card-problem">
+          <strong>¿Qué resolvemos?</strong>
+          La desprotección económica y la compleja burocracia consular que enfrentan las familias migrantes al fallecer un familiar en EE. UU.
+        </div>
+        
+        <div class="as-card-features-badges">
+          <span class="as-feature-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Repatriación Coordinada
+          </span>
+          <span class="as-feature-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Pase Redondo CBX Gratis
+          </span>
+          <span class="as-feature-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Soporte Legal Familiar
+          </span>
+        </div>
+
+        <div class="as-action-container">
+          <a href="/pages/mi-ultima-voluntad" class="as-btn-link">
+            Cotizar Plan de Asistencia
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SERVICIOS PARA EMPRESAS -->
+  <section class="as-container">
+    <div class="as-section-header" id="servicios-empresas">
+      <h2 class="as-section-title">Para Empresas</h2>
+      <p class="as-section-subtitle">Soluciones inmobiliarias, financieras y de logística comercial.</p>
+    </div>
+
+    <div class="as-cards-grid">
+      
+      <!-- GLOBAL ESTATES (COMERCIAL) -->
+      <div class="as-service-card">
+        <div class="as-card-image-container">
+          <span class="as-card-tag as-tag-empresas">Negocio e Inversión</span>
+          <div class="as-card-image" style="background-image: url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=800&auto=format&fit=crop');"></div>
+        </div>
+        <h3>Global Estates (Comercial)</h3>
+        
+        <div class="as-card-problem">
+          <strong>¿Qué resolvemos?</strong>
+          Las dificultades de infraestructura para PyMEs que buscan expandir sus operaciones mediante la adquisición de oficinas, bodegas o naves industriales.
+        </div>
+        
+        <div class="as-card-features-badges">
+          <span class="as-feature-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Oficinas y Bodegas
+          </span>
+          <span class="as-feature-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Fideicomisos Comerciales
+          </span>
+          <span class="as-feature-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Proyectos de Infraestructura
+          </span>
+        </div>
+
+        <div class="as-action-container">
+          <a href="/pages/globalestates" class="as-btn-link">
+            Explorar Inmuebles Comerciales
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- AYLESVA RECURSOS -->
+      <div class="as-service-card">
+        <div class="as-card-image-container" style="background-color: #FAF6F0; display: flex; align-items: center; justify-content: center; padding: 20px;">
+          <img src="{{ 'aylesva-recursos-logo-new.png' | asset_url }}" alt="Aylesva Recursos Logo" style="max-height: 110px; width: auto; object-fit: contain; z-index: 2; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);">
+        </div>
+        <h3>Aylesva Recursos</h3>
+        
+        <div class="as-card-problem">
+          <strong>¿Qué resolvemos?</strong>
+          La complejidad para que PyMEs e individuos califiquen a créditos y financiamientos con condiciones y tasas favorables.
+        </div>
+        
+        <div class="as-card-features-badges">
+          <span class="as-feature-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Análisis de Perfil
+          </span>
+          <span class="as-feature-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Intermediación Crediticia
+          </span>
+          <span class="as-feature-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Tasas de Interés Bajas
+          </span>
+        </div>
+
+        <div class="as-action-container">
+          <a href="/pages/aylesva-recursos" class="as-btn-link">
+            Iniciar Estudio Financiero
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- AYLESVA DIRECT -->
+      <div class="as-service-card">
+        <div class="as-card-image-container">
+          <div class="as-card-image" style="background-image: url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=800&auto=format&fit=crop');"></div>
+        </div>
+        <h3>Aylesva Direct</h3>
+        
+        <div class="as-card-problem">
+          <strong>¿Qué resolvemos?</strong>
+          Los riesgos de fraude, sobrecostos y retrasos aduanales al importar insumos o mercancías directamente desde manufacturas globales.
+        </div>
+        
+        <div class="as-card-features-badges">
+          <span class="as-feature-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Sourcing en Asia
+          </span>
+          <span class="as-feature-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Gestión de Aduanas
+          </span>
+          <span class="as-feature-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Distribución Local
+          </span>
+        </div>
+
+        <div class="as-action-container">
+          <a href="/pages/aylesva-direct" class="as-btn-link">
+            Cotizar Solución Logística
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- LANZA TU PROPIA MARCA -->
+      <div class="as-service-card">
+        <div class="as-card-image-container">
+          <div class="as-card-image" style="background-image: url('https://images.unsplash.com/photo-1511556532299-8f662fc26c06?q=80&w=800&auto=format&fit=crop');"></div>
+        </div>
+        <h3>Lanza tu propia marca</h3>
+        
+        <div class="as-card-problem">
+          <strong>¿Qué resolvemos?</strong>
+          La falta de infraestructura técnica y el alto costo de inventario inicial para emprendedores que desean lanzar una marca e-commerce premium.
+        </div>
+        
+        <div class="as-card-features-badges">
+          <span class="as-feature-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Creación de Marca
+          </span>
+          <span class="as-feature-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            E-commerce Integrado
+          </span>
+          <span class="as-feature-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Dropshipping sin Stock
+          </span>
+        </div>
+
+        <div class="as-action-container">
+          <a href="/pages/lanza-tu-propia-marca" class="as-btn-link">
+            Agendar Asesoría E-commerce
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  <!-- DISCLOSURE REGULATORIO -->
+  <section class="as-container" style="margin-top: 40px;">
+    <div class="as-disclosure-box">
+      <h4>Master Regulatory & Services Disclosure</h4>
+      
+      <div class="as-disclosure-item">
+        <strong>1. NOT A LENDER, BROKER, OR FINANCIAL ADVISOR</strong>
+        Aylesva Recursos operates strictly as an independent digital marketing publisher, advertising platform, and referral service. Aylesva Recursos is not a bank, lender, credit union, mortgage broker, consumer loan broker, commercial loan broker, or credit services organization. Aylesva Recursos does not solicit, originate, underwrite, negotiate, approve, or fund loans or any commercial financing products. We do not act as an agent, fiduciary, or broker for prospective borrowers, business owners, or third-party lenders.
+      </div>
+      
+      <div class="as-disclosure-item">
+        <strong>2. DUAL-PURPOSE REFERRAL SERVICES (CONSUMER & COMMERCIAL)</strong>
+        <ul>
+          <li><strong>Consumer Inquiries:</strong> Completing a request for consumer credit products connects you with independent third-party lending partners. Submitting your information does not constitute a loan application. Aylesva Recursos does not guarantee approval, rate offers, or terms.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  (function(){
+    var root = document.getElementById('as-page-root');
+    if(!root) return;
+
+    var secPersonas = root.querySelector('#servicios-personas');
+    var secEmpresas = root.querySelector('#servicios-empresas');
+
+    function checkScrollTransitions() {
+      var scrollPos = window.scrollY + (window.innerHeight / 2.5);
+      
+      var personasTop = secPersonas.offsetTop;
+      var empresasTop = secEmpresas.offsetTop;
+
+      if (scrollPos >= empresasTop) {
+        root.className = 'as-theme-dark-empresas';
+      } else if (scrollPos >= personasTop) {
+        root.className = 'as-theme-light-personas';
+      } else {
+        root.className = 'as-theme-dark-hero';
+      }
+
+      var scrollPct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+      
+      var sphere = root.querySelector('.as-shape-sphere');
+      var prism = root.querySelector('.as-shape-prism');
+      var torus = root.querySelector('.as-shape-torus');
+
+      if(sphere) {
+        sphere.style.transform = 'translateY(' + (scrollPct * 150) + 'px) rotate(' + (scrollPct * 360) + 'deg)';
+      }
+      if(prism) {
+        prism.style.transform = 'translateY(' + (-scrollPct * 120) + 'px) rotateX(' + (scrollPct * 180) + 'deg) rotateY(' + (scrollPct * 180) + 'deg)';
+      }
+      if(torus) {
+        torus.style.transform = 'translateY(' + (scrollPct * 90) + 'px) rotate(' + (-scrollPct * 270) + 'deg)';
+      }
+    }
+
+    window.addEventListener('scroll', checkScrollTransitions);
+    checkScrollTransitions();
+  })();
+</script>

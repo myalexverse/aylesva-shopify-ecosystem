@@ -1,0 +1,443 @@
+{
+  "sections": {
+    "hero": {
+      "type": "aylesva-corp-hero",
+      "settings": {
+        "eyebrow": "Global Estates",
+        "overlay": 84,
+        "focal": "center",
+        "image": "ay-ge-hero-warm.jpg",
+        "title": "Inversiones Inmobiliarias que Trascienden Fronteras",
+        "subtitle": "Desarrollos verificados en México y El Salvador, con acompañamiento desde la primera consulta hasta la entrega de llaves.",
+        "cta1_label": "Agenda tu consulta gratuita",
+        "cta1_link": "#contacto",
+        "cta2_label": "Ver desarrollos",
+        "cta2_link": "#desarrollos"
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ],
+      "blocks": {
+        "s1": {
+          "type": "stat",
+          "settings": {
+            "value": "3",
+            "label": "Desarrollos exclusivos"
+          }
+        },
+        "s2": {
+          "type": "stat",
+          "settings": {
+            "value": "72",
+            "label": "Unidades de lujo"
+          }
+        },
+        "s3": {
+          "type": "stat",
+          "settings": {
+            "value": "2",
+            "label": "Países"
+          }
+        },
+        "s4": {
+          "type": "stat",
+          "settings": {
+            "value": "2027",
+            "label": "Entrega proyectada"
+          }
+        }
+      }
+    },
+    "respaldo": {
+      "type": "aylesva-corp-features",
+      "settings": {
+        "bg": "#FFFFFF",
+        "eyebrow": "Por qué confiar en Aylesva",
+        "title": "Compra con confianza, a miles de kilómetros"
+      },
+      "block_order": [
+        "f1",
+        "f2",
+        "f3"
+      ],
+      "blocks": {
+        "f1": {
+          "type": "feature",
+          "settings": {
+            "icon": "<path d=\"M12 3l8 3v6c0 5-4 8-8 9-4-1-8-4-8-9V6z\"/><path d=\"M8.5 12l2.5 2.5 4.5-5\"/>",
+            "eyebrow": "Compra con confianza",
+            "title": "Guía de Inicio a Fin",
+            "text": "Comprar una propiedad en otro país no tiene que ser abrumador. Te guiamos en cada paso del camino para que puedas invertir con confianza, evitar errores costosos y tomar decisiones informadas."
+          }
+        },
+        "f2": {
+          "type": "feature",
+          "settings": {
+            "icon": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M3 12h18\"/><path d=\"M12 3c3 3 3 15 0 18-3-3-3-15 0-18z\"/>",
+            "eyebrow": "Protege tu inversión",
+            "title": "Experiencia Local de Confianza",
+            "text": "Te ayudamos a evitar estafas, costos ocultos y errores costosos proporcionándote orientación confiable y experiencia local durante todo el proceso de compra."
+          }
+        },
+        "f3": {
+          "type": "feature",
+          "settings": {
+            "icon": "<circle cx=\"12\" cy=\"8\" r=\"3.5\"/><path d=\"M5 21c0-4 3.2-6.5 7-6.5s7 2.5 7 6.5\"/>",
+            "eyebrow": "Estamos contigo en cada paso",
+            "title": "Acompañamiento de Inicio a Fin",
+            "text": "Desde tu primera consulta hasta el día que recibes tus llaves, Aylesva permanece a tu lado. Nuestro equipo te brinda orientación continua y se asegura de que cada etapa de tu inversión sea clara, segura y sin estrés."
+          }
+        }
+      }
+    },
+    "desarrollos": {
+      "type": "aylesva-corp-cards",
+      "settings": {
+        "bg": "#FAFAF8",
+        "columns": 3,
+        "eyebrow": "Nuestros desarrollos",
+        "title": "Tres oportunidades verificadas por nuestro equipo"
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3"
+      ],
+      "blocks": {
+        "c1": {
+          "type": "card",
+          "settings": {
+            "image": "ay-ge-t40-exterior.jpg",
+            "image_2": "ay-ge-t40-interior.jpg",
+            "label_2": "Residencias & Terrazas",
+            "image_3": "ay-ge-t40-rooftop.jpg",
+            "label_3": "Rooftop & Infinity Pool",
+            "image_4": "ay-ge-t40-bedroom.jpg",
+            "label_4": "Master Suite & Vistas",
+            "image_5": "ay-ge-t40-planos.jpg",
+            "label_5": "Planos Arquitectónicos",
+            "tag": "En Construcción",
+            "eyebrow": "Puerto Vallarta, México",
+            "title": "Torre 40",
+            "text": "Una torre residencial moderna que redefine la vida de lujo en el corazón de Puerto Vallarta.",
+            "bullets": "24 pisos · 72 unidades exclusivas\nEntrega estimada 2027\nAlberca infinity en rooftop\nVistas panorámicas al océano y la ciudad\nSeguridad 24/7 y concierge",
+            "cta_label": "Solicitar información",
+            "cta_link": "#contacto",
+            "whatsapp_label": "WhatsApp",
+            "whatsapp_url": "https:\/\/api.whatsapp.com\/send\/?phone=524774136612&text=Hola%2C+me+interesa+informaci%C3%B3n+sobre+Torre+40&type=phone_number&app_absent=0",
+            "price": ""
+          }
+        },
+        "c2": {
+          "type": "card",
+          "settings": {
+            "image": "ay-ge-pb-aerial.jpg",
+            "image_2": "ay-ge-pb-interior.jpg",
+            "label_2": "Villas con Plunge Pool",
+            "image_3": "ay-ge-pb-beachclub.jpg",
+            "label_3": "Beach Club & Marina",
+            "image_4": "ay-ge-pb-sunset.jpg",
+            "label_4": "Atardecer en la Bahía",
+            "image_5": "ay-ge-pb-masterplan.png",
+            "label_5": "Master Plan Costero",
+            "tag": "Preventa",
+            "eyebrow": "La Unión, El Salvador",
+            "title": "Paradise Bay",
+            "text": "Adquiere tu lugar en el destino costero más prometedor de El Salvador. Descubre oportunidades exclusivas de bienes raíces rodeadas de playas vírgenes, turismo en crecimiento y un valor excepcional a largo plazo.",
+            "bullets": "Cerca del nuevo aeropuerto internacional\nCerca de la futura Bitcoin City\nAdyacente al nuevo Puerto de La Unión\nInversión Segura",
+            "cta_label": "Solicitar información",
+            "cta_link": "#contacto",
+            "whatsapp_label": "WhatsApp",
+            "whatsapp_url": "https:\/\/api.whatsapp.com\/send\/?phone=50369734492&text=Hola%2C+me+interesa+informaci%C3%B3n+sobre+Paradise+Bay&type=phone_number&app_absent=0",
+            "price": ""
+          }
+        },
+        "c3": {
+          "type": "card",
+          "settings": {
+            "image": "ay-ge-alt-villas.jpg",
+            "image_2": "ay-ge-alt-interior.jpg",
+            "label_2": "Interiores en Piedra Natural",
+            "image_3": "ay-ge-alt-sunset.jpg",
+            "label_3": "Terraza Frente al Mar",
+            "image_4": "ay-ge-alt-oasis.jpg",
+            "label_4": "Oasis & Wellness Pavilion",
+            "image_5": "ay-ge-alt-masterplan.png",
+            "label_5": "Master Plan Desierto",
+            "tag": "Nuevo Desarrollo",
+            "eyebrow": "Sonora, México",
+            "title": "Altarena",
+            "text": "Ubicado a lo largo de la costa prístina de Sonora, Altarena es una comunidad exclusiva con plan maestro rodeada de uno de los paisajes naturales más extraordinarios de México.",
+            "bullets": "Espectaculares dunas y paisajes desérticos\nEstilo de vida tranquilo rodeado de naturaleza\nHerencia cultural auténtica\nPotencial de inversión excepcional",
+            "cta_label": "Solicitar información",
+            "cta_link": "#contacto",
+            "whatsapp_label": "WhatsApp",
+            "whatsapp_url": "https:\/\/api.whatsapp.com\/send\/?phone=524774136612&text=Hola%2C+me+interesa+informaci%C3%B3n+sobre+Altarena&type=phone_number&app_absent=0",
+            "price": ""
+          }
+        }
+      }
+    },
+    "mapa": {
+      "type": "aylesva-corp-map",
+      "settings": {
+        "bg": "#FFFFFF",
+        "eyebrow": "Nuestros Desarrollos",
+        "title": "Ubicaciones Verificadas, Inversiones Seguras",
+        "text": "Cada proyecto que presentamos ha sido verificado por nuestro equipo. Conocemos personalmente a los desarrolladores y supervisamos el avance de cada obra.",
+        "map_image": "shopify:\/\/shop_images\/mapofmexico.jpg",
+        "stat1_val": "3",
+        "stat1_lbl": "Proyectos Verificados",
+        "stat2_val": "2",
+        "stat2_lbl": "Países: MX y SV",
+        "cta_label": "Agenda tu consulta gratuita",
+        "cta_link": "#contacto",
+        "map_region_1": "México",
+        "region_1_x": 24,
+        "region_1_y": 26,
+        "map_region_2": "El Salvador",
+        "region_2_x": 66,
+        "region_2_y": 74,
+        "map_hint": "Explora nuestros desarrollos — interactúa con cada ubicación"
+      },
+      "block_order": [
+        "pin1",
+        "pin2",
+        "pin3"
+      ],
+      "blocks": {
+        "pin1": {
+          "type": "pin",
+          "settings": {
+            "name": "Torre 40",
+            "status": "En Construcción",
+            "location": "Puerto Vallarta / Nayarit",
+            "pos_x": 24,
+            "pos_y": 54,
+            "flip": false,
+            "link": "#desarrollos"
+          }
+        },
+        "pin2": {
+          "type": "pin",
+          "settings": {
+            "name": "Altarena",
+            "status": "Preventa",
+            "location": "Costa de Sonora, México",
+            "pos_x": 14,
+            "pos_y": 27,
+            "flip": false,
+            "link": "#desarrollos"
+          }
+        },
+        "pin3": {
+          "type": "pin",
+          "settings": {
+            "name": "Paradise Bay",
+            "status": "Preventa",
+            "location": "La Unión, El Salvador",
+            "pos_x": 66,
+            "pos_y": 82,
+            "flip": true,
+            "link": "#desarrollos"
+          }
+        }
+      }
+    },
+    "proceso": {
+      "type": "aylesva-corp-process",
+      "settings": {
+        "dark": true,
+        "eyebrow": "Cómo trabajamos",
+        "title": "Tres pasos hasta tus llaves",
+        "intro": "Un proceso claro, sin sorpresas y con un asesor asignado de principio a fin."
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3"
+      ],
+      "blocks": {
+        "s1": {
+          "type": "step",
+          "settings": {
+            "title": "Consulta gratuita",
+            "text": "Agendas una llamada sin compromiso. Escuchamos qué buscas, en qué plazo y con qué presupuesto, y te explicamos cómo funciona comprar en México o El Salvador."
+          }
+        },
+        "s2": {
+          "type": "step",
+          "settings": {
+            "title": "Selección verificada",
+            "text": "Te presentamos únicamente desarrollos que nuestro equipo ya visitó y validó: desarrollador, avance de obra, permisos y condiciones comerciales."
+          }
+        },
+        "s3": {
+          "type": "step",
+          "settings": {
+            "title": "Acompañamiento hasta las llaves",
+            "text": "Coordinamos contratos, pagos y seguimiento de obra contigo. Un asesor responde tus preguntas hasta el día de la entrega."
+          }
+        }
+      }
+    },
+    "testimonios": {
+      "type": "aylesva-corp-testimonials",
+      "settings": {
+        "bg": "#FFFFFF",
+        "eyebrow": "Testimonios Reales",
+        "title": "Inversionistas que ya dieron el paso",
+        "note": "Experiencias Verificadas"
+      },
+      "block_order": [
+        "t1",
+        "t2",
+        "t3"
+      ],
+      "blocks": {
+        "t1": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Al principio me daba desconfianza comprar en preventa estando yo fuera. Tenía miedo de que se retrasaran con la obra o que los trámites fueran un lío. El equipo de Aylesva me mandó videos del avance cada mes y me explicó el contrato punto por punto. La semana pasada llevé a mi papá a ver la torre y se le salieron las lágrimas de ver dónde va a pasar sus tardes frente al mar.",
+            "name": "Carlos Rodríguez y Don Félix",
+            "meta": "Torre 40 · Puerto Vallarta",
+            "avatar": "ay-testi-carlos-felix.jpg"
+          }
+        },
+        "t2": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Varios me decían que estaba loco por invertir en El Salvador sin conocer mucho. Pero cuando vi el masterplan de Paradise Bay y cómo está creciendo la zona de la playa, me animé. Me sorprendió lo fácil que fue todo el papeleo y el plan de pagos tan accesible. Es mi primera inversión grande y saber que ya tengo un pie en la playa me da una paz increíble.",
+            "name": "Alex Lantesi Mena",
+            "meta": "Paradise Bay · El Salvador",
+            "avatar": "ay-testi-alex-lantesi.jpg"
+          }
+        },
+        "t3": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Tenía mis ahorros en el banco perdiendo valor y no sabía qué hacer con ellos. Quería algo mío donde pudiera escaparme los fines de semana a la playa con mis amigas, pero que a la vez se pagara solo con rentas vacacionales. En Altarena encontré exactamente eso: el diseño está hermoso y el trato fue de amigos, sin presiones de ventas.",
+            "name": "Teresa Noriega",
+            "meta": "Altarena · Sonora",
+            "avatar": "ay-testi-teresa-noriega.jpg"
+          }
+        }
+      }
+    },
+    "contacto": {
+      "type": "aylesva-corp-form",
+      "settings": {
+        "anchor": "contacto",
+        "bg": "#FAFAF8",
+        "eyebrow": "Asesoría",
+        "title": "Agenda tu consulta gratuita",
+        "text": "Cuéntanos qué buscas y un asesor te contacta en menos de 24 horas hábiles.",
+        "form_id": "8tPsdSSw70XYgG77oYYW",
+        "form_height": 660,
+        "whatsapp_label": "Chat en WhatsApp",
+        "whatsapp_url": "https:\/\/api.whatsapp.com\/send\/?phone=50373197601&text=Hola%2C+me+gustar%C3%ADa+agendar+una+consulta+gratuita+sobre+Global+Estates&type=phone_number&app_absent=0",
+        "legal": "Aylesva actúa como facilitador independiente y proporciona información y orientación sobre oportunidades inmobiliarias ofrecidas por desarrolladores, corredores y socios externos. La disponibilidad de propiedades, precios, opciones de financiamiento y elegibilidad están sujetos a cambios sin previo aviso y pueden variar según la ubicación y el proveedor."
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3"
+      ],
+      "blocks": {
+        "p1": {
+          "type": "point",
+          "settings": {
+            "text": "Consulta inicial sin costo ni compromiso"
+          }
+        },
+        "p2": {
+          "type": "point",
+          "settings": {
+            "text": "Desarrollos visitados y validados por nuestro equipo"
+          }
+        },
+        "p3": {
+          "type": "point",
+          "settings": {
+            "text": "Acompañamiento hasta la entrega de llaves"
+          }
+        }
+      }
+    },
+    "legal_disclaimer": {
+      "type": "aylesva-corp-legal",
+      "settings": {
+        "bg": "#FFFFFF",
+        "alignment": "left",
+        "title": "Transparencia de la Plataforma y Reconocimiento Operativo",
+        "text": "Aylesva actúa estrictamente como una plataforma de tecnología, marketing y administración transfronteriza para conectar a compradores con oportunidades inmobiliarias globales. Para garantizar el cumplimiento normativo total y la máxima protección para nuestra clientela, Aylesva no opera como agente de bienes raíces, fiduciario o asesor financiero. Todas las negociaciones, representaciones y actividades de corretaje inmobiliario regulado se ejecutan exclusivamente a través de nuestro Bróker designado en EE. UU.\n\nAdemás, si bien brindamos acceso a propiedades internacionales de primer nivel, Aylesva no vende valores financieros, no administra grupos de renta (rental pools) ni garantiza rendimientos. Términos como \"invertir\" o \"inversión\" en esta plataforma se refieren estrictamente a la adquisición física y directa de bienes raíces por parte del comprador. Los mercados inmobiliarios conllevan riesgos inherentes, y las propiedades en jurisdicciones extranjeras (como México y El Salvador) están sujetas a las leyes locales y estructuras de titulación. Aconsejamos estrictamente a todos los clientes que consulten con sus propios asesores legales y fiscales independientes y certificados sobre adquisiciones en el extranjero. Al continuar, usted reconoce el papel de Aylesva única y exclusivamente como un facilitador administrativo de marketing."
+      }
+    },
+    "ramas": {
+      "type": "aylesva-corp-branches",
+      "settings": {
+        "bg": "#FFFFFF",
+        "eyebrow": "Ecosistema Aylesva",
+        "title": "El mismo respaldo, en cada una de nuestras ramas"
+      },
+      "block_order": [
+        "br1",
+        "br2",
+        "br3",
+        "br4"
+      ],
+      "blocks": {
+        "br1": {
+          "type": "branch",
+          "settings": {
+            "title": "Aylesva Recursos",
+            "text": "Intermediación financiera para tu negocio.",
+            "icon": "<rect x=\"3\" y=\"10\" width=\"18\" height=\"11\"/><path d=\"M3 10 12 4l9 6\"/><path d=\"M9 21v-6h6v6\"/>",
+            "link": "/pages/aylesva-recursos"
+          }
+        },
+        "br2": {
+          "type": "branch",
+          "settings": {
+            "title": "Aylesva Direct",
+            "text": "Importación y logística desde China.",
+            "icon": "<rect x=\"2\" y=\"8\" width=\"13\" height=\"9\"/><path d=\"M15 11h4l3 3v3h-7z\"/><circle cx=\"6\" cy=\"19\" r=\"2\"/><circle cx=\"18\" cy=\"19\" r=\"2\"/>",
+            "link": "/pages/aylesva-direct"
+          }
+        },
+        "br3": {
+          "type": "branch",
+          "settings": {
+            "title": "Aylesva Care",
+            "text": "Beneficios de salud, seguros y telemedicina.",
+            "icon": "<path d=\"M12 20 4 12.5A4.6 4.6 0 0 1 12 7a4.6 4.6 0 0 1 8 5.5z\"/><path d=\"M8 13h2l1.5-3 2 5 1.5-2h2\"/>",
+            "link": "/pages/aylesva-care"
+          }
+        },
+        "br4": {
+          "type": "branch",
+          "settings": {
+            "title": "Lanza tu marca",
+            "text": "Tienda propia con nuestro catálogo y envíos.",
+            "icon": "<rect x=\"3\" y=\"4\" width=\"18\" height=\"5\"/><path d=\"M5 9v12h14V9\"/><path d=\"M9 13h6\"/>",
+            "link": "/pages/lanza-tu-propia-marca"
+          }
+        }
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "respaldo",
+    "desarrollos",
+    "mapa",
+    "proceso",
+    "testimonios",
+    "contacto",
+    "legal_disclaimer",
+    "ramas"
+  ]
+}

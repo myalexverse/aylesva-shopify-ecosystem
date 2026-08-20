@@ -1,0 +1,91 @@
+{
+  "sections": {
+    "custom_multi_banner_JgeMNF": {
+      "type": "custom-multi-banner",
+      "blocks": {
+        "banner_b86KTh": {
+          "type": "banner",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/pomelli-image_16.jpg",
+            "title": "cOLECCIÓN 2026",
+            "sub_title": "Descripción corta del banner",
+            "btn_txt": "Comprar Ahora",
+            "btn_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "banner_b86KTh"
+      ],
+      "name": "Custom Multi Banner",
+      "settings": {
+        "desktop_height": 80,
+        "mobile_height": 60,
+        "autoplay": true,
+        "autoplay_speed": 5,
+        "overlay_opacity": 30
+      }
+    },
+    "custom_collection_hub_i8Dr9J": {
+      "type": "custom-collection-hub",
+      "blocks": {
+        "hero_GfyRCr": {
+          "type": "hero",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/pomelli-image_5.png",
+            "title": "Nueva Colección",
+            "subtitle": "Explora lo último en tendencias",
+            "btn_txt": "Explorar",
+            "btn_link": ""
+          }
+        },
+        "category_icon_RJFpkf": {
+          "type": "category_icon",
+          "settings": {
+            "title": "Sub-categoría",
+            "link": ""
+          }
+        },
+        "category_icon_4UQHBe": {
+          "type": "category_icon",
+          "settings": {
+            "title": "Sub-categoría",
+            "link": ""
+          }
+        },
+        "feature_banner_XmgUbz": {
+          "type": "feature_banner",
+          "settings": {
+            "promo_text": "HASTA 30% OFF",
+            "title": "Sección Destacada",
+            "link": ""
+          }
+        },
+        "feature_banner_qnwRRJ": {
+          "type": "feature_banner",
+          "settings": {
+            "promo_text": "HASTA 30% OFF",
+            "title": "Sección Destacada",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "hero_GfyRCr",
+        "category_icon_RJFpkf",
+        "category_icon_4UQHBe",
+        "feature_banner_XmgUbz",
+        "feature_banner_qnwRRJ"
+      ],
+      "name": "Collection Hub",
+      "settings": {
+        "icons_title": "Categorías",
+        "cta_text": "Ver Productos"
+      }
+    }
+  },
+  "order": [
+    "custom_multi_banner_JgeMNF",
+    "custom_collection_hub_i8Dr9J"
+  ]
+}

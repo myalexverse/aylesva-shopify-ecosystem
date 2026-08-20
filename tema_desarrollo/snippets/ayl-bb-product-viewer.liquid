@@ -1,0 +1,92 @@
+{% comment %}
+  Snippet Maestro: Visor de Producto PÍXEL PERFECT (Estándar Best Buy)
+  Rediseñado para eliminar el desorden y dar forma profesional mediante una 'Buy Box'.
+{% endcomment %}
+
+<div class="ayl-bb-product-info ayl-animate-in">
+  
+  {% comment %} 1. BLOQUE DE IDENTIDAD {% endcomment %}
+  <div class="ayl-bb-identity-block">
+    {% if product.vendor %}
+      <a href="{{ product.vendor | url_for_vendor }}" class="ayl-bb-brand">{{ product.vendor }}</a>
+    {% endif %}
+    <h1 class="product-single__title">{{ product.title }}</h1>
+    
+    <div class="ayl-bb-ratings">
+      <div class="ayl-bb-stars">
+        <i class="mdi mdi-star"></i><i class="mdi mdi-star"></i><i class="mdi mdi-star"></i><i class="mdi mdi-star"></i><i class="mdi mdi-star-half"></i>
+      </div>
+      <a href="#judgeme_product_reviews" class="ayl-bb-rating-link">
+        {% if product.metafields.judgeme.badge %}
+          {{ product.metafields.judgeme.badge }}
+        {% else %}
+          4.5 (12 Reseñas)
+        {% endif %}
+      </a>
+    </div>
+  </div>
+
+  {% comment %} 2. LA "BUY BOX" (CAJA DE COMPRA PROFESIONAL) {% endcomment %}
+  <div class="ayl-bb-buy-box">
+    
+    <div class="ayl-bb-price-block">
+      <span class="ayl-bb-current-price">{{ product.selected_or_first_available_variant.price | money }}</span>
+      
+      {% if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price %}
+        <div class="ayl-bb-savings-row">
+          <span class="ayl-bb-savings-tag">Ahorra {{ product.selected_or_first_available_variant.compare_at_price | minus: product.selected_or_first_available_variant.price | money }}</span>
+          <span class="ayl-bb-was-price">Reg. {{ product.selected_or_first_available_variant.compare_at_price | money }}</span>
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="ayl-bb-meta-info" style="font-size: 13px; color: var(--bb-text-muted); border-top: 1px solid rgba(0,0,0,0.05); padding-top: 12px; margin-top: -8px;">
+      <div style="margin-bottom: 4px;"><strong>SKU:</strong> {{ product.selected_or_first_available_variant.sku | default: 'N/A' }}</div>
+      {% if product.metafields.c_f.model %}
+        <div><strong>Modelo:</strong> {{ product.metafields.c_f.model }}</div>
+      {% endif %}
+    </div>
+
+    <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm">
+      <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+      
+      {% unless product.has_only_default_variant %}
+        <div class="ayl-bb-variant-selector" style="margin-bottom: 16px;">
+          <label style="display: block; font-size: 12px; font-weight: 700; margin-bottom: 8px; text-transform: uppercase;">Opciones disponibles</label>
+          <select name="id" class="form-control" style="border-radius: 4px; border: 1px solid var(--bb-border); height: 44px;">
+            {% for variant in product.variants %}
+              <option {% if variant == product.selected_or_first_available_variant %}selected="selected"{% endif %} value="{{ variant.id }}">
+                {{ variant.title }} - {{ variant.price | money }}
+              </option>
+            {% endfor %}
+          </select>
+        </div>
+      {% endunless %}
+
+      <div class="ayl-bb-actions">
+        {% if product.available %}
+          <button type="submit" name="add" id="AddToCart" class="btn">
+            <i class="mdi mdi-cart" style="margin-right: 8px; font-size: 20px;"></i>
+            Añadir al carrito
+          </button>
+        {% else %}
+          <button type="button" id="AddToCart" class="btn" disabled>Agotado</button>
+        {% endif %}
+      </div>
+    </form>
+
+    <div class="ayl-bb-shipping-info" style="display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--bb-success); font-weight: 600;">
+      <i class="mdi mdi-truck-fast-outline" style="font-size: 18px;"></i>
+      <span>Envío gratis disponible</span>
+    </div>
+  </div>
+
+  {% comment %} 3. STICKY MOBILE INFO (BACKUP DATA) {% endcomment %}
+  <div class="ayl-bb-mobile-sticky visible-xs">
+    <div class="ayl-bb-sticky-price">{{ product.selected_or_first_available_variant.price | money }}</div>
+    <button type="button" class="ayl-bb-add-btn" onclick="document.getElementById('AddToCart').click();" {% unless product.available %}disabled{% endunless %}>
+      {% if product.available %}Añadir{% else %}Agotado{% endif %}
+    </button>
+  </div>
+
+</div>

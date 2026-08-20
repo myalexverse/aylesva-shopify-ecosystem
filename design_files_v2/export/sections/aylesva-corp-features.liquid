@@ -1,0 +1,59 @@
+{% comment %} Aylesva · Features / beneficios en cuadrícula {% endcomment %}
+<section class="ay" style="background:{{ section.settings.bg }};border-top:var(--ay-hairline);border-bottom:var(--ay-hairline)">
+  <div class="ay-wrap">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:76px;align-items:end;margin-bottom:56px" class="ay-head">
+      <div>
+        {% if section.settings.eyebrow != blank %}<p class="ay-eyebrow">{{ section.settings.eyebrow }}</p>{% endif %}
+        <h2 class="ay-h2">{{ section.settings.title }}</h2>
+      </div>
+      {% if section.settings.intro != blank %}<p class="ay-lead" style="font-size:16px">{{ section.settings.intro }}</p>{% endif %}
+    </div>
+
+    <div class="ay-grid {% if section.blocks.size == 4 %}ay-grid--4{% else %}ay-grid--3{% endif %}">
+      {% for block in section.blocks %}
+        <div class="ay-card" {{ block.shopify_attributes }}>
+          {% if block.settings.icon != blank %}
+            <svg class="ay-icon" viewBox="0 0 24 24" stroke-linecap="square" aria-hidden="true">{{ block.settings.icon }}</svg>
+          {% endif %}
+          {% if block.settings.eyebrow != blank %}
+            <p style="font-family:var(--ay-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ay-gold-text);margin:28px 0 12px">{{ block.settings.eyebrow }}</p>
+          {% endif %}
+          <h3 class="ay-h3" style="margin:{% if block.settings.eyebrow != blank %}0 0 12px{% else %}26px 0 12px{% endif %}">{{ block.settings.title }}</h3>
+          <p class="ay-body" style="font-size:14px">{{ block.settings.text }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% comment %}
+  ÍCONOS: pega en "Trazado SVG" sólo el contenido interior del <svg> (paths/rect/circle).
+  El viewBox 0 0 24 24, el trazo de 1.25 y el color dorado los aplica la clase .ay-icon.
+  Set aprobado en el UI Kit — ejemplos:
+  Respaldo:  <path d="M12 3l8 3v6c0 5-4 8-8 9-4-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/>
+  Agilidad:  <circle cx="12" cy="12" r="9"/><path d="M12 12l4-3"/><path d="M12 3v2M21 12h-2M12 21v-2M3 12h2"/>
+  Alcance:   <circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c3 3 3 15 0 18-3-3-3-15 0-18z"/>
+  Asesoría:  <circle cx="12" cy="8" r="3.5"/><path d="M5 21c0-4 3.2-6.5 7-6.5s7 2.5 7 6.5"/>
+  Trámite:   <path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 12h6M9 16h6"/>
+{% endcomment %}
+
+{% schema %}
+{
+  "name": "Aylesva · Features",
+  "settings": [
+    { "type": "color", "id": "bg", "label": "Fondo de la sección", "default": "#FAFAF8" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Beneficios" },
+    { "type": "textarea", "id": "title", "label": "Titular", "default": "Respaldo institucional en cada operación" },
+    { "type": "textarea", "id": "intro", "label": "Texto de entrada" }
+  ],
+  "blocks": [
+    { "type": "feature", "name": "Beneficio", "limit": 6, "settings": [
+      { "type": "textarea", "id": "icon", "label": "Trazado SVG del ícono (ver notas)" },
+      { "type": "text", "id": "eyebrow", "label": "Eyebrow opcional" },
+      { "type": "text", "id": "title", "label": "Título (3 a 5 palabras)" },
+      { "type": "textarea", "id": "text", "label": "Descripción (una frase)" }
+    ]}
+  ],
+  "presets": [{ "name": "Aylesva · Features" }]
+}
+{% endschema %}

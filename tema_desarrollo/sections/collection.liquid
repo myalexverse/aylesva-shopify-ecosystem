@@ -1,0 +1,233 @@
+{{ 'aylesva-desktop-premium.css' | asset_url | stylesheet_tag }}
+<!-- /templates/collection.liquid -->
+{% comment %}The contents of the collection.liquid template can be found in /sections/collection-template.liquid{% endcomment %}
+{% if settings.collection_sidebar_use == "left_sidebar" %}
+<div class="content_wrap left-sidebar">
+  <div class="container">
+    {% render 'ayl-collection-desktop-header', results: collection %}
+    <div class="row">
+      <div id="left-column" class="col-xs-12 col-sm-3 left-sidebar sidebar">
+        {% render 'collection-sidebar' %}
+      </div>
+      <div class="col-xs-12 col-sm-9 collection_wrapper collection_right">
+        {% paginate collection.products by 16 %}
+          {% render 'ayl-definitive-mobile-grid', results: collection, paginate: paginate %}
+          <div class="hidden-xs">
+            {% if settings.collections_masonry %}  
+            {% render 'product-masonry', results: collection, enable_sorting: section.settings.enable_sorting %}
+            {% else %}
+            {% render 'collection-template', results: collection, enable_sorting: section.settings.enable_sorting %}
+            {% endif %}
+          </div>
+        {% endpaginate %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+{% if settings.collection_sidebar_use == "right_sidebar" %}
+<div class="content_wrap right-sidebar">
+  <div class="container">
+    {% render 'ayl-collection-desktop-header', results: collection %}
+    <div class="row">
+      <div class="col-xs-12 col-sm-9 collection_wrapper collection_left">
+        {% paginate collection.products by 16 %}
+          {% render 'ayl-definitive-mobile-grid', results: collection, paginate: paginate %}
+          <div class="hidden-xs">
+            {% if settings.collections_masonry %}  
+            {% render 'product-masonry', results: collection, enable_sorting: section.settings.enable_sorting %}
+            {% else %}
+            {% render 'collection-template', results: collection, enable_sorting: section.settings.enable_sorting %}
+            {% endif %}
+          </div>
+        {% endpaginate %}
+      </div>
+      <!-- /snippets/collection.liquid -->
+      <div id="right-column" class="col-xs-12 col-sm-3 right-sidebar sidebar">
+        {% render 'collection-sidebar' %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+{% if settings.collection_sidebar_use == "both_sidebar" %}
+<div class="content_wrap both-sidebar">
+  <div class="container">
+    {% render 'ayl-collection-desktop-header', results: collection %}
+    <div class="row">
+      <div id="left-column" class="col-xs-12 col-sm-3 left-sidebar sidebar">
+        {% render 'collection-sidebar' %}
+      </div>
+      <div class="col-xs-12 col-sm-6 collection_wrapper collection_left">
+        {% paginate collection.products by 16 %}
+          {% render 'ayl-definitive-mobile-grid', results: collection, paginate: paginate %}
+          <div class="hidden-xs">
+            {% if settings.collections_masonry %}  
+            {% render 'product-masonry', results: collection, enable_sorting: section.settings.enable_sorting %}
+            {% else %}
+            {% render 'collection-template', results: collection, enable_sorting: section.settings.enable_sorting %}
+            {% endif %}
+          </div>
+        {% endpaginate %}
+      </div>
+      <!-- /snippets/collection.liquid -->
+      <div id="right-column" class="col-xs-12 col-sm-3 right-sidebar sidebar">
+        {% render 'collection-sidebar' %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+{% if settings.collection_sidebar_use == "full_width" %}
+<div class="container">
+  {% render 'ayl-collection-desktop-header', results: collection %}
+</div>
+{% paginate collection.products by 16 %}
+{% if settings.collections_masonry %}
+<div class="full-width col-sm-12">
+  {% render 'ayl-definitive-mobile-grid', results: collection, paginate: paginate %}
+  <div class="hidden-xs">
+    {% render 'product-masonry', results: collection, enable_sorting: section.settings.enable_sorting %}
+  </div>
+</div>
+{% else %}
+<div class="full-width col-sm-12">
+  {% render 'ayl-definitive-mobile-grid', results: collection, paginate: paginate %}
+  <div class="hidden-xs">
+    {% render 'collection-template', results: collection, enable_sorting: section.settings.enable_sorting %}
+  </div>
+</div>
+{% endif %}
+{% endpaginate %}
+{% endif %}
+{% if settings.collection_sidebar_use == "full_width" %}
+{% if settings.collection_filter_pos == "left_filter" or settings.collection_filter_pos == "right_filter"%}
+<div class="off-canvas-wrapper">
+  {% if settings.collection_filter_pos == "left_filter" %}  
+  <div class="container">
+    <div id="left-column" class="off-canvas position-left offsidebar shop-has-sidebar is-transition-overlap">
+      {% elsif settings.collection_filter_pos == "right_filter" %}
+      <div id="right-column" class="off-canvas position-right offsidebar shop-has-sidebar is-transition-overlap">
+        {% endif %}
+        <div class="sidebar_close"><i class="mdi mdi-close-circle"></i></div>
+        <div class="collection_sidebar">
+          {% if current_tags == blank %}
+          {% assign has_refined = false %} 
+          {% else %}
+          {% assign has_refined = true %} 
+          {% endif %}
+          <div class="sidebar-block">
+            {% render 'sidebar-category', enable_sidecategory: section.settings.enable_sidecategory, linkedlist: section.settings.linkedlist, linkedlist_title: section.settings.linkedlist_title %}
+            {% render 'facets', results: collection, collapse_on_larger_devices: section.settings.collapse_on_larger_devices, show_filter: section.settings.show_filter %}
+          </div> 
+          {% render 'sidebar-bestsellers', show_best_products: section.settings.show_best_products,  bestseller: section.settings.bestseller, product_rows: section.settings.product_rows, pro_img_width_height: section.settings.pro_img_width_height, limit: section.settings.limit %}  
+          {% render 'promo-banner', show_promo_banner: section.settings.show_promo_banner, promo_img: section.settings.promo_img, promo_link: section.settings.promo_link %}
+        </div>
+      </div>    
+      <div class="js-off-canvas-overlay is-overlay-fixed"></div>
+    </div>
+  </div> 
+</div>
+{% endif %}
+{% endif %}
+{% schema %}
+{
+"name": "Collection",
+"settings": [
+{
+"type": "checkbox",
+"id": "enable_sidecategory",
+"label": "Enable category",
+"default": false
+},
+{
+"type": "link_list",
+"id": "linkedlist",
+"label": "Linklist"
+},
+{
+"type": "text",
+"id": "linkedlist_title",
+"label": "Heading"
+},
+{
+"type":"header",
+"content":"Collection Filter"
+},
+{
+"type":"checkbox",
+"id":"show_filter",
+"label":"Enable Filter",
+"default":true
+},
+{
+"type": "checkbox",
+"id": "collapse_on_larger_devices",
+"default": false,
+"label": "Collapse On Larger Devices"
+},
+{
+"type":"checkbox",
+"id":"enable_sorting",
+"label":"Enable Sorting",
+"default":true
+},
+{
+"type": "checkbox",
+"id": "enable_sidebar_multiple_choice",
+"label": "Multiple choices",
+"default": true,
+"info": "User can select multiple colors (size, brand...) or only one color (size, brand...)?"
+},   
+{
+"type": "checkbox",
+"id": "show_best_products",
+"label": "Enable best sellers",
+"default": false
+},
+{
+"type": "text",
+"id": "best_title",
+"label": "Heading"
+},
+{
+"type": "collection",
+"id": "bestseller",
+"label": "Collection"
+},
+{
+"type": "text",
+"id": "pro_img_width_height",
+"default": "80x104",
+"label": "Product image width and height (widthxheight)"
+},
+{
+"type": "text",
+"id": "limit",
+"label": "Product Limit",
+"default": "5"
+},
+{
+"type": "checkbox",
+"id": "product_rows",
+"label": "3 Rows Product"
+},
+{
+"type": "image_picker",
+"id": "promo_img",
+"label": "Image",
+"info": "Size: 328x500"
+},
+{
+"type": "url",
+"id": "promo_link",
+"label": "URL"
+},
+{
+"type": "text",
+"id": "promo_title",
+"label": "Heading"
+}
+]
+}
+{% endschema %}

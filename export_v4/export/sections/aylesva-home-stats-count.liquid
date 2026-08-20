@@ -1,0 +1,67 @@
+{% comment %}
+  Aylesva · Cifras que cuentan al entrar en pantalla (fondo ink).
+  IntersectionObserver + requestAnimationFrame, sin librerías.
+{% endcomment %}
+<section class="ay ay-stats3" id="{{ section.id }}" style="background:var(--ay-ink-800);color:#fff">
+  <div style="max-width:var(--ay-max);margin:0 auto;padding:0 var(--ay-pad-x)">
+    <div class="ay-stats3-grid">
+      {% for block in section.blocks %}
+        <div class="ay-stat3" {{ block.shopify_attributes }}>
+          <div class="ay-stat3-v" data-target="{{ block.settings.value }}" data-prefix="{{ block.settings.prefix }}" data-suffix="{{ block.settings.suffix }}">{{ block.settings.prefix }}0{{ block.settings.suffix }}</div>
+          <div class="ay-stat3-k">{{ block.settings.label }}</div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .ay-stats3-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:rgba(255,255,255,.14)}
+  .ay-stat3{padding:42px 28px 46px;background:var(--ay-ink-800)}
+  .ay-stat3-v{font-family:var(--ay-font-display);font-size:38px;font-weight:200;letter-spacing:-.02em;line-height:1}
+  .ay-stat3-k{font-family:var(--ay-font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:10px}
+</style>
+
+<script>
+  (function(){
+    var root = document.getElementById('shopify-section-{{ section.id }}');
+    if(!root) return;
+    var vals = root.querySelectorAll('.ay-stat3-v');
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function paint(el, n){
+      el.textContent = (el.dataset.prefix||'') + n.toLocaleString('es-MX') + (el.dataset.suffix||'');
+    }
+    function run(){
+      vals.forEach(function(el){
+        var target = parseFloat(el.dataset.target) || 0;
+        if(reduce){ paint(el, target); return; }
+        var t0 = performance.now();
+        (function step(now){
+          var p = Math.min(1,(now-t0)/1400);
+          paint(el, Math.round(target * (1 - Math.pow(1-p,3))));
+          if(p<1) requestAnimationFrame(step);
+        })(t0);
+      });
+    }
+    if(!('IntersectionObserver' in window)){ run(); return; }
+    var io = new IntersectionObserver(function(e){
+      if(e.some(function(x){return x.isIntersecting;})){ run(); io.disconnect(); }
+    }, { threshold:.4 });
+    io.observe(root);
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Aylesva · Cifras animadas",
+  "blocks": [
+    { "type": "stat", "name": "Cifra", "limit": 6, "settings": [
+      { "type": "text", "id": "value", "label": "Número final (solo dígitos)", "default": "23" },
+      { "type": "text", "id": "prefix", "label": "Prefijo", "default": "" },
+      { "type": "text", "id": "suffix", "label": "Sufijo", "default": "" },
+      { "type": "text", "id": "label", "label": "Etiqueta", "default": "Marcas lanzadas" }
+    ]}
+  ],
+  "presets": [{ "name": "Aylesva · Cifras animadas" }]
+}
+{% endschema %}

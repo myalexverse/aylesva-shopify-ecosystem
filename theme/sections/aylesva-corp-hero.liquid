@@ -1,0 +1,71 @@
+{% comment %} Aylesva · Hero corporativo universal (Gold & Ink) {% endcomment %}
+<section class="ay ay-hero" style="position:relative;overflow:hidden;background:var(--ay-ink-900)">
+  {%- assign raw_hero = section.settings.image_url | default: section.settings.image -%}
+  {%- capture hero_bg_src -%}
+    {%- if raw_hero.src -%}{{ raw_hero | image_url: width: 2400 }}
+    {%- elsif raw_hero contains 'http' -%}{{ raw_hero }}
+    {%- elsif raw_hero contains 'shopify://shop_images/' -%}{%- assign ch = raw_hero | remove: 'shopify://shop_images/' -%}{{ ch | file_img_url: '2400x' }}
+    {%- elsif raw_hero contains '.jpg' or raw_hero contains '.png' or raw_hero contains '.webp' -%}{{ raw_hero | asset_url }}
+    {%- endif -%}
+  {%- endcapture -%}
+  {%- assign hero_bg_src = hero_bg_src | strip -%}
+
+  {% if hero_bg_src != blank %}
+    <div style="position:absolute;inset:0;background-image:url({{ hero_bg_src }});background-size:cover;background-position:{{ section.settings.focal | default: 'center' }};background-repeat:no-repeat"></div>
+  {% endif %}
+  <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(2,6,23,{{ section.settings.overlay | divided_by: 100.0 }}) 0%,rgba(2,6,23,{{ section.settings.overlay | minus: 22 | divided_by: 100.0 }}) 48%,rgba(2,6,23,.18) 100%)"></div>
+
+  <div class="ay-wrap" style="position:relative;padding-bottom:0">
+    <div style="max-width:780px">
+      {% if section.settings.eyebrow != blank %}<p class="ay-eyebrow ay-eyebrow--dark">{{ section.settings.eyebrow }}</p>{% endif %}
+      <h1 class="ay-h1" style="color:#fff">{{ section.settings.title }}</h1>
+      {% if section.settings.subtitle != blank %}
+        <p class="ay-lead" style="color:rgba(255,255,255,.82);max-width:52ch;margin-bottom:38px">{{ section.settings.subtitle }}</p>
+      {% endif %}
+      <div style="display:flex;gap:16px;flex-wrap:wrap">
+        {% if section.settings.cta1_label != blank %}<a class="ay-btn ay-btn--gold" href="{{ section.settings.cta1_link }}">{{ section.settings.cta1_label }}</a>{% endif %}
+        {% if section.settings.cta2_label != blank %}<a class="ay-btn ay-btn--ghost-dark" href="{{ section.settings.cta2_link }}">{{ section.settings.cta2_label }}</a>{% endif %}
+      </div>
+    </div>
+
+    {% if section.blocks.size > 0 %}
+      <div style="display:grid;grid-template-columns:repeat({{ section.blocks.size }},1fr);gap:1px;background:rgba(255,255,255,.14);margin-top:92px;border-top:1px solid rgba(197,164,126,.5)">
+        {% for block in section.blocks %}
+          <div style="padding:30px 32px 36px;background:rgba(2,6,23,.55)" {{ block.shopify_attributes }}>
+            <div style="font-family:var(--ay-font-display);font-size:36px;font-weight:300;color:#fff;letter-spacing:-.02em">{{ block.settings.value }}</div>
+            <div style="font-family:var(--ay-font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.65);margin-top:8px">{{ block.settings.label }}</div>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div style="height:var(--ay-pad-y)"></div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Aylesva · Hero",
+  "settings": [
+    { "type": "text", "id": "image", "label": "Imagen de fondo (archivo de asset o nombre)" },
+    { "type": "text", "id": "image_url", "label": "URL de imagen (CDN o alternativa)" },
+    { "type": "select", "id": "focal", "label": "Encuadre", "default": "center", "options": [
+      {"value":"center","label":"Centro"},{"value":"top","label":"Arriba"},{"value":"bottom","label":"Abajo"}] },
+    { "type": "range", "id": "overlay", "label": "Opacidad del velo ink (%)", "min": 60, "max": 96, "step": 2, "default": 86 },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+    { "type": "textarea", "id": "title", "label": "Titular" },
+    { "type": "textarea", "id": "subtitle", "label": "Subtítulo" },
+    { "type": "text", "id": "cta1_label", "label": "Texto botón 1" },
+    { "type": "url", "id": "cta1_link", "label": "Destino botón 1" },
+    { "type": "text", "id": "cta2_label", "label": "Texto botón 2" },
+    { "type": "url", "id": "cta2_link", "label": "Destino botón 2" }
+  ],
+  "blocks": [
+    { "type": "stat", "name": "Métrica", "limit": 4, "settings": [
+      { "type": "text", "id": "value", "label": "Valor (p. ej. +1,500)" },
+      { "type": "text", "id": "label", "label": "Etiqueta" }
+    ]}
+  ],
+  "presets": [{ "name": "Aylesva · Hero" }]
+}
+{% endschema %}

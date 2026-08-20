@@ -1,0 +1,473 @@
+{% comment %}
+  bannerGemelas-cool.liquid
+  Dual Banner Section with Intelligent Hotspots (Product Prices, Dynamic Reveal)
+  Inspired by H&M/Zara editorial layouts.
+{% endcomment %}
+
+<div class="gemelas-wrapper" id="Gemelas-{{ section.id }}" style="margin-top: {{ section.settings.margin_top }}px; margin-bottom: {{ section.settings.margin_bottom }}px;">
+  <div class="gemelas-container">
+    <div class="gemelas-grid">
+      
+      <!-- BANDA IZQUIERDA -->
+      <div class="gemelas-column gemelas-column--left gemelas-reveal" data-side="left">
+        <div class="gemelas-media-box">
+          {% if section.settings.image_left != blank %}
+            <img loading="lazy" src="{{ section.settings.image_left | img_url: '1000x' }}" alt="Banner Left" class="gemelas-img">
+          {% else %}
+            {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+          {% endif %}
+          
+          <!-- HOTSPOTS IZQUIERDA -->
+          {% for block in section.blocks %}
+            {% if block.settings.image_side == 'left' %}
+              {% render 'gemelas-hotspot', block: block %}
+            {% endif %}
+          {% endfor %}
+
+          <!-- PRECIO FIJO IZQUIERDO -->
+          {% if section.settings.price_left != blank %}
+            <div class="gemelas-dot-wrapper gemelas-dot-wrapper--fixed" style="bottom: 12%; left: 10%; top: auto;">
+              <div class="gemelas-badge--v3">
+                <span class="gemelas-badge-inner">{{ section.settings.price_left }}</span>
+              </div>
+            </div>
+          {% endif %}
+        </div>
+        
+        <div class="gemelas-footer">
+          <a href="{{ section.settings.link_left }}" class="gemelas-footer-link">
+            <span>{{ section.settings.title_left }}</span>
+            <svg class="gemelas-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- BANDA DERECHA -->
+      <div class="gemelas-column gemelas-column--right gemelas-reveal" data-side="right">
+        <div class="gemelas-media-box">
+          {% if section.settings.image_right != blank %}
+            <img loading="lazy" src="{{ section.settings.image_right | img_url: '1000x' }}" alt="Banner Right" class="gemelas-img">
+          {% else %}
+            {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+          {% endif %}
+
+          <!-- HOTSPOTS DERECHA -->
+          {% for block in section.blocks %}
+            {% if block.settings.image_side == 'right' %}
+              {% render 'gemelas-hotspot', block: block %}
+            {% endif %}
+          {% endfor %}
+
+          <!-- PRECIO FIJO DERECHO -->
+          {% if section.settings.price_right != blank %}
+            <div class="gemelas-dot-wrapper gemelas-dot-wrapper--fixed" style="bottom: 12%; left: 10%; top: auto;">
+              <div class="gemelas-badge--v3">
+                <span class="gemelas-badge-inner">{{ section.settings.price_right }}</span>
+              </div>
+            </div>
+          {% endif %}
+        </div>
+
+        <div class="gemelas-footer">
+          <a href="{{ section.settings.link_right }}" class="gemelas-footer-link">
+            <span>{{ section.settings.title_right }}</span>
+            <svg class="gemelas-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<style>
+.gemelas-wrapper {
+  background: #fff;
+  /* Removed overflow: hidden to allow sticky traveler behavior */
+}
+
+.gemelas-container {
+  max-width: 100%;
+  padding: 0;
+}
+
+.gemelas-grid {
+  display: flex;
+  gap: 0px; /* Seamless fusion of images */
+}
+
+.gemelas-column {
+  flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.gemelas-media-box {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/7; /* Deep editorial ratio for maximum scrolling impact */
+  overflow: hidden;
+}
+
+.gemelas-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.gemelas-column:hover .gemelas-img {
+  transform: scale(1.03);
+}
+
+/* HOTSPOTS */
+.gemelas-dot-wrapper {
+  position: absolute;
+  z-index: 10;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  /* Start slightly lower for entrance animation */
+  margin-top: 15px; 
+  transition: opacity 1s ease, margin-top 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.gemelas-dot-wrapper--fixed {
+  transform: translate(0, 50%); /* Start from origin since it's bottom-left */
+}
+
+.gemelas-dot-wrapper.is-visible {
+  opacity: 1;
+  margin-top: 0;
+}
+
+.gemelas-badge--v3 {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: #1a1a1a !important;
+  color: #fff !important;
+  padding: 6px 14px !important;
+  border-radius: 2px !important;
+  font-family: inherit !important;
+  font-size: 11.5px !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3) !important;
+  transition: transform 0.3s ease, background 0.3s ease !important;
+  white-space: nowrap !important;
+  letter-spacing: 0.5px !important;
+  min-height: 28px !important;
+  line-height: normal !important;
+}
+
+.gemelas-badge-inner {
+  display: block;
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1 !important;
+}
+
+.gemelas-badge--v3:hover {
+  transform: scale(1.08) !important;
+  background: #C5A47E !important;
+}
+
+.gemelas-price {
+  margin-right: 8px;
+}
+
+{% comment %} gemelas-icon-box removed as requested {% endcomment %}
+
+/* FOOTER CAPTIONS (JS TRAVELER) */
+.gemelas-footer {
+  width: 100%;
+  background: #fff;
+  padding: 15px 0;
+  text-align: left;
+  transition: opacity 0.3s ease;
+  box-shadow: 0 -1px 0 rgba(0,0,0,0.05);
+  border-bottom: 1px solid #f2f2f2;
+}
+
+/* State when traveling (pinned to bottom) */
+.gemelas-footer.is-traveling {
+  position: fixed !important;
+  bottom: 0 !important;
+  left: auto !important;
+  z-index: 999 !important;
+  margin-top: 0 !important;
+}
+
+/* State when parked (at the very bottom) */
+.gemelas-footer.is-parked {
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  z-index: 998 !important;
+}
+
+.gemelas-footer-link {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 0 15px !important;
+  text-decoration: none !important;
+  color: #1a1a1a !important;
+  font-size: 14.5px !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1.5px !important;
+}
+
+.gemelas-footer-link:hover {
+  opacity: 1;
+  color: #C5A47E !important;
+}
+
+.gemelas-arrow {
+  width: 20px;
+  height: 20px;
+}
+
+@media screen and (max-width: 767px) {
+  .gemelas-grid {
+    flex-direction: column;
+    gap: 30px;
+  }
+  .gemelas-media-box {
+    aspect-ratio: 4/5;
+  }
+  
+  /* FORCE NATIVE STICKY ON MOBILE ONLY */
+  /* This avoids the 'photo cutting' issue on stacked mobile columns */
+  .gemelas-footer {
+    position: -webkit-sticky !important;
+    position: sticky !important;
+    bottom: 0 !important;
+    z-index: 100 !important;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.05) !important;
+  }
+  
+  /* Disable JS-driven absolute/fixed overrides for mobile */
+  .gemelas-footer.is-traveling, 
+  .gemelas-footer.is-parked {
+    position: sticky !important;
+    left: 0 !important;
+    width: 100% !important;
+  }
+}
+</style>
+
+<script>
+  (function() {
+    /* Intersection Observer for Hotspots */
+    const hotspotOptions = {
+      root: null,
+      threshold: 0.1,
+      rootMargin: '0px 0px -15% 0px'
+    };
+    const hotspotObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          hotspotObserver.unobserve(entry.target);
+        }
+      });
+    }, hotspotOptions);
+
+    const dots = document.querySelectorAll('.gemelas-dot-wrapper');
+    dots.forEach(dot => hotspotObserver.observe(dot));
+
+    /* --- JS TRAVELER ENGINE (BYPASSING OVERFLOW:HIDDEN) --- */
+    const updateTravelers = () => {
+      // SHIELD: Only run traveler for desktop (Native Sticky is better/smoother for mobile stacks)
+      if (window.innerWidth < 768) return;
+
+      const columns = document.querySelectorAll('.gemelas-column');
+      const viewportHeight = window.innerHeight;
+
+      columns.forEach(column => {
+        const footer = column.querySelector('.gemelas-footer');
+        if (!footer) return;
+
+        const rect = column.getBoundingClientRect();
+        const footerHeight = footer.offsetHeight;
+
+        // Reset width to parent column width (Crucial for fixed position)
+        footer.style.width = rect.width + 'px';
+
+        /* FULL RANGE LOGIC: Travel from the moment it enters until the end of photo */
+        if (rect.top < viewportHeight && rect.bottom > viewportHeight) {
+          // TRAVELING: Pin to bottom of viewport
+          footer.className = 'gemelas-footer is-traveling';
+          footer.style.left = rect.left + 'px';
+        } else if (rect.bottom <= viewportHeight) {
+          // PARKED: Bottom of section has reached the floor
+          footer.className = 'gemelas-footer is-parked';
+          footer.style.left = '0px';
+        } else {
+          // STARTING / OFF-SCREEN
+          footer.className = 'gemelas-footer';
+          footer.style.left = '0px';
+        }
+      });
+    };
+
+    window.addEventListener('scroll', () => {
+      requestAnimationFrame(updateTravelers);
+    }, { passive: true });
+
+    window.addEventListener('resize', updateTravelers);
+    updateTravelers(); // Initial check
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Banner Gemelas Cool",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Imagen Izquierda"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_left",
+      "label": "Foto Izquierda"
+    },
+    {
+      "type": "text",
+      "id": "title_left",
+      "label": "Título Izquierdo",
+      "default": "MODO MEDITERRÁNEO"
+    },
+    {
+      "type": "url",
+      "id": "link_left",
+      "label": "Enlace Izquierdo"
+    },
+    {
+      "type": "text",
+      "id": "price_left",
+      "label": "Precio Izquierdo (Fijo)",
+      "info": "Ej: $399.00 - Se alinea automáticamente"
+    },
+    {
+      "type": "header",
+      "content": "Imagen Derecha"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_right",
+      "label": "Foto Derecha"
+    },
+    {
+      "type": "text",
+      "id": "title_right",
+      "label": "Título Derecho",
+      "default": "SILUETAS LIGERAS"
+    },
+    {
+      "type": "url",
+      "id": "link_right",
+      "label": "Enlace Derecho"
+    },
+    {
+      "type": "text",
+      "id": "price_right",
+      "label": "Precio Derecho (Fijo)",
+      "info": "Ej: $399.00 - Se alinea automáticamente"
+    },
+    {
+      "type": "header",
+      "content": "Diseño"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "label": "Margen Superior",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "label": "Margen Inferior",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "hotspot",
+      "name": "Punto Inteligente",
+      "settings": [
+        {
+          "type": "select",
+          "id": "image_side",
+          "label": "Lado de la Imagen",
+          "options": [
+            { "value": "left", "label": "Izquierda" },
+            { "value": "right", "label": "Derecha" }
+          ],
+          "default": "left"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Seleccionar Producto (Muestra precio)"
+        },
+        {
+          "type": "url",
+          "id": "custom_link",
+          "label": "Enlace Personalizado (Si no hay producto)"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Etiqueta Manual / Nombre",
+          "info": "Se usa si no hay producto seleccionado"
+        },
+        {
+          "type": "text",
+          "id": "manual_price",
+          "label": "Precio Manual (Ej: $399.00)",
+          "info": "Sobrescribe el precio del producto si se llena"
+        },
+        {
+          "type": "range",
+          "id": "x_pos",
+          "label": "Posición Horizontal (%)",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 50
+        },
+        {
+          "type": "range",
+          "id": "y_pos",
+          "label": "Posición Vertical (%)",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 50
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banner Gemelas Cool",
+      "blocks": [
+        { "type": "hotspot", "settings": { "image_side": "left", "x_pos": 20, "y_pos": 75 } },
+        { "type": "hotspot", "settings": { "image_side": "right", "x_pos": 15, "y_pos": 80 } }
+      ]
+    }
+  ]
+}
+{% endschema %}

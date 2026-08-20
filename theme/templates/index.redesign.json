@@ -1,0 +1,323 @@
+{
+  "sections": {
+    "hero_ecosystem": {
+      "type": "aylesva-hero",
+      "settings": {
+        "title_1": "Impulsamos tu negocio.",
+        "title_2": "Potenciamos tu futuro.",
+        "subtitle": "Un ecosistema de soluciones diseñadas para acompañarte en cada etapa de crecimiento de tu empresa y tu patrimonio.",
+        "cta1_text": "Conoce nuestros servicios",
+        "cta1_url": "#ecosistema",
+        "cta2_text": "Habla con un asesor",
+        "cta2_url": "/pages/contacto"
+      }
+    },
+    "ecosystem_cards": {
+      "type": "ayl-home-ecosystem",
+      "blocks": {
+        "svc_commerce": {
+          "type": "service_card",
+          "settings": {
+            "icon_image": "eco-icon-commerce.jpg",
+            "accent_color": "#2D8F5E",
+            "title": "Commerce",
+            "subtitle": "Lanza y escala tu negocio online",
+            "description": "Tiendas online, dropshipping, integración al marketplace y logística 360°.",
+            "link_url": "/pages/lanza-tu-propia-marca",
+            "link_text": "Explorar →"
+          }
+        },
+        "svc_capital": {
+          "type": "service_card",
+          "settings": {
+            "icon_image": "eco-icon-capital.jpg",
+            "accent_color": "#C5A47E",
+            "title": "Capital",
+            "subtitle": "Financiamiento para crecer",
+            "description": "Capital de trabajo e inversión para impulsar tu empresa y hacerla crecer.",
+            "link_url": "/pages/aylesva-recursos",
+            "link_text": "Explorar →"
+          }
+        },
+        "svc_direct": {
+          "type": "service_card",
+          "settings": {
+            "icon_image": "eco-icon-direct.jpg",
+            "accent_color": "#3B82F6",
+            "title": "Direct",
+            "subtitle": "Importa sin complicaciones",
+            "description": "Conectamos tu negocio con proveedores internacionales de forma segura y eficiente.",
+            "link_url": "/pages/aylesva-direct",
+            "link_text": "Explorar →"
+          }
+        },
+        "svc_estates": {
+          "type": "service_card",
+          "settings": {
+            "icon_image": "eco-icon-estates.jpg",
+            "accent_color": "#1A1A1A",
+            "title": "Estates",
+            "subtitle": "Inversiones que trascienden",
+            "description": "Propiedades premium en destinos exclusivos con alta plusvalía y estilo de vida.",
+            "link_url": "/pages/globalestates",
+            "link_text": "Explorar →"
+          }
+        },
+        "svc_care": {
+          "type": "service_card",
+          "settings": {
+            "icon_image": "eco-icon-care.jpg",
+            "accent_color": "#8B5CF6",
+            "title": "Care",
+            "subtitle": "Protege lo que más importa",
+            "description": "Servicios de previsión, respaldo y planificación patrimonial para tu tranquilidad.",
+            "link_url": "/pages/aylesva-care",
+            "link_text": "Explorar →"
+          }
+        },
+        "svc_voluntad": {
+          "type": "service_card",
+          "settings": {
+            "icon_image": "icon-voluntad.jpg",
+            "accent_color": "#1C2B33",
+            "title": "Legado",
+            "subtitle": "Planificación y patrimonio",
+            "description": "Asesoría legal y herramientas para asegurar el futuro y patrimonio de tu familia.",
+            "link_url": "/pages/mi-ultima-voluntad",
+            "link_text": "Explorar →"
+          }
+        }
+      },
+      "block_order": [
+        "svc_commerce",
+        "svc_capital",
+        "svc_direct",
+        "svc_estates",
+        "svc_care",
+        "svc_voluntad"
+      ],
+      "settings": {
+        "eyebrow": "NUESTRO ECOSISTEMA DE SOLUCIONES"
+      }
+    },
+    "trust_logos": {
+      "type": "ayl-home-trust-logos",
+      "settings": {
+        "eyebrow": "CONFIANZA QUE NOS RESPALDA"
+      }
+    },
+    "ecosystem_stats": {
+      "type": "ayl-home-ecosystem-stats",
+      "blocks": {
+        "stat_1": {
+          "type": "stat",
+          "settings": {
+            "icon_svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"><path d=\"M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2\"/><circle cx=\"9\" cy=\"7\" r=\"4\"/><path d=\"M23 21v-2a4 4 0 00-3-3.87\"/><path d=\"M16 3.13a4 4 0 010 7.75\"/></svg>",
+            "number": "25000",
+            "prefix": "+",
+            "suffix": "",
+            "label": "Emprendedores impulsados"
+          }
+        },
+        "stat_2": {
+          "type": "stat",
+          "settings": {
+            "icon_svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"><path d=\"M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z\"/></svg>",
+            "number": "2000",
+            "prefix": "+",
+            "suffix": "",
+            "label": "Productos listos para vender"
+          }
+        },
+        "stat_3": {
+          "type": "stat",
+          "settings": {
+            "icon_svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><line x1=\"2\" y1=\"12\" x2=\"22\" y2=\"12\"/><path d=\"M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z\"/></svg>",
+            "number": "10",
+            "prefix": "+",
+            "suffix": "",
+            "label": "Países con cobertura"
+          }
+        },
+        "stat_4": {
+          "type": "stat",
+          "settings": {
+            "icon_svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"><path d=\"M22 11.08V12a10 10 0 11-5.93-9.14\"/><polyline points=\"22 4 12 14.01 9 11.01\"/></svg>",
+            "number": "99",
+            "prefix": "+",
+            "suffix": "%",
+            "label": "Clientes satisfechos"
+          }
+        }
+      },
+      "block_order": ["stat_1", "stat_2", "stat_3", "stat_4"],
+      "settings": {}
+    },
+    "solutions": {
+      "type": "ayl-home-solutions",
+      "settings": {
+        "eyebrow": "TODO LO QUE NECESITAS, EN UN SOLO LUGAR",
+        "headline": "Soluciones que se adaptan a cada etapa de tu camino."
+      }
+    },
+    "timeline": {
+      "type": "ayl-home-timeline",
+      "settings": {
+        "eyebrow": "TU CAMINO CON AYLESVA",
+        "headline": "De la idea al patrimonio.",
+        "subtitle": "Te acompañamos en cada paso del camino."
+      }
+    },
+    "testimonials": {
+      "type": "ayl-home-testimonials",
+      "settings": {
+        "eyebrow": "LO QUE DICEN NUESTROS CLIENTES",
+        "headline": "Historias de crecimiento real."
+      }
+    },
+    "marketplace_categories": {
+      "type": "aylesva-cuadro-colecciones",
+      "blocks": {
+        "collection_item_XL37qG": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "mujer",
+            "image": "shopify:\/\/shop_images\/long-blonde-hair-at-carnival.jpg",
+            "title": "Mujer"
+          }
+        },
+        "collection_item_iAbGCR": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "hombre",
+            "image": "shopify:\/\/shop_images\/man-puts-his-hand-inside-his-jacket.jpg",
+            "title": "Hombre"
+          }
+        },
+        "collection_item_WhNnmy": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "nino",
+            "image": "shopify:\/\/shop_images\/little-boy-ready-for-school-looking-up.jpg",
+            "title": "Niño"
+          }
+        },
+        "collection_item_WDwBmU": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "nina",
+            "image": "shopify:\/\/shop_images\/girl-framed-by-heart.jpg",
+            "title": "Niña"
+          }
+        },
+        "collection_item_rU67Nk": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "bebe",
+            "image": "shopify:\/\/shop_images\/cute-baby-girl-with-pink-bow-headband.jpg",
+            "title": "Bebé"
+          }
+        },
+        "collection_item_KqXWAM": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "artesanal",
+            "image": "shopify:\/\/shop_images\/pomelli-image_cd766c49-22f0-4171-859e-c22f786b7b86.png",
+            "title": "Artesanal"
+          }
+        },
+        "collection_item_9xz7Q4": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "hogar",
+            "image": "shopify:\/\/shop_images\/sunlight-creeps-through-a-bright-living-room.jpg",
+            "title": "Hogar"
+          }
+        },
+        "collection_item_W6PNML": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "alimentos",
+            "image": "shopify:\/\/shop_images\/hamburger-and-fries.jpg",
+            "title": "Alimentos"
+          }
+        },
+        "collection_item_XVNrYQ": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "electronicos",
+            "image": "shopify:\/\/shop_images\/mobile-phone-and-gimbal-in-hand.jpg",
+            "title": "Electrónicos"
+          }
+        },
+        "collection_item_n6cPf3": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "vehiculos",
+            "image": "shopify:\/\/shop_images\/red-sports-car-wheel-close-up.jpg",
+            "title": "Vehículos"
+          }
+        }
+      },
+      "block_order": [
+        "collection_item_XL37qG",
+        "collection_item_iAbGCR",
+        "collection_item_WhNnmy",
+        "collection_item_WDwBmU",
+        "collection_item_rU67Nk",
+        "collection_item_KqXWAM",
+        "collection_item_9xz7Q4",
+        "collection_item_W6PNML",
+        "collection_item_XVNrYQ",
+        "collection_item_n6cPf3"
+      ],
+      "settings": {
+        "title": "Marketplace",
+        "view_all_text": "Explorar todo el marketplace →",
+        "view_all_link": "/collections",
+        "margin_top": 30,
+        "margin_bottom": 30
+      }
+    },
+    "cta_final": {
+      "type": "ayl-home-cta-ecosystem",
+      "settings": {
+        "eyebrow": "COMIENZA HOY",
+        "headline": "¿Listo para impulsar tu negocio?",
+        "subtitle": "Nuestro equipo de expertos está listo para ayudarte a dar el siguiente paso.",
+        "cta_1_text": "Comenzar ahora →",
+        "cta_1_url": "/pages/servicios",
+        "cta_2_text": "Habla con un asesor",
+        "cta_2_url": "/pages/contacto"
+      }
+    },
+    "sticky_mobile": {
+      "type": "sticky-mobile-bar",
+      "settings": {
+        "mobile_bar": true,
+        "url_1": "",
+        "title_1": "Home",
+        "url_2": "",
+        "title_2": "Servicios",
+        "url_3": "",
+        "title_3": "Cart",
+        "url_4": "",
+        "title_4": "Account",
+        "url_5": "",
+        "title_5": "Wishlist"
+      }
+    }
+  },
+  "order": [
+    "hero_ecosystem",
+    "ecosystem_cards",
+    "trust_logos",
+    "ecosystem_stats",
+    "solutions",
+    "timeline",
+    "testimonials",
+    "marketplace_categories",
+    "cta_final",
+    "sticky_mobile"
+  ]
+}

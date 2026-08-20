@@ -1,0 +1,59 @@
+<div id="shopify-section-sidebar-tag-filters" class="shopify-section">
+{% if section.blocks.size > 0 %}   
+{% for block in section.blocks %}      
+{% if  block.settings.enable_shop_by_tags %}
+{% if  block.settings.shop_by_tags_title != blank %}
+<aside class="sidebar-tag filter tags {{ block.settings.shop_by_tags_title | downcase }} {{ block.id }}" data-section-id="{{ section.id }}" >  
+  {% assign tags = block.settings.shop_by_tags_list | split: ',' %}
+  <div class="widget">
+    <h4>{{ block.settings.shop_by_tags_title  }}
+      <a href="javascript:void(0)" class="clear" style="display:none">
+        <i class="mdi mdi-close-circle" aria-hidden="true"></i>
+      </a>
+    </h4>
+    <div class="widget-content">
+      <ul>
+        {% assign counter = 0 %}
+        {% for t in tags %}
+        {% if block.type != 'image' %}
+        {% assign tag = t | strip %}
+        {% assign tag_value = tag | handleize %}      
+        {% if current_tags contains tag %}
+        <li>
+          <div class="checkbox-group form-group-top clearfix">
+            <input type="checkbox"  id="checkBox" value="{{ tag_value }}" checked/>
+            <label for="checkBox"> 
+              <span class="check"></span>
+              <span class="box"></span>
+              &nbsp;&nbsp;{{ tag  }}
+            </label>
+          </div>
+        </li>
+        {% assign counter = counter | plus:1 %}
+        {% else %}
+        {% if collection.tags contains tag %} 
+        <li>
+          <div class="checkbox-group form-group-top clearfix">
+            <input type="checkbox"  id="checkBox" value="{{ tag_value }}"/>
+            <label for="checkBox"> 
+              <span class="check"></span>
+              <span class="box"></span>
+              &nbsp;&nbsp;{{ tag  }}
+            </label>
+          </div>
+        </li>
+        {% assign counter = counter | plus:1 %}
+        {% endif %}
+        {% endif %}
+        {% endif %}
+        {% endfor %}
+        {% if counter == 0 %}<script>$('.sidebar-tag.{{block.id }}').hide();</script>{% endif %}
+      </ul>
+    </div>
+  </div>
+</aside>
+{% endif %}
+{% endif %}
+{% endfor %}
+{% endif %}
+  </div>

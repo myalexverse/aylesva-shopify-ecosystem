@@ -1,0 +1,87 @@
+<style>
+  .mobile-small-banner-wrapper {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: block;
+  }
+  @media (min-width: 768px) {
+    .mobile-small-banner-wrapper {
+      display: none !important;
+    }
+  }
+  .mobile-small-banner {
+    width: 100%;
+    background-color: #000;
+    background-size: cover;
+    background-position: center;
+    padding: 40px 20px;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+  }
+  .mobile-small-banner-content {
+    position: relative;
+    z-index: 2;
+    max-width: 80%;
+  }
+  .mobile-small-banner h2 {
+    font-size: 1.3rem;
+    font-weight: 900;
+    line-height: 1.1;
+    margin: 0 0 10px;
+    text-transform: uppercase;
+    color: #fff;
+    letter-spacing: 0.5px;
+    text-shadow: 1px 1px 10px rgba(0,0,0,0.5); /* Added text shadow for readability since overlay is gone */
+  }
+  .mobile-small-banner p {
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin: 0;
+    color: #fff;
+    line-height: 1.4;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+  }
+</style>
+
+<div class="mobile-small-banner-wrapper">
+  <div class="mobile-small-banner" style="{% if section.settings.image != blank %}background-image: url({{ section.settings.image | img_url: 'master' }});{% else %}background: #000;{% endif %}">
+    <div class="mobile-small-banner-content">
+      <h2>{{ section.settings.headline }}</h2>
+      <p>{{ section.settings.subtext }}</p>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Móvil: Banner Pequeño",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Imagen de Fondo"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Título",
+      "default": "CONECTAMOS CULTURAS. IMPULSAMOS NEGOCIOS."
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Subtexto",
+      "default": "Compra productos y marcas latinas en México y USA."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Móvil: Banner Pequeño"
+    }
+  ]
+}
+{% endschema %}

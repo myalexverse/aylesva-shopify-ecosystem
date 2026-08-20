@@ -1,0 +1,493 @@
+{% comment %}
+  Section: produdecooler v4
+  Desktop: Slick carousel
+  Mobile:  Native scroll-snap carousel con flechas propias (sin Slick)
+{% endcomment %}
+
+{% style %}
+  #shopify-section-{{ section.id }} {
+    padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+    background-color: #FFFBFA;
+    overflow: hidden;
+  }
+
+  /* ── Header ──────────────────────────────────────────────── */
+  .pdc-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 24px;
+    padding: 0 15px;
+  }
+  .pdc-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0;
+    letter-spacing: -0.02em;
+  }
+  .pdc-view-all {
+    font-size: 13px;
+    color: #3483fa;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+  }
+  .pdc-view-all:hover { color: #2968c8; text-decoration: underline; }
+
+  /* ── Desktop Slick slider ─────────────────────────────────── */
+  .pdc-desktop { display: block; }
+  .pdc-desktop .slick-list {
+    margin: 0 !important;
+    padding: 15px 0 !important;
+  }
+  .pdc-desktop .pdc-item {
+    padding: 0 8px;
+    height: auto;
+    outline: none !important;
+  }
+  .pdc-desktop .pdc-item .aylesva-ml-card {
+    margin: 0 !important;
+    width: 100% !important;
+    border: 1px solid #eee;
+    background: #fff !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
+  }
+  .pdc-desktop .pdc-item .aylesva-ml-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 14px 32px rgba(0,0,0,0.12) !important;
+  }
+  .pdc-desktop .slick-arrow {
+    width: 44px; height: 44px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    z-index: 10;
+    transition: all 0.3s ease;
+    border: none; color: transparent; font-size: 0;
+  }
+  .pdc-desktop .slick-arrow:hover {
+    background: #f0f0f0;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+  }
+  .pdc-desktop .slick-prev { left: -22px; }
+  .pdc-desktop .slick-next { right: -22px; }
+  .pdc-desktop .slick-prev:before, .pdc-desktop .slick-next:before {
+    color: #3483fa;
+    font-family: 'Material Design Icons';
+    font-size: 24px;
+    opacity: 1;
+  }
+  .pdc-desktop .slick-prev:before { content: "\f0141"; }
+  .pdc-desktop .slick-next:before { content: "\f0142"; }
+
+  /* ── Mobile: ocultar desktop slider ──────────────────────── */
+  .pdc-mobile { display: none; }
+
+  @media (max-width: 767px) {
+    /* Ocultar Slick en mobile */
+    .pdc-desktop { display: none !important; }
+
+    /* Mostrar carrusel nativo */
+    .pdc-mobile { display: block !important; }
+
+    /* Header mobile */
+    .pdc-header {
+      padding: 0 14px;
+      margin-bottom: 14px;
+    }
+    .pdc-title { font-size: 17px; }
+
+    /* ── Carrusel nativo ───────────────────────────────────── */
+    .pdc-mobile-wrapper {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    /* Track horizontal con scroll snap */
+    .pdc-mobile-track {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;             /* Firefox */
+      gap: 8px;
+      padding: 8px 12px;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+    .pdc-mobile-track::-webkit-scrollbar { display: none; } /* Chrome/Safari */
+
+    /* Cada tarjeta: exactamente 50% menos el gap y padding */
+    .pdc-mobile-track .pdc-mob-item {
+      flex: 0 0 calc(50% - 4px);
+      min-width: calc(50% - 4px);
+      scroll-snap-align: start;
+      box-sizing: border-box;
+    }
+
+    /* La tarjeta en sí */
+    .pdc-mob-item .aylesva-ml-card {
+      margin: 0 !important;
+      border-radius: 8px !important;
+      border: 1px solid #eee !important;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06) !important;
+      background: #fff !important;
+    }
+
+    /* ── Flechas laterales ─────────────────────────────────── */
+    .pdc-mob-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 30px;
+      height: 60px;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      cursor: pointer;
+      z-index: 10;
+      transition: background 0.2s ease, opacity 0.2s ease;
+      padding: 0;
+    }
+    .pdc-mob-arrow:hover { background: rgba(0,0,0,0.7); }
+    .pdc-mob-arrow.pdc-arr-prev {
+      left: 0;
+      border-radius: 0 6px 6px 0;
+    }
+    .pdc-mob-arrow.pdc-arr-next {
+      right: 0;
+      border-radius: 6px 0 0 6px;
+    }
+    .pdc-mob-arrow svg {
+      width: 18px;
+      height: 18px;
+      fill: none;
+      stroke: #fff;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      flex-shrink: 0;
+    }
+    /* Flecha oculta cuando está en el extremo */
+    .pdc-mob-arrow[aria-disabled="true"] {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* ── Indicadores de página ─────────────────────────────── */
+    .pdc-mob-dots {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 10px;
+      padding-bottom: 4px;
+    }
+    .pdc-mob-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #ccc;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: none;
+      padding: 0;
+    }
+    .pdc-mob-dot.active {
+      background: #1a1a1a;
+      width: 18px;
+      border-radius: 3px;
+    }
+  }
+{% endstyle %}
+
+{%- comment -%} Recopilar productos una vez {%- endcomment -%}
+{% if section.blocks.size > 0 %}
+  {% assign pdc_products = '' %}
+{% endif %}
+
+<div class="pdc-container">
+  <div class="pdc-header">
+    <h2 class="pdc-title">{{ section.settings.title }}</h2>
+    {% if section.settings.view_all_link != blank %}
+      <a href="{{ section.settings.view_all_link }}" class="pdc-view-all">{{ section.settings.view_all_text }}</a>
+    {% endif %}
+  </div>
+
+  {%- comment -%} ══ DESKTOP: Slick Carousel ══════════════════════════ {%- endcomment -%}
+  <div class="pdc-desktop">
+    <div class="pdc-desktop-slider"
+         data-slick='{"slidesToShow": {{ section.settings.slides_desktop }}, "slidesToScroll": 1, "autoplay": {{ section.settings.autoplay }}, "dots": false, "arrows": true, "infinite": true, "responsive": [{"breakpoint": 1024, "settings": {"slidesToShow": 3}}]}'>
+      {% if section.blocks.size > 0 %}
+        {% for block in section.blocks %}
+          {% assign product = all_products[block.settings.product] %}
+          {% if product != blank %}
+            <div class="pdc-item">
+              {% render 'aylesva-ml-card', product: product %}
+            </div>
+          {% endif %}
+        {% endfor %}
+      {% else %}
+        {% assign pdc_col = collections[section.settings.collection] %}
+        {% if pdc_col != blank %}
+          {% for product in pdc_col.products limit: section.settings.product_limit %}
+            <div class="pdc-item">
+              {% render 'aylesva-ml-card', product: product %}
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% endif %}
+    </div>
+  </div>
+
+  {%- comment -%} ══ MOBILE: Carousel Nativo ══════════════════════════ {%- endcomment -%}
+  <div class="pdc-mobile">
+    <div class="pdc-mobile-wrapper" id="pdc-mobile-{{ section.id }}">
+
+      {%- comment -%} Flecha Izquierda {%- endcomment -%}
+      <button class="pdc-mob-arrow pdc-arr-prev" id="pdc-prev-{{ section.id }}" aria-label="Anterior" aria-disabled="true">
+        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+
+      {%- comment -%} Track de tarjetas {%- endcomment -%}
+      <div class="pdc-mobile-track" id="pdc-track-{{ section.id }}">
+        {% if section.blocks.size > 0 %}
+          {% for block in section.blocks %}
+            {% assign product = all_products[block.settings.product] %}
+            {% if product != blank %}
+              <div class="pdc-mob-item">
+                {% render 'aylesva-ml-card', product: product %}
+              </div>
+            {% endif %}
+          {% endfor %}
+        {% else %}
+          {% assign pdc_col = collections[section.settings.collection] %}
+          {% if pdc_col != blank %}
+            {% for product in pdc_col.products limit: section.settings.product_limit %}
+              <div class="pdc-mob-item">
+                {% render 'aylesva-ml-card', product: product %}
+              </div>
+            {% endfor %}
+          {% endif %}
+        {% endif %}
+      </div>
+
+      {%- comment -%} Flecha Derecha {%- endcomment -%}
+      <button class="pdc-mob-arrow pdc-arr-next" id="pdc-next-{{ section.id }}" aria-label="Siguiente">
+        <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+    </div>
+
+    {%- comment -%} Dots indicador {%- endcomment -%}
+    <div class="pdc-mob-dots" id="pdc-dots-{{ section.id }}"></div>
+  </div>
+</div>
+
+{%- comment -%} ══ Desktop: inicializar Slick ══════════════════════════ {%- endcomment -%}
+<script>
+  (function() {
+    var init = function() {
+      var $sl = $('.pdc-desktop-slider');
+      if ($sl.length && typeof $.fn.slick !== 'undefined') {
+        $sl.slick($sl.data('slick'));
+      }
+    };
+    if (typeof $ !== 'undefined') {
+      $(document).ready(init);
+    } else {
+      document.addEventListener('DOMContentLoaded', init);
+    }
+  })();
+</script>
+
+{%- comment -%} ══ Mobile: carrusel nativo ═════════════════════════════ {%- endcomment -%}
+<script>
+(function() {
+  var sectionId = '{{ section.id }}';
+
+  function initMobileCarousel() {
+    var track  = document.getElementById('pdc-track-'  + sectionId);
+    var prev   = document.getElementById('pdc-prev-'   + sectionId);
+    var next   = document.getElementById('pdc-next-'   + sectionId);
+    var dotsEl = document.getElementById('pdc-dots-'   + sectionId);
+
+    if (!track || !prev || !next) return;
+
+    /* Solo en mobile */
+    if (window.innerWidth > 767) return;
+
+    var items      = track.querySelectorAll('.pdc-mob-item');
+    var itemCount  = items.length;
+    if (itemCount === 0) return;
+
+    /* Páginas de 2 en 2 */
+    var perPage    = 2;
+    var pageCount  = Math.ceil(itemCount / perPage);
+    var currentPage = 0;
+
+    /* ── Construir dots ──────────────────────────────────── */
+    for (var d = 0; d < pageCount; d++) {
+      var dot = document.createElement('button');
+      dot.className = 'pdc-mob-dot' + (d === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', 'Página ' + (d + 1));
+      (function(pg) {
+        dot.addEventListener('click', function() { goToPage(pg); });
+      })(d);
+      dotsEl.appendChild(dot);
+    }
+
+    /* ── Ir a página ─────────────────────────────────────── */
+    function goToPage(pg) {
+      currentPage = Math.max(0, Math.min(pg, pageCount - 1));
+
+      /* Calcular scrollLeft: ancho de item * perPage * pg */
+      var itemWidth = track.scrollWidth / itemCount;
+      track.scrollTo({ left: itemWidth * perPage * currentPage, behavior: 'smooth' });
+
+      updateUI();
+    }
+
+    /* ── Actualizar flechas y dots ───────────────────────── */
+    function updateUI() {
+      /* Dots */
+      var dots = dotsEl.querySelectorAll('.pdc-mob-dot');
+      dots.forEach(function(d, i) {
+        d.classList.toggle('active', i === currentPage);
+      });
+      /* Flechas */
+      prev.setAttribute('aria-disabled', currentPage === 0 ? 'true' : 'false');
+      next.setAttribute('aria-disabled', currentPage >= pageCount - 1 ? 'true' : 'false');
+    }
+
+    /* ── Botones ─────────────────────────────────────────── */
+    prev.addEventListener('click', function() { goToPage(currentPage - 1); });
+    next.addEventListener('click', function() { goToPage(currentPage + 1); });
+
+    /* ── Sync dots al hacer scroll manual ───────────────── */
+    var scrollTimer;
+    track.addEventListener('scroll', function() {
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(function() {
+        var itemWidth = track.scrollWidth / itemCount;
+        var pg = Math.round(track.scrollLeft / (itemWidth * perPage));
+        currentPage = Math.max(0, Math.min(pg, pageCount - 1));
+        updateUI();
+      }, 100);
+    });
+
+    /* Estado inicial */
+    updateUI();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMobileCarousel);
+  } else {
+    initMobileCarousel();
+  }
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Produ Cooler",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Ofertas Destacadas"
+    },
+    {
+      "type": "text",
+      "id": "view_all_text",
+      "label": "View All Text",
+      "default": "Ver más"
+    },
+    {
+      "type": "url",
+      "id": "view_all_link",
+      "label": "View All Link"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection (if no blocks)"
+    },
+    {
+      "type": "range",
+      "id": "product_limit",
+      "min": 4,
+      "max": 20,
+      "step": 1,
+      "label": "Product Limit (Collection mode)",
+      "default": 10
+    },
+    {
+      "type": "header",
+      "content": "Carousel Settings"
+    },
+    {
+      "type": "range",
+      "id": "slides_desktop",
+      "min": 3,
+      "max": 6,
+      "step": 1,
+      "label": "Slides Desktop",
+      "default": 5
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Autoplay",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Appearance"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "label": "Padding Top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "label": "Padding Bottom",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Single Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Selected Product"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Produ Cooler",
+      "blocks": []
+    }
+  ]
+}
+{% endschema %}

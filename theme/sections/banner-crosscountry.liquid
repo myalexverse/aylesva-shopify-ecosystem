@@ -1,0 +1,471 @@
+{% comment %}
+  ============================================================
+  Crosscountry Banner — Custom Premium Shopify Section
+  Allows background image selection, fully responsive.
+  Includes Crosscountry logo and bottom benefits bar.
+  ============================================================
+{% endcomment %}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+
+<style>
+  #cc-banner-{{ section.id }} {
+    --cc-gold: #C5A47E;
+    --cc-dark: #1A1A1A;
+    --cc-light-bg: #F5F1EC;
+    --cc-muted: #666666;
+    font-family: 'Montserrat', sans-serif;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin: 20px 0;
+  }
+  
+  #cc-banner-{{ section.id }} .cc-banner-hero {
+    position: relative;
+    background-size: cover;
+    background-position: center 12% !important; /* Adjusted top alignment so the model's head never gets cut off */
+    min-height: clamp(800px, 95vh, 1050px);
+    display: flex;
+    align-items: center;
+    padding: 150px 0;
+    z-index: 1;
+  }
+  
+  #cc-banner-{{ section.id }} .cc-banner-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(245,241,236,0.65) 0%, rgba(245,241,236,0.2) 50%, rgba(0,0,0,0) 100%);
+    z-index: 1;
+  }
+  
+  /* Layout constraints */
+  #cc-banner-{{ section.id }} .cc-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 30px;
+    position: relative;
+    z-index: 2;
+  }
+  
+  /* Brand Head */
+  #cc-banner-{{ section.id }} .cc-brand-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 36px;
+  }
+  #cc-banner-{{ section.id }} .cc-brand-logo-img {
+    max-height: 130px;
+    width: auto;
+    object-fit: contain;
+  }
+  #cc-banner-{{ section.id }} .cc-brand-logo {
+    height: 48px;
+    width: auto;
+    color: var(--cc-dark);
+  }
+  #cc-banner-{{ section.id }} .cc-brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+    margin-left: -5px;
+  }
+  #cc-banner-{{ section.id }} .cc-brand-title {
+    font-family: 'Playfair Display', 'Georgia', serif;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: var(--cc-dark);
+    text-transform: uppercase;
+  }
+  #cc-banner-{{ section.id }} .cc-brand-subtitle {
+    font-family: 'Oswald', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: var(--cc-muted);
+    text-transform: uppercase;
+    margin-top: 3px;
+  }
+
+  /* Content area */
+  #cc-banner-{{ section.id }} .cc-content-box {
+    max-width: 580px;
+  }
+  #cc-banner-{{ section.id }} .cc-eyebrow {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--cc-muted);
+    position: relative;
+    padding-bottom: 8px;
+    margin-bottom: 24px;
+    display: inline-block;
+  }
+  #cc-banner-{{ section.id }} .cc-eyebrow::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 42px;
+    height: 2px;
+    background-color: var(--cc-dark);
+  }
+  
+  #cc-banner-{{ section.id }} .cc-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: clamp(48px, 6.5vw, 92px);
+    font-weight: 700;
+    line-height: 0.9;
+    color: var(--cc-dark);
+    text-transform: uppercase;
+    letter-spacing: -1.5px;
+    margin: 0 0 16px 0;
+  }
+  
+  #cc-banner-{{ section.id }} .cc-subtitle {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: var(--cc-dark);
+    text-transform: uppercase;
+    margin: 0 0 36px 0;
+  }
+  #cc-banner-{{ section.id }} .cc-subtitle span {
+    font-weight: 800;
+    color: var(--cc-dark);
+  }
+
+  /* Button styling */
+  #cc-banner-{{ section.id }} .cc-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    background-color: var(--cc-dark);
+    color: #ffffff;
+    padding: 16px 36px;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+  }
+  #cc-banner-{{ section.id }} .cc-btn svg {
+    width: 18px;
+    height: auto;
+    transition: transform 0.3s ease;
+  }
+  #cc-banner-{{ section.id }} .cc-btn:hover {
+    background-color: var(--cc-gold);
+    transform: translateY(-2px);
+  }
+  #cc-banner-{{ section.id }} .cc-btn:hover svg {
+    transform: translateX(6px);
+  }
+
+  /* Benefits bar */
+  #cc-banner-{{ section.id }} .cc-benefits-bar {
+    background-color: var(--cc-light-bg);
+    border-top: 1px solid rgba(0,0,0,0.04);
+    padding: 24px 0;
+  }
+  #cc-banner-{{ section.id }} .cc-benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    align-items: center;
+  }
+  #cc-banner-{{ section.id }} .cc-benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    justify-content: center;
+  }
+  #cc-banner-{{ section.id }} .cc-benefit-icon {
+    width: 32px;
+    height: 32px;
+    color: var(--cc-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  #cc-banner-{{ section.id }} .cc-benefit-icon svg {
+    width: 28px;
+    height: auto;
+  }
+  #cc-banner-{{ section.id }} .cc-benefit-text {
+    display: flex;
+    flex-direction: column;
+  }
+  #cc-banner-{{ section.id }} .cc-benefit-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--cc-dark);
+    margin-bottom: 2px;
+  }
+  #cc-banner-{{ section.id }} .cc-benefit-desc {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--cc-muted);
+  }
+
+  /* Responsive styling */
+  @media (max-width: 991px) {
+    #cc-banner-{{ section.id }} .cc-banner-hero {
+      padding: 50px 0;
+      min-height: 650px;
+      background-position: center 15% !important;
+    }
+    #cc-banner-{{ section.id }} .cc-banner-hero::before {
+      background: rgba(245,241,236,0.5);
+    }
+    #cc-banner-{{ section.id }} .cc-benefits-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    #cc-banner-{{ section.id }} .cc-benefit-item {
+      justify-content: flex-start;
+      padding-left: 20px;
+    }
+  }
+  @media (max-width: 580px) {
+    #cc-banner-{{ section.id }} .cc-banner-hero {
+      background-position: 70% 15% !important; /* Adjust model alignment in small viewports */
+    }
+    #cc-banner-{{ section.id }} .cc-banner-hero::before {
+      background: rgba(245,241,236,0.65);
+    }
+    #cc-banner-{{ section.id }} .cc-title {
+      font-size: 46px;
+    }
+    #cc-banner-{{ section.id }} .cc-subtitle {
+      letter-spacing: 2px;
+      font-size: 12px;
+    }
+    #cc-banner-{{ section.id }} .cc-btn {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>
+
+<div id="cc-banner-{{ section.id }}">
+  
+  {%- liquid
+    assign banner_bg = ''
+    if section.settings.bg_image != blank
+      assign banner_bg = section.settings.bg_image | image_url: width: 1800
+    else
+      assign banner_bg = 'crosscountry-banner-bg.jpg' | asset_url
+    endif
+  -%}
+  
+  <div class="cc-banner-hero" style="background-image: url('{{ banner_bg }}');">
+    <div class="cc-container">
+      <div class="cc-content-box">
+        
+        <!-- CROSSCOUNTRY BRAND LOGO -->
+        <div class="cc-brand-wrap" style="margin-bottom: 24px;">
+          {%- liquid
+            assign logo_url = 'crosscountry-logo-transparent-black.png' | asset_url
+            if section.settings.logo_image != blank
+              assign logo_url = section.settings.logo_image | image_url: width: 450
+            endif
+          -%}
+          <img src="{{ logo_url }}" alt="Crosscountry Logo" class="cc-brand-logo-img" style="max-height: 130px; width: auto; object-fit: contain;">
+        </div>
+        
+        <span class="cc-eyebrow">{{ section.settings.eyebrow }}</span>
+        <h2 class="cc-title">{{ section.settings.title }}</h2>
+        <p class="cc-subtitle">MADE FOR <span>{{ section.settings.subtitle_bold }}</span>.</p>
+        
+        {%- if section.settings.btn_text != blank -%}
+          <a href="{{ section.settings.btn_link | default: '/collections/calzado-hombre' }}" class="cc-btn">
+            <span>{{ section.settings.btn_text }}</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+        {%- endif -%}
+        
+      </div>
+    </div>
+  </div>
+  
+  <!-- BOTTOM BENEFITS BAR -->
+  <div class="cc-benefits-bar">
+    <div class="cc-container">
+      <div class="cc-benefits-grid">
+        
+        <!-- Benefit 1 -->
+        <div class="cc-benefit-item">
+          <div class="cc-benefit-icon">
+            <!-- Icono Cuero/Piel -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+          </div>
+          <div class="cc-benefit-text">
+            <span class="cc-benefit-title">{{ section.settings.b1_title | default: 'Piel Genuina' }}</span>
+            <span class="cc-benefit-desc">{{ section.settings.b1_desc | default: 'Calidad Premium' }}</span>
+          </div>
+        </div>
+        
+        <!-- Benefit 2 -->
+        <div class="cc-benefit-item">
+          <div class="cc-benefit-icon">
+            <!-- Icono Bota -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 16v1a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-1M4 12V9a5 5 0 0 1 5-5h6a5 5 0 0 1 5 5v3"></path>
+              <path d="M12 4v16"></path>
+            </svg>
+          </div>
+          <div class="cc-benefit-text">
+            <span class="cc-benefit-title">{{ section.settings.b2_title | default: 'Diseñadas' }}</span>
+            <span class="cc-benefit-desc">{{ section.settings.b2_desc | default: 'Para Durar' }}</span>
+          </div>
+        </div>
+        
+        <!-- Benefit 3 -->
+        <div class="cc-benefit-item">
+          <div class="cc-benefit-icon">
+            <!-- Icono Montaña -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21l-5-5-5 5"></path>
+              <path d="M12 2L2 22h20L12 2z"></path>
+            </svg>
+          </div>
+          <div class="cc-benefit-text">
+            <span class="cc-benefit-title">{{ section.settings.b3_title | default: 'Listas Para' }}</span>
+            <span class="cc-benefit-desc">{{ section.settings.b3_desc | default: 'Cualquier Terreno' }}</span>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+{% schema %}
+{
+  "name": "Banner Crosscountry",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Configuración del Banner"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Imagen de fondo",
+      "info": "Si se deja vacío, utilizará la imagen premium por defecto de Crosscountry."
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_image",
+      "label": "Imagen del Logotipo",
+      "info": "Sube el logo original de Crosscountry en PNG transparente para que se muestre en lugar del logo vectorizado."
+    },
+    {
+      "type": "text",
+      "id": "logo_title",
+      "label": "Nombre del Logo",
+      "default": "CROSSCOUNTRY"
+    },
+    {
+      "type": "text",
+      "id": "logo_subtitle",
+      "label": "Subtítulo del Logo",
+      "default": "ADVENTURE"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Copete (Eyebrow)",
+      "default": "Nueva Colección"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título Principal",
+      "default": "Born For The Wild."
+    },
+    {
+      "type": "text",
+      "id": "subtitle_bold",
+      "label": "Subtítulo en Negritas",
+      "default": "Everyday"
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Texto del Botón",
+      "default": "Comprar Ahora"
+    },
+    {
+      "type": "url",
+      "id": "btn_link",
+      "label": "Enlace del Botón"
+    },
+    {
+      "type": "header",
+      "content": "Beneficios (Barra Inferior)"
+    },
+    {
+      "type": "text",
+      "id": "b1_title",
+      "label": "Beneficio 1 - Título",
+      "default": "Piel Genuina"
+    },
+    {
+      "type": "text",
+      "id": "b1_desc",
+      "label": "Beneficio 1 - Descripción",
+      "default": "Calidad Premium"
+    },
+    {
+      "type": "text",
+      "id": "b2_title",
+      "label": "Beneficio 2 - Título",
+      "default": "Diseñadas"
+    },
+    {
+      "type": "text",
+      "id": "b2_desc",
+      "label": "Beneficio 2 - Descripción",
+      "default": "Para Durar"
+    },
+    {
+      "type": "text",
+      "id": "b3_title",
+      "label": "Beneficio 3 - Título",
+      "default": "Listas Para"
+    },
+    {
+      "type": "text",
+      "id": "b3_desc",
+      "label": "Beneficio 3 - Descripción",
+      "default": "Cualquier Terreno"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banner Crosscountry",
+      "category": "Promotional"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,245 @@
+{
+  "sections": {
+    "main": {
+      "type": "aylesva-luxury-landing",
+      "blocks": {
+        "pin_torre_40": {
+          "type": "map_pin",
+          "settings": {
+            "name": "Torre 40",
+            "status": "En Construcción",
+            "pos_x": 24,
+            "pos_y": 54,
+            "flip": false
+          }
+        },
+        "pin_altarena": {
+          "type": "map_pin",
+          "settings": {
+            "name": "Altarena",
+            "status": "Preventa",
+            "pos_x": 14,
+            "pos_y": 27,
+            "flip": false
+          }
+        },
+        "pin_paradise_bay": {
+          "type": "map_pin",
+          "settings": {
+            "name": "Paradise Bay",
+            "status": "Preventa",
+            "pos_x": 66,
+            "pos_y": 82,
+            "flip": true
+          }
+        },
+        "stat_developments": {
+          "type": "stat",
+          "settings": {
+            "number": "3",
+            "label": "Desarrollos Exclusivos"
+          }
+        },
+        "stat_units": {
+          "type": "stat",
+          "settings": {
+            "number": "72",
+            "label": "Unidades de Lujo"
+          }
+        },
+        "stat_countries": {
+          "type": "stat",
+          "settings": {
+            "number": "2",
+            "label": "Países"
+          }
+        },
+        "stat_completion": {
+          "type": "stat",
+          "settings": {
+            "number": "2027",
+            "label": "Entrega Proyectada"
+          }
+        },
+        "proj_paradise_bay": {
+          "type": "project",
+          "settings": {
+            "layout": "gallery",
+            "bg": "cream",
+            "eyebrow": "El Salvador",
+            "title": "Paradise Bay",
+            "location": "La Unión, El Salvador",
+            "desc": "Adquiere tu lugar en el destino costero más prometedor de El Salvador. Descubre oportunidades exclusivas de bienes raíces rodeadas de playas vírgenes, turismo en crecimiento y un valor excepcional a largo plazo.",
+            "features": "Cerca del nuevo aeropuerto internacional\nCerca de la futura Bitcoin City\nAdyacente al nuevo Puerto de La Unión\nInversión Segura",
+            "link_1": "",
+            "link_1_url": "",
+            "link_2": "",
+            "link_2_url": "",
+            "link_3": "",
+            "link_3_url": "",
+            "status_label": "Project Status",
+            "status": "Preventa",
+            "start_label": "Construction Start",
+            "start": "",
+            "delivery_label": "Estimated Delivery",
+            "delivery": "",
+            "hud": "",
+            "video_1": "shopify:\/\/files\/videos\/3mz_el_salvador_solazmar_branding (1080p).mp4",
+            "label_1": "Ver video",
+            "image_2": "shopify:\/\/shop_images\/paradisebay2.png",
+            "label_2": "",
+            "image_3": "shopify:\/\/shop_images\/paradisebay3.png",
+            "label_3": "",
+            "image_4": "shopify:\/\/shop_images\/paradisebay4.png",
+            "label_4": "",
+            "label_5": ""
+          }
+        },
+        "proj_torre_40": {
+          "type": "project",
+          "settings": {
+            "layout": "tabs",
+            "bg": "sand",
+            "eyebrow": "En Construcción",
+            "title": "Torre 40",
+            "location": "Puerto Vallarta, México",
+            "desc": "Una torre residencial moderna que redefine la vida de lujo en el corazón de Puerto Vallarta.",
+            "features": "24 | Pisos\n72 | Unidades Exclusivas\n2027 | Entrega Est.\nAlberca Infinity | Rooftop\nVistas Panorámicas | Océano y Ciudad\nSeguridad 24\/7 | y Concierge",
+            "link_1": "",
+            "link_1_url": "",
+            "link_2": "",
+            "link_2_url": "",
+            "link_3": "",
+            "link_3_url": "",
+            "status_label": "Project Status",
+            "status": "Pre-sale",
+            "start_label": "Construction Start",
+            "start": "",
+            "delivery_label": "Estimated Delivery",
+            "delivery": "",
+            "hud": "360° | Vista\n24 | Pisos\nPiso 12 | Unidades",
+            "video_1": "shopify:\/\/files\/videos\/WhatsApp Video 2026-07-10 at 12.18.00 PM.mp4",
+            "label_1": "Vista 360°",
+            "image_2": "shopify:\/\/shop_images\/foorplantorre40.jpg",
+            "label_2": "Planos",
+            "image_3": "shopify:\/\/shop_images\/ameneties.png",
+            "label_3": "Amenidades",
+            "image_4": "shopify:\/\/shop_images\/torre40gallery.png",
+            "label_4": "Galería",
+            "image_5": "shopify:\/\/shop_images\/en_construcion.png",
+            "label_5": "Avance de Obra"
+          }
+        },
+        "proj_altarena": {
+          "type": "project",
+          "settings": {
+            "layout": "gallery",
+            "bg": "white",
+            "eyebrow": "Nuevo Desarrollo",
+            "title": "Altarena",
+            "location": "México",
+            "desc": "Donde la Naturaleza se Encuentra con el Lujo\n\nUbicado a lo largo de la costa prístina de Sonora, Altarena es una comunidad exclusiva con plan maestro rodeada de uno de los paisajes naturales más extraordinarios de México. Playas interminables, majestuosas dunas de arena, bosques protegidos de saguaros, rica vida marina y la herencia cultural del pueblo Comcaac (Seri) crean un destino sin igual.",
+            "features": "Espectaculares dunas y paisajes desérticos\nEstilo de vida tranquilo rodeado de naturaleza\nHerencia cultural auténtica\nPotencial de inversión excepcional",
+            "link_1": "",
+            "link_1_url": "",
+            "link_2": "",
+            "link_2_url": "",
+            "link_3": "",
+            "link_3_url": "",
+            "status_label": "Project Status",
+            "status": "Preventa",
+            "start_label": "Construction Start",
+            "start": "",
+            "delivery_label": "Estimated Delivery",
+            "delivery": "",
+            "hud": "",
+            "video_1": "shopify:\/\/files\/videos\/8cd1b67e-1442be89.mp4",
+            "label_1": "Ver video",
+            "image_2": "shopify:\/\/shop_images\/Altarena2.png",
+            "label_2": "",
+            "label_3": "",
+            "image_4": "shopify:\/\/shop_images\/altanera5.jpg",
+            "label_4": "",
+            "label_5": ""
+          }
+        },
+        "testi_altarena": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "¿POR QUÉ ELEGIR ALTARENA?\nUn destino donde el Mar de Cortés, las imponentes dunas de arena y el Desierto de Sonora se unen para crear un estilo de vida costero extraordinario, único en México.",
+            "author": "Altarena",
+            "author_title": "Comunidad Costera Exclusiva"
+          }
+        },
+        "proj_torre_40_testi": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "¿POR QUÉ ELEGIR TORRE 40?\nTorre 40 ofrece arquitectura contemporánea, amenidades premium y una ubicación excepcional en Puerto Vallarta. Diseñado para la vida moderna, combina confort, lujo y potencial de inversión a largo plazo en una comunidad residencial exclusiva.",
+            "author": "Torre 40",
+            "author_title": "Residencias de Lujo"
+          }
+        },
+        "proj_paradise_bay_testi": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "¿POR QUÉ LOS INVERSIONISTAS ELIGEN PARADISE BAY?\nUna oportunidad única de adquirir propiedad en uno de los destinos costeros más prometedores de El Salvador, donde la belleza natural, el inventario limitado frente al mar y el turismo en crecimiento generan un valor excepcional a largo plazo.",
+            "author": "Paradise Bay",
+            "author_title": "Desarrollo Costero Exclusivo"
+          }
+        }
+      },
+      "block_order": [
+        "pin_torre_40",
+        "pin_altarena",
+        "pin_paradise_bay",
+        "stat_developments",
+        "stat_units",
+        "stat_countries",
+        "stat_completion",
+        "proj_paradise_bay",
+        "proj_torre_40",
+        "proj_altarena",
+        "testi_altarena",
+        "proj_torre_40_testi",
+        "proj_paradise_bay_testi"
+      ],
+      "settings": {
+        "hero_image": "shopify:\/\/shop_images\/heroimage.png",
+        "hero_eyebrow": "Desarrollos Exclusivos",
+        "hero_title": "Hogares con Sentido de Futuro",
+        "hero_subtitle": "Comunidades de estilo de vida premium en México y El Salvador, creadas para inversionistas exigentes.",
+        "map_image": "shopify:\/\/shop_images\/mapofmexico.jpg",
+        "map_eyebrow": "Nuestros Desarrollos",
+        "map_title": "Ubicaciones Estratégicas, Oportunidades Extraordinarias.",
+        "map_desc": "Descubre nuestros proyectos exclusivos en los destinos costeros más codiciados.",
+        "map_stat_1_num": "3",
+        "map_stat_1_label": "Proyectos Activos",
+        "map_stat_2_num": "2",
+        "map_stat_2_label": "Países",
+        "map_region_1": "México",
+        "region_1_x": 30,
+        "region_1_y": 30,
+        "map_region_2": "El Salvador",
+        "region_2_x": 63,
+        "region_2_y": 72,
+        "map_hint": "Explora nuestros desarrollos — haz clic en una ubicación",
+        "props_eyebrow": "Vida de Lujo",
+        "props_title": "Colecciones de Propiedades Exclusivas",
+        "cta_title": "Invierte en Lugares con los que la Gente Sueña.",
+        "cta_desc": "Agenda una presentación privada con nuestros especialistas en inversión y explora oportunidades exclusivas.",
+        "cta_feat_1_title": "",
+        "cta_feat_1_desc": "",
+        "cta_feat_2_title": "",
+        "cta_feat_2_desc": "",
+        "cta_label": "",
+        "cta_url": "",
+        "cta_embed_code": "<iframe src=\"https:\/\/api.leadconnectorhq.com\/widget\/form\/8tPsdSSw70XYgG77oYYW\" style=\"width:100%;height:100%;min-height:500px;border:none;border-radius:8px\" id=\"inline-8tPsdSSw70XYgG77oYYW\" data-layout=\"{'id':'INLINE'}\" data-trigger-type=\"alwaysShow\" data-trigger-value=\"\" data-activation-type=\"alwaysActivated\" data-activation-value=\"\" data-deactivation-type=\"neverDeactivate\" data-deactivation-value=\"\" data-form-name=\"aylesvaglobalestates\" data-height=\"779\" data-layout-iframe-id=\"inline-8tPsdSSw70XYgG77oYYW\" data-form-id=\"8tPsdSSw70XYgG77oYYW\" title=\"aylesvaglobalestates\"><\/iframe><script src=\"https:\/\/link.msgsndr.com\/js\/form_embed.js\"><\/script>",
+        "testi_eyebrow": "Desarrollos Exclusivos",
+        "testi_title": "¿Por Qué Nos Eligen?"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

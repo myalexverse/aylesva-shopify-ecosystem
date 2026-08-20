@@ -1,0 +1,31 @@
+{% comment %} Aylesva · Home · Banda de cifras del grupo (ink, full width) {% endcomment %}
+<section class="ay" style="background:var(--ay-ink-800)">
+  <div style="max-width:var(--ay-max);margin:0 auto;padding:0 var(--ay-pad-x)">
+    <div style="display:grid;grid-template-columns:repeat({{ section.blocks.size }},1fr);gap:1px;background:rgba(255,255,255,.14)" class="ay-stats">
+      {% for block in section.blocks %}
+        <div style="padding:42px 30px 46px;background:var(--ay-ink-800)" {{ block.shopify_attributes }}>
+          <div style="font-family:var(--ay-font-display);font-size:36px;font-weight:300;color:#fff;letter-spacing:-.02em">{{ block.settings.value }}</div>
+          <div style="font-family:var(--ay-font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:8px">{{ block.settings.label }}</div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  @media (max-width:1024px){ .ay-stats{grid-template-columns:repeat(2,1fr) !important} }
+  @media (max-width:640px){ .ay-stats{grid-template-columns:1fr !important} }
+</style>
+
+{% schema %}
+{
+  "name": "Aylesva · Cifras",
+  "blocks": [
+    { "type": "stat", "name": "Cifra", "limit": 6, "settings": [
+      { "type": "text", "id": "value", "label": "Cifra", "default": "+2,000" },
+      { "type": "text", "id": "label", "label": "Etiqueta", "default": "Productos en catálogo" }
+    ]}
+  ],
+  "presets": [{ "name": "Aylesva · Cifras" }]
+}
+{% endschema %}

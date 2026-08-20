@@ -1,0 +1,28 @@
+AYLESVA · SISTEMA VISUAL GOLD & INK
+Paquete de implementación para Shopify
+
+CONTENIDO
+  snippets/aylesva-corp-tokens.liquid ....... fuentes, colores y clases base (obligatorio)
+  sections/aylesva-corp-*.liquid ............ 7 secciones universales de las landings de servicio
+  sections/aylesva-home-*.liquid ............ 5 secciones propias de la Home
+  templates/page.home-aylesva.json .......... la Home completa, ya configurada con sus textos
+
+INSTALACIÓN
+  1. Copia snippets/ y sections/ a las carpetas del mismo nombre en el tema.
+  2. En layout/theme.liquid, dentro de <head>, agrega:
+       {% render 'aylesva-corp-tokens' %}
+  3. Copia templates/page.home-aylesva.json a templates/.
+  4. En Shopify: Páginas → Home (o la página que uses) → Plantilla de tema → "home-aylesva".
+     Si quieres que sea la portada del sitio, usa el mismo contenido en templates/index.json.
+  5. Sube las imágenes (Content → Files) y asígnalas desde el editor:
+     hero, 2 imágenes de "Qué hacemos", 4 del Marketplace y 3 de Resultados.
+  6. Pega el ID del formulario general de GoHighLevel en la sección de contacto
+     (hoy va vacío: la sección muestra un aviso hasta que lo llenes).
+
+NOTAS
+  · Los textos de la Home ya vienen dentro del JSON: no hay que teclearlos.
+  · Los enlaces apuntan a /pages/aylesva-recursos, /pages/aylesva-direct,
+    /pages/globalestates, /pages/aylesva-care, /pages/lanza-tu-propia-marca
+    y /pages/mi-ultima-voluntad. Verifica que los handles coincidan.
+  · Las reglas visuales del sistema están en el documento
+    "Handoff Shopify - Gold & Ink" (imprimible a PDF desde el proyecto).

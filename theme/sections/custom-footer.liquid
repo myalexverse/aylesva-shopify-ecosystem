@@ -1,0 +1,342 @@
+{% comment %}
+  Custom Corporate & Ecosystem Footer - GRUPO AYLESVA
+  Clean vanilla CSS & SVG icons, Gold & Ink palette.
+  Mobile accordion-enabled for ultra-clean mobile browsing.
+{% endcomment %}
+
+<style>
+  .ay-footer {
+    background: #ffffff;
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: #0F172A;
+    border-top: 1px solid rgba(15, 23, 42, 0.08);
+    padding: 72px 0 36px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .ay-footer-wrap {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .ay-footer-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1.1fr 1fr;
+    gap: 48px;
+    margin-bottom: 56px;
+  }
+  .ay-footer-brand-desc {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #64748B;
+    margin: 20px 0 24px;
+    max-width: 380px;
+  }
+  .ay-footer-contact-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #334155;
+  }
+  .ay-footer-contact-item svg {
+    color: #C5A47E;
+    flex-shrink: 0;
+  }
+  .ay-footer-contact-item a {
+    color: #334155;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .ay-footer-contact-item a:hover {
+    color: #9E1B2A;
+  }
+  .ay-footer-col-title {
+    font-size: 11.5px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #0F172A;
+    margin: 0 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .ay-footer-col-title .title-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .ay-footer-col-title .title-left::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #C5A47E;
+  }
+  .ay-footer-col-toggle {
+    display: none;
+    width: 20px;
+    height: 20px;
+    color: #94A3B8;
+    transition: transform 0.3s ease;
+  }
+  .ay-footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .ay-footer-links a {
+    color: #64748B;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .ay-footer-links a:hover {
+    color: #9E1B2A;
+    transform: translateX(3px);
+  }
+  .ay-footer-links a .tag-pill {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding: 2px 6px;
+    border-radius: 10px;
+    background: rgba(197, 164, 126, 0.15);
+    color: #9A7B52;
+    text-transform: uppercase;
+  }
+  .ay-footer-bottom {
+    border-top: 1px solid rgba(15, 23, 42, 0.08);
+    padding-top: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .ay-footer-copy {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: #94A3B8;
+    text-transform: uppercase;
+  }
+  .ay-footer-payments {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .ay-footer-payments .pay-badge {
+    height: 24px;
+    padding: 2px 6px;
+    background: #FAFAF8;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.75;
+  }
+
+  @media (max-width: 1024px) {
+    .ay-footer-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .ay-footer {
+      padding: 42px 0 28px;
+    }
+    .ay-footer-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+      margin-bottom: 36px;
+    }
+    .ay-footer-col {
+      border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+      padding-bottom: 16px;
+    }
+    .ay-footer-col-title {
+      cursor: pointer;
+      margin: 0;
+      padding: 10px 0;
+      user-select: none;
+    }
+    .ay-footer-col-toggle {
+      display: block;
+    }
+    .ay-footer-col.is-open .ay-footer-col-toggle {
+      transform: rotate(180deg);
+    }
+    .ay-footer-col-content {
+      display: none;
+      padding-top: 14px;
+    }
+    .ay-footer-col.is-open .ay-footer-col-content {
+      display: block;
+    }
+    .ay-footer-bottom {
+      flex-direction: column;
+      text-align: center;
+      gap: 16px;
+    }
+    .ay-footer-payments {
+      justify-content: center;
+    }
+  }
+</style>
+
+<footer class="ay-footer" role="contentinfo">
+  <div class="ay-footer-wrap">
+    
+    <div class="ay-footer-grid">
+      <!-- Columna 1: Brand & Contacto -->
+      <div class="ay-footer-brand">
+        <a href="/" style="display:inline-block;text-decoration:none;">
+          <img src="{{ 'aylesva-logo-mx-v1.png' | asset_url }}" alt="Grupo Aylesva" style="height: 34px; width: auto; object-fit: contain;" loading="lazy">
+        </a>
+        <p class="ay-footer-brand-desc">
+          Un ecosistema integral de soluciones corporativas, comerciales y de inversión para potenciar tu crecimiento sin fronteras.
+        </p>
+        <div class="ay-footer-contact-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          <span>Calle Benito Juárez 116 · Guanajuato, MX</span>
+        </div>
+        <div class="ay-footer-contact-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+          </svg>
+          <a href="mailto:sales@aylesva.com">sales@aylesva.com</a>
+        </div>
+        <div class="ay-footer-contact-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+          </svg>
+          <a href="https://api.whatsapp.com/send/?phone=524774136612" target="_blank" rel="noopener">+52 477 413 6612 (WhatsApp Directo)</a>
+        </div>
+      </div>
+
+      <!-- Columna 2: Ecosistema y Servicios -->
+      <div class="ay-footer-col is-open">
+        <h4 class="ay-footer-col-title">
+          <span class="title-left">Ecosistema Corporativo</span>
+          <svg class="ay-footer-col-toggle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </h4>
+        <div class="ay-footer-col-content">
+          <ul class="ay-footer-links">
+            <li><a href="/pages/lanza-tu-propia-marca">Lanza tu tienda <span class="tag-pill">E-comm</span></a></li>
+            <li><a href="/pages/aylesva-recursos">Aylesva Recursos <span class="tag-pill">Crédito</span></a></li>
+            <li><a href="/pages/aylesva-direct">Aylesva Direct <span class="tag-pill">China</span></a></li>
+            <li><a href="/pages/globalestates">Global Estates <span class="tag-pill">Real Estate</span></a></li>
+            <li><a href="/pages/aylesva-care">Aylesva Care <span class="tag-pill">EE. UU.</span></a></li>
+            <li><a href="/pages/mi-ultima-voluntad">Mi Última Voluntad</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Columna 3: Marketplace -->
+      <div class="ay-footer-col">
+        <h4 class="ay-footer-col-title">
+          <span class="title-left">Marketplace & Tienda</span>
+          <svg class="ay-footer-col-toggle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </h4>
+        <div class="ay-footer-col-content">
+          <ul class="ay-footer-links">
+            <li><a href="/pages/marketplace" style="font-weight:700;color:#0F172A;">Ver Todo el Marketplace →</a></li>
+            <li><a href="/pages/mujer">Dama & Moda</a></li>
+            <li><a href="/pages/hombre">Caballero</a></li>
+            <li><a href="/pages/ninos">Niños & Familia</a></li>
+            <li><a href="/pages/hogar">Hogar & Decoración</a></li>
+            <li><a href="/pages/artesanal">Artesanal & Tradición</a></li>
+            <li><a href="/pages/alimentos">Alimentos Gourmet</a></li>
+            <li><a href="/pages/electronicos">Electrónicos & Tech</a></li>
+            <li><a href="/pages/saldos">Saldos & Liquidaciones</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Columna 4: Empresa & Legal -->
+      <div class="ay-footer-col">
+        <h4 class="ay-footer-col-title">
+          <span class="title-left">Empresa & Ayuda</span>
+          <svg class="ay-footer-col-toggle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </h4>
+        <div class="ay-footer-col-content">
+          <ul class="ay-footer-links">
+            <li><a href="/#contacto">Contacto General</a></li>
+            <li><a href="/pages/rastreo">Rastrea tu pedido</a></li>
+            <li><a href="/policies/terms-of-service">Términos de Servicio</a></li>
+            <li><a href="/policies/privacy-policy">Aviso de Privacidad</a></li>
+            <li><a href="/policies/shipping-policy">Envíos y Devoluciones</a></li>
+            <li><a href="https://api.whatsapp.com/send/?phone=524774136612&text=Hola%2C+necesito+ayuda+con+Grupo+Aylesva" target="_blank" rel="noopener">Soporte por WhatsApp</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Barra Inferior -->
+    <div class="ay-footer-bottom">
+      <div class="ay-footer-copy">
+        © {{ 'now' | date: "%Y" }} GRUPO AYLESVA · TODOS LOS DERECHOS RESERVADOS
+      </div>
+
+      <div class="ay-footer-payments">
+        {%- for type in shop.enabled_payment_types -%}
+          <div class="pay-badge">
+            {{ type | payment_type_svg_tag: class: 'w-full h-full' }}
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<script>
+  (function() {
+    function initFooterAccordion() {
+      if (window.innerWidth > 640) return;
+      document.querySelectorAll('.ay-footer-col-title').forEach(function(title) {
+        title.onclick = function() {
+          var col = title.closest('.ay-footer-col');
+          if (col) col.classList.toggle('is-open');
+        };
+      });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initFooterAccordion);
+    } else {
+      initFooterAccordion();
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Aylesva · Footer Moderno",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Aylesva · Footer Moderno"
+    }
+  ]
+}
+{% endschema %}

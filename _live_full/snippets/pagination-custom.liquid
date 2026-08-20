@@ -1,0 +1,35 @@
+{% comment %}
+
+  This snippet renders a custom widget based on the current 'paginate' context,
+  defined in { % paginate XXXX by 5 % } tags wrapping the content.
+  The example below breaks the pagination down so you can setup your own styles and behavior if you wish.
+
+  Basic Pagination Usage:
+    <div class="pagination">
+      {{ paginate | default_pagination }}
+    </div>
+
+  Replace Text:
+    <div class="pagination">
+      {{ paginate | default_pagination: previous: 'Newer articles', next: 'Older articles' }}
+    </div>
+
+  More information:
+   - index#pagination
+   - http://docs.shopify.com/themes/liquid-variables/paginate
+
+{% endcomment %}
+
+{% if settings.collection_infinite_scroll %}
+	{% if paginate.next %}
+    <div class="infinite-scrolling {{ settings.collection_infinite_scroll }}">
+      <a href="{{ paginate.next.url }}" title="Load more..." class="btn next">Show more</a>  
+      <a href="#" class="disabled btn" style="display:none" title="Load more...">No more product </a>  
+    </div>
+	{% endif %}
+{% else %}
+<div class="pagination-custom text-center">
+  {{ paginate | default_pagination: next: '&raquo;', previous: '&laquo;' }}
+</div>
+
+{% endif %}

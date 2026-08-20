@@ -1,0 +1,187 @@
+{% comment %}
+  Aylesva Premium Recently Viewed Products
+  Motor moderno basado en localStorage y Section Rendering API
+{% endcomment %}
+
+{%- style -%}
+  .ayl-recent-viewed-{{ section.id }} {
+    padding: 60px 0;
+    background: #fff;
+    overflow: hidden;
+  }
+
+  .recent-viewed-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 0 20px;
+    max-width: 1300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .recent-viewed-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    color: #1a1a1a;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .recent-viewed-grid {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding: 20px;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* IE 10+ */
+    scroll-behavior: smooth;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .recent-viewed-grid::-webkit-scrollbar {
+    display: none; /* Safari/Chrome */
+  }
+
+  .recent-viewed-grid .ayl-premium-product-card {
+    flex: 0 0 calc(20% - 16px);
+    min-width: 250px;
+  }
+
+  @media (max-width: 1200px) {
+    .recent-viewed-grid .ayl-premium-product-card { flex: 0 0 calc(25% - 15px); }
+  }
+
+  @media (max-width: 1024px) {
+    .recent-viewed-grid .ayl-premium-product-card { flex: 0 0 calc(33.33% - 14px); }
+  }
+
+  @media (max-width: 767px) {
+    .ayl-recent-viewed-{{ section.id }} { padding: 40px 0; }
+    .recent-viewed-title { font-size: 22px; }
+    .recent-viewed-grid { gap: 12px; padding: 10px 20px; }
+    .recent-viewed-grid .ayl-premium-product-card { 
+      flex: 0 0 160px; 
+      min-width: 160px;
+    }
+  }
+
+  /* Navigation Arrows */
+  .recent-nav-btn {
+    background: none;
+    border: 1px solid #e0e0e0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #1a1a1a;
+  }
+
+  .recent-nav-btn:hover {
+    background: #1a1a1a;
+    color: #fff;
+    border-color: #1a1a1a;
+  }
+
+  .recent-nav-btn svg { width: 20px; height: 20px; }
+{%- endstyle -%}
+
+<div class="ayl-recent-viewed-{{ section.id }}" id="RecentlyViewedWrapper-{{ section.id }}" style="display: none;">
+  <div class="recent-viewed-header">
+    <h2 class="recent-viewed-title">{{ section.settings.title }}</h2>
+    <div class="recent-viewed-nav" style="display: flex; gap: 10px;">
+      <button class="recent-nav-btn prev" onclick="scrollRecent('prev')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+      <button class="recent-nav-btn next" onclick="scrollRecent('next')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="recent-viewed-grid" id="RecentlyViewedGrid-{{ section.id }}">
+    {% comment %} Content loaded via JS {% endcomment %}
+  </div>
+</div>
+
+<script>
+  (function() {
+    const storageKey = 'ayl_recently_viewed';
+    
+    window.scrollRecent = function(direction) {
+      const grid = document.getElementById('RecentlyViewedGrid-{{ section.id }}');
+      if (!grid) return;
+      const scrollAmount = grid.offsetWidth * 0.8;
+      grid.scrollLeft += (direction === 'prev' ? -scrollAmount : scrollAmount);
+    };
+
+    async function loadRecentlyViewed() {
+      console.log('Aylesva Recent: Iniciando carga...');
+      const recentHandles = JSON.parse(localStorage.getItem(storageKey) || '[]');
+      const currentHandle = "{{ product.handle }}";
+      
+      const filteredHandles = recentHandles.filter(h => h !== currentHandle);
+      console.log('Aylesva Recent: Handles encontrados:', filteredHandles);
+
+      if (filteredHandles.length === 0) return;
+
+      const wrapper = document.getElementById('RecentlyViewedWrapper-{{ section.id }}');
+      const grid = document.getElementById('RecentlyViewedGrid-{{ section.id }}');
+      if (!wrapper || !grid) return;
+
+      wrapper.style.display = 'block';
+
+      for (const handle of filteredHandles.slice(0, 8)) {
+        try {
+          const response = await fetch(`/products/${handle}?view=ayl-card`);
+          const html = await response.text();
+          if (html.includes('ayl-premium-product-card')) {
+            grid.insertAdjacentHTML('beforeend', html);
+          }
+        } catch (e) { console.error('Aylesva Recent error:', handle, e); }
+      }
+    }
+
+    // Tracking
+    if ("{{ product.handle }}" !== "") {
+      const handle = "{{ product.handle }}";
+      let recent = JSON.parse(localStorage.getItem(storageKey) || '[]');
+      recent = recent.filter(h => h !== handle);
+      recent.unshift(handle);
+      localStorage.setItem(storageKey, JSON.stringify(recent.slice(0, 12)));
+      console.log('Aylesva Recent: Tracked', handle);
+    }
+
+    if (document.readyState === 'complete') {
+      loadRecentlyViewed();
+    } else {
+      window.addEventListener('load', loadRecentlyViewed);
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Recientemente Vistos",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título",
+      "default": "Productos Recientemente Vistos"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Recientemente Vistos Premium"
+    }
+  ]
+}
+{% endschema %}

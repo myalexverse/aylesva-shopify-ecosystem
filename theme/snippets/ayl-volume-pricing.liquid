@@ -1,0 +1,62 @@
+{% comment %} Snippet para tabla de precios por volumen de mayoreo {% endcomment %}
+{%- liquid
+  assign current_variant = product.selected_or_first_available_variant
+  assign base_price = current_variant.price
+  
+  assign noun = 'unidades'
+  assign type_lower = product.type | downcase
+  assign title_lower = product.title | downcase
+  if type_lower contains 'bota' or type_lower contains 'calzado' or title_lower contains 'bota' or type_lower contains 'botin' or type_lower contains 'botín'
+    assign noun = 'pares'
+  else
+    assign noun = 'piezas'
+  endif
+
+  assign price_12 = base_price | times: 1.20 | round
+  assign price_24 = base_price | times: 1.15 | round
+  assign price_36 = base_price | times: 1.10 | round
+  assign price_48 = base_price | times: 1.05 | round
+-%}
+
+<div class="ayl-volume-pricing-box" style="margin: 20px 0; padding: 15px; border: 1px solid #eaeaea; border-radius: 8px; background-color: #fbfbfb;">
+  <h4 style="margin-top: 0; color: #4A0E17; font-weight: bold; font-size: 1.1rem; border-bottom: 2px solid #4A0E17; padding-bottom: 5px;">
+    Precios por Volumen (Misma Categoría)
+  </h4>
+  <p style="margin: 0 0 10px 0; font-size: 0.78rem; color: #666; line-height: 1.3;">
+    Precio base: {{ base_price | money }} por unidad. El markup se aplica según la cantidad total de {{ noun }} de la misma categoría.
+  </p>
+  <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95rem;">
+    <thead>
+      <tr style="border-bottom: 1px solid #ddd; color: #555;">
+        <th style="padding: 8px 4px;">Cantidad</th>
+        <th style="padding: 8px 4px; text-align: center;">Markup</th>
+        <th style="padding: 8px 4px; text-align: right;">Precio por Unidad</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="border-bottom: 1px solid #eee; background: #FFF8F0;">
+        <td style="padding: 8px 4px; font-weight: 500;">12 a 23 {{ noun }}</td>
+        <td style="padding: 8px 4px; text-align: center; color: #8B6914; font-weight: 600;">+20%</td>
+        <td style="padding: 8px 4px; text-align: right; color: #333; font-weight: 600;">{{ price_12 | money }}</td>
+      </tr>
+      <tr style="border-bottom: 1px solid #eee;">
+        <td style="padding: 8px 4px; font-weight: 500;">24 a 35 {{ noun }}</td>
+        <td style="padding: 8px 4px; text-align: center; color: #8B6914; font-weight: 600;">+15%</td>
+        <td style="padding: 8px 4px; text-align: right; color: #2D5A43; font-weight: 600;">{{ price_24 | money }}</td>
+      </tr>
+      <tr style="border-bottom: 1px solid #eee;">
+        <td style="padding: 8px 4px; font-weight: 500;">36 a 47 {{ noun }}</td>
+        <td style="padding: 8px 4px; text-align: center; color: #8B6914; font-weight: 600;">+10%</td>
+        <td style="padding: 8px 4px; text-align: right; color: #2D5A43; font-weight: 600;">{{ price_36 | money }}</td>
+      </tr>
+      <tr>
+        <td style="padding: 8px 4px; font-weight: 500;">48+ {{ noun }}</td>
+        <td style="padding: 8px 4px; text-align: center; color: #2D5A43; font-weight: 700;">+5%</td>
+        <td style="padding: 8px 4px; text-align: right; color: #2D5A43; font-weight: 700;">{{ price_48 | money }} ⭐</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="margin: 10px 0 0 0; font-size: 0.8rem; color: #666; line-height: 1.2;">
+    * Puedes <strong>combinar tallas y diferentes modelos</strong> de la misma categoría (ej. <em>{{ product.type | default: 'esta misma categoría' }}</em>) para alcanzar la cantidad mínima de 12 {{ noun }}.
+  </p>
+</div>

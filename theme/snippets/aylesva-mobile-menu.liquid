@@ -1,0 +1,551 @@
+<!-- AYLESVA MX — MENÚ CAJÓN MÓVIL v3 (Nike-style + Desktop Colors) -->
+
+<style>
+/* ================================================================
+   MOBILE HEADER OVERRIDES — alinear a paleta desktop
+   Solo afecta max-width: 768px
+   ================================================================ */
+
+@media screen and (max-width: 768px) {
+
+  /* ── Fuente global mobile ───────────────────────────────── */
+  .header_2 * {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  /* ── Announcement bar: verde oscuro como desktop ────────── */
+  .header_2 #top {
+    background-color: #2D5A43 !important;
+    padding: 5px 0 !important;
+    min-height: 0 !important;
+  }
+  .header_2 #top .container {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 0 16px !important;
+  }
+  .header_2 #top,
+  .header_2 #top a,
+  .header_2 #top * {
+    color: #ffffff !important;
+    font-size: 11px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.03em !important;
+    text-transform: uppercase !important;
+  }
+  /* Ocultar elementos secundarios del announcement en mobile */
+  .header_2 #top .header-top-right {
+    display: none !important;
+  }
+
+/* ── Full header: COMENTADO PARA NO INTERFERIR CON HEADER-STYLE-2 ──────────── 
+  .header_2 .full-header {
+    background-color: #ffffff !important;
+    border-bottom: 1px solid #e5e7eb !important;
+    padding: 0 !important;
+  }
+  .header_2 .full-header .container {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 10px 16px !important;
+    min-height: 60px !important;
+    flex-wrap: nowrap !important;
+  }
+  .header_2 .header-left,
+  .header_2 .header-middle,
+  .header_2 .header-right {
+    float: none !important;
+    position: static !important;
+    clear: none !important;
+  }
+
+  .header_2 .header-left {
+    flex: 0 0 auto !important;
+    padding: 0 !important;
+  }
+  .header_2 .header-logo {
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 1 !important;
+  }
+  .header_2 .header-logo img {
+    max-height: 44px !important;
+    width: auto !important;
+    max-width: 160px !important;
+    object-fit: contain !important;
+    margin: 0 !important;
+  }
+
+  .header_2 .header-middle {
+    display: none !important;
+  }
+
+  .header_2 .header-right {
+    flex: 0 0 auto !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 4px !important;
+    padding: 0 !important;
+  }
+
+  .header_2 #cart .btn.dropdown-toggle,
+  .header_2 a.wishlist,
+  .header_2 a.compare,
+  .header_2 .myaccount .dropdown-toggle {
+    width: 40px !important;
+    height: 40px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    border-radius: 50% !important;
+  }
+  .header_2 #cart .btn.dropdown-toggle i,
+  .header_2 .myaccount .dropdown-toggle i {
+    color: #0f172a !important;
+    font-size: 20px !important;
+  }
+
+  .header_2 .menu-bar,
+  #header-sticky.menu-bar {
+    background-color: #0f172a !important;
+    border: none !important;
+    padding: 0 !important;
+  }
+  .header_2 .menu-bar .container {
+    display: flex !important;
+    align-items: center !important;
+    padding: 0 16px !important;
+    height: 48px !important;
+  }
+
+  .header_2 .ttresponsive_menu-wrap {
+    display: flex !important;
+    align-items: center !important;
+  }
+  .header_2 .ttresponsive_menu {
+    width: 22px !important;
+    height: 16px !important;
+    position: relative !important;
+    cursor: pointer !important;
+  }
+  .header_2 .ttresponsive_menu::before,
+  .header_2 .ttresponsive_menu::after,
+  .ttresponsive_menu span {
+    background-color: #ffffff !important;
+  }
+  */
+
+  /* Texto en menu-bar: blanco */
+  .header_2 .menu-bar *,
+  .header_2 .menu-bar a {
+    color: #ffffff !important;
+  }
+
+  /* Ocultar la topmenu (nav links) en mobile — se maneja por el cajón */
+  .header_2 .menu-bar .topmenu,
+  .header_2 .menu-bar .tt-megamenu { display: none !important; }
+
+  /* ── Sticky mobile bar: armonizar colores ───────────────── */
+  .main-sticky-data {
+    background-color: #0f172a !important;
+    border-top: 1px solid #1e293b !important;
+  }
+  .main-sticky-data .sticky-data svg,
+  .main-sticky-data .sticky-data i,
+  .sticky_title {
+    color: #e2e8f0 !important;
+    fill: none !important;
+    stroke: #e2e8f0 !important;
+  }
+
+  /* ── Backdrop del cajón ─────────────────────────────────── */
+  #ayl-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 8900;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+  }
+  #ayl-backdrop.ayl-open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  /* ── Cajón deslizable ───────────────────────────────────── */
+  #ayl-drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 83vw;
+    max-width: 340px;
+    height: 100%;
+    background: #0f172a;
+    z-index: 9000;
+    transform: translateX(100%);
+    transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  #ayl-drawer.ayl-open {
+    transform: translateX(0);
+  }
+
+  /* ── Cabecera del cajón ─────────────────────────────────── */
+  .ayl-drawer-head {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 14px;
+    height: 56px;
+    flex-shrink: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    background: #0f172a;
+  }
+
+  /* Botón cerrar */
+  .ayl-btn-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: rgba(255,255,255,0.08);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    color: #94a3b8;
+    -webkit-tap-highlight-color: transparent;
+    transition: background 0.15s, color 0.15s;
+  }
+  .ayl-btn-close:active { background: rgba(255,255,255,0.15); color: #fff; }
+  .ayl-btn-close svg { width: 16px; height: 16px; }
+
+  /* Botón volver */
+  .ayl-btn-back {
+    display: none;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #64748b;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 0;
+    margin-right: auto;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .ayl-btn-back.ayl-visible { display: flex; }
+  .ayl-btn-back svg { width: 14px; height: 14px; }
+
+  /* ── Paneles ────────────────────────────────────────────── */
+  .ayl-panels {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+  }
+  .ayl-panel {
+    position: absolute;
+    inset: 0;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    transition: transform 0.26s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .ayl-panel::-webkit-scrollbar { display: none; }
+
+  #ayl-panel-main { transform: translateX(0); }
+  #ayl-panel-main.ayl-slide-out { transform: translateX(-28%); }
+  #ayl-panel-sub  { transform: translateX(100%); }
+  #ayl-panel-sub.ayl-slide-in  { transform: translateX(0); }
+
+  /* ── Items de categoría ─────────────────────────────────── */
+  .ayl-cat-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    height: 58px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: background 0.12s;
+    user-select: none;
+  }
+  .ayl-cat-item:active { background: rgba(255,255,255,0.04); }
+
+  .ayl-cat-name {
+    font-size: 17px;
+    font-weight: 500;
+    color: #f1f5f9;
+    letter-spacing: -0.1px;
+  }
+  .ayl-chevron {
+    width: 18px;
+    height: 18px;
+    color: #334155;
+    flex-shrink: 0;
+  }
+
+  /* ── Panel de subcategorías ─────────────────────────────── */
+  .ayl-sub-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #f8fafc;
+    padding: 20px 20px 12px;
+    letter-spacing: -0.3px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 4px;
+  }
+  .ayl-sub-item {
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    height: 50px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: background 0.12s;
+  }
+  .ayl-sub-item:active { background: rgba(255,255,255,0.04); }
+  .ayl-sub-item span {
+    font-size: 14px;
+    color: #94a3b8;
+    font-weight: 400;
+  }
+
+  /* ── Botón "Ver todo" — acento verde ─────────────────────── */
+  .ayl-ver-todo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 20px 30px;
+    height: 46px;
+    border-radius: 4px;
+    background: #2D5A43;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    transition: background 0.15s;
+  }
+  .ayl-ver-todo:active { background: #1e3d2d; }
+
+}
+
+/* ── Desktop: ocultar todo el snippet ──────────────────────── */
+@media screen and (min-width: 769px) {
+  #ayl-backdrop,
+  #ayl-drawer { display: none !important; }
+}
+</style>
+
+<!-- Backdrop -->
+<div id="ayl-backdrop" aria-hidden="true"></div>
+
+<!-- Cajón -->
+<div id="ayl-drawer" role="dialog" aria-modal="true" aria-label="Menú de navegación">
+
+  <div class="ayl-drawer-head">
+    <button class="ayl-btn-back" id="ayl-btn-back" aria-label="Volver">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+           stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+      Menú
+    </button>
+    <button class="ayl-btn-close" id="ayl-btn-close" aria-label="Cerrar menú">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+           stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+  </div>
+
+  <div class="ayl-panels">
+    <div class="ayl-panel" id="ayl-panel-main"></div>
+    <div class="ayl-panel" id="ayl-panel-sub"></div>
+  </div>
+
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  var CATS = [
+    { key: 'mujer',       label: 'Mujer',       href: '/collections/mujer',
+      subs: [['Ropa','/collections/ropa-mujer'],['Calzado','/collections/calzado-mujer'],
+             ['Ropa Interior y Lencería','/collections/ropa-interior-y-lenceria'],
+             ['Joyería y Accesorios','/collections/joyeria-y-accesorios'],
+             ['Bolsas y Carteras','/collections/bolsas-y-carteras'],
+             ['Accesorios de Moda','/collections/accesorios-de-moda'],
+             ['Belleza y Cuidado','/collections/belleza-y-cuidado-personal'],
+             ['Maternidad','/collections/maternidad']] },
+    { key: 'hombre',      label: 'Hombre',      href: '/collections/hombre',
+      subs: [['Ropa','/collections/ropa-hombre'],['Calzado','/collections/calzado-hombre'],
+             ['Ropa Interior','/collections/ropa-interior-hombre'],
+             ['Accesorios','/collections/accesorios-hombre'],
+             ['Joyería','/collections/joyeria'],
+             ['Cuidado Personal','/collections/cuidado-personal']] },
+    { key: 'nino',        label: 'Niño',        href: '/collections/nino',
+      subs: [['Ropa','/collections/ropa-nino'],['Calzado','/collections/calzado-nino'],
+             ['Ropa Interior','/collections/ropa-interior-nino'],
+             ['Accesorios','/collections/accesorios-nino']] },
+    { key: 'nina',        label: 'Niña',        href: '/collections/nina',
+      subs: [['Ropa','/collections/ropa-nina'],['Calzado','/collections/calzado-nina'],
+             ['Ropa Interior','/collections/ropa-interior-nina'],
+             ['Accesorios','/collections/accesorios-nina']] },
+    { key: 'bebe',        label: 'Bebé',        href: '/collections/bebe',
+      subs: [['Ropa','/collections/ropa-bebe'],['Calzado','/collections/calzado-bebe'],
+             ['Ropa Interior / Pañalería','/collections/ropa-interior-y-panaleria'],
+             ['Accesorios','/collections/accesorios-bebe'],
+             ['Higiene y Cuidado','/collections/higiene-y-cuidado']] },
+    { key: 'artesanal',   label: 'Artesanal',   href: '/collections/artesanal',
+      subs: [['Textiles y Tejidos','/collections/textiles-y-tejidos'],
+             ['Cerámica y Barro','/collections/ceramica-y-barro'],
+             ['Madera','/collections/madera'],
+             ['Joyería Artesanal','/collections/joyeria-artesanal'],
+             ['Cuero y Piel','/collections/cuero-y-piel'],
+             ['Arte y Pinturas','/collections/arte-decorativo-y-pinturas'],
+             ['Velas y Aromaterapia','/collections/velas-y-aromaterapia-artesanal'],
+             ['Juguetes Tradicionales','/collections/juguetes-y-muncos-tradicionales'],
+             ['Instrumentos','/collections/instrumentos-musicales-artesanales']] },
+    { key: 'hogar',       label: 'Hogar',       href: '/collections/hogar',
+      subs: [['Muebles','/collections/muebles'],
+             ['Decoración del Hogar','/collections/decoracion-del-hogar'],
+             ['Iluminación','/collections/iluminacion'],
+             ['Cocina y Comedor','/collections/cocina-y-comedor'],
+             ['Baño','/collections/bano'],
+             ['Recámara','/collections/recamara-y-ropa-de-cama'],
+             ['Jardín y Exterior','/collections/jardin-y-exterior'],
+             ['Arte y Coleccionables','/collections/arte-y-coleccionables']] },
+    { key: 'alimentos',   label: 'Alimentos',   href: '/collections/alimentos',
+      subs: [['Alimentos Artesanales','/collections/alimentos-artesanales'],
+             ['Bebidas Artesanales','/collections/bebidas-artesanales'],
+             ['Orgánicos y Naturales','/collections/productos-organicos-y-naturales'],
+             ['Repostería y Panadería','/collections/reposteria-y-panaderia'],
+             ['Regalos Gourmet','/collections/canastas-y-regalos-gourmet']] },
+    { key: 'electronicos',label: 'Electrónicos',href: '/collections/electronicos',
+      subs: [['Teléfonos','/collections/telefonos-y-comunicacion'],
+             ['Computadoras','/collections/computadoras-y-laptops'],
+             ['Audio y Sonido','/collections/audio-y-sonido'],
+             ['TV y Video','/collections/television-y-video'],
+             ['Fotografía','/collections/fotografia-y-video'],
+             ['Videojuegos','/collections/videojuegos'],
+             ['Electrodomésticos','/collections/electrodomesticos'],
+             ['Wearables','/collections/wearables-y-gadgets'],
+             ['Energía y Carga','/collections/energia-y-carga']] },
+    { key: 'vehiculos',   label: 'Vehículos',   href: '/collections/vehiculos',
+      subs: [['Automóviles','/collections/automoviles'],
+             ['Motocicletas','/collections/motocicletas'],
+             ['Carga y Trabajo','/collections/vehiculos-de-carga-y-trabajo'],
+             ['Accesorios','/collections/accesorios-y-refacciones'],
+             ['Recreativos','/collections/vehiculos-recreativos']] }
+  ];
+
+  var backdrop  = document.getElementById('ayl-backdrop');
+  var drawer    = document.getElementById('ayl-drawer');
+  var btnClose  = document.getElementById('ayl-btn-close');
+  var btnBack   = document.getElementById('ayl-btn-back');
+  var panelMain = document.getElementById('ayl-panel-main');
+  var panelSub  = document.getElementById('ayl-panel-sub');
+
+  var CHV = '<svg class="ayl-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"'
+          + ' stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">'
+          + '<polyline points="9 18 15 12 9 6"></polyline></svg>';
+
+  /* Construir panel principal */
+  panelMain.innerHTML = CATS.map(function (c, i) {
+    return '<div class="ayl-cat-item" data-idx="' + i + '">'
+         + '<span class="ayl-cat-name">' + c.label + '</span>' + CHV + '</div>';
+  }).join('');
+
+  var isOpen = false;
+  var subOpen = false;
+
+  function openDrawer() {
+    isOpen = true;
+    drawer.classList.add('ayl-open');
+    backdrop.classList.add('ayl-open');
+    document.body.style.overflow = 'hidden';
+    document.body.classList.remove('open-nav');
+  }
+
+  function closeDrawer() {
+    isOpen = false;
+    drawer.classList.remove('ayl-open');
+    backdrop.classList.remove('ayl-open');
+    document.body.style.overflow = '';
+    setTimeout(function () { closeSub(true); }, 320);
+  }
+
+  function openSub(idx) {
+    var cat = CATS[idx];
+    panelSub.innerHTML = '<div class="ayl-sub-title">' + cat.label + '</div>'
+      + cat.subs.map(function (s) {
+          return '<a class="ayl-sub-item" href="' + s[1] + '"><span>' + s[0] + '</span></a>';
+        }).join('')
+      + '<a class="ayl-ver-todo" href="' + cat.href + '">Ver todo en ' + cat.label + '</a>';
+    panelSub.scrollTop = 0;
+    panelMain.classList.add('ayl-slide-out');
+    panelSub.classList.add('ayl-slide-in');
+    btnBack.classList.add('ayl-visible');
+    subOpen = true;
+  }
+
+  function closeSub(silent) {
+    panelMain.classList.remove('ayl-slide-out');
+    panelSub.classList.remove('ayl-slide-in');
+    btnBack.classList.remove('ayl-visible');
+    subOpen = false;
+    if (!silent) panelSub.innerHTML = '';
+  }
+
+  btnClose.addEventListener('click', closeDrawer);
+  backdrop.addEventListener('click', closeDrawer);
+  btnBack.addEventListener('click', function () { closeSub(false); });
+
+  panelMain.addEventListener('click', function (e) {
+    var item = e.target.closest('.ayl-cat-item');
+    if (item) openSub(parseInt(item.getAttribute('data-idx'), 10));
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') { subOpen ? closeSub(false) : (isOpen && closeDrawer()); }
+  });
+
+  /* Interceptar hamburguesa del tema */
+  document.addEventListener('click', function (e) {
+    if (e.target.closest('.ttresponsive_menu-wrap')) {
+      e.stopImmediatePropagation();
+      document.body.classList.remove('open-nav');
+      openDrawer();
+    }
+  }, true);
+
+  /* Evitar que el tema reactive open-nav mientras el cajón está abierto */
+  new MutationObserver(function () {
+    if (isOpen && document.body.classList.contains('open-nav')) {
+      document.body.classList.remove('open-nav');
+    }
+  }).observe(document.body, { attributes: true, attributeFilter: ['class'] });
+
+})();
+</script>

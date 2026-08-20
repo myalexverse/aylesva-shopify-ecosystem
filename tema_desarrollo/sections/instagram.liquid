@@ -1,0 +1,179 @@
+{% if section.settings.instagram_use %}
+<div class="grid__item clearfix instagram-wrapper" data-section-id="{{ section.id }}" >
+  <div class="full-width">
+{% if section.settings.title != blank %}
+  <div class="section-header">
+  <h2 class="text-left tt-title"><i class="fa fa-instagram"></i> {{ section.settings.title | escape }}</h2>   
+
+{% endif %}
+     </div>
+  <input type="hidden" id="token-{{ section.id }}" value="{{ section.settings.accessToken }}">
+	<div class="tt-instagram clearfix" data-id="{{ section.id }}">
+  <div class="grid__item">
+    <div id="instafeed-{{ section.id }}" class="instafeed--{{ section.id }} instagram--with-padding instagram_wrap" data-sort-by="{{ section.settings.sort }}" data-grid="{{ section.settings.grid }}" data-rows="{{ section.settings.rows }}" data-slick='{"slidesToShow": "{{ section.settings.sidetoshow }}", "autoplay": {{ section.settings.use_autoplay }}, "arrows": {{ section.settings.use_arrows }},"responsive":[{"breakpoint": 1024,"settings":{"slidesToShow": 3}},{"breakpoint": 480,"settings":{"slidesToShow": 1}}]}'>
+    </div></div>
+  </div>
+  <style>.tt-instagram .info { background: {{ section.settings.overlay | color_modify: 'alpha', 0.7 }}; }.tt-instagram .info span { background:{{ section.settings.Button_bg }};color:{{ section.settings.Button_text }}; }.tt-instagram .info span a{color:{{ section.settings.Button_text }};}{% if section.settings.heading_image_need %} .instagram-wrapper .border-title:after {  content:"";background-image:url({{ section.settings.heading_image | img_url: 'master' }});display:inline-block;background-repeat:no-repeat;width:105px;height:17px;} {% endif %}</style>
+  </div>
+</div>
+{% endif %}
+
+{{ 'slick.scss' | asset_url | stylesheet_tag }}
+{{ 'instagram.js' | asset_url | script_tag }}
+
+{%- if section.settings.padding != blank or section.settings.margin != blank -%}
+{% assign margin = section.settings.margin | remove: ' ' | split: '-' | join: ' ' %}
+{% assign padding = section.settings.padding | remove: ' ' | split: '-' | join: ' ' %}
+<style>#shopify-section-{{ section.id }} { {%- if section.settings.margin != blank -%} margin: {{margin}};{%- endif -%}{%- if section.settings.padding != blank -%}padding: {{padding}}{%- endif -%}}</style>
+{%- endif -%}
+
+{% schema %}
+  {
+    "name": "Instagram Feed",
+    "class": "instagram-block",
+    "presets": [
+      {
+        "name": "Instagram Feed",
+        "category": "TemplateTrip"
+      }
+    ],
+    "settings": [
+		{
+        "type": "checkbox",
+        "id": "instagram_use",
+        "label": "Use Instagram?"
+        
+      },
+      {
+        "type": "text",
+        "id": "accessToken",
+        "label": "Access Token:",
+        "default": "6957714193.1677ed0.4caed2ca4e8e4fdcb466e825eb788862",
+        "info": "Use when Get Image from: 'Access Token'. [Where do I find Access Token?](http:\/\/instagram.pixelunion.net)"
+      },
+{
+      "type": "checkbox",
+      "id": "heading_image_need",
+      "label": "Show Heading Image ?"
+      
+    },	
+{
+      "type": "image_picker",
+      "id": "heading_image",
+      "label": "Image",
+	  "info": "Size: 105x17"
+      
+    },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Instagram Feed"
+      },
+      {
+        "type": "select",
+        "id": "sort",
+        "label": "Sort by",
+        "default": "none",
+        "options": [
+          {
+            "value": "none",
+            "label": "none (default)."
+          },
+          {
+            "value": "most-recent",
+            "label": "Newest to oldest."
+          },
+          {
+            "value": "least-recent",
+            "label": "Oldest to newest."
+          },
+          {
+            "value": "most-liked",
+            "label": "Highest # of likes to lowest."
+          },
+          {
+            "value": "least-liked",
+            "label": "Lowest # likes to highest."
+          },
+          {
+            "value": "most-commented",
+            "label": "Highest # of comments to lowest."
+          },
+          {
+            "value": "least-commented",
+            "label": "Lowest # of comments to highest."
+          },
+          {
+            "value": "random",
+            "label": "Random order."
+          }
+        ]
+      },
+   {
+       "type": "header",
+       "content": "=== settings Slider"
+      },
+      {
+        "type": "checkbox",
+        "id": "use_autoplay",
+        "label": "Use autoplay?",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "use_arrows",
+        "label": "Use Arrows?",
+        "default": true
+      },      
+      {
+        "type": "text",
+        "id": "sidetoshow",
+        "label": "slides To Show: (integer)",
+        "default": "6"
+      },
+      {
+      "type": "header",
+      "content": "=== settings Color"
+      },
+      {
+      "type": "color",
+      "id": "overlay",
+      "label": "Image Overlay",
+      "default": "#000"
+      },
+      {
+      "type": "color",
+      "id": "Button_bg",
+      "label": "Button Bg",
+      "default": "#000"
+      },
+      {
+      "type": "color",
+      "id": "Button_text",
+      "label": "Button Text",
+      "default": "#000"
+      },     
+      {
+        "type": "header",
+        "content": "== Design settings"
+      },
+      {
+        "type": "paragraph",
+        "content": "To horizontally center a block element (like <div>), use margin: auto;"
+      },
+      {
+        "type": "text",
+        "id": "margin",
+        "label": "Margins ( top-right-bottom-left )",
+        "info": "60px-auto-60px-auto"
+      },
+      {
+        "type": "text",
+        "id": "padding",
+        "label": "Paddings Integer px ( top-right-bottom-left )",
+        "info": "60px-60px-0-60px"
+      }
+    ]
+  }
+{% endschema %}

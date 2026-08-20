@@ -1,0 +1,272 @@
+{% comment %}
+  Aylesva Distribuidores Premium Hero Banner
+  Responsive hero section with background image picker and twin CTAs.
+{% endcomment %}
+
+<div class="ayl-hero-section" id="ayl-hero-{{ section.id }}">
+  {% if section.settings.bg_image != blank %}
+    {{ section.settings.bg_image | image_url: width: 2000 | image_tag: class: 'ayl-hero-bg', loading: 'eager' }}
+  {% else %}
+    <!-- Default elegant boot shop rustic image if none selected -->
+    <img src="{{ 'mayoreo-hero-hd.jpg' | asset_url }}" class="ayl-hero-bg" alt="Aylesva Distribuidores Moda Country" loading="eager">
+  {% endif %}
+  
+  <div class="ayl-hero-overlay"></div>
+  
+  <div class="ayl-hero-container">
+    <div class="ayl-hero-content">
+      {% if section.settings.pre_title != blank %}
+        <span class="ayl-hero-pretitle">{{ section.settings.pre_title | uppercase }}</span>
+      {% endif %}
+      
+      {% if section.settings.title != blank %}
+        <h1 class="ayl-hero-title">{{ section.settings.title | newline_to_br }}</h1>
+      {% endif %}
+      
+      {% if section.settings.subtitle != blank %}
+        <p class="ayl-hero-subtitle">{{ section.settings.subtitle }}</p>
+      {% endif %}
+      
+      <div class="ayl-hero-buttons">
+        {% if section.settings.btn_primary_text != blank %}
+          <a href="{{ section.settings.btn_primary_link | default: '#packages' }}" class="ayl-hero-btn-primary">
+            {{ section.settings.btn_primary_text }}
+          </a>
+        {% endif %}
+        
+        {% if section.settings.btn_secondary_text != blank %}
+          <a href="{{ section.settings.btn_secondary_link | default: '#catalog' }}" class="ayl-hero-btn-secondary">
+            {{ section.settings.btn_secondary_text }}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% style %}
+  .ayl-hero-section {
+    position: relative;
+    width: 100%;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
+    padding: 80px 0;
+    box-sizing: border-box;
+  }
+
+  @media (max-width: 767px) {
+    .ayl-hero-section {
+      min-height: 70vh;
+      padding: 60px 0;
+    }
+  }
+
+  .ayl-hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 1;
+  }
+
+  .ayl-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.4) 40%, rgba(0,0,0,0.7) 100%);
+    z-index: 2;
+  }
+
+  .ayl-hero-container {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
+
+  .ayl-hero-content {
+    max-width: 650px;
+    text-align: left;
+  }
+
+  @media (max-width: 767px) {
+    .ayl-hero-content {
+      max-width: 100%;
+      text-align: center;
+    }
+  }
+
+  .ayl-hero-pretitle {
+    display: inline-block;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #C5A47E; /* Corporate gold */
+    letter-spacing: 0.15em;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+
+  .ayl-hero-title {
+    font-family: 'Playfair Display', 'Didot', 'Georgia', serif;
+    font-size: clamp(36px, 5.5vw, 64px);
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.15;
+    margin: 0 0 20px 0;
+    letter-spacing: -0.01em;
+  }
+
+  .ayl-hero-title strong {
+    font-weight: 700;
+    color: #ffffff;
+  }
+
+  .ayl-hero-subtitle {
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: clamp(16px, 1.8vw, 19px);
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.5;
+    margin: 0 0 36px 0;
+    font-weight: 400;
+  }
+
+  .ayl-hero-buttons {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+
+  @media (max-width: 767px) {
+    .ayl-hero-buttons {
+      justify-content: center;
+      flex-direction: column;
+      width: 100%;
+    }
+  }
+
+  .ayl-hero-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #C5A47E; /* Corporate beige/gold */
+    color: #1a1a1a;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 16px 36px;
+    border-radius: 4px;
+    text-decoration: none !important;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(197, 164, 126, 0.25);
+    border: 2px solid #C5A47E;
+  }
+
+  .ayl-hero-btn-primary:hover {
+    background-color: #b3916b;
+    border-color: #b3916b;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(197, 164, 126, 0.35);
+  }
+
+  .ayl-hero-btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 16px 36px;
+    border-radius: 4px;
+    text-decoration: none !important;
+    border: 2px solid #ffffff;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+  }
+
+  .ayl-hero-btn-secondary:hover {
+    background-color: #ffffff;
+    color: #1a1a1a;
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 767px) {
+    .ayl-hero-btn-primary,
+    .ayl-hero-btn-secondary {
+      width: 100%;
+      box-sizing: border-box;
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Ayl Premium Hero Banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Imagen de Fondo"
+    },
+    {
+      "type": "text",
+      "id": "pre_title",
+      "label": "Etiqueta Superior",
+      "default": "Aylesva Distribuidores"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Título Principal",
+      "default": "CREA TU NEGOCIO\nEN MODA COUNTRY"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtítulo / Descripción",
+      "default": "Compra inventario desde 12 piezas con precios exclusivos para revendedores."
+    },
+    {
+      "type": "text",
+      "id": "btn_primary_text",
+      "label": "Texto Botón Principal",
+      "default": "Ver Paquetes"
+    },
+    {
+      "type": "url",
+      "id": "btn_primary_link",
+      "label": "Enlace Botón Principal"
+    },
+    {
+      "type": "text",
+      "id": "btn_secondary_text",
+      "label": "Texto Botón Secundario",
+      "default": "Solicitar Catálogo"
+    },
+    {
+      "type": "url",
+      "id": "btn_secondary_link",
+      "label": "Enlace Botón Secundario"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ayl Premium Hero Banner"
+    }
+  ]
+}
+{% endschema %}

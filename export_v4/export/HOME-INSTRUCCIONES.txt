@@ -1,0 +1,241 @@
+AYLESVA · HOME v3
+Instrucciones de implementación en Shopify
+Sistema visual "Gold & Ink" · agosto 2026
+
+Tiempo estimado: 40 minutos de instalación + carga de imágenes.
+Todos los textos vienen ya cargados en el archivo de plantilla.
+No hay que teclear contenido.
+
+========================================================================
+PASO 0 · ANTES DE EMPEZAR
+========================================================================
+
+  1. Duplica el tema actual (Tienda online → Temas → ⋯ → Duplicar).
+     Trabaja SIEMPRE sobre el duplicado.
+  2. Comprueba que el snippet de tokens ya esté instalado. Si es la primera
+     vez que subes este sistema, hazlo en el paso 1.
+
+========================================================================
+PASO 1 · SNIPPET DE TOKENS (obligatorio, una sola vez)
+========================================================================
+
+  Copia:
+    snippets/aylesva-corp-tokens.liquid   →   snippets/
+
+  En layout/theme.liquid, dentro de <head>, DESPUÉS de la hoja de estilos
+  del tema, agrega:
+
+      {% render 'aylesva-corp-tokens' %}
+
+  Este snippet trae las fuentes (Sora, Manrope, IBM Plex Mono), la paleta,
+  las clases base, el reset box-sizing y el observador de animaciones al
+  hacer scroll. Todas las secciones dependen de él: sin esto, la Home se
+  ve sin estilos.
+
+  IMPORTANTE: si ya lo tenías instalado de la entrega anterior,
+  SOBRESCRÍBELO. Esta versión añade lo que v3 necesita.
+
+========================================================================
+PASO 2 · SECCIONES
+========================================================================
+
+  Copia estos 6 archivos nuevos a sections/:
+
+    aylesva-home-hero-v3.liquid ........ Hero con mosaico interactivo
+    aylesva-home-stats-count.liquid .... Cifras que cuentan al aparecer
+    aylesva-home-services-v3.liquid .... Ecosistema: 6 tarjetas
+    aylesva-home-journey.liquid ........ Recorrido animado por servicio
+    aylesva-home-profiles.liquid ....... Selector "Soy…"
+    aylesva-home-closing.liquid ........ Banda de cierre en ink
+
+  La Home reutiliza además tres secciones que ya te entregamos:
+
+    aylesva-corp-cards.liquid .......... bloque "Resultados"
+    aylesva-home-split.liquid .......... bloque "Marketplace"
+    aylesva-corp-form.liquid ........... bloque de contacto
+
+  Si alguna de esas tres no está en el tema, cópiala también.
+
+========================================================================
+PASO 3 · PLANTILLA DE LA PÁGINA
+========================================================================
+
+  Copia:
+    templates/page.home-aylesva.json   →   templates/
+
+  Luego en el admin: Contenido → Páginas → [tu página de inicio] →
+  panel derecho "Plantilla de tema" → elige "home-aylesva" → Guardar.
+
+  Si quieres que esta sea la PORTADA del sitio (aylesva.mx a secas),
+  abre templates/index.json y pega dentro el mismo contenido del archivo
+  page.home-aylesva.json.
+
+  El orden de secciones que trae la plantilla es:
+
+    01  Hero interactivo
+    02  Cifras animadas (ink)
+    03  Nuestro ecosistema de soluciones (6 tarjetas)
+    04  Cómo funciona · recorrido animado (ink)
+    05  Encuentra tu solución ideal · selector "Soy…"
+    06  Resultados
+    07  Banda de cierre (ink)
+    08  Marketplace
+    09  Formulario de contacto
+
+  Puedes reordenar o desactivar cualquiera desde el editor de temas.
+
+========================================================================
+PASO 4 · IMÁGENES
+========================================================================
+
+  Súbelas en Contenido → Archivos y asígnalas desde el editor de temas
+  (cada bloque tiene su propio selector de imagen).
+
+  Mientras no haya imagen, el bloque muestra una trama diagonal con una
+  nota que dice qué foto va ahí. Nada se rompe si falta una.
+
+  HERO · 6 fotos, 900×700, recorte horizontal
+    Financiamiento .... empresario en su negocio
+    Importaciones ..... buque y carga aérea
+    Inversión ......... edificio residencial premium
+    E-commerce ........ tienda en pantalla de laptop
+    Protección ........ familia en casa
+    Repatriación ...... ala de avión al atardecer
+
+  ECOSISTEMA · 6 fotos, 900×600
+    oficina de asesoría · patio de contenedores · residencia moderna ·
+    familia en exterior · tienda en laptop · manos tomadas
+
+  SELECTOR DE PERFIL · 4 fotos VERTICALES, 900×1100
+    emprendedor en su local · ejecutiva corporativa ·
+    inversionista · familia
+
+  RESULTADOS · 3 fotos, 1200×800
+    Torre 40 (ya está en el CDN) · collage de tiendas · logística
+
+  MARKETPLACE · 4 fotos, 900×600
+    artesanal · moda · hogar · alimentos
+
+  Tratamiento: fotografía limpia, luz natural, sin filtros de color ni
+  viñeteados. Las secciones ya aplican el velo ink por encima. En el hero
+  y el selector de perfil el texto se sobrepone en la mitad inferior, así
+  que deja esa zona sin elementos importantes.
+
+========================================================================
+PASO 5 · FORMULARIO
+========================================================================
+
+  La sección de contacto de la Home queda con el campo "ID del formulario
+  de GoHighLevel" VACÍO, porque todavía no existe un formulario general.
+
+  Cuando lo creen, pega solo el ID (no la URL completa) en ese campo.
+  Mientras esté vacío, la sección muestra un aviso en lugar del formulario.
+
+  Los IDs de las landings de servicio ya están cargados en sus propias
+  plantillas y no hay que tocarlos.
+
+========================================================================
+CÓMO FUNCIONAN LAS PIEZAS INTERACTIVAS
+========================================================================
+
+  Todo es JavaScript propio, sin librerías externas, sin dependencias de
+  jQuery ni del tema. Cada script está dentro de su sección y busca sus
+  elementos por el id de sección, así que puedes tener dos instancias de
+  la misma sección sin que se interfieran.
+
+  HERO
+    El bloque de texto de la izquierda rota entre los 6 servicios cada
+    4 segundos (ajustable en el editor: "Rotación automática").
+    Al pasar el cursor sobre un mosaico la rotación se detiene y se
+    muestra ese servicio; el mosaico activo se eleva, toma borde dorado
+    y dibuja una línea dorada bajo su promesa.
+    Cada mosaico es un enlace directo a su landing.
+
+  CIFRAS
+    Cuentan de 0 al número final cuando la banda entra en pantalla, una
+    sola vez. El número final se escribe SOLO CON DÍGITOS ("2000"), y el
+    prefijo ("+") y el sufijo (" h") van en campos aparte. El separador de
+    miles lo aplica el navegador con formato de México.
+
+  RECORRIDO
+    Las pestañas cambian de recorrido. Los nodos se encienden en secuencia
+    cada 2 segundos y el conector dorado se traza entre ellos. Al hacer
+    clic en un nodo el recorrido salta a ese paso.
+    Los pasos de cada recorrido se escriben en un solo campo de texto,
+    UN PASO POR LÍNEA, con este formato exacto (cuatro partes, separadas
+    por la barra vertical):
+
+        Título | Descripción | Quién | trazado SVG del ícono
+
+    Ejemplo real:
+
+        Solicitas | Nos compartes tus datos. | Tú | <path d="M6 3h9l3 3v15H6z"/>
+
+    "Quién" es la etiqueta pequeña de abajo: usa Tú, Aylesva o Resultado.
+    El último paso no dibuja conector, es automático.
+
+  SELECTOR "SOY…"
+    Cada perfil trae su propia lista de coincidencias en un campo de texto,
+    UNA POR LÍNEA, con cinco partes:
+
+        Rama | Beneficio | Por qué aplica | enlace | trazado SVG
+
+    Recomendamos SIEMPRE 3 coincidencias por perfil: con 2 la cuadrícula
+    queda descompensada y con 4 se pierde la sensación de recomendación.
+
+  ACCESIBILIDAD
+    Todas las animaciones respetan prefers-reduced-motion: si el usuario
+    tiene el sistema en "reducir movimiento", el contenido aparece estático
+    y completo, sin rotaciones ni conteos.
+
+========================================================================
+ÍCONOS
+========================================================================
+
+  Los campos "trazado SVG" reciben SOLO el contenido interior del <svg>:
+  los path, rect y circle. El viewBox (0 0 24 24), el grosor de trazo
+  (1.25) y el color dorado los aplica el CSS del sistema.
+
+  El set completo aprobado está en ICONOS.txt. La plantilla JSON ya trae
+  los íconos cargados en todos los bloques: solo necesitarás este archivo
+  si agregas un servicio o un paso nuevo.
+
+  No mezclar con librerías de terceros (Font Awesome, Material, etc.):
+  rompen la unidad del sistema.
+
+========================================================================
+QA ANTES DE PUBLICAR
+========================================================================
+
+  [ ] El hero rota solo y se detiene al pasar el cursor.
+  [ ] Los 6 mosaicos llevan su foto y su enlace correcto.
+  [ ] Las cifras cuentan al hacer scroll y muestran "+2,000" con coma.
+  [ ] El recorrido cambia con las 4 pestañas y el conector llega al nodo
+      activo, no más lejos.
+  [ ] Cada perfil del selector muestra exactamente 3 tarjetas.
+  [ ] No hay barra de scroll horizontal en 1440, 1024 y 390 px de ancho.
+  [ ] En móvil los mosaicos y las tarjetas reflujan sin cortarse.
+  [ ] Ningún texto dorado sobre fondo claro usa #C5A47E (debe ser #9A7B52).
+  [ ] Los enlaces resuelven: /pages/aylesva-recursos, /pages/aylesva-direct,
+      /pages/globalestates, /pages/aylesva-care,
+      /pages/lanza-tu-propia-marca, /pages/mi-ultima-voluntad.
+      Si un handle es distinto en la tienda, corrígelo en el editor.
+
+========================================================================
+PENDIENTES DEL LADO DE AYLESVA
+========================================================================
+
+  · Las 19 fotografías listadas en el paso 4.
+  · ID del formulario general de GoHighLevel.
+  · Casos reales para la sección de Resultados (hoy son los tres
+    proyectos que ya existen, sin fotografía definitiva).
+  · Confirmar si la Home reemplaza la portada actual o vive como página
+    aparte.
+
+========================================================================
+REFERENCIA VISUAL
+========================================================================
+
+  maquetas/Home Aylesva v3.html es el diseño aprobado. Ábrelo en el
+  navegador: las medidas, los tiempos de animación y los textos son los
+  mismos que trae la plantilla. Úsalo para comparar el resultado.

@@ -1,0 +1,309 @@
+<section id="ayl-home-hero-ecosystem" class="ayl-hero-section">
+  <div class="ayl-hero__container">
+    <div class="ayl-hero__content">
+      <h1 class="ayl-hero__headline">
+        <span class="ayl-hero__headline-part1">{{ section.settings.headline_1 }}</span>
+        <br>
+        <span class="ayl-hero__headline-part2">{{ section.settings.headline_2 }}</span>
+      </h1>
+      <p class="ayl-hero__subtitle">{{ section.settings.subtitle }}</p>
+      
+      <div class="ayl-hero__ctas">
+        {% if section.settings.cta_1_text != blank %}
+          <a href="{{ section.settings.cta_1_url }}" class="ayl-btn ayl-btn--primary">
+            {{ section.settings.cta_1_text }}
+          </a>
+        {% endif %}
+        {% if section.settings.cta_2_text != blank %}
+          <a href="{{ section.settings.cta_2_url }}" class="ayl-btn ayl-btn--secondary">
+            {{ section.settings.cta_2_text }}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+    
+    <div class="ayl-hero__visual">
+      <img src="{{ 'hero-ecosystem-composition.jpg' | asset_url }}" 
+           alt="Dashboard Aylesva - Ecosistema de soluciones empresariales" 
+           class="ayl-hero__img"
+           loading="eager"
+           fetchpriority="high"
+           width="900"
+           height="675">
+    </div>
+  </div>
+</section>
+
+<style>
+  :root {
+    --ayl-bg: #FAFAF8;
+    --ayl-ink: #1A1A1A;
+    --ayl-stone: #6B6B6B;
+    --ayl-gold: #C5A47E;
+    --ayl-gold-sat: #D4AF37;
+    --ayl-dark: #0C0C0F;
+    --ayl-glass: rgba(255, 255, 255, 0.06);
+    --ayl-border: rgba(0, 0, 0, 0.06);
+  }
+
+  #ayl-home-hero-ecosystem {
+    background-color: var(--ayl-bg);
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding: 80px 20px;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  #ayl-home-hero-ecosystem .ayl-hero__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 64px;
+  }
+
+  #ayl-home-hero-ecosystem .ayl-hero__content {
+    flex: 1;
+    max-width: 50%;
+    animation: fadeInLeft 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
+  }
+
+  #ayl-home-hero-ecosystem .ayl-hero__headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 5vw, 52px);
+    line-height: 1.1;
+    color: var(--ayl-ink);
+    margin: 0 0 24px 0;
+    font-weight: 600;
+  }
+
+  #ayl-home-hero-ecosystem .ayl-hero__headline-part2 {
+    font-style: italic;
+    color: var(--ayl-gold);
+    font-weight: 500;
+  }
+
+  #ayl-home-hero-ecosystem .ayl-hero__subtitle {
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--ayl-stone);
+    margin: 0 0 40px 0;
+    max-width: 480px;
+  }
+
+  #ayl-home-hero-ecosystem .ayl-hero__ctas {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  #ayl-home-hero-ecosystem .ayl-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 32px;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+  }
+
+  #ayl-home-hero-ecosystem .ayl-btn--primary {
+    background-color: var(--ayl-ink);
+    color: #FFFFFF;
+  }
+
+  #ayl-home-hero-ecosystem .ayl-btn--primary:hover {
+    background-color: var(--ayl-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  }
+
+  #ayl-home-hero-ecosystem .ayl-btn--secondary {
+    background-color: transparent;
+    color: var(--ayl-ink);
+    border: 1px solid var(--ayl-border);
+  }
+
+  #ayl-home-hero-ecosystem .ayl-btn--secondary:hover {
+    border-color: var(--ayl-ink);
+    background-color: rgba(0,0,0,0.02);
+  }
+
+  /* Visual - Image */
+  #ayl-home-hero-ecosystem .ayl-hero__visual {
+    flex: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeInRight 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 0.2s;
+    opacity: 0;
+  }
+
+  #ayl-home-hero-ecosystem .ayl-hero__img {
+    width: 100%;
+    max-width: 580px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.08));
+  }
+
+  /* Keyframes */
+  @keyframes fadeInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes fadeInRight {
+    from {
+      opacity: 0;
+      transform: translateX(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+  }
+
+  /* Responsive Design */
+  @media (max-width: 1024px) {
+    #ayl-home-hero-ecosystem .ayl-hero__headline {
+      font-size: 36px;
+    }
+    #ayl-home-hero-ecosystem .ayl-hero__visual {
+      transform: scale(0.9);
+    }
+  }
+
+  @media (max-width: 768px) {
+    #ayl-home-hero-ecosystem {
+      min-height: auto;
+      padding: 60px 20px;
+    }
+    
+    #ayl-home-hero-ecosystem .ayl-hero__container {
+      flex-direction: column;
+      text-align: center;
+      gap: 40px;
+    }
+
+    #ayl-home-hero-ecosystem .ayl-hero__content {
+      max-width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #ayl-home-hero-ecosystem .ayl-hero__subtitle {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    #ayl-home-hero-ecosystem .ayl-hero__ctas {
+      justify-content: center;
+    }
+
+    #ayl-home-hero-ecosystem .ayl-hero__visual {
+      width: 100%;
+      height: 400px;
+    }
+    
+    #ayl-home-hero-ecosystem .ayl-hero__float--1 { left: 0; }
+    #ayl-home-hero-ecosystem .ayl-hero__float--2 { right: 0; }
+  }
+
+  @media (max-width: 480px) {
+    #ayl-home-hero-ecosystem .ayl-hero__visual {
+      display: none;
+    }
+    #ayl-home-hero-ecosystem .ayl-btn {
+      width: 100%;
+    }
+  }
+</style>
+
+<script>
+  (function() {
+    // Optional: Add IntersectionObserver to trigger animations when scrolled into view
+    // if section is not at the top of the page.
+    const section = document.getElementById('ayl-home-hero-ecosystem');
+    if (!section) return;
+
+    // Reset animations if we want to trigger them on scroll
+    // The current CSS sets them to play on load.
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Hero Ecosystem",
+  "settings": [
+    {
+      "type": "text",
+      "id": "headline_1",
+      "label": "Headline Line 1",
+      "default": "Impulsamos tu negocio."
+    },
+    {
+      "type": "text",
+      "id": "headline_2",
+      "label": "Headline Line 2 (Italic & Gold)",
+      "default": "Potenciamos tu futuro."
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Un ecosistema de soluciones diseñadas para acompañarte en cada etapa de crecimiento de tu empresa y tu patrimonio."
+    },
+    {
+      "type": "text",
+      "id": "cta_1_text",
+      "label": "Primary Button Text",
+      "default": "Conoce nuestros servicios →"
+    },
+    {
+      "type": "url",
+      "id": "cta_1_url",
+      "label": "Primary Button Link"
+    },
+    {
+      "type": "text",
+      "id": "cta_2_text",
+      "label": "Secondary Button Text",
+      "default": "Habla con un asesor 🎧"
+    },
+    {
+      "type": "url",
+      "id": "cta_2_url",
+      "label": "Secondary Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Ecosystem",
+      "category": "Hero"
+    }
+  ]
+}
+{% endschema %}

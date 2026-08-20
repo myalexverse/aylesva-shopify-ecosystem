@@ -1,0 +1,207 @@
+/* 
+   Aylesva Premium Product Card CSS
+   Monochromatic, Fluid, and High-Performance
+*/
+
+/* --- Variables & Core --- */
+:root {
+  --ayl-accent: #000000;
+  --ayl-white: #ffffff;
+  --ayl-glass: rgba(255, 255, 255, 0.75);
+  --ayl-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  --ayl-transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* --- Layout Structure --- */
+.ayl-premium-product-card {
+  position: relative;
+  background: #fff;
+  transition: var(--ayl-transition);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+/* --- Image Containers --- */
+.ayl-image-wrap {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4/5; /* Recommended for Clothing/Mobile */
+  background: #fff;
+}
+
+.ayl-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.ayl-premium-product-card:hover .ayl-image-wrap img {
+  transform: scale(1.05);
+}
+
+/* --- ACTION BAR (Hover State) --- */
+.ayl-action-bar {
+  position: absolute;
+  top: 15px;
+  right: -50px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: var(--ayl-transition);
+  z-index: 10;
+  opacity: 0;
+}
+
+.ayl-premium-product-card:hover .ayl-action-bar {
+  right: 15px;
+  opacity: 1;
+}
+
+.ayl-action-btn, 
+.ayl-main-add-btn {
+  background: var(--ayl-glass) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: none !important;
+  border-radius: 50% !important;
+  width: 40px !important;
+  height: 40px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer;
+  color: #000 !important;
+  box-shadow: var(--ayl-shadow);
+  transition: var(--ayl-transition) !important;
+}
+
+.ayl-action-btn:hover, 
+.ayl-main-add-btn:hover {
+  background: #C5A47E !important;
+  color: #ffffff !important;
+  transform: scale(1.1);
+}
+
+.ayl-action-btn svg, 
+.ayl-main-add-btn svg {
+  width: 18px !important;
+  height: 18px !important;
+}
+
+/* --- INFO AREA --- */
+.ayl-info-wrap {
+  padding: 12px 2px;
+  text-align: left;
+}
+
+.ayl-vendor {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #bbb;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.ayl-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: #1a1a1a;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 8px;
+  height: 34px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.ayl-price-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ayl-price {
+  font-size: 16px;
+  font-weight: 800;
+  color: #C5A47E;
+}
+
+.ayl-compare-price {
+  font-size: 12px;
+  color: #999;
+  text-decoration: line-through;
+}
+
+/* --- BADGE --- */
+.ayl-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #000;
+  color: #fff;
+  padding: 3px 8px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  z-index: 5;
+}
+
+/* ==========================================================
+   DESKTOP REFINEMENTS (MERCADO LIBRE STYLE)
+   Min-width 992px to strictly avoid touching mobile version
+   ========================================================== */
+@media (min-width: 992px) {
+  .ayl-image-wrap {
+    aspect-ratio: 1 / 1 !important; /* Force Square for ML look */
+    background: #fff;
+  }
+
+  /* Make image almost touch edges */
+  .ayl-image-wrap img {
+    object-fit: contain !important; 
+    padding: 2px;
+  }
+
+  .ayl-vendor {
+    display: none !important; /* Minimalist ML Style */
+  }
+
+  .ayl-title {
+    font-size: 14px !important;
+    color: #1a1a1a !important;
+    height: 40px !important; /* Increased for better title clearance */
+    line-height: 1.4 !important;
+    margin-bottom: 12px !important; /* Added breath between title and price */
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+  }
+
+  .ayl-price {
+    font-size: 20px !important; /* Slightly more balanced size */
+    font-weight: 700 !important;
+    color: #C5A47E !important; /* Premium Gold */
+    line-height: 1 !important;
+    margin: 0 !important;
+    display: block !important;
+    letter-spacing: -0.5px !important;
+  }
+
+  .ayl-info-wrap {
+    padding: 12px 10px !important;
+    flex-grow: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+  }
+
+  .ayl-premium-product-card {
+    border: 1px solid #eee !important;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05) !important;
+  }
+}

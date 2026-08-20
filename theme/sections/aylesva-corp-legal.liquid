@@ -1,0 +1,32 @@
+{% comment %}
+  Aylesva · Sección legal para disclaimers y responsivas.
+{% endcomment %}
+<section class="ay" style="background:{{ section.settings.bg | default: '#FAFAF8' }}">
+  <div class="ay-wrap" style="padding-top:48px;padding-bottom:48px">
+    <div style="max-width:800px;margin:0 auto;text-align:{{ section.settings.alignment }}">
+      {% if section.settings.title != blank %}
+        <p style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ay-gold-text);margin-bottom:12px;font-family:var(--ay-font-mono);font-weight:bold">{{ section.settings.title }}</p>
+      {% endif %}
+      <div style="font-size:11px;line-height:1.6;color:rgba(15,23,42,0.6);font-family:var(--ay-font-sans)">
+        {{ section.settings.text | newline_to_br }}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Aylesva · Legal",
+  "settings": [
+    { "type": "color", "id": "bg", "label": "Color de Fondo", "default": "#FAFAF8" },
+    { "type": "select", "id": "alignment", "label": "Alineación", "options": [
+      { "value": "left", "label": "Izquierda" },
+      { "value": "center", "label": "Centro" },
+      { "value": "justify", "label": "Justificado" }
+    ], "default": "center" },
+    { "type": "text", "id": "title", "label": "Título Legal", "default": "Platform Transparency & Operational Acknowledgment:" },
+    { "type": "textarea", "id": "text", "label": "Texto Legal" }
+  ],
+  "presets": [{ "name": "Aylesva · Legal" }]
+}
+{% endschema %}

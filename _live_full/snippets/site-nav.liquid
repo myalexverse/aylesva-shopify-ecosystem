@@ -1,0 +1,85 @@
+{% comment %}
+  List out your main-menu linklist (default)
+
+  More info on linklists:
+    - http://docs.shopify.com/themes/liquid-variables/linklists
+{% endcomment %}
+
+{% comment %}
+  This is a variable that turns on and off if the theme has dropdown. If it doesn't, it removes the extra padding in the mobile menu.
+{% endcomment %}
+{% assign has_dropdown = false %}
+<ul id="accessibleNav" class="site-nav">
+  {% comment %}
+    Read the links from the menu passed in from {% include 'site-nav' ... %}
+  {% endcomment %}
+  {% for link in navMenu.links %}
+    {% comment %}
+      Create a dropdown menu by naming a linklist the same as a link in the parent nav
+
+      More info on dropdowns:
+        - http://docs.shopify.com/manual/your-website/navigation/create-drop-down-menu
+    {% endcomment %}
+
+    {% assign child_list_handle = link.title | handleize %}
+    {% if link.links != blank %}
+    {% assign has_dropdown = true %}
+      <li class="menu-item-depth-0 site-nav--has-dropdown{% unless template.name == 'index' %}{% if link.active %} site-nav--open-dropdown{% endif %}{% endunless %}" aria-haspopup="true">
+        
+            <a href="{{ link.url }}" class="site-nav__linkdrop site-nav__label icon-fallback-text {% if link.active %} site-nav--active{% endif %}">{{ link.title }}
+              <span class="mobile-nav__sublist-trigger">
+                <span class="mobile-nav__sublist-expand">
+                  <i class="mdi mdi-chevron-down" aria-hidden="true"></i>
+                </span>
+                <span class="mobile-nav__sublist-contract">
+                 <i class="mdi mdi-chevron-up" aria-hidden="true"></i>
+                </span>
+              </span>
+            </a>     
+          {% assign flg = 0 %}  
+        {% for sub_link in link.links %}
+        {% if sub_link.links != blank and link.links.size > 1 %}
+        {% assign flg = 1 %}  
+        {% endif %}
+        {% endfor %}
+            <ul class="sub-nav__dropdown {% if flg == 1 %} mega-menu {% endif %} sub-menu mobile-nav__sublist items_{{ link.links.size }}">
+              {% if link.links.size > 0 %}
+              {% for sub_link in link.links %}
+                <li class="menu-item-depth-1 {% if sub_link.links != blank %} site-nav--has-dropdown {% endif %}{% if sub_link.child_active %}site-nav--active site-nav__child-link--active{% endif %}">
+                  <a href="{{ sub_link.url }}" class="site-nav__link">{{ sub_link.title | escape }}
+                 {% if sub_link.links != blank %}
+                    <span class="mobile-nav__sublist-trigger">
+                    <span class="mobile-nav__sublist-expand">
+                      <i class="mdi mdi-chevron-down" aria-hidden="true"></i>
+                    </span>
+                    <span class="mobile-nav__sublist-contract">
+                     <i class="mdi mdi-chevron-up" aria-hidden="true"></i>
+                    </span>
+                  </span>
+                    {% endif %}
+                    </a>
+                  {% if sub_link.links != blank %}
+                  <ul class="sub-sub-nav__dropdown sub-menu mobile-nav__sublist">
+                    {% for sub_sub_link in sub_link.links %}
+                      <li {% unless template.name == 'index' %}{% if sub_sub_link.child_active %}class="site-nav--active site-nav__child-link--active"{% endif %}{% endunless %}>
+                        <a href="{{ sub_sub_link.url }}" class="site-nav__link">{{ sub_sub_link.title | escape }}</a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                  {% endif %}
+                </li>
+              {% endfor %}
+              {% endif %}
+            </ul>
+      </li>
+    {% else %}
+      {% if link.title == "-" %}
+        <hr class="hr--small medium-down--hide">
+      {% else %}
+        <li class="menu-item-depth-0{% if link.active %} site-nav--active{% endif %}">
+          <a href="{{ link.url }}" class="site-nav__link{% if has_dropdown == false %} site-nav__linknodrop{% endif %}">{{ link.title }}</a>
+        </li>
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+</ul>

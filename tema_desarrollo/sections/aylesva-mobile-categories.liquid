@@ -1,0 +1,143 @@
+<style>
+  .mobile-categories-section {
+    padding: 5px 0; /* Minimal vertical space */
+    background: #fff;
+    display: block;
+  }
+  @media (min-width: 768px) {
+    .mobile-categories-section {
+      display: none !important;
+    }
+  }
+  .mobile-categories-header {
+    padding: 0 15px; /* Back to standard alignment */
+    margin-bottom: 8px;
+  }
+  .mobile-categories-header h2 {
+    font-size: 0.85rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin: 0;
+    color: #000;
+    letter-spacing: 0.3px;
+  }
+  .mobile-categories-scroll {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 8px;
+    padding: 0 15px 5px;
+    scrollbar-width: none;
+  }
+  .mobile-categories-scroll::-webkit-scrollbar {
+    display: none;
+  }
+  .mobile-category-card {
+    flex: 0 0 90px; /* Much smaller as requested */
+    scroll-snap-align: start;
+    text-decoration: none;
+    display: block;
+  }
+  .mobile-category-image {
+    width: 90px;
+    height: 90px;
+    background: #f4f4f4;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 5px;
+  }
+  .mobile-category-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .mobile-category-title {
+    font-size: 0.65rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    text-align: center;
+    color: #000;
+    line-height: 1.1;
+    padding: 0 2px;
+  }
+</style>
+
+<div class="mobile-categories-section">
+  <div class="mobile-categories-header">
+    <h2>{{ section.settings.title }}</h2>
+  </div>
+  <div class="mobile-categories-scroll">
+    {% for block in section.blocks %}
+      {%- assign collection = collections[block.settings.collection] -%}
+      {%- assign link_url = block.settings.url | default: collection.url -%}
+      <a href="{{ link_url | default: '#' }}" class="mobile-category-card" {{ block.shopify_attributes }}>
+        <div class="mobile-category-image">
+          {% if block.settings.image != blank %}
+            <img src="{{ block.settings.image | img_url: '200x200', crop: 'center' }}" alt="{{ block.settings.title | default: collection.title }}" loading="lazy">
+          {% elsif collection.image != blank %}
+            <img src="{{ collection.image | img_url: '200x200', crop: 'center' }}" alt="{{ block.settings.title | default: collection.title }}" loading="lazy">
+          {% else %}
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+          {% endif %}
+        </div>
+        <div class="mobile-category-title">
+          {{ block.settings.title | default: collection.title | default: "Colección" }}
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Móvil: Categorías",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título de la Sección",
+      "default": "COMPRAR POR CATEGORÍA"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Categoría",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Colección"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Enlace Personalizado (Opcional)"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Título Personalizado",
+          "info": "Si se deja vacío, se usará el nombre de la colección"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Imagen Personalizada"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Móvil: Categorías Scroll",
+      "blocks": [
+        { "type": "collection" },
+        { "type": "collection" },
+        { "type": "collection" },
+        { "type": "collection" }
+      ]
+    }
+  ]
+}
+{% endschema %}

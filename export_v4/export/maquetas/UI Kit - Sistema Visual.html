@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  body { margin: 0; background: #FAFAF8; -webkit-font-smoothing: antialiased; }
+  a { color: #0F172A; text-decoration: none; }
+  a:hover { color: #C5A47E; }
+</style>
+</helmet>
+
+<div style="font-family: Manrope, system-ui, sans-serif; color: #0F172A; background: #FAFAF8; min-height: 100%;">
+
+  <div style="display: flex; align-items: center; justify-content: space-between; padding: 22px 64px; border-bottom: 1px solid rgba(15,23,42,0.1); background: #FAFAF8; position: sticky; top: 0; z-index: 20;">
+    <div style="display: flex; align-items: baseline; gap: 14px;">
+      <span style="font-family: Sora, sans-serif; font-weight: 600; letter-spacing: 0.22em; font-size: 15px; text-transform: uppercase;">Aylesva</span>
+      <span style="width: 1px; height: 14px; background: rgba(15,23,42,0.2); display: inline-block;"></span>
+      <span style="font-size: 13px; letter-spacing: 0.04em; color: rgba(15,23,42,0.55);">Servicios Corporativos · Sistema Visual v1</span>
+    </div>
+    <div style="display: flex; gap: 28px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(15,23,42,0.5);">
+      <a href="#uikit">UI Kit</a>
+      <a href="#iconos">Iconografía</a>
+      <a href="#componentes">Componentes</a>
+    </div>
+  </div>
+
+  <!-- ============ PORTADA ============ -->
+  <div style="padding: 120px 64px 96px; max-width: 1440px; margin: 0 auto;">
+    <div style="display: grid; grid-template-columns: 1.25fr 1fr; gap: 80px; align-items: end;">
+      <div>
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 28px;">
+          <span style="width: 28px; height: 1px; background: #C5A47E; display: inline-block;"></span>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #9A7B52;">Gold &amp; Ink</span>
+        </div>
+        <h1 style="font-family: Sora, sans-serif; font-weight: 300; font-size: 68px; line-height: 1.04; letter-spacing: -0.03em; margin: 0 0 28px; text-wrap: balance;">Una sola voz visual para las cinco ramas de servicio.</h1>
+        <p style="font-size: 18px; line-height: 1.6; color: rgba(15,23,42,0.65); max-width: 56ch; margin: 0; text-wrap: pretty;">Guía de estilos y mockups de alta fidelidad de los cuatro bloques modulares de Shopify: hero, features, proceso y formulario. Cada patrón funciona en Capital, Direct, Care, Global Estates y Commerce cambiando únicamente texto e imagen.</p>
+      </div>
+      <div style="display: grid; gap: 1px; background: rgba(15,23,42,0.1); border: 1px solid rgba(15,23,42,0.1);">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(15,23,42,0.1);">
+          <div style="background: #FAFAF8; padding: 20px 22px;">
+            <div style="font-family: Sora, sans-serif; font-size: 30px; font-weight: 400;">5</div>
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(15,23,42,0.5); margin-top: 6px;">Ramas</div>
+          </div>
+          <div style="background: #FAFAF8; padding: 20px 22px;">
+            <div style="font-family: Sora, sans-serif; font-size: 30px; font-weight: 400;">4</div>
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(15,23,42,0.5); margin-top: 6px;">Secciones base</div>
+          </div>
+        </div>
+        <div style="background: #FAFAF8; padding: 20px 22px;">
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(15,23,42,0.5);">Regla del sistema</div>
+          <div style="font-size: 14px; line-height: 1.5; margin-top: 8px; color: rgba(15,23,42,0.8);">Un patrón, cinco aplicaciones. Nada de layouts propios por rama.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ UI KIT ============ -->
+  <div id="uikit" style="border-top: 1px solid rgba(15,23,42,0.1); background: #fff;">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 88px 64px;">
+
+      <div style="display: flex; align-items: baseline; gap: 20px; margin-bottom: 56px;">
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.18em; color: #9A7B52;">01</span>
+        <h2 style="font-family: Sora, sans-serif; font-weight: 400; font-size: 34px; letter-spacing: -0.02em; margin: 0;">UI Kit</h2>
+      </div>
+
+      <!-- Color -->
+      <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(15,23,42,0.45); margin-bottom: 20px;">Paleta</div>
+      <div style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; margin-bottom: 24px;">
+        <div>
+          <div style="height: 128px; background: #020617; border-radius: 2px;"></div>
+          <div style="font-family: Sora, sans-serif; font-size: 13px; font-weight: 500; margin-top: 12px;">Ink 900</div>
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: rgba(15,23,42,0.5); margin-top: 3px;">#020617</div>
+        </div>
+        <div>
+          <div style="height: 128px; background: #0F172A; border-radius: 2px;"></div>
+          <div style="font-family: Sora, sans-serif; font-size: 13px; font-weight: 500; margin-top: 12px;">Ink 800</div>
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: rgba(15,23,42,0.5); margin-top: 3px;">#0F172A</div>
+        </div>
+        <div>
+          <div style="height: 128px; background: #C5A47E; border-radius: 2px;"></div>
+          <div style="font-family: Sora, sans-serif; font-size: 13px; font-weight: 500; margin-top: 12px;">Gold</div>
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: rgba(15,23,42,0.5); margin-top: 3px;">#C5A47E</div>
+        </div>
+        <div>
+          <div style="height: 128px; background: #E3CCAE; border-radius: 2px;"></div>
+          <div style="font-family: Sora, sans-serif; font-size: 13px; font-weight: 500; margin-top: 12px;">Gold Light</div>
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: rgba(15,23,42,0.5); margin-top: 3px;">#E3CCAE</div>
+        </div>
+        <div>
+          <div style="height: 128px; background: #FAFAF8; border: 1px solid rgba(15,23,42,0.12); border-radius: 2px;"></div>
+          <div style="font-family: Sora, sans-serif; font-size: 13px; font-weight: 500; margin-top: 12px;">Stone</div>
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: rgba(15,23,42,0.5); margin-top: 3px;">#FAFAF8</div>
+        </div>
+        <div>
+          <div style="height: 128px; background: #fff; border: 1px solid rgba(15,23,42,0.12); border-radius: 2px;"></div>
+          <div style="font-family: Sora, sans-serif; font-size: 13px; font-weight: 500; margin-top: 12px;">White</div>
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: rgba(15,23,42,0.5); margin-top: 3px;">#FFFFFF</div>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 72px; font-size: 13px; line-height: 1.55; color: rgba(15,23,42,0.6);">
+        <div style="border-top: 1px solid rgba(15,23,42,0.12); padding-top: 12px;"><strong style="color: #0F172A; font-weight: 600;">Ink</strong> — fondos institucionales, texto de lectura, botón primario. Nunca dos tonos de ink adyacentes.</div>
+        <div style="border-top: 1px solid #C5A47E; padding-top: 12px;"><strong style="color: #0F172A; font-weight: 600;">Gold</strong> — íconos, eyebrows, líneas divisorias, botón secundario. Máximo 5% del área de la pantalla.</div>
+        <div style="border-top: 1px solid rgba(15,23,42,0.12); padding-top: 12px;"><strong style="color: #0F172A; font-weight: 600;">Stone</strong> — respiro entre secciones. Alterna con blanco; nunca dos secciones stone seguidas.</div>
+      </div>
+
+      <!-- Tipografía -->
+      <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(15,23,42,0.45); margin-bottom: 20px;">Tipografía y jerarquía</div>
+      <div style="display: grid; grid-template-columns: 1fr 320px; gap: 64px; margin-bottom: 72px; align-items: start;">
+        <div style="display: grid; gap: 28px;">
+          <div style="display: grid; grid-template-columns: 150px 1fr; gap: 32px; align-items: baseline; border-bottom: 1px solid rgba(15,23,42,0.08); padding-bottom: 24px;">
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: rgba(15,23,42,0.5); line-height: 1.5;">Display / H1<br />Sora 300 · 68/71<br />-3% tracking</div>
+            <div style="font-family: Sora, sans-serif; font-weight: 300; font-size: 56px; line-height: 1.05; letter-spacing: -0.03em;">Confianza que se construye</div>
+          </div>
+          <div style="display: grid; grid-template-columns: 150px 1fr; gap: 32px; align-items: baseline; border-bottom: 1px solid rgba(15,23,42,0.08); padding-bottom: 24px;">
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: rgba(15,23,42,0.5); line-height: 1.5;">H2 sección<br />Sora 400 · 34/40</div>
+            <div style="font-family: Sora, sans-serif; font-weight: 400; font-size: 34px; letter-spacing: -0.02em;">Soluciones integrales para tu operación</div>
+          </div>
+          <div style="display: grid; grid-template-columns: 150px 1fr; gap: 32px; align-items: baseline; border-bottom: 1px solid rgba(15,23,42,0.08); padding-bottom: 24px;">
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: rgba(15,23,42,0.5); line-height: 1.5;">H3 tarjeta<br />Sora 500 · 20/28</div>
+            <div style="font-family: Sora, sans-serif; font-weight: 500; font-size: 20px; letter-spacing: -0.01em;">Aprobación en 72 horas</div>
+          </div>
+          <div style="display: grid; grid-template-columns: 150px 1fr; gap: 32px; align-items: baseline; border-bottom: 1px solid rgba(15,23,42,0.08); padding-bottom: 24px;">
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: rgba(15,23,42,0.5); line-height: 1.5;">Body<br />Manrope 400 · 17/28</div>
+            <div style="font-size: 17px; line-height: 1.65; color: rgba(15,23,42,0.72); max-width: 60ch;">Acompañamos a empresas e individuos con financiamiento, logística internacional, salud y bienes raíces bajo un mismo estándar de servicio.</div>
+          </div>
+          <div style="display: grid; grid-template-columns: 150px 1fr; gap: 32px; align-items: baseline;">
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: rgba(15,23,42,0.5); line-height: 1.5;">Eyebrow<br />Mono 500 · 11px<br />+18% tracking</div>
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: #9A7B52;">Aylesva Capital</div>
+          </div>
+        </div>
+        <div style="background: #FAFAF8; padding: 28px; border: 1px solid rgba(15,23,42,0.1);">
+          <div style="font-family: Sora, sans-serif; font-size: 16px; font-weight: 500; margin-bottom: 14px;">Reglas de uso</div>
+          <div style="display: grid; gap: 12px; font-size: 13px; line-height: 1.55; color: rgba(15,23,42,0.65);">
+            <div>Sora solo para titulares y cifras. Nunca para párrafos largos.</div>
+            <div>Manrope para todo el cuerpo, listas y formularios.</div>
+            <div>IBM Plex Mono exclusivo para eyebrows, numeración de pasos y etiquetas de dato.</div>
+            <div>Titulares siempre en tracking negativo; eyebrows siempre en positivo. Ese contraste es la firma del sistema.</div>
+            <div>Máximo dos pesos por pantalla.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Botones -->
+      <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(15,23,42,0.45); margin-bottom: 20px;">Botones · normal / hover</div>
+      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: rgba(15,23,42,0.1); border: 1px solid rgba(15,23,42,0.1); margin-bottom: 72px;">
+        <div style="background: #fff; padding: 40px;">
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(15,23,42,0.45); margin-bottom: 24px;">Sobre fondo claro</div>
+          <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+            <div style="background: #0F172A; color: #fff; padding: 17px 34px; font-size: 14px; font-weight: 600; letter-spacing: 0.04em; cursor: pointer; transition: all .25s ease; border-radius: 2px;" style-hover="background: #020617; box-shadow: 0 12px 28px -12px rgba(2,6,23,0.55); transform: translateY(-2px);">Solicitar asesoría</div>
+            <div style="border: 1px solid #C5A47E; color: #9A7B52; padding: 16px 33px; font-size: 14px; font-weight: 600; letter-spacing: 0.04em; cursor: pointer; transition: all .25s ease; border-radius: 2px;" style-hover="background: #C5A47E; color: #fff;">Ver soluciones</div>
+            <div style="color: #0F172A; font-size: 14px; font-weight: 600; letter-spacing: 0.04em; cursor: pointer; border-bottom: 1px solid rgba(15,23,42,0.25); padding-bottom: 3px; transition: all .2s ease;" style-hover="border-color: #C5A47E; color: #9A7B52;">Descargar ficha →</div>
+          </div>
+        </div>
+        <div style="background: #0F172A; padding: 40px;">
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 24px;">Sobre fondo ink / hero</div>
+          <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+            <div style="background: #C5A47E; color: #0F172A; padding: 17px 34px; font-size: 14px; font-weight: 700; letter-spacing: 0.04em; cursor: pointer; transition: all .25s ease; border-radius: 2px;" style-hover="background: #E3CCAE; transform: translateY(-2px); box-shadow: 0 12px 28px -12px rgba(197,164,126,0.5);">Solicitar asesoría</div>
+            <div style="border: 1px solid rgba(255,255,255,0.4); color: #fff; padding: 16px 33px; font-size: 14px; font-weight: 600; letter-spacing: 0.04em; cursor: pointer; transition: all .25s ease; border-radius: 2px;" style-hover="border-color: #fff; background: rgba(255,255,255,0.08);">Ver soluciones</div>
+            <div style="color: #E3CCAE; font-size: 14px; font-weight: 600; letter-spacing: 0.04em; cursor: pointer; border-bottom: 1px solid rgba(227,204,174,0.4); padding-bottom: 3px; transition: all .2s ease;" style-hover="border-color: #E3CCAE;">Descargar ficha →</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fotografía -->
+      <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(15,23,42,0.45); margin-bottom: 20px;">Tratamiento fotográfico</div>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
+        <div>
+          <div style="position: relative; height: 220px; background: repeating-linear-gradient(135deg, #1c2740 0 8px, #16203a 8px 16px); display: flex; align-items: flex-end; padding: 20px; border-radius: 2px;">
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.55); letter-spacing: 0.08em;">foto · overlay ink 70%</span>
+          </div>
+          <div style="font-size: 13px; line-height: 1.55; color: rgba(15,23,42,0.65); margin-top: 12px;"><strong style="color: #0F172A;">Hero.</strong> Overlay lineal ink 70→40% de izquierda a derecha. El texto vive siempre en la zona más oscura.</div>
+        </div>
+        <div>
+          <div style="position: relative; height: 220px; background: repeating-linear-gradient(135deg, #d8d4cc 0 8px, #cfcac1 8px 16px); display: flex; align-items: flex-end; padding: 20px; border-radius: 2px;">
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(15,23,42,0.5); letter-spacing: 0.08em;">foto · desaturada 15%</span>
+          </div>
+          <div style="font-size: 13px; line-height: 1.55; color: rgba(15,23,42,0.65); margin-top: 12px;"><strong style="color: #0F172A;">Editorial.</strong> Sin overlay, desaturación ligera y contraste medio. Para bloques de proceso y equipo.</div>
+        </div>
+        <div>
+          <div style="position: relative; height: 220px; background: repeating-linear-gradient(135deg, #d8d4cc 0 8px, #cfcac1 8px 16px); border-radius: 2px; padding: 20px; display: flex; align-items: flex-end;">
+            <div style="position: absolute; inset: 12px; border: 1px solid rgba(197,164,126,0.9);"></div>
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(15,23,42,0.5); letter-spacing: 0.08em;">foto · marco gold 1px</span>
+          </div>
+          <div style="font-size: 13px; line-height: 1.55; color: rgba(15,23,42,0.65); margin-top: 12px;"><strong style="color: #0F172A;">Producto / inmueble.</strong> Marco interior gold de 1px a 12px del borde. Único adorno permitido.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ ICONOS ============ -->
+  <div id="iconos" style="border-top: 1px solid rgba(15,23,42,0.1);">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 88px 64px;">
+      <div style="display: flex; align-items: baseline; gap: 20px; margin-bottom: 16px;">
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.18em; color: #9A7B52;">02</span>
+        <h2 style="font-family: Sora, sans-serif; font-weight: 400; font-size: 34px; letter-spacing: -0.02em; margin: 0;">Iconografía</h2>
+      </div>
+      <p style="font-size: 15px; line-height: 1.6; color: rgba(15,23,42,0.6); max-width: 70ch; margin: 0 0 48px;">Set geométrico construido sobre una retícula de 24px: trazo de 1.25px, esquinas rectas, sin relleno. Un color, gold, sobre fondo claro u oscuro. Cada rama toma un ícono raíz; los beneficios usan el resto del set.</p>
+
+      <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: rgba(15,23,42,0.1); border: 1px solid rgba(15,23,42,0.1);">
+        <sc-for list="{{ icons }}" as="ic" hint-placeholder-count="10">
+          <div style="background: #fff; padding: 32px 24px; display: flex; flex-direction: column; gap: 18px; transition: background .25s ease;" style-hover="background: #FAFAF8;">
+            <div style="height: 40px;">{{ ic.el }}</div>
+            <div>
+              <div style="font-family: Sora, sans-serif; font-size: 14px; font-weight: 500;">{{ ic.name }}</div>
+              <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.1em; color: rgba(15,23,42,0.45); margin-top: 5px; text-transform: uppercase;">{{ ic.use }}</div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ COMPONENTES ============ -->
+  <div id="componentes" style="border-top: 1px solid rgba(15,23,42,0.1); background: #fff;">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 88px 64px 40px;">
+      <div style="display: flex; align-items: baseline; gap: 20px; margin-bottom: 16px;">
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.18em; color: #9A7B52;">03</span>
+        <h2 style="font-family: Sora, sans-serif; font-weight: 400; font-size: 34px; letter-spacing: -0.02em; margin: 0;">Componentes universales</h2>
+      </div>
+      <p style="font-size: 15px; line-height: 1.6; color: rgba(15,23,42,0.6); max-width: 70ch; margin: 0;">Mockups de los cuatro bloques de Shopify. La rama activa cambia solo el eyebrow, los textos y el ícono: la estructura es idéntica en las cinco.</p>
+    </div>
+
+    <!-- HERO -->
+    <div style="max-width: 1440px; margin: 0 auto; padding: 0 64px 24px;">
+      <div style="display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(15,23,42,0.15); padding-top: 14px;">
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;">aylesva-corp-hero</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: rgba(15,23,42,0.45);">imagen 2400×1200 · overlay ink · 2 CTA</span>
+      </div>
+    </div>
+    <div style="max-width: 1440px; margin: 0 auto 96px; padding: 0 64px;">
+      <div style="position: relative; overflow: hidden; background: repeating-linear-gradient(135deg, #1c2740 0 10px, #16203a 10px 20px); min-height: 620px; display: flex; align-items: center;">
+        <div style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(2,6,23,0.92) 0%, rgba(2,6,23,0.72) 45%, rgba(2,6,23,0.35) 100%);"></div>
+        <div style="position: absolute; right: 28px; bottom: 22px; font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.35); letter-spacing: 0.08em;">imagen de fondo de la rama</div>
+        <div style="position: relative; padding: 88px 80px; max-width: 780px;">
+          <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 30px;">
+            <div style="height: 26px;">{{ branch.el }}</div>
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: #E3CCAE;">{{ branch.name }}</span>
+          </div>
+          <h2 style="font-family: Sora, sans-serif; font-weight: 300; font-size: 60px; line-height: 1.06; letter-spacing: -0.03em; color: #fff; margin: 0 0 26px; text-wrap: balance;">{{ branch.title }}</h2>
+          <p style="font-size: 18px; line-height: 1.65; color: rgba(255,255,255,0.72); max-width: 52ch; margin: 0 0 40px; text-wrap: pretty;">{{ branch.sub }}</p>
+          <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+            <div style="background: #C5A47E; color: #0F172A; padding: 17px 34px; font-size: 14px; font-weight: 700; letter-spacing: 0.04em; cursor: pointer; transition: all .25s ease; border-radius: 2px;" style-hover="background: #E3CCAE; transform: translateY(-2px); box-shadow: 0 14px 30px -14px rgba(197,164,126,0.55);">{{ branch.cta1 }}</div>
+            <div style="border: 1px solid rgba(255,255,255,0.4); color: #fff; padding: 16px 33px; font-size: 14px; font-weight: 600; letter-spacing: 0.04em; cursor: pointer; transition: all .25s ease; border-radius: 2px;" style-hover="border-color: #fff; background: rgba(255,255,255,0.08);">{{ branch.cta2 }}</div>
+          </div>
+          <div style="display: flex; gap: 40px; margin-top: 56px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.15);">
+            <sc-for list="{{ branch.stats }}" as="s" hint-placeholder-count="3">
+              <div>
+                <div style="font-family: Sora, sans-serif; font-size: 26px; font-weight: 400; color: #fff;">{{ s.v }}</div>
+                <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-top: 6px;">{{ s.k }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+      <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; align-items: center;">
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(15,23,42,0.45); margin-right: 6px;">Rama activa</span>
+        <sc-for list="{{ branchTabs }}" as="t" hint-placeholder-count="5">
+          <div onClick="{{ t.pick }}" style="{{ t.style }}">{{ t.name }}</div>
+        </sc-for>
+      </div>
+    </div>
+
+    <!-- FEATURES -->
+    <div style="max-width: 1440px; margin: 0 auto; padding: 0 64px 24px;">
+      <div style="display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(15,23,42,0.15); padding-top: 14px;">
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;">aylesva-corp-features</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: rgba(15,23,42,0.45);">grid 3×2 · ícono + título + texto corto</span>
+      </div>
+    </div>
+    <div style="background: #FAFAF8; margin-bottom: 96px; border-top: 1px solid rgba(15,23,42,0.08); border-bottom: 1px solid rgba(15,23,42,0.08);">
+      <div style="max-width: 1440px; margin: 0 auto; padding: 88px 64px;">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: end; margin-bottom: 56px;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 22px;">
+              <span style="width: 24px; height: 1px; background: #C5A47E;"></span>
+              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #9A7B52;">Beneficios</span>
+            </div>
+            <h3 style="font-family: Sora, sans-serif; font-weight: 400; font-size: 40px; line-height: 1.12; letter-spacing: -0.025em; margin: 0; text-wrap: balance;">Respaldo institucional en cada operación</h3>
+          </div>
+          <p style="font-size: 16px; line-height: 1.7; color: rgba(15,23,42,0.62); margin: 0; text-wrap: pretty;">Seis tarjetas máximo por bloque. Título de tres a cinco palabras, descripción de una sola frase. El ícono nunca compite con la fotografía: sin fondo, sin círculo, sin sombra.</p>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(15,23,42,0.1); border: 1px solid rgba(15,23,42,0.1);">
+          <sc-for list="{{ features }}" as="f" hint-placeholder-count="6">
+            <div style="background: #fff; padding: 40px 36px 44px; transition: all .3s ease; cursor: default; position: relative;" style-hover="background: #0F172A; transform: translateY(-3px); box-shadow: 0 24px 48px -24px rgba(2,6,23,0.35); z-index: 2;">
+              <div style="height: 30px;">{{ f.el }}</div>
+              <div style="font-family: Sora, sans-serif; font-size: 19px; font-weight: 500; letter-spacing: -0.01em; margin: 26px 0 12px;">{{ f.t }}</div>
+              <div style="font-size: 14px; line-height: 1.65; color: rgba(15,23,42,0.6);">{{ f.d }}</div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(15,23,42,0.4); margin-top: 16px;">Hover: fondo ink, elevación 3px, sombra difusa. El texto invierte a blanco en implementación.</div>
+      </div>
+    </div>
+
+    <!-- PROCESO -->
+    <div style="max-width: 1440px; margin: 0 auto; padding: 0 64px 24px;">
+      <div style="display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(15,23,42,0.15); padding-top: 14px;">
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;">aylesva-corp-process</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: rgba(15,23,42,0.45);">3 pasos · numeración mono · línea gold</span>
+      </div>
+    </div>
+    <div style="background: #0F172A; margin-bottom: 96px;">
+      <div style="max-width: 1440px; margin: 0 auto; padding: 96px 64px;">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 22px;">
+          <span style="width: 24px; height: 1px; background: #C5A47E;"></span>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #E3CCAE;">Cómo funciona</span>
+        </div>
+        <h3 style="font-family: Sora, sans-serif; font-weight: 300; font-size: 44px; line-height: 1.1; letter-spacing: -0.03em; color: #fff; margin: 0 0 72px; max-width: 24ch;">Tres pasos, sin fricción</h3>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px;">
+          <sc-for list="{{ steps }}" as="p" hint-placeholder-count="3">
+            <div style="border-top: 1px solid rgba(197,164,126,0.45); padding-top: 28px;">
+              <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.2em; color: #C5A47E; margin-bottom: 26px;">{{ p.n }}</div>
+              <div style="font-family: Sora, sans-serif; font-size: 24px; font-weight: 400; letter-spacing: -0.015em; color: #fff; margin-bottom: 14px;">{{ p.t }}</div>
+              <div style="font-size: 15px; line-height: 1.7; color: rgba(255,255,255,0.62);">{{ p.d }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+
+    <!-- FORMULARIO -->
+    <div style="max-width: 1440px; margin: 0 auto; padding: 0 64px 24px;">
+      <div style="display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(15,23,42,0.15); padding-top: 14px;">
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;">aylesva-corp-form</span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: rgba(15,23,42,0.45);">contenedor para embed GoHighLevel</span>
+      </div>
+    </div>
+    <div style="max-width: 1440px; margin: 0 auto; padding: 0 64px 112px;">
+      <div style="display: grid; grid-template-columns: 1fr 1.1fr; background: #FAFAF8; border: 1px solid rgba(15,23,42,0.1);">
+        <div style="padding: 72px 64px; display: flex; flex-direction: column; justify-content: space-between; gap: 48px;">
+          <div>
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #9A7B52; margin-bottom: 22px;">Hablemos</div>
+            <h3 style="font-family: Sora, sans-serif; font-weight: 400; font-size: 38px; line-height: 1.12; letter-spacing: -0.025em; margin: 0 0 20px; text-wrap: balance;">Un asesor te contacta en menos de 24 horas</h3>
+            <p style="font-size: 16px; line-height: 1.7; color: rgba(15,23,42,0.62); margin: 0; max-width: 40ch;">Cuéntanos qué necesitas y te asignamos al especialista de la rama correspondiente.</p>
+          </div>
+          <div style="display: grid; gap: 16px;">
+            <div style="display: flex; gap: 14px; align-items: flex-start; font-size: 14px; line-height: 1.5; color: rgba(15,23,42,0.7);"><span style="width: 6px; height: 6px; flex: 0 0 6px; margin-top: 7px; background: #C5A47E; border-radius: 50%;"></span>Atención en español e inglés</div>
+            <div style="display: flex; gap: 14px; align-items: flex-start; font-size: 14px; line-height: 1.5; color: rgba(15,23,42,0.7);"><span style="width: 6px; height: 6px; flex: 0 0 6px; margin-top: 7px; background: #C5A47E; border-radius: 50%;"></span>Datos protegidos y sin costo de consulta</div>
+            <div style="display: flex; gap: 14px; align-items: flex-start; font-size: 14px; line-height: 1.5; color: rgba(15,23,42,0.7);"><span style="width: 6px; height: 6px; flex: 0 0 6px; margin-top: 7px; background: #C5A47E; border-radius: 50%;"></span>Cobertura en LATAM y Estados Unidos</div>
+          </div>
+        </div>
+        <div style="background: #fff; border-left: 1px solid rgba(15,23,42,0.1); padding: 56px 64px;">
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(15,23,42,0.4); margin-bottom: 32px;">Embed GoHighLevel · estilos heredados</div>
+          <div style="display: grid; gap: 24px;">
+            <div>
+              <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(15,23,42,0.55); margin-bottom: 9px;">Nombre completo</div>
+              <div style="border: 1px solid rgba(15,23,42,0.18); background: #fff; padding: 15px 16px; font-size: 15px; color: rgba(15,23,42,0.35); transition: border-color .2s ease;" style-hover="border-color: #C5A47E;">Nombre y apellido</div>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+              <div>
+                <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(15,23,42,0.55); margin-bottom: 9px;">Correo</div>
+                <div style="border: 1px solid rgba(15,23,42,0.18); padding: 15px 16px; font-size: 15px; color: rgba(15,23,42,0.35); transition: border-color .2s ease;" style-hover="border-color: #C5A47E;">nombre@empresa.com</div>
+              </div>
+              <div>
+                <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(15,23,42,0.55); margin-bottom: 9px;">Teléfono</div>
+                <div style="border: 1px solid rgba(15,23,42,0.18); padding: 15px 16px; font-size: 15px; color: rgba(15,23,42,0.35); transition: border-color .2s ease;" style-hover="border-color: #C5A47E;">+1 (000) 000 0000</div>
+              </div>
+            </div>
+            <div>
+              <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(15,23,42,0.55); margin-bottom: 9px;">Servicio de interés</div>
+              <div style="border: 1px solid rgba(15,23,42,0.18); padding: 15px 16px; font-size: 15px; color: rgba(15,23,42,0.5); display: flex; justify-content: space-between; align-items: center; transition: border-color .2s ease;" style-hover="border-color: #C5A47E;"><span>{{ branch.name }}</span><span style="color: #C5A47E;">▾</span></div>
+            </div>
+            <div>
+              <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(15,23,42,0.55); margin-bottom: 9px;">Mensaje</div>
+              <div style="border: 1px solid rgba(15,23,42,0.18); padding: 15px 16px; font-size: 15px; color: rgba(15,23,42,0.35); min-height: 88px; transition: border-color .2s ease;" style-hover="border-color: #C5A47E;">Describe brevemente tu necesidad</div>
+            </div>
+            <div style="background: #0F172A; color: #fff; padding: 18px; text-align: center; font-size: 14px; font-weight: 600; letter-spacing: 0.04em; cursor: pointer; transition: all .25s ease; border-radius: 2px;" style-hover="background: #020617; box-shadow: 0 14px 30px -14px rgba(2,6,23,0.6);">Enviar solicitud</div>
+            <div style="font-size: 12px; line-height: 1.6; color: rgba(15,23,42,0.45);">Al enviar aceptas nuestra política de privacidad. No compartimos tus datos con terceros.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="background: #020617; padding: 56px 64px;">
+    <div style="max-width: 1440px; margin: 0 auto; display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 24px;">
+      <span style="font-family: Sora, sans-serif; font-weight: 600; letter-spacing: 0.22em; font-size: 14px; text-transform: uppercase; color: #fff;">Aylesva</span>
+      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.1em; color: rgba(255,255,255,0.45);">Capital · Direct · Care · Global Estates · Commerce</span>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;gold&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#C5A47E&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#C5A47E&quot;,&quot;#E3CCAE&quot;,&quot;#B08D5B&quot;,&quot;#A9A29B&quot;],&quot;section&quot;:&quot;Marca&quot;},&quot;branchDefault&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;Aylesva Capital&quot;,&quot;options&quot;:[&quot;Aylesva Capital&quot;,&quot;Aylesva Direct&quot;,&quot;Aylesva Care&quot;,&quot;Global Estates&quot;,&quot;Aylesva Commerce&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contenido&quot;}}">
+const I = {
+  capital: '<rect x="3" y="10" width="18" height="11"/><path d="M3 10 12 4l9 6"/><path d="M9 21v-6h6v6"/>',
+  direct: '<rect x="2" y="8" width="13" height="9"/><path d="M15 11h4l3 3v3h-7z"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="19" r="2"/>',
+  care: '<path d="M12 20 4 12.5A4.6 4.6 0 0 1 12 7a4.6 4.6 0 0 1 8 5.5z"/><path d="M8 13h2l1.5-3 2 5 1.5-2h2"/>',
+  estates: '<path d="M3 21V9l6-4 6 4v12"/><path d="M15 21V13h6v8"/><path d="M7 13h2M7 17h2"/>',
+  commerce: '<rect x="3" y="4" width="18" height="5"/><path d="M5 9v12h14V9"/><path d="M9 13h6"/>',
+  shield: '<path d="M12 3l8 3v6c0 5-4 8-8 9-4-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/>',
+  speed: '<circle cx="12" cy="12" r="9"/><path d="M12 12l4-3"/><path d="M12 3v2M21 12h-2M12 21v-2M3 12h2"/>',
+  global: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c3 3 3 15 0 18-3-3-3-15 0-18z"/>',
+  advisor: '<circle cx="12" cy="8" r="3.5"/><path d="M5 21c0-4 3.2-6.5 7-6.5s7 2.5 7 6.5"/>',
+  doc: '<path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 12h6M9 16h6"/>'
+};
+
+const BRANCHES = [
+  { key: 'capital', name: 'Aylesva Capital', svg: I.capital,
+    title: 'Financiamiento a la medida de tu próximo movimiento',
+    sub: 'Préstamos personales y empresariales con evaluación ágil, tasas claras y acompañamiento de un asesor asignado.',
+    cta1: 'Solicitar financiamiento', cta2: 'Ver requisitos',
+    stats: [{ v: '72 h', k: 'Respuesta' }, { v: '$2.5M', k: 'Monto máximo' }, { v: '100%', k: 'Digital' }] },
+  { key: 'direct', name: 'Aylesva Direct', svg: I.direct,
+    title: 'Importación desde China sin intermediarios',
+    sub: 'Búsqueda de fábrica, control de calidad, consolidación y entrega puerta a puerta con trazabilidad en cada etapa.',
+    cta1: 'Cotizar importación', cta2: 'Cómo trabajamos',
+    stats: [{ v: '18 d', k: 'Tránsito medio' }, { v: '1,200+', k: 'Fábricas' }, { v: '3', k: 'Puertos' }] },
+  { key: 'care', name: 'Aylesva Care', svg: I.care,
+    title: 'Salud y bienestar para tu equipo y tu familia',
+    sub: 'Planes de beneficios, seguros y telemedicina 24/7 con red de especialistas en LATAM y Estados Unidos.',
+    cta1: 'Cotizar plan', cta2: 'Ver coberturas',
+    stats: [{ v: '24/7', k: 'Telemedicina' }, { v: '4,000+', k: 'Especialistas' }, { v: '2 países', k: 'Cobertura' }] },
+  { key: 'estates', name: 'Global Estates', svg: I.estates,
+    title: 'Bienes raíces y desarrollos de lujo',
+    sub: 'Portafolio curado de propiedades residenciales y de inversión, con estructuración financiera y administración.',
+    cta1: 'Ver portafolio', cta2: 'Agendar visita',
+    stats: [{ v: '12%', k: 'Retorno objetivo' }, { v: '38', k: 'Desarrollos' }, { v: 'A+', k: 'Zonas prime' }] },
+  { key: 'commerce', name: 'Aylesva Commerce', svg: I.commerce,
+    title: 'Distribución mayorista para escalar tu negocio',
+    sub: 'Catálogo mayorista, precios por volumen y abastecimiento continuo para retailers y cadenas en expansión.',
+    cta1: 'Abrir cuenta B2B', cta2: 'Descargar catálogo',
+    stats: [{ v: '15k', k: 'SKUs' }, { v: '48 h', k: 'Despacho' }, { v: '30d', k: 'Crédito' }] }
+];
+
+function icon(svg, size, color) {
+  return React.createElement('svg', {
+    width: size, height: size, viewBox: '0 0 24 24', fill: 'none',
+    stroke: color || '#C5A47E', strokeWidth: 1.25, strokeLinecap: 'square',
+    style: { display: 'block' },
+    dangerouslySetInnerHTML: { __html: svg }
+  });
+}
+
+class Component extends DCLogic {
+  state = { branch: 0 };
+
+  renderVals() {
+    const idx = this.state.branch;
+    const branch = BRANCHES[idx] || BRANCHES[0];
+    const gold = this.props.gold ?? '#C5A47E';
+
+    return {
+      branch: Object.assign({}, branch, { el: icon(branch.svg, 26, gold) }),
+      gold,
+      branchTabs: BRANCHES.map((b, i) => ({
+        name: b.name,
+        pick: () => this.setState({ branch: i }),
+        style: [
+          'font-family: Manrope, sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.02em;',
+          'padding: 9px 18px; cursor: pointer; border-radius: 2px; transition: all .2s ease;',
+          i === idx
+            ? 'background: #0F172A; color: #fff; border: 1px solid #0F172A;'
+            : 'background: transparent; color: rgba(15,23,42,0.6); border: 1px solid rgba(15,23,42,0.18);'
+        ].join(' ')
+      })),
+      icons: [
+        { name: 'Capital', use: 'Rama · financiamiento', el: icon(I.capital, 40, gold) },
+        { name: 'Direct', use: 'Rama · logística', el: icon(I.direct, 40, gold) },
+        { name: 'Care', use: 'Rama · salud', el: icon(I.care, 40, gold) },
+        { name: 'Global Estates', use: 'Rama · inmobiliario', el: icon(I.estates, 40, gold) },
+        { name: 'Commerce', use: 'Rama · mayorista', el: icon(I.commerce, 40, gold) },
+        { name: 'Respaldo', use: 'Beneficio · seguridad', el: icon(I.shield, 40, gold) },
+        { name: 'Agilidad', use: 'Beneficio · tiempos', el: icon(I.speed, 40, gold) },
+        { name: 'Alcance', use: 'Beneficio · cobertura', el: icon(I.global, 40, gold) },
+        { name: 'Asesoría', use: 'Beneficio · personas', el: icon(I.advisor, 40, gold) },
+        { name: 'Trámite', use: 'Beneficio · documentos', el: icon(I.doc, 40, gold) }
+      ],
+      features: [
+        { t: 'Respaldo del grupo', d: 'Cinco unidades de negocio operando bajo un mismo estándar de cumplimiento.', el: icon(I.shield, 30, gold) },
+        { t: 'Respuesta en 72 horas', d: 'Procesos digitales y comités de decisión semanales, sin filas ni papeleo.', el: icon(I.speed, 30, gold) },
+        { t: 'Cobertura internacional', d: 'Operaciones activas en LATAM, Estados Unidos y Asia.', el: icon(I.global, 30, gold) },
+        { t: 'Asesor asignado', d: 'Una persona responsable de tu caso de principio a fin.', el: icon(I.advisor, 30, gold) },
+        { t: 'Documentación clara', d: 'Contratos y condiciones explicados antes de firmar, sin letra pequeña.', el: icon(I.doc, 30, gold) },
+        { t: 'Estructura financiera', d: 'Esquemas de pago diseñados según el flujo real de tu operación.', el: icon(I.capital, 30, gold) }
+      ],
+      steps: [
+        { n: '01', t: 'Diagnóstico', d: 'Completas el formulario y un especialista revisa tu caso el mismo día hábil.' },
+        { n: '02', t: 'Propuesta', d: 'Recibes condiciones, tiempos y costos por escrito, con una sola ruta recomendada.' },
+        { n: '03', t: 'Ejecución', d: 'Firmamos, activamos el servicio y das seguimiento desde tu panel con tu asesor.' }
+      ]
+    };
+  }
+
+  componentDidMount() {
+    const d = this.props.branchDefault;
+    if (d) {
+      const i = BRANCHES.findIndex(b => b.name === d);
+      if (i > 0) this.setState({ branch: i });
+    }
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+{{ page.content }}
+<div class="page-width feature-row" data-section-id="{{ section.id }}" data-section-type="about-section">
+  <div id="ttabout">
+    <div class="row">
+      <div class="ttabout1 col-sm-12 col-xs-12">
+        <div class="About_us img">
+              <a href="#">
+                {% if section.settings.about_us != blank %}
+                {{ section.settings.about_us | img_url: "master" | img_tag: 'aboutus featured image', 'feature-row__image' }}
+                {% endif %}
+              </a>
+            </div>
+        <div class="ttabout-content">
+              <div class="ttabout-description">{{ section.settings.about_description}}</div>
+            </div> 
+      </div>
+      <div class="ttabout1">
+        <div class="ttaboutr1 ttabout col-sm-6 col-xs-6">
+          <div class="feature-row__item ttabout-img" style="background: {{ section.settings.about2_bg }}">
+            <div class="aboutr_img">
+              <a href="#">
+                {% if section.settings.about_image1 != blank %}
+                {{ section.settings.about_image1 | img_url: "master" | img_tag: 'aboutus featured image', 'feature-row__image' }}
+                {% endif %}
+              </a>
+            </div>
+            <div class="ttabout-content">
+              <div class="ttabout-title">{{ section.settings.about_title1 }}</div>
+              <div class="ttabout-subtitle">{{ section.settings.description_1 }}</div>
+            </div> 
+          </div>
+        </div>
+        <div class="about1 ttabout col-sm-6 col-xs-6">
+          <div class="feature-row__item ttabout-img" style="background: {{ section.settings.about2_bg }}">
+            <div class="about_img">
+              <a href="#">
+                {% if section.settings.about_image2 != blank %}
+                {{ section.settings.about_image2 | img_url: "master" | img_tag: 'aboutus featured image', 'feature-row__image' }}
+                {% endif %}
+              </a>
+            </div>
+            <div class="ttabout-content">
+              <div class="ttabout-title">{{ section.settings.about_title2 }}</div>
+              <div class="ttabout-subtitle">{{ section.settings.description_2 }}</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "About us",
+    "class": "aboutus",
+    "settings": [
+	
+      {
+        "type": "image_picker",
+        "id": "about_us",
+        "label": "About Us Image"
+      },
+	{
+        "type": "textarea",
+        "id": "about_description",
+        "label": "description",
+		"default": "About store"
+      },
+      {
+        "type": "image_picker",
+        "id": "about_image1",
+        "label": "Image"
+      },
+	 {
+        "type": "text",
+        "id": "about_title1",
+        "label": "About Title 1",
+		"default": "About our shop"
+      },
+	 {
+        "type": "textarea",
+        "id": "description_1",
+        "label": "description 1",
+		"default": "About store"
+      },
+       {
+        "type": "image_picker",
+        "id": "about_image2",
+        "label": "Image 1"
+      },
+	 {
+        "type": "text",
+        "id": "about_title2",
+        "label": "About Title 2",
+		"default": "What we do"
+      },
+	 {
+        "type": "textarea",
+        "id": "description_2",
+        "label": "description 2",
+		"default": "About store"
+      }
+    ],
+    "presets": [
+      {
+        "name": "About us",
+        "category": "Image"
+      }
+    ]
+  }
+{% endschema %}

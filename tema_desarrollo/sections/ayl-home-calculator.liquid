@@ -1,0 +1,420 @@
+{% comment %}
+  Aylesva Distribuidores Interactive Profit Calculator
+  Dynamic simulator where wholesale buyers toggle between packages to see potential earnings, including custom styled lifestyle image.
+{% endcomment %}
+
+<div class="ayl-calc-section" id="ayl-calculator-{{ section.id }}">
+  <div class="ayl-calc-container">
+    <div class="ayl-calc-grid">
+      
+      <!-- Left Column: Calculator -->
+      <div class="ayl-calc-left">
+        <h2 class="ayl-calc-title">{{ section.settings.title }}</h2>
+        
+        <!-- Interactive Tabs for Selecting Packages -->
+        <div class="ayl-calc-tabs">
+          <button type="button" class="ayl-calc-tab" data-pkg="12">Starter (12 pz)</button>
+          <button type="button" class="ayl-calc-tab active" data-pkg="24">Emprendedor (24 pz)</button>
+          <button type="button" class="ayl-calc-tab" data-pkg="48">Tienda Pro (48 pz)</button>
+        </div>
+        
+        <p class="ayl-calc-subtitle" id="ayl-calc-subtitle-text">Ejemplo con el paquete <strong>Emprendedor (24 piezas)</strong></p>
+        
+        <!-- Calculator Math Display -->
+        <div class="ayl-calc-math-grid">
+          
+          <!-- Inversión -->
+          <div class="ayl-math-box">
+            <span class="ayl-math-label">Inversión</span>
+            <span class="ayl-math-value" id="calc-val-investment">$4,490</span>
+            <span class="ayl-math-desc">Costo del paquete</span>
+          </div>
+          
+          <div class="ayl-math-operator">+</div>
+          
+          <!-- Precio Promedio -->
+          <div class="ayl-math-box">
+            <span class="ayl-math-label">Precio Promedio</span>
+            <span class="ayl-math-value" id="calc-val-retail-price">$420</span>
+            <span class="ayl-math-desc">De reventa sugerido</span>
+          </div>
+          
+          <div class="ayl-math-operator">=</div>
+          
+          <!-- Ingresos Potenciales -->
+          <div class="ayl-math-box">
+            <span class="ayl-math-label">Ingresos Potenciales</span>
+            <span class="ayl-math-value" id="calc-val-revenue">$10,080</span>
+            <span class="ayl-math-desc">24 piezas x $420</span>
+          </div>
+          
+          <div class="ayl-math-operator">=</div>
+          
+          <!-- Ganancia Estimada (Featured Wine Box) -->
+          <div class="ayl-math-box ayl-math-box--featured">
+            <span class="ayl-math-label">Ganancia Estimada</span>
+            <span class="ayl-math-value" id="calc-val-profit">$5,590</span>
+            <span class="ayl-math-desc">Tu margen potencial</span>
+          </div>
+          
+        </div>
+        
+        <p class="ayl-calc-disclaimer">{{ section.settings.disclaimer }}</p>
+      </div>
+      
+      <!-- Right Column: Image -->
+      <div class="ayl-calc-right">
+        <div class="ayl-calc-img-wrapper">
+          {% if section.settings.lifestyle_image != blank %}
+            {{ section.settings.lifestyle_image | image_url: width: 1000 | image_tag: class: 'ayl-calc-img', loading: 'lazy' }}
+          {% else %}
+            <!-- Default stylish lifestyle country image -->
+            <img src="{{ 'mayoreo-lifestyle-cowgirl.png' | asset_url }}" class="ayl-calc-img" alt="Distribuidora de moda country Aylesva" loading="lazy">
+          {% endif %}
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+{% javascript %}
+  document.addEventListener('DOMContentLoaded', () => {
+    const tabs = document.querySelectorAll('.ayl-calc-tab');
+    const investmentVal = document.getElementById('calc-val-investment');
+    const retailVal = document.getElementById('calc-val-retail-price');
+    const revenueVal = document.getElementById('calc-val-revenue');
+    const profitVal = document.getElementById('calc-val-profit');
+    const subtitleText = document.getElementById('ayl-calc-subtitle-text');
+    
+    // Data definition for simulator
+    const packagesData = {
+      "12": {
+        name: "Starter (12 piezas)",
+        investment: "$2,490",
+        retail: "$375",
+        revenue: "$4,500",
+        profit: "$2,010",
+        formula: "12 piezas x $375"
+      },
+      "24": {
+        name: "Emprendedor (24 piezas)",
+        investment: "$4,490",
+        retail: "$420",
+        revenue: "$10,080",
+        profit: "$5,590",
+        formula: "24 piezas x $420"
+      },
+      "48": {
+        name: "Tienda Pro (48 piezas)",
+        investment: "$7,990",
+        retail: "$400",
+        revenue: "$19,200",
+        profit: "$11,210",
+        formula: "48 piezas x $400"
+      }
+    };
+    
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Toggle Active class
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        
+        const pkgKey = tab.dataset.pkg;
+        const data = packagesData[pkgKey];
+        
+        if (data) {
+          // Animate and update values
+          [investmentVal, retailVal, revenueVal, profitVal].forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(5px)';
+          });
+          
+          setTimeout(() => {
+            subtitleText.innerHTML = `Ejemplo con el paquete <strong>${data.name}</strong>`;
+            investmentVal.textContent = data.investment;
+            retailVal.textContent = data.retail;
+            revenueVal.textContent = data.revenue;
+            profitVal.textContent = data.profit;
+            
+            // Update the formula description for the multiplication box
+            const formulaDesc = revenueVal.nextElementSibling;
+            if (formulaDesc) formulaDesc.textContent = data.formula;
+            
+            [investmentVal, retailVal, revenueVal, profitVal].forEach(el => {
+              el.style.opacity = '1';
+              el.style.transform = 'translateY(0)';
+            });
+          }, 200);
+        }
+      });
+    });
+  });
+{% endjavascript %}
+
+{% style %}
+  .ayl-calc-section {
+    width: 100%;
+    background-color: #F8F7F3; /* Cozy cream background */
+    padding: 90px 0;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .ayl-calc-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
+
+  .ayl-calc-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 50px;
+    align-items: center;
+  }
+
+  @media (max-width: 991px) {
+    .ayl-calc-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+
+  .ayl-calc-left {
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media (max-width: 991px) {
+    .ayl-calc-left {
+      align-items: center;
+      text-align: center;
+    }
+  }
+
+  .ayl-calc-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(26px, 3.5vw, 36px);
+    font-weight: 700;
+    color: #1a1a1a;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin: 0 0 24px 0;
+  }
+
+  .ayl-calc-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+    background-color: #EFECE6;
+    padding: 4px;
+    border-radius: 8px;
+    width: fit-content;
+  }
+
+  .ayl-calc-tab {
+    background: none;
+    border: none;
+    outline: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: #706861;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .ayl-calc-tab.active {
+    background-color: #ffffff;
+    color: #1a1a1a;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+
+  .ayl-calc-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: #706861;
+    margin: 0 0 36px 0;
+  }
+
+  /* Math Layout styling */
+  .ayl-calc-math-grid {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+  @media (max-width: 767px) {
+    .ayl-calc-math-grid {
+      flex-direction: column;
+      gap: 16px;
+      width: 100%;
+      max-width: 320px;
+      margin: 0 auto 30px auto;
+    }
+  }
+
+  .ayl-math-box {
+    flex: 1;
+    background-color: #ffffff;
+    border: 1px solid #EFECE6;
+    border-radius: 12px;
+    padding: 24px 16px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.01);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.3s ease;
+  }
+
+  @media (max-width: 767px) {
+    .ayl-math-box {
+      width: 100%;
+    }
+  }
+
+  .ayl-math-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 800;
+    color: #706861;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+  }
+
+  .ayl-math-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.2;
+    margin-bottom: 6px;
+    transition: all 0.2s ease;
+  }
+
+  .ayl-math-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: #999;
+    line-height: 1.2;
+  }
+
+  .ayl-math-operator {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 400;
+    color: #C5A47E;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 767px) {
+    .ayl-math-operator {
+      transform: rotate(90deg);
+      line-height: 1;
+      margin: -6px 0;
+    }
+  }
+
+  /* Wine Featured Box (Ganancia Estimada) */
+  .ayl-math-box--featured {
+    background-color: #5A1818; /* Elegant wine color */
+    border-color: #5A1818;
+    color: #ffffff;
+    box-shadow: 0 8px 25px rgba(90, 24, 24, 0.25);
+  }
+
+  .ayl-math-box--featured .ayl-math-label {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .ayl-math-box--featured .ayl-math-value {
+    color: #ffffff;
+    font-size: 34px;
+  }
+
+  .ayl-math-box--featured .ayl-math-desc {
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 600;
+  }
+
+  .ayl-calc-disclaimer {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: #999;
+    margin: 0;
+  }
+
+  /* Right Side Image */
+  .ayl-calc-right {
+    display: flex;
+    justify-content: center;
+  }
+
+  .ayl-calc-img-wrapper {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    aspect-ratio: 4/5;
+  }
+
+  @media (max-width: 991px) {
+    .ayl-calc-img-wrapper {
+      max-width: 320px;
+    }
+  }
+
+  .ayl-calc-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+  }
+
+  .ayl-calc-img-wrapper:hover .ayl-calc-img {
+    transform: scale(1.05);
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Ayl Profit Calculator",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título",
+      "default": "¿Cuánto Puedes Ganar?"
+    },
+    {
+      "type": "textarea",
+      "id": "disclaimer",
+      "label": "Nota aclaratoria",
+      "default": "Los precios pueden variar según el producto y la temporada."
+    },
+    {
+      "type": "image_picker",
+      "id": "lifestyle_image",
+      "label": "Imagen Lateral"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ayl Profit Calculator"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,78 @@
+{% comment %}
+  Aylesva · Contenedor de formulario (embed GoHighLevel).
+  El iframe de GHL hereda el ancho del contenedor; el CSS de abajo
+  neutraliza el estilo por defecto del widget.
+{% endcomment %}
+<section class="ay" id="{{ section.settings.anchor }}" style="background:{{ section.settings.bg }};border-top:var(--ay-hairline)">
+  <div class="ay-wrap">
+    <div style="display:grid;grid-template-columns:1fr 1.05fr;border:var(--ay-hairline);background:#fff" class="ay-form-shell">
+      <div style="padding:72px 60px;background:var(--ay-stone);display:flex;flex-direction:column;justify-content:space-between;gap:44px">
+        <div>
+          {% if section.settings.eyebrow != blank %}<p class="ay-eyebrow">{{ section.settings.eyebrow }}</p>{% endif %}
+          <h2 class="ay-h2" style="font-size:38px;margin-bottom:20px">{{ section.settings.title }}</h2>
+          <p class="ay-lead" style="font-size:16px;max-width:44ch">{{ section.settings.text }}</p>
+        </div>
+
+        {% if section.blocks.size > 0 %}
+          <ul style="list-style:none;margin:0;padding:0;display:grid;gap:16px">
+            {% for block in section.blocks %}
+              <li style="display:flex;gap:14px;align-items:flex-start;font-size:14px;line-height:1.5;color:rgba(15,23,42,.72)" {{ block.shopify_attributes }}>
+                <span style="width:6px;height:6px;flex:0 0 6px;margin-top:7px;background:var(--ay-gold);border-radius:50%"></span>{{ block.settings.text }}
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+
+        {% if section.settings.legal != blank %}
+          <p class="ay-legal" style="border-top:var(--ay-hairline);padding-top:22px">{{ section.settings.legal }}</p>
+        {% endif %}
+      </div>
+
+      <div style="padding:56px 60px;border-left:var(--ay-hairline)" class="ay-form-embed">
+        {% if section.settings.form_id != blank %}
+          <iframe
+            src="https://api.leadconnectorhq.com/widget/form/{{ section.settings.form_id }}"
+            style="width:100%;height:{{ section.settings.form_height }}px;border:none;display:block"
+            id="ghl-{{ section.settings.form_id }}"
+            title="{{ section.settings.title | escape }}"
+            loading="lazy"></iframe>
+          <script src="https://link.msgsndr.com/js/form_embed.js" defer></script>
+        {% else %}
+          <p class="ay-legal">Pega el ID del formulario de GoHighLevel en los ajustes de la sección.</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Tipografía y campos del widget alineados al sistema */
+  .ay-form-embed iframe{background:transparent}
+  @media (max-width:1024px){
+    .ay-form-shell{grid-template-columns:1fr !important}
+    .ay-form-embed{border-left:none !important;border-top:var(--ay-hairline) !important;padding:40px 28px !important}
+    .ay-form-shell > div:first-child{padding:48px 28px !important}
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Aylesva · Formulario",
+  "settings": [
+    { "type": "text", "id": "anchor", "label": "Ancla (id) para los CTA", "default": "contacto" },
+    { "type": "color", "id": "bg", "label": "Fondo", "default": "#FAFAF8" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Hablemos" },
+    { "type": "textarea", "id": "title", "label": "Titular", "default": "Un asesor te contacta en menos de 24 horas" },
+    { "type": "textarea", "id": "text", "label": "Texto" },
+    { "type": "text", "id": "form_id", "label": "ID del formulario GoHighLevel" },
+    { "type": "range", "id": "form_height", "label": "Alto del formulario (px)", "min": 400, "max": 1200, "step": 20, "default": 640 },
+    { "type": "textarea", "id": "legal", "label": "Aviso legal / disclaimer" }
+  ],
+  "blocks": [
+    { "type": "point", "name": "Punto de confianza", "limit": 4, "settings": [
+      { "type": "text", "id": "text", "label": "Texto" }
+    ]}
+  ],
+  "presets": [{ "name": "Aylesva · Formulario" }]
+}
+{% endschema %}

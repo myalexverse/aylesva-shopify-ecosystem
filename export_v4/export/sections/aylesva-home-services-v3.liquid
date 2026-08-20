@@ -1,0 +1,86 @@
+{% comment %} Aylesva · Home v3 · Ecosistema: 6 tarjetas con foto, necesidad y puntos {% endcomment %}
+<section class="ay" id="{{ section.settings.anchor }}" style="background:#fff;border-bottom:var(--ay-hairline)">
+  <div class="ay-wrap" style="padding-top:88px;padding-bottom:88px">
+    <div style="text-align:center;margin-bottom:52px">
+      <h2 class="ay-h2">{{ section.settings.title }}</h2>
+      {% if section.settings.intro != blank %}<p style="font-size:16px;line-height:1.65;color:rgba(15,23,42,.6);margin:14px 0 0">{{ section.settings.intro }}</p>{% endif %}
+    </div>
+    <div class="ay-svc3-grid">
+      {% for block in section.blocks %}
+        <a class="ay-svc3 ay-reveal" href="{{ block.settings.link }}" style="animation-delay:{{ forloop.index0 | times: 80 }}ms" {{ block.shopify_attributes }}>
+          <span class="ay-svc3-media">
+            <span class="ay-svc3-img" {% if block.settings.image %}style="background-image:url({{ block.settings.image | image_url: width: 900 }})"{% endif %}></span>
+            <span class="ay-svc3-veil"></span>
+            <span class="ay-svc3-badge">
+              <span class="ay-svc3-chip">{% if block.settings.icon != blank %}<svg class="ay-icon ay-icon--xs" viewBox="0 0 24 24" stroke-linecap="square" aria-hidden="true">{{ block.settings.icon }}</svg>{% endif %}</span>
+              <span class="ay-svc3-need">{{ block.settings.need }}</span>
+            </span>
+            {% unless block.settings.image %}<span class="ay-svc3-note">{{ block.settings.image_note }}</span>{% endunless %}
+          </span>
+          <span class="ay-svc3-body">
+            <span class="ay-svc3-name">{{ block.settings.name }}</span>
+            <span class="ay-svc3-plain">{{ block.settings.plain }}</span>
+            <span class="ay-svc3-desc">{{ block.settings.text }}</span>
+            {% if block.settings.points != blank %}
+              <span class="ay-svc3-points">
+                {% assign items = block.settings.points | newline_to_br | split: '<br />' %}
+                {% for item in items %}{% if item != blank %}
+                  <span class="ay-svc3-point"><span class="ay-svc3-dot">&#9672;</span>{{ item | strip }}</span>
+                {% endif %}{% endfor %}
+              </span>
+            {% endif %}
+            <span class="ay-svc3-more">Ver detalles <span class="ay-arrow">&rarr;</span></span>
+          </span>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .ay-svc3-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:18px}
+  .ay-svc3{display:flex;flex-direction:column;border:1px solid rgba(15,23,42,.14);background:var(--ay-stone);text-decoration:none;color:inherit;transition:all .3s ease}
+  .ay-svc3:hover{transform:translateY(-4px);box-shadow:0 26px 52px -30px rgba(2,6,23,.3);border-color:rgba(197,164,126,.8)}
+  .ay-svc3-media{position:relative;display:block;height:132px;overflow:hidden}
+  .ay-svc3-img{position:absolute;inset:0;background:repeating-linear-gradient(135deg,#efece6 0 8px,#e7e3db 8px 16px);background-size:cover;background-position:center;transition:transform .6s cubic-bezier(.22,.61,.36,1)}
+  .ay-svc3:hover .ay-svc3-img{transform:scale(1.06)}
+  .ay-svc3-veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(2,6,23,.4) 0%,rgba(2,6,23,.05) 60%)}
+  .ay-svc3-badge{position:absolute;top:10px;left:10px;display:flex;align-items:center;gap:8px}
+  .ay-svc3-chip{width:28px;height:28px;flex:0 0 28px;background:var(--ay-ink-800);display:flex;align-items:center;justify-content:center;border-radius:2px}
+  .ay-icon--xs{width:17px;height:17px;stroke:var(--ay-gold-light)}
+  .ay-svc3-need{font-family:var(--ay-font-mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#fff}
+  .ay-svc3-note{position:absolute;left:12px;bottom:10px;font-family:var(--ay-font-mono);font-size:8px;letter-spacing:.1em;color:rgba(15,23,42,.5)}
+  .ay-svc3-body{display:flex;flex-direction:column;gap:11px;padding:20px 18px 22px;flex:1}
+  .ay-svc3-name{font-family:var(--ay-font-display);font-size:13px;font-weight:600;letter-spacing:-.005em}
+  .ay-svc3-plain{font-family:var(--ay-font-display);font-size:17px;font-weight:400;letter-spacing:-.015em;line-height:1.24;color:var(--ay-gold-text);text-wrap:pretty}
+  .ay-svc3-desc{font-size:13px;line-height:1.6;color:rgba(15,23,42,.62)}
+  .ay-svc3-points{display:flex;flex-direction:column;gap:7px;padding-top:13px;border-top:1px solid rgba(15,23,42,.1)}
+  .ay-svc3-point{display:flex;gap:9px;align-items:flex-start;font-size:12px;line-height:1.45;color:rgba(15,23,42,.7)}
+  .ay-svc3-dot{color:var(--ay-gold);flex:0 0 auto}
+  .ay-svc3-more{font-family:var(--ay-font-mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--ay-gold-text);margin-top:auto;padding-top:14px}
+</style>
+
+{% schema %}
+{
+  "name": "Aylesva · Servicios v3",
+  "settings": [
+    { "type": "text", "id": "anchor", "label": "Ancla (id)", "default": "ecosistema" },
+    { "type": "textarea", "id": "title", "label": "Titular", "default": "Nuestro ecosistema de soluciones" },
+    { "type": "textarea", "id": "intro", "label": "Texto de entrada" }
+  ],
+  "blocks": [
+    { "type": "service", "name": "Servicio", "limit": 6, "settings": [
+      { "type": "image_picker", "id": "image", "label": "Fotografía (900×600)" },
+      { "type": "text", "id": "image_note", "label": "Nota si no hay foto aún", "default": "foto pendiente" },
+      { "type": "textarea", "id": "icon", "label": "Trazado SVG del ícono" },
+      { "type": "text", "id": "need", "label": "Necesidad (Financiamiento, Inversión…)" },
+      { "type": "text", "id": "name", "label": "Nombre de la rama" },
+      { "type": "text", "id": "plain", "label": "Beneficio en lenguaje llano" },
+      { "type": "textarea", "id": "text", "label": "Qué hace" },
+      { "type": "textarea", "id": "points", "label": "Dos puntos (uno por línea)" },
+      { "type": "url", "id": "link", "label": "Enlace a la landing" }
+    ]}
+  ],
+  "presets": [{ "name": "Aylesva · Servicios v3" }]
+}
+{% endschema %}

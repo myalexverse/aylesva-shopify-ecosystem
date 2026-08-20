@@ -1,0 +1,78 @@
+{% comment %}
+Documentation - http://docs.shopify.com/support/your-website/navigation/creating-a-breadcrumb-navigation
+{% endcomment %}
+{% unless template == 'index' %}
+<nav class="breadcrumb-wrapper" aria-label="breadcrumbs">  
+  <div class="container">
+    <div class="breadcrumb-wrap">
+      {% if template contains 'product' %}
+      <span>{{ product.title }}</span>
+      <div class="breadcrumb"><a href="/" title="{{ 'general.breadcrumbs.home_link_title' | t }}"><i class="mdi mdi-home-outline"></i></a>
+        {% if collection %}   
+        <span aria-hidden="true" class="breadcrumb__sep">&gt;</span>
+        {% if collection.handle %}
+        {% capture url %}{% if shop.locale != 'en' %}/{{ shop.locale }}{% endif %}/collections/{{ collection.handle }}{% endcapture %}
+        {{ collection.title | link_to: url }}
+        {% endif %}
+        {% endif %}
+      </div>
+      {% elsif template contains 'collection' and collection.handle %}
+      <span>{{ collection.title }}</span>
+      <div class="breadcrumb"> <a href="/" title="{{ 'general.breadcrumbs.home_link_title' | t }}"><i class="mdi mdi-home-outline"></i></a>
+
+        <span aria-hidden="true" class="breadcrumb__sep">&gt;</span>
+        {% if current_tags %}
+        {% capture url %}{% if shop.locale != 'en' %}/{{ shop.locale }}{% endif %}/collections/{{ collection.handle }}{% endcapture %}
+        {{ collection.title | link_to: url }}
+        <span aria-hidden="true" class="breadcrumb__sep">&gt;</span>
+        <span>{{ current_tags | join: " + " }}</span>
+        {% else %}
+        <span>{{ collection.title }}</span>
+
+        {% endif %}
+      </div>
+      {% elsif template == 'blog' %}
+      <span>{{ blog.title }}</span>
+      <div class="breadcrumb"> <a href="/" title="{{ 'general.breadcrumbs.home_link_title' | t }}"><i class="mdi mdi-home-outline"></i></a>
+
+        <span aria-hidden="true" class="breadcrumb__sep">&gt;</span>
+        {% if current_tags %}
+        {{ blog.title | link_to: blog.url }}
+        <span aria-hidden="true" class="breadcrumb__sep">&gt;</span>
+        <span>{{ current_tags | join: " + " }}</span>
+        {% else %}
+
+        <span>{{ blog.title }}</span>
+
+        {% endif %}
+      </div>
+
+      {% elsif template == 'article' %}
+      <span>{{ article.title }}</span>
+      <div class="breadcrumb">
+        <a href="/" title="{{ 'general.breadcrumbs.home_link_title' | t }}"><i class="mdi mdi-home-outline"></i></a>
+
+        <span aria-hidden="true" class="breadcrumb__sep">&gt;</span>
+        {{ blog.title | link_to: blog.url }}
+      </div>
+      {% elsif template contains 'page' %}
+      <span>{{ page.title }}</span>
+      <div class="breadcrumb">
+        <a href="/" title="{{ 'general.breadcrumbs.home_link_title' | t }}"><i class="mdi mdi-home-outline"></i></a>
+
+        <span aria-hidden="true" class="breadcrumb__sep">&gt;</span>
+        <span>{{ page.title }}</span>
+      </div>
+      {% else %}
+      <span>{{ page_title }}</span>
+      <div class="breadcrumb">
+        <a href="/" title="{{ 'general.breadcrumbs.home_link_title' | t }}"><i class="mdi mdi-home-outline"></i></a>
+
+        <span aria-hidden="true" class="breadcrumb__sep">&gt;</span>
+        <span>{{ page_title }}</span>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</nav>
+{% endunless %}

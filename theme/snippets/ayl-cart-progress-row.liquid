@@ -1,0 +1,83 @@
+{%- comment -%}
+  Renders a single category progress bar row for B2B wholesale.
+  Arguments:
+  - cat_name: 'Botas'
+  - qty: qty_botas
+  - key: 'botas'
+  
+  Markup tiers:
+  12 pzas → +20%  |  24 pzas → +15%  |  36 pzas → +10%  |  48 pzas → +5%
+{%- endcomment -%}
+
+{%- liquid
+  assign percent = 0
+  assign next_tier = 0
+  assign next_markup = ""
+  assign current_markup = ""
+  assign message = ""
+  assign is_max = false
+
+  assign unit_word = "unidades"
+  if key == 'botas'
+    assign unit_word = "pares"
+  endif
+
+  if qty < 12
+    assign next_tier = 12
+    assign next_markup = "+20% markup"
+    assign current_markup = "Mínimo no alcanzado"
+    assign percent = qty | times: 100 | divided_by: 12
+    assign missing = 12 | minus: qty
+    assign message = "Faltan " | append: missing | append: " " | append: unit_word | append: " para habilitar la compra."
+  elsif qty < 24
+    assign next_tier = 24
+    assign next_markup = "+15% markup"
+    assign current_markup = "+20% markup"
+    assign diff = qty | minus: 12
+    assign percent = diff | times: 100 | divided_by: 12
+    assign missing = 24 | minus: qty
+    assign message = "Faltan " | append: missing | append: " " | append: unit_word | append: " para bajar a +15%."
+  elsif qty < 36
+    assign next_tier = 36
+    assign next_markup = "+10% markup"
+    assign current_markup = "+15% markup"
+    assign diff = qty | minus: 24
+    assign percent = diff | times: 100 | divided_by: 12
+    assign missing = 36 | minus: qty
+    assign message = "Faltan " | append: missing | append: " " | append: unit_word | append: " para bajar a +10%."
+  elsif qty < 48
+    assign next_tier = 48
+    assign next_markup = "+5% markup"
+    assign current_markup = "+10% markup"
+    assign diff = qty | minus: 36
+    assign percent = diff | times: 100 | divided_by: 12
+    assign missing = 48 | minus: qty
+    assign message = "Faltan " | append: missing | append: " " | append: unit_word | append: " para bajar a +5%."
+  else
+    assign percent = 100
+    assign current_markup = "+5% markup (Mejor precio)"
+    assign is_max = true
+    assign message = "¡Mejor precio de categoría alcanzado! 🎉"
+  endif
+-%}
+
+<div class="ayl-progress-row" style="margin-bottom: 12px; padding: 12px; background: #fafafa; border: 1px solid #eaeaea; border-radius: 6px; font-family: 'Inter', sans-serif;">
+  <div style="display: flex; justify-content: space-between; font-size: 13px; font-weight: 600; color: #333; margin-bottom: 6px;">
+    <span>{{ cat_name }}</span>
+    <span style="color: #C5A47E; font-size: 12px;">
+      {{ qty }} {% if key == 'botas' %}par{% if qty > 1 %}es{% endif %}{% else %}pza{% if qty > 1 %}s{% endif %}{% endif %} 
+      <span style="font-weight: 400; color: #777; font-size: 11px;">({{ current_markup }})</span>
+    </span>
+  </div>
+  
+  <div class="progress-bar-bg" style="width: 100%; height: 8px; background: #e9e9e9; border-radius: 4px; overflow: hidden; margin-bottom: 6px; position: relative;">
+    <div class="progress-bar-fill" style="width: {{ percent }}%; height: 100%; background: {% if is_max %}#2d6a4f{% else %}#C5A47E{% endif %}; border-radius: 4px; transition: width 0.3s ease;"></div>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; font-size: 11px; color: #666; line-height: 1.3; gap: 8px;">
+    <span>{{ message }}</span>
+    {%- unless is_max -%}
+      <span style="font-weight: 500; color: #4A0E17; white-space: nowrap;">Siguiente: {{ next_tier }} pzas ({{ next_markup }})</span>
+    {%- endunless -%}
+  </div>
+</div>

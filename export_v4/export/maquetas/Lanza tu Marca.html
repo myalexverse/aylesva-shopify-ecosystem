@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  body { margin: 0; background: #FAFAF8; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; text-decoration: none; }
+  a:hover { color: #C5A47E; }
+</style>
+</helmet>
+
+<div style="font-family: Manrope, system-ui, sans-serif; color: #0F172A; background: #FAFAF8;">
+
+  <!-- NAV -->
+  <div style="background: #020617; color: #fff;">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 9px 48px; display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.55);">
+      <span>Grupo Aylesva · Capital · Direct · Care · Global Estates · Commerce</span>
+      <div style="display: flex; gap: 22px;">
+        <a href="#">México</a>
+        <a href="#">USA</a>
+      </div>
+    </div>
+  </div>
+  <div style="background: #0F172A; color: #fff; border-bottom: 1px solid rgba(255,255,255,0.1); position: sticky; top: 0; z-index: 40;">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 20px 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px 40px; flex-wrap: wrap;">
+      <div style="display: flex; align-items: baseline; gap: 16px; flex: 0 0 auto; white-space: nowrap;">
+        <span style="font-family: Sora, sans-serif; font-weight: 600; letter-spacing: 0.24em; font-size: 15px; text-transform: uppercase;">Aylesva</span>
+        <span style="width: 1px; height: 13px; background: rgba(255,255,255,0.25);"></span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #E3CCAE;">Lanza tu Marca</span>
+      </div>
+      <div style="display: flex; gap: 26px; font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.8); flex: 1 1 auto; justify-content: center; flex-wrap: wrap;">
+        <a href="#beneficios" style="white-space: nowrap;">Beneficios</a>
+        <a href="#como" style="white-space: nowrap;">Cómo funciona</a>
+        <a href="#marcas" style="white-space: nowrap;">Marcas</a>
+        <a href="#servicios" style="white-space: nowrap;">Servicios</a>
+        <a href="#empezar" style="white-space: nowrap;">Contacto</a>
+      </div>
+      <a href="#empezar" style="background: #C5A47E; color: #0F172A; padding: 13px 26px; font-size: 13px; font-weight: 700; letter-spacing: 0.04em; border-radius: 2px; white-space: nowrap; flex: 0 0 auto; transition: all .25s ease;" style-hover="background: #E3CCAE;">Lanzar mi marca</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div style="background: #020617; position: relative; overflow: hidden;">
+    <div style="position: relative; max-width: 1440px; margin: 0 auto; padding: 108px 48px 96px; display: grid; grid-template-columns: 1.05fr 1fr; gap: 72px; align-items: center;">
+      <div>
+        <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 30px;">
+          <span style="width: 26px; height: 1px; background: #C5A47E;"></span>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: #E3CCAE;">Dropshipping con Aylesva</span>
+        </div>
+        <h1 style="font-family: Sora, sans-serif; font-weight: 300; font-size: 62px; line-height: 1.05; letter-spacing: -0.03em; color: #fff; margin: 0 0 26px; text-wrap: balance;">Lanza tu marca en línea. Nosotros hacemos el resto.</h1>
+        <p style="font-size: 18px; line-height: 1.68; color: rgba(255,255,255,0.72); max-width: 52ch; margin: 0 0 38px; text-wrap: pretty;">Creamos tu página web profesional, publicamos tus propios productos o integramos más de 2,000 productos de aylesva.mx a tu tienda. Tú eliges cómo empezar.</p>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 40px;">
+          <a href="#empezar" style="background: #C5A47E; color: #0F172A; padding: 18px 36px; font-size: 14px; font-weight: 700; letter-spacing: 0.04em; border-radius: 2px; transition: all .25s ease;" style-hover="background: #E3CCAE; transform: translateY(-2px); box-shadow: 0 16px 34px -16px rgba(197,164,126,0.55);">Lanzar mi marca →</a>
+          <a href="#como" style="border: 1px solid rgba(255,255,255,0.42); color: #fff; padding: 17px 35px; font-size: 14px; font-weight: 600; letter-spacing: 0.04em; border-radius: 2px; transition: all .25s ease;" style-hover="border-color: #fff; background: rgba(255,255,255,0.08);">Cómo funciona</a>
+        </div>
+        <div style="display: flex; gap: 28px; flex-wrap: wrap; padding-top: 26px; border-top: 1px solid rgba(255,255,255,0.14); font-size: 13px; color: rgba(255,255,255,0.6);">
+          <span style="display: flex; gap: 9px; align-items: center;"><span style="color: #C5A47E;">✓</span>Creación de páginas web</span>
+          <span style="display: flex; gap: 9px; align-items: center;"><span style="color: #C5A47E;">✓</span>Productos propios</span>
+          <span style="display: flex; gap: 9px; align-items: center;"><span style="color: #C5A47E;">✓</span>+2,000 productos integrados</span>
+        </div>
+      </div>
+      <div style="position: relative;">
+        <div style="height: 520px; background-image: url('https://aylesva.mx/cdn/shop/t/8/assets/lanza-hero-ecommerce.jpg?v=79729935251067826321785355661'); background-size: cover; background-position: center; border: 1px solid rgba(255,255,255,0.14);"></div>
+        <div style="position: absolute; inset: 12px; border: 1px solid rgba(197,164,126,0.7); pointer-events: none;"></div>
+        <div style="position: absolute; left: -34px; top: 48px; background: rgba(2,6,23,0.92); border: 1px solid rgba(197,164,126,0.4); padding: 16px 20px; min-width: 218px;">
+          <div style="font-size: 13px; font-weight: 700; color: #fff;">Nuevo pedido #1847</div>
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.08em; color: #E3CCAE; margin-top: 6px;">Pago confirmado · hace 2 min</div>
+        </div>
+        <div style="position: absolute; right: -28px; top: 232px; background: rgba(2,6,23,0.92); border: 1px solid rgba(197,164,126,0.4); padding: 16px 20px; min-width: 200px;">
+          <div style="font-size: 13px; font-weight: 700; color: #fff;">Envío en camino</div>
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.08em; color: #E3CCAE; margin-top: 6px;">Rastreo: AYL-29384</div>
+        </div>
+        <div style="position: absolute; left: -20px; bottom: 44px; background: #C5A47E; padding: 16px 22px;">
+          <div style="font-family: Sora, sans-serif; font-size: 22px; font-weight: 500; color: #0F172A;">+$12,450 MXN</div>
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(15,23,42,0.7); margin-top: 5px;">Ventas de esta semana</div>
+        </div>
+      </div>
+    </div>
+    <div style="position: relative; max-width: 1440px; margin: 0 auto; padding: 0 48px 0;">
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.14); border-top: 1px solid rgba(197,164,126,0.5);">
+        <sc-for list="{{ stats }}" as="s" hint-placeholder-count="4">
+          <div style="padding: 30px 32px 40px; background: #020617;">
+            <div style="font-family: Sora, sans-serif; font-size: 38px; font-weight: 300; color: #fff; letter-spacing: -0.02em;">{{ s.v }}</div>
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-top: 8px;">{{ s.k }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <div id="beneficios" style="background: #FAFAF8; border-bottom: 1px solid rgba(15,23,42,0.08);">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 96px 48px;">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; margin-bottom: 56px;">
+        <div>
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 22px;">
+            <span style="width: 24px; height: 1px; background: #C5A47E;"></span>
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #9A7B52;">¿Por qué Aylesva?</span>
+          </div>
+          <h2 style="font-family: Sora, sans-serif; font-weight: 400; font-size: 42px; line-height: 1.12; letter-spacing: -0.028em; margin: 0;">Todo lo que necesitas, sin los riesgos.</h2>
+        </div>
+        <p style="font-size: 16px; line-height: 1.7; color: rgba(15,23,42,0.62); margin: 0; text-wrap: pretty;">Tu tienda funciona sobre Shopify, integrada de forma nativa desde el primer día. Nosotros resolvemos catálogo, inventario y logística.</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(15,23,42,0.12); border: 1px solid rgba(15,23,42,0.12);">
+        <sc-for list="{{ features }}" as="f" hint-placeholder-count="4">
+          <div style="background: #fff; padding: 40px 32px 44px; transition: all .3s ease;" style-hover="box-shadow: 0 26px 52px -30px rgba(2,6,23,0.3); transform: translateY(-3px); z-index: 2;">
+            <div style="height: 30px;">{{ f.el }}</div>
+            <div style="font-family: Sora, sans-serif; font-size: 19px; font-weight: 500; letter-spacing: -0.01em; margin: 26px 0 12px;">{{ f.t }}</div>
+            <div style="font-size: 14px; line-height: 1.65; color: rgba(15,23,42,0.62);">{{ f.d }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <!-- PILARES -->
+  <div style="background: #fff;">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 96px 48px;">
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(15,23,42,0.12); border: 1px solid rgba(15,23,42,0.12);">
+        <sc-for list="{{ pillars }}" as="p" hint-placeholder-count="3">
+          <div style="background: #FAFAF8; padding: 48px 40px 52px; transition: all .3s ease;" style-hover="background: #fff; box-shadow: 0 26px 52px -30px rgba(2,6,23,0.28); transform: translateY(-3px); z-index: 2;">
+            <div style="height: 34px;">{{ p.el }}</div>
+            <div style="font-family: Sora, sans-serif; font-size: 22px; font-weight: 500; letter-spacing: -0.015em; margin: 30px 0 14px;">{{ p.t }}</div>
+            <div style="font-size: 15px; line-height: 1.7; color: rgba(15,23,42,0.64);">{{ p.d }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <!-- MARCAS -->
+  <div id="marcas" style="background: #0F172A;">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 104px 48px;">
+      <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 72px; align-items: end; margin-bottom: 56px;">
+        <div>
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 22px;">
+            <span style="width: 24px; height: 1px; background: #C5A47E;"></span>
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #E3CCAE;">Resultados reales</span>
+          </div>
+          <h2 style="font-family: Sora, sans-serif; font-weight: 300; font-size: 44px; line-height: 1.1; letter-spacing: -0.03em; color: #fff; margin: 0; text-wrap: balance;">Marcas lanzadas con Aylesva. Sitios reales, activos hoy.</h2>
+        </div>
+        <div>
+          <p style="font-size: 16px; line-height: 1.7; color: rgba(255,255,255,0.62); margin: 0 0 24px;">Cada tarjeta es una tienda real construida y lanzada por nuestro equipo. Haz clic en cualquiera para conocer el proyecto.</p>
+          <a href="#" style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #E3CCAE; border-bottom: 1px solid rgba(227,204,174,0.4); padding-bottom: 4px;">Ver las 23 marcas →</a>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
+        <sc-for list="{{ brands }}" as="b" hint-placeholder-count="8">
+          <a href="#" style="display: block; border: 1px solid rgba(255,255,255,0.16); background: rgba(255,255,255,0.03); transition: all .3s ease;" style-hover="border-color: #C5A47E; transform: translateY(-3px);">
+            <div style="height: 170px; background: repeating-linear-gradient(135deg, #1c2740 0 8px, #16203a 8px 16px); display: flex; align-items: center; justify-content: center;">
+              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.12em; color: rgba(255,255,255,0.42);">captura del sitio</span>
+            </div>
+            <div style="padding: 20px 22px 22px; display: flex; justify-content: space-between; align-items: center; gap: 12px;">
+              <div>
+                <div style="font-family: Sora, sans-serif; font-size: 15px; font-weight: 500; color: #fff;">{{ b.name }}</div>
+                <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-top: 5px;">{{ b.cat }}</div>
+              </div>
+              <span style="color: #C5A47E; font-size: 13px;">↗</span>
+            </div>
+          </a>
+        </sc-for>
+      </div>
+      <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-top: 20px;">Pendiente: capturas y nombres reales de las 23 marcas</div>
+    </div>
+  </div>
+
+  <!-- PROCESO -->
+  <div id="como" style="background: #FAFAF8; border-bottom: 1px solid rgba(15,23,42,0.08);">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 104px 48px;">
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 22px;">
+        <span style="width: 24px; height: 1px; background: #C5A47E;"></span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #9A7B52;">Cómo funciona</span>
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: end; margin-bottom: 60px;">
+        <h2 style="font-family: Sora, sans-serif; font-weight: 400; font-size: 42px; line-height: 1.12; letter-spacing: -0.028em; margin: 0;">Tres pasos para lanzar tu marca.</h2>
+        <p style="font-size: 16px; line-height: 1.7; color: rgba(15,23,42,0.62); margin: 0;">Sin complicaciones. Nos encargamos de todo para que tú solo te enfoques en vender.</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;">
+        <sc-for list="{{ steps }}" as="p" hint-placeholder-count="3">
+          <div style="background: #fff; border: 1px solid rgba(15,23,42,0.12); transition: all .3s ease;" style-hover="box-shadow: 0 26px 52px -30px rgba(2,6,23,0.3); transform: translateY(-3px);">
+            <div style="position: relative; height: 240px; background-size: cover; background-position: center; background-color: #d8d4cc; background-image: {{ p.bg }};">
+              <div style="position: absolute; left: 0; bottom: 0; background: #0F172A; color: #C5A47E; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.2em; padding: 12px 18px;">{{ p.n }}</div>
+            </div>
+            <div style="padding: 34px 32px 38px;">
+              <div style="font-family: Sora, sans-serif; font-size: 21px; font-weight: 500; letter-spacing: -0.015em; margin-bottom: 12px;">{{ p.t }}</div>
+              <div style="font-size: 15px; line-height: 1.7; color: rgba(15,23,42,0.64);">{{ p.d }}</div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICIOS -->
+  <div id="servicios" style="background: #fff;">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 104px 48px;">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: end; margin-bottom: 56px;">
+        <div>
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 22px;">
+            <span style="width: 24px; height: 1px; background: #C5A47E;"></span>
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #9A7B52;">También ofrecemos</span>
+          </div>
+          <h2 style="font-family: Sora, sans-serif; font-weight: 400; font-size: 42px; line-height: 1.12; letter-spacing: -0.028em; margin: 0;">Más formas de crecer con Aylesva.</h2>
+        </div>
+        <p style="font-size: 16px; line-height: 1.7; color: rgba(15,23,42,0.62); margin: 0; text-wrap: pretty;">Ya sea que necesites una tienda nueva desde cero o quieras conectar tus productos existentes a nuestro marketplace — te ayudamos.</p>
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px;">
+        <sc-for list="{{ services }}" as="s" hint-placeholder-count="2">
+          <div style="border: 1px solid rgba(15,23,42,0.12); background: #FAFAF8; display: grid; grid-template-columns: 0.85fr 1fr; transition: all .3s ease;" style-hover="box-shadow: 0 26px 52px -30px rgba(2,6,23,0.3); transform: translateY(-3px);">
+            <div style="position: relative; min-height: 340px; background-size: cover; background-position: center; background-color: #d8d4cc; background-image: {{ s.bg }};">
+              <div style="position: absolute; top: 18px; left: 18px; background: #C5A47E; color: #0F172A; font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; padding: 7px 12px;">{{ s.tag }}</div>
+            </div>
+            <div style="padding: 40px 36px 38px; display: flex; flex-direction: column; gap: 22px;">
+              <div>
+                <div style="font-family: Sora, sans-serif; font-size: 23px; font-weight: 500; letter-spacing: -0.018em; margin-bottom: 14px; text-wrap: balance;">{{ s.t }}</div>
+                <div style="font-size: 15px; line-height: 1.7; color: rgba(15,23,42,0.64);">{{ s.d }}</div>
+              </div>
+              <div style="display: grid; gap: 11px; padding-top: 20px; border-top: 1px solid rgba(15,23,42,0.12);">
+                <sc-for list="{{ s.bullets }}" as="b" hint-placeholder-count="3">
+                  <div style="display: flex; gap: 12px; align-items: flex-start; font-size: 14px; line-height: 1.5; color: rgba(15,23,42,0.75);"><span style="color: #C5A47E;">✓</span><span>{{ b }}</span></div>
+                </sc-for>
+              </div>
+              <a href="#empezar" style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #9A7B52; border-bottom: 1px solid rgba(197,164,126,0.5); padding-bottom: 4px; align-self: start; margin-top: auto;">Solicitar información →</a>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORMULARIO -->
+  <div id="empezar" style="background: #FAFAF8; border-top: 1px solid rgba(15,23,42,0.08);">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 104px 48px;">
+      <div style="display: grid; grid-template-columns: 1fr 1.05fr; border: 1px solid rgba(15,23,42,0.12); background: #fff;">
+        <div style="padding: 72px 60px; background: #FAFAF8; display: flex; flex-direction: column; justify-content: space-between; gap: 44px;">
+          <div>
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #9A7B52; margin-bottom: 22px;">Empieza tu marca</div>
+            <h2 style="font-family: Sora, sans-serif; font-weight: 400; font-size: 38px; line-height: 1.14; letter-spacing: -0.026em; margin: 0 0 20px; text-wrap: balance;">Solicita información para lanzar tu marca.</h2>
+            <p style="font-size: 16px; line-height: 1.7; color: rgba(15,23,42,0.64); margin: 0; max-width: 44ch;">Llena el formulario y te mostraremos cómo lanzar tu propia tienda en línea con nuestro catálogo y sistema de envíos.</p>
+          </div>
+          <div style="display: grid; gap: 16px;">
+            <div style="display: flex; gap: 14px; align-items: flex-start; font-size: 14px; line-height: 1.5; color: rgba(15,23,42,0.72);"><span style="width: 6px; height: 6px; flex: 0 0 6px; margin-top: 7px; background: #C5A47E; border-radius: 50%;"></span>Respuesta en menos de 24 hrs</div>
+            <div style="display: flex; gap: 14px; align-items: flex-start; font-size: 14px; line-height: 1.5; color: rgba(15,23,42,0.72);"><span style="width: 6px; height: 6px; flex: 0 0 6px; margin-top: 7px; background: #C5A47E; border-radius: 50%;"></span>Sin compromiso</div>
+            <div style="display: flex; gap: 14px; align-items: flex-start; font-size: 14px; line-height: 1.5; color: rgba(15,23,42,0.72);"><span style="width: 6px; height: 6px; flex: 0 0 6px; margin-top: 7px; background: #C5A47E; border-radius: 50%;"></span>Asesoría personalizada</div>
+          </div>
+        </div>
+        <div style="padding: 60px; border-left: 1px solid rgba(15,23,42,0.12);">
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(15,23,42,0.4); margin-bottom: 32px;">Embed GoHighLevel · form ENbMAneKkZAPTdITGH2n</div>
+          <div style="display: grid; gap: 24px;">
+            <div>
+              <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(15,23,42,0.55); margin-bottom: 9px;">Nombre completo</div>
+              <div style="border: 1px solid rgba(15,23,42,0.18); padding: 15px 16px; font-size: 15px; color: rgba(15,23,42,0.35); transition: border-color .2s ease;" style-hover="border-color: #C5A47E;">Nombre y apellido</div>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+              <div>
+                <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(15,23,42,0.55); margin-bottom: 9px;">Correo</div>
+                <div style="border: 1px solid rgba(15,23,42,0.18); padding: 15px 16px; font-size: 15px; color: rgba(15,23,42,0.35); transition: border-color .2s ease;" style-hover="border-color: #C5A47E;">nombre@correo.com</div>
+              </div>
+              <div>
+                <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(15,23,42,0.55); margin-bottom: 9px;">WhatsApp</div>
+                <div style="border: 1px solid rgba(15,23,42,0.18); padding: 15px 16px; font-size: 15px; color: rgba(15,23,42,0.35); transition: border-color .2s ease;" style-hover="border-color: #C5A47E;">+52 (000) 000 0000</div>
+              </div>
+            </div>
+            <div>
+              <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(15,23,42,0.55); margin-bottom: 9px;">¿Qué necesitas?</div>
+              <div style="border: 1px solid rgba(15,23,42,0.18); padding: 15px 16px; font-size: 15px; color: rgba(15,23,42,0.5); display: flex; justify-content: space-between; align-items: center; transition: border-color .2s ease;" style-hover="border-color: #C5A47E;"><span>Lanzar una marca nueva con su catálogo</span><span style="color: #C5A47E;">▾</span></div>
+            </div>
+            <div>
+              <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(15,23,42,0.55); margin-bottom: 9px;">¿Ya tienes productos propios?</div>
+              <div style="display: flex; gap: 12px;">
+                <div style="flex: 1; border: 1px solid #C5A47E; background: rgba(197,164,126,0.12); padding: 14px; text-align: center; font-size: 14px; font-weight: 600; color: #0F172A; cursor: pointer;">Sí</div>
+                <div style="flex: 1; border: 1px solid rgba(15,23,42,0.18); padding: 14px; text-align: center; font-size: 14px; color: rgba(15,23,42,0.55); cursor: pointer; transition: border-color .2s ease;" style-hover="border-color: #C5A47E;">No, quiero su catálogo</div>
+              </div>
+            </div>
+            <div>
+              <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(15,23,42,0.55); margin-bottom: 9px;">Mensaje</div>
+              <div style="border: 1px solid rgba(15,23,42,0.18); padding: 15px 16px; font-size: 15px; color: rgba(15,23,42,0.35); min-height: 84px; transition: border-color .2s ease;" style-hover="border-color: #C5A47E;">Cuéntanos qué quieres vender</div>
+            </div>
+            <div style="background: #0F172A; color: #fff; padding: 18px; text-align: center; font-size: 14px; font-weight: 600; letter-spacing: 0.04em; cursor: pointer; border-radius: 2px; transition: all .25s ease;" style-hover="background: #020617; box-shadow: 0 14px 30px -14px rgba(2,6,23,0.6);">Solicitar información</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA FINAL -->
+  <div style="position: relative; background: #020617; overflow: hidden;">
+    <div style="position: absolute; inset: 0; background-image: url('https://aylesva.mx/cdn/shop/t/8/assets/lanza-service-webdesign.jpg?v=73910672857533230781785356547'); background-size: cover; background-position: center;"></div>
+    <div style="position: absolute; inset: 0; background: rgba(2,6,23,0.85);"></div>
+    <div style="position: relative; max-width: 1440px; margin: 0 auto; padding: 96px 48px; display: flex; justify-content: space-between; align-items: center; gap: 64px; flex-wrap: wrap;">
+      <div style="max-width: 58ch;">
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #E3CCAE; margin-bottom: 20px;">Tu turno</div>
+        <h2 style="font-family: Sora, sans-serif; font-weight: 300; font-size: 40px; line-height: 1.15; letter-spacing: -0.028em; color: #fff; margin: 0 0 18px; text-wrap: balance;">Tu marca podría ser la siguiente que lancemos juntos.</h2>
+        <p style="font-size: 16px; line-height: 1.7; color: rgba(255,255,255,0.65); margin: 0;">Diseñamos, construimos y lanzamos tu tienda de principio a fin, con el catálogo, envíos y tecnología ya resueltos.</p>
+      </div>
+      <div style="display: grid; gap: 14px; justify-items: start;">
+        <a href="#empezar" style="background: #C5A47E; color: #0F172A; padding: 20px 40px; font-size: 14px; font-weight: 700; letter-spacing: 0.04em; border-radius: 2px; white-space: nowrap; transition: all .25s ease;" style-hover="background: #E3CCAE; transform: translateY(-2px); box-shadow: 0 16px 34px -16px rgba(197,164,126,0.55);">Lanzar mi marca →</a>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.1em; color: rgba(255,255,255,0.45);">Sin compromiso. Te mostraremos cómo podría verse tu tienda.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- BANDA DE OTRAS RAMAS -->
+  <div style="background: #fff;">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 96px 48px;">
+      <div style="margin-bottom: 44px;">
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #9A7B52; margin-bottom: 20px;">Ecosistema Aylesva</div>
+        <h2 style="font-family: Sora, sans-serif; font-weight: 400; font-size: 34px; line-height: 1.15; letter-spacing: -0.025em; margin: 0; max-width: 30ch;">El mismo respaldo, en cada una de nuestras ramas</h2>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(15,23,42,0.12); border: 1px solid rgba(15,23,42,0.12);">
+        <sc-for list="{{ branches }}" as="b" hint-placeholder-count="4">
+          <a href="#" style="background: #FAFAF8; padding: 40px 32px 44px; display: block; transition: all .3s ease;" style-hover="background: #fff;">
+            <div style="height: 30px;">{{ b.el }}</div>
+            <div style="font-family: Sora, sans-serif; font-size: 18px; font-weight: 500; letter-spacing: -0.01em; margin: 26px 0 10px;">{{ b.name }}</div>
+            <div style="font-size: 14px; line-height: 1.6; color: rgba(15,23,42,0.6);">{{ b.d }}</div>
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: #9A7B52; margin-top: 26px;">Conocer →</div>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="background: #020617; color: #fff;">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 80px 48px 40px; display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 64px;">
+      <div>
+        <div style="font-family: Sora, sans-serif; font-weight: 600; letter-spacing: 0.24em; font-size: 15px; text-transform: uppercase; margin-bottom: 22px;">Aylesva</div>
+        <p style="font-size: 14px; line-height: 1.75; color: rgba(255,255,255,0.6); margin: 0 0 26px; max-width: 40ch;">Una plataforma dedicada a la curaduría editorial de productos premium, conectando artesanos y marcas de lujo con el estilo de vida contemporáneo.</p>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; line-height: 2; color: rgba(255,255,255,0.5);">Calle Benito Juarez 116<br />sales@aylesva.com</div>
+      </div>
+      <div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: #C5A47E; margin-bottom: 20px;">Servicios</div>
+        <div style="display: grid; gap: 12px; font-size: 14px; color: rgba(255,255,255,0.7);">
+          <a href="#">Lanza tu marca</a>
+          <a href="#">Global Estates</a>
+          <a href="#">Aylesva Capital</a>
+          <a href="#">Aylesva Direct</a>
+          <a href="#">Aylesva Care</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: #C5A47E; margin-bottom: 20px;">Nuestra Empresa</div>
+        <div style="display: grid; gap: 12px; font-size: 14px; color: rgba(255,255,255,0.7);">
+          <a href="#">Ayuda / Contacto</a>
+          <a href="#">Nuestra Historia</a>
+          <a href="#">Términos de Servicio</a>
+          <a href="#">Aviso de Privacidad</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: #C5A47E; margin-bottom: 20px;">Recibe Nuestras Ofertas</div>
+        <p style="font-size: 14px; line-height: 1.65; color: rgba(255,255,255,0.6); margin: 0 0 18px;">Únete a nuestra colección curada y sé el primero en conocer lanzamientos exclusivos.</p>
+        <div style="display: flex; border: 1px solid rgba(255,255,255,0.25);">
+          <div style="flex: 1; padding: 13px 14px; font-size: 13px; color: rgba(255,255,255,0.4);">tu@correo.com</div>
+          <div style="background: #C5A47E; color: #0F172A; padding: 13px 18px; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; cursor: pointer; transition: background .25s ease;" style-hover="background: #E3CCAE;">SUSCRIBIR</div>
+        </div>
+      </div>
+    </div>
+    <div style="max-width: 1440px; margin: 0 auto; padding: 28px 48px 44px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.08em; color: rgba(255,255,255,0.42);">
+      <span>© 2026 Aylesva · Lanza tu marca en línea</span>
+      <span>Capital · Direct · Care · Global Estates · Commerce</span>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;gold&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#C5A47E&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#C5A47E&quot;,&quot;#E3CCAE&quot;,&quot;#B08D5B&quot;],&quot;section&quot;:&quot;Marca&quot;}}">
+const I = {
+  sync: '<path d="M4 12a8 8 0 0 1 13.7-5.6"/><path d="M20 12a8 8 0 0 1-13.7 5.6"/><path d="M18 3v4h-4"/><path d="M6 21v-4h4"/>',
+  ship: '<rect x="2" y="8" width="13" height="9"/><path d="M15 11h4l3 3v3h-7z"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="19" r="2"/>',
+  shop: '<rect x="3" y="4" width="18" height="5"/><path d="M5 9v12h14V9"/><path d="M9 13h6"/>',
+  grow: '<path d="M4 20V9M10 20V4M16 20v-7M22 20h-20"/>',
+  noStock: '<rect x="4" y="7" width="16" height="13"/><path d="M9 7V4h6v3"/><path d="M9 13h6"/>',
+  store: '<path d="M3 9h18v12H3z"/><path d="M3 9l2-5h14l2 5"/><path d="M9 21v-7h6v7"/>',
+  logistics: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l4 2"/>',
+  capital: '<rect x="3" y="10" width="18" height="11"/><path d="M3 10 12 4l9 6"/><path d="M9 21v-6h6v6"/>',
+  direct: '<rect x="2" y="8" width="13" height="9"/><path d="M15 11h4l3 3v3h-7z"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="19" r="2"/>',
+  care: '<path d="M12 20 4 12.5A4.6 4.6 0 0 1 12 7a4.6 4.6 0 0 1 8 5.5z"/><path d="M8 13h2l1.5-3 2 5 1.5-2h2"/>',
+  estates: '<path d="M3 21V9l6-4 6 4v12"/><path d="M15 21V13h6v8"/><path d="M7 13h2M7 17h2"/>'
+};
+
+function icon(svg, size, color) {
+  return React.createElement('svg', {
+    width: size, height: size, viewBox: '0 0 24 24', fill: 'none',
+    stroke: color || '#C5A47E', strokeWidth: 1.25, strokeLinecap: 'square',
+    style: { display: 'block' },
+    dangerouslySetInnerHTML: { __html: svg }
+  });
+}
+
+class Component extends DCLogic {
+  renderVals() {
+    const gold = this.props.gold ?? '#C5A47E';
+    return {
+      stats: [
+        { v: '23', k: 'Marcas lanzadas' },
+        { v: '+2,000', k: 'Productos disponibles' },
+        { v: '100%', k: 'Envíos gestionados' },
+        { v: '24 hrs', k: 'Tiempo de respuesta' }
+      ],
+      features: [
+        { t: 'Sincronización automática', d: 'Más de 1,500 productos con inventario y precios siempre actualizados.', el: icon(I.sync, 30, gold) },
+        { t: 'Envío directo', d: 'Cada pedido se envía directamente desde el almacén a la puerta de tu cliente.', el: icon(I.ship, 30, gold) },
+        { t: '100% Shopify', d: 'Tu tienda funciona sobre Shopify, integrada de forma nativa desde el primer día.', el: icon(I.shop, 30, gold) },
+        { t: 'Crece a tu ritmo', d: 'Agrega más productos a tu catálogo cuando lo desees.', el: icon(I.grow, 30, gold) }
+      ],
+      pillars: [
+        { t: 'Sin inversión en inventario', d: 'No necesitas comprar productos por adelantado. Empieza a vender libre de riesgos y sin capital comprometido. Solo pagas cuando vendes.', el: icon(I.noStock, 34, gold) },
+        { t: 'Tienda profesional incluida', d: 'Obtienes un comercio electrónico premium diseñado por nuestro equipo, completamente configurado y optimizado para vender desde el primer día.', el: icon(I.store, 34, gold) },
+        { t: 'Logística resuelta al 100%', d: 'Tú vendes; nosotros empacamos y enviamos cada pedido directamente a tu cliente. Gestión de envíos completa, incluyendo rastreo.', el: icon(I.logistics, 34, gold) }
+      ],
+      brands: [
+        { name: 'Marca 01', cat: 'Moda' },
+        { name: 'Marca 02', cat: 'Hogar' },
+        { name: 'Marca 03', cat: 'Artesanal' },
+        { name: 'Marca 04', cat: 'Belleza' },
+        { name: 'Marca 05', cat: 'Electrónicos' },
+        { name: 'Marca 06', cat: 'Alimentos' },
+        { name: 'Marca 07', cat: 'Accesorios' },
+        { name: 'Marca 08', cat: 'Deporte' }
+      ],
+      steps: [
+        { n: '01', t: 'Elige tus productos', d: 'Selecciona de nuestro catálogo de +1,500 productos los que quieres vender bajo tu marca.', bg: "url('https://aylesva.mx/cdn/shop/t/8/assets/lanza-step-select.jpg?v=96742576847062386621785355679')" },
+        { n: '02', t: 'Lanzamos tu tienda', d: 'Diseñamos y construimos tu tienda profesional en Shopify, lista para recibir clientes.', bg: "url('https://aylesva.mx/cdn/shop/t/8/assets/lanza-step-launch.jpg?v=78518425695149522671785355680')" },
+        { n: '03', t: 'Tú vendes, nosotros enviamos', d: 'Cada pedido se surte y envía desde nuestro almacén directo a la puerta de tu cliente.', bg: "url('https://aylesva.mx/cdn/shop/t/8/assets/lanza-step-shipping.jpg?v=48937738132792762041785355682')" }
+      ],
+      services: [
+        {
+          tag: 'Popular', t: 'Creamos tu Página Web',
+          d: 'Diseñamos y desarrollamos tu tienda en línea desde cero — profesional, optimizada y lista para vender. Desde la identidad visual hasta la última línea de código.',
+          bullets: ['Diseño personalizado', 'E-commerce completo', 'Optimizado para móviles'],
+          bg: "url('https://aylesva.mx/cdn/shop/t/8/assets/lanza-service-webdesign.jpg?v=73910672857533230781785356547')"
+        },
+        {
+          tag: 'Nuevo', t: 'Conecta tus Productos a Aylesva',
+          d: '¿Ya tienes productos? Creamos tu página web y conectamos tu catálogo al marketplace de aylesva.mx para que llegues a miles de clientes nuevos.',
+          bullets: ['Tu tienda propia + presencia en aylesva.mx', 'Sincronización de inventario', 'Mayor alcance de ventas'],
+          bg: "url('https://aylesva.mx/cdn/shop/t/8/assets/lanza-service-connect.jpg?v=76321154926274738671785356549')"
+        }
+      ],
+      branches: [
+        { name: 'Global Estates', d: 'Bienes raíces y desarrollos de lujo.', el: icon(I.estates, 30, gold) },
+        { name: 'Aylesva Capital', d: 'Financiamiento y préstamos.', el: icon(I.capital, 30, gold) },
+        { name: 'Aylesva Direct', d: 'Importación y logística desde China.', el: icon(I.direct, 30, gold) },
+        { name: 'Aylesva Care', d: 'Beneficios de salud, seguros y telemedicina.', el: icon(I.care, 30, gold) }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

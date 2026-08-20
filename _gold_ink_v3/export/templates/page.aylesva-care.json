@@ -1,0 +1,282 @@
+{
+  "sections": {
+    "hero": {
+      "type": "aylesva-corp-hero",
+      "settings": {
+        "eyebrow": "Aylesva Care",
+        "overlay": 94,
+        "focal": "center",
+        "title": "Protección y Bienestar Integral para ti y tu Familia",
+        "subtitle": "Accede a los mejores paquetes de beneficios de salud, hogar y seguros complementarios de la mano de New Benefits desde solo $20 USD.",
+        "cta1_label": "Solicitar Información",
+        "cta1_link": "#contacto",
+        "cta2_label": "Conocer Beneficios",
+        "cta2_link": "#planes"
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ],
+      "blocks": {
+        "s1": {
+          "type": "stat",
+          "settings": {
+            "value": "$20 USD",
+            "label": "Desde, al mes"
+          }
+        },
+        "s2": {
+          "type": "stat",
+          "settings": {
+            "value": "24/7",
+            "label": "Telemedicina"
+          }
+        },
+        "s3": {
+          "type": "stat",
+          "settings": {
+            "value": "3",
+            "label": "Paquetes de beneficios"
+          }
+        },
+        "s4": {
+          "type": "stat",
+          "settings": {
+            "value": "New Benefits",
+            "label": "Red de proveedores"
+          }
+        }
+      }
+    },
+    "planes": {
+      "type": "aylesva-corp-cards",
+      "settings": {
+        "bg": "#FAFAF8",
+        "columns": 3,
+        "eyebrow": "Paquetes",
+        "title": "Planes de Beneficios de Salud y Hogar",
+        "intro": "Encuentra opciones diseñadas para cuidar tu salud diaria, protegerte ante accidentes y dar soporte a tu hogar."
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3"
+      ],
+      "blocks": {
+        "c1": {
+          "type": "card",
+          "settings": {
+            "tag": "Popular",
+            "title": "Health & Household",
+            "text": "Beneficios de salud diaria, telemedicina 24/7, consultas médicas preferenciales y productos Briotech de grado médico para el cuidado diario.",
+            "price": "$20 USD",
+            "price_suffix": "/mes",
+            "cta_label": "Saber más",
+            "cta_link": "#contacto"
+          }
+        },
+        "c2": {
+          "type": "card",
+          "settings": {
+            "tag": "Popular",
+            "title": "Supplemental Insurance",
+            "text": "Planes complementarios con el respaldo de Aflac y UHOne diseñados para cubrir accidentes, hospitalización y gastos de visión/dentales.",
+            "price": "$35 USD",
+            "price_suffix": "/mes",
+            "cta_label": "Saber más",
+            "cta_link": "#contacto"
+          }
+        },
+        "c3": {
+          "type": "card",
+          "settings": {
+            "tag": "Hogar",
+            "title": "Homezie",
+            "text": "Descuentos y beneficios integrales para el cuidado, soporte y economía de tu hogar, facilitando el acceso a técnicos y reparaciones.",
+            "price": "$15 USD",
+            "price_suffix": "/mes",
+            "cta_label": "Saber más",
+            "cta_link": "#contacto"
+          }
+        }
+      }
+    },
+    "respaldo": {
+      "type": "aylesva-corp-features",
+      "settings": {
+        "bg": "#FFFFFF",
+        "eyebrow": "Respaldo integral",
+        "title": "Un Ecosistema de Salud y Descuentos",
+        "intro": "New Benefits es el principal proveedor de planes de descuento en salud en los Estados Unidos. A través de Aylesva Care, te conectamos con telemedicina, descuentos farmacéuticos y seguros suplementarios de líderes de la industria."
+      },
+      "block_order": [
+        "f1",
+        "f2",
+        "f3"
+      ],
+      "blocks": {
+        "f1": {
+          "type": "feature",
+          "settings": {
+            "icon": "<rect x=\"3\" y=\"5\" width=\"18\" height=\"14\"/><path d=\"M3 10h18M9 10v9\"/>",
+            "title": "Beneficios Flexibles",
+            "text": "Planes diseñados a la medida para cubrir desde necesidades médicas diarias hasta servicios complementarios para el hogar."
+          }
+        },
+        "f2": {
+          "type": "feature",
+          "settings": {
+            "icon": "<circle cx=\"8\" cy=\"8\" r=\"3\"/><circle cx=\"17\" cy=\"9\" r=\"2.5\"/><path d=\"M2 20c0-3.3 2.7-5.5 6-5.5s6 2.2 6 5.5\"/><path d=\"M15 20c0-2.5 1.5-4 3.5-4S22 17.5 22 20\"/>",
+            "title": "Cobertura de Dependientes",
+            "text": "Agrega fácilmente a miembros de tu familia para extender los descuentos de salud y el bienestar a todos tus seres queridos."
+          }
+        },
+        "f3": {
+          "type": "feature",
+          "settings": {
+            "icon": "<path d=\"M12 3l8 3v6c0 5-4 8-8 9-4-1-8-4-8-9V6z\"/><path d=\"M8.5 12l2.5 2.5 4.5-5\"/>",
+            "title": "Aliados de la Industria",
+            "text": "New Benefits, Aflac, UHOne y Briotech respaldan la red de proveedores y los seguros complementarios."
+          }
+        }
+      }
+    },
+    "proceso": {
+      "type": "aylesva-corp-process",
+      "settings": {
+        "dark": true,
+        "eyebrow": "Activación",
+        "title": "Pasos para Registrarte",
+        "intro": "Un proceso de activación simple para comenzar a disfrutar de tus beneficios."
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3"
+      ],
+      "blocks": {
+        "s1": {
+          "type": "step",
+          "settings": {
+            "title": "Elección de Plan",
+            "text": "Selecciona entre nuestros paquetes de beneficios médicos y de protección complementaria."
+          }
+        },
+        "s2": {
+          "type": "step",
+          "settings": {
+            "title": "Formulario de Inscripción",
+            "text": "Proporciona tus datos básicos y los de tus dependientes familiares para abrir tu perfil."
+          }
+        },
+        "s3": {
+          "type": "step",
+          "settings": {
+            "title": "Activación de Beneficios",
+            "text": "Recibe tu tarjeta digital de Aylesva Care y empieza a ahorrar en consultas y medicamentos."
+          }
+        }
+      }
+    },
+    "contacto": {
+      "type": "aylesva-corp-form",
+      "settings": {
+        "anchor": "contacto",
+        "bg": "#FFFFFF",
+        "eyebrow": "Asesoría",
+        "title": "Solicita tu Asesoría Personalizada",
+        "text": "Compártenos tus datos para presentarte los planes de descuentos médicos y seguros suplementarios.",
+        "form_id": "vDnep2WEYdM0V7jw95KX",
+        "form_height": 700,
+        "legal": "Este programa NO es un seguro de gastos médicos. No está diseñado para reemplazar seguros ni cumple con los requisitos de cobertura mínima obligatoria de la Ley de Cuidado de Salud Asequible. Proporciona descuentos y tarifas preferenciales exclusivamente en la red de proveedores de salud contratados por New Benefits, Ltd. Cada miembro es responsable de pagar el costo total de los servicios médicos con descuento en el momento de recibirlos. Organización del Plan de Descuento: New Benefits, Ltd., Attn: Compliance Department, PO Box 803475, Dallas, TX 75380-3475."
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3"
+      ],
+      "blocks": {
+        "p1": {
+          "type": "point",
+          "settings": {
+            "text": "Telemedicina 24/7 y consultas preferenciales"
+          }
+        },
+        "p2": {
+          "type": "point",
+          "settings": {
+            "text": "Cobertura extensible a dependientes"
+          }
+        },
+        "p3": {
+          "type": "point",
+          "settings": {
+            "text": "Tarjeta digital de Aylesva Care al activar"
+          }
+        }
+      }
+    },
+    "ramas": {
+      "type": "aylesva-corp-branches",
+      "settings": {
+        "bg": "#FFFFFF",
+        "eyebrow": "Ecosistema Aylesva",
+        "title": "El mismo respaldo, en cada una de nuestras ramas"
+      },
+      "block_order": [
+        "br1",
+        "br2",
+        "br3",
+        "br4"
+      ],
+      "blocks": {
+        "br1": {
+          "type": "branch",
+          "settings": {
+            "title": "Aylesva Recursos",
+            "text": "Intermediación financiera para tu negocio.",
+            "icon": "<rect x=\"3\" y=\"10\" width=\"18\" height=\"11\"/><path d=\"M3 10 12 4l9 6\"/><path d=\"M9 21v-6h6v6\"/>",
+            "link": "/pages/aylesva-recursos"
+          }
+        },
+        "br2": {
+          "type": "branch",
+          "settings": {
+            "title": "Aylesva Direct",
+            "text": "Importación y logística desde China.",
+            "icon": "<rect x=\"2\" y=\"8\" width=\"13\" height=\"9\"/><path d=\"M15 11h4l3 3v3h-7z\"/><circle cx=\"6\" cy=\"19\" r=\"2\"/><circle cx=\"18\" cy=\"19\" r=\"2\"/>",
+            "link": "/pages/aylesva-direct"
+          }
+        },
+        "br3": {
+          "type": "branch",
+          "settings": {
+            "title": "Global Estates",
+            "text": "Bienes raíces y desarrollos de lujo.",
+            "icon": "<path d=\"M3 21V9l6-4 6 4v12\"/><path d=\"M15 21V13h6v8\"/><path d=\"M7 13h2M7 17h2\"/>",
+            "link": "/pages/globalestates"
+          }
+        },
+        "br4": {
+          "type": "branch",
+          "settings": {
+            "title": "Lanza tu marca",
+            "text": "Tienda propia con nuestro catálogo y envíos.",
+            "icon": "<rect x=\"3\" y=\"4\" width=\"18\" height=\"5\"/><path d=\"M5 9v12h14V9\"/><path d=\"M9 13h6\"/>",
+            "link": "/pages/lanza-tu-propia-marca"
+          }
+        }
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "planes",
+    "respaldo",
+    "proceso",
+    "contacto",
+    "ramas"
+  ]
+}

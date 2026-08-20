@@ -1,0 +1,121 @@
+{% if section.settings.show_best_products %}
+<div class="widget widget_top_rated_products" data-section-id="{{ section.id }}" >
+  {% if section.settings.title != blank %}
+  <h4 class="widget-title">{{ section.settings.title }}</h4>  
+  {% endif %}
+  {% if section.settings.pro_img_width_height != blank %}
+  {% assign pro_size =  section.settings.pro_img_width_height %}
+  {% else %}
+  {% assign pro_size= 'small' %}
+  {% endif %}
+  {%  assign cnt = 1 %} 
+  <ul class="no-bullets top-products owl-carousel">
+    {% for product in collections[section.settings.bestseller].products limit: section.settings.limit %}
+    {%- assign mod_3 = cnt | modulo:3 -%}
+    {%- assign collection = collections[section.settings.bestseller] -%}  
+  {%-  assign foundpro = collection.products.count -%}
+    {% if section.settings.product_rows %}
+    {% if foundpro >= 9 %}
+    {%  if mod_3 == 1  %}
+    <div class="sidebar-products">
+      {% endif    %}
+      {% endif  %}
+      {% endif %}
+      <div id="product-{{ product.id }}" data-id="product-{{ product.id }}" class="item-row product-layouts">
+      <li class="col-xs-12 product-wrapper sidebar-product{% if product.images.size > 1 %} product_container{% endif %}"> 
+        {% if product.images.size > 0 %}  
+        <div class="image product-thumb col-xs-5 col-sm-5 col-md-4 padding_0">
+          <div class="product-img col-xs-12 padding_0 {{ settings.product_img_hover }}">
+            <a class="thumb product-t" href="{{ product.url | within: collection }}">                                          
+              <img loading="lazy" class="featured-image image_thumb" alt="featured product" src="{{ product.featured_image | product_img_url: pro_size }}">  
+              <div class="second-productimg">
+              <img loading="lazy" class="image_thumb_swap" alt="featured product" src="{{ product.images.last | product_img_url: pro_size }}">  
+              </div>
+            </a>
+            {% if product.images.size > 1 %}
+              {% if product.images.last %}
+              <div class="loader">
+                <div class="preloader-wrapper active">
+                  <div class="spinner-layer"></div>
+                </div>
+              </div>
+              {% endif %} 
+              {% endif %} 
+            {% if product.compare_at_price > product.price %}
+            <span class="sale on-sale-tag">{{ 'products.product.on_sale' | t }}</span>    
+            {% endif %}
+          </div>
+        </div>
+        {% endif %} 
+        <div class="top-products-detail thumb-description col-xs-7 col-sm-7 col-md-8">
+          <h4><a href="{{ product.url | within: collection }}"> {{ product.title }} </a></h4>
+          {% for tag in product.tags %}
+
+          {% endfor %}
+          <div class="top-product-prices">
+            {% include 'product-price' %}	
+          </div>
+          {% if settings.collections_show_rating %}    
+          <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+          {% endif %}
+        </div>
+      </li>
+      </div>
+      {% if section.settings.product_rows %}
+      {% if foundpro >= 9 %}
+      {%  if mod_3 == 0  %}
+    </div>
+    {% endif    %}
+    {% endif  %}
+    {% assign cnt = cnt | plus: 1 %}
+    {% endif %}
+    {% endfor %}
+    {% if section.settings.product_rows %}
+    {% if foundpro >= 9 %}
+    {%  if mod_3 == 0  %}
+  </ul> 
+  {% endif    %}
+  {% endif    %}
+  {% endif    %}  
+</div>
+{% endif %} 
+ {% schema %}
+  {
+    "name": "Products",    
+    "settings": [	
+      {
+        "type": "checkbox",
+        "id": "show_best_products",
+        "label": "Enable best sellers",
+		"default":false
+      },
+	 {
+        "type": "text",
+        "id": "title",
+        "label": "Heading"
+      },
+      {
+        "type": "collection",
+        "id": "bestseller",
+        "label": "Collection"
+      },
+	{
+        "type": "text",
+        "id": "pro_img_width_height",
+        "default": "80x104",
+        "label": "Product image width and height (widthxheight)"
+      },
+      {
+        "type": "text",
+        "id": "limit",
+        "label": "Product Limit",
+        "default": "5"
+      },
+	{
+          "type": "checkbox",
+          "id": "product_rows",
+          "label": "3 Rows Product"
+        }
+]
+  }
+{% endschema %}

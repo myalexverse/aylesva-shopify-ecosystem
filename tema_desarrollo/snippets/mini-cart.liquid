@@ -1,0 +1,42 @@
+<div id="slidedown-cart"> 
+   {% if settings.header_style_1 == 'style_2' %}
+   <div class="cart-close"><i class="mdi mdi-close"></i></div>
+  {% endif %}
+  <div class="mini-cart-wrap">
+      <!--  <h3>{{ 'cart.general.mini_cart_title' | t }}</h3>-->
+      <div class="no-items">
+        <p>{{ 'cart.general.empty' | t }}</p>
+        <p class="text-continue"><a href="javascript:void(0)">{{ 'cart.general.continue_shopping' | t }}</a></p>
+      </div>
+      <div class="has-items">
+        <ul class="mini-products-list">  
+          {% for item in cart.items %}
+          <li class="item" id="cart-item-{{item.id}}">
+            <a href="{{item.url}}" title="{{item.title}}" class="product-image">
+              <img loading="lazy" src="{{ item.image | product_img_url: 'small' }}" alt="{{item.title}}"></a>
+            <div class="product-details">
+              <p class="product-name"><a href="{{item.url}}">{{ item.product.title }}
+                {% if item.product.variants.size != 0 %}
+                {% unless item.variant.title contains 'Default' %}
+                {{ item.variant.title }}
+                {% endunless %}
+                {% endif %}</a></p>
+              <div class="cart-collateral"><span class="price">{{item.price | money}}</span> x {{item.quantity}}</div>
+            </div>
+            <a href="javascript:void(0)" title="Remove This Item" class="btn-remove"><span class="mdi mdi-close"></span></a>
+          </li>
+          {% endfor %}
+        </ul>
+        <div class="summary">                
+          <p class="total">
+            <span class="label">{{ 'cart.general.cart_total' | t }}</span>
+            <span class="price">{{cart.total_price | money}}</span> 
+          </p>
+        </div>
+        <div class="actions">
+          <button class="btn" onclick="window.location='/checkout'"><i class="mdi mdi-cart-outline"></i>{{ 'cart.general.checkout' | t }}</button>
+          <button class="btn text-cart" onclick="window.location='/cart'"><i class="mdi mdi-share"></i>{{ 'cart.general.view_cart' | t }}</button>
+        </div>
+      </div>
+  </div>
+</div>

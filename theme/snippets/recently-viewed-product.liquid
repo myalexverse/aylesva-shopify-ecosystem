@@ -1,0 +1,157 @@
+{{ 'jquery.tmpl.min.js'| asset_url | script_tag }}
+{{ 'jQuery.products.min.js' | asset_url | script_tag }}
+ {%- assign grid_image_width = '210x210' -%}
+{%- if section.blocks.size > 0 -%}
+{%- assign viewed_products_item = 6 -%}
+{%- endif -%}
+<div id="recently-viewed-products-wrap" class="col-sm-12 collection clearfix" style="display:none;">
+  <div class="recent-product">
+  <div class="section-header"><h2 class="tt-title">Recently Viewed Products</h2></div>
+      <div class="recently_navigation customNavigation">
+      <div class="navigation_wrap">
+        <a class="prev fa-prev">{{ 'general.slider.prev' | t }}<span class="custom_prev"></span></a>
+        <a class="next fa-next">{{ 'general.slider.next' | t }}<span class="custom_next"></span></a> 
+      </div>
+    </div>
+  <div class="recently-viewed-wrap">
+    <div class="row">
+    <div id="recently-viewed-products" class="collection clearfix owl-carousel owl-theme">
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+{% raw %}
+<div class="recentveiw">
+<script id="recently-viewed-product-template"  type="text/x-jquery-tmpl">
+          <div id="product-${handle}" class="product product-layouts item-row col-xs-12">
+            <div class="product-container" itemtype="https://schema.org/Product">
+              <div class="product-wrapper">
+                  <div class="thumbs product-thumb">
+                    <a href="${url}">
+                      <img loading="lazy" src="${Shopify.Products.resizeImage(featured_image, "600x800")}" alt="featured-image"/>
+  					</a>
+                	{{if available}}
+
+          			{{else}}
+              			<div class="sold-out-tag text-center">
+                    		<span class="tag">Sold out</span>
+  						</div>
+          			{{/if}}
+  					</div>
+                  	<div class="product-description"> 
+                    	<span class="shopify-product-reviews-badge" data-id="${id}"></span>     
+                      	<span class="h4 grid-view-item__title">
+                      		<a class="grid-view-item__link grid-link__title" href="${url}">${title}</a>
+  						</span>
+                      	<div class="content_price">
+                          <div class="product-price-and-shipping">
+                          {{if available}}
+                            {{if price_varies}}
+                             <span itemprop="price" class="price"><span class="money">${price_min}</span></span>
+                               {{if compare_at_price > price}}
+                              <span class="price-regular"><span class="money">${compare_at_price}</span></span>
+                              {{/if}}
+                             
+                           {{else}}
+                                <span  itemprop="price" class="price"><span class="money">${price_min}</span></span>
+                            {{/if}}
+                           {{/if}}
+  						  </div>
+  						</div>
+  					</div>
+  			</div>
+  		</div>
+  	</div>
+  </script>
+</div>
+{% endraw %}
+<script type="text/javascript">
+  var viewed_number_of = 4;
+  var viewed_products_item = {{viewed_products_item}};
+  Shopify.Products.showRecentlyViewed({ 
+    howManyToShow: viewed_products_item,
+    onComplete: function() {
+        var listPrice = jQuery('#recently-viewed-products .product .money');
+        listPrice.each(function() {
+          var $this = jQuery(this);
+          var $price = Shopify.formatMoney($this.html(), window.money_format);
+          $this.html($price);
+        });
+      jQuery("body:not(.rtl) #recently-viewed-products").owlCarousel({
+        nav : false,
+        dots : false,
+        pagination: true,
+        mouseDrag: true,
+        rtl:false,
+        scrollPerPage: false,
+        items: viewed_number_of,
+        responsive: {
+          1400: {
+            items: viewed_number_of
+          },
+          1200: {
+            items: 4
+          },
+          768: {
+            items: 3
+          },
+          481: {
+            items: 2
+          },
+          100: {
+            items: 1
+          }
+        }
+      });
+      jQuery("body.rtl #recently-viewed-products").owlCarousel({
+        nav : false,
+        dots : false,
+        pagination: true,
+        mouseDrag: true,
+        rtl:true,
+        scrollPerPage: false,
+        items: viewed_number_of,
+        responsive: {
+          1200: {
+            items: viewed_number_of
+          },
+          768: {
+            items: 3
+          },
+          481: {
+            items: 2
+          },
+          100: {
+            items: 1
+          }
+        }
+      });  
+
+      var recently_count=$('#recently-viewed-products-wrap .collection .item-row').length;
+     console.log(recently_count);
+      if(recently_count>4){
+        jQuery("#recently-viewed-products-wrap .customNavigation .next").click(function(){
+        jQuery('#recently-viewed-products-wrap .collection').trigger('next.owl');
+      });
+
+      jQuery("#recently-viewed-products-wrap .customNavigation .prev").click(function(){
+        jQuery('#recently-viewed-products-wrap .collection').trigger('prev.owl');
+      });
+      } else {
+        $('.recently_navigation').css('display','none');
+      }
+
+      
+
+      jQuery('#recently-viewed-wrapper').show();
+      if(window.show_multiple_currencies){
+        Currency.convertAll(
+          shopCurrency, 
+          jQuery('[name=currencies]').val(), 
+          '#recently-viewed-products span.money'
+        );
+      }
+    } 
+  });
+</script>

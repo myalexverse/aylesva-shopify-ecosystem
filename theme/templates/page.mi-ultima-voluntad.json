@@ -1,0 +1,384 @@
+{
+  "sections": {
+    "hero": {
+      "type": "aylesva-corp-hero",
+      "settings": {
+        "eyebrow": "Protección y Legado Familiar",
+        "overlay": 84,
+        "focal": "center",
+        "image": "ay-muv-hero-family.jpg",
+        "title": "Protege a tu familia incluso cuando ya no puedas estar allí.",
+        "subtitle": "MUV te ayuda a dejar todo en orden, para que las personas que más amas tengan tranquilidad, guía y apoyo cuando más lo necesitan.",
+        "cta1_label": "Programar Consulta Gratis",
+        "cta1_link": "#contacto",
+        "cta2_label": "Conoce las Membresías",
+        "cta2_link": "#membresias"
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ],
+      "blocks": {
+        "s1": {
+          "type": "stat",
+          "settings": {
+            "value": "2",
+            "label": "Rutas de membresía"
+          }
+        },
+        "s2": {
+          "type": "stat",
+          "settings": {
+            "value": "CBX",
+            "label": "Pase redondo incluido"
+          }
+        },
+        "s3": {
+          "type": "stat",
+          "settings": {
+            "value": "ES / EN",
+            "label": "Atención bilingüe"
+          }
+        },
+        "s4": {
+          "type": "stat",
+          "settings": {
+            "value": "Anual",
+            "label": "Vigencia de membresía"
+          }
+        }
+      }
+    },
+    "razones": {
+      "type": "aylesva-corp-features",
+      "settings": {
+        "bg": "#FAFAF8",
+        "eyebrow": "Por qué importa",
+        "title": "Nadie quiere pensar en este momento… pero todos queremos proteger a quienes amamos."
+      },
+      "block_order": [
+        "f1",
+        "f2",
+        "f3"
+      ],
+      "blocks": {
+        "f1": {
+          "type": "feature",
+          "settings": {
+            "icon": "<path d=\"M12 3v6\"/><path d=\"M6 21V13\"/><path d=\"M18 21v-8\"/><path d=\"M4 13h16\"/><path d=\"M9 6h6\"/>",
+            "title": "Decisiones difíciles",
+            "text": "Evita que tu familia tenga que adivinar qué hacer en los momentos más difíciles y dolorosos."
+          }
+        },
+        "f2": {
+          "type": "feature",
+          "settings": {
+            "icon": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M12 7v10\"/><path d=\"M15 10c0-1.4-1.3-2-3-2s-3 .6-3 2 1.3 2 3 2 3 .6 3 2-1.3 2-3 2-3-.6-3-2\"/>",
+            "title": "Gastos inesperados",
+            "text": "Reduce drásticamente la carga financiera y logística imprevista para tu hogar."
+          }
+        },
+        "f3": {
+          "type": "feature",
+          "settings": {
+            "icon": "<path d=\"M12 20 4 12.5A4.6 4.6 0 0 1 12 7a4.6 4.6 0 0 1 8 5.5z\"/>",
+            "title": "Tranquilidad absoluta",
+            "text": "Deja instrucciones sumamente claras y todo el soporte consular y logístico coordinado."
+          }
+        }
+      }
+    },
+    "membresias": {
+      "type": "aylesva-corp-cards",
+      "settings": {
+        "bg": "#FFFFFF",
+        "columns": 2,
+        "eyebrow": "Membresías",
+        "title": "Soporte completo, sin fronteras."
+      },
+      "block_order": [
+        "c1",
+        "c2"
+      ],
+      "blocks": {
+        "c1": {
+          "type": "card",
+          "settings": {
+            "image": "ay-muv-ruta-mexico.jpg",
+            "tag": "Más Solicitada",
+            "eyebrow": "Membresía Anual",
+            "title": "Estados Unidos → México",
+            "text": "Asistencia coordinada entre ambos países, con acompañamiento consular, gestión de trámites y guía para tu familia.",
+            "bullets": "Asistencia de repatriación binacional coordinada\nGuía paso a paso para tus familiares\nSoporte internacional 24/7 en español\nPase redondo CBX (San Diego - Tijuana) incluido",
+            "cta_label": "Obtener Membresía",
+            "cta_link": "#contacto",
+            "whatsapp_label": "WhatsApp",
+            "whatsapp_url": "https:\/\/api.whatsapp.com\/send\/?phone=524774136612&text=Hola%2C+me+interesa+informaci%C3%B3n+sobre+la+membres%C3%ADa+MUV+USA+-+M%C3%A9xico&type=phone_number&app_absent=0",
+            "price": ""
+          }
+        },
+        "c2": {
+          "type": "card",
+          "settings": {
+            "image": "ay-muv-ruta-sudamerica.jpg",
+            "tag": "Internacional",
+            "eyebrow": "Membresía Anual",
+            "title": "Estados Unidos → Sudamérica",
+            "text": "Cobertura integral para familias con origen en Sudamérica, con la misma coordinación internacional y respaldo.",
+            "bullets": "Asistencia de repatriación internacional\nGuía personalizada para familiares en destino\nSoporte y coordinación consular\nPase redondo CBX (San Diego - Tijuana) incluido",
+            "cta_label": "Obtener Membresía",
+            "cta_link": "#contacto",
+            "whatsapp_label": "WhatsApp",
+            "whatsapp_url": "https:\/\/api.whatsapp.com\/send\/?phone=524774136612&text=Hola%2C+me+interesa+informaci%C3%B3n+sobre+la+membres%C3%ADa+MUV+USA+-+Sudam%C3%A9rica&type=phone_number&app_absent=0",
+            "price": ""
+          }
+        }
+      }
+    },
+    "cbx": {
+      "type": "aylesva-corp-cards",
+      "settings": {
+        "bg": "#FAFAF8",
+        "columns": 2,
+        "eyebrow": "Beneficios exclusivos para miembros MUV",
+        "title": "Tu viaje comienza antes del vuelo.",
+        "intro": "Al adquirir tu membresía MUV, recibes un pase de ida y vuelta GRATIS para cruzar a través del Cross Border Xpress (CBX)."
+      },
+      "block_order": [
+        "c1",
+        "c2"
+      ],
+      "blocks": {
+        "c1": {
+          "type": "card",
+          "settings": {
+            "image": "ay-muv-cbx.png",
+            "tag": "Beneficio Exclusivo",
+            "eyebrow": "Cross Border Xpress",
+            "title": "Viaje redondo gratis vía CBX",
+            "text": "Cruza el puente peatonal exclusivo entre San Diego y el Aeropuerto de Tijuana con menor tiempo de espera y máxima comodidad. *Viaje redondo = un Boleto de Cruce en ambos sentidos del Puente CBX.",
+            "bullets": "Boleto de cruce en ambos sentidos incluido\nConexión directa San Diego - Aeropuerto TIJ\nSin largas filas en cruces fronterizos",
+            "cta_label": "Solicitar Información",
+            "cta_link": "#contacto",
+            "price": ""
+          }
+        },
+        "c2": {
+          "type": "card",
+          "settings": {
+            "image": "ay-muv-card.png",
+            "tag": "Membresía Activa",
+            "eyebrow": "Tarjeta de miembro MUV",
+            "title": "Tranquilidad para toda la vida",
+            "text": "El mejor regalo que puedes dejarle a tu familia no es algo material. Es la certeza de que todo estará claro y de que no estarán solos en el camino.",
+            "bullets": "Credencial física y digital de miembro\nLínea directa de asistencia 24/7 bilingüe\nAcceso a la red de beneficios exclusivos",
+            "cta_label": "Solicitar Información",
+            "cta_link": "#contacto",
+            "price": ""
+          }
+        }
+      }
+    },
+    "proceso": {
+      "type": "aylesva-corp-process",
+      "settings": {
+        "dark": true,
+        "eyebrow": "Cómo funciona",
+        "title": "Cuatro pasos sencillos."
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ],
+      "blocks": {
+        "s1": {
+          "type": "step",
+          "settings": {
+            "title": "Elige tu membresía",
+            "text": "Selecciona la ruta que corresponde al país de origen de tu familia."
+          }
+        },
+        "s2": {
+          "type": "step",
+          "settings": {
+            "title": "Recibe tu código y membresía",
+            "text": "Te enviamos tus datos de miembro, tarjeta digital e instrucciones de uso."
+          }
+        },
+        "s3": {
+          "type": "step",
+          "settings": {
+            "title": "Accede a tus beneficios",
+            "text": "Quedas activo de inmediato, incluyendo tu pase redondo para CBX."
+          }
+        },
+        "s4": {
+          "type": "step",
+          "settings": {
+            "title": "Respaldo total para tu familia",
+            "text": "Coordinación internacional y acompañamiento integral cuando más se necesite."
+          }
+        }
+      }
+    },
+    "faq": {
+      "type": "aylesva-corp-faq",
+      "settings": {
+        "bg": "#FAFAF8",
+        "eyebrow": "Preguntas frecuentes",
+        "title": "Preguntas Frecuentes"
+      },
+      "block_order": [
+        "f1",
+        "f2",
+        "f3",
+        "f4"
+      ],
+      "blocks": {
+        "f1": {
+          "type": "faq",
+          "settings": {
+            "q": "¿Qué incluye la membresía?",
+            "a": "Tu membresía anual incluye asistencia de repatriación, guía paso a paso para tu familia, soporte internacional coordinado entre Estados Unidos y tu país de origen, y acceso a beneficios exclusivos como el pase CBX."
+          }
+        },
+        "f2": {
+          "type": "faq",
+          "settings": {
+            "q": "¿Cómo funciona el beneficio de CBX?",
+            "a": "Al activar tu membresía, recibes un pase redondo gratis para cruzar el puente de CBX entre San Diego y el Aeropuerto de Tijuana, con menos tiempo de espera y mayor comodidad."
+          }
+        },
+        "f3": {
+          "type": "faq",
+          "settings": {
+            "q": "¿La cobertura aplica fuera de Estados Unidos?",
+            "a": "Sí. MUV está diseñado para familias migrantes: la cobertura conecta a Estados Unidos con México y Sudamérica, con coordinación internacional incluida."
+          }
+        },
+        "f4": {
+          "type": "faq",
+          "settings": {
+            "q": "¿Cómo puedo obtener más información?",
+            "a": "Puedes hablar con un asesor o solicitar información usando el formulario de esta página. La consulta inicial es gratuita y está disponible en inglés y español."
+          }
+        }
+      }
+    },
+    "contacto": {
+      "type": "aylesva-corp-form",
+      "settings": {
+        "anchor": "contacto",
+        "bg": "#FFFFFF",
+        "eyebrow": "Consulta gratuita",
+        "title": "Solicita Tu Consulta Gratuita",
+        "text": "Completa el formulario y un asesor especializado de Mi Última Voluntad se comunicará contigo.",
+        "form_id": "DPfokHX747mbGaU8Fobk",
+        "form_height": 720,
+        "whatsapp_url": "https:\/\/api.whatsapp.com\/send\/?phone=524774136612&text=Hola%2C+me+gustar%C3%ADa+informaci%C3%B3n+y+asesor%C3%ADa+sobre+Mi+%C3%9Altima+Voluntad+%28MUV%29&type=phone_number&app_absent=0",
+        "whatsapp_label": "Hablar con un asesor por WhatsApp"
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3"
+      ],
+      "blocks": {
+        "p1": {
+          "type": "point",
+          "settings": {
+            "text": "Consulta inicial gratuita, en inglés y español"
+          }
+        },
+        "p2": {
+          "type": "point",
+          "settings": {
+            "text": "Coordinación binacional e internacional 24/7"
+          }
+        },
+        "p3": {
+          "type": "point",
+          "settings": {
+            "text": "Pase redondo CBX incluido al activar tu membresía"
+          }
+        }
+      }
+    },
+    "legal_disclaimer": {
+      "type": "aylesva-corp-legal",
+      "settings": {
+        "bg": "#FAFAF8",
+        "alignment": "left",
+        "title": "Términos de la Plataforma MUV USA, Divulgaciones No Legales y Regulatorias",
+        "text": "1. Estado de Autoayuda y Descargo de Práctica No Autorizada del Derecho (UPL):\nMi Última Voluntad USA (\"MUV USA\"), operando a través de aylesva.com, funciona estrictamente como una plataforma tecnológica de autoayuda, organización administrativa de documentos y logística de preferencias personales. Aylesva no es un bufete de abogados, abogado de planificación patrimonial, notario público ni proveedor de servicios legales en EE. UU., México, El Salvador ni ninguna otra jurisdicción. Aylesva no brinda asesoramiento legal, no redacta instrumentos legales personalizados, no interpreta códigos de sucesiones ni representa a los usuarios ante tribunales o autoridades consulares. No se crea ninguna relación abogado-cliente a través del uso de la plataforma.\n\n2. Descargo de Responsabilidad de No Servicios Funerarios ni Mortuorios:\nMUV USA no es una funeraria con licencia, establecimiento mortuorio, transportista ni servicio de dirección funeraria. Toda la logística de repatriación, permisos consulares, procesamiento de actas de defunción y atención mortuoria son realizados estricta e independientemente por funerarias externas autónomas y con licencia, transportistas internacionales y autoridades consulares (\"Proveedores Mortuorios Externos\"). AYLESVA RENUNCIA EXPRESAMENTE A TODA RESPONSABILIDAD DIRECTA E INDIRECTA (VICARIA) DERIVADA DE LOS ACTOS, OMISIONES, RETRASOS O MALA CONDUCTA DE CUALQUIER PROVEEDOR MORTUORIO EXTERNO O AUTORIDAD CONSULAR.\n\n3. Aviso de Contrato No de Seguro y No de Servicios Funerarios Anticipados (Pre-Need):\nLas membresías y planes de MUV USA no constituyen seguros de vida, seguros de entierro ni contratos de servicios funerarios por necesidad anticipada. Las tarifas pagadas a Aylesva representan únicamente tarifas de uso de software administrativo y facilitación de conserjería.\n\n4. Jurisdicción Extranjera y No Garantía de Repatriación:\nLos procedimientos de repatriación y el transporte internacional se rigen exclusivamente por leyes soberanas extranjeras y la discreción del consulado. Aylesva no garantiza aprobaciones de gobiernos extranjeros, plazos fronterizos ni reconocimiento de sucesiones extranjeras de las preferencias registradas por el usuario.\n\n5. Arbitraje Individual Vinculante Obligatorio y Renuncia a Demanda Colectiva (FAA):\nCualquier disputa que surja de su uso de aylesva.com o los servicios de MUV USA se resolverá exclusivamente mediante arbitraje individual vinculante administrado por la Asociación Americana de Arbitraje (AAA). USTED RENUNCIA EXPRESAMENTE A SU DERECHO A PARTICIPAR EN CUALQUIER DEMANDA COLECTIVA O PROCEDIMIENTO REPRESENTATIVO CONTRA AYLESVA.\n\n6. Comunicaciones TCPA y Consentimiento Electrónico:\nAl registrarse, usted autoriza expresamente a Aylesva y a sus Proveedores Externos a contactarlo por teléfono, mensajes de texto (SMS/MMS) y correo electrónico utilizando sistemas automatizados. El consentimiento no es una condición de compra y puede optar por no participar en cualquier momento.\n\n7. Limitación de Responsabilidad:\nEl usuario garantiza que: (i) organiza sus últimos deseos basándose en su propio juicio; (ii) no ha dependido de plantillas de la plataforma como asesoramiento legal; y (iii) acuerda indemnizar y eximir a Aylesva de disputas familiares o impugnaciones testamentarias que surjan de sus directivas."
+      }
+    },
+    "ramas": {
+      "type": "aylesva-corp-branches",
+      "settings": {
+        "bg": "#FFFFFF",
+        "eyebrow": "Ecosistema Aylesva",
+        "title": "El mismo respaldo, en cada una de nuestras ramas"
+      },
+      "block_order": [
+        "br1",
+        "br2",
+        "br3",
+        "br4"
+      ],
+      "blocks": {
+        "br1": {
+          "type": "branch",
+          "settings": {
+            "title": "Aylesva Care",
+            "text": "Beneficios de salud, seguros y telemedicina.",
+            "icon": "<path d=\"M12 20 4 12.5A4.6 4.6 0 0 1 12 7a4.6 4.6 0 0 1 8 5.5z\"/><path d=\"M8 13h2l1.5-3 2 5 1.5-2h2\"/>",
+            "link": "/pages/aylesva-care"
+          }
+        },
+        "br2": {
+          "type": "branch",
+          "settings": {
+            "title": "Aylesva Recursos",
+            "text": "Intermediación financiera para tu negocio.",
+            "icon": "<rect x=\"3\" y=\"10\" width=\"18\" height=\"11\"/><path d=\"M3 10 12 4l9 6\"/><path d=\"M9 21v-6h6v6\"/>",
+            "link": "/pages/aylesva-recursos"
+          }
+        },
+        "br3": {
+          "type": "branch",
+          "settings": {
+            "title": "Aylesva Direct",
+            "text": "Importación y logística desde China.",
+            "icon": "<rect x=\"2\" y=\"8\" width=\"13\" height=\"9\"/><path d=\"M15 11h4l3 3v3h-7z\"/><circle cx=\"6\" cy=\"19\" r=\"2\"/><circle cx=\"18\" cy=\"19\" r=\"2\"/>",
+            "link": "/pages/aylesva-direct"
+          }
+        },
+        "br4": {
+          "type": "branch",
+          "settings": {
+            "title": "Global Estates",
+            "text": "Bienes raíces y desarrollos de lujo.",
+            "icon": "<path d=\"M3 21V9l6-4 6 4v12\"/><path d=\"M15 21V13h6v8\"/><path d=\"M7 13h2M7 17h2\"/>",
+            "link": "/pages/globalestates"
+          }
+        }
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "razones",
+    "membresias",
+    "cbx",
+    "proceso",
+    "faq",
+    "contacto",
+    "legal_disclaimer",
+    "ramas"
+  ]
+}

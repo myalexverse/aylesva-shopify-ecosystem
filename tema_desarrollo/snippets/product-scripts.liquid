@@ -1,0 +1,167 @@
+{% comment %}
+  Refactored Product Scripts Snippet
+  Handles product page specific JS logic.
+{% endcomment %}
+
+{% unless product == empty %}
+  <script type="application/json" id="ProductJson-{{ section.id }}">{{ product | json }}</script>
+  <script type="application/json" id="ModelJson-{{ section.id }}">{{ product.media | where: 'media_type', 'model' | json }}</script>
+{% endunless %}
+
+{{ 'option_selection.js' | shopify_asset_url | script_tag }}
+{{ 'printThis.js' | asset_url | script_tag }}
+
+<script>
+  {% for media in product.media %}
+    {% case media.media_type %}
+      {% when 'video' %}
+        jQuery('.video-source video').attr('controls',true);
+    {% endcase %}
+  {% endfor %}
+  
+  jQuery(window).load(function() {
+    $(".design_2 .product-information").stick_in_parent({offset_top: 150});
+  });
+
+  {% if section.settings.thumb_position == 'vertical_left' or section.settings.thumb_position == 'vertical_right' %} 
+    window.thumb_position = "vertical";
+  {% else %}
+    window.thumb_position = "horizontal";
+  {% endif %} 
+
+  $(document).ready(function(){
+    // 1. MOBILE GALLERY SLIDER (Premium Swipe Experience)
+    function initMobileGallery() {
+      if (jQuery(window).width() < 768) {
+        var $gallery = $('#productPhoto');
+        if ($gallery.length && !$gallery.hasClass('slick-initialized')) {
+          // Remove theme 'hide' classes to let Slick handle them
+          $gallery.find('.product-single__media-wrapper').removeClass('hide');
+          
+          $gallery.slick({
+            dots: true,
+            infinite: false,
+            speed: 500,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: false,
+            adaptiveHeight: true,
+            swipeToSlide: true,
+            touchThreshold: 10
+          });
+        }
+      } else {
+        // Destroy if screen resized back to desktop
+        var $gallery = $('#productPhoto');
+        if ($gallery.hasClass('slick-initialized')) {
+          $gallery.slick('unslick');
+          // Re-apply theme hide logic (first image visible)
+          $gallery.find('.product-single__media-wrapper').addClass('hide');
+          $gallery.find('.product-single__media-wrapper').first().removeClass('hide');
+        }
+      }
+    }
+
+    initMobileGallery();
+    $(window).on('resize', function() { initMobileGallery(); });
+
+    $(".cart-close").click(function(){
+      $(".add-to-cart-sticky").addClass("main_active");
+      $(".add-to-cart-sticky").hide(200);
+    });
+
+    function productcartsticky() {
+      if (jQuery(window).width() > 319) {
+        if (jQuery(this).scrollTop() > 550) {
+          jQuery('.add-to-cart-sticky').addClass("fixed");
+        } else {
+          jQuery('.add-to-cart-sticky').removeClass("fixed");
+        }
+      } else {
+        jQuery('.add-to-cart-sticky').removeClass("fixed");
+      }
+    }
+
+    productcartsticky();
+    
+    jQuery(window).resize(function() { productcartsticky(); });
+    jQuery(window).scroll(function() { productcartsticky(); });
+
+    jQuery(window).on('scroll', function () {
+      if (jQuery(this).scrollTop() > 600 && jQuery(this).scrollTop() < 1550) {
+        jQuery('.add-to-cart-sticky').removeClass('main_active');
+      } else {
+        jQuery('.add-to-cart-sticky').addClass('main_active');
+      }
+    });
+
+    $('.print').on('click', function(e) {  
+      $('.demo').printThis({
+        importStyle: $(this).hasClass('importStyle')
+      });
+    });
+
+    {% if section.settings.product_layout != blank %}
+      jQuery('body').addClass('product_sticky_{{ section.settings.product_layout }}');
+      {% if section.settings.product_layout == 'design_1' or section.settings.product_layout == 'design_4' %}
+        jQuery('body').addClass('product_sticky');
+      {% endif %}
+    {% endif %}
+
+    // Owl Carousel initialization for Design 5
+    if ($('.full_gallery_slider.owl-carousel').length) {
+      $('.full_gallery_slider.owl-carousel').on('changed.owl.carousel',function(property) {
+        var totalItems = property.item.count;	 
+        var currentItem = property.item.index - property.relatedTarget._clones.length / 2;
+        currentItem = currentItem + 1;
+        $(".num").html(currentItem+'/'+totalItems); 
+      });
+
+      var owlOptions = {
+        stagePadding: 460,
+        loop:true,
+        startPosition:0,
+        center: true,
+        dots:true,
+        items:1,
+        lazyLoad: true,
+        nav:true,
+        rtl: $('body').hasClass('rtl'),
+        responsive:{
+          0:{ items:1, stagePadding: 50 },
+          600:{ items:1, stagePadding: 80 },
+          992:{ items:1, stagePadding: 80 },
+          1400:{ items:1, stagePadding: 150 },
+          1600:{ items:1, stagePadding: 200 },
+          1800:{ items:1, stagePadding: 460 }
+        }
+      };
+      
+      $('.full_gallery_slider.owl-carousel').owlCarousel(owlOptions);
+    }
+  });
+
+  document.addEventListener('DOMContentLoaded', function() {
+    function isIE() {
+      const ua = window.navigator.userAgent;
+      return (ua.indexOf('MSIE ') > 0 || ua.indexOf('Trident/') > 0);
+    }
+
+    if (!isIE()) return;
+    
+    const productFormId = 'product-form-{{ section.id }}';
+    const hiddenInput = document.querySelector('#' + productFormId + ' input[name="id"]');
+    const noScriptInputWrapper = document.createElement('div');
+    const variantSwitcher = document.querySelector('variant-radios[data-section="{{ section.id }}"]') || document.querySelector('variant-selects[data-section="{{ section.id }}"]');
+    
+    if (variantSwitcher && hiddenInput) {
+      noScriptInputWrapper.innerHTML = document.querySelector('.product-form__noscript-wrapper-{{ section.id }}').textContent;
+      variantSwitcher.outerHTML = noScriptInputWrapper.outerHTML;
+      document.querySelector('#Variants-{{ section.id }}').addEventListener('change', function(event) {
+        hiddenInput.value = event.currentTarget.value;
+      });
+    }
+  });
+
+  window.number_of_thumb = {{ section.settings.number_of_thumb | default: 3 }};
+</script>

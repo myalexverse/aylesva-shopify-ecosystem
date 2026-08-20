@@ -1,0 +1,302 @@
+{% comment %}
+  Snippet Maestro: Visor de Producto DESKTOP PREMIUM (Aylesva Exclusive)
+  Diseño inspirado en Cuadra / Zara / Amazon.
+{% endcomment %}
+
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+
+<style>
+  #AylDesktopViewer {
+    display: grid !important;
+    grid-template-columns: 1.2fr 0.8fr !important;
+    gap: 40px !important;
+    padding: 20px 0 !important;
+    max-width: 1300px !important;
+    margin: 0 auto !important;
+    background: #fff !important;
+  }
+
+  /* ── COLUMNA IZQUIERDA: GALERÍA ── */
+  .ayl-gallery-sticky {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+  }
+  
+  .ayl-gallery-item {
+    width: 100% !important;
+    background: #fff !important;
+    overflow: hidden !important;
+    cursor: crosshair !important;
+    border: 1px solid #f0f0f0 !important;
+    border-radius: 4px !important;
+  }
+  
+  .ayl-gallery-item img {
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    object-fit: contain !important;
+  }
+
+  /* ── COLUMNA DERECHA: INFO STICKY ── */
+  .ayl-info-sticky {
+    position: sticky !important;
+    top: 120px !important;
+    height: fit-content !important;
+    padding: 0 10px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 15px !important;
+  }
+
+  .ayl-p-vendor {
+    font-size: 11px !important;
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+    color: #999 !important;
+    margin-bottom: 5px !important;
+  }
+
+  .ayl-p-title {
+    font-size: 28px !important;
+    font-weight: 400 !important;
+    line-height: 1.2 !important;
+    color: #000 !important;
+    margin: 0 !important;
+  }
+
+  .ayl-p-price {
+    font-size: 24px !important;
+    font-weight: 700 !important;
+    color: #000 !important;
+    margin: 10px 0 !important;
+  }
+
+  /* VARIANTES CHIPS */
+  .ayl-variants-desktop {
+    margin: 20px 0 !important;
+  }
+  
+  .ayl-variant-group {
+    margin-bottom: 20px !important;
+  }
+  
+  .ayl-variant-label {
+    font-size: 12px !important;
+    font-weight: 800 !important;
+    margin-bottom: 10px !important;
+    text-transform: uppercase !important;
+  }
+  
+  .ayl-chip-container {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+  }
+  
+  .ayl-chip {
+    border: 1px solid #000 !important;
+    padding: 10px 20px !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    background: #fff !important;
+    color: #000 !important;
+    text-transform: uppercase !important;
+  }
+  
+  .ayl-chip:hover {
+    background: #f5f5f5 !important;
+  }
+  
+  .ayl-chip.selected {
+    background: #000 !important;
+    color: #fff !important;
+  }
+
+  /* BOTONES DE COMPRA */
+  .ayl-cta-desktop {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    margin-top: 20px !important;
+  }
+  
+  .ayl-btn-main {
+    height: 55px !important;
+    border: none !important;
+    font-size: 14px !important;
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  
+  .ayl-btn-atc {
+    background: #000 !important;
+    color: #fff !important;
+  }
+  
+  .ayl-btn-atc:hover {
+    background: #333 !important;
+  }
+  
+  .ayl-btn-buy {
+    background: transparent !important;
+    border: 2px solid #000 !important;
+    color: #000 !important;
+  }
+  
+  .ayl-btn-buy:hover {
+    background: #000 !important;
+    color: #fff !important;
+  }
+
+  /* BENEFICIOS */
+  .ayl-benefits-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+    margin-top: 30px !important;
+    padding-top: 20px !important;
+    border-top: 1px solid #f0f0f0 !important;
+  }
+  
+  .ayl-benefit-item {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    font-size: 11px !important;
+    color: #666 !important;
+    text-transform: uppercase !important;
+    font-weight: 700 !important;
+  }
+  
+  .ayl-benefit-item i {
+    font-size: 18px !important;
+    color: #000 !important;
+  }
+</style>
+
+<div id="AylDesktopViewer">
+  
+  <!-- 1. GALERÍA STICKY (IZQUIERDA) -->
+  <div class="ayl-gallery-sticky">
+    {% for media in product.media %}
+      <div class="ayl-gallery-item zoom-trigger">
+        <img src="{{ media | img_url: '1200x' }}" alt="{{ media.alt }}" loading="lazy">
+      </div>
+    {% endfor %}
+  </div>
+
+  <!-- 2. INFO STICKY (DERECHA) -->
+  <div class="ayl-info-sticky">
+    <div class="ayl-p-vendor">{{ product.vendor }}</div>
+    <h1 class="ayl-p-title">{{ product.title }}</h1>
+    
+    <div class="ayl-p-price">
+      {{ current_variant.price | money }}
+      <span class="ayl-price-currency" style="font-size: 0.75em; font-weight: 700; color: #C5A47E; margin-left: 6px; vertical-align: baseline; letter-spacing: 0.05em;">{{ cart.currency.iso_code }}</span>
+    </div>
+
+    <div class="ayl-variants-desktop">
+      {% unless product.has_only_default_variant %}
+        {% for option in product.options_with_values %}
+          <div class="ayl-variant-group">
+            <div class="ayl-variant-label">{{ option.name }}</div>
+            <div class="ayl-chip-container">
+              {% for value in option.values %}
+                {%- assign variant_for_value = product.variants | where: "option1", value | first -%}
+                {% if variant_for_value == blank %}
+                  {%- assign variant_for_value = product.variants | where: "option2", value | first -%}
+                {% endif %}
+                <div class="ayl-chip {% if option.selected_value == value %}selected{% endif %}"
+                     onclick="location.href='?variant={{ variant_for_value.id }}'">
+                  {{ value }}
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        {% endfor %}
+      {% endunless %}
+    </div>
+
+    <div class="ayl-cta-desktop">
+      <form action="/cart/add" method="post" id="atc-form-desktop" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="{{ current_variant.id }}">
+        <button type="submit" class="ayl-btn-main ayl-btn-atc" style="width: 100%;">
+          Agregar al carrito
+        </button>
+      </form>
+      
+      <button type="button" class="ayl-btn-main ayl-btn-buy" id="direct-buy-desktop">
+        Comprar ahora
+      </button>
+    </div>
+
+    <!-- BENEFICIOS COMPRA -->
+    <div class="ayl-benefits-grid">
+      <div class="ayl-benefit-item">
+        <i class="mdi mdi-truck-fast-outline"></i> Envío rápido
+      </div>
+      <div class="ayl-benefit-item">
+        <i class="mdi mdi-shield-check-outline"></i> Compra segura
+      </div>
+      <div class="ayl-benefit-item">
+        <i class="mdi mdi-swap-horizontal"></i> Cambios en tienda
+      </div>
+      <div class="ayl-benefit-item">
+        <i class="mdi mdi-credit-card-outline"></i> Meses sin intereses
+      </div>
+    </div>
+
+
+  </div>
+
+</div>
+
+<script>
+  $(document).ready(function() {
+    // 1. INICIALIZAR ZOOM (Solo en Desktop)
+    if (typeof $.fn.zoom !== 'undefined') {
+      $('.zoom-trigger').each(function() {
+        var $this = $(this);
+        var imgUrl = $this.find('img').attr('src');
+        $this.zoom({
+          url: imgUrl,
+          magnify: 1.5,
+          on: 'mouseover'
+        });
+      });
+    }
+
+    // 2. BOTÓN COMPRAR AHORA (Directo a Checkout)
+    $('#direct-buy-desktop').on('click', function() {
+      var variantId = $('#atc-form-desktop input[name="id"]').val();
+      var $btn = $(this);
+      
+      $btn.text('Procesando...').prop('disabled', true).css('opacity', '0.7');
+
+      fetch('/cart/add.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: variantId, quantity: 1 })
+      })
+      .then(res => res.json())
+      .then(() => {
+        window.location.href = '/checkout';
+      })
+      .catch(err => {
+        console.error('Error:', err);
+        $btn.text('Comprar ahora').prop('disabled', false).css('opacity', '1');
+      });
+    });
+  });
+</script>

@@ -1,0 +1,27 @@
+{% comment %}
+  gemelas-hotspot.liquid
+  Snippet to handle individual hotspot rendering with dynamic price/link logic.
+{% endcomment %}
+
+{%- assign target_link = block.settings.custom_link -%}
+{%- assign badge_text = block.settings.label -%}
+{%- assign show_price = false -%}
+
+{% if block.settings.product != blank %}
+  {%- assign product_obj = all_products[block.settings.product] -%}
+  {%- assign target_link = product_obj.url -%}
+  {%- assign badge_text = product_obj.price | money -%}
+  {%- assign show_price = true -%}
+{% endif %}
+
+{% comment %} Manual Price overrides product price if provided {% endcomment %}
+{% if block.settings.manual_price != blank %}
+  {%- assign badge_text = block.settings.manual_price -%}
+  {%- assign show_price = true -%}
+{% endif %}
+
+<div class="gemelas-dot-wrapper" style="top: {{ block.settings.y_pos }}%; left: {{ block.settings.x_pos }}%;">
+  <a href="{{ target_link }}" class="gemelas-badge gemelas-badge--v3">
+    <span class="gemelas-badge-inner">{{ badge_text }}</span>
+  </a>
+</div>

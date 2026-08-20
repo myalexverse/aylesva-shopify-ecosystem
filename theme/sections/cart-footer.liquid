@@ -1,0 +1,245 @@
+<style> 
+  cart-note.cart__note.field {
+    display: block;
+  }
+  .cart__footer {
+    border-top: 1px solid #eee;
+    padding: 30px 15px;
+    margin-top: 20px;
+    background: #fff;
+  }
+  
+  /* ── DESKTOP SUMMARY ── */
+  @media (min-width: 768px) {
+    .totals {
+      text-align: right;
+      padding: 0;
+      margin-bottom: 25px;
+    }
+    .totals__subtotal {
+      font-size: 14px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #777;
+    }
+    .totals__subtotal-value {
+      font-size: 24px;
+      font-weight: 800;
+      color: #000;
+    }
+    .cart-mobile-view { display: none !important; }
+  }
+
+  /* ── MOBILE SUMMARY (PREMIUM UNIFIED) ── */
+  @media (max-width: 767px) {
+    .cart-desktop-view { display: none !important; }
+
+    .cart__footer {
+      border: none;
+      padding: 30px 15px 40px;
+      background: #fff;
+      border-top: 1px solid #eee;
+      text-align: left !important;
+    }
+    .totals {
+      text-align: left !important;
+    }
+    .totals-header {
+      font-size: 16px;
+      font-weight: 800;
+      color: #000;
+      margin-bottom: 25px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      border-left: 4px solid #000;
+      padding-left: 15px;
+      text-align: left !important;
+    }
+    .totals-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      font-size: 15px;
+      color: #444;
+    }
+    .totals-row.grand-total {
+      font-size: 19px;
+      font-weight: 900;
+      margin-top: 20px;
+      padding-top: 15px;
+      border-top: 1px solid #eee;
+      color: #000;
+    }
+    .tax-note {
+      text-align: left;
+      margin: 15px 0 25px;
+      color: #888;
+      font-size: 12px;
+      line-height: 1.4;
+    }
+    
+    .cart__ctas {
+      margin-top: 20px;
+      text-align: left !important;
+    }
+    .cart__checkout-button {
+      background-color: #000 !important;
+      color: #fff !important;
+      border-radius: 0px !important;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px !important;
+      font-weight: 800 !important;
+      text-transform: uppercase !important;
+      letter-spacing: 2px !important;
+      border: none !important;
+      width: 100%;
+      margin-top: 15px;
+    }
+
+    .additional-checkout-buttons {
+       margin-top: 25px;
+       border-top: 1px solid #eee;
+       padding-top: 20px;
+       text-align: left !important;
+    }
+    .additional-checkout-buttons h2 {
+       font-size: 11px;
+       text-transform: uppercase;
+       letter-spacing: 1px;
+       color: #999;
+       text-align: left !important;
+       margin-bottom: 15px;
+       display: block;
+       width: 100%;
+    }
+  }
+</style>
+
+<div class="page-width {% if cart == empty %} hide{% endif %}" id="cart-footer" data-id="{{ section.id }}">
+  <div class="cart__footer">
+
+
+    <div class="cart__blocks">
+      {% for block in section.blocks %}
+      {% if block.type != 's_text' %}
+      {%- case block.type -%}
+      {%- when '@app' -%}
+      {% render block %}
+      {%- when 'subtotal' -%}
+      <div class="js-contents" {{ block.shopify_attributes }}>
+        <!-- DESKTOP TOTALS -->
+        <div class="totals cart-desktop-view">
+          <h3 class="totals__subtotal">{{ 'cart.general.carttotal' | t }}</h3>
+          <p class="totals__subtotal-value">{{ cart.total_price | money_with_currency }}</p>
+        </div>
+
+        <!-- MOBILE TOTALS (C&A STYLE) -->
+        <div class="totals cart-mobile-view">
+          <h3 class="totals-header">Resumen del pedido</h3>
+          
+          <div class="totals-row">
+            <span>Subtotal</span>
+            <span>{{ cart.total_price | money }}</span>
+          </div>
+          
+          <div class="totals-row">
+            <span>Envío</span>
+            <span style="color: #000; font-weight: 500;">Calculado al checkout</span>
+          </div>
+          
+          <div class="totals-row grand-total">
+            <span>Total</span>
+            <span>{{ cart.total_price | money }}</span>
+          </div>
+        </div>
+
+        {%- if cart.cart_level_discount_applications.size > 0 -%}
+        <div class="cart-mobile-view">
+          <ul class="discounts list-unstyled" role="list" aria-label="{{ 'customer.order.discount' | t }}">
+            {%- for discount in cart.cart_level_discount_applications -%}
+            <li class="discounts__discount" style="display: flex; justify-content: space-between; font-size: 14px; color: #ff0000; margin-bottom: 8px;">
+              <span>Descuento: {{ discount.title }}</span>
+              <span>-{{ discount.total_allocated_amount | money }}</span>
+            </li>
+            {%- endfor -%}
+          </ul>
+        </div>
+        {%- endif -%}
+        
+        <p class="tax-note caption-large rte">{{ 'cart.general.taxes_extra' | t }}</p>
+      </div>
+      
+      {%- else -%}
+
+         <div  class="cart__ctas" {{ block.shopify_attributes }}>
+        <noscript>
+          <button type="submit"  onclick="window.location='/checkout'" class="cart__update-button button button--secondary" form="cart">
+            {{ 'cart.general.update' | t }}
+          </button>
+        </noscript>
+        <button type="submit" id="checkout" onclick="" class="cart__checkout-button button btn" name="checkout"{% if cart == empty %} disabled{% endif %} form="cart">
+          {{ 'cart.general.checkout' | t }}
+        </button>
+      </div>
+      {%- if additional_checkout_buttons -%}
+      <div class="cart__dynamic-checkout-buttons additional-checkout-buttons">
+        <h2>O paga con tu método preferido</h2>
+        {{ content_for_additional_checkout_buttons }}
+      </div>
+      {%- endif -%}
+      {%- endcase -%}
+      {% endif %}
+      {% endfor %}
+      <div id="cart-errors"></div>
+    </div>
+
+        {%- if section.settings.show_cart_note -%}
+    <cart-note class="cart__note field">
+      <label for="Cart-note" style="font-size: 13px; font-weight: 700; text-transform: uppercase; margin-bottom: 10px; display: block;">{{ 'cart.general.note' | t }}</label>
+      <textarea class="text-area text-area--resize-vertical field__input" name="note" id="Cart-note" placeholder="{{ 'cart.general.note' | t }}" style="width: 100%; border: 1px solid #eee; padding: 10px; border-radius: 4px;">{{ cart.note }}</textarea>
+    </cart-note>
+    {%- endif -%}
+
+    
+  </div>
+</div>
+
+<script>
+  $(document).ready(function() {
+    $('.cart__blocks .cart__checkout-button').click(function() {
+        window.location='/checkout';
+        $(this).submit();
+    });
+  });
+</script>
+
+{% schema %}
+{
+"name": "cart-footer",
+"class": "cart__footer-wrapper col-lg-4",
+"settings": [
+{
+"type": "checkbox",
+"id": "show_cart_note",
+"default": true,
+"label": "Show Cart note"
+}
+],
+"blocks": [
+{
+"type": "subtotal",
+"name": "Subtotal",
+"limit": 1
+},
+{
+"type": "buttons",
+"name": "Buttons",
+"limit": 1
+}
+]
+}
+{% endschema %}

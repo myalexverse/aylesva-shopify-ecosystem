@@ -1,0 +1,44 @@
+{% comment %}
+  Refactored Product Complementary Snippet
+{% endcomment %}
+
+<product-recommendations class="complementary-products quick-add-hidden no-js-hidden{% if block.settings.make_collapsible_row %} is-accordion{% endif %}" data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&intent=complementary">
+  {%- if recommendations.performed and recommendations.products_count > 0 -%}
+    <hr class="hr">
+    <aside aria-label="complementary_products" {{ block.shopify_attributes }}{% if block.settings.make_collapsible_row %} class="product__accordion accordion"{% endif %}>
+      <div class="complementary-products__container">
+        {%- if block.settings.make_collapsible_row -%}
+          <details id="Details-{{ block.id }}-{{ section.id }}" open>
+            <summary>
+        {%- endif %}
+        
+        <div class="summary__title">
+          <h2 class="h4 accordion__title">{{ block.settings.block_heading }}</h2>
+        </div>
+        
+        {%- if block.settings.make_collapsible_row -%}
+          <svg aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6" width="14" height="14">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor"></path>
+          </svg>
+          </summary>
+        {%- endif -%}
+        
+        <slideshow-component class="slider-mobile-gutter">
+          <div id="Slider-{{ block.id }}" class="contains-card contains-card--product complementary-slider grid grid--1-col slider slider--everywhere" role="list">
+            {%- for p in recommendations.products -%}
+              <div id="Slide-{{ block.id }}-{{ forloop.index }}" class="complementary-slide grid__item slider__slide slideshow__slide" tabindex="-1" role="group">
+                <ul class="list-unstyled" role="list">
+                  <li>{% render 'product-complementory', product: p %}</li>
+                </ul>
+              </div>
+            {%- endfor -%}
+          </div>
+        </slideshow-component>
+        
+        {%- if block.settings.make_collapsible_row -%}
+          </details>
+        {%- endif -%}
+      </div>
+    </aside>
+  {%- endif -%}
+</product-recommendations>

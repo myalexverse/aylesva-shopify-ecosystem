@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  body { margin: 0; background: #FAFAF8; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; text-decoration: none; }
+  a:hover { color: #C5A47E; }
+</style>
+</helmet>
+
+<div style="font-family: Manrope, system-ui, sans-serif; color: #0F172A; background: #FAFAF8;">
+
+  <!-- NAV -->
+  <div style="background: #020617; color: #fff;">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 9px 48px; display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.55);">
+      <span>Grupo Aylesva · Capital · Direct · Care · Global Estates · Commerce</span>
+      <div style="display: flex; gap: 22px;">
+        <a href="#">México</a>
+        <a href="#">USA</a>
+      </div>
+    </div>
+  </div>
+  <div style="background: #0F172A; color: #fff; border-bottom: 1px solid rgba(255,255,255,0.1); position: sticky; top: 0; z-index: 40;">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 20px 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px 40px; flex-wrap: wrap;">
+      <div style="display: flex; align-items: baseline; gap: 16px; flex: 0 0 auto; white-space: nowrap;">
+        <span style="font-family: Sora, sans-serif; font-weight: 600; letter-spacing: 0.24em; font-size: 15px; text-transform: uppercase;">Aylesva</span>
+        <span style="width: 1px; height: 13px; background: rgba(255,255,255,0.25);"></span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #E3CCAE;">Recursos</span>
+      </div>
+      <div style="display: flex; gap: 26px; font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.8); flex: 1 1 auto; justify-content: center; flex-wrap: wrap;">
+        <a href="#tipos" style="white-space: nowrap;">Tipos de préstamo</a>
+        <a href="#comparativo" style="white-space: nowrap;">Comparativo</a>
+        <a href="#nosotros" style="white-space: nowrap;">Quiénes somos</a>
+        <a href="#proceso" style="white-space: nowrap;">Proceso</a>
+        <a href="#estudio" style="white-space: nowrap;">Estudio</a>
+      </div>
+      <a href="#estudio" style="background: #C5A47E; color: #0F172A; padding: 13px 26px; font-size: 13px; font-weight: 700; letter-spacing: 0.04em; border-radius: 2px; white-space: nowrap; flex: 0 0 auto; transition: all .25s ease;" style-hover="background: #E3CCAE;">Hacer estudio financiero</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div style="background: #020617;">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 104px 48px 96px; display: grid; grid-template-columns: 1.1fr 1fr; gap: 76px; align-items: center;">
+      <div>
+        <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 30px;">
+          <span style="width: 26px; height: 1px; background: #C5A47E;"></span>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: #E3CCAE;">Aylesva Recursos</span>
+        </div>
+        <h1 style="font-family: Sora, sans-serif; font-weight: 300; font-size: 60px; line-height: 1.06; letter-spacing: -0.03em; color: #fff; margin: 0 0 26px; text-wrap: balance;">El camino más inteligente para financiar tu negocio</h1>
+        <p style="font-size: 17px; line-height: 1.72; color: rgba(255,255,255,0.72); max-width: 58ch; margin: 0 0 38px; text-wrap: pretty;">Somos tu intermediario financiero inteligente. Tomamos tus datos, analizamos tu perfil socioeconómico y de mercado, y te conectamos de forma directa con la prestadora de servicios ideal (como Finqui y aliados estratégicos) para asegurar las mejores condiciones posibles para ti.</p>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 40px;">
+          <a href="#estudio" style="background: #C5A47E; color: #0F172A; padding: 18px 36px; font-size: 14px; font-weight: 700; letter-spacing: 0.04em; border-radius: 2px; transition: all .25s ease;" style-hover="background: #E3CCAE; transform: translateY(-2px); box-shadow: 0 16px 34px -16px rgba(197,164,126,0.55);">Hacer Estudio Financiero</a>
+          <a href="#comparativo" style="border: 1px solid rgba(255,255,255,0.42); color: #fff; padding: 17px 35px; font-size: 14px; font-weight: 600; letter-spacing: 0.04em; border-radius: 2px; transition: all .25s ease;" style-hover="border-color: #fff; background: rgba(255,255,255,0.08);">Ver Tipos de Préstamos</a>
+        </div>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+          <sc-for list="{{ chips }}" as="c" hint-placeholder-count="3">
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: #E3CCAE; border: 1px solid rgba(197,164,126,0.45); padding: 9px 14px;">{{ c }}</span>
+          </sc-for>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+        <div style="height: 240px; background-image: url('https://aylesva.mx/cdn/shop/t/8/assets/desk_financial_charts.jpg?v=49958499840986178691784576033'); background-size: cover; background-position: center; border: 1px solid rgba(255,255,255,0.14);"></div>
+        <div style="height: 240px; margin-top: 34px; background-image: url('https://aylesva.mx/cdn/shop/t/8/assets/tablet_analytics.jpg?v=58201004609510439251784576035'); background-size: cover; background-position: center; border: 1px solid rgba(255,255,255,0.14);"></div>
+        <div style="height: 240px; background-image: url('https://aylesva.mx/cdn/shop/t/8/assets/corporate_architecture.jpg?v=147044094702967624071784576037'); background-size: cover; background-position: center; border: 1px solid rgba(255,255,255,0.14);"></div>
+        <div style="height: 240px; margin-top: 34px; background-image: url('https://aylesva.mx/cdn/shop/t/8/assets/financial_advisor.jpg?v=156124590121052013421784576039'); background-size: cover; background-position: center; border: 1px solid rgba(255,255,255,0.14);"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIPOS DE FINANCIAMIENTO -->
+  <div id="tipos" style="background: #FAFAF8; border-bottom: 1px solid rgba(15,23,42,0.08);">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 100px 48px;">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 76px; align-items: end; margin-bottom: 56px;">
+        <div>
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 22px;">
+            <span style="width: 24px; height: 1px; background: #C5A47E;"></span>
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #9A7B52;">Intermediación didáctica</span>
+          </div>
+          <h2 style="font-family: Sora, sans-serif; font-weight: 400; font-size: 42px; line-height: 1.12; letter-spacing: -0.028em; margin: 0; text-wrap: balance;">Intermediación Financiera Didáctica</h2>
+        </div>
+        <p style="font-size: 16px; line-height: 1.7; color: rgba(15,23,42,0.62); margin: 0; text-wrap: pretty;">Conoce los tipos de financiamiento más populares y dinámicos del mercado para PYMEs y el mercado estadounidense.</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;">
+        <sc-for list="{{ loans }}" as="l" hint-placeholder-count="3">
+          <div style="background: #fff; border: 1px solid rgba(15,23,42,0.12); display: flex; flex-direction: column; transition: all .3s ease;" style-hover="box-shadow: 0 28px 56px -32px rgba(2,6,23,0.32); transform: translateY(-3px);">
+            <div style="height: 220px; background-size: cover; background-position: center; background-color: #d8d4cc; background-image: {{ l.bg }};"></div>
+            <div style="padding: 36px 34px 38px; display: flex; flex-direction: column; gap: 16px; flex: 1;">
+              <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: #9A7B52;">{{ l.eyebrow }}</div>
+              <div style="font-family: Sora, sans-serif; font-size: 24px; font-weight: 500; letter-spacing: -0.018em;">{{ l.t }}</div>
+              <div style="font-size: 15px; line-height: 1.7; color: rgba(15,23,42,0.64);">{{ l.d }}</div>
+              <a href="#estudio" style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #9A7B52; border-bottom: 1px solid rgba(197,164,126,0.5); padding-bottom: 4px; align-self: start; margin-top: auto;">Simular esta opción →</a>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPARATIVO -->
+  <div id="comparativo" style="background: #fff;">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 100px 48px;">
+      <div style="margin-bottom: 48px; max-width: 70ch;">
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #9A7B52; margin-bottom: 20px;">Estudio comparativo</div>
+        <h2 style="font-family: Sora, sans-serif; font-weight: 400; font-size: 42px; line-height: 1.12; letter-spacing: -0.028em; margin: 0 0 18px; text-wrap: balance;">Estudio Comparativo de Financiamientos</h2>
+        <p style="font-size: 16px; line-height: 1.7; color: rgba(15,23,42,0.62); margin: 0;">Comparamos los principales tipos de financiamientos de EE. UU. y México para ayudarte a tomar la mejor decisión de capital.</p>
+      </div>
+      <div style="border: 1px solid rgba(15,23,42,0.14);">
+        <div style="display: grid; grid-template-columns: 1.3fr 1.5fr 1fr 1.4fr 1fr; background: #0F172A; color: #E3CCAE; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;">
+          <div style="padding: 20px 22px;">Tipo de Préstamo</div>
+          <div style="padding: 20px 22px;">Propósito Principal</div>
+          <div style="padding: 20px 22px;">Velocidad</div>
+          <div style="padding: 20px 22px;">Requisitos</div>
+          <div style="padding: 20px 22px;">Rango de Montos</div>
+        </div>
+        <sc-for list="{{ table }}" as="r" hint-placeholder-count="4">
+          <div style="display: grid; grid-template-columns: 1.3fr 1.5fr 1fr 1.4fr 1fr; border-top: 1px solid rgba(15,23,42,0.1); font-size: 14px; line-height: 1.55; transition: background .2s ease;" style-hover="background: #FAFAF8;">
+            <div style="padding: 22px; font-family: Sora, sans-serif; font-weight: 500; font-size: 15px;">{{ r.name }}</div>
+            <div style="padding: 22px; color: rgba(15,23,42,0.68);">{{ r.purpose }}</div>
+            <div style="padding: 22px; color: rgba(15,23,42,0.68);">{{ r.speed }}</div>
+            <div style="padding: 22px; color: rgba(15,23,42,0.68);">{{ r.reqs }}</div>
+            <div style="padding: 22px; font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #9A7B52;">{{ r.amount }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUIÉNES SOMOS -->
+  <div id="nosotros" style="background: #0F172A;">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 104px 48px;">
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 22px;">
+        <span style="width: 24px; height: 1px; background: #C5A47E;"></span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #E3CCAE;">Quiénes somos</span>
+      </div>
+      <h2 style="font-family: Sora, sans-serif; font-weight: 300; font-size: 46px; line-height: 1.1; letter-spacing: -0.03em; color: #fff; margin: 0 0 64px;">Tu puente hacia el capital ideal</h2>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 56px; margin-bottom: 72px;">
+        <div style="border-top: 1px solid rgba(197,164,126,0.45); padding-top: 28px;">
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #C5A47E; margin-bottom: 20px;">Misión</div>
+          <p style="font-family: Sora, sans-serif; font-weight: 300; font-size: 22px; line-height: 1.55; letter-spacing: -0.01em; color: rgba(255,255,255,0.88); margin: 0; text-wrap: pretty;">Facilitar el acceso al financiamiento a través de un análisis inteligente y transparente, conectando a negocios y emprendedores con las mejores soluciones de crédito mediante intermediación digital y didáctica.</p>
+        </div>
+        <div style="border-top: 1px solid rgba(197,164,126,0.45); padding-top: 28px;">
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #C5A47E; margin-bottom: 20px;">Visión</div>
+          <p style="font-family: Sora, sans-serif; font-weight: 300; font-size: 22px; line-height: 1.55; letter-spacing: -0.01em; color: rgba(255,255,255,0.88); margin: 0; text-wrap: pretty;">Ser el intermediario financiero de referencia, reconocido por nuestra transparencia, innovación en análisis socioeconómico y capacidad de match perfecto entre solicitantes e instituciones de crédito.</p>
+        </div>
+      </div>
+      <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 26px;">Nuestros Valores Comerciales</div>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.16);">
+        <sc-for list="{{ values }}" as="v" hint-placeholder-count="3">
+          <div style="background: #0F172A; padding: 40px 34px 44px; transition: background .3s ease;" style-hover="background: #020617;">
+            <div style="height: 30px;">{{ v.el }}</div>
+            <div style="font-family: Sora, sans-serif; font-size: 20px; font-weight: 500; letter-spacing: -0.015em; color: #fff; margin: 26px 0 12px;">{{ v.t }}</div>
+            <div style="font-size: 15px; line-height: 1.7; color: rgba(255,255,255,0.62);">{{ v.d }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROCESO 4 PASOS -->
+  <div id="proceso" style="background: #FAFAF8; border-bottom: 1px solid rgba(15,23,42,0.08);">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 100px 48px;">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 76px; align-items: end; margin-bottom: 60px;">
+        <div>
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 22px;">
+            <span style="width: 24px; height: 1px; background: #C5A47E;"></span>
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #9A7B52;">Cómo funciona</span>
+          </div>
+          <h2 style="font-family: Sora, sans-serif; font-weight: 400; font-size: 42px; line-height: 1.12; letter-spacing: -0.028em; margin: 0;">Proceso didáctico en 4 pasos</h2>
+        </div>
+        <p style="font-size: 16px; line-height: 1.7; color: rgba(15,23,42,0.62); margin: 0;">Cómo logramos ubicarte con la prestadora financiera ideal.</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px;">
+        <sc-for list="{{ steps }}" as="p" hint-placeholder-count="4">
+          <div style="border-top: 1px solid rgba(197,164,126,0.7); padding-top: 28px;">
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.2em; color: #9A7B52; margin-bottom: 24px;">{{ p.n }}</div>
+            <div style="font-family: Sora, sans-serif; font-size: 21px; font-weight: 500; letter-spacing: -0.015em; margin-bottom: 12px; text-wrap: balance;">{{ p.t }}</div>
+            <div style="font-size: 15px; line-height: 1.7; color: rgba(15,23,42,0.64);">{{ p.d }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORMULARIO -->
+  <div id="estudio" style="background: #fff;">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 100px 48px;">
+      <div style="display: grid; grid-template-columns: 1fr 1.05fr; border: 1px solid rgba(15,23,42,0.12);">
+        <div style="padding: 72px 60px; background: #FAFAF8; display: flex; flex-direction: column; justify-content: space-between; gap: 44px;">
+          <div>
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #9A7B52; margin-bottom: 22px;">Sin compromiso</div>
+            <h2 style="font-family: Sora, sans-serif; font-weight: 400; font-size: 38px; line-height: 1.14; letter-spacing: -0.026em; margin: 0 0 20px; text-wrap: balance;">Estudio Socioeconómico y Financiero</h2>
+            <p style="font-size: 16px; line-height: 1.7; color: rgba(15,23,42,0.64); margin: 0; max-width: 46ch;">Completa tus datos básicos para analizar tu perfil y conectarte con la mejor oferta de financiamiento disponible.</p>
+          </div>
+          <div style="display: grid; gap: 16px;">
+            <div style="display: flex; gap: 14px; align-items: flex-start; font-size: 14px; line-height: 1.5; color: rgba(15,23,42,0.72);"><span style="width: 6px; height: 6px; flex: 0 0 6px; margin-top: 7px; background: #C5A47E; border-radius: 50%;"></span>Estudio de mercado gratis</div>
+            <div style="display: flex; gap: 14px; align-items: flex-start; font-size: 14px; line-height: 1.5; color: rgba(15,23,42,0.72);"><span style="width: 6px; height: 6px; flex: 0 0 6px; margin-top: 7px; background: #C5A47E; border-radius: 50%;"></span>Match con la prestadora donde tu perfil encaja</div>
+            <div style="display: flex; gap: 14px; align-items: flex-start; font-size: 14px; line-height: 1.5; color: rgba(15,23,42,0.72);"><span style="width: 6px; height: 6px; flex: 0 0 6px; margin-top: 7px; background: #C5A47E; border-radius: 50%;"></span>Atención por WhatsApp durante todo el proceso</div>
+          </div>
+          <a href="#" style="border: 1px solid #C5A47E; color: #9A7B52; padding: 15px 28px; font-size: 13px; font-weight: 600; letter-spacing: 0.04em; align-self: start; border-radius: 2px; transition: all .25s ease;" style-hover="background: #C5A47E; color: #fff;">Chat en WhatsApp</a>
+        </div>
+        <div style="padding: 60px; border-left: 1px solid rgba(15,23,42,0.12);">
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(15,23,42,0.4); margin-bottom: 32px;">Embed GoHighLevel · form 8biW0OIL5lKLx23bNZFO</div>
+          <div style="display: grid; gap: 24px;">
+            <div>
+              <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(15,23,42,0.55); margin-bottom: 9px;">Nombre del solicitante</div>
+              <div style="border: 1px solid rgba(15,23,42,0.18); padding: 15px 16px; font-size: 15px; color: rgba(15,23,42,0.35); transition: border-color .2s ease;" style-hover="border-color: #C5A47E;">Nombre y apellido</div>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+              <div>
+                <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(15,23,42,0.55); margin-bottom: 9px;">Correo</div>
+                <div style="border: 1px solid rgba(15,23,42,0.18); padding: 15px 16px; font-size: 15px; color: rgba(15,23,42,0.35); transition: border-color .2s ease;" style-hover="border-color: #C5A47E;">nombre@empresa.com</div>
+              </div>
+              <div>
+                <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(15,23,42,0.55); margin-bottom: 9px;">WhatsApp</div>
+                <div style="border: 1px solid rgba(15,23,42,0.18); padding: 15px 16px; font-size: 15px; color: rgba(15,23,42,0.35); transition: border-color .2s ease;" style-hover="border-color: #C5A47E;">+52 (000) 000 0000</div>
+              </div>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+              <div>
+                <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(15,23,42,0.55); margin-bottom: 9px;">Tipo de financiamiento</div>
+                <div style="border: 1px solid rgba(15,23,42,0.18); padding: 15px 16px; font-size: 15px; color: rgba(15,23,42,0.5); display: flex; justify-content: space-between; align-items: center; transition: border-color .2s ease;" style-hover="border-color: #C5A47E;"><span>Línea de crédito</span><span style="color: #C5A47E;">▾</span></div>
+              </div>
+              <div>
+                <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(15,23,42,0.55); margin-bottom: 9px;">Monto requerido</div>
+                <div style="border: 1px solid rgba(15,23,42,0.18); padding: 15px 16px; font-size: 15px; color: rgba(15,23,42,0.5); display: flex; justify-content: space-between; align-items: center; transition: border-color .2s ease;" style-hover="border-color: #C5A47E;"><span>Selecciona un rango</span><span style="color: #C5A47E;">▾</span></div>
+              </div>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+              <div>
+                <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(15,23,42,0.55); margin-bottom: 9px;">Antigüedad del negocio</div>
+                <div style="border: 1px solid rgba(15,23,42,0.18); padding: 15px 16px; font-size: 15px; color: rgba(15,23,42,0.5); display: flex; justify-content: space-between; align-items: center; transition: border-color .2s ease;" style-hover="border-color: #C5A47E;"><span>1 a 3 años</span><span style="color: #C5A47E;">▾</span></div>
+              </div>
+              <div>
+                <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(15,23,42,0.55); margin-bottom: 9px;">Ingresos mensuales</div>
+                <div style="border: 1px solid rgba(15,23,42,0.18); padding: 15px 16px; font-size: 15px; color: rgba(15,23,42,0.5); display: flex; justify-content: space-between; align-items: center; transition: border-color .2s ease;" style-hover="border-color: #C5A47E;"><span>Selecciona un rango</span><span style="color: #C5A47E;">▾</span></div>
+              </div>
+            </div>
+            <div>
+              <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(15,23,42,0.55); margin-bottom: 9px;">¿Para qué usarás el capital?</div>
+              <div style="border: 1px solid rgba(15,23,42,0.18); padding: 15px 16px; font-size: 15px; color: rgba(15,23,42,0.35); min-height: 80px; transition: border-color .2s ease;" style-hover="border-color: #C5A47E;">Describe brevemente el destino de los recursos</div>
+            </div>
+            <div style="background: #0F172A; color: #fff; padding: 18px; text-align: center; font-size: 14px; font-weight: 600; letter-spacing: 0.04em; cursor: pointer; border-radius: 2px; transition: all .25s ease;" style-hover="background: #020617; box-shadow: 0 14px 30px -14px rgba(2,6,23,0.6);">Enviar mi estudio</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DIVULGACIÓN REGULATORIA -->
+  <div style="background: #FAFAF8; border-top: 1px solid rgba(15,23,42,0.08);">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 72px 48px;">
+      <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #9A7B52; margin-bottom: 28px;">Divulgación Regulatoria y de Servicios</div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 56px; max-width: 1100px;">
+        <div>
+          <div style="font-family: Sora, sans-serif; font-size: 15px; font-weight: 600; margin-bottom: 12px;">1. No somos un prestamista, corredor o asesor financiero</div>
+          <p style="font-size: 13px; line-height: 1.75; color: rgba(15,23,42,0.58); margin: 0;">Aylesva Recursos opera estrictamente como un medio de marketing digital independiente, plataforma publicitaria y servicio de referencia. Aylesva Recursos no es un banco, prestamista, unión de crédito, corredor de hipotecas, corredor de préstamos de consumo, corredor de préstamos comerciales o entidad de servicios de crédito. Aylesva Recursos no solicita, origina, suscribe, negocia, aprueba ni financia préstamos ni ningún producto de financiamiento comercial. No actuamos como agentes, fiduciarios o corredores para posibles prestatarios, propietarios de negocios o prestamistas externos.</p>
+        </div>
+        <div>
+          <div style="font-family: Sora, sans-serif; font-size: 15px; font-weight: 600; margin-bottom: 12px;">2. Servicios de referencia de doble propósito (consumo y comercial)</div>
+          <p style="font-size: 13px; line-height: 1.75; color: rgba(15,23,42,0.58); margin: 0;"><strong style="color: rgba(15,23,42,0.75);">Consultas de Consumo:</strong> Completar una solicitud para productos de crédito de consumo te conecta con socios prestamistas externos independientes. Enviar tu información no constituye una solicitud de préstamo. Aylesva Recursos no garantiza la aprobación, ofertas de tasas ni condiciones de financiamiento.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BANDA DE OTRAS RAMAS -->
+  <div style="background: #fff; border-top: 1px solid rgba(15,23,42,0.08);">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 96px 48px;">
+      <div style="margin-bottom: 44px;">
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #9A7B52; margin-bottom: 20px;">Ecosistema Aylesva</div>
+        <h2 style="font-family: Sora, sans-serif; font-weight: 400; font-size: 34px; line-height: 1.15; letter-spacing: -0.025em; margin: 0; max-width: 30ch;">El mismo respaldo, en cada una de nuestras ramas</h2>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(15,23,42,0.12); border: 1px solid rgba(15,23,42,0.12);">
+        <sc-for list="{{ branches }}" as="b" hint-placeholder-count="4">
+          <a href="#" style="background: #FAFAF8; padding: 40px 32px 44px; display: block; transition: all .3s ease;" style-hover="background: #fff;">
+            <div style="height: 30px;">{{ b.el }}</div>
+            <div style="font-family: Sora, sans-serif; font-size: 18px; font-weight: 500; letter-spacing: -0.01em; margin: 26px 0 10px;">{{ b.name }}</div>
+            <div style="font-size: 14px; line-height: 1.6; color: rgba(15,23,42,0.6);">{{ b.d }}</div>
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: #9A7B52; margin-top: 26px;">Conocer →</div>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="background: #020617; color: #fff;">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 80px 48px 40px; display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 64px;">
+      <div>
+        <div style="font-family: Sora, sans-serif; font-weight: 600; letter-spacing: 0.24em; font-size: 15px; text-transform: uppercase; margin-bottom: 22px;">Aylesva</div>
+        <p style="font-size: 14px; line-height: 1.75; color: rgba(255,255,255,0.6); margin: 0 0 26px; max-width: 40ch;">Una plataforma dedicada a la curaduría editorial de productos premium, conectando artesanos y marcas de lujo con el estilo de vida contemporáneo.</p>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; line-height: 2; color: rgba(255,255,255,0.5);">Calle Benito Juarez 116<br />sales@aylesva.com</div>
+      </div>
+      <div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: #C5A47E; margin-bottom: 20px;">Servicios</div>
+        <div style="display: grid; gap: 12px; font-size: 14px; color: rgba(255,255,255,0.7);">
+          <a href="#">Aylesva Recursos</a>
+          <a href="#">Global Estates</a>
+          <a href="#">Aylesva Direct</a>
+          <a href="#">Aylesva Care</a>
+          <a href="#">Lanza tu marca</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: #C5A47E; margin-bottom: 20px;">Nuestra Empresa</div>
+        <div style="display: grid; gap: 12px; font-size: 14px; color: rgba(255,255,255,0.7);">
+          <a href="#">Ayuda / Contacto</a>
+          <a href="#">Nuestra Historia</a>
+          <a href="#">Términos de Servicio</a>
+          <a href="#">Aviso de Privacidad</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: #C5A47E; margin-bottom: 20px;">Recibe Nuestras Ofertas</div>
+        <p style="font-size: 14px; line-height: 1.65; color: rgba(255,255,255,0.6); margin: 0 0 18px;">Únete a nuestra colección curada y sé el primero en conocer lanzamientos exclusivos.</p>
+        <div style="display: flex; border: 1px solid rgba(255,255,255,0.25);">
+          <div style="flex: 1; padding: 13px 14px; font-size: 13px; color: rgba(255,255,255,0.4);">tu@correo.com</div>
+          <div style="background: #C5A47E; color: #0F172A; padding: 13px 18px; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; cursor: pointer; transition: background .25s ease;" style-hover="background: #E3CCAE;">SUSCRIBIR</div>
+        </div>
+      </div>
+    </div>
+    <div style="max-width: 1440px; margin: 0 auto; padding: 28px 48px 44px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.08em; color: rgba(255,255,255,0.42);">
+      <span>© 2026 Aylesva MX</span>
+      <span>Capital · Direct · Care · Global Estates · Commerce</span>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;gold&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#C5A47E&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#C5A47E&quot;,&quot;#E3CCAE&quot;,&quot;#B08D5B&quot;],&quot;section&quot;:&quot;Marca&quot;}}">
+const I = {
+  match: '<circle cx="12" cy="12" r="9"/><path d="M8 12l2.5 2.5L16 9"/>',
+  teach: '<path d="M4 6h16v12H4z"/><path d="M8 10h8M8 14h5"/>',
+  free: '<path d="M12 3l8 3v6c0 5-4 8-8 9-4-1-8-4-8-9V6z"/><path d="M9 12h6"/>',
+  capital: '<rect x="3" y="10" width="18" height="11"/><path d="M3 10 12 4l9 6"/><path d="M9 21v-6h6v6"/>',
+  direct: '<rect x="2" y="8" width="13" height="9"/><path d="M15 11h4l3 3v3h-7z"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="19" r="2"/>',
+  care: '<path d="M12 20 4 12.5A4.6 4.6 0 0 1 12 7a4.6 4.6 0 0 1 8 5.5z"/><path d="M8 13h2l1.5-3 2 5 1.5-2h2"/>',
+  estates: '<path d="M3 21V9l6-4 6 4v12"/><path d="M15 21V13h6v8"/><path d="M7 13h2M7 17h2"/>'
+};
+
+function icon(svg, size, color) {
+  return React.createElement('svg', {
+    width: size, height: size, viewBox: '0 0 24 24', fill: 'none',
+    stroke: color || '#C5A47E', strokeWidth: 1.25, strokeLinecap: 'square',
+    style: { display: 'block' },
+    dangerouslySetInnerHTML: { __html: svg }
+  });
+}
+
+class Component extends DCLogic {
+  renderVals() {
+    const gold = this.props.gold ?? '#C5A47E';
+    return {
+      chips: ['Match Inteligente', 'Estudio de Mercado Gratis', 'Intermediación Directa'],
+      loans: [
+        { eyebrow: 'Líneas de crédito comerciales', t: 'Business Lines of Credit', d: 'Una de las opciones más populares en EE. UU. Obtienes acceso a un fondo de capital del cual solo pagas intereses por el monto que decidas retirar, ideal para solventar flujos de caja variables.', bg: "url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800&q=80')" },
+        { eyebrow: 'Capital de trabajo', t: 'Working Capital Loans', d: 'Diseñado para cubrir las necesidades operativas de corto plazo: pago de nóminas, adquisición inmediata de inventarios o pago a proveedores críticos de tu negocio.', bg: "url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80')" },
+        { eyebrow: 'Financiamiento de equipo', t: 'Equipment Financing', d: 'Adquiere maquinaria, tecnología o vehículos comerciales. El mismo equipamiento sirve como garantía del crédito, reduciendo los requisitos colaterales y agilizando la aprobación.', bg: "url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=80')" }
+      ],
+      table: [
+        { name: 'Business Lines of Credit', purpose: 'Flujo de caja y emergencias inmediatas', speed: 'Rápido (24-48 hrs)', reqs: 'Bajos (Estados de cuenta)', amount: 'Hasta $150,000 USD' },
+        { name: 'Working Capital Loans', purpose: 'Operación diaria, inventario y nóminas', speed: 'Ágil (2-3 días)', reqs: 'Medios (Estados de cuenta + SAT)', amount: 'Hasta $500,000 USD' },
+        { name: 'Equipment Financing', purpose: 'Compra de maquinaria, tecnología o autos', speed: 'Moderado (3-5 días)', reqs: 'Medios (Cotización de activos)', amount: 'Hasta $1,000,000 USD' },
+        { name: 'SBA Loans (USA)', purpose: 'Crecimiento a largo plazo y consolidación', speed: 'Lento (2-4 semanas)', reqs: 'Altos (Garantías + Historial)', amount: 'Hasta $5,000,000 USD' }
+      ],
+      values: [
+        { t: 'Transparencia didáctica', d: 'Te explicamos con total claridad cómo funciona cada opción del mercado para que tomes la mejor decisión.', el: icon(I.teach, 30, gold) },
+        { t: 'Match inteligente', d: 'Evitamos que envíes solicitudes a ciegas. Buscamos la prestadora (Finqui, etc.) donde tu perfil encaja perfectamente.', el: icon(I.match, 30, gold) },
+        { t: 'Estudio sin compromiso', d: 'Realizamos tu estudio socioeconómico y de mercado gratis para evaluar tus posibilidades reales.', el: icon(I.free, 30, gold) }
+      ],
+      steps: [
+        { n: '01', t: 'Completa tus datos', d: 'Ingresa tu información básica y necesidades financieras en nuestro formulario de estudio.' },
+        { n: '02', t: 'Análisis Socioeconómico', d: 'Nuestros algoritmos y analistas evalúan tu perfil de negocio y capacidad financiera.' },
+        { n: '03', t: 'Estudio del Mercado Financiero', d: 'Comparamos ofertas de prestamistas como Finqui y otros socios del mercado mexicano y estadounidense.' },
+        { n: '04', t: 'Match y Acomodo Directo', d: 'Te canalizamos con la prestadora con mayor probabilidad de aprobación y mejores tasas para ti.' }
+      ],
+      branches: [
+        { name: 'Global Estates', d: 'Bienes raíces y desarrollos de lujo.', el: icon(I.estates, 30, gold) },
+        { name: 'Aylesva Direct', d: 'Importación y logística desde China.', el: icon(I.direct, 30, gold) },
+        { name: 'Aylesva Care', d: 'Beneficios de salud, seguros y telemedicina.', el: icon(I.care, 30, gold) },
+        { name: 'Lanza tu marca', d: 'Tienda propia con nuestro catálogo y envíos.', el: icon(I.capital, 30, gold) }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

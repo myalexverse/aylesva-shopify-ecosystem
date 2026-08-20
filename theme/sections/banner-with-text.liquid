@@ -1,0 +1,254 @@
+
+<div class="container"> 
+
+<div {% if settings.enable_animation != blank %} data-aos="fade-up" {% endif %} class="page-width feature-row" data-section-id="{{ section.id }}" data-section-type="banner-section">
+  <div id="cmsbanner_{{ section.id }}" class="ttcmsbanner">
+      <div class="cmsbanner">
+                <div class="ttbanner-wrap2   owl-carousel product_col_desktop_pro{{ section.settings.product_col_desktop_pro }} ">
+
+            {% for block in section.blocks %}
+            {% if block.settings.banner_image1 != blank %}
+          <div id="sub2-{{ block.id }}" class="ttbanner1 ttbanner banner1  banner2">
+            <div class="feature-row__item ttbanner-img"{% if block.settings.banner2_bg != blank %} style="background: {{ block.settings.banner2_bg }}"{% endif %}>
+
+              <div class="banner_img">
+                <a>
+                  {% if block.settings.banner_image1 != blank %}
+                  <img loading="lazy"  src="{{  block.settings.banner_image1 | img_url: "master" }}" alt="banner-image" />
+                  {% else %}
+                  {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                  {% endif %}
+                </a>
+                <div class="ttbanner-content {{ block.settings.text_position1 }}">
+                  <div class="ttbanner-block">
+
+                  <div class="ttbaaner-title" style="color:{{block.settings.title1_color}};">{{ block.settings.banner_title1 }}</div>
+                                              <div class="ttbaaner-subtitle" style="color:{{block.settings.subtitle1_color}};">{{ block.settings.banner_subtitle1 }}</div>
+
+                  {% if block.settings.btn1_txt != blank %}
+                  <div class="ttbaaner-button">
+                    <a href="{{block.settings.banner_link1 }}" class="btn">{{block.settings.btn1_txt}}</a>
+                  </div>  
+                  {% endif %}  
+                  
+                </div>
+                </div>
+              </div>
+
+<style>#sub2-{{ block.id }}.banner1 .banner_img .ttbanner-content .ttbaaner-button > a{background:{{block.settings.btn1_color }};color:{{block.settings.btntxt1_color }};}#sub2-{{ block.id }}.banner1 .banner_img .ttbanner-content .ttbaaner-button > a:hover{background:{{block.settings.btnhover1_color }};color:{{block.settings.btntxthover1_color }};}#sub2-{{ block.id }}.banner2 .banner_img .ttbanner-content .ttbaaner-button > a{background:{{section.settings.btn2_color }};color:{{section.settings.btntxt2_color }};}#cmsbanner_{{ section.id }} .banner2 .banner_img .ttbanner-content .ttbaaner-button > a:hover{background:{{section.settings.btnhover2_color }};color:{{section.settings.btntxthover2_color }};}</style>
+
+              
+            </div>
+          </div>
+            {% endif %}
+            {% endfor %}
+                        </div>
+      </div>
+    </div>
+</div>
+  </div>
+    <script>
+  $(document).ready(function() {
+
+    var brandsowl2 = $("body:not(.rtl) .ttbanner-wrap2");
+  var brandsowl2rtl = $("body.rtl .ttbanner-wrap2");
+  brandsowl2.owlCarousel({
+    items: {{section.settings.product_col_desktop_pro}},
+    dots: !1,
+    margin: 20,
+    loop: !1,
+    autoplay: !0,
+    autoplaySpeed: 1500,
+    autoplayHoverPause: true,
+    nav: !0,
+    responsive: {
+      100: {
+        items: 1
+      },
+      320: {
+        items:1
+      },
+      544: {
+        items: 1
+      },
+      992: {
+        items: 2
+      },
+      1200: {
+        items: 2
+      },
+            1400: {
+        items: 2
+      },
+      1630: {
+        items: {{section.settings.product_col_desktop_pro}}
+      }
+    }
+  });
+  brandsowl2rtl.owlCarousel({
+    items: {{section.settings.product_col_desktop_pro}},
+    dots: !1,
+    loop: !1,
+        margin: 20,
+    nav: !0,
+    autoplay: !0,
+    autoplaySpeed: 1500,
+    autoplayHoverPause: true,
+    rtl: !0,
+    responsive: {
+      100: {
+        items: 1
+      },
+      320: {
+        items:1
+      },
+      544: {
+        items: 1
+      },
+      992: {
+        items: 2
+      },
+      1200: {
+        items: 2
+      },
+            1400: {
+        items: 2
+      },
+      1630: {
+        items: {{section.settings.product_col_desktop_pro}}
+      }
+    }
+  });
+
+});    
+</script>
+  
+
+
+{% schema %}
+{
+"name": "Home Banner with text",
+"class": "index-section bannerwithtext",
+
+    "settings": [
+
+
+          {
+"type": "range",
+"id": "product_col_desktop_pro",
+"min": 2,
+"max": 4,
+"step": 1,
+"label": "Number of columns on Desktop",
+"default": 2
+}
+
+
+  ],
+
+  
+  "blocks" : [
+{
+"type": "image",
+"name": "Slide",
+"settings": [
+{
+"type": "image_picker",
+"id": "banner_image1",
+"label": "Image"
+},
+{
+"type": "url",
+"id": "banner_link1",
+"label": "Banner 1 link"
+},
+{
+"type": "color",
+"id": "banner1_bg",
+"label": "banner 1 background color",
+"default": "#f4f3f0"
+},
+{
+"type": "text",
+"id": "banner_title1",
+"label": "Banner Title 1",
+"default": "jackets"
+},
+{
+"type": "text",
+"id": "banner_subtitle1",
+"label": "Banner Subtitle 1",
+"default": "women"
+},
+{
+"type": "color",
+"id": "title1_color",
+"label": "Title1 color",
+"default": "#fff"
+},
+{
+"type": "color",
+"id": "subtitle1_color",
+"label": "Subtitle1 color",
+"default": "#fff"
+},
+{
+"type": "text",
+"id": "btn1_txt",
+"label": "button text",
+"default": "explore more"
+},
+{
+"type": "color",
+"id": "btn1_color",
+"label": "button1 background color",
+"default": "#FFD203"
+},
+{
+"type": "color",
+"id": "btntxt1_color",
+"label": "button1 text color",
+"default": "#000000"
+},
+{
+"type": "color",
+"id": "btnhover1_color",
+"label": "button1 hover background color",
+"default": "#000000"
+},
+{
+"type": "color",
+"id": "btntxthover1_color",
+"label": "button1 hover text color",
+"default": "#fff"
+},
+{
+"type": "select",
+"id": "text_position1",
+"label": "Text Position",
+"options": [
+{
+"value": "left",
+"label": "left"
+},
+{
+"value": "right",
+"label": "Right"
+},
+{
+"value": "center",
+"label": "Center"
+}
+]
+}
+]
+  }
+],
+"presets": [
+{
+"name": "Home Banner with text",
+"category": "Image"
+}
+]
+}
+{% endschema %}

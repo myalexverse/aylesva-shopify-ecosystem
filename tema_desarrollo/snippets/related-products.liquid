@@ -1,0 +1,57 @@
+{% assign number_of_products = 10 %}
+{% assign number_of_products_to_fetch = number_of_products | plus: 1 %}
+{% if collection == null or collection.handle == 'frontpage' or collection.handle == 'all' %}
+{% assign found_a_collection = false %}
+{% for c in product.collections %}
+{% if found_a_collection == false and c.handle != 'frontpage' and c.handle != 'all' and c.all_products_count > 1 %}
+{% assign found_a_collection = true %}
+{% assign collection = c %}
+{% endif %}
+{% endfor %}
+{% endif %}
+{% if collection and collection.products_count > 1 %}
+<div class="related-products-container col-sm-12">
+  <div class="related-product">
+    <div class="section-header text-center">
+      <h2 class="tt-title">{{ "products.general.related_products_title" | t }}</h2>    
+    </div>
+    <div class="row">
+      <div class="product-grid related-products owl-carousel">
+        {% assign current_product = product %}
+        {% assign current_product_found = false %}
+        {% for product in collection.products limit: number_of_products_to_fetch  %}
+        {% if product.handle == current_product.handle %}
+        {% assign current_product_found = true %}
+        {% else %}
+        {% unless current_product_found == false and forloop.last %}
+
+        {% unless same_vendor and current_product_found.vendor != product.vendor %}
+        {% unless same_type and current_product_found.type != product.type %}
+
+        <div class="grid-item">
+          {% render 'ayl-product-card-grid', product: product %}
+        </div>
+        {% endunless %}
+        {% endunless %}
+        {% endunless %}
+        {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+    <div class="related_navigation customNavigation hideme">
+      <div class="navigation_wrap">
+        <a class="prev mdi-chevron-left">{{ 'general.slider.prev' | t }}</a>
+        <a class="next mdi-chevron-right">{{ 'general.slider.next' | t }}</a> 
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+<script type="text/javascript">function relatedowljs(){var related_count=$('.related-products .item-row').length;if(related_count>4){$('.related_navigation').css('display','block')}
+                                                       else{$('.related_navigation').css('display','none')}
+                                                       var related=$("body:not(.rtl) .related-products");var relatedrtl=$("body.rtl .related-products");related.owlCarousel({items:5,slidesToScroll:1,loop:!1,responsive:{100:{items:1},481:{items:2},1200:{items:3},1460:{items:4},1660:{items:4}},responsiveRefreshRate:200,responsiveBaseWidth:window,autoPlay:!1,stopOnHover:!0,nav:!0,dots:!1});if($('.related-products-container').find('.owl-nav').hasClass('disabled')){$('.related-products-container').find('.customNavigation').hide()}else{$('.related-products-container').find('.customNavigation').show()}
+                                                       $(".related_navigation .next").click(function(){related.trigger('next.owl')})
+                                                       $(".related_navigation .prev").click(function(){related.trigger('prev.owl')})
+                                                       relatedrtl.owlCarousel({items:5,loop:!1,rtl:!0,responsive:{100:{items:1},481:{items:2},1200:{items:3},1460:{items:4},1660:{items:4}},responsiveRefreshRate:200,responsiveBaseWidth:window,autoPlay:!1,stopOnHover:!0,nav:!0,dots:!1});$(".related_navigation .next").click(function(){relatedrtl.trigger('next.owl')})
+                                                       $(".related_navigation .prev").click(function(){relatedrtl.trigger('prev.owl')})}
+  $(document).ready(function(){relatedowljs()});$(window).resize(function(){relatedowljs()})</script>

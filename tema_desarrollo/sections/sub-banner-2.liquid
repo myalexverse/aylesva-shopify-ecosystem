@@ -1,0 +1,255 @@
+
+<style>
+.ttcmssubbanner2 .ttbanner-wrap .tthomebanner-img img {
+    width: 100%;
+}
+  </style>
+
+<div class="container"> 
+{% if section.blocks.size > 0 %}
+<div  {% if settings.enable_animation != blank %} data-aos="fade-up" {% endif %} class="page-width feature-row" {% if settings.enable_animation != blank %} data-aos="fade-up" {% endif %} data-section-id="{{ section.id }}" data-section-type="banner-section">
+  <div class="ttcmssubbanner2">
+    <div class="ttbanner">
+          <div class="ttbanner-wrap   owl-carousel product_col_desktop_pro{{ section.settings.product_col_desktop_pro }} ">
+            {% for block in section.blocks %}
+            {% if block.settings.banner_image1 != blank %}
+            <div id="sub2-{{ block.id }}" class="ttsubbanner">
+              <div class="sub-banner2 tthomebanner-img">
+                <div class="tthomebanner-img">
+                  <a>
+                    {% if block.settings.banner_image1 != blank %}
+                    <img loading="lazy" height="280" width="520" src="{{  block.settings.banner_image1 | img_url: "master" }}" alt="sub-banner image" />
+                    {% else %}
+                    {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                    {% endif %}
+                  </a>
+                </div>
+                <div class="ttbanner-content {{ block.settings.text_position }}">
+                  {% if block.settings.title !="" %}
+                  <div class="title">{{ block.settings.title }}</div>
+                  {% endif %}
+                  {% if block.settings.subtitle !="" %}
+                  <div class="subtitle">{{ block.settings.subtitle }}</div>
+                  {% endif %}
+                  {% if block.settings.btn != blank %}
+                  <div class="ttbaaner-button">
+                    <a class="button btn" href="{{block.settings.banner_link1 }}">{{block.settings.btn}}</a>
+                  </div>  
+                  {% endif %} 
+                </div>
+              </div>
+              <style>.ttcmssubbanner2 .ttbanner-wrap #sub2-{{ block.id }} .title{color:{{ block.settings.title_color }};}.ttcmssubbanner2 .ttbanner-wrap #sub2-{{ block.id }} .subtitle{color:{{ block.settings.subtitle_color }};}.ttcmssubbanner2 .ttbanner-wrap #sub2-{{ block.id }} .ttbaaner-button a.button{background:{{block.settings.btnbg_color }};color:{{block.settings.btntxt_color}};}.ttcmssubbanner2 .ttbanner-wrap #sub2-{{ block.id }} .ttbaaner-button a.button:hover{background:{{block.settings.btnhvr_color }};color:{{block.settings.btnhvrtxt_color}};}</style>
+            </div>
+            {% endif %}
+            {% endfor %}
+          </div>
+      </div>
+  </div>
+</div>
+{% endif %}
+
+</div>
+
+  <script>
+  $(document).ready(function() {
+
+    var brandsowl9 = $("body:not(.rtl) .ttbanner-wrap");
+  var brandsowlrtl9 = $("body.rtl .ttbanner-wrap");
+  brandsowl9.owlCarousel({
+    items: {{section.settings.product_col_desktop_pro}},
+    dots: !1,
+    margin: 30,
+    loop: !1,
+    autoplay: !0,
+    autoplaySpeed: 1500,
+    autoplayHoverPause: true,
+    nav: !0,
+    responsive: {
+      100: {
+        items: 1
+      },
+      320: {
+        items:1
+      },
+      544: {
+        items: 2
+      },
+      992: {
+        items: 2
+      },
+      1200: {
+        items: 3
+      },
+            1400: {
+        items: 3
+      },
+      1630: {
+        items: {{section.settings.product_col_desktop_pro}}
+      }
+    }
+  });
+  brandsowlrtl9.owlCarousel({
+    items: {{section.settings.product_col_desktop_pro}},
+    dots: !1,
+    loop: !1,
+        margin: 30,
+    nav: !0,
+    autoplay: !0,
+    autoplaySpeed: 1500,
+    autoplayHoverPause: true,
+    rtl: !0,
+    responsive: {
+      100: {
+        items: 1
+      },
+      320: {
+        items:1
+      },
+      544: {
+        items: 2
+      },
+      992: {
+        items: 2
+      },
+      1200: {
+        items: 3
+      },
+            1400: {
+        items: 3
+      },
+      1630: {
+        items: {{section.settings.product_col_desktop_pro}}
+      }
+    }
+  });
+  $('.brand-bar').each(function() {
+    if ($(this).find('.owl-nav').hasClass('disabled')) {
+      $(this).find('.customNavigation').hide()
+    } else {
+      $(this).find('.customNavigation').show()
+    }
+  });
+  $(".brand_next").click(function() {
+    $(".tt-brand_slider").trigger('next.owl')
+  });
+  $(".brand_prev").click(function() {
+    $(".tt-brand_slider").trigger('prev.owl')
+  });
+});    
+</script>
+  
+
+  
+{% schema %}
+{
+"name": "sub-banner-2",
+"class": "index-section ttcmssub-banner2",
+  "settings": [
+
+
+          {
+"type": "range",
+"id": "product_col_desktop_pro",
+"min": 2,
+"max": 20,
+"step": 1,
+"label": "Number of columns on Desktop",
+"default": 3
+}
+
+
+  ],
+"blocks" : [
+{
+"type": "image",
+"name": "Slide",
+"settings": [
+{
+"type": "image_picker",
+"id": "banner_image1",
+"label": "Image"
+},
+{
+"type": "url",
+"id": "banner_link1",
+"label": "Banner link"
+},
+{
+"type": "textarea",
+"id": "title",
+"label": "Title",
+"default":"Kid's Corner"
+},
+{
+"type": "textarea",
+"id": "subtitle",
+"label": "Sub Title",
+"default":"Big Storage"
+},
+{
+"type": "color",
+"id": "title_color",
+"label": "Title Color",
+"default":"#f12a43"
+},
+{
+"type": "color",
+"id": "subtitle_color",
+"label": "Subtitle Color",
+"default":"#000000"
+},
+{
+"type": "text",
+"id": "btn",
+"label": "Button text"
+},
+{
+"type": "color",
+"id": "btnbg_color",
+"label": "Button Background Color"
+},
+{
+"type": "color",
+"id": "btntxt_color",
+"label": "Button text Color"
+},
+{
+"type": "color",
+"id": "btnhvr_color",
+"label": "Button Hover Background Color"
+},
+{
+"type": "color",
+"id": "btnhvrtxt_color",
+"label": "Button Hover text Color"
+},
+{
+"type": "select",
+"id": "text_position",
+"label": "Text Position",
+"options": [
+{
+"value": "left",
+"label": "left"
+},
+{
+"value": "right",
+"label": "Right"
+},
+{
+"value": "center",
+"label": "Center"
+}
+]
+}
+]
+}
+],
+"presets": [
+{
+"name": "sub-banner-2",
+"category": "Image"
+}
+]
+}
+{% endschema %}

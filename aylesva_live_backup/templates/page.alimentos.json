@@ -1,0 +1,287 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "wrapper": "div#main",
+  "sections": {
+    "hero": {
+      "type": "aylesva-intro-hero",
+      "blocks": {
+        "slide1": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/restaurant-breakfast.jpg",
+            "image_alignment": "center",
+            "sub_title": "SABORES DE México",
+            "title": "ALIMENTOS Y\nBEBIDAS",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30,
+            "btn1_txt": "Ver Despensa",
+            "btn1_link": "shopify:\/\/collections\/alimentos-artesanales",
+            "btn_bg_color": "#ffb300",
+            "btn_txt_color": "#000000",
+            "btn2_txt": "Ver Bebidas",
+            "btn2_link": "shopify:\/\/collections\/bebidas-artesanales"
+          }
+        }
+      },
+      "block_order": [
+        "slide1"
+      ],
+      "settings": {
+        "desktop_height": 80,
+        "mobile_height": 60,
+        "autoplay": true,
+        "autoplay_speed": 6,
+        "show_arrows": true
+      }
+    },
+    "bubbles": {
+      "type": "aylesva-category-bubbles",
+      "blocks": {
+        "b1": {
+          "type": "category",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/person-adds-milk-to-their-shopping-basket.jpg",
+            "label": "Despensa",
+            "link": "shopify:\/\/collections\/alimentos-artesanales"
+          }
+        },
+        "b2": {
+          "type": "category",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/healthy-beet-juice.jpg",
+            "label": "Bebidas",
+            "link": "shopify:\/\/collections\/bebidas-artesanales"
+          }
+        },
+        "b3": {
+          "type": "category",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/bread-loaf-on-a-wooden-cutting-board.jpg",
+            "label": "Snacks",
+            "link": "shopify:\/\/collections\/dulces-tipicos"
+          }
+        },
+        "b4": {
+          "type": "category",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/camera-looks-down-on-wooden-table-with-two-bao-buns.jpg",
+            "label": "Gourmet",
+            "link": "shopify:\/\/collections\/regalos-gourmet"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ],
+      "settings": {
+        "title": "CATEGORÍAS GOURMET",
+        "bg_color": "#ffffff"
+      }
+    },
+    "gender_cards": {
+      "type": "aylesva-gender-cards",
+      "blocks": {
+        "c1": {
+          "type": "card",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/asparagus-on-white.jpg",
+            "label": "Orgánicos",
+            "link": "shopify:\/\/collections\/productos-organicos"
+          }
+        },
+        "c2": {
+          "type": "card",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/chocolate-cake-with-toffee-sauced-drizzled-over.jpg",
+            "label": "Repostería",
+            "link": "shopify:\/\/collections\/reposteria"
+          }
+        },
+        "c3": {
+          "type": "card",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/coffee-break.jpg",
+            "label": "Café y Té",
+            "link": "shopify:\/\/collections\/cafe-y-te"
+          }
+        },
+        "c4": {
+          "type": "card",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/fresh-thyme-and-kitchen-scissors.jpg",
+            "label": "Especias",
+            "link": "shopify:\/\/collections\/especias-y-condimentos"
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4"
+      ],
+      "settings": {
+        "title": "COMPLETA TU COCINA",
+        "bg_color": "#ffffff"
+      }
+    },
+    "custom_duo_cooler_banner_cKckDU": {
+      "type": "custom-duo-cooler-banner",
+      "name": "Duo Cooler Banner",
+      "settings": {
+        "section_title": "Marcas Destacadas",
+        "image_1": "shopify:\/\/shop_images\/Cambiar_texto_en_202604101216_46578ad7-19ae-447f-8e90-fba57eb775b6.jpg",
+        "button_text_1": "proximamente",
+        "link_1": "",
+        "video_2": "shopify:\/\/files\/videos\/Woman_drinking_coffee_202604101224.mp4",
+        "button_text_2": "más productos",
+        "link_2": "",
+        "margin_top": 30,
+        "margin_bottom": 30
+      }
+    },
+    "aylesva_cooler_carousel_eK9R4N": {
+      "type": "aylesva-cooler-carousel",
+      "name": "Cooler Carrusel",
+      "settings": {
+        "title": "Ofertas Destacadas",
+        "collection": "abrigos-y-chaquetas-hombre",
+        "product_limit": 12,
+        "animation_speed": 25,
+        "margin_top": 30,
+        "margin_bottom": 30
+      }
+    },
+    "aylesva_cuadro_colecciones_3xJghC": {
+      "type": "aylesva-cuadro-colecciones",
+      "blocks": {
+        "collection_item_WwzMY8": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "mujer",
+            "image": "shopify:\/\/shop_images\/long-blonde-hair-at-carnival.jpg",
+            "title": "Mujer"
+          }
+        },
+        "collection_item_8RX3bd": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "hombre",
+            "image": "shopify:\/\/shop_images\/man-puts-his-hand-inside-his-jacket.jpg",
+            "title": ""
+          }
+        },
+        "collection_item_EY8kGa": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "nino",
+            "image": "shopify:\/\/shop_images\/little-boy-ready-for-school-looking-up.jpg",
+            "title": ""
+          }
+        },
+        "collection_item_hXaq8k": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "nina",
+            "image": "shopify:\/\/shop_images\/girl-framed-by-heart.jpg",
+            "title": ""
+          }
+        },
+        "collection_item_rcMKwi": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "bebe",
+            "image": "shopify:\/\/shop_images\/cute-baby-girl-with-pink-bow-headband.jpg",
+            "title": ""
+          }
+        },
+        "collection_item_eezhnC": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "artesanal",
+            "image": "shopify:\/\/shop_images\/pomelli-image_cd766c49-22f0-4171-859e-c22f786b7b86.png",
+            "title": ""
+          }
+        },
+        "collection_item_WiJHmF": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "hogar",
+            "image": "shopify:\/\/shop_images\/sunlight-creeps-through-a-bright-living-room.jpg",
+            "title": ""
+          }
+        },
+        "collection_item_b9KtWr": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "alimentos",
+            "image": "shopify:\/\/shop_images\/hamburger-and-fries.jpg",
+            "title": ""
+          }
+        },
+        "collection_item_XcTLp9": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "electronicos",
+            "image": "shopify:\/\/shop_images\/mobile-phone-and-gimbal-in-hand.jpg",
+            "title": ""
+          }
+        },
+        "collection_item_V3hNaG": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "vehiculos",
+            "image": "shopify:\/\/shop_images\/red-sports-car-wheel-close-up.jpg",
+            "title": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_item_WwzMY8",
+        "collection_item_8RX3bd",
+        "collection_item_EY8kGa",
+        "collection_item_hXaq8k",
+        "collection_item_rcMKwi",
+        "collection_item_eezhnC",
+        "collection_item_WiJHmF",
+        "collection_item_b9KtWr",
+        "collection_item_XcTLp9",
+        "collection_item_V3hNaG"
+      ],
+      "name": "Cuadro Colecciones LOL",
+      "settings": {
+        "title": "Categorías",
+        "view_all_text": "Mostrar todas las categorías",
+        "view_all_link": "",
+        "margin_top": 30,
+        "margin_bottom": 30
+      }
+    },
+    "main": {
+      "type": "page",
+      "disabled": true,
+      "settings": {}
+    }
+  },
+  "order": [
+    "hero",
+    "bubbles",
+    "gender_cards",
+    "custom_duo_cooler_banner_cKckDU",
+    "aylesva_cooler_carousel_eK9R4N",
+    "aylesva_cuadro_colecciones_3xJghC",
+    "main"
+  ]
+}

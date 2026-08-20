@@ -1,0 +1,45 @@
+{% comment %} Aylesva · Proceso por pasos (fondo ink) {% endcomment %}
+<section class="ay" style="background:{% if section.settings.dark %}var(--ay-ink-800){% else %}var(--ay-stone){% endif %}">
+  <div class="ay-wrap">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:76px;align-items:end;margin-bottom:64px" class="ay-head">
+      <div>
+        {% if section.settings.eyebrow != blank %}
+          <p class="ay-eyebrow {% if section.settings.dark %}ay-eyebrow--dark{% endif %}">{{ section.settings.eyebrow }}</p>
+        {% endif %}
+        <h2 class="ay-h2" style="{% if section.settings.dark %}color:#fff;font-weight:300;letter-spacing:-.03em{% endif %}">{{ section.settings.title }}</h2>
+      </div>
+      {% if section.settings.intro != blank %}
+        <p class="ay-lead" style="font-size:16px;{% if section.settings.dark %}color:rgba(255,255,255,.62){% endif %}">{{ section.settings.intro }}</p>
+      {% endif %}
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat({{ section.blocks.size }},1fr);gap:44px" class="ay-steps">
+      {% for block in section.blocks %}
+        <div style="border-top:1px solid rgba(197,164,126,{% if section.settings.dark %}.45{% else %}.7{% endif %});padding-top:28px" {{ block.shopify_attributes }}>
+          <div style="font-family:var(--ay-font-mono);font-size:12px;letter-spacing:.2em;color:{% if section.settings.dark %}var(--ay-gold){% else %}var(--ay-gold-text){% endif %};margin-bottom:24px">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</div>
+          <h3 class="ay-h3" style="font-size:23px;font-weight:400;{% if section.settings.dark %}color:#fff{% endif %};margin-bottom:12px">{{ block.settings.title }}</h3>
+          <p class="ay-body" style="{% if section.settings.dark %}color:rgba(255,255,255,.62){% endif %}">{{ block.settings.text }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Aylesva · Proceso",
+  "settings": [
+    { "type": "checkbox", "id": "dark", "label": "Fondo ink (oscuro)", "default": true },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Cómo funciona" },
+    { "type": "textarea", "id": "title", "label": "Titular", "default": "Tres pasos, sin fricción" },
+    { "type": "textarea", "id": "intro", "label": "Texto de entrada" }
+  ],
+  "blocks": [
+    { "type": "step", "name": "Paso", "limit": 4, "settings": [
+      { "type": "text", "id": "title", "label": "Título del paso" },
+      { "type": "textarea", "id": "text", "label": "Descripción" }
+    ]}
+  ],
+  "presets": [{ "name": "Aylesva · Proceso" }]
+}
+{% endschema %}

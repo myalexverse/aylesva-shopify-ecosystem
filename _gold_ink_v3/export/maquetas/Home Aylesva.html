@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  body { margin: 0; background: #FAFAF8; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; text-decoration: none; }
+  a:hover { color: #C5A47E; }
+  @keyframes ay-need-in { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+  @keyframes ay-rule-in { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  .ay-need { opacity: 0; }
+  .ay-need.is-in { animation: ay-need-in .72s cubic-bezier(.22,.61,.36,1) forwards; }
+  .ay-need.is-in .ay-need-rule { animation: ay-rule-in .8s cubic-bezier(.22,.61,.36,1) forwards; }
+  .ay-need-num { transition: color .35s ease, -webkit-text-stroke-color .35s ease; }
+  .ay-need:hover .ay-need-num { color: rgba(197,164,126,.16); }
+  .ay-need-arrow { display: inline-block; transition: transform .35s cubic-bezier(.22,.61,.36,1); }
+  .ay-need:hover .ay-need-arrow { transform: translateX(6px); }
+  .ay-need-icon { transition: transform .45s cubic-bezier(.22,.61,.36,1), opacity .35s ease; opacity: .55; }
+  .ay-need:hover .ay-need-icon { opacity: 1; transform: translateY(-3px); }
+  @media (prefers-reduced-motion: reduce) {
+    .ay-need, .ay-need.is-in { opacity: 1; animation: none; }
+    .ay-need-rule { transform: none !important; animation: none !important; }
+  }
+</style>
+</helmet>
+
+<div style="font-family: Manrope, system-ui, sans-serif; color: #0F172A; background: #FAFAF8;">
+
+  <!-- NAV -->
+  <div style="background: #020617; color: #fff;">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 9px 48px; display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.55);">
+      <span>Marketplace · Servicios corporativos · Cobertura en México, EE. UU. y Asia</span>
+      <div style="display: flex; gap: 22px;">
+        <a href="#">México</a>
+        <a href="#">USA</a>
+      </div>
+    </div>
+  </div>
+  <div style="background: #fff; border-bottom: 1px solid rgba(15,23,42,0.1); position: sticky; top: 0; z-index: 40;">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 20px 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px 40px; flex-wrap: wrap;">
+      <div style="display: flex; align-items: baseline; gap: 16px; flex: 0 0 auto; white-space: nowrap;">
+        <span style="font-family: Sora, sans-serif; font-weight: 600; letter-spacing: 0.24em; font-size: 15px; text-transform: uppercase;">Aylesva</span>
+        <span style="width: 1px; height: 13px; background: rgba(15,23,42,0.2);"></span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #9A7B52;">México</span>
+      </div>
+      <div style="display: flex; gap: 26px; font-size: 14px; font-weight: 500; color: rgba(15,23,42,0.72); flex: 1 1 auto; justify-content: center; flex-wrap: wrap;">
+        <a href="#servicios" style="white-space: nowrap;">Servicios</a>
+        <a href="#emprende" style="white-space: nowrap;">Emprende</a>
+        <a href="#financiamiento" style="white-space: nowrap;">Financiamiento</a>
+        <a href="#importaciones" style="white-space: nowrap;">Importaciones</a>
+        <a href="#inversion" style="white-space: nowrap;">Inversión</a>
+        <a href="#marketplace" style="white-space: nowrap;">Marketplace</a>
+      </div>
+      <a href="#contacto" style="background: #0F172A; color: #fff; padding: 13px 26px; font-size: 13px; font-weight: 600; letter-spacing: 0.04em; border-radius: 2px; white-space: nowrap; flex: 0 0 auto; transition: all .25s ease;" style-hover="background: #020617; box-shadow: 0 12px 26px -12px rgba(2,6,23,0.5);">Habla con un asesor</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div style="background: #FAFAF8; border-bottom: 1px solid rgba(15,23,42,0.08);">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 104px 48px 88px; display: grid; grid-template-columns: 1fr 1.05fr; gap: 72px; align-items: center;">
+      <div>
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 30px;">
+          <span style="width: 26px; height: 1px; background: #C5A47E;"></span>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: #9A7B52;">Grupo Aylesva</span>
+        </div>
+        <h1 style="font-family: Sora, sans-serif; font-weight: 300; font-size: 64px; line-height: 1.04; letter-spacing: -0.032em; margin: 0 0 26px; text-wrap: balance;">Impulsamos tu negocio.<br /><span style="color: #9A7B52;">Potenciamos tu futuro.</span></h1>
+        <p style="font-size: 19px; line-height: 1.65; color: rgba(15,23,42,0.68); max-width: 46ch; margin: 0 0 40px; text-wrap: pretty;">Un ecosistema de soluciones diseñadas para acompañarte en cada etapa de crecimiento de tu empresa y tu patrimonio.</p>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+          <a href="#servicios" style="background: #0F172A; color: #fff; padding: 18px 36px; font-size: 14px; font-weight: 600; letter-spacing: 0.04em; border-radius: 2px; transition: all .25s ease;" style-hover="background: #020617; transform: translateY(-2px); box-shadow: 0 14px 30px -14px rgba(2,6,23,0.5);">Conoce nuestros servicios →</a>
+          <a href="#contacto" style="border: 1px solid #C5A47E; color: #9A7B52; padding: 17px 35px; font-size: 14px; font-weight: 600; letter-spacing: 0.04em; border-radius: 2px; transition: all .25s ease;" style-hover="background: #C5A47E; color: #fff;">Habla con un asesor</a>
+        </div>
+      </div>
+      <div style="position: relative; border: 1px solid rgba(15,23,42,0.12); background: repeating-linear-gradient(135deg, #efece6 0 10px, #e7e3db 10px 20px); height: 520px; display: flex; align-items: flex-end; padding: 28px;">
+        <div style="position: absolute; inset: 12px; border: 1px solid rgba(197,164,126,0.85); pointer-events: none;"></div>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.1em; color: rgba(15,23,42,0.5);">render del ecosistema · panel, tarjeta y paquetería · 2400×1600</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CIFRAS DEL GRUPO -->
+  <div style="background: #0F172A;">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 0 48px;">
+      <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: rgba(255,255,255,0.14);">
+        <sc-for list="{{ stats }}" as="s" hint-placeholder-count="5">
+          <div style="padding: 42px 30px 46px; background: #0F172A;">
+            <div style="font-family: Sora, sans-serif; font-size: 36px; font-weight: 300; color: #fff; letter-spacing: -0.02em;">{{ s.v }}</div>
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-top: 8px;">{{ s.k }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUÉ HACEMOS -->
+  <div style="background: #fff;">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 100px 48px;">
+      <div style="display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 80px; align-items: start;">
+        <div>
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 22px;">
+            <span style="width: 24px; height: 1px; background: #C5A47E;"></span>
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #9A7B52;">Qué hacemos</span>
+          </div>
+          <h2 style="font-family: Sora, sans-serif; font-weight: 400; font-size: 42px; line-height: 1.12; letter-spacing: -0.028em; margin: 0 0 40px; text-wrap: balance;">Dos formas de trabajar con nosotros, un mismo respaldo.</h2>
+          <div style="position: relative; border: 1px solid rgba(15,23,42,0.12); height: 380px; background: repeating-linear-gradient(135deg, #efece6 0 10px, #e7e3db 10px 20px); display: flex; align-items: flex-end; padding: 24px;">
+            <div style="position: absolute; inset: 12px; border: 1px solid rgba(197,164,126,0.85); pointer-events: none;"></div>
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.1em; color: rgba(15,23,42,0.5);">equipo Aylesva en oficina · vertical 1200×1600</span>
+          </div>
+        </div>
+        <div>
+          <p style="font-size: 17px; line-height: 1.72; color: rgba(15,23,42,0.68); margin: 0 0 44px; text-wrap: pretty;">Aylesva empezó como un marketplace de productos premium y hoy opera además un portafolio de servicios corporativos. La misma empresa te vende un producto curado, te financia un proyecto, te importa un contenedor, te consigue un inmueble o te cuida la salud, con un asesor asignado en cada caso.</p>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(15,23,42,0.12); border: 1px solid rgba(15,23,42,0.12);">
+            <sc-for list="{{ universes }}" as="u" hint-placeholder-count="2">
+              <div style="background: #FAFAF8; display: flex; flex-direction: column;">
+                <div style="height: 190px; background: repeating-linear-gradient(135deg, #efece6 0 8px, #e7e3db 8px 16px); display: flex; align-items: flex-end; padding: 16px;">
+                  <span style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 0.1em; color: rgba(15,23,42,0.5);">{{ u.img }}</span>
+                </div>
+                <div style="padding: 32px 32px 36px; display: flex; flex-direction: column; flex: 1;">
+                <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: #9A7B52; margin-bottom: 16px;">{{ u.tag }}</div>
+                <div style="font-family: Sora, sans-serif; font-size: 22px; font-weight: 500; letter-spacing: -0.015em; margin-bottom: 12px;">{{ u.t }}</div>
+                <div style="font-size: 15px; line-height: 1.7; color: rgba(15,23,42,0.64); margin-bottom: 26px;">{{ u.d }}</div>
+                <a href="{{ u.href }}" style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: #9A7B52; border-bottom: 1px solid rgba(197,164,126,0.5); padding-bottom: 4px; align-self: start; margin-top: auto;">{{ u.cta }} →</a>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ECOSISTEMA DE SERVICIOS -->
+  <div id="servicios" style="background: #FAFAF8; border-top: 1px solid rgba(15,23,42,0.08); border-bottom: 1px solid rgba(15,23,42,0.08);">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 100px 48px;">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 76px; align-items: end; margin-bottom: 52px;">
+        <div>
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 22px;">
+            <span style="width: 24px; height: 1px; background: #C5A47E;"></span>
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #9A7B52;">Nuestro ecosistema de soluciones</span>
+          </div>
+          <h2 style="font-family: Sora, sans-serif; font-weight: 400; font-size: 42px; line-height: 1.12; letter-spacing: -0.028em; margin: 0;">Qué hace cada servicio</h2>
+        </div>
+        <p style="font-size: 16px; line-height: 1.7; color: rgba(15,23,42,0.62); margin: 0; text-wrap: pretty;">Cada rama resuelve una necesidad concreta y opera con su propio equipo. Puedes usar una sola o combinarlas: financiar la importación, vender en el marketplace y proteger a tu familia con el mismo grupo.</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(15,23,42,0.12); border: 1px solid rgba(15,23,42,0.12);">
+        <sc-for list="{{ services }}" as="s" hint-placeholder-count="6">
+          <a href="{{ s.href }}" style="background: #fff; display: flex; flex-direction: column; transition: all .3s ease;" style-hover="box-shadow: 0 28px 56px -32px rgba(2,6,23,0.3); transform: translateY(-3px); z-index: 2;">
+            <div style="position: relative; height: 170px; background: repeating-linear-gradient(135deg, #efece6 0 8px, #e7e3db 8px 16px); display: flex; align-items: flex-end; padding: 16px;">
+              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 0.1em; color: rgba(15,23,42,0.5);">{{ s.img }}</span>
+              <div style="position: absolute; right: 22px; bottom: -22px; width: 64px; height: 64px; background: #0F172A; display: flex; align-items: center; justify-content: center;">{{ s.el }}</div>
+            </div>
+            <div style="padding: 40px 34px 42px; display: flex; flex-direction: column; gap: 16px; flex: 1;">
+            <div>
+              <div style="font-family: Sora, sans-serif; font-size: 23px; font-weight: 500; letter-spacing: -0.018em;">{{ s.name }}</div>
+              <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: #9A7B52; margin-top: 8px;">{{ s.claim }}</div>
+            </div>
+            <div style="font-size: 15px; line-height: 1.7; color: rgba(15,23,42,0.64);">{{ s.d }}</div>
+            <div style="display: grid; gap: 10px; padding-top: 20px; border-top: 1px solid rgba(15,23,42,0.12);">
+              <sc-for list="{{ s.bullets }}" as="b" hint-placeholder-count="3">
+                <div style="display: flex; gap: 12px; align-items: flex-start; font-size: 14px; line-height: 1.5; color: rgba(15,23,42,0.72);"><span style="color: #C5A47E; flex: 0 0 auto;">◈</span><span>{{ b }}</span></div>
+              </sc-for>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin-top: auto; padding-top: 22px;">
+              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(15,23,42,0.45);">{{ s.who }}</span>
+              <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: #9A7B52;">Conocer →</span>
+            </div>
+            </div>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <!-- CON QUÉ NECESIDAD LLEGAS -->
+  <div style="background: #0F172A;">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 100px 48px;">
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 22px;">
+        <span style="width: 24px; height: 1px; background: #C5A47E;"></span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #E3CCAE;">Encuentra tu ruta</span>
+      </div>
+      <h2 style="font-family: Sora, sans-serif; font-weight: 300; font-size: 44px; line-height: 1.1; letter-spacing: -0.03em; color: #fff; margin: 0 0 20px; max-width: 30ch; text-wrap: balance;">¿Con qué necesidad llegas hoy?</h2>
+      <p style="font-size: 16px; line-height: 1.7; color: rgba(255,255,255,0.62); margin: 0 0 52px; max-width: 60ch;">Empieza por el objetivo, no por el nombre del servicio. Cada ruta te lleva a la rama que lo resuelve.</p>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.16);">
+        <sc-for list="{{ needs }}" as="n" hint-placeholder-count="6">
+          <a class="ay-need" href="{{ n.href }}" style="background: #0F172A; padding: 32px 30px 34px; display: flex; flex-direction: column; gap: 20px; transition: background .3s ease; animation-delay: {{ n.delay }};" style-hover="background: #020617;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 20px;">
+              <span class="ay-need-num" style="font-family: Sora, sans-serif; font-size: 40px; font-weight: 200; line-height: 1; color: transparent; -webkit-text-stroke: 1px rgba(197,164,126,0.75);">{{ n.n }}</span>
+              <div class="ay-need-icon">{{ n.el }}</div>
+            </div>
+            <div style="font-family: Sora, sans-serif; font-size: 19px; font-weight: 400; color: #fff; letter-spacing: -0.012em; line-height: 1.35; text-wrap: pretty;">{{ n.q }}</div>
+            <div style="margin-top: auto;">
+              <div class="ay-need-rule" style="height: 1px; background: linear-gradient(90deg, rgba(197,164,126,0.85), rgba(255,255,255,0.12)); transform: scaleX(0); transform-origin: left; animation-delay: {{ n.delayRule }};"></div>
+              <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: #C5A47E; padding-top: 14px;">{{ n.to }} <span class="ay-need-arrow">→</span></div>
+            </div>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <!-- CÓMO TRABAJAMOS -->
+  <div style="background: #fff; border-bottom: 1px solid rgba(15,23,42,0.08);">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 100px 48px;">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 76px; align-items: end; margin-bottom: 60px;">
+        <div>
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 22px;">
+            <span style="width: 24px; height: 1px; background: #C5A47E;"></span>
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #9A7B52;">Cómo trabajamos</span>
+          </div>
+          <h2 style="font-family: Sora, sans-serif; font-weight: 400; font-size: 42px; line-height: 1.12; letter-spacing: -0.028em; margin: 0;">El mismo método en las seis ramas</h2>
+        </div>
+        <p style="font-size: 16px; line-height: 1.7; color: rgba(15,23,42,0.62); margin: 0;">Cambia el servicio, no la forma de atenderte: diagnóstico sin costo, una sola propuesta recomendada y un asesor que responde hasta el cierre.</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px;">
+        <sc-for list="{{ steps }}" as="p" hint-placeholder-count="3">
+          <div style="border-top: 1px solid rgba(197,164,126,0.7); padding-top: 28px;">
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.2em; color: #9A7B52; margin-bottom: 24px;">{{ p.n }}</div>
+            <div style="font-family: Sora, sans-serif; font-size: 23px; font-weight: 500; letter-spacing: -0.015em; margin-bottom: 12px;">{{ p.t }}</div>
+            <div style="font-size: 15px; line-height: 1.7; color: rgba(15,23,42,0.64);">{{ p.d }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <!-- POR QUÉ AYLESVA -->
+  <div style="background: #FAFAF8; border-bottom: 1px solid rgba(15,23,42,0.08);">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 100px 48px;">
+      <div style="margin-bottom: 52px; max-width: 60ch;">
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #9A7B52; margin-bottom: 20px;">Por qué Aylesva</div>
+        <h2 style="font-family: Sora, sans-serif; font-weight: 400; font-size: 42px; line-height: 1.12; letter-spacing: -0.028em; margin: 0; text-wrap: balance;">Un grupo detrás de cada operación</h2>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(15,23,42,0.12); border: 1px solid rgba(15,23,42,0.12);">
+        <sc-for list="{{ reasons }}" as="r" hint-placeholder-count="4">
+          <div style="background: #fff; padding: 40px 32px 44px; transition: all .3s ease;" style-hover="box-shadow: 0 26px 52px -30px rgba(2,6,23,0.28); transform: translateY(-3px); z-index: 2;">
+            <div style="height: 30px;">{{ r.el }}</div>
+            <div style="font-family: Sora, sans-serif; font-size: 19px; font-weight: 500; letter-spacing: -0.012em; margin: 26px 0 12px;">{{ r.t }}</div>
+            <div style="font-size: 14px; line-height: 1.65; color: rgba(15,23,42,0.62);">{{ r.d }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <!-- MARKETPLACE -->
+  <div id="marketplace" style="background: #fff;">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 100px 48px;">
+      <div style="display: grid; grid-template-columns: 1fr 1.05fr; gap: 80px; align-items: center;">
+        <div>
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #9A7B52; margin-bottom: 20px;">Marketplace</div>
+          <h2 style="font-family: Sora, sans-serif; font-weight: 400; font-size: 40px; line-height: 1.14; letter-spacing: -0.028em; margin: 0 0 22px; text-wrap: balance;">Curaduría editorial de productos premium</h2>
+          <p style="font-size: 17px; line-height: 1.7; color: rgba(15,23,42,0.66); margin: 0 0 32px; max-width: 50ch; text-wrap: pretty;">Más de 2,000 productos entre moda, hogar, artesanal, alimentos, electrónicos y vehículos, conectando artesanos y marcas de lujo con el estilo de vida contemporáneo.</p>
+          <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 34px;">
+            <sc-for list="{{ categories }}" as="c" hint-placeholder-count="8">
+              <a href="#" style="font-size: 13px; font-weight: 500; color: rgba(15,23,42,0.7); border: 1px solid rgba(15,23,42,0.16); padding: 9px 16px; border-radius: 2px; transition: all .2s ease;" style-hover="border-color: #C5A47E; color: #9A7B52;">{{ c }}</a>
+            </sc-for>
+          </div>
+          <a href="#" style="background: #0F172A; color: #fff; padding: 17px 32px; font-size: 14px; font-weight: 600; letter-spacing: 0.04em; border-radius: 2px; display: inline-block; transition: all .25s ease;" style-hover="background: #020617; box-shadow: 0 14px 30px -14px rgba(2,6,23,0.5);">Explorar el catálogo</a>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+          <div style="height: 230px; background: repeating-linear-gradient(135deg, #efece6 0 8px, #e7e3db 8px 16px); border: 1px solid rgba(15,23,42,0.12); display: flex; align-items: flex-end; padding: 16px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 0.1em; color: rgba(15,23,42,0.5);">producto · artesanal</span></div>
+          <div style="height: 230px; margin-top: 30px; background: repeating-linear-gradient(135deg, #efece6 0 8px, #e7e3db 8px 16px); border: 1px solid rgba(15,23,42,0.12); display: flex; align-items: flex-end; padding: 16px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 0.1em; color: rgba(15,23,42,0.5);">producto · moda</span></div>
+          <div style="height: 230px; background: repeating-linear-gradient(135deg, #efece6 0 8px, #e7e3db 8px 16px); border: 1px solid rgba(15,23,42,0.12); display: flex; align-items: flex-end; padding: 16px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 0.1em; color: rgba(15,23,42,0.5);">producto · hogar</span></div>
+          <div style="height: 230px; margin-top: 30px; background: repeating-linear-gradient(135deg, #efece6 0 8px, #e7e3db 8px 16px); border: 1px solid rgba(15,23,42,0.12); display: flex; align-items: flex-end; padding: 16px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 0.1em; color: rgba(15,23,42,0.5);">producto · alimentos</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRUEBA -->
+  <div style="background: #FAFAF8; border-top: 1px solid rgba(15,23,42,0.08); border-bottom: 1px solid rgba(15,23,42,0.08);">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 100px 48px;">
+      <div style="display: flex; justify-content: space-between; align-items: end; gap: 48px; margin-bottom: 48px;">
+        <div>
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #9A7B52; margin-bottom: 20px;">Resultados</div>
+          <h2 style="font-family: Sora, sans-serif; font-weight: 400; font-size: 40px; line-height: 1.14; letter-spacing: -0.028em; margin: 0; max-width: 28ch;">Lo que ya está en marcha</h2>
+        </div>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: #9A7B52; border: 1px dashed #C5A47E; padding: 10px 14px;">Pendiente: fotos y casos reales</span>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;">
+        <sc-for list="{{ proof }}" as="p" hint-placeholder-count="3">
+          <div style="border: 1px solid rgba(15,23,42,0.12); background: #fff; display: flex; flex-direction: column; transition: all .3s ease;" style-hover="box-shadow: 0 26px 52px -30px rgba(2,6,23,0.28); transform: translateY(-3px);">
+            <div style="height: 200px; background: repeating-linear-gradient(135deg, #efece6 0 8px, #e7e3db 8px 16px); display: flex; align-items: flex-end; padding: 18px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 0.1em; color: rgba(15,23,42,0.5);">{{ p.img }}</span></div>
+            <div style="padding: 30px 28px 32px;">
+              <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: #9A7B52; margin-bottom: 14px;">{{ p.tag }}</div>
+              <div style="font-family: Sora, sans-serif; font-size: 20px; font-weight: 500; letter-spacing: -0.015em; margin-bottom: 10px;">{{ p.t }}</div>
+              <div style="font-size: 14px; line-height: 1.65; color: rgba(15,23,42,0.62);">{{ p.d }}</div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACTO -->
+  <div id="contacto" style="background: #fff;">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 100px 48px;">
+      <div style="display: grid; grid-template-columns: 1fr 1.05fr; border: 1px solid rgba(15,23,42,0.12);">
+        <div style="padding: 72px 60px; background: #FAFAF8; display: flex; flex-direction: column; justify-content: space-between; gap: 44px;">
+          <div>
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #9A7B52; margin-bottom: 22px;">Un solo punto de entrada</div>
+            <h2 style="font-family: Sora, sans-serif; font-weight: 400; font-size: 38px; line-height: 1.14; letter-spacing: -0.026em; margin: 0 0 20px; text-wrap: balance;">Cuéntanos qué necesitas y te asignamos al especialista correcto.</h2>
+            <p style="font-size: 16px; line-height: 1.7; color: rgba(15,23,42,0.64); margin: 0; max-width: 44ch;">Si no sabes por dónde empezar, deja el campo de servicio en blanco: un asesor te orienta antes de canalizarte.</p>
+          </div>
+          <div style="display: grid; gap: 16px;">
+            <div style="display: flex; gap: 14px; align-items: flex-start; font-size: 14px; line-height: 1.5; color: rgba(15,23,42,0.72);"><span style="width: 6px; height: 6px; flex: 0 0 6px; margin-top: 7px; background: #C5A47E; border-radius: 50%;"></span>Respuesta en menos de 24 horas hábiles</div>
+            <div style="display: flex; gap: 14px; align-items: flex-start; font-size: 14px; line-height: 1.5; color: rgba(15,23,42,0.72);"><span style="width: 6px; height: 6px; flex: 0 0 6px; margin-top: 7px; background: #C5A47E; border-radius: 50%;"></span>Atención en español e inglés</div>
+            <div style="display: flex; gap: 14px; align-items: flex-start; font-size: 14px; line-height: 1.5; color: rgba(15,23,42,0.72);"><span style="width: 6px; height: 6px; flex: 0 0 6px; margin-top: 7px; background: #C5A47E; border-radius: 50%;"></span>Sin costo de consulta y sin compromiso</div>
+          </div>
+        </div>
+        <div style="padding: 60px; border-left: 1px solid rgba(15,23,42,0.12);">
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(15,23,42,0.4); margin-bottom: 32px;">Embed GoHighLevel · formulario general (por definir)</div>
+          <div style="display: grid; gap: 24px;">
+            <div>
+              <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(15,23,42,0.55); margin-bottom: 9px;">Nombre completo</div>
+              <div style="border: 1px solid rgba(15,23,42,0.18); padding: 15px 16px; font-size: 15px; color: rgba(15,23,42,0.35); transition: border-color .2s ease;" style-hover="border-color: #C5A47E;">Nombre y apellido</div>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+              <div>
+                <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(15,23,42,0.55); margin-bottom: 9px;">Correo</div>
+                <div style="border: 1px solid rgba(15,23,42,0.18); padding: 15px 16px; font-size: 15px; color: rgba(15,23,42,0.35); transition: border-color .2s ease;" style-hover="border-color: #C5A47E;">nombre@correo.com</div>
+              </div>
+              <div>
+                <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(15,23,42,0.55); margin-bottom: 9px;">WhatsApp</div>
+                <div style="border: 1px solid rgba(15,23,42,0.18); padding: 15px 16px; font-size: 15px; color: rgba(15,23,42,0.35); transition: border-color .2s ease;" style-hover="border-color: #C5A47E;">+52 (000) 000 0000</div>
+              </div>
+            </div>
+            <div>
+              <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(15,23,42,0.55); margin-bottom: 9px;">Servicio de interés</div>
+              <div style="border: 1px solid rgba(15,23,42,0.18); padding: 15px 16px; font-size: 15px; color: rgba(15,23,42,0.5); display: flex; justify-content: space-between; align-items: center; transition: border-color .2s ease;" style-hover="border-color: #C5A47E;"><span>Aún no lo sé, oriéntenme</span><span style="color: #C5A47E;">▾</span></div>
+            </div>
+            <div>
+              <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(15,23,42,0.55); margin-bottom: 9px;">Mensaje</div>
+              <div style="border: 1px solid rgba(15,23,42,0.18); padding: 15px 16px; font-size: 15px; color: rgba(15,23,42,0.35); min-height: 84px; transition: border-color .2s ease;" style-hover="border-color: #C5A47E;">Describe brevemente tu necesidad</div>
+            </div>
+            <div style="background: #0F172A; color: #fff; padding: 18px; text-align: center; font-size: 14px; font-weight: 600; letter-spacing: 0.04em; cursor: pointer; border-radius: 2px; transition: all .25s ease;" style-hover="background: #020617; box-shadow: 0 14px 30px -14px rgba(2,6,23,0.6);">Enviar solicitud</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="background: #020617; color: #fff;">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 80px 48px 40px; display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 64px;">
+      <div>
+        <div style="font-family: Sora, sans-serif; font-weight: 600; letter-spacing: 0.24em; font-size: 15px; text-transform: uppercase; margin-bottom: 22px;">Aylesva</div>
+        <p style="font-size: 14px; line-height: 1.75; color: rgba(255,255,255,0.6); margin: 0 0 26px; max-width: 40ch;">Una plataforma dedicada a la curaduría editorial de productos premium, conectando artesanos y marcas de lujo con el estilo de vida contemporáneo.</p>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; line-height: 2; color: rgba(255,255,255,0.5);">Calle Benito Juarez 116<br />sales@aylesva.com</div>
+      </div>
+      <div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: #C5A47E; margin-bottom: 20px;">Servicios</div>
+        <div style="display: grid; gap: 12px; font-size: 14px; color: rgba(255,255,255,0.7);">
+          <a href="#">Aylesva Recursos</a>
+          <a href="#">Aylesva Direct</a>
+          <a href="#">Global Estates</a>
+          <a href="#">Aylesva Care</a>
+          <a href="#">Lanza tu marca</a>
+          <a href="#">Mi Última Voluntad</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: #C5A47E; margin-bottom: 20px;">Marketplace</div>
+        <div style="display: grid; gap: 12px; font-size: 14px; color: rgba(255,255,255,0.7);">
+          <a href="#">Mujer</a>
+          <a href="#">Hombre</a>
+          <a href="#">Artesanal</a>
+          <a href="#">Hogar</a>
+          <a href="#">Alimentos</a>
+          <a href="#">Electrónicos</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: #C5A47E; margin-bottom: 20px;">Recibe Nuestras Ofertas</div>
+        <p style="font-size: 14px; line-height: 1.65; color: rgba(255,255,255,0.6); margin: 0 0 18px;">Únete a nuestra colección curada y sé el primero en conocer lanzamientos exclusivos.</p>
+        <div style="display: flex; border: 1px solid rgba(255,255,255,0.25);">
+          <div style="flex: 1; padding: 13px 14px; font-size: 13px; color: rgba(255,255,255,0.4);">tu@correo.com</div>
+          <div style="background: #C5A47E; color: #0F172A; padding: 13px 18px; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; cursor: pointer; transition: background .25s ease;" style-hover="background: #E3CCAE;">SUSCRIBIR</div>
+        </div>
+      </div>
+    </div>
+    <div style="max-width: 1440px; margin: 0 auto; padding: 28px 48px 44px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.08em; color: rgba(255,255,255,0.42);">
+      <span>© 2026 Aylesva MX</span>
+      <span>Recursos · Direct · Care · Global Estates · Lanza tu marca · MUV</span>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;gold&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#C5A47E&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#C5A47E&quot;,&quot;#E3CCAE&quot;,&quot;#B08D5B&quot;],&quot;section&quot;:&quot;Marca&quot;}}">
+const I = {
+  capital: '<rect x="3" y="10" width="18" height="11"/><path d="M3 10 12 4l9 6"/><path d="M9 21v-6h6v6"/>',
+  direct: '<rect x="2" y="8" width="13" height="9"/><path d="M15 11h4l3 3v3h-7z"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="19" r="2"/>',
+  care: '<path d="M12 20 4 12.5A4.6 4.6 0 0 1 12 7a4.6 4.6 0 0 1 8 5.5z"/><path d="M8 13h2l1.5-3 2 5 1.5-2h2"/>',
+  estates: '<path d="M3 21V9l6-4 6 4v12"/><path d="M15 21V13h6v8"/><path d="M7 13h2M7 17h2"/>',
+  shop: '<rect x="3" y="4" width="18" height="5"/><path d="M5 9v12h14V9"/><path d="M9 13h6"/>',
+  legacy: '<path d="M12 3l8 3v6c0 5-4 8-8 9-4-1-8-4-8-9V6z"/><path d="M9 12h6M12 9v6"/>',
+  shield: '<path d="M12 3l8 3v6c0 5-4 8-8 9-4-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/>',
+  speed: '<circle cx="12" cy="12" r="9"/><path d="M12 12l4-3"/><path d="M12 3v2M21 12h-2M12 21v-2M3 12h2"/>',
+  global: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c3 3 3 15 0 18-3-3-3-15 0-18z"/>',
+  advisor: '<circle cx="12" cy="8" r="3.5"/><path d="M5 21c0-4 3.2-6.5 7-6.5s7 2.5 7 6.5"/>'
+};
+
+function icon(svg, size, color) {
+  return React.createElement('svg', {
+    width: size, height: size, viewBox: '0 0 24 24', fill: 'none',
+    stroke: color || '#C5A47E', strokeWidth: 1.25, strokeLinecap: 'square',
+    style: { display: 'block' },
+    dangerouslySetInnerHTML: { __html: svg }
+  });
+}
+
+class Component extends DCLogic {
+  componentDidMount() {
+    this._obs = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) { e.target.classList.add('is-in'); this._obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.25, rootMargin: '0px 0px -8% 0px' });
+    this._scan = () => document.querySelectorAll('.ay-need:not(.is-in)').forEach((el) => this._obs.observe(el));
+    this._scan();
+    this._t = setTimeout(this._scan, 400);
+  }
+  componentDidUpdate() { if (this._scan) this._scan(); }
+  componentWillUnmount() { clearTimeout(this._t); if (this._obs) this._obs.disconnect(); }
+
+  renderVals() {
+    const gold = this.props.gold ?? '#C5A47E';
+    return {
+      stats: [
+        { v: '6', k: 'Líneas de servicio' },
+        { v: '+2,000', k: 'Productos en catálogo' },
+        { v: '23', k: 'Marcas lanzadas' },
+        { v: '3', k: 'Desarrollos inmobiliarios' },
+        { v: '24 h', k: 'Tiempo de respuesta' }
+      ],
+      universes: [
+        { tag: 'Para personas', t: 'Marketplace', d: 'Compra en línea productos curados de moda, hogar, artesanal, alimentos, electrónicos y vehículos.', cta: 'Ir a la tienda', href: '#marketplace', img: 'producto curado · 900×600' },
+        { tag: 'Para empresas y patrimonio', t: 'Servicios corporativos', d: 'Financiamiento, importación, bienes raíces, beneficios de salud, tiendas propias y previsión familiar.', cta: 'Ver servicios', href: '#servicios', img: 'reunión de asesoría · 900×600' }
+      ],
+      services: [
+        { name: 'Aylesva Recursos', claim: 'Financiamiento para crecer', who: 'Empresas y emprendedores', href: '#financiamiento', img: 'firma de crédito · 900×500',
+          d: 'Intermediario financiero: analizamos tu perfil y te conectamos con la prestadora donde tu solicitud tiene más probabilidad de aprobación.',
+          bullets: ['Estudio socioeconómico gratis', 'Líneas de crédito, capital de trabajo y equipo', 'Mercado mexicano y estadounidense'], el: icon(I.capital, 32, gold) },
+        { name: 'Aylesva Direct', claim: 'Importa sin complicaciones', who: 'Empresas importadoras', href: '#importaciones', img: 'contenedores en puerto · 900×500',
+          d: 'Sourcing, calidad y aduanas desde China y mercados globales, con un solo punto de contacto para toda la operación.',
+          bullets: ['Búsqueda y validación de proveedores', 'Revisión de tu proveedor actual', 'Logística y despacho aduanal'], el: icon(I.direct, 32, gold) },
+        { name: 'Global Estates', claim: 'Inversiones que trascienden', who: 'Inversionistas y familias', href: '#inversion', img: 'torre 40 · render · 900×500',
+          d: 'Bienes raíces verificados en México y El Salvador, con acompañamiento desde la primera consulta hasta la entrega de llaves.',
+          bullets: ['Desarrollos visitados y validados', 'Torre 40, Paradise Bay y Altarena', 'Estructuración y seguimiento de obra'], el: icon(I.estates, 32, gold) },
+        { name: 'Aylesva Care', claim: 'Protege lo que más importa', who: 'Personas y equipos', href: '#care', img: 'consulta médica · 900×500',
+          d: 'Paquetes de beneficios de salud, hogar y seguros complementarios con la red de New Benefits, desde $20 USD al mes.',
+          bullets: ['Telemedicina 24/7 y consultas preferenciales', 'Seguros complementarios Aflac y UHOne', 'Cobertura extensible a dependientes'], el: icon(I.care, 32, gold) },
+        { name: 'Lanza tu marca', claim: 'Lanza y escala tu negocio online', who: 'Emprendedores', href: '#emprende', img: 'tienda en pantalla · 900×500',
+          d: 'Diseñamos y lanzamos tu tienda en Shopify, con nuestro catálogo integrado y la logística resuelta. Tú vendes, nosotros enviamos.',
+          bullets: ['Sin inversión en inventario', '23 marcas ya lanzadas', 'Conecta tus productos al marketplace'], el: icon(I.shop, 32, gold) },
+        { name: 'Mi Última Voluntad', claim: 'Previsión sin fronteras', who: 'Familias migrantes', href: '#muv', img: 'familia reunida · 900×500',
+          d: 'Membresía anual de repatriación y guía para tu familia, coordinada entre Estados Unidos, México y Sudamérica.',
+          bullets: ['Asistencia de repatriación', 'Guía paso a paso para tu familia', 'Pase CBX incluido'], el: icon(I.legacy, 32, gold) }
+      ],
+      needs: [
+        { n: '01', q: 'Necesito capital para operar o crecer', to: 'Aylesva Recursos', href: '#financiamiento', el: icon(I.capital, 26, gold) },
+        { n: '02', q: 'Quiero importar producto o mejorar mis costos', to: 'Aylesva Direct', href: '#importaciones', el: icon(I.direct, 26, gold) },
+        { n: '03', q: 'Busco invertir en bienes raíces', to: 'Global Estates', href: '#inversion', el: icon(I.estates, 26, gold) },
+        { n: '04', q: 'Quiero vender en línea con mi propia marca', to: 'Lanza tu marca', href: '#emprende', el: icon(I.shop, 26, gold) },
+        { n: '05', q: 'Quiero cuidar la salud de mi familia o mi equipo', to: 'Aylesva Care', href: '#care', el: icon(I.care, 26, gold) },
+        { n: '06', q: 'Quiero dejar todo en orden para mi familia', to: 'Mi Última Voluntad', href: '#muv', el: icon(I.legacy, 26, gold) }
+      ].map((it, i) => Object.assign(it, { delay: (i * 90) + 'ms', delayRule: (i * 90 + 260) + 'ms' })),
+      steps: [
+        { n: '01', t: 'Diagnóstico sin costo', d: 'Nos cuentas qué necesitas. Un especialista revisa tu caso el mismo día hábil y te dice si podemos ayudarte.' },
+        { n: '02', t: 'Una propuesta clara', d: 'Recibes condiciones, tiempos y costos por escrito, con una sola ruta recomendada y sin letra pequeña.' },
+        { n: '03', t: 'Acompañamiento', d: 'Un asesor asignado da seguimiento hasta el cierre: el crédito liberado, el contenedor entregado, las llaves en tu mano.' }
+      ],
+      reasons: [
+        { t: 'Respaldo del grupo', d: 'Seis unidades operando bajo un mismo estándar de cumplimiento y servicio.', el: icon(I.shield, 30, gold) },
+        { t: 'Un asesor asignado', d: 'Una persona responsable de tu caso de principio a fin, no una bandeja de tickets.', el: icon(I.advisor, 30, gold) },
+        { t: 'Cobertura internacional', d: 'Operaciones activas en México, Estados Unidos, El Salvador y Asia.', el: icon(I.global, 30, gold) },
+        { t: 'Tiempos claros', d: 'Respuesta en 24 horas y plazos comprometidos por escrito en cada servicio.', el: icon(I.speed, 30, gold) }
+      ],
+      categories: ['Mujer', 'Hombre', 'Niños', 'Artesanal', 'Hogar', 'Alimentos', 'Electrónicos', 'Vehículos'],
+      proof: [
+        { tag: 'Global Estates', t: 'Torre 40, Puerto Vallarta', d: '24 pisos y 72 unidades exclusivas, en construcción con entrega estimada en 2027.', img: 'foto del desarrollo' },
+        { tag: 'Lanza tu marca', t: '23 tiendas activas hoy', d: 'Sitios reales construidos y lanzados por nuestro equipo, de la identidad al último detalle de código.', img: 'collage de tiendas' },
+        { tag: 'Aylesva Direct', t: 'Importación puerta a puerta', d: 'Coordinación de proveedores, calidad y aduanas desde China a México y Estados Unidos.', img: 'foto de logística' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

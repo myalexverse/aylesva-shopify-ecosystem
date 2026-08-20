@@ -1,0 +1,638 @@
+{% comment %}
+  ============================================================
+  Mi Última Voluntad — Premium US Replica Landing Section
+  Identical design, maquetation, images, hover and interactive
+  effects translated to Spanish.
+  ============================================================
+{% endcomment %}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  body:has(#muv-{{ section.id }}) .breadcrumb-wrapper,
+  body:has(#muv-{{ section.id }}) .breadcrumb-wrap,
+  body:has(#muv-{{ section.id }}) nav[aria-label="breadcrumbs"],
+  body:has(#muv-{{ section.id }}) #annoucementbar,
+  body:has(#muv-{{ section.id }}) .shopify-section.announcement-bar { display: none !important; }
+
+  html { scroll-behavior: smooth; }
+
+  @keyframes muvGlow-{{ section.id }}  { 0%,100%{opacity:.55;transform:translate(-50%,-50%) scale(1)}50%{opacity:.9;transform:translate(-50%,-50%) scale(1.08)} }
+  @keyframes muvFloat-{{ section.id }} { 0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)} }
+
+  #muv-{{ section.id }} {
+    font-family: 'Manrope', -apple-system, sans-serif;
+    background: #FAF9F6;
+    color: #1B1710;
+    margin-top: 20px;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  #muv-{{ section.id }} * { box-sizing: border-box; }
+  #muv-{{ section.id }} h1, #muv-{{ section.id }} h2, #muv-{{ section.id }} h3 { margin: 0; color: #1B1710; }
+  #muv-{{ section.id }} p { margin: 0; }
+  #muv-{{ section.id }} a { text-decoration: none; color: #1B1710; }
+
+  /* ---- BUTTONS ---- */
+  #muv-{{ section.id }} .muv-btn-primary { font-family:'Sora',sans-serif; font-weight:700; font-size:15px; color:#fff; background:#1B1710; padding:16px 34px; border-radius:100px; box-shadow:0 8px 32px rgba(27,23,16,.28); transition:transform .25s,box-shadow .25s,filter .25s; display:inline-block; border: none; cursor: pointer; }
+  #muv-{{ section.id }} .muv-btn-primary:hover { transform:translateY(-2px); box-shadow:0 12px 42px rgba(27,23,16,.38); color:#fff; }
+  #muv-{{ section.id }} .muv-btn-ghost { font-family:'Sora',sans-serif; font-weight:600; font-size:15px; color:#1B1710; background:rgba(255,255,255,.65); border:1px solid rgba(27,23,16,.22); padding:16px 34px; border-radius:100px; backdrop-filter:blur(8px); transition:border-color .25s,background .25s; display:inline-block; }
+  #muv-{{ section.id }} .muv-btn-ghost:hover { border-color:#1B1710; background:rgba(27,23,16,.08); }
+  #muv-{{ section.id }} .muv-btn-outline { font-family:'Sora',sans-serif; font-weight:700; font-size:15px; color:#1B1710; border:1.5px solid #1B1710; padding:15px 34px; border-radius:100px; transition:background .25s,color .25s; display:inline-block; }
+  #muv-{{ section.id }} .muv-btn-outline:hover { background:#1B1710; color:#fff; }
+
+  /* ---- EYEBROW ---- */
+  #muv-{{ section.id }} .muv-eyebrow { display:block; font-size:12px; font-weight:600; letter-spacing:.26em; text-transform:uppercase; color:#1B1710; }
+
+  /* ---- SECTION PADDING ---- */
+  #muv-{{ section.id }} .muv-band { padding:clamp(80px,10vw,140px) clamp(20px,5vw,64px); }
+
+  /* ======== HERO ======== */
+  #muv-{{ section.id }} .muv-hero { position:relative; margin-top:0; min-height:100vh; display:flex; align-items:center; justify-content:center; text-align:center; overflow:hidden; }
+  #muv-{{ section.id }} .muv-hero-bg { position:absolute; inset:-12% 0; z-index:0; }
+  #muv-{{ section.id }} .muv-hero-bg img { width:100%; height:100%; object-fit:cover; display:block; }
+  #muv-{{ section.id }} .muv-hero-overlay { position:absolute; inset:0; z-index:1; background:linear-gradient(180deg,rgba(250,249,246,.88) 0%,rgba(250,249,246,.68) 45%,rgba(250,249,246,.97) 100%); }
+  #muv-{{ section.id }} .muv-hero-glow { position:absolute; left:50%; top:38%; width:640px; height:640px; transform:translate(-50%,-50%); z-index:1; border-radius:50%; background:radial-gradient(circle,rgba(27,23,16,.18) 0%,transparent 62%); animation:muvGlow-{{ section.id }} 7s ease-in-out infinite; pointer-events:none; }
+  #muv-{{ section.id }} .muv-hero-content { position:relative; z-index:2; max-width:880px; padding:140px 24px 90px; display:flex; flex-direction:column; align-items:center; gap:28px; }
+  #muv-{{ section.id }} .muv-hero h1 { font-family:'Sora',sans-serif; font-weight:800; font-size:clamp(34px,5.6vw,64px); line-height:1.12; letter-spacing:-.01em; color:#1B1710; }
+  #muv-{{ section.id }} .muv-hero-sub { max-width:620px; font-size:clamp(16px,1.6vw,19px); line-height:1.65; color:rgba(27,23,16,.72); }
+  #muv-{{ section.id }} .muv-hero-cta { display:flex; flex-wrap:wrap; gap:14px; justify-content:center; margin-top:6px; }
+  #muv-{{ section.id }} .muv-badges { display:flex; flex-wrap:wrap; gap:clamp(14px,3vw,34px); justify-content:center; margin-top:16px; }
+  #muv-{{ section.id }} .muv-badge { display:flex; align-items:center; gap:8px; font-size:13.5px; font-weight:500; color:rgba(27,23,16,.7); }
+  #muv-{{ section.id }} .muv-badge-check { display:inline-flex; width:18px; height:18px; border-radius:50%; background:rgba(27,23,16,.15); align-items:center; justify-content:center; color:#1B1710; font-size:11px; flex-shrink:0; }
+  #muv-{{ section.id }} .muv-scroll-arrow { position:absolute; bottom:28px; left:50%; transform:translateX(-50%); z-index:2; color:rgba(27,23,16,.4); font-size:20px; animation:muvFloat-{{ section.id }} 2.6s ease-in-out infinite; }
+
+  /* ======== WHY MUV ======== */
+  #muv-{{ section.id }} .muv-why-inner { max-width:1200px; margin:0 auto; }
+  #muv-{{ section.id }} .muv-why-title { max-width:760px; text-align:center; margin:0 auto 64px; font-family:'Sora',sans-serif; font-weight:700; font-size:clamp(26px,3.4vw,40px); line-height:1.25; color:#1B1710; }
+  #muv-{{ section.id }} .muv-why-title .muv-gold { color:#1B1710; }
+  #muv-{{ section.id }} .muv-cards-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:24px; }
+  #muv-{{ section.id }} .muv-card { padding:40px 32px; border-radius:20px; background:#FFFFFF; border:1px solid rgba(27,23,16,.08); box-shadow:0 6px 24px rgba(27,23,16,.05); transition:transform .3s,border-color .3s; }
+  #muv-{{ section.id }} .muv-card:hover { transform:translateY(-6px); border-color:rgba(27,23,16,.45); }
+  #muv-{{ section.id }} .muv-card-icon { width:48px; height:48px; border-radius:14px; background:rgba(27,23,16,.1); border:1px solid rgba(27,23,16,.3); display:flex; align-items:center; justify-content:center; margin-bottom:22px; color:#1B1710; font-family:'Sora',sans-serif; font-weight:700; font-size:18px; }
+  #muv-{{ section.id }} .muv-card h3 { font-family:'Sora',sans-serif; font-weight:700; font-size:20px; margin-bottom:10px; color:#1B1710; }
+  #muv-{{ section.id }} .muv-card p { font-size:15px; line-height:1.65; color:rgba(27,23,16,.62); }
+
+  /* ======== MEMBERSHIPS ======== */
+  #muv-{{ section.id }} .muv-memberships { background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(27,23,16,.08),transparent 70%); }
+  #muv-{{ section.id }} .muv-mem-inner { max-width:1080px; margin:0 auto; }
+  #muv-{{ section.id }} .muv-section-head { text-align:center; margin-bottom:64px; }
+  #muv-{{ section.id }} .muv-section-head h2 { font-family:'Sora',sans-serif; font-weight:700; font-size:clamp(26px,3.4vw,40px); line-height:1.25; margin-top:16px; color:#1B1710; }
+  #muv-{{ section.id }} .muv-plans-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:28px; }
+  #muv-{{ section.id }} .muv-plan { position:relative; padding:44px 38px; border-radius:24px; background:#FFFFFF; border:1px solid rgba(27,23,16,.3); overflow:hidden; box-shadow:0 10px 36px rgba(27,23,16,.06); transition:transform .3s,box-shadow .3s; }
+  #muv-{{ section.id }} .muv-plan:hover { transform:translateY(-6px); box-shadow:0 24px 60px rgba(27,23,16,.14),0 0 0 1px rgba(27,23,16,.4); }
+  #muv-{{ section.id }} .muv-plan-glow { position:absolute; top:-60px; right:-60px; width:200px; height:200px; border-radius:50%; background:radial-gradient(circle,rgba(27,23,16,.08),transparent 70%); pointer-events:none; }
+  #muv-{{ section.id }} .muv-plan-title { display:flex; align-items:center; gap:12px; margin-bottom:8px; }
+  #muv-{{ section.id }} .muv-plan-title span { font-family:'Sora',sans-serif; font-weight:700; font-size:clamp(20px,2.2vw,25px); color:#1B1710; }
+  #muv-{{ section.id }} .muv-plan-title .muv-arrow { color:#1B1710; font-size:22px; }
+  #muv-{{ section.id }} .muv-plan-title .muv-dest { color:#1B1710; }
+  #muv-{{ section.id }} .muv-plan-label { font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:rgba(27,23,16,.45); margin-bottom:30px; }
+  #muv-{{ section.id }} .muv-plan-benefits { display:flex; flex-direction:column; gap:14px; margin-bottom:36px; }
+  #muv-{{ section.id }} .muv-benefit { display:flex; align-items:flex-start; gap:12px; font-size:15px; line-height:1.5; color:rgba(27,23,16,.75); }
+  #muv-{{ section.id }} .muv-benefit-check { flex:none; display:inline-flex; width:20px; height:20px; border-radius:50%; background:rgba(27,23,16,.13); align-items:center; justify-content:center; color:#1B1710; font-size:11px; margin-top:1px; }
+
+  /* ======== CBX ======== */
+  #muv-{{ section.id }} .muv-cbx { position:relative; min-height:min(720px,90vh); display:flex; align-items:center; background:#F2EFE8; overflow:hidden; }
+  #muv-{{ section.id }} .muv-cbx-bg { position:absolute; inset:0; z-index:0; }
+  #muv-{{ section.id }} .muv-cbx-bg img { width:100%; height:100%; object-fit:cover; display:block; }
+  #muv-{{ section.id }} .muv-cbx-overlay { position:absolute; inset:0; z-index:1; background:linear-gradient(90deg,rgba(242,239,232,.97) 0%,rgba(242,239,232,.85) 50%,rgba(242,239,232,.4) 100%); }
+  #muv-{{ section.id }} .muv-cbx-inner { position:relative; z-index:2; max-width:1200px; margin:0 auto; padding:80px 24px; width:100%; display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:clamp(40px,6vw,90px); align-items:center; }
+  #muv-{{ section.id }} .muv-cbx-text { max-width:540px; }
+  #muv-{{ section.id }} .muv-cbx-text .muv-eyebrow { color:rgba(27,23,16,.6); margin-bottom:18px; }
+  #muv-{{ section.id }} .muv-cbx-text h2 { font-family:'Sora',sans-serif; font-weight:800; font-size:clamp(28px,3.6vw,44px); line-height:1.18; margin-bottom:20px; color:#1B1710; }
+  #muv-{{ section.id }} .muv-cbx-text p { font-size:16.5px; line-height:1.7; color:rgba(27,23,16,.75); margin-bottom:30px; }
+  #muv-{{ section.id }} .muv-cbx-text strong { color:#1B1710; }
+  #muv-{{ section.id }} .muv-cbx-disclaimer { margin-top:34px; padding:14px 18px; border:1px solid rgba(27,23,16,.25); border-radius:10px; background:rgba(255,255,255,.75); display:flex; flex-direction:column; gap:6px; max-width:480px; text-align: left; }
+  #muv-{{ section.id }} .muv-cbx-disclaimer span { font-size:11.5px; font-weight:700; line-height:1.5; color:rgba(27,23,16,.8); }
+  #muv-{{ section.id }} .muv-cbx-card-wrap { display:flex; justify-content:center; }
+  #muv-{{ section.id }} .muv-cbx-card { position:relative; width:min(520px,100%); border-radius:26px; border:3px solid #C5A47E; background:linear-gradient(135deg,rgba(24,12,40,.94),rgba(45,20,80,.9)); box-shadow:0 18px 60px rgba(27,23,16,.22),0 0 90px rgba(197,164,126,.15),inset 0 0 40px rgba(197,164,126,.08); padding:clamp(24px,3vw,38px) clamp(20px,2.5vw,32px); display:grid; grid-template-columns:1.2fr auto 1.1fr; align-items:center; gap:clamp(14px,2vw,24px); animation:muvFloat-{{ section.id }} 5s ease-in-out infinite; }
+  #muv-{{ section.id }} .muv-cbx-card-left { text-align:center; }
+  #muv-{{ section.id }} .muv-cbx-brand { font-family:'Sora',sans-serif; font-weight:800; font-size:clamp(30px,3.4vw,44px); letter-spacing:.04em; color:#fff; line-height:1; }
+  #muv-{{ section.id }} .muv-cbx-bar { height:4px; width:70%; margin:6px auto 8px; border-radius:100px; background:linear-gradient(90deg,#C5A47E,#FAF9F6); }
+  #muv-{{ section.id }} .muv-cbx-label { font-size:10px; letter-spacing:.18em; font-weight:600; color:rgba(255,255,255,.85); }
+  #muv-{{ section.id }} .muv-cbx-mid { display:flex; align-items:center; gap:clamp(10px,1.4vw,18px); }
+  #muv-{{ section.id }} .muv-cbx-divider { width:0; height:80px; border-left:2px dashed rgba(255,255,255,.3); }
+  #muv-{{ section.id }} .muv-cbx-plane { font-size:clamp(26px,2.8vw,36px); color:#C5A47E; }
+  #muv-{{ section.id }} .muv-cbx-card-right { text-align:center; }
+  #muv-{{ section.id }} .muv-cbx-pass { font-family:'Sora',sans-serif; font-weight:700; font-size:clamp(13px,1.3vw,17px); letter-spacing:.08em; color:#fff; }
+  #muv-{{ section.id }} .muv-cbx-free { font-family:'Sora',sans-serif; font-weight:800; font-size:clamp(28px,3vw,40px); line-height:1.1; background:linear-gradient(90deg,#C5A47E,#FAF9F6); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+  #muv-{{ section.id }} .muv-cbx-via { font-family:'Sora',sans-serif; font-weight:700; font-size:clamp(12px,1.2vw,16px); letter-spacing:.1em; color:#fff; }
+
+  /* ======== HOW IT WORKS ======== */
+  #muv-{{ section.id }} .muv-steps-inner { max-width:1200px; margin:0 auto; }
+  #muv-{{ section.id }} .muv-steps-head { text-align:center; margin-bottom:70px; }
+  #muv-{{ section.id }} .muv-steps-head h2 { font-family:'Sora',sans-serif; font-weight:700; font-size:clamp(26px,3.4vw,40px); margin-top:16px; color:#1B1710; }
+  #muv-{{ section.id }} .muv-steps-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px; }
+  #muv-{{ section.id }} .muv-step { padding:36px 26px 32px; border-radius:18px; background:#FFFFFF; border:1px solid rgba(27,23,16,.08); box-shadow:0 6px 24px rgba(27,23,16,.04); text-align: left; }
+  #muv-{{ section.id }} .muv-step-num { font-family:'Sora',sans-serif; font-weight:800; font-size:44px; line-height:1; background:linear-gradient(180deg,#1B1710,rgba(27,23,16,.25)); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:20px; }
+  #muv-{{ section.id }} .muv-step p { font-size:15.5px; line-height:1.6; color:rgba(27,23,16,.75); }
+
+  /* ======== EMOTIONAL ======== */
+  #muv-{{ section.id }} .muv-emo-inner { max-width:1080px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:clamp(36px,6vw,72px); align-items:center; }
+  #muv-{{ section.id }} .muv-emo-media { position:relative; }
+  #muv-{{ section.id }} .muv-emo-glow { position:absolute; inset:-20px; border-radius:28px; background:radial-gradient(circle at 30% 70%,rgba(27,23,16,.12),transparent 70%); pointer-events:none; }
+  #muv-{{ section.id }} .muv-emo-media img { position:relative; width:100%; height:clamp(320px,40vw,460px); object-fit:cover; border-radius:24px; display:block; }
+  #muv-{{ section.id }} .muv-emo-body { text-align: left; }
+  #muv-{{ section.id }} .muv-emo-body h2 { font-family:'Sora',sans-serif; font-weight:700; font-size:clamp(26px,3.4vw,40px); line-height:1.22; margin-bottom:22px; color:#1B1710; }
+  #muv-{{ section.id }} .muv-emo-body h2 span { color:#1B1710; }
+  #muv-{{ section.id }} .muv-emo-body p { font-size:17px; line-height:1.75; color:rgba(27,23,16,.68); margin-bottom:32px; }
+
+  /* ======== FAQ ======== */
+  #muv-{{ section.id }} .muv-faq-inner { max-width:760px; margin:0 auto; }
+  #muv-{{ section.id }} .muv-faq-inner h2 { text-align:center; font-family:'Sora',sans-serif; font-weight:700; font-size:clamp(24px,3vw,36px); margin-bottom:48px; color:#1B1710; }
+  #muv-{{ section.id }} .muv-faq-list { display:flex; flex-direction:column; gap:14px; }
+  #muv-{{ section.id }} .muv-faq-item { border-radius:16px; background:#FFFFFF; border:1px solid rgba(27,23,16,.09); box-shadow:0 4px 18px rgba(27,23,16,.04); overflow:hidden; text-align: left; }
+  #muv-{{ section.id }} .muv-faq-btn { width:100%; display:flex; align-items:center; justify-content:space-between; gap:16px; padding:22px 26px; background:none; border:none; cursor:pointer; text-align:left; font-family:'Sora',sans-serif; font-weight:600; font-size:16px; color:#1B1710; transition:color .2s; }
+  #muv-{{ section.id }} .muv-faq-btn:hover { color:#000; }
+  #muv-{{ section.id }} .muv-faq-icon { flex:none; display:inline-flex; width:28px; height:28px; align-items:center; justify-content:center; border-radius:50%; border:1px solid rgba(27,23,16,.4); color:#1B1710; font-size:14px; transition:transform .35s; }
+  #muv-{{ section.id }} .muv-faq-icon.is-open { transform:rotate(45deg); }
+  #muv-{{ section.id }} .muv-faq-body { max-height:0; overflow:hidden; opacity:0; transition:max-height .45s ease,opacity .35s ease; }
+  #muv-{{ section.id }} .muv-faq-body.is-open { max-height:400px; opacity:1; }
+  #muv-{{ section.id }} .muv-faq-body p { padding:0 26px 24px; font-size:15px; line-height:1.7; color:rgba(27,23,16,.62); }
+
+  /* ======== FINAL CTA ======== */
+  #muv-{{ section.id }} .muv-cta { position:relative; padding:clamp(100px,13vw,180px) clamp(20px,5vw,64px); text-align:center; overflow:hidden; background:#F2EFE8; }
+  #muv-{{ section.id }} .muv-cta-bg { position:absolute; inset:0; opacity:.3; }
+  #muv-{{ section.id }} .muv-cta-bg img { width:100%; height:100%; object-fit:cover; }
+  #muv-{{ section.id }} .muv-cta-overlay { position:absolute; inset:0; background:linear-gradient(180deg,rgba(250,249,246,1) 0%,rgba(250,249,246,.6) 45%,rgba(242,239,232,.97) 100%),radial-gradient(ellipse 70% 90% at 50% 110%,rgba(27,23,16,.14),transparent 70%); }
+  #muv-{{ section.id }} .muv-cta-content { position:relative; max-width:720px; margin:0 auto; display:flex; flex-direction:column; align-items:center; gap:26px; }
+  #muv-{{ section.id }} .muv-cta-content h2 { font-family:'Sora',sans-serif; font-weight:800; font-size:clamp(32px,5vw,56px); line-height:1.15; color:#1B1710; }
+  #muv-{{ section.id }} .muv-cta-content h2 span { color:#1B1710; }
+  #muv-{{ section.id }} .muv-cta-content p { font-size:17px; line-height:1.7; color:rgba(27,23,16,.68); max-width:560px; }
+
+  /* ======== FORM ======== */
+  #muv-{{ section.id }} .muv-form-inner { max-width:760px; margin:0 auto; }
+  #muv-{{ section.id }} .muv-form-inner h2 { text-align:center; font-family:'Sora',sans-serif; font-weight:700; font-size:clamp(24px,3vw,36px); margin-bottom:14px; color:#1B1710; }
+  #muv-{{ section.id }} .muv-form-sub { text-align:center; font-size:15.5px; line-height:1.7; color:rgba(27,23,16,.62); margin-bottom:40px; }
+  #muv-{{ section.id }} .muv-form-embed { width:100%; min-height: 555px; }
+  #muv-{{ section.id }} .muv-form-embed iframe { width:100% !important; border:0 !important; display:block; min-height: 555px; border-radius: 8px; }
+  #muv-{{ section.id }} .muv-form-box { background: #fff; padding: 40px; border-radius: 20px; border: 1px solid rgba(27,23,16,.08); box-shadow: 0 8px 30px rgba(27,23,16,.04); }
+  #muv-{{ section.id }} .muv-form-grid { display: grid; grid-template-columns: 1fr; gap: 20px; text-align: left; }
+  #muv-{{ section.id }} .muv-field { display: flex; flex-direction: column; gap: 8px; }
+  #muv-{{ section.id }} .muv-field label { font-size: 13.5px; font-weight: 700; color: #1B1710; text-transform: uppercase; letter-spacing: 0.5px; }
+  #muv-{{ section.id }} .muv-field input,
+  #muv-{{ section.id }} .muv-field select,
+  #muv-{{ section.id }} .muv-field textarea { width: 100%; padding: 14px 18px; border-radius: 12px; border: 1.5px solid rgba(0, 0, 0, 0.12); font-family: inherit; font-size: 15px; transition: border-color .3s, box-shadow .3s; outline: none; background: #fff; }
+  #muv-{{ section.id }} .muv-field input:focus,
+  #muv-{{ section.id }} .muv-field select:focus,
+  #muv-{{ section.id }} .muv-field textarea:focus { border-color: #1B1710; box-shadow: 0 0 0 4px rgba(27, 23, 16, 0.08); }
+  #muv-{{ section.id }} .muv-field textarea { height: 120px; resize: vertical; }
+  #muv-{{ section.id }} .muv-form-success { background: #ECFDF5; border: 1.5px solid #10B981; color: #065F46; padding: 18px; border-radius: 12px; font-size: 15px; text-align: center; margin-bottom: 24px; font-weight: 700; }
+  #muv-{{ section.id }} .muv-form-actions { text-align: center; margin-top: 24px; }
+  #muv-{{ section.id }} .muv-form-actions button { width: 100%; }
+
+  /* ======== FOOTER ======== */
+  #muv-{{ section.id }} .muv-footer { padding:36px clamp(20px,5vw,64px); border-top:1px solid rgba(27,23,16,.08); display:flex; flex-wrap:wrap; gap:16px; align-items:center; justify-content:space-between; }
+  #muv-{{ section.id }} .muv-footer-brand { display:flex; align-items:baseline; gap:10px; }
+  #muv-{{ section.id }} .muv-footer-logo { font-family:'Sora',sans-serif; font-weight:800; font-size:16px; letter-spacing:.14em; color:#1B1710; }
+  #muv-{{ section.id }} .muv-footer-tagline { font-size:11px; color:rgba(27,23,16,.4); }
+  #muv-{{ section.id }} .muv-footer-copy { font-size:12px; color:rgba(27,23,16,.35); }
+</style>
+
+<div id="muv-{{ section.id }}">
+  
+  <!-- HERO SECTION -->
+  <section class="muv-hero">
+    <div class="muv-hero-bg" data-parallax="0.35">
+      <img src="{{ section.settings.hero_image_url }}" alt="MUV hero" loading="eager">
+    </div>
+    <div class="muv-hero-overlay"></div>
+    <div class="muv-hero-glow"></div>
+    <div class="muv-hero-content" data-muv-reveal>
+      <span class="muv-eyebrow">{{ section.settings.hero_eyebrow }}</span>
+      <h1>{{ section.settings.hero_title }}</h1>
+      <p class="muv-hero-sub">{{ section.settings.hero_subtitle }}</p>
+      <div class="muv-hero-cta">
+        <a href="#muv-formulario-{{ section.id }}" class="muv-btn-primary">{{ section.settings.hero_btn1_text }}</a>
+        <a href="#muv-formulario-{{ section.id }}" class="muv-btn-ghost">{{ section.settings.hero_btn2_text }}</a>
+      </div>
+      <div class="muv-badges">
+        <div class="muv-badge"><span class="muv-badge-check">✓</span>Protección familiar</div>
+        <div class="muv-badge"><span class="muv-badge-check">✓</span>Soporte en español</div>
+        <div class="muv-badge"><span class="muv-badge-check">✓</span>Cobertura internacional</div>
+      </div>
+    </div>
+    <div class="muv-scroll-arrow">↓</div>
+  </section>
+
+  <!-- WHY MUV SECTION -->
+  <section class="muv-band">
+    <div class="muv-why-inner">
+      <h2 class="muv-why-title" data-muv-reveal>
+        Nadie quiere pensar en este momento…
+        <span class="muv-gold"> pero todos queremos proteger a quienes amamos.</span>
+      </h2>
+      <div class="muv-cards-grid">
+        <div class="muv-card" data-muv-reveal>
+          <div class="muv-card-icon">§</div>
+          <h3>Decisiones difíciles</h3>
+          <p>Evita que tu familia tenga que adivinar qué hacer en los momentos más difíciles.</p>
+        </div>
+        <div class="muv-card" data-muv-reveal>
+          <div class="muv-card-icon">$</div>
+          <h3>Gastos inesperados</h3>
+          <p>Reduce drásticamente la carga emocional y financiera de tu hogar.</p>
+        </div>
+        <div class="muv-card" data-muv-reveal>
+          <div class="muv-card-icon">❋</div>
+          <h3>Tranquilidad</h3>
+          <p>Deja instrucciones sumamente claras y todo el soporte para tu familia.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEMBERSHIPS SECTION -->
+  <section class="muv-band muv-memberships" id="muv-membresias-{{ section.id }}">
+    <div class="muv-mem-inner">
+      <div class="muv-section-head" data-muv-reveal>
+        <span class="muv-eyebrow">Membresías</span>
+        <h2>{{ section.settings.pricing_title }}</h2>
+      </div>
+      <div class="muv-plans-grid">
+        <!-- PLAN 1 -->
+        <div class="muv-plan" data-muv-reveal>
+          <div class="muv-plan-glow"></div>
+          <div class="muv-plan-title">
+            <span>Estados Unidos</span>
+            <span class="muv-arrow">→</span>
+            <span class="muv-dest">México</span>
+          </div>
+          <p class="muv-plan-label">Membresía anual</p>
+          <div class="muv-plan-benefits">
+            {%- assign p1_items = section.settings.plan1_items | split: '|' -%}
+            {%- for item in p1_items -%}
+              <div class="muv-benefit">
+                <span class="muv-benefit-check">✓</span>
+                {{ item | strip }}
+              </div>
+            {%- endfor -%}
+          </div>
+          <a href="#muv-formulario-{{ section.id }}" class="muv-btn-primary" style="display:block;text-align:center;">Obtener Membresía</a>
+        </div>
+        <!-- PLAN 2 -->
+        <div class="muv-plan" data-muv-reveal>
+          <div class="muv-plan-glow"></div>
+          <div class="muv-plan-title">
+            <span>Estados Unidos</span>
+            <span class="muv-arrow">→</span>
+            <span class="muv-dest">Sudamérica</span>
+          </div>
+          <p class="muv-plan-label">Membresía anual</p>
+          <div class="muv-plan-benefits">
+            {%- assign p2_items = section.settings.plan2_items | split: '|' -%}
+            {%- for item in p2_items -%}
+              <div class="muv-benefit">
+                <span class="muv-benefit-check">✓</span>
+                {{ item | strip }}
+              </div>
+            {%- endfor -%}
+          </div>
+          <a href="#muv-formulario-{{ section.id }}" class="muv-btn-primary" style="display:block;text-align:center;">Obtener Membresía</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CBX SECTION -->
+  <section class="muv-cbx">
+    <div class="muv-cbx-bg">
+      <img src="{{ section.settings.cbx_image_url }}" alt="CBX Crossing" loading="lazy">
+    </div>
+    <div class="muv-cbx-overlay"></div>
+    <div class="muv-cbx-inner">
+      <div class="muv-cbx-text" data-muv-reveal>
+        <span class="muv-eyebrow">Beneficios exclusivos para miembros MUV</span>
+        <h2>{{ section.settings.cbx_title }}</h2>
+        <p>{{ section.settings.cbx_description }}</p>
+        <a href="#muv-formulario-{{ section.id }}" class="muv-btn-primary">Solicitar Información</a>
+        <div class="muv-cbx-disclaimer">
+          <span>*Viaje redondo = un Boleto de Cruce en ambos sentidos del Puente de Cross Border Xpress</span>
+        </div>
+      </div>
+      <div class="muv-cbx-card-wrap" data-muv-reveal>
+        <div class="muv-cbx-card">
+          <div class="muv-cbx-card-left">
+            <div class="muv-cbx-brand">CBX</div>
+            <div class="muv-cbx-bar"></div>
+            <div class="muv-cbx-label">CROSS BORDER XPRESS</div>
+          </div>
+          <div class="muv-cbx-mid">
+            <div class="muv-cbx-divider"></div>
+            <span class="muv-cbx-plane">✈</span>
+            <div class="muv-cbx-divider"></div>
+          </div>
+          <div class="muv-cbx-card-right">
+            <div class="muv-cbx-pass">VIAJE REDONDO</div>
+            <div class="muv-cbx-free">GRATIS</div>
+            <div class="muv-cbx-via">VIA CBX</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEPS SECTION -->
+  <section class="muv-band">
+    <div class="muv-steps-inner">
+      <div class="muv-steps-head" data-muv-reveal>
+        <span class="muv-eyebrow">Cómo funciona</span>
+        <h2>{{ section.settings.steps_title }}</h2>
+      </div>
+      <div class="muv-steps-grid">
+        <div class="muv-step" data-muv-reveal>
+          <div class="muv-step-num">01</div>
+          <p>{{ section.settings.step1_title }}</p>
+        </div>
+        <div class="muv-step" data-muv-reveal>
+          <div class="muv-step-num">02</div>
+          <p>{{ section.settings.step2_title }}</p>
+        </div>
+        <div class="muv-step" data-muv-reveal>
+          <div class="muv-step-num">03</div>
+          <p>{{ section.settings.step3_title }}</p>
+        </div>
+        <div class="muv-step" data-muv-reveal>
+          <div class="muv-step-num">04</div>
+          <p>{{ section.settings.step4_title }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EMOTIONAL / CARD SECTION -->
+  <section class="muv-band">
+    <div class="muv-emo-inner">
+      <div class="muv-emo-media" data-muv-reveal>
+        <div class="muv-emo-glow"></div>
+        <img src="{{ section.settings.card_image_url }}" alt="MUV card and family" loading="lazy">
+      </div>
+      <div class="muv-emo-body" data-muv-reveal>
+        <h2>
+          Hoy, puedes dejarles
+          <span>tranquilidad para toda la vida.</span>
+        </h2>
+        <p>El mejor regalo que puedes dejarle a tu familia no es algo material. Es la certeza de que todo estará claro y de que no estarán solos en el camino.</p>
+        <a href="#muv-formulario-{{ section.id }}" class="muv-btn-outline">Solicitar Información</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <section class="muv-band">
+    <div class="muv-faq-inner">
+      <h2 data-muv-reveal>{{ section.settings.faq_title }}</h2>
+      <div class="muv-faq-list">
+        <!-- FAQ 1 -->
+        <div class="muv-faq-item" data-muv-reveal>
+          <button class="muv-faq-btn" type="button" aria-expanded="false">
+            {{ section.settings.faq_q1 }}
+            <span class="muv-faq-icon">＋</span>
+          </button>
+          <div class="muv-faq-body" role="region">
+            <p>{{ section.settings.faq_a1 }}</p>
+          </div>
+        </div>
+        <!-- FAQ 2 -->
+        <div class="muv-faq-item" data-muv-reveal>
+          <button class="muv-faq-btn" type="button" aria-expanded="false">
+            {{ section.settings.faq_q2 }}
+            <span class="muv-faq-icon">＋</span>
+          </button>
+          <div class="muv-faq-body" role="region">
+            <p>{{ section.settings.faq_a2 }}</p>
+          </div>
+        </div>
+        <!-- FAQ 3 -->
+        <div class="muv-faq-item" data-muv-reveal>
+          <button class="muv-faq-btn" type="button" aria-expanded="false">
+            {{ section.settings.faq_q3 }}
+            <span class="muv-faq-icon">＋</span>
+          </button>
+          <div class="muv-faq-body" role="region">
+            <p>{{ section.settings.faq_a3 }}</p>
+          </div>
+        </div>
+        <!-- FAQ 4 -->
+        <div class="muv-faq-item" data-muv-reveal>
+          <button class="muv-faq-btn" type="button" aria-expanded="false">
+            {{ section.settings.faq_q4 }}
+            <span class="muv-faq-icon">＋</span>
+          </button>
+          <div class="muv-faq-body" role="region">
+            <p>{{ section.settings.faq_a4 }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA BANNER -->
+  <section class="muv-cta">
+    <div class="muv-cta-bg">
+      <img src="{{ section.settings.hero_image_url }}" alt="" loading="lazy" aria-hidden="true">
+    </div>
+    <div class="muv-cta-overlay"></div>
+    <div class="muv-cta-content">
+      <h2 data-muv-reveal>
+        Hazlo por quienes
+        <span>más amas.</span>
+      </h2>
+      <p data-muv-reveal>Programa una consulta gratuita y conoce cómo MUV puede ayudarte a proteger el futuro de tu familia.</p>
+    </div>
+  </section>
+
+  <!-- FORM SECTION -->
+  <section class="muv-band" id="muv-formulario-{{ section.id }}">
+    <div class="muv-form-inner">
+      <h2 data-muv-reveal>{{ section.settings.form_title }}</h2>
+      <p class="muv-form-sub" data-muv-reveal>{{ section.settings.form_subtitle }}</p>
+      
+      <div data-muv-reveal>
+        {%- if section.settings.embed_form_code != blank -%}
+          <div class="muv-form-embed">
+            {{ section.settings.embed_form_code }}
+            <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+          </div>
+        {%- else -%}
+          <div class="muv-form-box">
+            {%- form 'contact', id: 'muv-contact-form-mx' -%}
+              {%- if form.posted_successfully? -%}
+                <div class="muv-form-success">{{ section.settings.form_success }}</div>
+              {%- endif -%}
+              
+              <div class="muv-form-grid">
+                <div class="muv-field">
+                  <label>Nombre Completo</label>
+                  <input type="text" name="contact[name]" required placeholder="Ej. Carlos Mendoza">
+                </div>
+                <div class="muv-field">
+                  <label>Correo Electrónico</label>
+                  <input type="email" name="contact[email]" required placeholder="Ej. carlos@dominio.com">
+                </div>
+                <div class="muv-field">
+                  <label>Teléfono / WhatsApp</label>
+                  <input type="tel" name="contact[phone]" placeholder="Ej. 55 9876 5432">
+                </div>
+                <div class="muv-field">
+                  <label>Plan de Interés</label>
+                  <select name="contact[plan_type]">
+                    <option value="Plan USA - Mexico">USA - México ($349 USD/año)</option>
+                    <option value="Plan USA - LATAM">USA - LATAM ($349 USD/año)</option>
+                  </select>
+                </div>
+                <div class="muv-field">
+                  <label>Mensaje o Comentarios</label>
+                  <textarea name="contact[body]" placeholder="Escribe aquí tus dudas..."></textarea>
+                </div>
+              </div>
+              
+              <div class="muv-form-actions">
+                <button type="submit" class="muv-btn-primary">{{ section.settings.form_btn_text }}</button>
+              </div>
+            {%- endform -%}
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="muv-footer">
+    <div class="muv-footer-brand">
+      <span class="muv-footer-logo">MUV</span>
+      <span class="muv-footer-tagline">Mi Última Voluntad</span>
+    </div>
+    <span class="muv-footer-copy">© 2026 MUV · Protección familiar sin fronteras</span>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var root = document.getElementById('muv-{{ section.id }}');
+  if (!root) return;
+
+  // Scroll reveal
+  var revealEls = root.querySelectorAll('[data-muv-reveal]');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'translateY(0)';
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(function(el) {
+      var r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight * 0.92) return;
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(26px)';
+      el.style.transition = 'opacity .8s cubic-bezier(.22,.61,.36,1), transform .8s cubic-bezier(.22,.61,.36,1)';
+      io.observe(el);
+    });
+  } else {
+    revealEls.forEach(function(el){ el.style.opacity = '1'; });
+  }
+
+  // Parallax hero
+  var parallaxEl = root.querySelector('[data-parallax]');
+  if (parallaxEl) {
+    var factor = parseFloat(parallaxEl.getAttribute('data-parallax')) || 0.35;
+    window.addEventListener('scroll', function() {
+      parallaxEl.style.transform = 'translateY(' + (window.scrollY * factor) + 'px)';
+    }, { passive: true });
+  }
+
+  // FAQ accordion
+  root.querySelectorAll('.muv-faq-item').forEach(function(item, idx) {
+    var btn  = item.querySelector('.muv-faq-btn');
+    var body = item.querySelector('.muv-faq-body');
+    var icon = item.querySelector('.muv-faq-icon');
+    if (!btn || !body) return;
+    if (idx === 0) { body.classList.add('is-open'); icon.classList.add('is-open'); btn.setAttribute('aria-expanded','true'); }
+    btn.addEventListener('click', function() {
+      var isOpen = body.classList.contains('is-open');
+      root.querySelectorAll('.muv-faq-body').forEach(function(b){ b.classList.remove('is-open'); });
+      root.querySelectorAll('.muv-faq-icon').forEach(function(i){ i.classList.remove('is-open'); });
+      root.querySelectorAll('.muv-faq-btn').forEach(function(b){ b.setAttribute('aria-expanded','false'); });
+      if (!isOpen) { body.classList.add('is-open'); icon.classList.add('is-open'); btn.setAttribute('aria-expanded','true'); }
+    });
+  });
+
+  // Smooth scroll
+  root.querySelectorAll('a[href^="#"]').forEach(function(a) {
+    a.addEventListener('click', function(ev) {
+      var id = a.getAttribute('href').slice(1);
+      
+      // If we are looking for muv-formulario ID:
+      if (id.indexOf('muv-formulario') === 0) {
+        id = 'muv-formulario-{{ section.id }}';
+      }
+      
+      var target = document.getElementById(id);
+      if (!target) return;
+      ev.preventDefault();
+      var y = target.getBoundingClientRect().top + window.pageYOffset - 24;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    });
+  });
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Mi Última Voluntad",
+  "settings": [
+    { "type": "header", "content": "1 · Hero Banner" },
+    { "type": "text", "id": "hero_eyebrow", "label": "Ceja Hero", "default": "Protección para tu familia" },
+    { "type": "text", "id": "hero_title", "label": "Título Hero", "default": "Protege a tu familia incluso cuando ya no puedas estar allí." },
+    { "type": "text", "id": "hero_subtitle", "label": "Subtítulo Hero", "default": "MUV te ayuda a dejar todo en orden, para que las personas que más amas tengan tranquilidad, guía y apoyo cuando más lo necesitan." },
+    { "type": "text", "id": "hero_btn1_text", "label": "Texto Botón 1", "default": "Programar Consulta Gratis" },
+    { "type": "text", "id": "hero_btn2_text", "label": "Texto Botón 2", "default": "Hablar con un Asesor" },
+    { "type": "text", "id": "hero_image_url", "label": "URL Imagen Hero", "default": "https://images.unsplash.com/photo-1659523144224-bdf04a78d999?fm=jpg&q=80&w=2200&auto=format&fit=crop" },
+
+    { "type": "header", "content": "2 · Membresías" },
+    { "type": "text", "id": "pricing_title", "label": "Título de Membresías", "default": "Soporte completo, sin fronteras." },
+    { "type": "textarea", "id": "plan1_items", "label": "Beneficios Plan México (Separados por |)", "default": "Asistencia de repatriación | Guía para tu familia | Soporte internacional | Membresía anual" },
+    { "type": "textarea", "id": "plan2_items", "label": "Beneficios Plan Latam (Separados por |)", "default": "Asistencia de repatriación | Guía para tu familia | Soporte internacional | Membresía anual" },
+
+    { "type": "header", "content": "3 · Cruce CBX" },
+    { "type": "text", "id": "cbx_title", "label": "Título CBX", "default": "Tu viaje comienza antes del vuelo." },
+    { "type": "textarea", "id": "cbx_description", "label": "Descripción CBX", "default": "Al adquirir tu membresía MUV, recibes un pase de ida y vuelta GRATIS para cruzar a través del CBX." },
+    { "type": "text", "id": "cbx_image_url", "label": "URL Imagen CBX", "default": "https://www.aylesva.com/cdn/shop/files/pasted-1783109167178-0.png?v=1783110870" },
+
+    { "type": "header", "content": "4 · Cómo funciona (Pasos)" },
+    { "type": "text", "id": "steps_title", "label": "Título de Pasos", "default": "Cuatro pasos sencillos." },
+    { "type": "text", "id": "step1_title", "label": "Paso 1", "default": "Elige tu membresía" },
+    { "type": "text", "id": "step2_title", "label": "Paso 2", "default": "Recibe tu código y tu información" },
+    { "type": "text", "id": "step3_title", "label": "Paso 3", "default": "Obtén acceso a tus beneficios y asistencia" },
+    { "type": "text", "id": "step4_title", "label": "Paso 4", "default": "Tu familia tiene respaldo y guía cuando más lo necesite" },
+
+    { "type": "header", "content": "5 · Sección Emocional" },
+    { "type": "text", "id": "card_image_url", "label": "URL Imagen Tarjeta", "default": "https://www.aylesva.com/cdn/shop/files/nuvcard.png?v=1783110936" },
+
+    { "type": "header", "content": "6 · Preguntas Frecuentes (FAQs)" },
+    { "type": "text", "id": "faq_title", "label": "Título FAQs", "default": "Preguntas Frecuentes" },
+    { "type": "text", "id": "faq_q1", "label": "Pregunta 1", "default": "¿Qué incluye la membresía?" },
+    { "type": "textarea", "id": "faq_a1", "label": "Respuesta 1", "default": "Tu membresía anual incluye asistencia de repatriación, guía paso a paso para tu familia, soporte internacional coordinado entre Estados Unidos y tu país de origen, y acceso a beneficios exclusivos como el pase CBX." },
+    { "type": "text", "id": "faq_q2", "label": "Pregunta 2", "default": "¿Cómo funciona el beneficio de CBX?" },
+    { "type": "textarea", "id": "faq_a2", "label": "Respuesta 2", "default": "Al activar tu membresía, recibes un pase redondo gratis para cruzar el puente de CBX entre San Diego y el Aeropuerto de Tijuana, con menos tiempo de espera y mayor comodidad." },
+    { "type": "text", "id": "faq_q3", "label": "Pregunta 3", "default": "¿La cobertura aplica fuera de Estados Unidos?" },
+    { "type": "textarea", "id": "faq_a3", "label": "Respuesta 3", "default": "Sí. MUV está diseñado para familias migrantes: la cobertura conecta a Estados Unidos con México y Sudamérica, con coordinación internacional incluida." },
+    { "type": "text", "id": "faq_q4", "label": "Pregunta 4", "default": "¿Cómo puedo obtener más información?" },
+    { "type": "textarea", "id": "faq_a4", "label": "Respuesta 4", "default": "Puedes hablar con un asesor o solicitar información usando el botón al final de la página. La consulta inicial es gratuita y está disponible en inglés y español." },
+
+    { "type": "header", "content": "7 · Formulario" },
+    { "type": "text", "id": "form_title", "label": "Título Formulario", "default": "Solicita Tu Consulta Gratuita" },
+    { "type": "text", "id": "form_subtitle", "label": "Subtítulo Formulario", "default": "Completa el formulario y un asesor se comunicará contigo." },
+    { "type": "textarea", "id": "embed_form_code", "label": "Código Embed GoHighLevel", "default": "<iframe src=\"https://api.leadconnectorhq.com/widget/form/DPfokHX747mbGaU8Fobk\" style=\"width:100%;height:100%;border:none;border-radius:8px\" id=\"inline-DPfokHX747mbGaU8Fobk\" data-layout=\"{'id':'INLINE'}\" data-trigger-type=\"alwaysShow\" data-trigger-value=\"\" data-activation-type=\"alwaysActivated\" data-activation-value=\"\" data-deactivation-type=\"neverDeactivate\" data-deactivation-value=\"\" data-form-name=\"aylesvamuvusa\" data-height=\"555\" data-layout-iframe-id=\"inline-DPfokHX747mbGaU8Fobk\" data-form-id=\"DPfokHX747mbGaU8Fobk\" title=\"aylesvamuvusa\"></iframe>" },
+    { "type": "text", "id": "form_btn_text", "label": "Texto Botón Formulario", "default": "Enviar Solicitud" },
+    { "type": "text", "id": "form_success", "label": "Mensaje Éxito", "default": "¡Gracias! Tu solicitud ha sido recibida con éxito. Un asesor de Mi Última Voluntad se pondrá en contacto contigo muy pronto." }
+  ]
+}
+{% endschema %}

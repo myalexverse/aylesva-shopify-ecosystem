@@ -1,0 +1,43 @@
+<div class="ttinput_newsletter">
+<label class="form-label--hidden">
+  <span class="visuallyhidden">{{ 'general.newsletter_form.newsletter_label' | t }}</span>
+</label>
+  <div class="form-vertical">
+    {% form 'customer' %}
+     
+      {% if form.posted_successfully? %}
+    	<input type="hidden" name="contact[tags]" value="newsletter">
+    	<div class="input-group newsletter-input">
+          <input type="email" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ 'general.newsletter_form.newsletter_email' | t }}" name="contact[email]" id="Email" class="input-group-field" aria-label="{{ 'general.newsletter_form.newsletter_email' | t }}" autocorrect="off" autocapitalize="off">
+          <span class="input-group-btn">
+            <button type="submit" class="btn icon-fallback-text" name="commit" id="subscribe" aria-label="Name">
+              <!-- <i class="mdi mdi-email-outline"></i>
+              <span class="icon icon-chevron-right" aria-hidden="true"></span> -->
+                <span class="icon" aria-hidden="true">
+              <i class="mdi mdi-arrow-right">
+                </i>
+              </span>
+              <span class="subscribe">{{ 'general.newsletter_form.submit' | t }}</span>
+            </button>
+          </span>
+        </div>
+        <p class="note form-success">{{ 'general.newsletter_form.confirmation' | t }}</p>
+      {% else %}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <div class="input-group newsletter-input">
+          <input type="email" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ 'general.newsletter_form.newsletter_email' | t }}" name="contact[email]" id="Email" class="input-group-field" aria-label="{{ 'general.newsletter_form.newsletter_email' | t }}" autocorrect="off" autocapitalize="off">
+          <span class="input-group-btn">
+            <button type="submit" class="btn icon-fallback-text" name="commit" id="subscribe" aria-label="Name">
+              <span class="icon" aria-hidden="true">
+              <i class="mdi mdi-arrow-right">
+                </i>
+              </span>
+              <span class="subscribe">{{ 'general.newsletter_form.submit' | t }}</span>
+            </button>
+          </span>
+        </div>
+      {% endif %}
+     {{ form.errors | default_errors }}
+    {% endform %}
+  </div>
+</div>

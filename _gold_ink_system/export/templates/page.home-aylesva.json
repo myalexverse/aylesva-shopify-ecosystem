@@ -1,0 +1,475 @@
+{
+  "sections": {
+    "hero": {
+      "type": "aylesva-home-hero",
+      "settings": {
+        "eyebrow": "Grupo Aylesva",
+        "title_line1": "Impulsamos tu negocio.",
+        "title_line2": "Potenciamos tu futuro.",
+        "subtitle": "Un ecosistema de soluciones diseñadas para acompañarte en cada etapa de crecimiento de tu empresa y tu patrimonio.",
+        "cta1_label": "Conoce nuestros servicios",
+        "cta1_link": "#servicios",
+        "cta2_label": "Habla con un asesor",
+        "cta2_link": "#contacto"
+      }
+    },
+    "stats": {
+      "type": "aylesva-home-stats",
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5"
+      ],
+      "blocks": {
+        "s1": {
+          "type": "stat",
+          "settings": {
+            "value": "6",
+            "label": "Líneas de servicio"
+          }
+        },
+        "s2": {
+          "type": "stat",
+          "settings": {
+            "value": "+2,000",
+            "label": "Productos en catálogo"
+          }
+        },
+        "s3": {
+          "type": "stat",
+          "settings": {
+            "value": "23",
+            "label": "Marcas lanzadas"
+          }
+        },
+        "s4": {
+          "type": "stat",
+          "settings": {
+            "value": "3",
+            "label": "Desarrollos inmobiliarios"
+          }
+        },
+        "s5": {
+          "type": "stat",
+          "settings": {
+            "value": "24 h",
+            "label": "Tiempo de respuesta"
+          }
+        }
+      }
+    },
+    "que-hacemos": {
+      "type": "aylesva-home-universes",
+      "settings": {
+        "bg": "#FFFFFF",
+        "eyebrow": "Qué hacemos",
+        "title": "Dos formas de trabajar con nosotros, un mismo respaldo.",
+        "text": "Aylesva empezó como un marketplace de productos premium y hoy opera además un portafolio de servicios corporativos. La misma empresa te vende un producto curado, te financia un proyecto, te importa un contenedor, te consigue un inmueble o te cuida la salud, con un asesor asignado en cada caso."
+      },
+      "block_order": [
+        "u1",
+        "u2"
+      ],
+      "blocks": {
+        "u1": {
+          "type": "universe",
+          "settings": {
+            "tag": "Para personas",
+            "title": "Marketplace",
+            "text": "Compra en línea productos curados de moda, hogar, artesanal, alimentos, electrónicos y vehículos.",
+            "cta": "Ir a la tienda",
+            "link": "/collections/all"
+          }
+        },
+        "u2": {
+          "type": "universe",
+          "settings": {
+            "tag": "Para empresas y patrimonio",
+            "title": "Servicios corporativos",
+            "text": "Financiamiento, importación, bienes raíces, beneficios de salud, tiendas propias y previsión familiar.",
+            "cta": "Ver servicios",
+            "link": "#servicios"
+          }
+        }
+      }
+    },
+    "servicios": {
+      "type": "aylesva-home-services",
+      "settings": {
+        "anchor": "servicios",
+        "eyebrow": "Nuestro ecosistema de soluciones",
+        "title": "Qué hace cada servicio",
+        "intro": "Cada rama resuelve una necesidad concreta y opera con su propio equipo. Puedes usar una sola o combinarlas: financiar la importación, vender en el marketplace y proteger a tu familia con el mismo grupo."
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6"
+      ],
+      "blocks": {
+        "b1": {
+          "type": "service",
+          "settings": {
+            "icon": "<rect x=\"3\" y=\"10\" width=\"18\" height=\"11\"/><path d=\"M3 10 12 4l9 6\"/><path d=\"M9 21v-6h6v6\"/>",
+            "title": "Aylesva Recursos",
+            "claim": "Financiamiento para crecer",
+            "text": "Intermediario financiero: analizamos tu perfil y te conectamos con la prestadora donde tu solicitud tiene más probabilidad de aprobación.",
+            "bullets": "Estudio socioeconómico gratis\nLíneas de crédito, capital de trabajo y equipo\nMercado mexicano y estadounidense",
+            "audience": "Empresas y emprendedores",
+            "link": "/pages/aylesva-recursos"
+          }
+        },
+        "b2": {
+          "type": "service",
+          "settings": {
+            "icon": "<rect x=\"2\" y=\"8\" width=\"13\" height=\"9\"/><path d=\"M15 11h4l3 3v3h-7z\"/><circle cx=\"6\" cy=\"19\" r=\"2\"/><circle cx=\"18\" cy=\"19\" r=\"2\"/>",
+            "title": "Aylesva Direct",
+            "claim": "Importa sin complicaciones",
+            "text": "Sourcing, calidad y aduanas desde China y mercados globales, con un solo punto de contacto para toda la operación.",
+            "bullets": "Búsqueda y validación de proveedores\nRevisión de tu proveedor actual\nLogística y despacho aduanal",
+            "audience": "Empresas importadoras",
+            "link": "/pages/aylesva-direct"
+          }
+        },
+        "b3": {
+          "type": "service",
+          "settings": {
+            "icon": "<path d=\"M3 21V9l6-4 6 4v12\"/><path d=\"M15 21V13h6v8\"/><path d=\"M7 13h2M7 17h2\"/>",
+            "title": "Global Estates",
+            "claim": "Inversiones que trascienden",
+            "text": "Bienes raíces verificados en México y El Salvador, con acompañamiento desde la primera consulta hasta la entrega de llaves.",
+            "bullets": "Desarrollos visitados y validados\nTorre 40, Paradise Bay y Altarena\nEstructuración y seguimiento de obra",
+            "audience": "Inversionistas y familias",
+            "link": "/pages/globalestates"
+          }
+        },
+        "b4": {
+          "type": "service",
+          "settings": {
+            "icon": "<path d=\"M12 20 4 12.5A4.6 4.6 0 0 1 12 7a4.6 4.6 0 0 1 8 5.5z\"/><path d=\"M8 13h2l1.5-3 2 5 1.5-2h2\"/>",
+            "title": "Aylesva Care",
+            "claim": "Protege lo que más importa",
+            "text": "Paquetes de beneficios de salud, hogar y seguros complementarios con la red de New Benefits, desde $20 USD al mes.",
+            "bullets": "Telemedicina 24/7 y consultas preferenciales\nSeguros complementarios Aflac y UHOne\nCobertura extensible a dependientes",
+            "audience": "Personas y equipos",
+            "link": "/pages/aylesva-care"
+          }
+        },
+        "b5": {
+          "type": "service",
+          "settings": {
+            "icon": "<rect x=\"3\" y=\"4\" width=\"18\" height=\"5\"/><path d=\"M5 9v12h14V9\"/><path d=\"M9 13h6\"/>",
+            "title": "Lanza tu marca",
+            "claim": "Lanza y escala tu negocio online",
+            "text": "Diseñamos y lanzamos tu tienda en Shopify, con nuestro catálogo integrado y la logística resuelta. Tú vendes, nosotros enviamos.",
+            "bullets": "Sin inversión en inventario\n23 marcas ya lanzadas\nConecta tus productos al marketplace",
+            "audience": "Emprendedores",
+            "link": "/pages/lanza-tu-propia-marca"
+          }
+        },
+        "b6": {
+          "type": "service",
+          "settings": {
+            "icon": "<path d=\"M12 3l8 3v6c0 5-4 8-8 9-4-1-8-4-8-9V6z\"/><path d=\"M9 12h6M12 9v6\"/>",
+            "title": "Mi Última Voluntad",
+            "claim": "Previsión sin fronteras",
+            "text": "Membresía anual de repatriación y guía para tu familia, coordinada entre Estados Unidos, México y Sudamérica.",
+            "bullets": "Asistencia de repatriación\nGuía paso a paso para tu familia\nPase CBX incluido",
+            "audience": "Familias migrantes",
+            "link": "/pages/mi-ultima-voluntad"
+          }
+        }
+      }
+    },
+    "necesidad": {
+      "type": "aylesva-home-needs",
+      "block_order": [
+        "n1",
+        "n2",
+        "n3",
+        "n4",
+        "n5",
+        "n6"
+      ],
+      "blocks": {
+        "n1": {
+          "type": "need",
+          "settings": {
+            "question": "Necesito capital para operar o crecer",
+            "target": "Aylesva Recursos",
+            "link": "/pages/aylesva-recursos",
+            "icon": "<rect x=\"3\" y=\"10\" width=\"18\" height=\"11\"/><path d=\"M3 10 12 4l9 6\"/><path d=\"M9 21v-6h6v6\"/>"
+          }
+        },
+        "n2": {
+          "type": "need",
+          "settings": {
+            "question": "Quiero importar producto o mejorar mis costos",
+            "target": "Aylesva Direct",
+            "link": "/pages/aylesva-direct",
+            "icon": "<rect x=\"2\" y=\"8\" width=\"13\" height=\"9\"/><path d=\"M15 11h4l3 3v3h-7z\"/><circle cx=\"6\" cy=\"19\" r=\"2\"/><circle cx=\"18\" cy=\"19\" r=\"2\"/>"
+          }
+        },
+        "n3": {
+          "type": "need",
+          "settings": {
+            "question": "Busco invertir en bienes raíces",
+            "target": "Global Estates",
+            "link": "/pages/globalestates",
+            "icon": "<path d=\"M3 21V9l6-4 6 4v12\"/><path d=\"M15 21V13h6v8\"/><path d=\"M7 13h2M7 17h2\"/>"
+          }
+        },
+        "n4": {
+          "type": "need",
+          "settings": {
+            "question": "Quiero vender en línea con mi propia marca",
+            "target": "Lanza tu marca",
+            "link": "/pages/lanza-tu-propia-marca",
+            "icon": "<rect x=\"3\" y=\"4\" width=\"18\" height=\"5\"/><path d=\"M5 9v12h14V9\"/><path d=\"M9 13h6\"/>"
+          }
+        },
+        "n5": {
+          "type": "need",
+          "settings": {
+            "question": "Quiero cuidar la salud de mi familia o mi equipo",
+            "target": "Aylesva Care",
+            "link": "/pages/aylesva-care",
+            "icon": "<path d=\"M12 20 4 12.5A4.6 4.6 0 0 1 12 7a4.6 4.6 0 0 1 8 5.5z\"/><path d=\"M8 13h2l1.5-3 2 5 1.5-2h2\"/>"
+          }
+        },
+        "n6": {
+          "type": "need",
+          "settings": {
+            "question": "Quiero dejar todo en orden para mi familia",
+            "target": "Mi Última Voluntad",
+            "link": "/pages/mi-ultima-voluntad",
+            "icon": "<path d=\"M12 3l8 3v6c0 5-4 8-8 9-4-1-8-4-8-9V6z\"/><path d=\"M9 12h6M12 9v6\"/>"
+          }
+        }
+      }
+    },
+    "metodo": {
+      "type": "aylesva-corp-process",
+      "settings": {
+        "dark": false,
+        "eyebrow": "Cómo trabajamos",
+        "title": "El mismo método en las seis ramas",
+        "intro": "Cambia el servicio, no la forma de atenderte: diagnóstico sin costo, una sola propuesta recomendada y un asesor que responde hasta el cierre."
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3"
+      ],
+      "blocks": {
+        "p1": {
+          "type": "step",
+          "settings": {
+            "title": "Diagnóstico sin costo",
+            "text": "Nos cuentas qué necesitas. Un especialista revisa tu caso el mismo día hábil y te dice si podemos ayudarte."
+          }
+        },
+        "p2": {
+          "type": "step",
+          "settings": {
+            "title": "Una propuesta clara",
+            "text": "Recibes condiciones, tiempos y costos por escrito, con una sola ruta recomendada y sin letra pequeña."
+          }
+        },
+        "p3": {
+          "type": "step",
+          "settings": {
+            "title": "Acompañamiento",
+            "text": "Un asesor asignado da seguimiento hasta el cierre: el crédito liberado, el contenedor entregado, las llaves en tu mano."
+          }
+        }
+      }
+    },
+    "por-que": {
+      "type": "aylesva-corp-features",
+      "settings": {
+        "bg": "#FAFAF8",
+        "eyebrow": "Por qué Aylesva",
+        "title": "Un grupo detrás de cada operación"
+      },
+      "block_order": [
+        "r1",
+        "r2",
+        "r3",
+        "r4"
+      ],
+      "blocks": {
+        "r1": {
+          "type": "feature",
+          "settings": {
+            "icon": "<path d=\"M12 3l8 3v6c0 5-4 8-8 9-4-1-8-4-8-9V6z\"/><path d=\"M8.5 12l2.5 2.5 4.5-5\"/>",
+            "title": "Respaldo del grupo",
+            "text": "Seis unidades operando bajo un mismo estándar de cumplimiento y servicio."
+          }
+        },
+        "r2": {
+          "type": "feature",
+          "settings": {
+            "icon": "<circle cx=\"12\" cy=\"8\" r=\"3.5\"/><path d=\"M5 21c0-4 3.2-6.5 7-6.5s7 2.5 7 6.5\"/>",
+            "title": "Un asesor asignado",
+            "text": "Una persona responsable de tu caso de principio a fin, no una bandeja de tickets."
+          }
+        },
+        "r3": {
+          "type": "feature",
+          "settings": {
+            "icon": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M3 12h18\"/><path d=\"M12 3c3 3 3 15 0 18-3-3-3-15 0-18z\"/>",
+            "title": "Cobertura internacional",
+            "text": "Operaciones activas en México, Estados Unidos, El Salvador y Asia."
+          }
+        },
+        "r4": {
+          "type": "feature",
+          "settings": {
+            "icon": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M12 12l4-3\"/><path d=\"M12 3v2M21 12h-2M12 21v-2M3 12h2\"/>",
+            "title": "Tiempos claros",
+            "text": "Respuesta en 24 horas y plazos comprometidos por escrito en cada servicio."
+          }
+        }
+      }
+    },
+    "marketplace": {
+      "type": "aylesva-home-split",
+      "settings": {
+        "anchor": "marketplace",
+        "bg": "#FFFFFF",
+        "media_right": true,
+        "eyebrow": "Marketplace",
+        "title": "Curaduría editorial de productos premium",
+        "text": "Más de 2,000 productos entre moda, hogar, artesanal, alimentos, electrónicos y vehículos, conectando artesanos y marcas de lujo con el estilo de vida contemporáneo.",
+        "chips": "Mujer, Hombre, Niños, Artesanal, Hogar, Alimentos, Electrónicos, Vehículos",
+        "cta_label": "Explorar el catálogo",
+        "cta_link": "/collections/all"
+      },
+      "block_order": [
+        "m1",
+        "m2",
+        "m3",
+        "m4"
+      ],
+      "blocks": {
+        "m1": {
+          "type": "image",
+          "settings": {}
+        },
+        "m2": {
+          "type": "image",
+          "settings": {}
+        },
+        "m3": {
+          "type": "image",
+          "settings": {}
+        },
+        "m4": {
+          "type": "image",
+          "settings": {}
+        }
+      }
+    },
+    "resultados": {
+      "type": "aylesva-corp-cards",
+      "settings": {
+        "bg": "#FAFAF8",
+        "columns": 3,
+        "eyebrow": "Resultados",
+        "title": "Lo que ya está en marcha"
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3"
+      ],
+      "blocks": {
+        "c1": {
+          "type": "card",
+          "settings": {
+            "eyebrow": "Global Estates",
+            "title": "Torre 40, Puerto Vallarta",
+            "text": "24 pisos y 72 unidades exclusivas, en construcción con entrega estimada en 2027.",
+            "cta_label": "",
+            "price": ""
+          }
+        },
+        "c2": {
+          "type": "card",
+          "settings": {
+            "eyebrow": "Lanza tu marca",
+            "title": "23 tiendas activas hoy",
+            "text": "Sitios reales construidos y lanzados por nuestro equipo, de la identidad al último detalle de código.",
+            "cta_label": "",
+            "price": ""
+          }
+        },
+        "c3": {
+          "type": "card",
+          "settings": {
+            "eyebrow": "Aylesva Direct",
+            "title": "Importación puerta a puerta",
+            "text": "Coordinación de proveedores, calidad y aduanas desde China a México y Estados Unidos.",
+            "cta_label": "",
+            "price": ""
+          }
+        }
+      }
+    },
+    "contacto": {
+      "type": "aylesva-corp-form",
+      "settings": {
+        "anchor": "contacto",
+        "bg": "#FFFFFF",
+        "eyebrow": "Un solo punto de entrada",
+        "title": "Cuéntanos qué necesitas y te asignamos al especialista correcto.",
+        "text": "Si no sabes por dónde empezar, deja el campo de servicio en blanco: un asesor te orienta antes de canalizarte.",
+        "form_id": "",
+        "form_height": 640
+      },
+      "block_order": [
+        "t1",
+        "t2",
+        "t3"
+      ],
+      "blocks": {
+        "t1": {
+          "type": "point",
+          "settings": {
+            "text": "Respuesta en menos de 24 horas hábiles"
+          }
+        },
+        "t2": {
+          "type": "point",
+          "settings": {
+            "text": "Atención en español e inglés"
+          }
+        },
+        "t3": {
+          "type": "point",
+          "settings": {
+            "text": "Sin costo de consulta y sin compromiso"
+          }
+        }
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "stats",
+    "que-hacemos",
+    "servicios",
+    "necesidad",
+    "metodo",
+    "por-que",
+    "marketplace",
+    "resultados",
+    "contacto"
+  ]
+}

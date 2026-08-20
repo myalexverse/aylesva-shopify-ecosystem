@@ -1,0 +1,911 @@
+<!-- Google Fonts Import for high-end boutique aesthetics -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  /* Base Container & Section Spacing */
+  .saldos-features-section {
+    position: relative;
+    padding: 60px 0;
+    background: #fafafa;
+    font-family: 'Outfit', sans-serif;
+  }
+
+  .saldos-features-container {
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 25px;
+  }
+
+  /* Grid Layout (3 Columns on Desktop) */
+  .saldos-features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    align-items: stretch;
+  }
+
+  /* Card Base Style matching Foto 3 exactly */
+  .features-panel-card {
+    background: #ffffff !important;
+    border: 1px solid #eeeeee !important;
+    border-radius: 16px !important;
+    padding: 30px 24px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02) !important;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .features-panel-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05) !important;
+  }
+
+  /* Card Header with Gold Icon */
+  .panel-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 25px;
+  }
+  .panel-header-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #C5A47E;
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+  }
+  .panel-header-icon svg {
+    width: 100%;
+    height: 100%;
+    stroke-width: 1.5;
+  }
+  .panel-header-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #1a1a1a;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0;
+  }
+
+  /* PANEL 1: INTERACTIVE CALCULATOR STYLING */
+  .calc-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 25px;
+  }
+  .calc-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+  }
+  .calc-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #444444;
+  }
+  
+  /* Select Dropdown & Input styled elegantly */
+  .calc-select, .calc-input-wrapper input {
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #1a1a1a;
+    background: #fafafa;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 10px 14px;
+    width: 130px;
+    outline: none;
+    transition: border-color 0.3s, background-color 0.3s;
+    cursor: pointer;
+    box-sizing: border-box;
+  }
+  .calc-select:focus, .calc-input-wrapper input:focus {
+    border-color: #C5A47E;
+    background: #ffffff;
+  }
+
+  /* Dropdown custom chevron style */
+  .calc-select-wrapper {
+    position: relative;
+    display: inline-block;
+  }
+  .calc-select-wrapper::after {
+    content: '';
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid #1a1a1a;
+    pointer-events: none;
+  }
+  .calc-select {
+    padding-right: 28px;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+
+  /* Results Display */
+  .calc-results-wrap {
+    margin-top: auto;
+    border-top: 1px solid #f6f6f6;
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .calc-gain-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .calc-gain-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #888888;
+    margin-bottom: 6px;
+  }
+  .calc-gain-value {
+    font-size: 28px;
+    font-weight: 700;
+    color: #C5A47E;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .calc-gain-value span.currency {
+    font-size: 14px;
+    font-weight: 500;
+    margin-left: 2px;
+  }
+  .calc-gain-subtext {
+    font-size: 11.5px;
+    font-weight: 500;
+    color: #888888;
+  }
+  .calc-graphic-right {
+    color: #C5A47E;
+    width: 80px;
+    height: 40px;
+    opacity: 0.9;
+  }
+
+  /* PANEL 2: BENEFITS LIST STYLING */
+  .benefits-items-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 100%;
+  }
+  .benefit-panel-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .benefit-panel-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #C5A47E;
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .benefit-panel-icon svg {
+    width: 100%;
+    height: 100%;
+    stroke-width: 1.5;
+  }
+  .benefit-panel-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .benefit-panel-title {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+  .benefit-panel-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: #666666;
+    line-height: 1.35;
+  }
+
+  /* PANEL 3: TESTIMONIAL SLIDER STYLING */
+  .testimonial-header-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    width: 100%;
+  }
+  .testimonial-header-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #1a1a1a;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0;
+  }
+  .testimonial-link {
+    font-size: 11px;
+    font-weight: 700;
+    color: #C5A47E;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: color 0.3s ease;
+  }
+  .testimonial-link:hover { color: #b08d65; }
+  .testimonial-link svg { width: 10px; height: 10px; }
+
+  /* Testimonials Slider Area */
+  .testimonial-slider-viewport {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 160px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+  }
+  
+  .testimonial-slide {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease, visibility 0.6s;
+    z-index: 1;
+  }
+  .testimonial-slide.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+    z-index: 2;
+  }
+
+  /* Profile Pic Left */
+  .testimonial-avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 1px solid #eeeeee;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  }
+  .testimonial-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Quote Center */
+  .testimonial-content-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .testimonial-quote {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    line-height: 1.45;
+    color: #444444;
+    margin: 0 0 12px 0;
+    font-weight: 400;
+  }
+  .testimonial-author {
+    font-size: 12px;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.2;
+    margin-bottom: 2px;
+  }
+  .testimonial-role {
+    font-size: 10.5px;
+    font-weight: 500;
+    color: #888888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* Slider Controls: Absolute floating arrows overlapping the slider sides */
+  .slider-arrow-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 1px solid #eeeeee;
+    color: #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: all 0.2s ease;
+  }
+  .slider-arrow-btn:hover {
+    background: #C5A47E;
+    color: #ffffff;
+    border-color: #C5A47E;
+    transform: translateY(-50%) scale(1.05);
+  }
+  .slider-arrow-btn svg {
+    width: 14px;
+    height: 14px;
+    stroke-width: 2.5;
+  }
+  .slider-arrow-btn.prev-btn { left: -8px; }
+  .slider-arrow-btn.next-btn { right: -8px; }
+
+  /* Indicators Dots at the Bottom */
+  .slider-dots-container {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+    padding-top: 10px;
+  }
+  .slider-dot-item {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #e2e8f0;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  .slider-dot-item.active {
+    background: #1a1a1a;
+    transform: scale(1.2);
+  }
+
+  /* RESPONSIVE LAYOUTS */
+  @media (max-width: 991px) {
+    .saldos-features-grid {
+      grid-template-columns: 1fr; /* Stack vertically into 1 column on tablets and mobiles */
+      gap: 25px;
+    }
+    .features-panel-card {
+      padding: 26px 20px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .saldos-features-section {
+      padding: 40px 0;
+    }
+    .saldos-features-container {
+      padding: 0 15px;
+    }
+    .features-panel-card {
+      border-radius: 12px !important;
+    }
+    .calc-gain-value {
+      font-size: 24px;
+    }
+    .slider-arrow-btn.prev-btn { left: -5px; }
+    .slider-arrow-btn.next-btn { right: -5px; }
+  }
+</style>
+
+<div class="saldos-features-section" id="SaldosFeaturesSection-{{ section.id }}">
+  <div class="saldos-features-container">
+    
+    <div class="saldos-features-grid">
+      
+      <!-- ======================================= -->
+      <!-- PANEL 1: INTERACTIVE PROFIT CALCULATOR  -->
+      <!-- ======================================= -->
+      <div class="features-panel-card">
+        
+        <!-- Header -->
+        <div class="panel-header">
+          <div class="panel-header-icon">
+            <!-- Calculator outline SVG icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="4" y="2" width="16" height="20" rx="2" ry="2"/>
+              <line x1="12" y1="18" x2="12.01" y2="18"/>
+              <line x1="8" y1="14" x2="8.01" y2="14"/>
+              <line x1="12" y1="14" x2="12.01" y2="14"/>
+              <line x1="16" y1="14" x2="16.01" y2="14"/>
+              <line x1="8" y1="10" x2="8.01" y2="10"/>
+              <line x1="12" y1="10" x2="12.01" y2="10"/>
+              <line x1="16" y1="10" x2="16.01" y2="10"/>
+              <line x1="7" y1="6" x2="17" y2="6"/>
+            </svg>
+          </div>
+          <h3 class="panel-header-title">{{ section.settings.calc_title }}</h3>
+        </div>
+
+        <!-- Form Fields -->
+        <div class="calc-form">
+          
+          <!-- Investment Select -->
+          <div class="calc-row">
+            <span class="calc-label">Inversión inicial</span>
+            <div class="calc-select-wrapper">
+              <select class="calc-select" id="calc-investment-{{ section.id }}">
+                <option value="3000">$ 3,000</option>
+                <option value="5000" selected>$ 5,000</option>
+                <option value="10000">$ 10,000</option>
+                <option value="20000">$ 20,000</option>
+                <option value="30000">$ 30,000</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Average Margin Input -->
+          <div class="calc-row">
+            <span class="calc-label">Margen promedio</span>
+            <div class="calc-input-wrapper">
+              <input 
+                type="text" 
+                id="calc-margin-{{ section.id }}" 
+                value="{{ section.settings.calc_margin }}%" 
+                readonly 
+                aria-label="Margen de ganancia"
+              >
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Live Estimated Results displays at bottom -->
+        <div class="calc-results-wrap">
+          <div class="calc-gain-info">
+            <span class="calc-gain-label">Ganancia estimada</span>
+            <div class="calc-gain-value">
+              <span id="calc-gain-amount-{{ section.id }}">$ 8,250</span>
+              <span class="currency">MXN</span>
+            </div>
+            <span class="calc-gain-subtext">Por cada pack vendido</span>
+          </div>
+
+          <!-- Upward Graph gold trend SVG -->
+          <div class="calc-graphic-right">
+            <svg width="100%" height="100%" viewBox="0 0 100 50" fill="none">
+              <!-- Upward trend chart line vector path -->
+              <path d="M5 45 L25 35 L40 40 L55 25 L70 30 L90 5" stroke="#C5A47E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M82 5 L90 5 L90 13" stroke="#C5A47E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="90" cy="5" r="3" fill="#C5A47E"/>
+            </svg>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ======================================= -->
+      <!-- PANEL 2: BRANDING COMPETITIVE BENEFITS  -->
+      <!-- ======================================= -->
+      <div class="features-panel-card">
+        
+        <!-- Header -->
+        <div class="panel-header">
+          <div class="panel-header-icon">
+            <!-- Box with sparkles/award SVG icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="8" r="7"/>
+              <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
+            </svg>
+          </div>
+          <h3 class="panel-header-title">{{ section.settings.why_title }}</h3>
+        </div>
+
+        <!-- Benefits list items -->
+        <div class="benefits-items-wrap">
+          
+          <!-- Item 1 -->
+          <div class="benefit-panel-item">
+            <div class="benefit-panel-icon">
+              <!-- Hat outline SVG -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2 18h20v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-2z"/>
+                <path d="M12 2a4 4 0 0 0-4 4v2c0 2.5 1.5 4.5 4 4.5s4-2 4-4.5V6a4 4 0 0 0-4-4z"/>
+                <path d="M3 18c0-3.5 3-6.5 9-6.5s9 3 9 6.5"/>
+              </svg>
+            </div>
+            <div class="benefit-panel-content">
+              <h4 class="benefit-panel-title">{{ section.settings.benefit1_title }}</h4>
+              <p class="benefit-panel-subtitle">{{ section.settings.benefit1_text }}</p>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="benefit-panel-item">
+            <div class="benefit-panel-icon">
+              <!-- Tag outline SVG -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+                <line x1="7" y1="7" x2="7.01" y2="7"/>
+              </svg>
+            </div>
+            <div class="benefit-panel-content">
+              <h4 class="benefit-panel-title">{{ section.settings.benefit2_title }}</h4>
+              <p class="benefit-panel-subtitle">{{ section.settings.benefit2_text }}</p>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="benefit-panel-item">
+            <div class="benefit-panel-icon">
+              <!-- Package Box SVG -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="21 16 12 21 3 16 12 11 21 16"/>
+                <polyline points="3 11 12 16 21 11"/>
+                <polyline points="12 21 12 11"/>
+                <polyline points="12 11 12 3"/>
+                <polyline points="21 11 21 3 12 3 3 3 3 11"/>
+              </svg>
+            </div>
+            <div class="benefit-panel-content">
+              <h4 class="benefit-panel-title">{{ section.settings.benefit3_title }}</h4>
+              <p class="benefit-panel-subtitle">{{ section.settings.benefit3_text }}</p>
+            </div>
+          </div>
+
+          <!-- Item 4 -->
+          <div class="benefit-panel-item">
+            <div class="benefit-panel-icon">
+              <!-- Support Award SVG -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <path d="M12 8v4"/>
+                <path d="M12 16h.01"/>
+              </svg>
+            </div>
+            <div class="benefit-panel-content">
+              <h4 class="benefit-panel-title">{{ section.settings.benefit4_title }}</h4>
+              <p class="benefit-panel-subtitle">{{ section.settings.benefit4_text }}</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- ======================================= -->
+      <!-- PANEL 3: DYNAMIC TESTIMONIAL SLIDER     -->
+      <!-- ======================================= -->
+      <div class="features-panel-card" style="position: relative;">
+        
+        <!-- Header -->
+        <div class="testimonial-header-wrap">
+          <h3 class="testimonial-header-title">{{ section.settings.testimonials_title }}</h3>
+          {% if section.settings.link_text != blank %}
+            <a href="{{ section.settings.link_url | default: '#' }}" class="testimonial-link">
+              {{ section.settings.link_text }}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          {% endif %}
+        </div>
+
+        <!-- Slider Viewport containing blocks -->
+        <div class="testimonial-slider-viewport">
+          
+          <!-- Prev Button -->
+          <button class="slider-arrow-btn prev-btn" id="t-prev-{{ section.id }}" aria-label="Anterior testimonio">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
+
+          {% for block in section.blocks %}
+            {% if block.type == 'testimonial' %}
+              <div class="testimonial-slide {% if forloop.first %}active{% endif %}" data-t-index="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
+                
+                <!-- Avatar profile image -->
+                <div class="testimonial-avatar">
+                  {% if block.settings.avatar != blank %}
+                    <img loading="lazy" src="{{ block.settings.avatar | img_url: '150x150', crop: 'center' }}" alt="{{ block.settings.author | escape }}">
+                  {% else %}
+                    <!-- Elegant Default Profile placeholder Unsplash matching country style -->
+                    <img loading="lazy" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=150" alt="Emprendedora Valeria">
+                  {% endif %}
+                </div>
+
+                <!-- Quote text -->
+                <div class="testimonial-content-wrap">
+                  <p class="testimonial-quote">
+                    "{{ block.settings.quote }}"
+                  </p>
+                  <span class="testimonial-author">- {{ block.settings.author }}</span>
+                  <span class="testimonial-role">{{ block.settings.role }}</span>
+                </div>
+
+              </div>
+            {% endif %}
+          {% endfor %}
+
+          <!-- Next Button -->
+          <button class="slider-arrow-btn next-btn" id="t-next-{{ section.id }}" aria-label="Siguiente testimonio">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+
+        </div>
+
+        <!-- Indicators Dots -->
+        <div class="slider-dots-container" id="t-dots-{{ section.id }}">
+          {% for block in section.blocks %}
+            {% if block.type == 'testimonial' %}
+              <div class="slider-dot-item {% if forloop.first %}active{% endif %}" data-slide-dot="{{ forloop.index0 }}"></div>
+            {% endif %}
+          {% endfor %}
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<script>
+  (function() {
+    const sId = "{{ section.id }}";
+    
+    // =======================================
+    // 1. DYNAMIC CALCULATOR LIVE MATH SCRIPT
+    // =======================================
+    const selectEl = document.getElementById('calc-investment-' + sId);
+    const valueEl = document.getElementById('calc-gain-amount-' + sId);
+    const margin = parseInt("{{ section.settings.calc_margin }}") || 65;
+
+    function recalculateGain() {
+      if (!selectEl || !valueEl) return;
+      const investment = parseInt(selectEl.value) || 5000;
+      
+      // Target image exact formula: Return = Cost * (1 + Margin / 100)
+      // $5000 * 1.65 = $8250
+      const totalReturn = Math.round(investment * (1 + margin / 100));
+      
+      // Beautiful smooth format with space between pesos and thousands
+      const formatted = totalReturn.toLocaleString('es-MX', { minimumFractionDigits: 0 }).replace(',', ' ');
+      valueEl.innerText = '$ ' + formatted;
+    }
+
+    if (selectEl) {
+      selectEl.addEventListener('change', recalculateGain);
+      recalculateGain(); // Init on load
+    }
+
+    // =======================================
+    // 2. INTERACTIVE TESTIMONIAL SLIDER SCRIPT
+    // =======================================
+    const wrapper = document.getElementById('SaldosFeaturesSection-' + sId);
+    if (!wrapper) return;
+
+    const slides = Array.from(wrapper.querySelectorAll('.testimonial-slide'));
+    const dots = Array.from(wrapper.querySelectorAll('.slider-dot-item'));
+    const prevBtn = document.getElementById('t-prev-' + sId);
+    const nextBtn = document.getElementById('t-next-' + sId);
+    const total = slides.length;
+    let current = 0;
+
+    function goToTestimonial(idx) {
+      if (idx >= total) idx = 0;
+      if (idx < 0) idx = total - 1;
+      current = idx;
+
+      slides.forEach(s => s.classList.remove('active'));
+      dots.forEach(d => d.classList.remove('active'));
+
+      if (slides[idx]) slides[idx].classList.add('active');
+      if (dots[idx]) dots[idx].classList.add('active');
+    }
+
+    if (prevBtn && nextBtn && total > 1) {
+      prevBtn.addEventListener('click', () => goToTestimonial(current - 1));
+      nextBtn.addEventListener('click', () => goToTestimonial(current + 1));
+      
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => goToTestimonial(index));
+      });
+
+      // Optional Touch swipe support for mobiles
+      let touchStartX = 0;
+      let touchEndX = 0;
+      
+      const viewport = wrapper.querySelector('.testimonial-slider-viewport');
+      if (viewport) {
+        viewport.addEventListener('touchstart', e => {
+          touchStartX = e.changedTouches[0].screenX;
+        }, false);
+        
+        viewport.addEventListener('touchend', e => {
+          touchEndX = e.changedTouches[0].screenX;
+          if (touchStartX - touchEndX > 50) {
+            goToTestimonial(current + 1); // Swipe Left -> Next
+          }
+          if (touchEndX - touchStartX > 50) {
+            goToTestimonial(current - 1); // Swipe Right -> Prev
+          }
+        }, false);
+      }
+    } else {
+      if (prevBtn) prevBtn.style.display = 'none';
+      if (nextBtn) nextBtn.style.display = 'none';
+      const dotsCont = document.getElementById('t-dots-' + sId);
+      if (dotsCont) dotsCont.style.display = 'none';
+    }
+
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Saldos Triple Dashboard",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Panel 1: Calculadora de Ganancias"
+    },
+    {
+      "type": "text",
+      "id": "calc_title",
+      "label": "Título Calculadora",
+      "default": "CALCULA TUS GANANCIAS"
+    },
+    {
+      "type": "range",
+      "id": "calc_margin",
+      "label": "Margen Promedio (%)",
+      "min": 20,
+      "max": 150,
+      "step": 5,
+      "default": 65,
+      "unit": "%"
+    },
+    {
+      "type": "header",
+      "content": "Panel 2: Beneficios de la Marca"
+    },
+    {
+      "type": "text",
+      "id": "why_title",
+      "label": "Título de Beneficios",
+      "default": "¿POR QUÉ ELEGIR NUESTROS PACKS?"
+    },
+    {
+      "type": "text",
+      "id": "benefit1_title",
+      "label": "Título Beneficio 1",
+      "default": "Productos seleccionados"
+    },
+    {
+      "type": "text",
+      "id": "benefit1_text",
+      "label": "Texto Beneficio 1",
+      "default": "Solo artículos de alta demanda y calidad"
+    },
+    {
+      "type": "text",
+      "id": "benefit2_title",
+      "label": "Título Beneficio 2",
+      "default": "Listos para revender"
+    },
+    {
+      "type": "text",
+      "id": "benefit2_text",
+      "label": "Texto Beneficio 2",
+      "default": "Sin necesidad de inversión adicional"
+    },
+    {
+      "type": "text",
+      "id": "benefit3_title",
+      "label": "Título Beneficio 3",
+      "default": "Inventario renovado"
+    },
+    {
+      "type": "text",
+      "id": "benefit3_text",
+      "label": "Texto Beneficio 3",
+      "default": "Nuevos packs cada semana"
+    },
+    {
+      "type": "text",
+      "id": "benefit4_title",
+      "label": "Título Beneficio 4",
+      "default": "Soporte para emprendedores"
+    },
+    {
+      "type": "text",
+      "id": "benefit4_text",
+      "label": "Texto Beneficio 4",
+      "default": "Te acompañamos en tu crecimiento"
+    },
+    {
+      "type": "header",
+      "content": "Panel 3: Testimoniales de Clientes"
+    },
+    {
+      "type": "text",
+      "id": "testimonials_title",
+      "label": "Título de Testimoniales",
+      "default": "EMPRENDEDORES QUE YA FACTURAN"
+    },
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "Texto Enlace Ver Historias",
+      "default": "Ver historias"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Enlace Historias"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonio",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "avatar",
+          "label": "Foto de Perfil (Avatar)"
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Testimonio/Cita",
+          "default": "Empecé con un pack de botas y cinturones y hoy tengo mi propia marca de ropa country."
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Nombre del Autor",
+          "default": "Valeria R."
+        },
+        {
+          "type": "text",
+          "id": "role",
+          "label": "Rol/Puesto",
+          "default": "Emprendedora Aylesva"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Saldos Triple Dashboard",
+      "blocks": [
+        { "type": "testimonial" }
+      ]
+    }
+  ]
+}
+{% endschema %}

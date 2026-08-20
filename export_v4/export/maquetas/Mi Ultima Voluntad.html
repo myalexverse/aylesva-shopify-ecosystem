@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  body { margin: 0; background: #FAFAF8; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; text-decoration: none; }
+  a:hover { color: #C5A47E; }
+</style>
+</helmet>
+
+<div style="font-family: Manrope, system-ui, sans-serif; color: #0F172A; background: #FAFAF8;">
+
+  <!-- NAV -->
+  <div style="background: #020617; color: #fff;">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 9px 48px; display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.55);">
+      <span>Grupo Aylesva · Capital · Direct · Care · Global Estates · Commerce</span>
+      <div style="display: flex; gap: 22px;">
+        <a href="#">México</a>
+        <a href="#">USA</a>
+      </div>
+    </div>
+  </div>
+  <div style="background: #0F172A; color: #fff; border-bottom: 1px solid rgba(255,255,255,0.1); position: sticky; top: 0; z-index: 40;">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 20px 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px 40px; flex-wrap: wrap;">
+      <div style="display: flex; align-items: baseline; gap: 16px; flex: 0 0 auto; white-space: nowrap;">
+        <span style="font-family: Sora, sans-serif; font-weight: 600; letter-spacing: 0.24em; font-size: 15px; text-transform: uppercase;">Aylesva</span>
+        <span style="width: 1px; height: 13px; background: rgba(255,255,255,0.25);"></span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #E3CCAE;">MUV · Mi Última Voluntad</span>
+      </div>
+      <div style="display: flex; gap: 26px; font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.8); flex: 1 1 auto; justify-content: center; flex-wrap: wrap;">
+        <a href="#membresias" style="white-space: nowrap;">Membresías</a>
+        <a href="#cbx" style="white-space: nowrap;">Beneficio CBX</a>
+        <a href="#pasos" style="white-space: nowrap;">Cómo funciona</a>
+        <a href="#faq" style="white-space: nowrap;">Preguntas</a>
+        <a href="#consulta" style="white-space: nowrap;">Consulta</a>
+      </div>
+      <a href="#consulta" style="background: #C5A47E; color: #0F172A; padding: 13px 26px; font-size: 13px; font-weight: 700; letter-spacing: 0.04em; border-radius: 2px; white-space: nowrap; flex: 0 0 auto; transition: all .25s ease;" style-hover="background: #E3CCAE;">Consulta gratis</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div style="position: relative; background: #020617; overflow: hidden;">
+    <div style="position: absolute; inset: 0; background-image: url('https://images.unsplash.com/photo-1659523144224-bdf04a78d999?fm=jpg&q=80&w=2200&auto=format&fit=crop'); background-size: cover; background-position: center;"></div>
+    <div style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(2,6,23,0.95) 0%, rgba(2,6,23,0.8) 48%, rgba(2,6,23,0.4) 100%);"></div>
+    <div style="position: relative; max-width: 1440px; margin: 0 auto; padding: 128px 48px 104px;">
+      <div style="max-width: 780px;">
+        <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 30px;">
+          <span style="width: 26px; height: 1px; background: #C5A47E;"></span>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: #E3CCAE;">Protección para tu familia</span>
+        </div>
+        <h1 style="font-family: Sora, sans-serif; font-weight: 300; font-size: 58px; line-height: 1.08; letter-spacing: -0.03em; color: #fff; margin: 0 0 26px; text-wrap: balance;">Protege a tu familia incluso cuando ya no puedas estar allí.</h1>
+        <p style="font-size: 18px; line-height: 1.68; color: rgba(255,255,255,0.74); max-width: 54ch; margin: 0 0 38px; text-wrap: pretty;">MUV te ayuda a dejar todo en orden, para que las personas que más amas tengan tranquilidad, guía y apoyo cuando más lo necesitan.</p>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 44px;">
+          <a href="#consulta" style="background: #C5A47E; color: #0F172A; padding: 18px 36px; font-size: 14px; font-weight: 700; letter-spacing: 0.04em; border-radius: 2px; transition: all .25s ease;" style-hover="background: #E3CCAE; transform: translateY(-2px); box-shadow: 0 16px 34px -16px rgba(197,164,126,0.55);">Programar Consulta Gratis</a>
+          <a href="#consulta" style="border: 1px solid rgba(255,255,255,0.42); color: #fff; padding: 17px 35px; font-size: 14px; font-weight: 600; letter-spacing: 0.04em; border-radius: 2px; transition: all .25s ease;" style-hover="border-color: #fff; background: rgba(255,255,255,0.08);">Hablar con un Asesor</a>
+        </div>
+        <div style="display: flex; gap: 32px; flex-wrap: wrap; padding-top: 26px; border-top: 1px solid rgba(255,255,255,0.14);">
+          <sc-for list="{{ chips }}" as="c" hint-placeholder-count="3">
+            <span style="display: flex; gap: 10px; align-items: center; font-size: 14px; color: rgba(255,255,255,0.7);"><span style="color: #C5A47E;">✓</span>{{ c }}</span>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROBLEMA -->
+  <div style="background: #FAFAF8; border-bottom: 1px solid rgba(15,23,42,0.08);">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 100px 48px;">
+      <h2 style="font-family: Sora, sans-serif; font-weight: 300; font-size: 42px; line-height: 1.16; letter-spacing: -0.028em; margin: 0 0 56px; max-width: 40ch; text-wrap: balance;">Nadie quiere pensar en este momento… pero todos queremos proteger a quienes amamos.</h2>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(15,23,42,0.12); border: 1px solid rgba(15,23,42,0.12);">
+        <sc-for list="{{ problems }}" as="p" hint-placeholder-count="3">
+          <div style="background: #fff; padding: 48px 40px 52px; transition: all .3s ease;" style-hover="box-shadow: 0 26px 52px -30px rgba(2,6,23,0.28); transform: translateY(-3px); z-index: 2;">
+            <div style="height: 32px;">{{ p.el }}</div>
+            <div style="font-family: Sora, sans-serif; font-size: 22px; font-weight: 500; letter-spacing: -0.015em; margin: 28px 0 14px;">{{ p.t }}</div>
+            <div style="font-size: 15px; line-height: 1.7; color: rgba(15,23,42,0.64);">{{ p.d }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <!-- MEMBRESÍAS -->
+  <div id="membresias" style="background: #0F172A;">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 104px 48px;">
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 22px;">
+        <span style="width: 24px; height: 1px; background: #C5A47E;"></span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #E3CCAE;">Membresías</span>
+      </div>
+      <h2 style="font-family: Sora, sans-serif; font-weight: 300; font-size: 46px; line-height: 1.1; letter-spacing: -0.03em; color: #fff; margin: 0 0 60px;">Soporte completo, sin fronteras.</h2>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px;">
+        <sc-for list="{{ plans }}" as="p" hint-placeholder-count="2">
+          <div style="border: 1px solid rgba(255,255,255,0.18); background: rgba(255,255,255,0.03); padding: 48px 44px 52px; display: flex; flex-direction: column; gap: 30px; transition: all .3s ease;" style-hover="border-color: #C5A47E; transform: translateY(-3px);">
+            <div>
+              <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: #E3CCAE; margin-bottom: 18px;">Membresía anual</div>
+              <div style="font-family: Sora, sans-serif; font-size: 32px; font-weight: 400; letter-spacing: -0.022em; color: #fff; text-wrap: balance;">{{ p.route }}</div>
+            </div>
+            <div style="display: grid; gap: 14px; padding-top: 26px; border-top: 1px solid rgba(197,164,126,0.4);">
+              <sc-for list="{{ p.bullets }}" as="b" hint-placeholder-count="4">
+                <div style="display: flex; gap: 14px; align-items: flex-start; font-size: 15px; line-height: 1.55; color: rgba(255,255,255,0.78);"><span style="color: #C5A47E;">✓</span><span>{{ b }}</span></div>
+              </sc-for>
+            </div>
+            <a href="#consulta" style="background: #C5A47E; color: #0F172A; padding: 17px 32px; font-size: 14px; font-weight: 700; letter-spacing: 0.04em; text-align: center; border-radius: 2px; margin-top: auto; transition: all .25s ease;" style-hover="background: #E3CCAE;">Obtener Membresía</a>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <!-- CBX -->
+  <div id="cbx" style="background: #fff; border-bottom: 1px solid rgba(15,23,42,0.08);">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 100px 48px; display: grid; grid-template-columns: 1fr 1.05fr; gap: 80px; align-items: center;">
+      <div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #9A7B52; margin-bottom: 20px;">Beneficios exclusivos para miembros MUV</div>
+        <h2 style="font-family: Sora, sans-serif; font-weight: 400; font-size: 42px; line-height: 1.12; letter-spacing: -0.028em; margin: 0 0 22px; text-wrap: balance;">Tu viaje comienza antes del vuelo.</h2>
+        <p style="font-size: 17px; line-height: 1.7; color: rgba(15,23,42,0.66); margin: 0 0 32px; max-width: 50ch; text-wrap: pretty;">Al adquirir tu membresía MUV, recibes un pase de ida y vuelta GRATIS para cruzar a través del CBX.</p>
+        <div style="display: inline-flex; align-items: center; gap: 20px; border: 1px solid rgba(197,164,126,0.7); background: #FAFAF8; padding: 20px 26px; margin-bottom: 32px;">
+          <div>
+            <div style="font-family: Sora, sans-serif; font-size: 22px; font-weight: 600; letter-spacing: 0.06em;">CBX</div>
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(15,23,42,0.5); margin-top: 4px;">Cross Border Xpress</div>
+          </div>
+          <span style="width: 1px; height: 40px; background: rgba(15,23,42,0.15);"></span>
+          <div>
+            <div style="font-family: Sora, sans-serif; font-size: 18px; font-weight: 500; color: #9A7B52;">Viaje redondo gratis</div>
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(15,23,42,0.5); margin-top: 4px;">Vía CBX</div>
+          </div>
+        </div>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+          <a href="#consulta" style="background: #0F172A; color: #fff; padding: 17px 32px; font-size: 14px; font-weight: 600; letter-spacing: 0.04em; border-radius: 2px; transition: all .25s ease;" style-hover="background: #020617; box-shadow: 0 14px 30px -14px rgba(2,6,23,0.5);">Solicitar Información</a>
+        </div>
+        <div style="font-size: 12px; line-height: 1.65; color: rgba(15,23,42,0.5); margin-top: 22px;">*Viaje redondo = un Boleto de Cruce en ambos sentidos del Puente de Cross Border Xpress</div>
+      </div>
+      <div style="position: relative; border: 1px solid rgba(15,23,42,0.12);">
+        <div style="height: 440px; background-image: url('https://www.aylesva.com/cdn/shop/files/pasted-1783109167178-0.png?v=1783110870'); background-size: cover; background-position: center;"></div>
+        <div style="position: absolute; inset: 12px; border: 1px solid rgba(197,164,126,0.85); pointer-events: none;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PASOS -->
+  <div id="pasos" style="background: #FAFAF8; border-bottom: 1px solid rgba(15,23,42,0.08);">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 100px 48px;">
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 22px;">
+        <span style="width: 24px; height: 1px; background: #C5A47E;"></span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #9A7B52;">Cómo funciona</span>
+      </div>
+      <h2 style="font-family: Sora, sans-serif; font-weight: 400; font-size: 42px; line-height: 1.12; letter-spacing: -0.028em; margin: 0 0 60px;">Cuatro pasos sencillos.</h2>
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px;">
+        <sc-for list="{{ steps }}" as="p" hint-placeholder-count="4">
+          <div style="border-top: 1px solid rgba(197,164,126,0.7); padding-top: 28px;">
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.2em; color: #9A7B52; margin-bottom: 24px;">{{ p.n }}</div>
+            <div style="font-family: Sora, sans-serif; font-size: 20px; font-weight: 500; letter-spacing: -0.015em; line-height: 1.35; text-wrap: pretty;">{{ p.t }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <!-- TARJETA MUV -->
+  <div style="background: #fff;">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 100px 48px; display: grid; grid-template-columns: 1.05fr 1fr; gap: 80px; align-items: center;">
+      <div style="position: relative; border: 1px solid rgba(15,23,42,0.12); background: #FAFAF8;">
+        <div style="height: 420px; background-image: url('https://www.aylesva.com/cdn/shop/files/nuvcard.png?v=1783110936'); background-size: contain; background-repeat: no-repeat; background-position: center;"></div>
+      </div>
+      <div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #9A7B52; margin-bottom: 20px;">Tarjeta de miembro</div>
+        <h2 style="font-family: Sora, sans-serif; font-weight: 400; font-size: 40px; line-height: 1.14; letter-spacing: -0.028em; margin: 0 0 22px; text-wrap: balance;">Hoy, puedes dejarles tranquilidad para toda la vida.</h2>
+        <p style="font-size: 17px; line-height: 1.72; color: rgba(15,23,42,0.66); margin: 0 0 34px; max-width: 50ch; text-wrap: pretty;">El mejor regalo que puedes dejarle a tu familia no es algo material. Es la certeza de que todo estará claro y de que no estarán solos en el camino.</p>
+        <a href="#consulta" style="border: 1px solid #C5A47E; color: #9A7B52; padding: 16px 32px; font-size: 14px; font-weight: 600; letter-spacing: 0.04em; border-radius: 2px; transition: all .25s ease; display: inline-block;" style-hover="background: #C5A47E; color: #fff;">Solicitar Información</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div id="faq" style="background: #FAFAF8; border-top: 1px solid rgba(15,23,42,0.08);">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 100px 48px; display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 80px; align-items: start;">
+      <div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #9A7B52; margin-bottom: 20px;">Preguntas frecuentes</div>
+        <h2 style="font-family: Sora, sans-serif; font-weight: 400; font-size: 38px; line-height: 1.14; letter-spacing: -0.026em; margin: 0;">Preguntas Frecuentes</h2>
+      </div>
+      <div style="border-top: 1px solid rgba(15,23,42,0.14);">
+        <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="4">
+          <div style="border-bottom: 1px solid rgba(15,23,42,0.14);">
+            <div onClick="{{ f.toggle }}" style="display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 26px 0; cursor: pointer; transition: color .2s ease;" style-hover="color: #9A7B52;">
+              <span style="font-family: Sora, sans-serif; font-size: 20px; font-weight: 500; letter-spacing: -0.012em;">{{ f.q }}</span>
+              <span style="color: #C5A47E; font-size: 20px; flex: 0 0 auto;">{{ f.sign }}</span>
+            </div>
+            <div style="{{ f.bodyStyle }}">
+              <p style="font-size: 16px; line-height: 1.75; color: rgba(15,23,42,0.66); margin: 0; max-width: 68ch;">{{ f.a }}</p>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA FINAL -->
+  <div style="position: relative; background: #020617; overflow: hidden;">
+    <div style="position: absolute; inset: 0; background-image: url('https://images.unsplash.com/photo-1659523144224-bdf04a78d999?fm=jpg&q=80&w=2200&auto=format&fit=crop'); background-size: cover; background-position: center;"></div>
+    <div style="position: absolute; inset: 0; background: rgba(2,6,23,0.85);"></div>
+    <div style="position: relative; max-width: 1440px; margin: 0 auto; padding: 96px 48px; display: flex; justify-content: space-between; align-items: center; gap: 64px; flex-wrap: wrap;">
+      <div style="max-width: 58ch;">
+        <h2 style="font-family: Sora, sans-serif; font-weight: 300; font-size: 42px; line-height: 1.14; letter-spacing: -0.028em; color: #fff; margin: 0 0 18px; text-wrap: balance;">Hazlo por quienes más amas.</h2>
+        <p style="font-size: 17px; line-height: 1.7; color: rgba(255,255,255,0.68); margin: 0;">Programa una consulta gratuita y conoce cómo MUV puede ayudarte a proteger el futuro de tu familia.</p>
+      </div>
+      <a href="#consulta" style="background: #C5A47E; color: #0F172A; padding: 20px 40px; font-size: 14px; font-weight: 700; letter-spacing: 0.04em; border-radius: 2px; white-space: nowrap; transition: all .25s ease;" style-hover="background: #E3CCAE; transform: translateY(-2px); box-shadow: 0 16px 34px -16px rgba(197,164,126,0.55);">Programar Consulta Gratis</a>
+    </div>
+  </div>
+
+  <!-- FORMULARIO -->
+  <div id="consulta" style="background: #fff;">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 100px 48px;">
+      <div style="display: grid; grid-template-columns: 1fr 1.05fr; border: 1px solid rgba(15,23,42,0.12);">
+        <div style="padding: 72px 60px; background: #FAFAF8; display: flex; flex-direction: column; justify-content: space-between; gap: 44px;">
+          <div>
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #9A7B52; margin-bottom: 22px;">Consulta gratuita</div>
+            <h2 style="font-family: Sora, sans-serif; font-weight: 400; font-size: 38px; line-height: 1.14; letter-spacing: -0.026em; margin: 0 0 20px; text-wrap: balance;">Solicita Tu Consulta Gratuita</h2>
+            <p style="font-size: 16px; line-height: 1.7; color: rgba(15,23,42,0.64); margin: 0; max-width: 44ch;">Completa el formulario y un asesor se comunicará contigo.</p>
+          </div>
+          <div style="display: grid; gap: 16px;">
+            <div style="display: flex; gap: 14px; align-items: flex-start; font-size: 14px; line-height: 1.5; color: rgba(15,23,42,0.72);"><span style="width: 6px; height: 6px; flex: 0 0 6px; margin-top: 7px; background: #C5A47E; border-radius: 50%;"></span>Consulta inicial gratuita, en inglés y español</div>
+            <div style="display: flex; gap: 14px; align-items: flex-start; font-size: 14px; line-height: 1.5; color: rgba(15,23,42,0.72);"><span style="width: 6px; height: 6px; flex: 0 0 6px; margin-top: 7px; background: #C5A47E; border-radius: 50%;"></span>Coordinación entre Estados Unidos, México y Sudamérica</div>
+            <div style="display: flex; gap: 14px; align-items: flex-start; font-size: 14px; line-height: 1.5; color: rgba(15,23,42,0.72);"><span style="width: 6px; height: 6px; flex: 0 0 6px; margin-top: 7px; background: #C5A47E; border-radius: 50%;"></span>Pase CBX incluido al activar tu membresía</div>
+          </div>
+        </div>
+        <div style="padding: 60px; border-left: 1px solid rgba(15,23,42,0.12);">
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(15,23,42,0.4); margin-bottom: 32px;">Embed GoHighLevel · form DPfokHX747mbGaU8Fobk</div>
+          <div style="display: grid; gap: 24px;">
+            <div>
+              <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(15,23,42,0.55); margin-bottom: 9px;">Nombre completo</div>
+              <div style="border: 1px solid rgba(15,23,42,0.18); padding: 15px 16px; font-size: 15px; color: rgba(15,23,42,0.35); transition: border-color .2s ease;" style-hover="border-color: #C5A47E;">Nombre y apellido</div>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+              <div>
+                <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(15,23,42,0.55); margin-bottom: 9px;">Correo</div>
+                <div style="border: 1px solid rgba(15,23,42,0.18); padding: 15px 16px; font-size: 15px; color: rgba(15,23,42,0.35); transition: border-color .2s ease;" style-hover="border-color: #C5A47E;">nombre@correo.com</div>
+              </div>
+              <div>
+                <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(15,23,42,0.55); margin-bottom: 9px;">Teléfono</div>
+                <div style="border: 1px solid rgba(15,23,42,0.18); padding: 15px 16px; font-size: 15px; color: rgba(15,23,42,0.35); transition: border-color .2s ease;" style-hover="border-color: #C5A47E;">+1 (000) 000 0000</div>
+              </div>
+            </div>
+            <div>
+              <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(15,23,42,0.55); margin-bottom: 9px;">Membresía de interés</div>
+              <div style="border: 1px solid rgba(15,23,42,0.18); padding: 15px 16px; font-size: 15px; color: rgba(15,23,42,0.5); display: flex; justify-content: space-between; align-items: center; transition: border-color .2s ease;" style-hover="border-color: #C5A47E;"><span>Estados Unidos → México</span><span style="color: #C5A47E;">▾</span></div>
+            </div>
+            <div>
+              <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(15,23,42,0.55); margin-bottom: 9px;">Idioma de contacto</div>
+              <div style="display: flex; gap: 12px;">
+                <div style="flex: 1; border: 1px solid #C5A47E; background: rgba(197,164,126,0.12); padding: 14px; text-align: center; font-size: 14px; font-weight: 600; cursor: pointer;">Español</div>
+                <div style="flex: 1; border: 1px solid rgba(15,23,42,0.18); padding: 14px; text-align: center; font-size: 14px; color: rgba(15,23,42,0.55); cursor: pointer; transition: border-color .2s ease;" style-hover="border-color: #C5A47E;">English</div>
+              </div>
+            </div>
+            <div>
+              <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(15,23,42,0.55); margin-bottom: 9px;">Mensaje</div>
+              <div style="border: 1px solid rgba(15,23,42,0.18); padding: 15px 16px; font-size: 15px; color: rgba(15,23,42,0.35); min-height: 84px; transition: border-color .2s ease;" style-hover="border-color: #C5A47E;">Cuéntanos cómo podemos ayudarte</div>
+            </div>
+            <div style="background: #0F172A; color: #fff; padding: 18px; text-align: center; font-size: 14px; font-weight: 600; letter-spacing: 0.04em; cursor: pointer; border-radius: 2px; transition: all .25s ease;" style-hover="background: #020617; box-shadow: 0 14px 30px -14px rgba(2,6,23,0.6);">Solicitar consulta</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BANDA DE OTRAS RAMAS -->
+  <div style="background: #FAFAF8; border-top: 1px solid rgba(15,23,42,0.08);">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 96px 48px;">
+      <div style="margin-bottom: 44px;">
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #9A7B52; margin-bottom: 20px;">Ecosistema Aylesva</div>
+        <h2 style="font-family: Sora, sans-serif; font-weight: 400; font-size: 34px; line-height: 1.15; letter-spacing: -0.025em; margin: 0; max-width: 30ch;">El mismo respaldo, en cada una de nuestras ramas</h2>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(15,23,42,0.12); border: 1px solid rgba(15,23,42,0.12);">
+        <sc-for list="{{ branches }}" as="b" hint-placeholder-count="4">
+          <a href="#" style="background: #fff; padding: 40px 32px 44px; display: block; transition: all .3s ease;" style-hover="background: #FAFAF8;">
+            <div style="height: 30px;">{{ b.el }}</div>
+            <div style="font-family: Sora, sans-serif; font-size: 18px; font-weight: 500; letter-spacing: -0.01em; margin: 26px 0 10px;">{{ b.name }}</div>
+            <div style="font-size: 14px; line-height: 1.6; color: rgba(15,23,42,0.6);">{{ b.d }}</div>
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: #9A7B52; margin-top: 26px;">Conocer →</div>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="background: #020617; color: #fff;">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 80px 48px 40px; display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 64px;">
+      <div>
+        <div style="font-family: Sora, sans-serif; font-weight: 600; letter-spacing: 0.24em; font-size: 15px; text-transform: uppercase; margin-bottom: 22px;">Aylesva</div>
+        <p style="font-size: 14px; line-height: 1.75; color: rgba(255,255,255,0.6); margin: 0 0 26px; max-width: 40ch;">Una plataforma dedicada a la curaduría editorial de productos premium, conectando artesanos y marcas de lujo con el estilo de vida contemporáneo.</p>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; line-height: 2; color: rgba(255,255,255,0.5);">Calle Benito Juarez 116<br />sales@aylesva.com</div>
+      </div>
+      <div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: #C5A47E; margin-bottom: 20px;">Servicios</div>
+        <div style="display: grid; gap: 12px; font-size: 14px; color: rgba(255,255,255,0.7);">
+          <a href="#">Mi Última Voluntad</a>
+          <a href="#">Aylesva Care</a>
+          <a href="#">Aylesva Recursos</a>
+          <a href="#">Aylesva Direct</a>
+          <a href="#">Global Estates</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: #C5A47E; margin-bottom: 20px;">Nuestra Empresa</div>
+        <div style="display: grid; gap: 12px; font-size: 14px; color: rgba(255,255,255,0.7);">
+          <a href="#">Ayuda / Contacto</a>
+          <a href="#">Nuestra Historia</a>
+          <a href="#">Términos de Servicio</a>
+          <a href="#">Aviso de Privacidad</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: #C5A47E; margin-bottom: 20px;">Recibe Nuestras Ofertas</div>
+        <p style="font-size: 14px; line-height: 1.65; color: rgba(255,255,255,0.6); margin: 0 0 18px;">Únete a nuestra colección curada y sé el primero en conocer lanzamientos exclusivos.</p>
+        <div style="display: flex; border: 1px solid rgba(255,255,255,0.25);">
+          <div style="flex: 1; padding: 13px 14px; font-size: 13px; color: rgba(255,255,255,0.4);">tu@correo.com</div>
+          <div style="background: #C5A47E; color: #0F172A; padding: 13px 18px; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; cursor: pointer; transition: background .25s ease;" style-hover="background: #E3CCAE;">SUSCRIBIR</div>
+        </div>
+      </div>
+    </div>
+    <div style="max-width: 1440px; margin: 0 auto; padding: 28px 48px 44px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.08em; color: rgba(255,255,255,0.42);">
+      <span>© 2026 MUV · Protección familiar sin fronteras</span>
+      <span>Capital · Direct · Care · Global Estates · Commerce</span>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;gold&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#C5A47E&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#C5A47E&quot;,&quot;#E3CCAE&quot;,&quot;#B08D5B&quot;],&quot;section&quot;:&quot;Marca&quot;}}">
+const I = {
+  decisions: '<path d="M12 3v6"/><path d="M6 21V13"/><path d="M18 21v-8"/><path d="M4 13h16"/><path d="M9 6h6"/>',
+  money: '<circle cx="12" cy="12" r="9"/><path d="M12 7v10"/><path d="M15 10c0-1.4-1.3-2-3-2s-3 .6-3 2 1.3 2 3 2 3 .6 3 2-1.3 2-3 2-3-.6-3-2"/>',
+  calm: '<path d="M12 20 4 12.5A4.6 4.6 0 0 1 12 7a4.6 4.6 0 0 1 8 5.5z"/>',
+  capital: '<rect x="3" y="10" width="18" height="11"/><path d="M3 10 12 4l9 6"/><path d="M9 21v-6h6v6"/>',
+  direct: '<rect x="2" y="8" width="13" height="9"/><path d="M15 11h4l3 3v3h-7z"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="19" r="2"/>',
+  care: '<path d="M12 20 4 12.5A4.6 4.6 0 0 1 12 7a4.6 4.6 0 0 1 8 5.5z"/><path d="M8 13h2l1.5-3 2 5 1.5-2h2"/>',
+  estates: '<path d="M3 21V9l6-4 6 4v12"/><path d="M15 21V13h6v8"/><path d="M7 13h2M7 17h2"/>'
+};
+
+function icon(svg, size, color) {
+  return React.createElement('svg', {
+    width: size, height: size, viewBox: '0 0 24 24', fill: 'none',
+    stroke: color || '#C5A47E', strokeWidth: 1.25, strokeLinecap: 'square',
+    style: { display: 'block' },
+    dangerouslySetInnerHTML: { __html: svg }
+  });
+}
+
+const FAQ = [
+  { q: '¿Qué incluye la membresía?', a: 'Tu membresía anual incluye asistencia de repatriación, guía paso a paso para tu familia, soporte internacional coordinado entre Estados Unidos y tu país de origen, y acceso a beneficios exclusivos como el pase CBX.' },
+  { q: '¿Cómo funciona el beneficio de CBX?', a: 'Al activar tu membresía, recibes un pase redondo gratis para cruzar el puente de CBX entre San Diego y el Aeropuerto de Tijuana, con menos tiempo de espera y mayor comodidad.' },
+  { q: '¿La cobertura aplica fuera de Estados Unidos?', a: 'Sí. MUV está diseñado para familias migrantes: la cobertura conecta a Estados Unidos con México y Sudamérica, con coordinación internacional incluida.' },
+  { q: '¿Cómo puedo obtener más información?', a: 'Puedes hablar con un asesor o solicitar información usando el botón al final de la página. La consulta inicial es gratuita y está disponible en inglés y español.' }
+];
+
+class Component extends DCLogic {
+  state = { open: 0 };
+
+  renderVals() {
+    const gold = this.props.gold ?? '#C5A47E';
+    const open = this.state.open;
+    return {
+      chips: ['Protección familiar', 'Soporte en español', 'Cobertura internacional'],
+      problems: [
+        { t: 'Decisiones difíciles', d: 'Evita que tu familia tenga que adivinar qué hacer en los momentos más difíciles.', el: icon(I.decisions, 32, gold) },
+        { t: 'Gastos inesperados', d: 'Reduce drásticamente la carga emocional y financiera de tu hogar.', el: icon(I.money, 32, gold) },
+        { t: 'Tranquilidad', d: 'Deja instrucciones sumamente claras y todo el soporte para tu familia.', el: icon(I.calm, 32, gold) }
+      ],
+      plans: [
+        { route: 'Estados Unidos → México', bullets: ['Asistencia de repatriación', 'Guía para tu familia', 'Soporte internacional', 'Membresía anual'] },
+        { route: 'Estados Unidos → Sudamérica', bullets: ['Asistencia de repatriación', 'Guía para tu familia', 'Soporte internacional', 'Membresía anual'] }
+      ],
+      steps: [
+        { n: '01', t: 'Elige tu membresía' },
+        { n: '02', t: 'Recibe tu código y tu información' },
+        { n: '03', t: 'Obtén acceso a tus beneficios y asistencia' },
+        { n: '04', t: 'Tu familia tiene respaldo y guía cuando más lo necesite' }
+      ],
+      faqs: FAQ.map((f, i) => ({
+        q: f.q,
+        a: f.a,
+        sign: open === i ? '−' : '+',
+        toggle: () => this.setState({ open: open === i ? -1 : i }),
+        bodyStyle: open === i ? 'padding: 0 0 30px;' : 'display: none;'
+      })),
+      branches: [
+        { name: 'Aylesva Care', d: 'Beneficios de salud, seguros y telemedicina.', el: icon(I.care, 30, gold) },
+        { name: 'Aylesva Recursos', d: 'Intermediación financiera para tu negocio.', el: icon(I.capital, 30, gold) },
+        { name: 'Aylesva Direct', d: 'Importación y logística desde China.', el: icon(I.direct, 30, gold) },
+        { name: 'Global Estates', d: 'Bienes raíces y desarrollos de lujo.', el: icon(I.estates, 30, gold) }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

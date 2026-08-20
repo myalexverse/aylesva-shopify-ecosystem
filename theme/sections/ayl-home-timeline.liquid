@@ -1,0 +1,385 @@
+<div id="{{ section.id }}" class="ayl-timeline">
+  <div class="ayl-timeline__container">
+    <div class="ayl-timeline__header">
+      {% if section.settings.eyebrow != blank %}
+        <div class="ayl-timeline__eyebrow">{{ section.settings.eyebrow }}</div>
+      {% endif %}
+      {% if section.settings.headline != blank %}
+        <h2 class="ayl-timeline__headline">{{ section.settings.headline }}</h2>
+      {% endif %}
+      {% if section.settings.subtitle != blank %}
+        <p class="ayl-timeline__subtitle">{{ section.settings.subtitle }}</p>
+      {% endif %}
+    </div>
+
+    <div class="ayl-timeline__track-wrapper">
+      <div class="ayl-timeline__track">
+        <div class="ayl-timeline__line"></div>
+        <div class="ayl-timeline__steps">
+          {% for block in section.blocks %}
+            <div class="ayl-timeline__step" {{ block.shopify_attributes }}>
+              <div class="ayl-timeline__step-circle {% if forloop.first %}ayl-timeline__step-circle--active{% endif %}">
+                {{ block.settings.icon_svg }}
+              </div>
+              <div class="ayl-timeline__step-title">{{ block.settings.title }}</div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  #{{ section.id }} {
+    --ayl-bg: #FAFAF8;
+    --ayl-ink: #1A1A1A;
+    --ayl-stone: #6B6B6B;
+    --ayl-gold: #C5A47E;
+    --ayl-border: rgba(0,0,0,0.06);
+    --ayl-circle-inactive: #E8E8E8;
+    
+    background-color: var(--ayl-bg);
+    padding: 80px 0;
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+  }
+
+  #{{ section.id }} .ayl-timeline__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  #{{ section.id }} .ayl-timeline__header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  #{{ section.id }} .ayl-timeline__eyebrow {
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: var(--ayl-gold);
+    letter-spacing: 0.12em;
+    margin-bottom: 16px;
+  }
+
+  #{{ section.id }} .ayl-timeline__headline {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    line-height: 1.2;
+    color: var(--ayl-ink);
+    margin: 0 0 16px 0;
+  }
+
+  @media (min-width: 768px) {
+    #{{ section.id }} .ayl-timeline__headline {
+      font-size: 42px;
+    }
+  }
+
+  #{{ section.id }} .ayl-timeline__subtitle {
+    font-size: 16px;
+    color: var(--ayl-stone);
+    margin: 0;
+  }
+
+  @media (min-width: 768px) {
+    #{{ section.id }} .ayl-timeline__subtitle {
+      font-size: 18px;
+    }
+  }
+
+  /* Desktop layout (horizontal) */
+  @media (min-width: 768px) {
+    #{{ section.id }} .ayl-timeline__track-wrapper {
+      overflow-x: auto;
+      padding-bottom: 24px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--ayl-gold) transparent;
+    }
+
+    #{{ section.id }} .ayl-timeline__track-wrapper::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    #{{ section.id }} .ayl-timeline__track-wrapper::-webkit-scrollbar-thumb {
+      background-color: var(--ayl-gold);
+      border-radius: 4px;
+    }
+
+    #{{ section.id }} .ayl-timeline__track {
+      position: relative;
+      min-width: max-content;
+      padding: 0 24px;
+    }
+
+    #{{ section.id }} .ayl-timeline__line {
+      position: absolute;
+      top: 28px;
+      left: 60px;
+      right: 60px;
+      height: 2px;
+      background-color: var(--ayl-border);
+      z-index: 1;
+    }
+
+    #{{ section.id }} .ayl-timeline__steps {
+      display: flex;
+      justify-content: space-between;
+      gap: 64px;
+      position: relative;
+      z-index: 2;
+    }
+
+    #{{ section.id }} .ayl-timeline__step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 120px;
+      text-align: center;
+    }
+
+    #{{ section.id }} .ayl-timeline__step-circle {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background-color: var(--ayl-circle-inactive);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      transition: background-color 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
+      color: var(--ayl-stone);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    #{{ section.id }} .ayl-timeline__step-circle--active,
+    #{{ section.id }} .ayl-timeline__step-circle.is-visible {
+      background-color: var(--ayl-gold);
+      color: #FFF;
+      transform: scale(1.05);
+      box-shadow: 0 8px 24px rgba(197, 164, 126, 0.4);
+    }
+    
+    #{{ section.id }} .ayl-timeline__step-circle svg {
+      width: 24px;
+      height: 24px;
+      fill: currentColor;
+    }
+
+    #{{ section.id }} .ayl-timeline__step-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--ayl-ink);
+      line-height: 1.4;
+    }
+  }
+
+  /* Mobile layout (vertical) */
+  @media (max-width: 767px) {
+    #{{ section.id }} .ayl-timeline__track {
+      position: relative;
+      padding-left: 28px;
+    }
+
+    #{{ section.id }} .ayl-timeline__line {
+      position: absolute;
+      top: 24px;
+      bottom: 24px;
+      left: 28px;
+      width: 2px;
+      background-color: var(--ayl-border);
+      z-index: 1;
+      transform: translateX(-50%);
+    }
+
+    #{{ section.id }} .ayl-timeline__steps {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      position: relative;
+      z-index: 2;
+    }
+
+    #{{ section.id }} .ayl-timeline__step {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    #{{ section.id }} .ayl-timeline__step-circle {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background-color: var(--ayl-circle-inactive);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
+      color: var(--ayl-stone);
+      flex-shrink: 0;
+      margin-left: -28px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    #{{ section.id }} .ayl-timeline__step-circle--active,
+    #{{ section.id }} .ayl-timeline__step-circle.is-visible {
+      background-color: var(--ayl-gold);
+      color: #FFF;
+      transform: scale(1.05);
+      box-shadow: 0 8px 24px rgba(197, 164, 126, 0.4);
+    }
+
+    #{{ section.id }} .ayl-timeline__step-circle svg {
+      width: 24px;
+      height: 24px;
+      fill: currentColor;
+    }
+
+    #{{ section.id }} .ayl-timeline__step-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--ayl-ink);
+      line-height: 1.4;
+    }
+  }
+</style>
+
+<script>
+  (function() {
+    document.addEventListener("DOMContentLoaded", function() {
+      const circles = document.querySelectorAll('#{{ section.id }} .ayl-timeline__step-circle');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            // We can optionally unobserve after highlighting
+            // observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.5,
+        rootMargin: "0px 0px -100px 0px"
+      });
+
+      circles.forEach(circle => {
+        // Remove active class from first item if we want it animated with observer
+        // circle.classList.remove('ayl-timeline__step-circle--active');
+        observer.observe(circle);
+      });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "AYL - Timeline",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Text",
+      "default": "TU CAMINO CON AYLESVA"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "De la idea al patrimonio."
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Te acompañamos en cada paso del camino."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Timeline Step",
+      "limit": 8,
+      "settings": [
+        {
+          "type": "html",
+          "id": "icon_svg",
+          "label": "Icon SVG",
+          "info": "Paste SVG code here"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Step Title",
+          "default": "Step Title"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "AYL - Timeline",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "title": "Empieza aquí",
+            "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1zm3-19C8.14 2 5 5.14 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.86-3.14-7-7-7z\"/></svg>"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Creamos tu negocio",
+            "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M20 18c1.1 0 1.99-.9 1.99-2L22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z\"/></svg>"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Obtienes proveedores",
+            "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z\"/></svg>"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Consigues financiamiento",
+            "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z\"/></svg>"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Vendes",
+            "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M18 6h-2c0-2.21-1.79-4-4-4S8 3.79 8 6H6c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6-2c1.1 0 2 .9 2 2h-4c0-1.1.9-2 2-2z\"/></svg>"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Escalas",
+            "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z\"/></svg>"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Inviertes",
+            "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M12 2L2 22h20L12 2zm0 3.5l6.5 13H5.5L12 5.5z\"/></svg>"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Proteges tu patrimonio",
+            "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z\"/></svg>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

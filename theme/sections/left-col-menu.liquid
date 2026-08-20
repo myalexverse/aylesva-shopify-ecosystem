@@ -1,0 +1,129 @@
+{% assign navMenu = linklists[section.settings.left_nav_menu] %}
+<div class="left-sidebar-menu">
+  <div class="left-toggle">
+    {% if section.settings.title != blank %}
+    <h4 class="widget-title" style="color:{{section.settings.title_color }}"><i class="mdi mdi-menu"></i><span class="title">{{ section.settings.title }}</span></h4>  
+    {% endif %}
+
+<ul id="left_accessibleNav" class="left-site-nav">
+  {% comment %}
+    Read the links from the menu passed in from {% include 'site-nav' ... %}
+  {% endcomment %}
+  {% for link in navMenu.links %}
+    {% comment %}
+      Create a dropdown menu by naming a linklist the same as a link in the parent nav
+
+      More info on dropdowns:
+        - http://docs.shopify.com/manual/your-website/navigation/create-drop-down-menu
+    {% endcomment %}
+
+    {% assign child_list_handle = link.title | handleize %}
+    {% if link.links != blank %}
+    {% assign has_dropdown = true %}
+      <li class="menu-item-depth-0 site-nav--has-dropdown{% unless template.name == 'index' %}{% if link.active %} site-nav--open-dropdown{% endif %}{% endunless %}" aria-haspopup="true">
+        
+            <a href="{{ link.url }}" class="site-nav__linkdrop site-nav__label icon-fallback-text {% if link.active %} site-nav--active{% endif %}">
+              {{ link.title }}
+              <span class="mobile-nav__sublist-trigger">
+                <span class="mobile-nav__sublist-expand">
+                  <i class="mdi mdi-chevron-down" aria-hidden="true"></i>
+                </span>
+                <span class="mobile-nav__sublist-contract">
+                 <i class="mdi mdi-chevron-up" aria-hidden="true"></i>
+                </span>
+              </span>
+            </a>     
+          {% assign flg = 0 %}  
+        {% for sub_link in link.links %}
+        {% if sub_link.links != blank and link.links.size > 1 %}
+        {% assign flg = 1 %}  
+        {% endif %}
+        {% endfor %}
+            <ul class="sub-nav__dropdown {% if flg == 1 %} mega-menu {% endif %} sub-menu mobile-nav__sublist items_{{ link.links.size }}">
+              {% if link.links.size > 0 %}
+              {% for sub_link in link.links %}
+                <li class="menu-item-depth-1 {% if sub_link.links != blank %} site-nav--has-dropdown {% endif %}{% if sub_link.child_active %}site-nav--active site-nav__child-link--active{% endif %}">
+                  <a href="{{ sub_link.url }}" class="site-nav__link">{{ sub_link.title | escape }}
+                 {% if sub_link.links != blank %}
+                    <span class="mobile-nav__sublist-trigger">
+                    <span class="mobile-nav__sublist-expand">
+                      <i class="mdi mdi-chevron-down" aria-hidden="true"></i>
+                    </span>
+                    <span class="mobile-nav__sublist-contract">
+                     <i class="mdi mdi-chevron-up" aria-hidden="true"></i>
+                    </span>
+                  </span>
+                    {% endif %}
+                    </a>
+                  {% if sub_link.links != blank %}
+                  <ul class="sub-sub-nav__dropdown sub-menu mobile-nav__sublist">
+                    {% for sub_sub_link in sub_link.links %}
+                      <li {% unless template.name == 'index' %}{% if sub_sub_link.child_active %}class="site-nav--active site-nav__child-link--active"{% endif %}{% endunless %}>
+                        <a href="{{ sub_sub_link.url }}" class="site-nav__link">{{ sub_sub_link.title | escape }}</a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                  {% endif %}
+                </li>
+              {% endfor %}
+              {% endif %}
+            </ul>
+      </li>
+    {% else %}
+      {% if link.title == "-" %}
+        <hr class="hr--small medium-down--hide">
+      {% else %}
+        <li class="menu-item-depth-0 {% if link.active %}site-nav--active{% endif %}">
+          <a href="{{ link.url }}" class="site-nav__link{% if has_dropdown == false %} site-nav__linknodrop{% endif %}">{{ link.title }}</a>
+        </li>
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+</ul>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Left Sidebar Menu",
+    "settings": [
+
+          {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+		  "default":"Testimonials"
+          },
+          {
+          "type": "color",
+          "id": "title_color",
+          "label": "Title Color",
+          "default":"#000"
+          },
+		{
+          "type": "color",
+          "id": "menu_color",
+          "label": "Menu Text Color",
+          "default":"#888"
+          },
+		{
+          "type": "color",
+          "id": "menu_hover_color",
+          "label": "Menu Text Hover Color",
+          "default":"#000"
+          },
+    	{	
+        "type": "link_list",
+        "id": "left_nav_menu",
+        "label": "Menu",
+        "default": "main-menu"
+      }	
+	],
+    "presets": [
+      {
+        "name": "Left Sidebar Menu",
+        "category": "Left Sidebar"
+      }
+    ]
+  }
+{% endschema %}
+<style>@media (min-width: 992px){.left-site-nav > li a{color: {{ section.settings.menu_color }};font-size: 14px;}.left-site-nav > li > ul.mega-menu > li > a, .left-sidebar-menu .left-site-nav > li > span.categories{color: {{section.settings.menu_color }};}.left-site-nav > li:hover > a, .left-sidebar-menu .left-site-nav > li:hover > span.categories{color: {{ section.settings.menu_hover_color }};}#left_accessibleNav > li.site-nav--has-dropdown:hover > a::after { color: {{ section.settings.menu_hover_color }};}}</style>

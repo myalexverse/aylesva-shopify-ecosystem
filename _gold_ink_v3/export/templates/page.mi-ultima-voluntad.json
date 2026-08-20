@@ -1,0 +1,357 @@
+{
+  "sections": {
+    "hero": {
+      "type": "aylesva-corp-hero",
+      "settings": {
+        "eyebrow": "Protección para tu familia",
+        "overlay": 94,
+        "focal": "center",
+        "title": "Protege a tu familia incluso cuando ya no puedas estar allí.",
+        "subtitle": "MUV te ayuda a dejar todo en orden, para que las personas que más amas tengan tranquilidad, guía y apoyo cuando más lo necesitan.",
+        "cta1_label": "Programar Consulta Gratis",
+        "cta1_link": "#contacto",
+        "cta2_label": "Hablar con un Asesor",
+        "cta2_link": "#contacto"
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ],
+      "blocks": {
+        "s1": {
+          "type": "stat",
+          "settings": {
+            "value": "2",
+            "label": "Rutas de membresía"
+          }
+        },
+        "s2": {
+          "type": "stat",
+          "settings": {
+            "value": "CBX",
+            "label": "Pase redondo incluido"
+          }
+        },
+        "s3": {
+          "type": "stat",
+          "settings": {
+            "value": "ES / EN",
+            "label": "Atención bilingüe"
+          }
+        },
+        "s4": {
+          "type": "stat",
+          "settings": {
+            "value": "Anual",
+            "label": "Vigencia de membresía"
+          }
+        }
+      }
+    },
+    "razones": {
+      "type": "aylesva-corp-features",
+      "settings": {
+        "bg": "#FAFAF8",
+        "eyebrow": "Por qué importa",
+        "title": "Nadie quiere pensar en este momento… pero todos queremos proteger a quienes amamos."
+      },
+      "block_order": [
+        "f1",
+        "f2",
+        "f3"
+      ],
+      "blocks": {
+        "f1": {
+          "type": "feature",
+          "settings": {
+            "icon": "<path d=\"M12 3v6\"/><path d=\"M6 21V13\"/><path d=\"M18 21v-8\"/><path d=\"M4 13h16\"/><path d=\"M9 6h6\"/>",
+            "title": "Decisiones difíciles",
+            "text": "Evita que tu familia tenga que adivinar qué hacer en los momentos más difíciles."
+          }
+        },
+        "f2": {
+          "type": "feature",
+          "settings": {
+            "icon": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M12 7v10\"/><path d=\"M15 10c0-1.4-1.3-2-3-2s-3 .6-3 2 1.3 2 3 2 3 .6 3 2-1.3 2-3 2-3-.6-3-2\"/>",
+            "title": "Gastos inesperados",
+            "text": "Reduce drásticamente la carga emocional y financiera de tu hogar."
+          }
+        },
+        "f3": {
+          "type": "feature",
+          "settings": {
+            "icon": "<path d=\"M12 20 4 12.5A4.6 4.6 0 0 1 12 7a4.6 4.6 0 0 1 8 5.5z\"/>",
+            "title": "Tranquilidad",
+            "text": "Deja instrucciones sumamente claras y todo el soporte para tu familia."
+          }
+        }
+      }
+    },
+    "membresias": {
+      "type": "aylesva-corp-cards",
+      "settings": {
+        "bg": "#FFFFFF",
+        "columns": 2,
+        "eyebrow": "Membresías",
+        "title": "Soporte completo, sin fronteras."
+      },
+      "block_order": [
+        "c1",
+        "c2"
+      ],
+      "blocks": {
+        "c1": {
+          "type": "card",
+          "settings": {
+            "eyebrow": "Membresía anual",
+            "title": "Estados Unidos → México",
+            "text": "Asistencia coordinada entre ambos países, con guía para tu familia en todo el proceso.",
+            "bullets": "Asistencia de repatriación\nGuía para tu familia\nSoporte internacional\nMembresía anual",
+            "cta_label": "Obtener Membresía",
+            "cta_link": "#contacto",
+            "price": ""
+          }
+        },
+        "c2": {
+          "type": "card",
+          "settings": {
+            "eyebrow": "Membresía anual",
+            "title": "Estados Unidos → Sudamérica",
+            "text": "Cobertura para familias con origen en Sudamérica, con la misma coordinación internacional.",
+            "bullets": "Asistencia de repatriación\nGuía para tu familia\nSoporte internacional\nMembresía anual",
+            "cta_label": "Obtener Membresía",
+            "cta_link": "#contacto",
+            "price": ""
+          }
+        }
+      }
+    },
+    "cbx": {
+      "type": "aylesva-corp-cards",
+      "settings": {
+        "bg": "#FAFAF8",
+        "columns": 2,
+        "eyebrow": "Beneficios exclusivos para miembros MUV",
+        "title": "Tu viaje comienza antes del vuelo.",
+        "intro": "Al adquirir tu membresía MUV, recibes un pase de ida y vuelta GRATIS para cruzar a través del CBX."
+      },
+      "block_order": [
+        "c1",
+        "c2"
+      ],
+      "blocks": {
+        "c1": {
+          "type": "card",
+          "settings": {
+            "eyebrow": "Cross Border Xpress",
+            "title": "Viaje redondo gratis vía CBX",
+            "text": "Cruza el puente entre San Diego y el Aeropuerto de Tijuana con menos tiempo de espera. *Viaje redondo = un Boleto de Cruce en ambos sentidos del Puente de Cross Border Xpress.",
+            "cta_label": "Solicitar Información",
+            "cta_link": "#contacto",
+            "price": ""
+          }
+        },
+        "c2": {
+          "type": "card",
+          "settings": {
+            "eyebrow": "Tarjeta de miembro",
+            "title": "Hoy, puedes dejarles tranquilidad para toda la vida.",
+            "text": "El mejor regalo que puedes dejarle a tu familia no es algo material. Es la certeza de que todo estará claro y de que no estarán solos en el camino.",
+            "cta_label": "Solicitar Información",
+            "cta_link": "#contacto",
+            "price": ""
+          }
+        }
+      }
+    },
+    "proceso": {
+      "type": "aylesva-corp-process",
+      "settings": {
+        "dark": true,
+        "eyebrow": "Cómo funciona",
+        "title": "Cuatro pasos sencillos."
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ],
+      "blocks": {
+        "s1": {
+          "type": "step",
+          "settings": {
+            "title": "Elige tu membresía",
+            "text": "Selecciona la ruta que corresponde al país de origen de tu familia."
+          }
+        },
+        "s2": {
+          "type": "step",
+          "settings": {
+            "title": "Recibe tu código y tu información",
+            "text": "Te enviamos tus datos de miembro y las instrucciones de uso."
+          }
+        },
+        "s3": {
+          "type": "step",
+          "settings": {
+            "title": "Obtén acceso a tus beneficios y asistencia",
+            "text": "Quedas activo, incluyendo el pase CBX."
+          }
+        },
+        "s4": {
+          "type": "step",
+          "settings": {
+            "title": "Tu familia tiene respaldo y guía cuando más lo necesite",
+            "text": "Coordinación internacional y acompañamiento en el momento difícil."
+          }
+        }
+      }
+    },
+    "faq": {
+      "type": "aylesva-corp-faq",
+      "settings": {
+        "bg": "#FAFAF8",
+        "eyebrow": "Preguntas frecuentes",
+        "title": "Preguntas Frecuentes"
+      },
+      "block_order": [
+        "f1",
+        "f2",
+        "f3",
+        "f4"
+      ],
+      "blocks": {
+        "f1": {
+          "type": "faq",
+          "settings": {
+            "q": "¿Qué incluye la membresía?",
+            "a": "Tu membresía anual incluye asistencia de repatriación, guía paso a paso para tu familia, soporte internacional coordinado entre Estados Unidos y tu país de origen, y acceso a beneficios exclusivos como el pase CBX."
+          }
+        },
+        "f2": {
+          "type": "faq",
+          "settings": {
+            "q": "¿Cómo funciona el beneficio de CBX?",
+            "a": "Al activar tu membresía, recibes un pase redondo gratis para cruzar el puente de CBX entre San Diego y el Aeropuerto de Tijuana, con menos tiempo de espera y mayor comodidad."
+          }
+        },
+        "f3": {
+          "type": "faq",
+          "settings": {
+            "q": "¿La cobertura aplica fuera de Estados Unidos?",
+            "a": "Sí. MUV está diseñado para familias migrantes: la cobertura conecta a Estados Unidos con México y Sudamérica, con coordinación internacional incluida."
+          }
+        },
+        "f4": {
+          "type": "faq",
+          "settings": {
+            "q": "¿Cómo puedo obtener más información?",
+            "a": "Puedes hablar con un asesor o solicitar información usando el formulario de esta página. La consulta inicial es gratuita y está disponible en inglés y español."
+          }
+        }
+      }
+    },
+    "contacto": {
+      "type": "aylesva-corp-form",
+      "settings": {
+        "anchor": "contacto",
+        "bg": "#FFFFFF",
+        "eyebrow": "Consulta gratuita",
+        "title": "Solicita Tu Consulta Gratuita",
+        "text": "Completa el formulario y un asesor se comunicará contigo.",
+        "form_id": "DPfokHX747mbGaU8Fobk",
+        "form_height": 700
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3"
+      ],
+      "blocks": {
+        "p1": {
+          "type": "point",
+          "settings": {
+            "text": "Consulta inicial gratuita, en inglés y español"
+          }
+        },
+        "p2": {
+          "type": "point",
+          "settings": {
+            "text": "Coordinación entre Estados Unidos, México y Sudamérica"
+          }
+        },
+        "p3": {
+          "type": "point",
+          "settings": {
+            "text": "Pase CBX incluido al activar tu membresía"
+          }
+        }
+      }
+    },
+    "ramas": {
+      "type": "aylesva-corp-branches",
+      "settings": {
+        "bg": "#FFFFFF",
+        "eyebrow": "Ecosistema Aylesva",
+        "title": "El mismo respaldo, en cada una de nuestras ramas"
+      },
+      "block_order": [
+        "br1",
+        "br2",
+        "br3",
+        "br4"
+      ],
+      "blocks": {
+        "br1": {
+          "type": "branch",
+          "settings": {
+            "title": "Aylesva Care",
+            "text": "Beneficios de salud, seguros y telemedicina.",
+            "icon": "<path d=\"M12 20 4 12.5A4.6 4.6 0 0 1 12 7a4.6 4.6 0 0 1 8 5.5z\"/><path d=\"M8 13h2l1.5-3 2 5 1.5-2h2\"/>",
+            "link": "/pages/aylesva-care"
+          }
+        },
+        "br2": {
+          "type": "branch",
+          "settings": {
+            "title": "Aylesva Recursos",
+            "text": "Intermediación financiera para tu negocio.",
+            "icon": "<rect x=\"3\" y=\"10\" width=\"18\" height=\"11\"/><path d=\"M3 10 12 4l9 6\"/><path d=\"M9 21v-6h6v6\"/>",
+            "link": "/pages/aylesva-recursos"
+          }
+        },
+        "br3": {
+          "type": "branch",
+          "settings": {
+            "title": "Aylesva Direct",
+            "text": "Importación y logística desde China.",
+            "icon": "<rect x=\"2\" y=\"8\" width=\"13\" height=\"9\"/><path d=\"M15 11h4l3 3v3h-7z\"/><circle cx=\"6\" cy=\"19\" r=\"2\"/><circle cx=\"18\" cy=\"19\" r=\"2\"/>",
+            "link": "/pages/aylesva-direct"
+          }
+        },
+        "br4": {
+          "type": "branch",
+          "settings": {
+            "title": "Global Estates",
+            "text": "Bienes raíces y desarrollos de lujo.",
+            "icon": "<path d=\"M3 21V9l6-4 6 4v12\"/><path d=\"M15 21V13h6v8\"/><path d=\"M7 13h2M7 17h2\"/>",
+            "link": "/pages/globalestates"
+          }
+        }
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "razones",
+    "membresias",
+    "cbx",
+    "proceso",
+    "faq",
+    "contacto",
+    "ramas"
+  ]
+}

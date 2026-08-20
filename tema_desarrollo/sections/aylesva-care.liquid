@@ -1,0 +1,479 @@
+{% comment %}
+  ============================================================
+  Aylesva Care — Premium Health & Benefits Landing Section
+  Fully custom, responsive, beautiful CSS & hover animations.
+  Translate & Adapt compatible, editable via Shopify Customizer.
+  Repeatable content uses blocks (trust badge, package, process step).
+  ============================================================
+{% endcomment %}
+
+{%- liquid
+  assign brand_red = section.settings.color_red
+  assign brand_blue = section.settings.color_blue
+  assign light_bg = section.settings.color_light
+  assign white_bg = section.settings.color_white
+  assign accent_green = section.settings.color_accent
+  assign contact_anchor = '#care-contact-' | append: section.id
+-%}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  #care-{{ section.id }} {
+    --ac-red: {{ brand_red }};
+    --ac-blue: {{ brand_blue }};
+    --ac-light: {{ light_bg }};
+    --ac-white: {{ white_bg }};
+    --ac-green: {{ accent_green }};
+    --ac-ink: #1E293B;
+    --ac-muted: #64748B;
+    --ac-line: rgba(124,25,34,.08);
+    --ac-radius: 24px;
+    --ac-radius-sm: 16px;
+    --ac-shadow: 0 4px 20px rgba(124,25,34,.04), 0 10px 30px rgba(124,25,34,.05);
+    --ac-shadow-hover: 0 24px 50px -12px rgba(124,25,34,.16);
+    --ac-maxw: 1240px;
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: var(--ac-ink);
+    background: var(--ac-white);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  #care-{{ section.id }} * { box-sizing: border-box; }
+  #care-{{ section.id }} .ac-wrap { max-width: var(--ac-maxw); margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- TYPOGRAPHY & BUTTONS ---------- */
+  #care-{{ section.id }} h1, 
+  #care-{{ section.id }} h2, 
+  #care-{{ section.id }} h3, 
+  #care-{{ section.id }} h4 { margin: 0; line-height: 1.25; font-weight: 800; color: var(--ac-blue); letter-spacing: -0.5px; }
+  #care-{{ section.id }} p { margin: 0; line-height: 1.65; }
+  #care-{{ section.id }} .ac-eyebrow { display: inline-block; font-size: 13px; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase; color: var(--ac-red); margin-bottom: 12px; }
+  
+  #care-{{ section.id }} .ac-btn { display: inline-flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; padding: 14px 30px; border-radius: 30px; text-decoration: none; transition: all .3s cubic-bezier(0.16, 1, 0.3, 1); cursor: pointer; border: none; font-family: inherit; }
+  #care-{{ section.id }} .ac-btn--primary { background: var(--ac-red); color: #fff; box-shadow: 0 4px 14px rgba(124,25,34,.25); }
+  #care-{{ section.id }} .ac-btn--primary:hover { background: var(--ac-blue); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(28,65,112,.35); }
+  #care-{{ section.id }} .ac-btn--outline { background: transparent; color: var(--ac-blue); border: 2px solid var(--ac-blue); }
+  #care-{{ section.id }} .ac-btn--outline:hover { background: var(--ac-blue); color: #fff; transform: translateY(-2px); }
+
+  /* ---------- LAYOUT BANDS ---------- */
+  #care-{{ section.id }} .ac-band { padding: clamp(60px,8vw,100px) 0; }
+  #care-{{ section.id }} .ac-band--gray { background: var(--ac-light); }
+  #care-{{ section.id }} .ac-section-head { text-align: center; max-width: 720px; margin: 0 auto clamp(40px,6vw,68px); }
+  #care-{{ section.id }} .ac-section-head h2 { font-size: clamp(28px,3.5vw,40px); }
+  #care-{{ section.id }} .ac-section-head p { font-size: 16px; color: var(--ac-muted); margin-top: 14px; }
+
+  /* ---------- REVEAL ANIMATIONS ---------- */
+  #care-{{ section.id }} .ac-reveal { opacity: 0; transform: translateY(28px); transition: opacity .75s cubic-bezier(0.16, 1, 0.3, 1), transform .75s cubic-bezier(0.16, 1, 0.3, 1); }
+  #care-{{ section.id }} .ac-reveal.ac-in { opacity: 1; transform: translateY(0); }
+
+  /* ---------- HERO SECTION ---------- */
+  #care-{{ section.id }} .ac-hero { position: relative; padding: clamp(70px,10vw,140px) 0; overflow: hidden; background-size: cover; background-position: center; display: flex; align-items: center; min-height: clamp(500px, 75vh, 780px); }
+  #care-{{ section.id }} .ac-hero::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(28,65,112,0.85) 0%, rgba(28,65,112,0.55) 50%, rgba(28,65,112,0.9) 100%); z-index: 1; }
+  #care-{{ section.id }} .ac-hero-content { position: relative; z-index: 2; max-width: 760px; color: #fff; }
+  #care-{{ section.id }} .ac-hero-content h1 { font-size: clamp(36px,5vw,60px); color: #fff; font-weight: 800; letter-spacing: -1.5px; }
+  #care-{{ section.id }} .ac-hero-content p { font-size: clamp(16px,2.2vw,20px); line-height: 1.6; color: rgba(255,255,255,0.9); margin: 24px 0 36px; font-weight: 400; }
+  #care-{{ section.id }} .ac-hero-cta { display: flex; flex-wrap: wrap; gap: 16px; }
+  #care-{{ section.id }} .ac-hero-cta .ac-btn--outline { border-color: #fff; color: #fff; }
+  #care-{{ section.id }} .ac-hero-cta .ac-btn--outline:hover { background: #fff; color: var(--ac-blue); }
+
+  /* ---------- BENEFITS / PACKAGES GRID ---------- */
+  #care-{{ section.id }} .ac-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  #care-{{ section.id }} .ac-card { background: var(--ac-white); border-radius: var(--ac-radius); overflow: hidden; box-shadow: var(--ac-shadow); border: 1px solid var(--ac-line); display: flex; flex-direction: column; height: 100%; transition: all .4s cubic-bezier(0.16, 1, 0.3, 1); position: relative; }
+  
+  /* HOVER ANIMATION FOR CARDS */
+  #care-{{ section.id }} .ac-card:hover { transform: translateY(-10px); box-shadow: var(--ac-shadow-hover); border-color: var(--ac-red); }
+  
+  #care-{{ section.id }} .ac-card-media { height: clamp(200px, 15vw, 240px); overflow: hidden; position: relative; background: var(--ac-light); }
+  #care-{{ section.id }} .ac-card-media img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(0.16, 1, 0.3, 1); }
+  
+  /* Zoom image on hover */
+  #care-{{ section.id }} .ac-card:hover .ac-card-media img { transform: scale(1.08); }
+  
+  #care-{{ section.id }} .ac-badge { position: absolute; top: 16px; left: 16px; padding: 6px 12px; border-radius: 30px; font-size: 11px; font-weight: 800; text-transform: uppercase; background: var(--ac-green); color: #fff; z-index: 2; box-shadow: 0 4px 8px rgba(0,0,0,0.1); letter-spacing: 0.5px; }
+  #care-{{ section.id }} .ac-card-body { padding: 28px; display: flex; flex-direction: column; flex-grow: 1; }
+  #care-{{ section.id }} .ac-card-body h3 { font-size: 22px; margin-bottom: 12px; font-weight: 700; transition: color .3s; }
+  
+  #care-{{ section.id }} .ac-card:hover .ac-card-body h3 { color: var(--ac-red); }
+  #care-{{ section.id }} .ac-card-body p { font-size: 15px; color: var(--ac-muted); line-height: 1.6; flex-grow: 1; }
+  
+  #care-{{ section.id }} .ac-card-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--ac-line); }
+  #care-{{ section.id }} .ac-price-label { font-size: 11px; text-transform: uppercase; color: var(--ac-muted); font-weight: 700; letter-spacing: 0.5px; }
+  #care-{{ section.id }} .ac-price { font-size: 22px; font-weight: 800; color: var(--ac-blue); margin-top: 2px; }
+  #care-{{ section.id }} .ac-price span { font-size: 13px; font-weight: 600; color: var(--ac-muted); }
+  
+  #care-{{ section.id }} .ac-card-link { font-size: 14.5px; font-weight: 800; color: var(--ac-blue); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: color .2s; }
+  #care-{{ section.id }} .ac-card-link svg { width: 16px; height: 16px; transition: transform .3s cubic-bezier(0.16, 1, 0.3, 1); }
+  
+  #care-{{ section.id }} .ac-card:hover .ac-card-link { color: var(--ac-red); }
+  #care-{{ section.id }} .ac-card:hover .ac-card-link svg { transform: translateX(5px); color: var(--ac-red); }
+
+  /* ---------- COMPLIANCE DISCLOSURE SECTION ---------- */
+  #care-{{ section.id }} .ac-disclosure-band { background: #F1F5F9; border-top: 1px solid #E2E8F0; border-bottom: 1px solid #E2E8F0; padding: 24px 0; }
+  #care-{{ section.id }} .ac-disclosure-box { display: flex; gap: 20px; align-items: flex-start; max-width: 960px; margin: 0 auto; }
+  #care-{{ section.id }} .ac-disc-icon { width: 44px; height: 44px; border-radius: 50%; background: #E2E8F0; color: var(--ac-red); display: grid; place-items: center; flex-shrink: 0; }
+  #care-{{ section.id }} .ac-disc-icon svg { width: 22px; height: 22px; }
+  #care-{{ section.id }} .ac-disclosure-box p { font-size: 12.5px; line-height: 1.6; color: #475569; }
+  #care-{{ section.id }} .ac-disclosure-box p strong { color: var(--ac-blue); font-weight: 700; }
+  #care-{{ section.id }} .ac-disclosure-box p a { color: var(--ac-red); font-weight: 700; text-decoration: underline; }
+
+  /* ---------- INFO / BENEFITS OVERVIEW ---------- */
+  #care-{{ section.id }} .ac-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px,6vw,80px); align-items: center; }
+  #care-{{ section.id }} .ac-info-media { position: relative; border-radius: var(--ac-radius); overflow: hidden; box-shadow: var(--ac-shadow-hover); aspect-ratio: 4/3; }
+  #care-{{ section.id }} .ac-info-media img { width: 100%; height: 100%; object-fit: cover; }
+  #care-{{ section.id }} .ac-info-body h2 { font-size: clamp(26px,3vw,38px); margin-bottom: 24px; }
+  #care-{{ section.id }} .ac-info-body p { color: var(--ac-muted); margin-bottom: 20px; }
+  
+  #care-{{ section.id }} .ac-features { display: flex; flex-direction: column; gap: 16px; margin-top: 28px; }
+  #care-{{ section.id }} .ac-feature { display: flex; gap: 14px; }
+  #care-{{ section.id }} .ac-feat-icon { width: 38px; height: 38px; border-radius: 10px; background: rgba(124,25,34,0.06); color: var(--ac-red); display: grid; place-items: center; flex-shrink: 0; }
+  #care-{{ section.id }} .ac-feat-icon svg { width: 20px; height: 20px; }
+  #care-{{ section.id }} .ac-feat-text h4 { font-size: 16px; font-weight: 700; margin-bottom: 4px; color: var(--ac-blue); }
+  #care-{{ section.id }} .ac-feat-text p { font-size: 14px; color: var(--ac-muted); margin: 0; }
+
+  /* ---------- TIMELINE PROCESS ---------- */
+  #care-{{ section.id }} .ac-process { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; position: relative; }
+  #care-{{ section.id }} .ac-process-card { background: var(--ac-white); padding: 32px; border-radius: var(--ac-radius); border: 1px solid var(--ac-line); box-shadow: var(--ac-shadow); transition: all .3s; }
+  #care-{{ section.id }} .ac-process-card:hover { transform: translateY(-4px); border-color: var(--ac-red); }
+  #care-{{ section.id }} .ac-proc-num { font-size: 38px; font-weight: 800; color: rgba(124,25,34,0.15); margin-bottom: 16px; line-height: 1; }
+  #care-{{ section.id }} .ac-process-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+  #care-{{ section.id }} .ac-process-card p { font-size: 14px; color: var(--ac-muted); }
+
+  /* ---------- REGISTRATION FORM ---------- */
+  #care-{{ section.id }} .ac-form-box { max-width: 820px; margin: 0 auto; background: var(--ac-white); border: 1px solid var(--ac-line); border-radius: 26px; box-shadow: var(--ac-shadow-hover); padding: clamp(28px,4vw,56px); }
+  #care-{{ section.id }} .ac-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  #care-{{ section.id }} .ac-field { display: flex; flex-direction: column; gap: 6px; }
+  #care-{{ section.id }} .ac-field.ac-span2 { grid-column: 1 / -1; }
+  #care-{{ section.id }} .ac-field label { font-size: 13.5px; font-weight: 700; color: var(--ac-blue); }
+  #care-{{ section.id }} .ac-field input, 
+  #care-{{ section.id }} .ac-field select, 
+  #care-{{ section.id }} .ac-field textarea { font-family: inherit; font-size: 15px; color: var(--ac-ink); background: var(--ac-light); border: 1px solid var(--ac-line); border-radius: 12px; padding: 13px 15px; transition: all .25s ease; width: 100%; }
+  #care-{{ section.id }} .ac-field input:focus, 
+  #care-{{ section.id }} .ac-field select:focus, 
+  #care-{{ section.id }} .ac-field textarea:focus { outline: none; border-color: var(--ac-red); background: #fff; box-shadow: 0 0 0 4px rgba(124,25,34,.15); }
+  #care-{{ section.id }} .ac-field textarea { resize: vertical; min-height: 120px; }
+  #care-{{ section.id }} .ac-form-actions { margin-top: 32px; text-align: center; }
+  #care-{{ section.id }} .ac-form-success { background: rgba(16,185,129,.10); border: 1px solid rgba(16,185,129,.2); color: #059669; border-radius: 12px; padding: 16px 18px; font-weight: 600; margin-bottom: 24px; text-align: center; }
+
+  /* ---------- RESPONSIVE DESIGN ---------- */
+  @media (max-width: 990px) {
+    #care-{{ section.id }} .ac-grid { grid-template-columns: 1fr; gap: 24px; max-width: 420px; margin: 0 auto; }
+    #care-{{ section.id }} .ac-info-grid { grid-template-columns: 1fr; }
+    #care-{{ section.id }} .ac-process { grid-template-columns: 1fr; gap: 20px; }
+  }
+  @media (max-width: 580px) {
+    #care-{{ section.id }} .ac-form-grid { grid-template-columns: 1fr; }
+    #care-{{ section.id }} .ac-form-grid .ac-field { grid-column: auto !important; }
+    #care-{{ section.id }} .ac-hero-cta { flex-direction: column; }
+    #care-{{ section.id }} .ac-hero-cta .ac-btn { width: 100%; }
+  }
+</style>
+
+<div id="care-{{ section.id }}">
+
+  {%- comment -%}============ HERO SECTION ============{%- endcomment -%}
+  {%- liquid
+    assign hero_bg = ''
+    if section.settings.hero_image != blank
+      assign hero_bg = section.settings.hero_image | image_url: width: 1800
+    else
+      assign hero_bg = section.settings.hero_image_url
+    endif
+  -%}
+  <section class="ac-hero" style="background-image: url('{{ hero_bg }}');">
+    <div class="ac-wrap">
+      <div class="ac-hero-content ac-reveal">
+        {%- if section.settings.hero_eyebrow != blank -%}<span class="ac-eyebrow">{{ section.settings.hero_eyebrow }}</span>{%- endif -%}
+        <h1>{{ section.settings.hero_title }}</h1>
+        <p>{{ section.settings.hero_subtitle }}</p>
+        <div class="ac-hero-cta">
+          {%- if section.settings.hero_btn1_text != blank -%}
+            <a href="{{ section.settings.hero_btn1_link | default: contact_anchor }}" class="ac-btn ac-btn--primary">{{ section.settings.hero_btn1_text }}</a>
+          {%- endif -%}
+          {%- if section.settings.hero_btn2_text != blank -%}
+            <a href="{{ section.settings.hero_btn2_link | default: '#packages-featured' }}" class="ac-btn ac-btn--outline" data-ac-scroll>{{ section.settings.hero_btn2_text }}</a>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%}============ BENEFITS PACKAGES ============ {%- endcomment -%}
+  {%- assign package_blocks = section.blocks | where: 'type', 'package_card' -%}
+  {%- if package_blocks.size > 0 -%}
+    <section class="ac-band ac-band--gray" id="packages-featured">
+      <div class="ac-wrap">
+        <div class="ac-section-head ac-reveal">
+          <h2>{{ section.settings.props_title }}</h2>
+          {%- if section.settings.props_subtitle != blank -%}<p>{{ section.settings.props_subtitle }}</p>{%- endif -%}
+        </div>
+        
+        <div class="ac-grid">
+          {%- for block in package_blocks -%}
+            {%- liquid
+              assign card_img = ''
+              if block.settings.image != blank
+                assign card_img = block.settings.image | image_url: width: 600
+              else
+                assign card_img = block.settings.image_url
+              endif
+            -%}
+            <div class="ac-card ac-reveal" {{ block.shopify_attributes }}>
+              <div class="ac-card-media">
+                {%- if card_img != blank -%}<img src="{{ card_img }}" alt="{{ block.settings.title | escape }}" loading="lazy">{%- endif -%}
+                {%- if block.settings.featured_badge -%}<span class="ac-badge">Popular</span>{%- endif -%}
+              </div>
+              <div class="ac-card-body">
+                <h3>{{ block.settings.title }}</h3>
+                <p>{{ block.settings.description }}</p>
+                
+                <div class="ac-card-footer">
+                  <div>
+                    <span class="ac-price-label">Desde solo</span>
+                    <div class="ac-price">{{ block.settings.price }} <span>USD/mes</span></div>
+                  </div>
+                  <a href="{{ contact_anchor }}" class="ac-card-link" data-ac-scroll>
+                    <span>Saber más</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+    </section>
+  {%- endif -%}
+
+  {%- comment -%}============ COMPLIANCE DISCLOSURE ============{%- endcomment -%}
+  <section class="ac-disclosure-band">
+    <div class="ac-wrap">
+      <div class="ac-disclosure-box">
+        <div class="ac-disc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div>
+          <p>
+            <strong>Este programa NO es un seguro de gastos médicos.</strong> No está diseñado para reemplazar seguros ni cumple con los requisitos de cobertura mínima obligatoria de la Ley de Cuidado de Salud Asequible. Proporciona descuentos y tarifas preferenciales exclusivamente en la red de proveedores de salud contratados por <strong>New Benefits, Ltd.</strong> Cada miembro es responsable de pagar el costo total de los servicios médicos con descuento en el momento de recibirlos. Para conocer el listado completo de revelaciones legales, <a href="http://content.newbenefits.com/feed.aspx?hash=1nCjynVyHgD3qMTJC7SQg" target="_blank" rel="noopener">haga clic aquí</a>. Organización del Plan de Descuento: New Benefits, Ltd., Attn: Compliance Department, PO Box 803475, Dallas, TX 75380-3475.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%}============ INFO & BENEFITS ============{%- endcomment -%}
+  <section class="ac-band">
+    <div class="ac-wrap">
+      <div class="ac-info-grid">
+        {%- liquid
+          assign info_img = ''
+          if section.settings.info_image != blank
+            assign info_img = section.settings.info_image | image_url: width: 1000
+          else
+            assign info_img = section.settings.info_image_url
+          endif
+        -%}
+        <div class="ac-info-media acg-reveal">
+          {%- if info_img != blank -%}<img src="{{ info_img }}" alt="Atención médica y bienestar familiar" loading="lazy">{%- endif -%}
+        </div>
+        <div class="ac-info-body ac-reveal">
+          <span class="ac-eyebrow">{{ section.settings.info_eyebrow }}</span>
+          <h2>{{ section.settings.info_title }}</h2>
+          <p>{{ section.settings.info_description }}</p>
+          
+          <div class="ac-features">
+            <div class="ac-feature">
+              <div class="ac-feat-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              </div>
+              <div class="ac-feat-text">
+                <h4>Beneficios Flexibles</h4>
+                <p>Planes diseñados a la medida para cubrir desde necesidades médicas diarias hasta servicios complementarios para el hogar.</p>
+              </div>
+            </div>
+            <div class="ac-feature">
+              <div class="ac-feat-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </div>
+              <div class="ac-feat-text">
+                <h4>Cobertura de Dependientes</h4>
+                <p>Agrega fácilmente a miembros de tu familia para extender los descuentos de salud y el bienestar a todos tus seres queridos.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%}============ PROCESO DE COMPRA ============{%- endcomment -%}
+  {%- assign timeline_blocks = section.blocks | where: 'type', 'timeline_step' -%}
+  {%- if timeline_blocks.size > 0 -%}
+    <section class="ac-band ac-band--gray">
+      <div class="ac-wrap">
+        <div class="ac-section-head ac-reveal">
+          <h2>{{ section.settings.timeline_title }}</h2>
+          {%- if section.settings.timeline_subtitle != blank -%}<p>{{ section.settings.timeline_subtitle }}</p>{%- endif -%}
+        </div>
+        
+        <div class="ac-process">
+          {%- for block in timeline_blocks -%}
+            <div class="ac-process-card ac-reveal" {{ block.shopify_attributes }}>
+              <div class="ac-proc-num">0{{ forloop.index }}</div>
+              <h3>{{ block.settings.title }}</h3>
+              <p>{{ block.settings.description }}</p>
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+    </section>
+  {%- endif -%}
+
+  {%- comment -%}============ CONTACT / REGISTRATION FORM ============{%- endcomment -%}
+  <section class="ac-band" id="{{ contact_anchor | remove: '#' }}">
+    <div class="ac-wrap">
+      <div class="ac-section-head ac-reveal">
+        <h2>{{ section.settings.form_title }}</h2>
+        {%- if section.settings.form_subtitle != blank -%}<p>{{ section.settings.form_subtitle }}</p>{%- endif -%}
+      </div>
+      
+      {%- if section.settings.embed_form_code != blank -%}
+        <div class="ac-form-box ac-reveal" style="min-height:400px;">
+          {{ section.settings.embed_form_code }}
+          <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+        </div>
+      {%- else -%}
+        <div class="ac-form-box ac-reveal" style="min-height:400px;">
+          <iframe
+            src="https://api.leadconnectorhq.com/widget/form/vDnep2WEYdM0V7jw95KX"
+            style="width:100%;height:100%;border:none;border-radius:8px"
+            id="inline-vDnep2WEYdM0V7jw95KX"
+            data-layout="{'id':'INLINE'}"
+            data-trigger-type="alwaysShow"
+            data-trigger-value=""
+            data-activation-type="alwaysActivated"
+            data-activation-value=""
+            data-deactivation-type="neverDeactivate"
+            data-deactivation-value=""
+            data-form-name="aylesvacaremx"
+            data-height="561"
+            data-layout-iframe-id="inline-vDnep2WEYdM0V7jw95KX"
+            data-form-id="vDnep2WEYdM0V7jw95KX"
+            title="aylesvacaremx"
+          ></iframe>
+          <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+        </div>
+      {%- endif -%}
+    </div>
+  </section>
+
+</div>
+
+<script>
+  (function(){
+    var root = document.getElementById('care-{{ section.id }}');
+    if(!root) return;
+    
+    // Reveal animations
+    var els = root.querySelectorAll('.ac-reveal');
+    if(!('IntersectionObserver' in window)){ 
+      els.forEach(function(e){ e.classList.add('ac-in'); }); 
+      return; 
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ 
+          en.target.classList.add('ac-in'); 
+          io.unobserve(en.target); 
+        }
+      });
+    }, { threshold: 0.08 });
+    els.forEach(function(e){ io.observe(e); });
+
+    // Smooth scroll for anchors
+    root.querySelectorAll('a[data-ac-scroll]').forEach(function(a){
+      a.addEventListener('click', function(ev){
+        var href = a.getAttribute('href') || '';
+        if(href.charAt(0) !== '#') return;
+        var target = document.getElementById(href.slice(1));
+        if(!target) return;
+        ev.preventDefault();
+        var y = target.getBoundingClientRect().top + window.pageYOffset - 24;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Aylesva Care",
+  "tag": "section",
+  "class": "aylesva-care-section",
+  "settings": [
+    { "type": "header", "content": "Diseño y Colores" },
+    { "type": "color", "id": "color_red", "label": "Rojo Vino (Principal)", "default": "#7C1922" },
+    { "type": "color", "id": "color_blue", "label": "Azul Acero (Texto)", "default": "#1C4170" },
+    { "type": "color", "id": "color_light", "label": "Gris Claro", "default": "#F8FAFC" },
+    { "type": "color", "id": "color_white", "label": "Blanco / Fondo", "default": "#FFFFFF" },
+    { "type": "color", "id": "color_accent", "label": "Verde (Acento)", "default": "#4E8424" },
+
+    { "type": "header", "content": "1 · Hero" },
+    { "type": "text", "id": "hero_eyebrow", "label": "Subtítulo Hero", "default": "AYLESVA CARE" },
+    { "type": "text", "id": "hero_title", "label": "Título Principal", "default": "Protección y Bienestar Integral para ti y tu Familia" },
+    { "type": "textarea", "id": "hero_subtitle", "label": "Descripción Hero", "default": "Accede a los mejores paquetes de beneficios de salud, hogar y seguros complementarios de la mano de New Benefits desde solo $20 USD." },
+    { "type": "text", "id": "hero_btn1_text", "label": "Botón Principal", "default": "Solicitar Información" },
+    { "type": "url", "id": "hero_btn1_link", "label": "Enlace Botón Principal" },
+    { "type": "text", "id": "hero_btn2_text", "label": "Botón Secundario", "default": "Conocer Beneficios" },
+    { "type": "url", "id": "hero_btn2_link", "label": "Enlace Botón Secundario" },
+    { "type": "image_picker", "id": "hero_image", "label": "Imagen de Fondo Hero" },
+    { "type": "text", "id": "hero_image_url", "label": "URL Alternativa Fondo Hero" },
+
+    { "type": "header", "content": "2 · Paquetes y Planes" },
+    { "type": "text", "id": "props_title", "label": "Título Sección", "default": "Planes de Beneficios de Salud y Hogar" },
+    { "type": "text", "id": "props_subtitle", "label": "Subtítulo Sección", "default": "Encuentra opciones diseñadas para cuidar tu salud diaria, protegerte ante accidentes y dar soporte a tu hogar." },
+
+    { "type": "header", "content": "3 · Información General" },
+    { "type": "text", "id": "info_eyebrow", "label": "Subtítulo Sección Info", "default": "RESPALDO INTEGRAL" },
+    { "type": "text", "id": "info_title", "label": "Título Sección Info", "default": "Un Ecosistema de Salud y Descuentos" },
+    { "type": "textarea", "id": "info_description", "label": "Descripción Info", "default": "New Benefits es el principal proveedor de planes de descuento en salud en los Estados Unidos. A través de Aylesva Care, te conectamos directamente con servicios de consultas y telemedicina, descuentos farmacéuticos y seguros suplementarios de líderes de la industria." },
+    { "type": "image_picker", "id": "info_image", "label": "Imagen de Sección Info" },
+    { "type": "text", "id": "info_image_url", "label": "URL Alternativa Imagen Info" },
+
+    { "type": "header", "content": "4 · Proceso de Registro" },
+    { "type": "text", "id": "timeline_title", "label": "Pasos para Registrarte" },
+    { "type": "text", "id": "timeline_subtitle", "label": "Subtítulo del Proceso" },
+
+    { "type": "header", "content": "5 · Formulario de Contacto" },
+    { "type": "textarea", "id": "embed_form_code", "label": "Código Embed del CRM (LeadConnector / GHL)", "info": "Pega aquí el código iframe de LeadConnector. Si está vacío se mostrará el formulario nativo de Shopify." },
+    { "type": "text", "id": "form_title", "label": "Solicita tu Asesoría Personalizada" },
+    { "type": "text", "id": "form_subtitle", "label": "Subtítulo del Formulario" },
+    { "type": "text", "id": "form_btn_text", "label": "Texto del Botón Enviar", "default": "Solicitar Información" },
+    { "type": "text", "id": "form_success", "label": "Mensaje de Éxito", "default": "¡Gracias! Tu solicitud ha sido recibida con éxito. Un agente especializado de Aylesva Care se pondrá en contacto contigo muy pronto." }
+  ],
+  "blocks": [
+    {
+      "type": "package_card",
+      "name": "Paquete de Beneficios",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Nombre del Paquete", "default": "Health & Household" },
+        { "type": "textarea", "id": "description", "label": "Descripción", "default": "Beneficios de salud diaria, telemedicina 24/7, consultas médicas preferenciales y productos Briotech de grado médico." },
+        { "type": "text", "id": "price", "label": "Precio Inicial", "default": "$20" },
+        { "type": "checkbox", "id": "featured_badge", "label": "Marcar como Popular", "default": true },
+        { "type": "image_picker", "id": "image", "label": "Imagen del Paquete" },
+        { "type": "text", "id": "image_url", "label": "URL Alternativa de Imagen" }
+      ]
+    },
+    {
+      "type": "timeline_step",
+      "name": "Paso de Registro",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Título", "default": "1. Selección de Plan" },
+        { "type": "textarea", "id": "description", "label": "Descripción", "default": "Elige el plan de beneficios que mejor se adapte a ti y tus dependientes." }
+      ]
+    }
+  ]
+}
+{% endschema %}

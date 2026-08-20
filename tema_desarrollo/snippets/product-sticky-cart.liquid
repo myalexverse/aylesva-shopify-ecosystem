@@ -1,0 +1,98 @@
+{% comment %}
+  Refactored Product Sticky Cart Snippet
+  Handles the sticky add-to-cart bar at the bottom.
+{% endcomment %}
+
+{% if section.settings.addtocart_sticky_bar %}
+  <div data-id="product-{{ product.id }}" class="add-to-cart-sticky main_active hidden-xs">
+    <div class="container">
+      <div class="cart-close position-absolute rounded-circle"></div>
+      <div class="sticky-data">
+        <div class="main-img-desc">
+          {% assign sticky_featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_media.preview_image %}
+          <div class="main_image_wrap1">
+            <img loading="lazy" class="product-img" src="{{ sticky_featured_image | img_url: '600x' }}" alt="{{ sticky_featured_image.alt | escape }}" id="productPhotoImg1">
+          </div>	
+          <div class="product-desc">
+            <div class="product-single__title text-capitalize text-start">{{ product.title | strip_html }}</div>
+            <div class="h2 product-single__price" id="sticky-price-{{ section.id }}">
+              {% render 'product-price', product: product, use_variant: true, show_vendor: section.settings.show_vendor %}
+            </div>
+          </div>
+        </div>
+        
+        {% if product.has_only_default_variant != true %}
+          <div class="color-size">
+            <div class="color">
+              {% if settings.display_color_variant %}             
+                {% render 'item-swatch' , product: product %}
+              {% endif %}
+            </div>
+            <div class="size">
+              {% if settings.display_size_variant %}        
+                <ul class="product-size">  
+                  {% for option in product.options %}
+                    {% if option == 'Size' %}
+                      {% assign index = forloop.index0 %}
+                      {% assign sizelist = '' %}
+                      {% for variant in product.variants %}
+                        {% capture size_val %}{{ variant.options[index] }}{% endcapture %}
+                        {% unless sizelist contains size_val %}  
+                          <li class="size{% if sizelist == '' %} active{% endif %}">
+                            <label>{{ size_val | split: ' ' | last | handle }}</label>
+                            {% if variant.image != null %}
+                              <span class="hidden">
+                                <img loading="lazy" width="373" height="486" src="{{ variant.image.src | product_img_url: '373x486' }}" alt="{{ size_val | handleize }}"/>
+                              </span>
+                            {% endif %}
+                          </li>
+                          {% capture tempList %}{{ sizelist | append: size_val | append: ' ' }}{% endcapture %}{% assign sizelist = tempList %}
+                        {% endunless %}
+                      {% endfor %}
+                    {% endif %}
+                  {% endfor %}
+                </ul>
+              {% endif %}  
+            </div>
+          </div>
+        {% endif %}  
+
+        <div class="cart-qty">
+          {% if product.available %} 
+            <div class="product-qty">        
+                <div class="qty-box-set">  
+                  <input type="number" name="quantity" value="1" min="1" data-id="Qty" class="quantity">
+                  <div class="qnt_wrap">
+                    <div class="inc button qtyplus"><i class="mdi mdi-plus"></i></div>
+                    <div class="dec button qtyminus"><i class="mdi mdi-minus"></i></div>
+                  </div>
+                </div>
+            </div>
+          {% endif %}
+          <div class="grid--uniform product-single__addtocart">
+            <product-form class="product-form">
+              <div class="product-form__error-message-wrapper" role="alert" hidden>
+                <span class="product-form__error-message"></span>
+              </div>
+              {%- assign product_form_id = 'product-form-sticky-' | append: section.id -%}
+              {%- form 'product', product, id: product_form_id, class: 'product-form-sticky', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}            
+                <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                <div class="product-form__buttons">
+                  <button id="AddToCartSticky" type="submit" name="add" class="btn product-form__submit button button--full-width" {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %}>
+                    <span id="addToCartTextSticky">
+                      {%- if product.selected_or_first_available_variant.available -%}
+                        {{ 'products.product.add_to_cart' | t }}
+                      {%- else -%}
+                        {{ 'products.product.sold_out' | t }}
+                      {%- endif -%}
+                    </span>
+                  </button>                      
+                </div>
+              {%- endform -%}
+            </product-form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}

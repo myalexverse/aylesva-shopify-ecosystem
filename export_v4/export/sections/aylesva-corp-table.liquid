@@ -1,0 +1,65 @@
+{% comment %} Aylesva · Tabla comparativa (usada en Aylesva Recursos) {% endcomment %}
+<section class="ay" style="background:{{ section.settings.bg }};border-top:var(--ay-hairline);border-bottom:var(--ay-hairline)">
+  <div class="ay-wrap">
+    <div style="margin-bottom:44px;max-width:56ch">
+      {% if section.settings.eyebrow != blank %}<p class="ay-eyebrow">{{ section.settings.eyebrow }}</p>{% endif %}
+      <h2 class="ay-h2">{{ section.settings.title }}</h2>
+    </div>
+
+    <div style="overflow-x:auto;border:var(--ay-hairline);background:#fff">
+      <table style="width:100%;border-collapse:collapse;min-width:920px">
+        <thead>
+          <tr style="background:var(--ay-ink-800);color:var(--ay-gold-light);font-family:var(--ay-font-mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase">
+            <th style="text-align:left;padding:16px 20px">{{ section.settings.h1 }}</th>
+            <th style="text-align:left;padding:16px 20px">{{ section.settings.h2 }}</th>
+            <th style="text-align:left;padding:16px 20px">{{ section.settings.h3 }}</th>
+            <th style="text-align:left;padding:16px 20px">{{ section.settings.h4 }}</th>
+            <th style="text-align:right;padding:16px 20px">{{ section.settings.h5 }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for block in section.blocks %}
+            <tr style="border-bottom:1px solid rgba(15,23,42,.1)" {{ block.shopify_attributes }}>
+              <td style="padding:20px;font-family:var(--ay-font-display);font-size:16px;font-weight:500;letter-spacing:-.01em">{{ block.settings.c1 }}</td>
+              <td style="padding:20px;font-size:14px;color:rgba(15,23,42,.68)">{{ block.settings.c2 }}</td>
+              <td style="padding:20px;font-size:14px;color:rgba(15,23,42,.68)">{{ block.settings.c3 }}</td>
+              <td style="padding:20px;font-size:14px;color:rgba(15,23,42,.68)">{{ block.settings.c4 }}</td>
+              <td style="padding:20px;text-align:right;font-family:var(--ay-font-mono);font-size:13px;color:var(--ay-gold-text);white-space:nowrap">{{ block.settings.c5 }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    {% if section.settings.note != blank %}
+      <p class="ay-legal" style="margin-top:20px;border-left:2px solid var(--ay-gold);padding-left:18px">{{ section.settings.note }}</p>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Aylesva · Tabla comparativa",
+  "settings": [
+    { "type": "color", "id": "bg", "label": "Fondo", "default": "#FFFFFF" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Comparativa" },
+    { "type": "textarea", "id": "title", "label": "Titular", "default": "Qué opción conviene según tu necesidad" },
+    { "type": "text", "id": "h1", "label": "Encabezado 1", "default": "Producto" },
+    { "type": "text", "id": "h2", "label": "Encabezado 2", "default": "Para qué sirve" },
+    { "type": "text", "id": "h3", "label": "Encabezado 3", "default": "Velocidad" },
+    { "type": "text", "id": "h4", "label": "Encabezado 4", "default": "Requisitos" },
+    { "type": "text", "id": "h5", "label": "Encabezado 5", "default": "Monto" },
+    { "type": "textarea", "id": "note", "label": "Nota al pie" }
+  ],
+  "blocks": [
+    { "type": "row", "name": "Fila", "limit": 10, "settings": [
+      { "type": "text", "id": "c1", "label": "Columna 1" },
+      { "type": "text", "id": "c2", "label": "Columna 2" },
+      { "type": "text", "id": "c3", "label": "Columna 3" },
+      { "type": "text", "id": "c4", "label": "Columna 4" },
+      { "type": "text", "id": "c5", "label": "Columna 5" }
+    ]}
+  ],
+  "presets": [{ "name": "Aylesva · Tabla comparativa" }]
+}
+{% endschema %}

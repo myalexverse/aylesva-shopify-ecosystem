@@ -1,0 +1,1079 @@
+<!-- Google Fonts Import for high-end boutique aesthetics -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  /* Base Container & Full-Width Wrapper */
+  .saldos-hero-section {
+    position: relative;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    overflow: hidden;
+    background: #0d0d0d;
+    font-family: 'Outfit', sans-serif;
+  }
+
+  /* Responsive Heights */
+  .saldos-hero-wrapper {
+    position: relative;
+    width: 100%;
+    min-height: {{ section.settings.desktop_height }}vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 0 80px 0; /* Add bottom padding to balance the bottom trust bar */
+  }
+
+  /* Responsive Background Image using HTML5 picture tag */
+  .saldos-hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+  .saldos-hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  /* Premium Multi-Layer Gradient Overlay (Brighter on the right to show the model, darker on left for readability) */
+  .saldos-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.85) 0%,
+      rgba(0, 0, 0, 0.5) 30%,
+      rgba(0, 0, 0, 0.1) 60%,
+      rgba(0, 0, 0, 0.05) 100%
+    );
+  }
+
+  /* Content Grid Layout */
+  .saldos-hero-container {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 25px;
+  }
+  .saldos-hero-grid {
+    display: grid;
+    grid-template-columns: 1.25fr 0.75fr;
+    gap: 60px;
+    align-items: center;
+    margin-bottom: 50px;
+  }
+
+  /* LEFT COLUMN: BRANDING & CTA */
+  .saldos-hero-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* Premium Pill Badge */
+  .saldos-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border: 1px solid rgba(197, 164, 126, 0.4);
+    background: rgba(197, 164, 126, 0.08);
+    border-radius: 50px;
+    color: #C5A47E;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 25px;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+  }
+
+  /* Headline Typography */
+  .saldos-hero-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 5.2vw, 4.8rem);
+    font-weight: 700;
+    line-height: 1.08;
+    color: #ffffff;
+    margin: 0 0 20px 0;
+    letter-spacing: -0.5px;
+  }
+  .saldos-hero-headline span.gold-accent {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 400;
+    color: #C5A47E;
+    display: inline-block;
+  }
+
+  /* Subtext Description */
+  .saldos-hero-subtext {
+    font-family: 'Inter', sans-serif;
+    font-size: 15.5px;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 35px;
+    max-width: 620px;
+    font-weight: 300;
+  }
+
+  /* Features Grid Icons Row */
+  .saldos-hero-features {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    width: 100%;
+    margin-bottom: 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 30px;
+  }
+  .saldos-feature-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centered icons on top, labels below */
+    text-align: center;
+    gap: 12px;
+  }
+  .saldos-feature-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #C5A47E;
+    width: 28px;
+    height: 28px;
+  }
+  .saldos-feature-icon svg {
+    width: 100%;
+    height: 100%;
+    stroke-width: 1.5;
+  }
+  .saldos-feature-text {
+    font-size: 11.5px;
+    line-height: 1.3;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+    text-transform: none;
+    letter-spacing: 0;
+  }
+
+  /* CTA Buttons Row */
+  .saldos-hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    width: 100%;
+  }
+  .saldos-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 36px;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+  }
+  .saldos-btn-primary {
+    background: #C5A47E;
+    color: #ffffff;
+    border: 1px solid #C5A47E;
+  }
+  .saldos-btn-primary:hover {
+    background: #ffffff;
+    border-color: #ffffff;
+    color: #0d0d0d;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(197, 164, 126, 0.15);
+  }
+  .saldos-btn-secondary {
+    background: transparent;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+  .saldos-btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #ffffff;
+    transform: translateY(-2px);
+  }
+
+  /* RIGHT COLUMN: PREMIUM WHITE TRUST CARDS */
+  .saldos-hero-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+  }
+
+  /* Solid Premium White Cards as shown in the target image */
+  .saldos-glass-card {
+    background: #ffffff !important;
+    border: 1px solid #eeeeee !important;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .saldos-glass-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Card 1: Estimated Profit */
+  .saldos-card-profit {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+  }
+  .profit-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #1a1a1a;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+  .profit-value {
+    font-family: 'Outfit', sans-serif;
+    font-size: 44px;
+    font-weight: 700;
+    color: #C5A47E;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .profit-subtext {
+    font-size: 12px;
+    font-weight: 600;
+    color: #555555;
+  }
+  .profit-graphic-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #C5A47E;
+    width: 55px;
+    height: 55px;
+  }
+
+  /* Card 2: Checklist Benefits */
+  .saldos-card-checklist {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .checklist-title {
+    font-size: 11px;
+    font-weight: 700;
+    color: #1a1a1a;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #eeeeee;
+    padding-bottom: 10px;
+  }
+  .checklist-items {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .checklist-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .checklist-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #C5A47E;
+    width: 14px;
+    height: 14px;
+  }
+  .checklist-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+  .checklist-text {
+    font-size: 12.5px;
+    font-weight: 500;
+    color: #333333;
+  }
+
+  /* BOTTOM ROW: SOLID WHITE TRUST BANNER */
+  .saldos-hero-trustbar {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    background: #ffffff !important;
+    border: 1px solid #eeeeee !important;
+    border-radius: 12px;
+    padding: 24px 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  }
+  .trustbar-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    align-items: center;
+  }
+  .trustbar-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 0 10px;
+    border-right: 1px solid #eeeeee;
+  }
+  .trustbar-item:last-child {
+    border-right: none;
+  }
+  .trustbar-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #C5A47E;
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+  }
+  .trustbar-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+  .trustbar-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .trustbar-number {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.2;
+    margin-bottom: 2px;
+  }
+  .trustbar-label {
+    font-size: 11px;
+    font-weight: 500;
+    color: #555555;
+    line-height: 1.3;
+  }
+
+  /* RESPONSIVE BREAKPOINTS (TABLETS & LAPTOPS) */
+  @media (max-width: 1199px) {
+    .trustbar-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .trustbar-item:nth-child(3) {
+      border-right: none;
+    }
+    .trustbar-item:nth-child(4), .trustbar-item:nth-child(5) {
+      border-top: 1px solid #eeeeee;
+      padding-top: 15px;
+    }
+  }
+
+  @media (max-width: 991px) {
+    .saldos-hero-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    .saldos-hero-wrapper {
+      padding: 50px 0;
+    }
+    .saldos-hero-brand {
+      align-items: center;
+      text-align: center;
+    }
+    .saldos-hero-badge {
+      margin-bottom: 20px;
+    }
+    .saldos-hero-headline {
+      text-align: center;
+    }
+    .saldos-hero-subtext {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .saldos-hero-features {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      padding-top: 25px;
+    }
+    .saldos-feature-item {
+      align-items: center;
+      text-align: center;
+    }
+    .saldos-hero-buttons {
+      justify-content: center;
+    }
+  }
+
+  /* ULTIMATE MOBILE VERSION COMPATIBILITY (ZARA/NIKE INSPIRED SWIPER) */
+  @media (max-width: 767px) {
+    .saldos-hero-section {
+      width: 100vw !important;
+      max-width: none !important;
+      margin-left: calc(-50vw + 50%) !important;
+    }
+    .saldos-hero-wrapper {
+      min-height: auto;
+      padding: 40px 0 50px 0;
+    }
+    .saldos-hero-container {
+      padding: 0 15px;
+    }
+    .saldos-hero-badge {
+      font-size: 10px;
+      padding: 5px 12px;
+      margin-bottom: 15px;
+    }
+    .saldos-hero-headline {
+      font-size: 32px;
+      line-height: 1.15;
+    }
+    .saldos-hero-subtext {
+      font-size: 13.5px;
+      margin-bottom: 25px;
+    }
+    
+    /* Brighter, highly-optimized mobile gradient mask overlay */
+    .saldos-hero-overlay {
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.85) 0%,
+        rgba(0, 0, 0, 0.65) 60%,
+        rgba(0, 0, 0, 0.45) 100%
+      ) !important;
+    }
+
+    .saldos-hero-features {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+    .saldos-feature-text {
+      font-size: 11px;
+    }
+    .saldos-btn {
+      width: 100%;
+      padding: 14px 20px;
+      font-size: 12.5px;
+    }
+    .saldos-hero-buttons {
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+    .saldos-hero-sidebar {
+      gap: 15px;
+      margin-bottom: 35px;
+    }
+    .saldos-glass-card {
+      padding: 18px !important;
+      border-radius: 8px !important;
+    }
+    .profit-value {
+      font-size: 32px;
+    }
+
+    /* Swipe horizontal swiper scroll for the trust bar on mobile (saves over 300px vertical space) */
+    .saldos-hero-trustbar {
+      padding: 15px 15px !important;
+      overflow-x: auto !important;
+      scrollbar-width: none !important;
+      -ms-overflow-style: none !important;
+      -webkit-overflow-scrolling: touch !important;
+      width: 100vw !important;
+      margin-left: -15px !important; /* Bleed out to screen edge */
+      border-radius: 0 !important;
+      border-left: none !important;
+      border-right: none !important;
+    }
+    .saldos-hero-trustbar::-webkit-scrollbar {
+      display: none !important;
+    }
+    .trustbar-grid {
+      display: flex !important;
+      flex-wrap: nowrap !important;
+      gap: 24px !important;
+      width: max-content !important;
+    }
+    .trustbar-item {
+      flex: 0 0 auto !important;
+      border-right: 1px solid #eeeeee !important;
+      border-bottom: none !important;
+      border-top: none !important;
+      padding: 0 20px 0 0 !important;
+      margin: 0 !important;
+    }
+    .trustbar-item:last-child {
+      border-right: none !important;
+      padding-right: 0 !important;
+    }
+    .trustbar-number {
+      font-size: 13px;
+    }
+    .trustbar-label {
+      font-size: 10px;
+    }
+  }
+</style>
+
+<div class="saldos-hero-section" id="SaldosHeroSection-{{ section.id }}">
+  <div class="saldos-hero-wrapper">
+    
+    <!-- Background Image -->
+    <div class="saldos-hero-bg">
+      <picture>
+        {% if section.settings.image_mobile != blank %}
+          <source media="(max-width: 767px)" srcset="{{ section.settings.image_mobile | img_url: '767x767', crop: 'center' }}">
+        {% endif %}
+        {% if section.settings.image_desktop != blank %}
+          <img loading="eager" fetchpriority="high" src="{{ section.settings.image_desktop | img_url: '1920x' }}" alt="{{ section.settings.title_white | escape }}">
+        {% else %}
+          <!-- Ultra-Premium Default Image matching the Country aesthetics -->
+          <img loading="eager" fetchpriority="high" src="{{ 'aylesva-saldos-hero-bg.png' | asset_url }}" alt="{{ section.settings.title_white | escape }}">
+        {% endif %}
+      </picture>
+    </div>
+
+    <!-- Black linear gradient mask -->
+    <div class="saldos-hero-overlay"></div>
+
+    <div class="saldos-hero-container">
+      
+      <!-- Upper content grid -->
+      <div class="saldos-hero-grid">
+        
+        <!-- LEFT COLUMN: BRANDING & OFFERS -->
+        <div class="saldos-hero-brand">
+          
+          {% if section.settings.pretitle != blank %}
+            <div class="saldos-hero-badge">
+              <span>{{ section.settings.pretitle }}</span>
+            </div>
+          {% endif %}
+
+          <h1 class="saldos-hero-headline">
+            {{ section.settings.title_white }}
+            {% if section.settings.title_gold != blank %}
+              <br><span class="gold-accent">{{ section.settings.title_gold }}</span>
+            {% endif %}
+          </h1>
+
+          {% if section.settings.subtext != blank %}
+            <p class="saldos-hero-subtext">
+              {{ section.settings.subtext }}
+            </p>
+          {% endif %}
+
+          <!-- Icons Grid Row -->
+          <div class="saldos-hero-features">
+            
+            <!-- Feature 1 -->
+            <div class="saldos-feature-item">
+              <div class="saldos-feature-icon">
+                <!-- Cowboy hat SVG vector icon -->
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M2 18h20v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-2z"/>
+                  <path d="M12 2a4 4 0 0 0-4 4v2c0 2.5 1.5 4.5 4 4.5s4-2 4-4.5V6a4 4 0 0 0-4-4z"/>
+                  <path d="M3 18c0-3.5 3-6.5 9-6.5s9 3 9 6.5"/>
+                </svg>
+              </div>
+              <div class="saldos-feature-text">
+                {{ section.settings.feature1_text }}
+              </div>
+            </div>
+
+            <!-- Feature 2 -->
+            <div class="saldos-feature-item">
+              <div class="saldos-feature-icon">
+                <!-- Line chart upward trend SVG vector icon -->
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="18" y1="20" x2="18" y2="10"/>
+                  <line x1="12" y1="20" x2="12" y2="4"/>
+                  <line x1="6" y1="20" x2="6" y2="14"/>
+                  <path d="M2 20h20"/>
+                  <path d="M12 4l6 6M18 10l4-4"/>
+                </svg>
+              </div>
+              <div class="saldos-feature-text">
+                {{ section.settings.feature2_text }}
+              </div>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="saldos-feature-item">
+              <div class="saldos-feature-icon">
+                <!-- Package Box SVG vector icon -->
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="21 16 12 21 3 16 12 11 21 16"/>
+                  <polyline points="3 11 12 16 21 11"/>
+                  <polyline points="12 21 12 11"/>
+                  <polyline points="12 11 12 3"/>
+                  <polyline points="21 11 21 3 12 3 3 3 3 11"/>
+                </svg>
+              </div>
+              <div class="saldos-feature-text">
+                {{ section.settings.feature3_text }}
+              </div>
+            </div>
+
+            <!-- Feature 4 -->
+            <div class="saldos-feature-item">
+              <div class="saldos-feature-icon">
+                <!-- Fast Shipping Truck SVG vector icon -->
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="1" y="3" width="15" height="13"/>
+                  <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+                  <circle cx="5.5" cy="18.5" r="2.5"/>
+                  <circle cx="18.5" cy="18.5" r="2.5"/>
+                </svg>
+              </div>
+              <div class="saldos-feature-text">
+                {{ section.settings.feature4_text }}
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Buttons Row -->
+          <div class="saldos-hero-buttons">
+            {% if section.settings.btn1_label != blank %}
+              <a href="{{ section.settings.btn1_link | default: '#' }}" class="saldos-btn saldos-btn-primary">
+                {{ section.settings.btn1_label }}
+              </a>
+            {% endif %}
+            {% if section.settings.btn2_label != blank %}
+              <a href="{{ section.settings.btn2_link | default: '#' }}" class="saldos-btn saldos-btn-secondary">
+                {{ section.settings.btn2_label }}
+              </a>
+            {% endif %}
+          </div>
+
+        </div>
+
+        <!-- RIGHT COLUMN: WHITE TRUST CARDS -->
+        <div class="saldos-hero-sidebar">
+          
+          <!-- Card 1: Margin Profit Calculator -->
+          <div class="saldos-glass-card saldos-card-profit">
+            <div class="profit-info-left">
+              <div class="profit-label">{{ section.settings.card1_title }}</div>
+              <div class="profit-value">{{ section.settings.card1_value }}</div>
+              <div class="profit-subtext">{{ section.settings.card1_subtext }}</div>
+            </div>
+            
+            <div class="profit-graphic-right">
+              <!-- Upward Bar Chart Graphic icon inside the card -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 3v18h18"/>
+                <path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3"/>
+                <path d="M18.7 8h-4.3"/>
+                <path d="M18.7 8v4.3"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Card 2: Checklist benefits -->
+          <div class="saldos-glass-card saldos-card-checklist">
+            <div class="checklist-title">{{ section.settings.card2_title }}</div>
+            <div class="checklist-items">
+              
+              {% if section.settings.checklist_item_1 != blank %}
+                <div class="checklist-item">
+                  <div class="checklist-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </div>
+                  <div class="checklist-text">{{ section.settings.checklist_item_1 }}</div>
+                </div>
+              {% endif %}
+
+              {% if section.settings.checklist_item_2 != blank %}
+                <div class="checklist-item">
+                  <div class="checklist-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </div>
+                  <div class="checklist-text">{{ section.settings.checklist_item_2 }}</div>
+                </div>
+              {% endif %}
+
+              {% if section.settings.checklist_item_3 != blank %}
+                <div class="checklist-item">
+                  <div class="checklist-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </div>
+                  <div class="checklist-text">{{ section.settings.checklist_item_3 }}</div>
+                </div>
+              {% endif %}
+
+              {% if section.settings.checklist_item_4 != blank %}
+                <div class="checklist-item">
+                  <div class="checklist-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                  </div>
+                  <div class="checklist-text">{{ section.settings.checklist_item_4 }}</div>
+                </div>
+              {% endif %}
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- BOTTOM ROW: SOLID WHITE TRUST BANNER -->
+      <div class="saldos-hero-trustbar">
+        <div class="trustbar-grid">
+          
+          <!-- Trust Item 1 -->
+          <div class="trustbar-item">
+            <div class="trustbar-icon">
+              <!-- People icon -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </div>
+            <div class="trustbar-content">
+              <div class="trustbar-number">{{ section.settings.trust1_num }}</div>
+              <div class="trustbar-label">{{ section.settings.trust1_text }}</div>
+            </div>
+          </div>
+
+          <!-- Trust Item 2 -->
+          <div class="trustbar-item">
+            <div class="trustbar-icon">
+              <!-- Package Box icon -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="21 16 12 21 3 16 12 11 21 16"/>
+                <polyline points="3 11 12 16 21 11"/>
+                <polyline points="12 21 12 11"/>
+                <polyline points="12 11 12 3"/>
+                <polyline points="21 11 21 3 12 3 3 3 3 11"/>
+              </svg>
+            </div>
+            <div class="trustbar-content">
+              <div class="trustbar-number">{{ section.settings.trust2_num }}</div>
+              <div class="trustbar-label">{{ section.settings.trust2_text }}</div>
+            </div>
+          </div>
+
+          <!-- Trust Item 3 -->
+          <div class="trustbar-item">
+            <div class="trustbar-icon">
+              <!-- Shield Growth icon -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <path d="M12 8v4"/>
+                <path d="M12 16h.01"/>
+              </svg>
+            </div>
+            <div class="trustbar-content">
+              <div class="trustbar-number">{{ section.settings.trust3_num }}</div>
+              <div class="trustbar-label">{{ section.settings.trust3_text }}</div>
+            </div>
+          </div>
+
+          <!-- Trust Item 4 -->
+          <div class="trustbar-item">
+            <div class="trustbar-icon">
+              <!-- Star Box icon -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                <line x1="12" y1="22.08" x2="12" y2="12"/>
+              </svg>
+            </div>
+            <div class="trustbar-content">
+              <div class="trustbar-number">{{ section.settings.trust4_num }}</div>
+              <div class="trustbar-label">{{ section.settings.trust4_text }}</div>
+            </div>
+          </div>
+
+          <!-- Trust Item 5 -->
+          <div class="trustbar-item">
+            <div class="trustbar-icon">
+              <!-- Star-Badge icon -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="8" r="7"/>
+                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
+              </svg>
+            </div>
+            <div class="trustbar-content">
+              <div class="trustbar-number">{{ section.settings.trust5_num }}</div>
+              <div class="trustbar-label">{{ section.settings.trust5_text }}</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Saldos Premium Hero",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image_desktop",
+      "label": "Imagen de Fondo (Escritorio)"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Imagen de Fondo (Móvil)",
+      "info": "Si se deja en blanco, se usará la imagen de escritorio adaptada verticalmente."
+    },
+    {
+      "type": "range",
+      "id": "desktop_height",
+      "label": "Altura Escritorio (vh)",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "default": 85,
+      "unit": "vh"
+    },
+    {
+      "type": "header",
+      "content": "Textos Principales"
+    },
+    {
+      "type": "text",
+      "id": "pretitle",
+      "label": "Badge Superior",
+      "default": "★ PACKS EMPRENDEDORES"
+    },
+    {
+      "type": "text",
+      "id": "title_white",
+      "label": "Título Parte Blanca",
+      "default": "Moda Country"
+    },
+    {
+      "type": "text",
+      "id": "title_gold",
+      "label": "Título Parte Dorada",
+      "default": "para emprender"
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Descripción Principal",
+      "default": "Lotes seleccionados de moda country con alta rotación y gran demanda. Ideal para reventa, boutiques y tiendas online."
+    },
+    {
+      "type": "header",
+      "content": "Iconos y Características (Fila de 4)"
+    },
+    {
+      "type": "text",
+      "id": "feature1_text",
+      "label": "Texto Característica 1",
+      "default": "Productos de alta demanda"
+    },
+    {
+      "type": "text",
+      "id": "feature2_text",
+      "label": "Texto Característica 2",
+      "default": "Ganancias de hasta 3X"
+    },
+    {
+      "type": "text",
+      "id": "feature3_text",
+      "label": "Texto Característica 3",
+      "default": "Listos para revender"
+    },
+    {
+      "type": "text",
+      "id": "feature4_text",
+      "label": "Texto Característica 4",
+      "default": "Envíos a todo México"
+    },
+    {
+      "type": "header",
+      "content": "Botones de Acción"
+    },
+    {
+      "type": "text",
+      "id": "btn1_label",
+      "label": "Texto Botón Principal",
+      "default": "VER TODOS LOS PACKS"
+    },
+    {
+      "type": "url",
+      "id": "btn1_link",
+      "label": "Enlace Botón Principal"
+    },
+    {
+      "type": "text",
+      "id": "btn2_label",
+      "label": "Texto Botón Secundario",
+      "default": "CÓMO FUNCIONA"
+    },
+    {
+      "type": "url",
+      "id": "btn2_link",
+      "label": "Enlace Botón Secundario"
+    },
+    {
+      "type": "header",
+      "content": "Tarjeta de Ganancias (Derecha - Superior)"
+    },
+    {
+      "type": "text",
+      "id": "card1_title",
+      "label": "Título Tarjeta Ganancias",
+      "default": "GANANCIA ESTIMADA POR PACK"
+    },
+    {
+      "type": "text",
+      "id": "card1_value",
+      "label": "Margen/Porcentaje",
+      "default": "+65%"
+    },
+    {
+      "type": "text",
+      "id": "card1_subtext",
+      "label": "Texto Secundario Margen",
+      "default": "de margen promedio"
+    },
+    {
+      "type": "header",
+      "content": "Tarjeta Checklist (Derecha - Inferior)"
+    },
+    {
+      "type": "text",
+      "id": "card2_title",
+      "label": "Título Tarjeta Checklist",
+      "default": "¿POR QUÉ EMPRENDER CON MODA COUNTRY?"
+    },
+    {
+      "type": "text",
+      "id": "checklist_item_1",
+      "label": "Beneficio 1",
+      "default": "Alta demanda todo el año"
+    },
+    {
+      "type": "text",
+      "id": "checklist_item_2",
+      "label": "Beneficio 2",
+      "default": "Productos atemporales"
+    },
+    {
+      "type": "text",
+      "id": "checklist_item_3",
+      "label": "Beneficio 3",
+      "default": "Fácil de vender"
+    },
+    {
+      "type": "text",
+      "id": "checklist_item_4",
+      "label": "Beneficio 4",
+      "default": "Perfecto para cualquier canal"
+    },
+    {
+      "type": "header",
+      "content": "Barra de Confianza Inferior (Fila de 5)"
+    },
+    {
+      "type": "text",
+      "id": "trust1_num",
+      "label": "Número Indicador 1",
+      "default": "+30,000"
+    },
+    {
+      "type": "text",
+      "id": "trust1_text",
+      "label": "Descripción Indicador 1",
+      "default": "Emprendedores ya forman parte"
+    },
+    {
+      "type": "text",
+      "id": "trust2_num",
+      "label": "Número Indicador 2",
+      "default": "+850"
+    },
+    {
+      "type": "text",
+      "id": "trust2_text",
+      "label": "Descripción Indicador 2",
+      "default": "Packs vendidos cada semana"
+    },
+    {
+      "type": "text",
+      "id": "trust3_num",
+      "label": "Número Indicador 3",
+      "default": "Hasta 3X"
+    },
+    {
+      "type": "text",
+      "id": "trust3_text",
+      "label": "Descripción Indicador 3",
+      "default": "tu inversión en ganancias"
+    },
+    {
+      "type": "text",
+      "id": "trust4_num",
+      "label": "Número Indicador 4",
+      "default": "Inventario nuevo"
+    },
+    {
+      "type": "text",
+      "id": "trust4_text",
+      "label": "Descripción Indicador 4",
+      "default": "Cada semana"
+    },
+    {
+      "type": "text",
+      "id": "trust5_num",
+      "label": "Número Indicador 5",
+      "default": "Selección experta"
+    },
+    {
+      "type": "text",
+      "id": "trust5_text",
+      "label": "Descripción Indicador 5",
+      "default": "Productos de alta rotación"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Saldos Premium Hero"
+    }
+  ]
+}
+{% endschema %}

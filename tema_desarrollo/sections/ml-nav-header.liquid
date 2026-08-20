@@ -1,0 +1,860 @@
+{% comment %}
+  ML Navigation Header Section
+  Fully responsive, Vanilla CSS and JS, with Shopify Schema for customization.
+  Best practices: Scoped CSS variables, Vanilla JS, No external dependencies.
+{% endcomment %}
+
+
+<style>
+  .ml-header-custom {
+    width: 100%;
+    position: relative;
+    z-index: 50;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    background-color: var(--bg-color);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  }
+
+  .ml-header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+
+  .ml-header-top {
+    height: 56px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .ml-logo {
+    flex-shrink: 0;
+    display: block;
+  }
+
+  .ml-logo img {
+    height: 34px;
+    width: var(--logo-width);
+    object-fit: contain;
+    object-position: left center;
+  }
+
+  .ml-search-bar {
+    flex-grow: 1;
+    max-width: 588px;
+    position: relative;
+  }
+
+  .ml-search-form {
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    border-radius: 2px;
+    overflow: hidden;
+    height: 40px;
+    margin: 0;
+  }
+
+  .ml-search-input {
+    flex-grow: 1;
+    padding: 0 16px;
+    height: 100%;
+    outline: none;
+    font-size: 16px;
+    border: none;
+    color: #333333;
+  }
+
+  .ml-search-input::placeholder {
+    color: #9ca3af;
+  }
+
+  .ml-search-divider {
+    width: 1px;
+    height: 24px;
+    background-color: #e5e7eb;
+  }
+
+  .ml-search-btn {
+    padding: 0 12px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6b7280;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+
+  .ml-search-btn:hover {
+    color: #374151;
+  }
+
+  .ml-promo {
+    display: none;
+    flex-shrink: 0;
+    align-items: center;
+  }
+
+  @media (min-width: 1024px) {
+    .ml-promo {
+      display: flex;
+    }
+  }
+
+  .ml-promo img {
+    height: 39px;
+    width: auto;
+  }
+
+  .ml-header-bottom {
+    height: 44px;
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 12px;
+    gap: 20px;
+  }
+
+  .ml-location {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    min-width: 150px;
+    padding: 0;
+  }
+
+  .ml-location svg {
+    color: var(--text-color-70);
+    margin-bottom: 4px;
+  }
+
+  .ml-location-texts {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+  }
+
+  .ml-location-line1 {
+    font-size: 12px;
+    color: var(--text-color-70);
+  }
+
+  .ml-location-line2 {
+    font-size: 14px;
+    color: var(--text-color);
+  }
+
+  .ml-nav-links {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: var(--text-color-80);
+  }
+
+  /* FIX 1: position: relative agregado para que los dropdowns se anclen correctamente */
+  .ml-dropdown-container {
+    position: relative;
+  }
+
+  .ml-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: inherit;
+    text-decoration: none;
+    padding: 4px 0;
+    transition: color 0.2s;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 14px;
+    position: relative;
+    white-space: nowrap;
+  }
+
+  .ml-nav-link:hover {
+    color: var(--text-color);
+  }
+
+  .ml-badge-free {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%) scale(0.75);
+    background-color: #00A650;
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 9999px;
+    text-transform: uppercase;
+  }
+
+  .ml-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 8px;
+    background-color: #333333;
+    color: #ffffff;
+    border-radius: 4px;
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+    padding: 16px 0;
+    max-height: 80vh;
+    overflow-y: auto;
+    width: 240px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.2s ease;
+    z-index: 60;
+  }
+
+  .ml-dropdown-menu.is-active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .ml-dropdown-menu::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 40px;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid #333333;
+  }
+
+  .ml-dropdown-item {
+    display: block;
+    padding: 8px 24px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background-color 0.2s;
+  }
+
+  .ml-dropdown-item:hover {
+    background-color: #2563eb;
+  }
+
+  .ml-user-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: var(--text-color);
+    margin-left: auto;
+  }
+
+  .ml-user-profile {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 0;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: inherit;
+  }
+
+  .ml-user-avatar {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+    background: #f3f4f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ml-user-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .ml-user-name {
+    max-width: 80px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 14px;
+  }
+
+  /* FIX 2: right: 0 en lugar de right: -50px para evitar desbordamiento */
+  .ml-user-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 8px;
+    width: 304px;
+    background-color: #ffffff;
+    border-radius: 4px;
+    box-shadow: 0 10px 25px -5px rgba(0,0,0,0.2);
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.2s ease;
+    z-index: 60;
+  }
+
+  .ml-user-dropdown.is-active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .ml-user-header {
+    padding: 16px;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .ml-user-header-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+
+  .ml-user-header-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #f3f4f6;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ml-user-header-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .ml-user-header-details {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ml-user-header-name {
+    font-weight: 600;
+    color: #111827;
+  }
+
+  .ml-user-header-link {
+    font-size: 12px;
+    color: #2563eb;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+  }
+
+  .ml-user-promo-img {
+    width: 100%;
+    margin-top: 8px;
+    border-radius: 4px;
+  }
+
+  .ml-user-links-container {
+    padding: 8px 0;
+    max-height: 400px;
+    overflow-y: auto;
+  }
+
+  .ml-user-dropdown-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 24px;
+    color: #374151;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background-color 0.2s;
+  }
+
+  .ml-user-dropdown-item:hover {
+    background-color: #f9fafb;
+  }
+
+  .ml-separator {
+    height: 1px;
+    background-color: #f3f4f6;
+    margin: 8px 0;
+  }
+
+  .ml-inline-free-badge {
+    background-color: #00A650;
+    color: #ffffff;
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 9999px;
+    font-weight: 700;
+  }
+
+  .ml-icon-btn {
+    position: relative;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+  }
+
+  .ml-icon-btn svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .ml-cart-count {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background-color: #111827;
+    color: #ffffff;
+    font-size: 10px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+  }
+
+  .ml-chevron {
+    transition: transform 0.2s;
+    width: 14px;
+    height: 14px;
+  }
+
+  .ml-dropdown-container.is-active .ml-chevron {
+    transform: rotate(180deg);
+  }
+</style>
+
+<header class="ml-header-custom"
+        data-section-id="{{ section.id }}"
+        style="--bg-color: {{ section.settings.bg_color }}; --text-color: {{ section.settings.text_color }}; --logo-width: {{ section.settings.logo_width }}px; --text-color-70: {{ section.settings.text_color | color_modify: 'alpha', 0.7 }}; --text-color-80: {{ section.settings.text_color | color_modify: 'alpha', 0.8 }};">
+
+  <div class="ml-header-container">
+
+    {% comment %} Upper Navigation Row {% endcomment %}
+    <div class="ml-header-top">
+
+      {% comment %} Logo {% endcomment %}
+      <a href="{{ routes.root_url }}" class="ml-logo">
+        {% if section.settings.logo != blank %}
+          <img src="{{ section.settings.logo | image_url: width: 300 }}" alt="{{ shop.name }}" loading="lazy" width="{{ section.settings.logo_width }}" height="34">
+        {% else %}
+          {%- # theme-check-disable RemoteAsset -%}
+          <img src="https://storage.googleapis.com/storage.magicpath.ai/user/381829534464507904/assets/3a9a361c-a882-4a22-a1e6-23d126c98fdc.png" alt="Mercado Libre" width="{{ section.settings.logo_width }}" height="34">
+          {%- # theme-check-enable RemoteAsset -%}
+        {% endif %}
+      </a>
+
+      {% comment %} Search Bar {% endcomment %}
+      <div class="ml-search-bar">
+        <form action="{{ routes.search_url }}" method="get" class="ml-search-form" role="search">
+          <input type="hidden" name="options[prefix]" value="last">
+          <input type="text"
+                 name="q"
+                 placeholder="{{ section.settings.search_placeholder }}"
+                 class="ml-search-input"
+                 value="{{ search.terms | escape }}">
+          <div class="ml-search-divider"></div>
+          <button type="submit" class="ml-search-btn" aria-label="Buscar">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          </button>
+        </form>
+      </div>
+
+      {% comment %} Promo Banner {% endcomment %}
+      <div class="ml-promo">
+        {%- capture promo_content -%}
+          {%- if section.settings.promo_banner != blank -%}
+            <img src="{{ section.settings.promo_banner | image_url: height: 80 }}" alt="Promo" loading="lazy" width="200" height="39">
+          {%- else -%}
+            {%- # theme-check-disable RemoteAsset -%}
+            <img src="https://http2.mlstatic.com/D_NQ_848656-MLA107515856691_022026-OO.webp" alt="Promo" loading="lazy" width="200" height="39">
+            {%- # theme-check-enable RemoteAsset -%}
+          {%- endif -%}
+        {%- endcapture -%}
+        {%- if section.settings.promo_link != blank -%}
+          <a href="{{ section.settings.promo_link }}">{{ promo_content }}</a>
+        {%- else -%}
+          {{ promo_content }}
+        {%- endif -%}
+      </div>
+
+    </div>
+
+    {% comment %} Lower Navigation Row {% endcomment %}
+    <div class="ml-header-bottom">
+
+      {% comment %} Location Selector {% endcomment %}
+      {%- comment -%} FIX 3: type="button" para evitar submit accidental {%- endcomment -%}
+      <button type="button" class="ml-location">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+        <div class="ml-location-texts">
+          <span class="ml-location-line1">{{ section.settings.location_line_1 }}</span>
+          <span class="ml-location-line2">{{ section.settings.location_line_2 }}</span>
+        </div>
+      </button>
+
+      {% comment %} Main Nav Links {% endcomment %}
+      <nav class="ml-nav-links">
+
+        {% comment %} Categories Dropdown {% endcomment %}
+        <div class="ml-dropdown-container js-dropdown" data-dropdown="categories">
+          {%- comment -%} FIX 3: type="button" {%- endcomment -%}
+          <button type="button" class="ml-nav-link js-dropdown-toggle">
+            Categorías
+            <svg class="ml-chevron" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+
+          <div class="ml-dropdown-menu js-dropdown-menu">
+            {% if section.settings.category_menu != blank %}
+              {% for link in linklists[section.settings.category_menu].links %}
+                <a href="{{ link.url }}" class="ml-dropdown-item">{{ link.title }}</a>
+              {% endfor %}
+            {% else %}
+              {% comment %} Demo Categories {% endcomment %}
+              <a href="#" class="ml-dropdown-item">Vehículos</a>
+              <a href="#" class="ml-dropdown-item">Supermercado</a>
+              <a href="#" class="ml-dropdown-item">Tecnología</a>
+              <a href="#" class="ml-dropdown-item">Moda</a>
+              <a href="#" class="ml-dropdown-item">Hogar y Muebles</a>
+            {% endif %}
+          </div>
+        </div>
+
+        {% comment %} Block Links {% endcomment %}
+        {% for block in section.blocks %}
+          {% if block.type == 'main_link' %}
+            <a href="{{ block.settings.url | default: '#' }}" class="ml-nav-link" {{ block.shopify_attributes }}>
+              {{ block.settings.label }}
+              {% if block.settings.is_free %}
+                <span class="ml-badge-free">Gratis</span>
+              {% endif %}
+            </a>
+          {% endif %}
+        {% endfor %}
+
+      </nav>
+
+      {% comment %} User Actions {% endcomment %}
+      <div class="ml-user-actions">
+
+        {% comment %} User Profile Dropdown {% endcomment %}
+        <div class="ml-dropdown-container js-dropdown" data-dropdown="user">
+          {%- comment -%} FIX 3: type="button" {%- endcomment -%}
+          <button type="button" class="ml-user-profile js-dropdown-toggle">
+            <div class="ml-user-avatar">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            </div>
+            <span class="ml-user-name">
+              {% if customer %}
+                {{ customer.first_name | default: customer.name }}
+              {% else %}
+                Mi cuenta
+              {% endif %}
+            </span>
+            <svg class="ml-chevron" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+
+          <div class="ml-user-dropdown js-dropdown-menu">
+            <div class="ml-user-header">
+              <div class="ml-user-header-info">
+                <div class="ml-user-header-avatar">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                </div>
+                <div class="ml-user-header-details">
+                  <div class="ml-user-header-name">
+                    {% if customer %}
+                      {{ customer.name }}
+                    {% else %}
+                      Bienvenido
+                    {% endif %}
+                  </div>
+                  <a href="{{ routes.account_url }}" class="ml-user-header-link">
+                    Mi perfil
+                    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 4px; transform: rotate(-90deg);"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                  </a>
+                </div>
+              </div>
+              {%- # theme-check-disable RemoteAsset -%}
+              <img src="https://http2.mlstatic.com/resources/frontend/statics/loyal/partners/meliplus/drawer/pill_drawer_mega_promo_adqui_mlm@3x.png" alt="Promo Plus" class="ml-user-promo-img" width="272" height="44" loading="lazy">
+              {%- # theme-check-enable RemoteAsset -%}
+            </div>
+            <div class="ml-user-links-container">
+              {% for block in section.blocks %}
+                {% if block.type == 'user_link' %}
+                  {% if block.settings.separator %}
+                    <div class="ml-separator"></div>
+                  {% endif %}
+                  <a href="{{ block.settings.url | default: '#' }}" class="ml-user-dropdown-item" {{ block.shopify_attributes }}>
+                    {{ block.settings.label }}
+                    {% if block.settings.is_free %}
+                      <span class="ml-inline-free-badge">GRATIS</span>
+                    {% endif %}
+                  </a>
+                {% endif %}
+              {% endfor %}
+
+              {% if customer %}
+                <div class="ml-separator"></div>
+                <a href="{{ routes.account_logout_url }}" class="ml-user-dropdown-item">Salir</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+
+        {% comment %} Quick Actions {% endcomment %}
+        {% for block in section.blocks %}
+          {% if block.type == 'quick_action' %}
+            <a href="{{ block.settings.url | default: '#' }}" class="ml-nav-link" {{ block.shopify_attributes }}>
+              {{ block.settings.label }}
+            </a>
+          {% endif %}
+        {% endfor %}
+
+        {% comment %} Icons {% endcomment %}
+        <a href="#" class="ml-icon-btn" aria-label="Notificaciones">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+        </a>
+        <a href="{{ routes.cart_url }}" class="ml-icon-btn" aria-label="Carrito" onclick="if(window.innerWidth >= 992 && window.aylCartDrawer) { event.preventDefault(); window.aylCartDrawer.toggle(); }">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+          {% if cart.item_count > 0 %}
+            <span class="ml-cart-count">{{ cart.item_count }}</span>
+          {% endif %}
+        </a>
+
+      </div>
+    </div>
+  </div>
+</header>
+
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // FIX 4: JS scoped al section para evitar conflictos con otras secciones
+    const header = document.querySelector('[data-section-id="{{ section.id }}"]');
+    if (!header) return;
+
+    const dropdowns = header.querySelectorAll('.js-dropdown');
+
+    dropdowns.forEach(dropdown => {
+      const toggle = dropdown.querySelector('.js-dropdown-toggle');
+      const menu = dropdown.querySelector('.js-dropdown-menu');
+
+      if (!toggle || !menu) return;
+
+      toggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+
+        // Cerrar otros dropdowns del mismo header
+        dropdowns.forEach(other => {
+          if (other !== dropdown) {
+            other.classList.remove('is-active');
+            other.querySelector('.js-dropdown-menu').classList.remove('is-active');
+          }
+        });
+
+        // Toggle del dropdown actual
+        const isActive = dropdown.classList.toggle('is-active');
+        menu.classList.toggle('is-active', isActive);
+      });
+    });
+
+    // Cerrar al hacer click fuera del header
+    document.addEventListener('click', (e) => {
+      if (!header.contains(e.target)) {
+        dropdowns.forEach(dropdown => {
+          dropdown.classList.remove('is-active');
+          const menu = dropdown.querySelector('.js-dropdown-menu');
+          if (menu) menu.classList.remove('is-active');
+        });
+      }
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "ML Nav Header",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#FFE600"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#333333"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo Image"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "min": 50,
+      "max": 250,
+      "step": 5,
+      "unit": "px",
+      "label": "Logo Width",
+      "default": 135
+    },
+    {
+      "type": "text",
+      "id": "search_placeholder",
+      "label": "Search Placeholder",
+      "default": "Buscar productos, marcas y más…"
+    },
+    {
+      "type": "image_picker",
+      "id": "promo_banner",
+      "label": "Promo Banner Image"
+    },
+    {
+      "type": "url",
+      "id": "promo_link",
+      "label": "Promo Banner Link"
+    },
+    {
+      "type": "text",
+      "id": "location_line_1",
+      "label": "Location Text Line 1",
+      "default": "Enviar a Abel"
+    },
+    {
+      "type": "text",
+      "id": "location_line_2",
+      "label": "Location Text Line 2",
+      "default": "CP 36750"
+    },
+    {
+      "type": "link_list",
+      "id": "category_menu",
+      "label": "Categories Menu"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "main_link",
+      "name": "Main Nav Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Ofertas"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link"
+        },
+        {
+          "type": "checkbox",
+          "id": "is_free",
+          "label": "Show 'Gratis' badge",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "user_link",
+      "name": "User Drop Menu Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Compras"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link"
+        },
+        {
+          "type": "checkbox",
+          "id": "is_free",
+          "label": "Show 'Gratis' badge",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "separator",
+          "label": "Add Separator Before",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "quick_action",
+      "name": "Quick Action Link",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Mis compras"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "ML Nav Header",
+      "blocks": [
+        { "type": "main_link", "settings": { "label": "Ofertas" } },
+        { "type": "main_link", "settings": { "label": "Historial" } },
+        { "type": "main_link", "settings": { "label": "Supermercado" } },
+        { "type": "main_link", "settings": { "label": "Moda" } },
+        { "type": "main_link", "settings": { "label": "Mercado Play", "is_free": true } },
+        { "type": "main_link", "settings": { "label": "Vender" } },
+        { "type": "quick_action", "settings": { "label": "Mis compras" } },
+        { "type": "quick_action", "settings": { "label": "Favoritos" } },
+        { "type": "user_link", "settings": { "label": "Compras" } },
+        { "type": "user_link", "settings": { "label": "Historial" } },
+        { "type": "user_link", "settings": { "label": "Preguntas" } },
+        { "type": "user_link", "settings": { "label": "Créditos", "separator": true } },
+        { "type": "user_link", "settings": { "label": "Mercado Play", "is_free": true } }
+      ]
+    }
+  ]
+}
+{% endschema %}

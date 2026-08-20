@@ -1,0 +1,94 @@
+{% comment %}
+  Aylesva · Tarjetas con imagen. Un solo patrón para:
+  desarrollos (Global Estates), planes (Care), tipos de préstamo (Recursos),
+  categorías (Direct) y pasos ilustrados (Lanza tu marca).
+{% endcomment %}
+<section class="ay" style="background:{{ section.settings.bg }}">
+  <div class="ay-wrap">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:76px;align-items:end;margin-bottom:56px" class="ay-head">
+      <div>
+        {% if section.settings.eyebrow != blank %}<p class="ay-eyebrow">{{ section.settings.eyebrow }}</p>{% endif %}
+        <h2 class="ay-h2">{{ section.settings.title }}</h2>
+      </div>
+      {% if section.settings.intro != blank %}<p class="ay-lead" style="font-size:16px">{{ section.settings.intro }}</p>{% endif %}
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat({{ section.settings.columns }},1fr);gap:30px" class="ay-cards">
+      {% for block in section.blocks %}
+        <article style="background:#fff;border:var(--ay-hairline);display:flex;flex-direction:column;transition:all .3s ease" class="ay-card-img" {{ block.shopify_attributes }}>
+          <div class="ay-media" style="height:216px;{% if block.settings.image %}background-image:url({{ block.settings.image | image_url: width: 1200 }}){% endif %}">
+            {% if block.settings.tag != blank %}
+              <span style="position:absolute;top:18px;left:18px;background:var(--ay-gold);color:var(--ay-ink-800);font-family:var(--ay-font-mono);font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;padding:7px 12px">{{ block.settings.tag }}</span>
+            {% endif %}
+          </div>
+          <div style="padding:34px 32px 36px;display:flex;flex-direction:column;gap:15px;flex:1">
+            {% if block.settings.eyebrow != blank %}
+              <p style="font-family:var(--ay-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ay-gold-text);margin:0">{{ block.settings.eyebrow }}</p>
+            {% endif %}
+            <h3 class="ay-h3" style="font-size:23px">{{ block.settings.title }}</h3>
+            <p class="ay-body">{{ block.settings.text }}</p>
+
+            {% if block.settings.bullets != blank %}
+              <ul style="list-style:none;margin:8px 0 0;padding:22px 0 0;border-top:var(--ay-hairline);display:grid;gap:12px">
+                {% assign items = block.settings.bullets | newline_to_br | split: '<br />' %}
+                {% for item in items %}
+                  {% if item != blank %}
+                    <li style="display:flex;gap:13px;align-items:flex-start;font-size:15px;line-height:1.5;color:rgba(15,23,42,.78)">
+                      <span style="color:var(--ay-gold);flex:0 0 auto">&#9672;</span><span>{{ item | strip }}</span>
+                    </li>
+                  {% endif %}
+                {% endfor %}
+              </ul>
+            {% endif %}
+
+            {% if block.settings.price != blank %}
+              <div style="display:flex;align-items:baseline;gap:10px;padding-top:20px;margin-top:auto;border-top:var(--ay-hairline)">
+                <span style="font-family:var(--ay-font-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(15,23,42,.45)">Desde solo</span>
+                <span style="font-family:var(--ay-font-display);font-size:28px;font-weight:400;letter-spacing:-.02em">{{ block.settings.price }}</span>
+                <span style="font-size:13px;color:rgba(15,23,42,.55)">{{ block.settings.price_suffix }}</span>
+              </div>
+            {% endif %}
+
+            {% if block.settings.cta_label != blank %}
+              <a class="ay-link" style="align-self:start;margin-top:auto" href="{{ block.settings.cta_link }}">{{ block.settings.cta_label }} &rarr;</a>
+            {% endif %}
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .ay-card-img:hover{transform:translateY(-3px);box-shadow:0 28px 56px -32px rgba(2,6,23,.32)}
+  @media (max-width:1024px){ .ay-cards{grid-template-columns:1fr 1fr !important} .ay-head{grid-template-columns:1fr !important;gap:24px !important} }
+  @media (max-width:640px){ .ay-cards{grid-template-columns:1fr !important} }
+</style>
+
+{% schema %}
+{
+  "name": "Aylesva · Tarjetas",
+  "settings": [
+    { "type": "color", "id": "bg", "label": "Fondo", "default": "#FAFAF8" },
+    { "type": "range", "id": "columns", "label": "Columnas", "min": 2, "max": 4, "step": 1, "default": 3 },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+    { "type": "textarea", "id": "title", "label": "Titular" },
+    { "type": "textarea", "id": "intro", "label": "Texto de entrada" }
+  ],
+  "blocks": [
+    { "type": "card", "name": "Tarjeta", "limit": 8, "settings": [
+      { "type": "image_picker", "id": "image", "label": "Imagen (1200px)" },
+      { "type": "text", "id": "tag", "label": "Etiqueta sobre la imagen (Preventa, Popular…)" },
+      { "type": "text", "id": "eyebrow", "label": "Eyebrow (ubicación, categoría)" },
+      { "type": "text", "id": "title", "label": "Título" },
+      { "type": "textarea", "id": "text", "label": "Descripción" },
+      { "type": "textarea", "id": "bullets", "label": "Viñetas (una por línea)" },
+      { "type": "text", "id": "price", "label": "Precio (opcional)" },
+      { "type": "text", "id": "price_suffix", "label": "Sufijo de precio", "default": "/mes" },
+      { "type": "text", "id": "cta_label", "label": "Enlace de acción", "default": "Solicitar información" },
+      { "type": "url", "id": "cta_link", "label": "Destino" }
+    ]}
+  ],
+  "presets": [{ "name": "Aylesva · Tarjetas" }]
+}
+{% endschema %}

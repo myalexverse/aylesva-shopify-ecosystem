@@ -1,0 +1,655 @@
+<!-- Aylesva Ofertas Hero - Premium Landing Header -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+  /* Dynamic CSS variable injection for overlay opacity */
+  #AylOfertasHero-{{ section.id }} {
+    --overlay-opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};
+  }
+
+  /* Responsive utility classes */
+  .ayl-desktop-only {
+    display: block !important;
+  }
+  .ayl-mobile-only {
+    display: none !important;
+  }
+  @media (max-width: 767px) {
+    .ayl-desktop-only {
+      display: none !important;
+    }
+    .ayl-mobile-only {
+      display: block !important;
+    }
+  }
+
+  /* Main Hero Wrapper */
+  .ayl-ofertas-hero {
+    position: relative;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    min-height: 75vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: #050505;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  /* Background media container */
+  .ayl-ofertas-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+  .ayl-ofertas-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: right center;
+  }
+  .ayl-fallback-bg {
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 75% 30%, #1c1c1c 0%, #030303 100%);
+  }
+
+  /* Customizable linear dark mask overlay for left readability */
+  .ayl-ofertas-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, 
+      rgba(0, 0, 0, calc(var(--overlay-opacity) * 1.0)) 0%, 
+      rgba(0, 0, 0, calc(var(--overlay-opacity) * 0.9)) 35%, 
+      rgba(0, 0, 0, calc(var(--overlay-opacity) * 0.55)) 65%, 
+      rgba(0, 0, 0, 0) 100%
+    );
+    z-index: 2;
+  }
+
+  /* Main text columns and alignment */
+  .ayl-ofertas-container {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 60px 8%;
+  }
+  .ayl-ofertas-content {
+    max-width: 650px;
+    text-align: left;
+  }
+
+  /* Subtitle text: letters spaced elegantly - larger */
+  .ayl-ofertas-subtitle {
+    font-size: clamp(1.1rem, 2vw, 1.4rem) !important;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: #C5A47E !important;
+    font-weight: 700 !important;
+    margin-bottom: 18px;
+    animation: aylFadeIn 0.8s ease-out forwards;
+  }
+
+  /* Headline "HASTA 70% OFF" - Extra large with bright white override */
+  .ayl-ofertas-title {
+    font-size: clamp(3.8rem, 8vw, 6.2rem) !important;
+    font-weight: 800 !important;
+    line-height: 1.05 !important;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    letter-spacing: -2px !important;
+    color: #ffffff !important; /* Forced bright white HASTA */
+    animation: aylSlideUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  .ayl-ofertas-title .gold-text {
+    display: block;
+    color: #C5A47E !important;
+    font-size: clamp(4.8rem, 11vw, 8.8rem) !important;
+    letter-spacing: -4px !important;
+    line-height: 0.9 !important;
+    margin-top: 8px;
+    font-weight: 900 !important;
+  }
+
+  /* Subtext description - larger & bolder */
+  .ayl-ofertas-subtext {
+    font-size: clamp(1.2rem, 2.2vw, 1.55rem) !important;
+    font-weight: 400 !important;
+    line-height: 1.45 !important;
+    color: rgba(255, 255, 255, 0.95) !important;
+    margin-bottom: 40px;
+    max-width: 580px;
+    animation: aylFadeIn 1.1s ease-out forwards;
+  }
+
+  /* Countdown module - larger */
+  .ayl-countdown-wrapper {
+    margin-bottom: 45px;
+    animation: aylFadeIn 1.3s ease-out forwards;
+  }
+  .ayl-countdown-label {
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.7) !important;
+    margin-bottom: 15px;
+  }
+  .ayl-countdown-container {
+    display: flex;
+    gap: 15px;
+  }
+  .ayl-countdown-box {
+    background: #0f0f0f !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    border-radius: 8px !important;
+    min-width: 90px;
+    padding: 16px 12px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+  .ayl-countdown-box:hover {
+    transform: translateY(-3px);
+    border-color: rgba(197, 164, 126, 0.6) !important;
+  }
+  .ayl-countdown-num {
+    font-size: clamp(1.8rem, 3.5vw, 2.4rem) !important;
+    font-weight: 800 !important;
+    color: #ffffff !important;
+    line-height: 1;
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+  }
+  .ayl-countdown-unit {
+    font-size: 9px !important;
+    font-weight: 700 !important;
+    letter-spacing: 1.5px;
+    color: #C5A47E !important;
+    text-transform: uppercase;
+  }
+
+  /* Double button layout - larger & boldest */
+  .ayl-hero-buttons {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    animation: aylFadeIn 1.5s ease-out forwards;
+  }
+  .ayl-hero-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 45px !important;
+    font-size: 0.95rem !important;
+    font-weight: 800 !important;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    cursor: pointer;
+  }
+  .ayl-hero-btn-solid {
+    background: #C5A47E;
+    color: #ffffff;
+    border: 1px solid #C5A47E;
+  }
+  .ayl-hero-btn-solid:hover {
+    background: #b2916c;
+    border-color: #b2916c;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(197, 164, 126, 0.35);
+  }
+  .ayl-hero-btn-outline {
+    background: transparent;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+  }
+  .ayl-hero-btn-outline:hover {
+    background: #ffffff;
+    color: #000000;
+    border-color: #ffffff;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(255, 255, 255, 0.15);
+  }
+
+  /* Curved dynamic stamp rotating infinitely */
+  .ayl-badge-circle {
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 55%;
+    transform: translateY(-50%);
+    z-index: 10;
+    animation: ayl-spin 25s linear infinite;
+    pointer-events: none;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+  }
+
+  @keyframes ayl-spin {
+    from { transform: translateY(-50%) rotate(0deg); }
+    to { transform: translateY(-50%) rotate(360deg); }
+  }
+
+  /* Micro animations */
+  @keyframes aylFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes aylSlideUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Responsive screen sizing adaptations */
+  @media (max-width: 991px) {
+    .ayl-badge-circle {
+      left: 50%;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .ayl-ofertas-hero {
+      min-height: 85vh;
+      align-items: flex-end;
+    }
+    .ayl-ofertas-bg img {
+      object-position: 70% center;
+    }
+    .ayl-ofertas-overlay {
+      background: linear-gradient(to top, 
+        #000000 0%, 
+        rgba(0, 0, 0, calc(var(--overlay-opacity) * 1.0)) 50%, 
+        rgba(0, 0, 0, calc(var(--overlay-opacity) * 0.5)) 100%
+      );
+    }
+    .ayl-ofertas-container {
+      padding: 40px 20px 50px 20px;
+    }
+    .ayl-ofertas-title {
+      letter-spacing: -1px !important;
+      margin-bottom: 16px;
+    }
+    .ayl-ofertas-title .gold-text {
+      letter-spacing: -2px !important;
+    }
+    .ayl-countdown-container {
+      gap: 8px;
+    }
+    .ayl-countdown-box {
+      min-width: 60px;
+      padding: 10px 6px;
+    }
+    .ayl-countdown-num {
+      font-size: 1.35rem !important;
+    }
+    .ayl-countdown-unit {
+      font-size: 8px !important;
+    }
+    .ayl-hero-buttons {
+      gap: 12px;
+    }
+    .ayl-hero-btn {
+      width: 100%;
+      padding: 14px 20px !important;
+      font-size: 0.8rem !important;
+    }
+    .ayl-badge-circle {
+      width: 85px;
+      height: 85px;
+      top: 30px;
+      right: 20px;
+      left: auto;
+      transform: none;
+      animation: ayl-spin-mobile 20s linear infinite;
+    }
+  }
+  
+  @keyframes ayl-spin-mobile {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+</style>
+
+<div class="ayl-ofertas-hero" id="AylOfertasHero-{{ section.id }}">
+  <!-- Background Image picker container -->
+  <div class="ayl-ofertas-bg">
+    {% if section.settings.image_desktop != blank %}
+      <img class="ayl-desktop-only" src="{{ section.settings.image_desktop | img_url: '1920x' }}" alt="{{ section.settings.title_white | escape }}" loading="eager">
+    {% else %}
+      <div class="ayl-desktop-only ayl-fallback-bg"></div>
+    {% endif %}
+    
+    {% if section.settings.image_mobile != blank %}
+      <img class="ayl-mobile-only" src="{{ section.settings.image_mobile | img_url: '800x' }}" alt="{{ section.settings.title_white | escape }}" loading="eager">
+    {% else %}
+      {% if section.settings.image_desktop != blank %}
+        <img class="ayl-mobile-only" src="{{ section.settings.image_desktop | img_url: '800x' }}" alt="{{ section.settings.title_white | escape }}" loading="eager">
+      {% else %}
+        <div class="ayl-mobile-only ayl-fallback-bg"></div>
+      {% endif %}
+    {% endif %}
+  </div>
+
+  <!-- Readability overlay -->
+  <div class="ayl-ofertas-overlay"></div>
+
+  <!-- Content elements -->
+  <div class="ayl-ofertas-container">
+    <div class="ayl-ofertas-content">
+      {% if section.settings.pretitle != blank %}
+        <div class="ayl-ofertas-subtitle">{{ section.settings.pretitle }}</div>
+      {% endif %}
+
+      <h1 class="ayl-ofertas-title">
+        {{ section.settings.title_white }}
+        {% if section.settings.title_gold != blank %}
+          <span class="gold-text">{{ section.settings.title_gold }}</span>
+        {% endif %}
+      </h1>
+
+      {% if section.settings.subtext != blank %}
+        <p class="ayl-ofertas-subtext">{{ section.settings.subtext }}</p>
+      {% endif %}
+
+      <!-- Countdown module -->
+      <div class="ayl-countdown-wrapper">
+        {% if section.settings.countdown_label != blank %}
+          <div class="ayl-countdown-label">{{ section.settings.countdown_label }}</div>
+        {% endif %}
+        
+        <div class="ayl-countdown-container">
+          <div class="ayl-countdown-box">
+            <span class="ayl-countdown-num" id="ayl-days-{{ section.id }}">00</span>
+            <span class="ayl-countdown-unit">Días</span>
+          </div>
+          <div class="ayl-countdown-box">
+            <span class="ayl-countdown-num" id="ayl-hours-{{ section.id }}">00</span>
+            <span class="ayl-countdown-unit">Horas</span>
+          </div>
+          <div class="ayl-countdown-box">
+            <span class="ayl-countdown-num" id="ayl-minutes-{{ section.id }}">00</span>
+            <span class="ayl-countdown-unit">Min</span>
+          </div>
+          <div class="ayl-countdown-box">
+            <span class="ayl-countdown-num" id="ayl-seconds-{{ section.id }}">00</span>
+            <span class="ayl-countdown-unit">Seg</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="ayl-hero-buttons">
+        {% if section.settings.btn1_label != blank %}
+          <a href="{{ section.settings.btn1_link | default: '#' }}" class="ayl-hero-btn ayl-hero-btn-solid">
+            {{ section.settings.btn1_label }}
+          </a>
+        {% endif %}
+        
+        {% if section.settings.btn2_label != blank %}
+          <a href="{{ section.settings.btn2_link | default: '#' }}" class="ayl-hero-btn ayl-hero-btn-outline">
+            {{ section.settings.btn2_label }}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <!-- Sello / Seal Badge -->
+  {% if section.settings.show_badge %}
+    <div class="ayl-badge-circle">
+      <svg viewBox="0 0 100 100" width="100%" height="100%">
+        <defs>
+          <path id="textPathTop-{{ section.id }}" d="M 15,50 A 35,35 0 0,1 85,50" fill="none" />
+          <path id="textPathBottom-{{ section.id }}" d="M 85,50 A 35,35 0 0,1 15,50" fill="none" />
+        </defs>
+        <!-- Circle Background -->
+        <circle cx="50" cy="50" r="43" fill="{{ section.settings.badge_bg }}" />
+        
+        <!-- Dashed Outer line -->
+        <circle cx="50" cy="50" r="46.5" fill="none" stroke="{{ section.settings.badge_bg }}" stroke-width="1.2" stroke-dasharray="2, 2" />
+        
+        <!-- Curved Texts inside the medallion -->
+        <text fill="{{ section.settings.badge_color }}" font-family="'Inter', sans-serif" font-size="7.8" font-weight="800" letter-spacing="1.8px">
+          <textPath href="#textPathTop-{{ section.id }}" startOffset="50%" text-anchor="middle">{{ section.settings.badge_text_top }}</textPath>
+        </text>
+        
+        <text fill="{{ section.settings.badge_color }}" font-family="'Inter', sans-serif" font-size="7.8" font-weight="800" letter-spacing="1.8px">
+          <textPath href="#textPathBottom-{{ section.id }}" startOffset="50%" text-anchor="middle">{{ section.settings.badge_text_bottom }}</textPath>
+        </text>
+        
+        <!-- Lightning Vector icon -->
+        <g transform="translate(42, 35) scale(0.68)">
+          <path d="M12,2 L2,13.5 L9.5,13.5 L7,22 L17,10.5 L9.5,10.5 L12,2 Z" fill="{{ section.settings.badge_color }}" />
+        </g>
+      </svg>
+    </div>
+  {% endif %}
+</div>
+
+<script>
+  (function() {
+    const sId = "{{ section.id }}";
+    const targetDateStr = "{{ section.settings.countdown_date }}";
+    
+    const daysEl = document.getElementById('ayl-days-' + sId);
+    const hoursEl = document.getElementById('ayl-hours-' + sId);
+    const minutesEl = document.getElementById('ayl-minutes-' + sId);
+    const secondsEl = document.getElementById('ayl-seconds-' + sId);
+
+    // Dynamic smart fallback: If the date is invalid or has already passed,
+    // we establish a target of 5 days starting from the user's local moment
+    let targetTime = new Date(targetDateStr).getTime();
+    const currentTime = new Date().getTime();
+
+    if (isNaN(targetTime) || targetTime <= currentTime) {
+      const fallbackDays = 5;
+      const targetDate = new Date();
+      targetDate.setDate(targetDate.getDate() + fallbackDays);
+      targetTime = targetDate.getTime();
+      console.log("Aylesva Ofertas: Using dynamic 5-day fallback countdown target.");
+    }
+
+    function calculateTime() {
+      const now = new Date().getTime();
+      const distance = targetTime - now;
+
+      if (distance < 0) {
+        if (daysEl) daysEl.innerText = "00";
+        if (hoursEl) hoursEl.innerText = "00";
+        if (minutesEl) minutesEl.innerText = "00";
+        if (secondsEl) secondsEl.innerText = "00";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      if (daysEl) daysEl.innerText = days.toString().padStart(2, '0');
+      if (hoursEl) hoursEl.innerText = hours.toString().padStart(2, '0');
+      if (minutesEl) minutesEl.innerText = minutes.toString().padStart(2, '0');
+      if (secondsEl) secondsEl.innerText = seconds.toString().padStart(2, '0');
+    }
+
+    calculateTime();
+    setInterval(calculateTime, 1000);
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Aylesva Ofertas Hero",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Imágenes de Fondo"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_desktop",
+      "label": "Imagen de Escritorio",
+      "info": "Se recomienda una imagen horizontal de alta resolución (1920x800px) con el sujeto hacia la derecha."
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Imagen de Móvil",
+      "info": "Si se deja en blanco, se usará la de escritorio."
+    },
+    {
+      "type": "header",
+      "content": "Estilo del Filtro Oscuro"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Opacidad del Filtro Negro (%)",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 60,
+      "info": "Controla la intensidad del degradado negro a la izquierda para asegurar legibilidad. 0% es totalmente transparente, 100% es negro sólido."
+    },
+    {
+      "type": "header",
+      "content": "Textos Principales"
+    },
+    {
+      "type": "text",
+      "id": "pretitle",
+      "label": "Subtítulo (OFERTAS)",
+      "default": "OFERTAS"
+    },
+    {
+      "type": "text",
+      "id": "title_white",
+      "label": "Título Línea 1 (Blanco)",
+      "default": "HASTA"
+    },
+    {
+      "type": "text",
+      "id": "title_gold",
+      "label": "Título Línea 2 (Dorado)",
+      "default": "70% OFF"
+    },
+    {
+      "type": "textarea",
+      "id": "subtext",
+      "label": "Subtexto Descriptivo",
+      "default": "Tus marcas favoritas a precios increíbles"
+    },
+    {
+      "type": "header",
+      "content": "Temporizador"
+    },
+    {
+      "type": "text",
+      "id": "countdown_label",
+      "label": "Etiqueta del Temporizador",
+      "default": "Las ofertas terminan en:"
+    },
+    {
+      "type": "text",
+      "id": "countdown_date",
+      "label": "Fecha Límite (ISO 8601)",
+      "default": "2026-12-31T23:59:59",
+      "info": "Formato: AAAA-MM-DDTHH:MM:SS (ejemplo: 2026-06-30T18:00:00). Si la fecha ya pasó, se iniciará automáticamente un contador de demostración de 5 días."
+    },
+    {
+      "type": "header",
+      "content": "Botón 1 (Dorado)"
+    },
+    {
+      "type": "text",
+      "id": "btn1_label",
+      "label": "Texto Botón 1",
+      "default": "COMPRAR OFERTAS"
+    },
+    {
+      "type": "url",
+      "id": "btn1_link",
+      "label": "Enlace Botón 1"
+    },
+    {
+      "type": "header",
+      "content": "Botón 2 (Delineado)"
+    },
+    {
+      "type": "text",
+      "id": "btn2_label",
+      "label": "Texto Botón 2",
+      "default": "VER TODO"
+    },
+    {
+      "type": "url",
+      "id": "btn2_link",
+      "label": "Enlace Botón 2"
+    },
+    {
+      "type": "header",
+      "content": "Sello ÚLTIMAS PIEZAS"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_badge",
+      "label": "Mostrar Sello",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "badge_text_top",
+      "label": "Texto Superior del Sello",
+      "default": "ÚLTIMAS"
+    },
+    {
+      "type": "text",
+      "id": "badge_text_bottom",
+      "label": "Texto Inferior del Sello",
+      "default": "PIEZAS"
+    },
+    {
+      "type": "color",
+      "id": "badge_bg",
+      "label": "Color de Fondo del Sello",
+      "default": "#C5A47E"
+    },
+    {
+      "type": "color",
+      "id": "badge_color",
+      "label": "Color del Texto e Icono del Sello",
+      "default": "#000000"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Aylesva Ofertas Hero"
+    }
+  ]
+}
+{% endschema %}

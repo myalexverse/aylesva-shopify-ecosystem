@@ -1,0 +1,395 @@
+<div {% if settings.enable_animation != blank %} data-aos="fade-up" {% endif %}  class="page-width blog_latest_new_home" data-section-id="{{ section.id }}" data-section-type="blog_latest_new_home-section">
+  <div class="container">
+    <div class="blogs">
+      {% if section.settings.title != blank %}
+      <header class="section-header">
+        <h2 class="tt-title">{{ section.settings.title | escape }}</h2>
+      </header>
+      {%- assign blog = blogs[section.settings.blog] -%}
+
+      {% unless blog.articles_count == 0 or blog.empty? %}
+      <div class="grid grid--blog blog-grid-wrapper {{ section.settings.blog_design }}">
+        <div class="row">
+          <div id="blog_slider" class="grid-blog-slider owl-carousel owl-theme">  
+            {% for article in blog.articles limit: section.settings.post_limit %}
+            <div class="grid__item medium-up--one-third">
+              <div class="article__grid__inner tt-blog-content">
+                {% if section.settings.blog_design == 'design_3' %}
+                {% if article.image %}
+                <div class="ttblog_image_holder blog_image_holder">
+                  <a href="{{ article.url }}" class="article__grid-image">
+                    <img loading="lazy" height="auto" width="370" id="{{ img_id }}"
+                         class="article__grid-image lazyload"
+                         src="{{ article.image | img_url: '600x800' }}"
+                         alt="{{ article.image.alt | escape }}">
+                  </a>
+
+                </div>
+                {% else %}
+                <img loading="lazy" src="{{ 'no-image.gif' | img_url: '600x800' }}"/>
+                {% endif %} 	       
+                <div class="blog-content-wrap col-xs-12">
+                  <div class="article__grid-meta{% if article.image %} article__grid-meta--has-image{% endif %}">
+                    {% if section.settings.blog_show_date %}
+                    <span class="article__date left">
+                      <i class="mdi mdi-calendar-blank" aria-hidden="true"></i>
+                      {{ article.published_at | time_tag: format: 'month_day_year' }}
+                    </span>
+                    {% endif %}
+                    {% if section.settings.blog_design == 'design_2' or section.settings.blog_design == 'design_3' %}
+
+                    {% endif %}
+                    <h4 class="article__title">
+                      <a href="{{ article.url }}">{{ article.title }}</a>
+                    </h4>
+
+                    <div class="rte article__grid-excerpt">
+                      {% if article.excerpt.size > 0 %}{{ article.excerpt }}{% else %}{{ article.content | strip_html | truncate: 50 }}{% endif %}
+                    </div>
+
+                    {% if blog.comments_enabled? %}
+                    {% assign number_of_comments = article.comments_count %}     
+                    <span class="article__comment right">                    
+                      <a href="{{ article.url }}#comments">
+                        <i class="mdi mdi-comment-multiple-outline" aria-hidden="true"></i>
+                        {{ number_of_comments}}
+
+                      </a>
+
+                    </span>
+                    {% endif %}
+                    <div class="list--inline article__meta-buttons">
+                      <a href="{{ article.url }}" class="read-more">{{ 'blogs.article.read_more' | t }}</a>
+                    </div>
+                  </div>
+                </div>
+
+
+                {% else %}
+
+                {% if article.image %}
+                <div class="ttblog_image_holder blog_image_holder">
+                  <a href="{{ article.url }}" class="article__grid-image">
+                    <img loading="lazy" height="auto" width="370" id="{{ img_id }}"
+                         class="article__grid-image lazyload"
+                         src="{{ article.image | img_url: '600x800' }}"
+                         alt="{{ article.image.alt | escape }}">
+                  </a>
+
+                </div>
+                {% else %}
+                <img loading="lazy" src="{{ 'no-image.gif' | img_url: '600x800' }}"/>
+                {% endif %}
+                <div class="blog-content-wrap col-xs-12">
+                  <div class="article__grid-meta{% if article.image %} article__grid-meta--has-image{% endif %}">
+                    {% if section.settings.blog_show_date %}
+                    <span class="article__date left">
+                      <i class="mdi mdi-calendar-blank" aria-hidden="true"></i>
+                      <span class="date">{{ article.published_at | date: '%d' }}</span>
+                      <span class="month">{{ article.published_at | date: '%b' }},</span>
+                      <span class="year">{{ article.published_at | date: '%Y' }}</span>
+                    </span>
+                    {% endif %}
+                    {% if section.settings.blog_design == 'design_2' or section.settings.blog_design == 'design_3' %}
+                    {% if blog.comments_enabled? %}
+                    <span class="article__comment right">                    
+                      <a href="{{ article.url }}#comments">
+                        <i class="mdi mdi-comment-multiple" aria-hidden="true"></i>
+                        {{ 'blogs.comments.with_count' | t: count: article.comments_count }}
+                      </a>
+                    </span>
+                    {% endif %}
+                    {% endif %}
+                    <h4 class="article__title">
+                      <a href="{{ article.url }}">{{ article.title }}</a>
+                    </h4>
+
+                    <div class="rte article__grid-excerpt">
+                      {% if article.excerpt.size > 0 %}{{ article.excerpt }}{% else %}{{ article.content | strip_html | truncate: 50 }}{% endif %}
+                    </div>
+
+
+                    <div class="list--inline article__meta-buttons">
+                      <a href="{{ article.url }}" class="read-more">{{ 'blogs.article.read_more' | t }}</a>
+                    </div>
+                  </div>
+                </div>
+
+
+                {% assign cnt = cnt | plus: 1 %}
+                {% else %}
+                {% if article.image %}
+                <div class="ttblog_image_holder blog_image_holder">
+                  <a href="{{ article.url }}" class="article__grid-image">
+                    <img loading="lazy" height="auto" width="370" id="{{ img_id }}"
+                         class="article__grid-image lazyload"
+                         src="{{ article.image | img_url: '600x800' }}"
+                         alt="{{ article.image.alt | escape }}">
+                  </a>
+
+                </div>
+                {% else %}
+                <img loading="lazy" src="{{ 'no-image.gif' | img_url: '600x800' }}"/>
+                {% endif %}
+                <div class="blog-content-wrap col-xs-12">
+                  <div class="article__grid-meta{% if article.image %} article__grid-meta--has-image{% endif %}">
+                    {% if section.settings.blog_show_date %}
+                    <span class="article__date left">
+                      <i class="mdi mdi-calendar-blank" aria-hidden="true"></i>
+                      {{ article.published_at | time_tag: format: 'month_day_year' }}
+                    </span>
+                    {% endif %}
+                    {% if section.settings.blog_design == 'design_2' or section.settings.blog_design == 'design_3' %}
+                    {% if blog.comments_enabled? %}
+                    <span class="article__comment right">                    
+                      <a href="{{ article.url }}#comments">
+                        <i class="mdi mdi-comment-multiple" aria-hidden="true"></i>
+                        {{ 'blogs.comments.with_count' | t: count: article.comments_count }}
+                      </a>
+                    </span>
+                    {% endif %}
+                    {% endif %}
+                    <h4 class="article__title">
+                      <a href="{{ article.url }}">{{ article.title }}</a>
+                    </h4>
+
+                    <div class="rte article__grid-excerpt">
+                      {% if article.excerpt.size > 0 %}{{ article.excerpt }}{% else %}{{ article.content | strip_html | truncate: 50 }}{% endif %}
+                    </div>
+
+                    <div class="list--inline article__meta-buttons">
+                      <a href="{{ article.url }}" class="read-more">{{ 'blogs.article.read_more' | t }}</a>
+                    </div>
+                  </div>
+                </div>
+                {% endif %}
+              </div>
+            </div>
+
+            {% endfor %}
+          </div>
+        </div>
+        <div class="customNavigation">
+          <div class="navigation_wrap">
+            <a class="mdi blog_prev prev">{{ 'general.slider.prev' | t }}</a>
+            <a class="mdi blog_next next">{{ 'general.slider.next' | t }}</a>
+          </div>
+        </div>
+      </div>
+      {% else %}
+      <div class="grid grid--uniform grid--blog">
+        <div id="blog_slider" class="grid-blog-slider owl-carousel owl-theme">
+          {% for i in (1..section.settings.post_limit) %}
+          <div class="grid__item medium-up--one-third">
+            <div class="article__grid-meta">  
+              <img loading="lazy" src="{{ 'no-image.gif' | img_url: '600x800' }}"/>
+              <h4 class="article__title">
+                <a href="#">{{ 'home_page.onboarding.blog_title' | t }}</a>
+              </h4>
+              {% if section.settings.blog_show_author %}
+              <span class="article__author">{{ 'home_page.onboarding.blog_author' | t }}</span>
+              {% endif %}
+              <div class="rte article__grid-excerpt">{{ 'home_page.onboarding.blog_excerpt' | t | strip_html | truncate: 150}}</div>
+              <div class="list--inline article__meta-buttons">
+                <a href="{{ article.url }}" class="read-more">{{ 'blogs.article.read_more' | t }}</a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endunless %}
+
+      {% endif %}
+
+      {% if section.settings.show_view_all %}
+      <div class="text-center">
+        <a href="{{ blog.url }}" class="btn">
+          {{ 'blogs.article.view_all' | t }}
+        </a>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+<script>
+    $(document).ready(function() {
+    var blogowlrtl = $("body.rtl .grid-blog-slider");
+  $("body.rtl .grid-blog-slider").owlCarousel({
+    items : {{section.settings.product_col_desktop_pro}}, //10 items above 1000px browser width
+    loop: false,
+    nav: true,  
+    rtl: true, 
+    dots: false,
+    autoplayHoverPause: true,
+    responsive: {
+      100: {
+        items: 1
+      },
+            320: {
+        items: {{section.settings.product_col_mobile_pro}}
+      },
+      543: {
+        items: 2
+      },
+      992: {
+        items: 3
+      },
+      1201: {
+        items: {{section.settings.product_col_desktop_pro}}
+      }
+    }
+  });
+
+  var blogowl = $("body:not(.rtl) .grid-blog-slider");
+  $("body:not(.rtl) .grid-blog-slider").owlCarousel({
+    items : {{section.settings.product_col_desktop_pro}} , //10 items above 1000px browser width
+    loop: false,
+    nav: true,  
+    rtl: false,  
+    dots: false,
+    autoplayHoverPause: true,
+    responsive: {
+      100: {
+        items: 1
+      },
+            320: {
+        items: {{section.settings.product_col_mobile_pro}}
+      },
+      543: {
+        items: 2
+      },
+      992: {
+        items: 3
+      },
+      1201: {
+        items: {{section.settings.product_col_desktop_pro}}
+      }
+    }
+  });
+  $('.grid--blog').each(function () { 
+    if($(this).find('.owl-nav').hasClass('disabled')){
+      $(this).find('.customNavigation').hide();
+    }else{
+      $(this).find('.customNavigation').show();
+    }
+  });
+  $(".blog_next").click(function(){
+    $(".grid-blog-slider").trigger('next.owl');
+  });
+  $(".blog_prev").click(function(){
+    $(".grid-blog-slider").trigger('prev.owl');
+  });
+});
+</script>
+
+
+{% schema %}
+{
+"name": "Blog posts",
+"class": "index-section",
+"settings": [
+
+
+            {
+"type": "range",
+"id": "product_col_desktop_pro",
+"min": 2,
+"max": 5,
+"step": 1,
+"label": "Number of columns on Desktop",
+"default": 4
+},
+
+
+{
+"type": "range",
+"id": "product_col_mobile_pro",
+"min": 1,
+"max": 3,
+"step": 1,
+"label": "Number of columns on Mobile",
+"default": 1
+},
+
+  
+{
+"type": "text",
+"id": "title",
+"label": "Heading",
+"default": "Blog posts"
+},
+{
+"id": "blog",
+"type": "blog",
+"label": "Blog"
+},
+{
+"type": "select",
+"id": "blog_design",
+"label": "Select Blog Design",
+"default": "design_1",
+"options": [
+{
+"value": "design_1",
+"label": "Design 1"
+},
+{
+"value": "design_2",
+"label": "Design 2"
+},
+{
+"value": "design_3",
+"label": "Design 3"
+}
+]
+},
+{
+"type": "select",
+"id": "post_limit",
+"label": "Posts",
+"default": "3",
+"options": [
+{
+"value": "3",
+"label": "3"
+},
+{
+"value": "6",
+"label": "6"
+},
+{
+"value": "9",
+"label": "9"
+},
+{
+"value": "12",
+"label": "12"
+}
+]
+},
+{
+"type": "checkbox",
+"id": "blog_show_date",
+"label": "Show date",
+"default": true
+},
+{
+"type": "checkbox",
+"id": "show_view_all",
+"label": "Show 'View all' button",
+"default": false
+}
+],
+"presets": [
+{
+"name": "Blog posts",
+"category": "Blog",
+"settings": {
+"blog": "News",
+"post_limit": "3"
+}
+}
+]
+}
+{% endschema %}

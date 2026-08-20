@@ -1,0 +1,206 @@
+/* 
+  Aylesva Amazon Premium UI - PRO DESKTOP & MOBILE
+  Inspirado en los patrones de conversión de Amazon
+*/
+
+:root {
+  --amz-yellow: #FFD814;
+  --amz-yellow-hover: #F7CA00;
+  --amz-orange: #FFA41C;
+  --amz-orange-hover: #FA8900;
+  --amz-link: #007185;
+  --amz-text: #0F1111;
+  --amz-text-muted: #565959;
+  --amz-success: #007600;
+  --amz-border: #D5D9D9;
+  --amz-bg-alt: #F0F2F2;
+}
+
+.ayl-amazon-product-container {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--amz-text);
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 15px;
+}
+
+/* 1. SECCIÓN IDENTIDAD Y GALERÍA */
+.ayl-amz-identity .ayl-amz-brand {
+  color: var(--amz-link);
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.ayl-amz-identity h1 {
+  font-size: 18px !important;
+  font-weight: 500 !important;
+  line-height: 24px;
+  margin: 5px 0 10px 0;
+}
+
+.ayl-amz-ratings {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 15px;
+}
+
+.ayl-amz-stars { color: #f90; font-size: 14px; }
+.ayl-amz-rating-count { color: var(--amz-link); font-size: 13px; }
+
+/* GALERÍA MÓVIL */
+.ayl-amz-gallery {
+  position: relative;
+  margin-bottom: 25px;
+}
+
+.ayl-amz-main-slider {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: #fff;
+}
+
+.ayl-amz-main-slider img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Dots personalizados Amazon */
+.slick-dots {
+  bottom: -20px !important;
+}
+.slick-dots li button:before {
+  font-size: 6px !important;
+  color: #ccc !important;
+  opacity: 1 !important;
+}
+.slick-dots li.slick-active button:before {
+  color: var(--amz-text) !important;
+}
+
+/* 2. VARIANTES ESTILO AMAZON */
+.ayl-amz-variants {
+  border-top: 1px solid var(--amz-border);
+  padding: 15px 0;
+}
+
+.ayl-amz-variant-title {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.ayl-amz-variant-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.ayl-amz-variant-item {
+  border: 1px solid var(--amz-border);
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  background: #fff;
+  transition: all 0.2s;
+}
+
+.ayl-amz-variant-item.selected {
+  border-color: var(--amz-orange);
+  background: #FEF8F2;
+  box-shadow: 0 0 0 1px var(--amz-orange);
+}
+
+/* 3. PRECIO Y COMPRA */
+.ayl-amz-buy-box {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ayl-amz-price-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.ayl-amz-currency { font-size: 16px; margin-top: 4px; }
+.ayl-amz-price-big { font-size: 28px; font-weight: 400; }
+.ayl-amz-price-cents { font-size: 16px; margin-top: 4px; }
+
+.ayl-amz-msi {
+  color: var(--amz-text-muted);
+  font-size: 13px;
+}
+
+.ayl-amz-msi b { color: var(--amz-text); }
+
+.ayl-amz-delivery {
+  font-size: 14px;
+  margin: 10px 0;
+}
+
+.ayl-amz-delivery b { color: var(--amz-text); }
+
+/* BOTONES AMAZON */
+.ayl-amz-btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 50px;
+  border: none;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.ayl-amz-btn-cart {
+  background: var(--amz-yellow);
+  box-shadow: 0 2px 5px rgba(213,217,217,.5);
+}
+
+.ayl-amz-btn-buy {
+  background: var(--amz-orange);
+}
+
+.ayl-amz-btn:active { transform: scale(0.98); }
+
+/* 4. SECCIONES INFERIORES */
+.ayl-amz-extra-section {
+  border-top: 8px solid var(--amz-bg-alt);
+  margin-left: -15px;
+  margin-right: -15px;
+  padding: 20px 15px;
+}
+
+.ayl-amz-section-title {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+/* ANIMACIONES */
+.ayl-amz-fade-in {
+  animation: amzFadeIn 0.4s ease-out;
+}
+
+@keyframes amzFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* DESKTOP RESPONSIVE */
+@media screen and (min-width: 768px) {
+  .ayl-amazon-product-container {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 40px;
+  }
+}

@@ -1,0 +1,338 @@
+<style>
+  /* Aylesva Modern Product UI - Premium Minimalist Styles */
+  :root {
+    --ayl-accent-green: #14422D;
+    --ayl-text-muted: #666;
+    --ayl-border-soft: #eee;
+  }
+
+  /* 1. BREADCRUMBS MINIMALIST */
+  .ayl-breadcrumb-minimal {
+    padding: 15px 0;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--ayl-text-muted);
+    border-bottom: 1px solid var(--ayl-border-soft);
+    margin-bottom: 20px;
+  }
+  .ayl-breadcrumb-minimal a { color: inherit; transition: color 0.2s; }
+  .ayl-breadcrumb-minimal a:hover { color: var(--ayl-accent-green); }
+  .ayl-breadcrumb-minimal .breadcrumb__sep { margin: 0 8px; font-weight: 300; }
+  .ayl-breadcrumb-minimal .current { font-weight: 600; color: #333; }
+
+  /* 2. PRODUCT INFO CLEANUP */
+  .product-single__title {
+    font-size: 24px;
+    line-height: 1.2;
+    font-weight: 700;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    color: #1b1c1c;
+  }
+  .ayl-vendor {
+    display: block;
+    font-size: 13px;
+    text-transform: uppercase;
+    color: var(--ayl-accent-green);
+    letter-spacing: 0.1em;
+    margin-bottom: 5px;
+  }
+  
+  .product-single__price-wrapper {
+    margin: 20px 0;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--ayl-accent-green);
+  }
+
+  /* 3. MINIMALIST DETAILS (ACCORDION) */
+  .ayl-minimalist-details { margin: 25px 0; }
+  .ayl-details-accordion {
+    border-top: 1px solid var(--ayl-border-soft);
+    border-bottom: 1px solid var(--ayl-border-soft);
+  }
+  .ayl-details-accordion summary {
+    padding: 15px 0;
+    cursor: pointer;
+    font-weight: 600;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-transform: uppercase;
+    font-size: 13px;
+  }
+  .ayl-details-accordion summary::after {
+    content: '+';
+    font-size: 18px;
+  }
+  .ayl-details-accordion[open] summary::after {
+    content: '-';
+  }
+  .ayl-details-accordion .product-varient { padding-bottom: 15px; }
+  .ayl-details-accordion p { margin: 8px 0; font-size: 14px; }
+  .ayl-details-accordion label { font-weight: 600; color: #333; min-width: 100px; display: inline-block; }
+
+  /* 4. BUY BUTTONS MODERN */
+  .product-form__submit {
+    background: var(--ayl-accent-green) !important;
+    color: #fff !important;
+    font-weight: 600 !important;
+    font-size: 16px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.1em !important;
+    border-radius: 0 !important;
+    height: 55px !important;
+    transition: all 0.3s ease !important;
+    border: none !important;
+    box-shadow: 0 4px 15px rgba(20,66,45,0.2) !important;
+  }
+  .product-form__submit:hover {
+    background: #0A2418 !important;
+    transform: translateY(-2px);
+  }
+
+  /* 5. TOAST NOTIFICATION (AJAX SUCCESS) - OVERRIDING THEME INVASIVE MODAL */
+  .ajax-success-modal.ayl-modern-toast {
+    position: fixed !important;
+    top: 20px !important;
+    right: 20px !important;
+    left: auto !important;
+    bottom: auto !important;
+    width: 320px !important;
+    height: auto !important;
+    transform: none !important;
+    background: #fff !important;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15) !important;
+    border-radius: 12px !important;
+    padding: 0 !important; /* Managed by toast-content */
+    z-index: 1000000 !important;
+    display: none;
+    border: 1px solid var(--ayl-border-soft) !important;
+    overflow: hidden !important;
+  }
+  
+  /* Remove theme overlay */
+  .ajax-success-modal .overlay { display: none !important; }
+  .ajax-success-modal .content { position: static !important; transform: none !important; width: auto !important; padding: 0 !important; background: transparent !important; }
+
+  .ayl-toast-content {
+    display: flex;
+    flex-direction: column;
+    animation: aylToastIn 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  @keyframes aylToastIn {
+    from { opacity: 0; transform: translateX(50px) scale(0.9); }
+    to { opacity: 1; transform: translateX(0) scale(1); }
+  }
+
+  .ayl-toast-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 15px;
+    background: #f8f9fa;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--ayl-accent-green);
+    border-bottom: 1px solid var(--ayl-border-soft);
+  }
+  .ayl-toast-header i { font-size: 18px; color: #4cbb6c; }
+  .ayl-toast-header .close-modal { 
+    margin-left: auto; 
+    color: #999; 
+    font-size: 16px;
+    padding: 5px;
+  }
+
+  .ayl-toast-body { 
+    display: flex; 
+    gap: 15px; 
+    padding: 15px;
+    align-items: center;
+  }
+  .ayl-toast-body img { 
+    width: 50px; 
+    height: 50px; 
+    object-fit: cover; 
+    border-radius: 6px;
+    background: #f5f5f5;
+  }
+  .ayl-toast-info { flex: 1; }
+  .ayl-toast-body h3 { 
+    font-size: 13px; 
+    margin: 0; 
+    font-weight: 600; 
+    line-height:1.4; 
+    color: #333;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .ayl-toast-body span { font-size: 14px; color: var(--ayl-accent-green); font-weight: 700; margin-top: 4px; display: block; }
+
+  .ayl-toast-footer { padding: 0 15px 15px; }
+  .ayl-btn-primary {
+    display: block;
+    background: var(--ayl-accent-green);
+    color: #fff !important;
+    text-align: center;
+    padding: 10px;
+    font-weight: 600;
+    font-size: 13px;
+    border-radius: 6px;
+    text-decoration: none !important;
+    transition: all 0.2s;
+  }
+  .ayl-btn-primary:hover { background: #0A2418; opacity: 0.9; }
+
+  /* MOBILE SPECIFIC */
+  @media (max-width: 767px) {
+    .ayl-modern-toast {
+      top: 10px !important;
+      right: 10px !important;
+      left: 10px !important;
+      width: calc(100% - 20px) !important;
+    }
+  }
+
+  
+  /* CLEANUP THEME ELEMENTS */
+  .hr, hr.hr { display: none !important; }
+  .product-single-wrap { border: none !important; box-shadow: none !important; padding: 0 !important; }
+  .product-page .container { max-width: 1200px; }
+  
+  /* 6. SLICK DOTS MINIMALIST */
+  .slick-dots {
+    bottom: 15px !important;
+    display: flex !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    padding: 0 !important;
+    list-style: none !important;
+  }
+  .slick-dots li { 
+    margin: 0 !important; 
+    width: 8px !important; 
+    height: 8px !important; 
+  }
+  .slick-dots li button {
+    width: 100% !important;
+    height: 100% !important;
+    padding: 0 !important;
+    border-radius: 50% !important;
+    background: #ccc !important;
+    border: none !important;
+    text-indent: -9999px !important;
+    opacity: 0.5 !important;
+    transition: all 0.3s ease !important;
+  }
+  .slick-dots li.slick-active button {
+    background: var(--ayl-accent-green) !important;
+    opacity: 1 !important;
+    transform: scale(1.2);
+  }
+
+  /* 7. CART STICKER (FORMER WISHLIST) */
+  .ayl-cart-sticker {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 10;
+  }
+  .ayl-cart-sticker .btn {
+    background: #4cbb6c !important;
+    color: #fff !important;
+    width: 44px !important;
+    height: 44px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 50% !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1) !important;
+    border: none !important;
+    padding: 0 !important;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+  }
+  .ayl-cart-sticker .btn:hover {
+    transform: scale(1.1);
+    background: #3da35b !important;
+  }
+  .ayl-cart-sticker .mdi { font-size: 20px !important; }
+  .ayl-cart-sticker .tooltip-label { display: none !important; }
+
+  /* 8. STICKY CART REFINEMENT */
+  .add-to-cart-sticky {
+    box-shadow: 0 -5px 20px rgba(0,0,0,0.05) !important;
+    border-top: none !important;
+    padding: 10px 0 !important;
+    background: #fff !important;
+    transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+  .add-to-cart-sticky .btn {
+    border-radius: 0 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-weight: 700;
+    height: 48px;
+    background: var(--ayl-accent-green);
+    color: #fff;
+    border: none;
+  }
+  .add-to-cart-sticky .product-single__title {
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    margin: 0 !important;
+  }
+  .add-to-cart-sticky .product-qty .qty-box-set {
+    border: 1px solid var(--ayl-border-soft) !important;
+    height: 48px;
+    display: flex;
+    align-items: center;
+  }
+  .add-to-cart-sticky .sticky-data {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  /* 9. LAYOUT SPECIFIC FIXES */
+  .ayl-modern-product-viewer .ayl-vendor {
+    display: block;
+    margin-bottom: 8px;
+  }
+  
+  /* Template 5 center alignment */
+  .design_5 .ayl-modern-product-viewer .product-single__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .design_5 .ayl-modern-product-viewer .ayl-details-accordion summary {
+    justify-content: center;
+    gap: 15px;
+  }
+  .design_5 .ayl-modern-product-viewer .ayl-action-wrap {
+    justify-content: center;
+  }
+
+  /* 10. CLEANUP & GENERAL */
+  .product-single__media-wrapper { outline: none !important; }
+  #productPhoto.slick-slider { margin-bottom: 20px !important; }
+  .hide { display: none !important; }
+  
+  /* Fix for 'white screen' / 'second image' issue */
+  .product-single__media-wrapper img,
+  .main_image_wrap img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+
+</style>

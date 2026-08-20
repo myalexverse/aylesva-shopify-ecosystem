@@ -1,0 +1,39 @@
+{% comment %} Aylesva · Home · Hero institucional (fondo crema, imagen a la derecha) {% endcomment %}
+<section class="ay" style="background:var(--ay-stone);border-bottom:var(--ay-hairline)">
+  <div class="ay-wrap" style="display:grid;grid-template-columns:1fr 1.05fr;gap:72px;align-items:center" class="ay-home-hero">
+    <div>
+      {% if section.settings.eyebrow != blank %}<p class="ay-eyebrow">{{ section.settings.eyebrow }}</p>{% endif %}
+      <h1 class="ay-h1" style="font-size:clamp(36px,4.6vw,64px)">
+        {{ section.settings.title_line1 }}<br><span style="color:var(--ay-gold-text)">{{ section.settings.title_line2 }}</span>
+      </h1>
+      <p class="ay-lead" style="font-size:19px;max-width:46ch;margin-bottom:40px">{{ section.settings.subtitle }}</p>
+      <div style="display:flex;gap:16px;flex-wrap:wrap">
+        {% if section.settings.cta1_label != blank %}<a class="ay-btn ay-btn--primary" href="{{ section.settings.cta1_link }}">{{ section.settings.cta1_label }} &rarr;</a>{% endif %}
+        {% if section.settings.cta2_label != blank %}<a class="ay-btn ay-btn--ghost" href="{{ section.settings.cta2_link }}">{{ section.settings.cta2_label }}</a>{% endif %}
+      </div>
+    </div>
+    <div class="ay-media ay-media--framed" style="height:520px;border:var(--ay-hairline);{% if section.settings.image %}background-image:url({{ section.settings.image | image_url: width: 2400 }}){% else %}background:repeating-linear-gradient(135deg,#efece6 0 10px,#e7e3db 10px 20px){% endif %}"></div>
+  </div>
+</section>
+
+<style>
+  @media (max-width:1024px){ .ay-home-hero{grid-template-columns:1fr !important;gap:40px !important} .ay-home-hero .ay-media{height:320px !important} }
+</style>
+
+{% schema %}
+{
+  "name": "Aylesva · Home hero",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Grupo Aylesva" },
+    { "type": "text", "id": "title_line1", "label": "Titular · línea 1", "default": "Impulsamos tu negocio." },
+    { "type": "text", "id": "title_line2", "label": "Titular · línea 2 (en dorado)", "default": "Potenciamos tu futuro." },
+    { "type": "textarea", "id": "subtitle", "label": "Subtítulo", "default": "Un ecosistema de soluciones diseñadas para acompañarte en cada etapa de crecimiento de tu empresa y tu patrimonio." },
+    { "type": "image_picker", "id": "image", "label": "Imagen (2400px)" },
+    { "type": "text", "id": "cta1_label", "label": "CTA primario", "default": "Conoce nuestros servicios" },
+    { "type": "url", "id": "cta1_link", "label": "Enlace CTA primario" },
+    { "type": "text", "id": "cta2_label", "label": "CTA secundario", "default": "Habla con un asesor" },
+    { "type": "url", "id": "cta2_link", "label": "Enlace CTA secundario" }
+  ],
+  "presets": [{ "name": "Aylesva · Home hero" }]
+}
+{% endschema %}

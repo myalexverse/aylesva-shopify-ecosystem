@@ -1,0 +1,22 @@
+<div class="filter-sortby grid__items">
+        <label for="sort-by">{{ 'collections.sorting.title' | t }}</label> 
+        <input type="text" id="sort-by" class="hide">
+        <div class="sorting-section">
+          <button class="dropdown-toggle" data-toggle="dropdown">
+           
+            <span>{{ 'collections.sorting.featured' | t }}</span>
+            <i class="mdi mdi-chevron-down"></i>
+          </button>
+
+          <ul class="dropdown-menu" role="menu">
+            <li class="active"><a href="manual">{{ 'collections.sorting.featured' | t }}</a></li>
+            <li><a href="price-ascending">{{ 'collections.sorting.price_ascending' | t }}</a></li>
+            <li><a href="price-descending">{{ 'collections.sorting.price_descending' | t }}</a></li>
+            <li><a href="title-ascending">{{ 'collections.sorting.az' | t }}</a></li>
+            <li><a href="title-descending">{{ 'collections.sorting.za' | t }}</a></li>
+            <li><a href="created-ascending">{{ 'collections.sorting.date_ascending' | t }}</a></li>
+            <li><a href="created-descending">{{ 'collections.sorting.date_descending' | t }}</a></li>
+            <li><a href="best-selling">{{ 'collections.sorting.best_selling' | t }}</a></li>
+          </ul>
+        </div>
+</div>

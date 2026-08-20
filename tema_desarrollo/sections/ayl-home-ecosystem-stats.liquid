@@ -1,0 +1,248 @@
+<section id="shopify-section-{{ section.id }}" class="ayl-stats-section">
+  <div class="ayl-stats-container">
+    <div class="ayl-stats-grid">
+      {% for block in section.blocks %}
+        <div class="ayl-stat-item" {{ block.shopify_attributes }}>
+          <div class="ayl-stat-icon">
+            {% if block.settings.icon_svg != blank %}
+              {{ block.settings.icon_svg }}
+            {% else %}
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="10" stroke="#C5A47E" stroke-width="2"/>
+                <path d="M12 8V16M8 12H16" stroke="#C5A47E" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            {% endif %}
+          </div>
+          <div class="ayl-stat-number-wrapper">
+            {% if block.settings.prefix != blank %}
+              <span class="ayl-stat-prefix">{{ block.settings.prefix }}</span>
+            {% endif %}
+            <span class="ayl-stat-number" data-target="{{ block.settings.number }}">0</span>
+            {% if block.settings.suffix != blank %}
+              <span class="ayl-stat-suffix">{{ block.settings.suffix }}</span>
+            {% endif %}
+          </div>
+          <div class="ayl-stat-label">
+            {{ block.settings.label | escape }}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  #shopify-section-{{ section.id }} {
+    --ayl-dark: #0C0C0F;
+    --ayl-gold: #C5A47E;
+    background-color: var(--ayl-dark);
+    position: relative;
+    padding: 6rem 0;
+    overflow: hidden;
+  }
+  
+  #shopify-section-{{ section.id }}::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    height: 60%;
+    background: radial-gradient(circle, rgba(197, 164, 126, 0.1) 0%, rgba(12, 12, 15, 0) 70%);
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  #shopify-section-{{ section.id }} .ayl-stats-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    position: relative;
+    z-index: 2;
+  }
+  
+  #shopify-section-{{ section.id }} .ayl-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    text-align: center;
+  }
+  
+  #shopify-section-{{ section.id }} .ayl-stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  #shopify-section-{{ section.id }} .ayl-stat-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(197, 164, 126, 0.1);
+    border-radius: 50%;
+    color: var(--ayl-gold);
+  }
+  
+  #shopify-section-{{ section.id }} .ayl-stat-icon svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+  }
+  
+  #shopify-section-{{ section.id }} .ayl-stat-number-wrapper {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 42px;
+    color: #FFFFFF;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  #shopify-section-{{ section.id }} .ayl-stat-label {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: #a1a1a6;
+    line-height: 1.4;
+  }
+  
+  @media (max-width: 1024px) {
+    #shopify-section-{{ section.id }} .ayl-stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3rem 2rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    #shopify-section-{{ section.id }} .ayl-stat-number-wrapper {
+      font-size: 36px;
+    }
+  }
+</style>
+
+<script>
+  (function() {
+    const section = document.getElementById('shopify-section-{{ section.id }}');
+    if (!section) return;
+
+    const counters = section.querySelectorAll('.ayl-stat-number');
+    const speed = 150; // Controls animation speed
+
+    const animateCounters = () => {
+      counters.forEach(counter => {
+        const updateCount = () => {
+          const target = +counter.getAttribute('data-target').replace(/,/g, '');
+          const count = +counter.innerText.replace(/,/g, '');
+          
+          const inc = target / speed;
+          
+          if (count < target) {
+            counter.innerText = Math.ceil(count + inc).toLocaleString();
+            setTimeout(updateCount, 15);
+          } else {
+            counter.innerText = target.toLocaleString();
+          }
+        };
+        updateCount();
+      });
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        animateCounters();
+        observer.disconnect();
+      }
+    }, { threshold: 0.5 });
+
+    observer.observe(section);
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Ecosystem Stats",
+  "max_blocks": 4,
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat Item",
+      "settings": [
+        {
+          "type": "html",
+          "id": "icon_svg",
+          "label": "Icon SVG (optional)"
+        },
+        {
+          "type": "text",
+          "id": "prefix",
+          "label": "Prefix",
+          "default": "+"
+        },
+        {
+          "type": "text",
+          "id": "number",
+          "label": "Number Target",
+          "default": "25000"
+        },
+        {
+          "type": "text",
+          "id": "suffix",
+          "label": "Suffix"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Emprendedores impulsados"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ecosystem Stats",
+      "blocks": [
+        {
+          "type": "stat",
+          "settings": {
+            "prefix": "+",
+            "number": "25000",
+            "label": "Emprendedores impulsados"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "prefix": "+",
+            "number": "2000",
+            "label": "Productos listos para vender"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "prefix": "+",
+            "number": "10",
+            "label": "Países con cobertura"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "prefix": "+",
+            "number": "99",
+            "suffix": "%",
+            "label": "Clientes satisfechos"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

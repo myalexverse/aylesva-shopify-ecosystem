@@ -1,0 +1,154 @@
+{% comment %}
+  Aylesva · Home v3 · Hero interactivo (mosaico de servicios).
+  El bloque izquierdo rota solo cada 3.6 s entre los servicios; al pasar el
+  cursor sobre un mosaico la rotación se detiene y se muestra ese servicio.
+  Sin librerías. Respeta prefers-reduced-motion.
+{% endcomment %}
+<section class="ay ay-hero3" id="{{ section.id }}">
+  <div class="ay-wrap ay-hero3-grid">
+    <div>
+      {% if section.settings.eyebrow != blank %}<p class="ay-eyebrow">{{ section.settings.eyebrow }}</p>{% endif %}
+      <h1 class="ay-h1 ay-hero3-title">
+        {{ section.settings.title_a }} <span style="color:var(--ay-gold-text)">{{ section.settings.title_gold }}</span> {{ section.settings.title_b }}
+      </h1>
+      <p class="ay-hero3-sub">{{ section.settings.subtitle }}</p>
+
+      <div class="ay-hero3-claim">
+        {% for block in section.blocks %}
+          <div class="ay-claim" data-claim="{{ forloop.index0 }}" {% if forloop.first %}data-on="1"{% endif %}>
+            <div class="ay-claim-label">{{ block.settings.label }}</div>
+            <div class="ay-claim-title">{{ block.settings.claim }}</div>
+            <div class="ay-claim-desc">{{ block.settings.description }}</div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="ay-hero3-cta">
+        {% for block in section.blocks %}
+          <a class="ay-btn ay-btn--primary ay-claim-cta" data-claim="{{ forloop.index0 }}" href="{{ block.settings.link }}" {% if forloop.first %}data-on="1"{% endif %}>{{ block.settings.cta }} &rarr;</a>
+        {% endfor %}
+        {% if section.settings.cta2_label != blank %}
+          <a class="ay-btn ay-btn--outline" href="{{ section.settings.cta2_link }}">{{ section.settings.cta2_label }}</a>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="ay-hero3-mosaic">
+      {% for block in section.blocks %}
+        <a class="ay-tile" data-tile="{{ forloop.index0 }}" href="{{ block.settings.link }}" {% if forloop.first %}data-on="1"{% endif %}>
+          <span class="ay-tile-img" {% if block.settings.image %}style="background-image:url({{ block.settings.image | image_url: width: 900 }})"{% endif %}></span>
+          <span class="ay-tile-veil"></span>
+          {% unless block.settings.image %}<span class="ay-tile-note">{{ block.settings.image_note }}</span>{% endunless %}
+          <span class="ay-tile-body">
+            <span class="ay-tile-label">
+              {% if block.settings.icon != blank %}<svg class="ay-icon ay-icon--sm" viewBox="0 0 24 24" stroke-linecap="square" aria-hidden="true">{{ block.settings.icon }}</svg>{% endif %}
+              {{ block.settings.label }}
+            </span>
+            <span class="ay-tile-short">{{ block.settings.short }}</span>
+            <span class="ay-tile-rule"></span>
+          </span>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .ay-hero3{background:var(--ay-stone);border-bottom:var(--ay-hairline)}
+  .ay-hero3 .ay-wrap{padding:56px var(--ay-pad-x) 60px}
+  .ay-hero3-grid{display:grid;grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr);gap:56px;align-items:center}
+  .ay-hero3-title{font-size:clamp(34px,3.6vw,50px);line-height:1.06;margin:0 0 20px}
+  .ay-hero3-sub{font-size:17px;line-height:1.6;color:rgba(15,23,42,.7);max-width:40ch;margin:0 0 24px;text-wrap:pretty}
+
+  .ay-hero3-claim{position:relative;border-left:2px solid var(--ay-gold);padding:2px 0 2px 18px;min-height:92px;margin-bottom:26px}
+  .ay-claim{position:absolute;inset:0 0 auto 18px;opacity:0;pointer-events:none;transition:opacity .4s ease,transform .4s ease;transform:translateY(8px)}
+  .ay-claim[data-on]{opacity:1;transform:none;position:relative;inset:auto;left:0}
+  .ay-claim-label{font-family:var(--ay-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ay-gold-text);margin-bottom:12px}
+  .ay-claim-title{font-family:var(--ay-font-display);font-size:22px;font-weight:400;letter-spacing:-.02em;line-height:1.24;margin-bottom:8px;text-wrap:pretty}
+  .ay-claim-desc{font-size:14px;line-height:1.6;color:rgba(15,23,42,.62);max-width:46ch}
+
+  .ay-hero3-cta{display:flex;gap:14px;flex-wrap:wrap}
+  .ay-claim-cta{display:none}
+  .ay-claim-cta[data-on]{display:inline-block}
+  .ay-btn--outline{border:1px solid rgba(15,23,42,.2);color:var(--ay-ink-800);background:transparent}
+  .ay-btn--outline:hover{border-color:var(--ay-gold);color:var(--ay-gold-text)}
+
+  .ay-hero3-mosaic{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}
+  .ay-tile{position:relative;display:block;height:178px;overflow:hidden;border:1px solid rgba(15,23,42,.12);text-decoration:none;transition:border-color .35s ease,transform .35s ease}
+  .ay-tile[data-on]{border-color:var(--ay-gold);transform:translateY(-4px)}
+  .ay-tile-img{position:absolute;inset:0;background:repeating-linear-gradient(135deg,#efece6 0 9px,#e7e3db 9px 18px);background-size:cover;background-position:center;transition:transform .6s cubic-bezier(.22,.61,.36,1)}
+  .ay-tile:hover .ay-tile-img{transform:scale(1.06)}
+  .ay-tile-veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(2,6,23,.05) 0%,rgba(2,6,23,.5) 46%,rgba(2,6,23,.93) 100%)}
+  .ay-tile-note{position:absolute;left:12px;top:12px;font-family:var(--ay-font-mono);font-size:8px;letter-spacing:.1em;color:rgba(15,23,42,.5)}
+  .ay-tile-body{position:absolute;left:0;right:0;bottom:0;padding:14px 14px 16px;display:flex;flex-direction:column;gap:8px}
+  .ay-tile-label{display:flex;align-items:center;gap:8px;font-family:var(--ay-font-mono);font-size:9px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ay-gold-light)}
+  .ay-icon--sm{width:14px;height:14px;stroke:var(--ay-gold-light)}
+  .ay-tile-short{font-family:var(--ay-font-display);font-size:14px;font-weight:500;color:#fff;letter-spacing:-.008em;line-height:1.3;text-wrap:pretty}
+  .ay-tile-rule{height:1px;width:0;background:var(--ay-gold);transition:width .4s cubic-bezier(.22,.61,.36,1)}
+  .ay-tile[data-on] .ay-tile-rule{width:44px}
+
+  @media (max-width:1024px){ .ay-hero3-grid{grid-template-columns:1fr;gap:40px} }
+  @media (prefers-reduced-motion:reduce){ .ay-tile,.ay-tile-img,.ay-claim{transition:none} }
+</style>
+
+<script>
+  (function(){
+    var root = document.getElementById('shopify-section-{{ section.id }}');
+    if(!root) return;
+    var tiles = root.querySelectorAll('.ay-tile');
+    var claims = root.querySelectorAll('.ay-claim');
+    var ctas = root.querySelectorAll('.ay-claim-cta');
+    if(!tiles.length) return;
+    var i = 0, hold = false, timer = null;
+    var delay = {{ section.settings.rotate_seconds | times: 1000 | default: 3600 }};
+
+    function show(n){
+      i = n;
+      [tiles, claims, ctas].forEach(function(set){
+        for(var k=0;k<set.length;k++){
+          if(k===n) set[k].setAttribute('data-on','1'); else set[k].removeAttribute('data-on');
+        }
+      });
+    }
+    function start(){
+      if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      timer = setInterval(function(){ if(!hold) show((i+1)%tiles.length); }, delay);
+    }
+    tiles.forEach(function(t,n){
+      t.addEventListener('mouseenter', function(){ hold = true; show(n); });
+      t.addEventListener('mouseleave', function(){ hold = false; });
+      t.addEventListener('focus', function(){ hold = true; show(n); });
+    });
+    show(0); start();
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Aylesva · Home hero v3",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Grupo Aylesva" },
+    { "type": "text", "id": "title_a", "label": "Titular · antes del dorado", "default": "Todo lo que necesitas para" },
+    { "type": "text", "id": "title_gold", "label": "Titular · en dorado", "default": "crecer, invertir y proteger" },
+    { "type": "text", "id": "title_b", "label": "Titular · después del dorado", "default": "tu futuro." },
+    { "type": "textarea", "id": "subtitle", "label": "Subtítulo (una línea)", "default": "Seis servicios para tu negocio, tu patrimonio y tu familia." },
+    { "type": "range", "id": "rotate_seconds", "label": "Rotación automática (segundos)", "min": 2, "max": 8, "step": 1, "default": 4 },
+    { "type": "text", "id": "cta2_label", "label": "CTA secundario", "default": "Habla con un asesor" },
+    { "type": "url", "id": "cta2_link", "label": "Enlace CTA secundario" }
+  ],
+  "blocks": [
+    { "type": "world", "name": "Servicio del mosaico", "limit": 6, "settings": [
+      { "type": "image_picker", "id": "image", "label": "Fotografía (900×700)" },
+      { "type": "text", "id": "image_note", "label": "Nota si no hay foto aún", "default": "foto pendiente" },
+      { "type": "textarea", "id": "icon", "label": "Trazado SVG del ícono" },
+      { "type": "text", "id": "label", "label": "Etiqueta (Financiamiento, Importaciones…)" },
+      { "type": "text", "id": "short", "label": "Promesa corta sobre la foto", "default": "Te damos capital para crecer" },
+      { "type": "text", "id": "claim", "label": "Titular del bloque izquierdo" },
+      { "type": "textarea", "id": "description", "label": "Descripción del bloque izquierdo" },
+      { "type": "text", "id": "cta", "label": "Texto del botón", "default": "Conocer" },
+      { "type": "url", "id": "link", "label": "Enlace a la landing" }
+    ]}
+  ],
+  "presets": [{ "name": "Aylesva · Home hero v3" }]
+}
+{% endschema %}

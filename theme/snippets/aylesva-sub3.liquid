@@ -1,0 +1,202 @@
+
+{% comment %} AYLESVA MX — Subcategorías nivel 3 {% endcomment %}
+{% assign col = collection.handle %}
+{% assign sub3 = '' %}
+{% assign sub3_color = '#2e7d32' %}
+
+{% comment %} MUJER {% endcomment %}
+{% if col == 'ropa-mujer' %}
+  {% assign sub3_titulo = 'Ropa Mujer' %}
+  {% assign sub3_color  = '#E91E8C' %}
+  {% assign sub3 = 'Blusas y camisas|/collections/blusas-y-camisas,Vestidos Mujer|/collections/vestidos-mujer,Faldas Mujer|/collections/faldas-mujer,Pantalones y jeans Mujer|/collections/pantalones-y-jeans-mujer,Shorts y bermudas Mujer|/collections/shorts-y-bermudas-mujer,Abrigos y chaquetas Mujer|/collections/abrigos-y-chaquetas-mujer,Sudaderas y hoodies Mujer|/collections/sudaderas-y-hoodies-mujer,Trajes y blazers Mujer|/collections/trajes-y-blazers-mujer,Ropa deportiva Mujer|/collections/ropa-deportiva-mujer,Pijamas y ropa de dormir Mujer|/collections/pijamas-y-ropa-de-dormir-mujer,Overoles y monos Mujer|/collections/overoles-y-monos-mujer' %}
+{% elsif col == 'calzado-mujer' %}
+  {% assign sub3_titulo = 'Calzado Mujer' %}
+  {% assign sub3_color  = '#E91E8C' %}
+  {% assign sub3 = 'Tacones y stilettos|/collections/tacones-y-stilettos,Sandalias Mujer|/collections/sandalias-mujer,Flats y bailarinas|/collections/flats-y-bailarinas,Botas y botines Mujer|/collections/botas-y-botines-mujer,Tenis y sneakers Mujer|/collections/tenis-y-sneakers-mujer,Zapatos de trabajo|/collections/zapatos-de-trabajo,Pantuflas y chanclas|/collections/pantuflas-y-chanclas,Plataformas|/collections/plataformas' %}
+{% elsif col == 'ropa-interior-y-lenceria' %}
+  {% assign sub3_titulo = 'Ropa Interior y Lencería' %}
+  {% assign sub3_color  = '#E91E8C' %}
+  {% assign sub3 = 'Brasieres y bras|/collections/brasieres-y-bras,Panties y calzones|/collections/panties-y-calzones,Bodies|/collections/bodies,Fajas y moldeadores|/collections/fajas-y-moldeadores,Medias y calcetas|/collections/medias-y-calcetas,Pijamas y lencería|/collections/pijamas-y-lenceria' %}
+{% elsif col == 'joyeria-y-accesorios' %}
+  {% assign sub3_titulo = 'Joyería y Accesorios' %}
+  {% assign sub3_color  = '#E91E8C' %}
+  {% assign sub3 = 'Collares|/collections/collares,Aretes y pendientes|/collections/aretes-y-pendientes,Pulseras y brazaletes|/collections/pulseras-y-brazaletes,Anillos Mujer|/collections/anillos-mujer,Relojes Mujer|/collections/relojes-mujer' %}
+{% elsif col == 'bolsas-y-carteras' %}
+  {% assign sub3_titulo = 'Bolsas y Carteras' %}
+  {% assign sub3_color  = '#E91E8C' %}
+  {% assign sub3 = 'Bolsas de mano|/collections/bolsas-de-mano,Mochilas Mujer|/collections/mochilas-mujer,Clutches y sobre|/collections/clutches-y-sobre,Bolsas de playa|/collections/bolsas-de-playa,Carteras y billeteras Mujer|/collections/carteras-y-billeteras-mujer,Tote bags|/collections/tote-bags' %}
+{% elsif col == 'accesorios-de-moda' %}
+  {% assign sub3_titulo = 'Accesorios de Moda' %}
+  {% assign sub3_color  = '#E91E8C' %}
+  {% assign sub3 = 'Cinturones Mujer|/collections/cinturones-mujer,Bufandas y chales|/collections/bufandas-y-chales,Gorros y sombreros Mujer|/collections/gorros-y-sombreros-mujer,Lentes de sol Mujer|/collections/lentes-de-sol-mujer,Diademas y accesorios|/collections/diademas-y-accesorios-para-el-cabello-mujer' %}
+
+{% comment %} HOMBRE {% endcomment %}
+{% elsif col == 'ropa-hombre' %}
+  {% assign sub3_titulo = 'Ropa Hombre' %}
+  {% assign sub3_color  = '#1565C0' %}
+  {% assign sub3 = 'Camisas formales y casuales|/collections/camisas-formales-y-casuales,Camisetas y polos Hombre|/collections/camisetas-y-polos-hombre,Pantalones y jeans Hombre|/collections/pantalones-y-jeans-hombre,Shorts y bermudas Hombre|/collections/shorts-y-bermudas-hombre,Trajes y blazers Hombre|/collections/trajes-y-blazers-hombre,Abrigos y chaquetas Hombre|/collections/abrigos-y-chaquetas-hombre,Sudaderas y hoodies Hombre|/collections/sudaderas-y-hoodies-hombre,Ropa deportiva Hombre|/collections/ropa-deportiva-hombre' %}
+{% elsif col == 'calzado-hombre' %}
+  {% assign sub3_titulo = 'Calzado Hombre' %}
+  {% assign sub3_color  = '#1565C0' %}
+  {% assign sub3 = 'Zapatos formales|/collections/zapatos-formales,Botas y botines Hombre|/collections/botas-y-botines-hombre,Tenis y sneakers Hombre|/collections/tenis-y-sneakers-hombre,Sandalias y chanclas|/collections/sandalias-y-chanclas,Mocasines y loafers|/collections/mocasines-y-loafers,Pantuflas Hombre|/collections/pantuflas-hombre' %}
+{% elsif col == 'ropa-interior-hombre' %}
+  {% assign sub3_titulo = 'Ropa Interior Hombre' %}
+  {% assign sub3_color  = '#1565C0' %}
+  {% assign sub3 = 'Calzoncillos y boxers|/collections/calzoncillos-y-boxers,Camisetas interiores Hombre|/collections/camisetas-interiores-hombre,Medias y calcetines Hombre|/collections/medias-y-calcetines-hombre,Pijamas Hombre|/collections/pijamas-hombre' %}
+{% elsif col == 'accesorios-hombre' %}
+  {% assign sub3_titulo = 'Accesorios Hombre' %}
+  {% assign sub3_color  = '#1565C0' %}
+  {% assign sub3 = 'Cinturones Hombre|/collections/cinturones-hombre,Corbatas y pañuelos|/collections/corbatas-y-panuelos,Relojes Hombre|/collections/relojes-hombre,Lentes de sol Hombre|/collections/lentes-de-sol-hombre,Gorras y sombreros Hombre|/collections/gorras-y-sombreros-hombre,Maletines y mochilas|/collections/maletines-y-mochilas' %}
+
+{% comment %} NIÑO {% endcomment %}
+{% elsif col == 'ropa-nino' %}
+  {% assign sub3_titulo = 'Ropa Niño' %}
+  {% assign sub3_color  = '#2E7D32' %}
+  {% assign sub3 = 'Camisetas y polos Niño|/collections/camisetas-y-polos-nino,Pantalones y jeans Niño|/collections/pantalones-y-jeans-nino,Shorts Niño|/collections/shorts-nino,Sudaderas y hoodies Niño|/collections/sudaderas-y-hoodies-nino,Chaquetas y abrigos Niño|/collections/chaquetas-y-abrigos-nino,Ropa deportiva Niño|/collections/ropa-deportiva-nino,Uniformes escolares Niño|/collections/uniformes-escolares-nino,Trajes y ropa formal Niño|/collections/trajes-y-ropa-formal-nino' %}
+{% elsif col == 'calzado-nino' %}
+  {% assign sub3_titulo = 'Calzado Niño' %}
+  {% assign sub3_color  = '#2E7D32' %}
+  {% assign sub3 = 'Tenis y sneakers Niño|/collections/tenis-y-sneakers-nino,Sandalias Niño|/collections/sandalias-nino,Botas|/collections/botas,Zapatos escolares Niño|/collections/zapatos-escolares-nino,Pantuflas Niño|/collections/pantuflas-nino' %}
+
+{% comment %} NIÑA {% endcomment %}
+{% elsif col == 'ropa-nina' %}
+  {% assign sub3_titulo = 'Ropa Niña' %}
+  {% assign sub3_color  = '#E65100' %}
+  {% assign sub3 = 'Vestidos Niña|/collections/vestidos-nina,Faldas Niña|/collections/faldas-nina,Blusas y camisetas|/collections/blusas-y-camisetas,Pantalones y jeans Niña|/collections/pantalones-y-jeans-nina,Shorts Niña|/collections/shorts-nina,Sudaderas y hoodies Niña|/collections/sudaderas-y-hoodies-nina,Uniformes escolares Niña|/collections/uniformes-escolares-nina' %}
+{% elsif col == 'calzado-nina' %}
+  {% assign sub3_titulo = 'Calzado Niña' %}
+  {% assign sub3_color  = '#E65100' %}
+  {% assign sub3 = 'Tenis y sneakers Niña|/collections/tenis-y-sneakers-nina,Sandalias y ballerinas|/collections/sandalias-y-ballerinas,Botas y botines Niña|/collections/botas-y-botines-nina,Zapatos escolares Niña|/collections/zapatos-escolares-nina,Pantuflas Niña|/collections/pantuflas-nina' %}
+
+{% comment %} BEBÉ {% endcomment %}
+{% elsif col == 'ropa-bebe' %}
+  {% assign sub3_titulo = 'Ropa Bebé' %}
+  {% assign sub3_color  = '#F9A825' %}
+  {% assign sub3 = 'Bodies y pañaleros|/collections/bodies-y-panaleros,Pijamas y sleepers|/collections/pijamas-y-sleepers,Conjuntos y ajuares|/collections/conjuntos-y-ajuares,Camisetas y tops|/collections/camisetas-y-tops,Pantalones y joggers|/collections/pantalones-y-joggers,Sudaderas y hoodies Bebé|/collections/sudaderas-y-hoodies-bebe,Abrigos y chaquetas Bebé|/collections/abrigos-y-chaquetas-bebe' %}
+
+{% comment %} ARTESANAL {% endcomment %}
+{% elsif col == 'textiles-y-tejidos' %}
+  {% assign sub3_titulo = 'Textiles y Tejidos' %}
+  {% assign sub3_color  = '#9C27B0' %}
+  {% assign sub3 = 'Tapetes y alfombras tejidas|/collections/tapetes-y-alfombras-tejidas,Bolsas y mochilas artesanales|/collections/bolsas-y-mochilas-artesanales,Manteles y caminos de mesa|/collections/manteles-y-caminos-de-mesa,Ropa bordada y huipiles|/collections/ropa-bordada-y-huipiles,Hamacas|/collections/hamacas,Cobijas y rebozos|/collections/cobijas-y-rebozos' %}
+{% elsif col == 'ceramica-y-barro' %}
+  {% assign sub3_titulo = 'Cerámica y Barro' %}
+  {% assign sub3_color  = '#9C27B0' %}
+  {% assign sub3 = 'Vajillas y platos decorativos|/collections/vajillas-y-platos-decorativos,Jarrones y floreros|/collections/jarrones-y-floreros,Figuras y esculturas de barro|/collections/figuras-y-esculturas-de-barro,Macetas artesanales|/collections/macetas-artesanales,Ollas y cazuelas tradicionales|/collections/ollas-y-cazuelas-tradicionales,Talavera|/collections/talavera' %}
+
+{% comment %} HOGAR {% endcomment %}
+{% elsif col == 'muebles' %}
+  {% assign sub3_titulo = 'Muebles' %}
+  {% assign sub3_color  = '#00897B' %}
+  {% assign sub3 = 'Salas y sillones|/collections/salas-y-sillones,Comedores y sillas|/collections/comedores-y-sillas,Recámaras y camas|/collections/recamaras-y-camas,Muebles de oficina|/collections/muebles-de-oficina,Estantes y libreros|/collections/estantes-y-libreros,Muebles infantiles|/collections/muebles-infantiles' %}
+{% elsif col == 'cocina-y-comedor' %}
+  {% assign sub3_titulo = 'Cocina y Comedor' %}
+  {% assign sub3_color  = '#00897B' %}
+  {% assign sub3 = 'Vajillas y platos|/collections/vajillas-y-platos,Vasos y copas|/collections/vasos-y-copas,Ollas y sartenes|/collections/ollas-y-sartenes,Utensilios de cocina|/collections/utensilios-de-cocina,Organizadores de cocina|/collections/organizadores-de-cocina,Manteles y servilletas|/collections/manteles-y-servilletas' %}
+
+{% comment %} ALIMENTOS {% endcomment %}
+{% elsif col == 'alimentos-artesanales' %}
+  {% assign sub3_titulo = 'Alimentos Artesanales' %}
+  {% assign sub3_color  = '#E53935' %}
+  {% assign sub3 = 'Mermeladas y conservas|/collections/mermeladas-y-conservas,Salsas y moles|/collections/salsas-y-moles,Quesos artesanales|/collections/quesos-artesanales,Chocolates y dulces|/collections/chocolates-y-dulces,Miel y derivados de abeja|/collections/miel-y-derivados-de-abeja,Especias y condimentos|/collections/especias-y-condimentos,Café de especialidad|/collections/cafe-de-especialidad' %}
+{% elsif col == 'bebidas-artesanales' %}
+  {% assign sub3_titulo = 'Bebidas Artesanales' %}
+  {% assign sub3_color  = '#E53935' %}
+  {% assign sub3 = 'Cerveza artesanal|/collections/cerveza-artesanal,Vinos y espumosos|/collections/vinos-y-espumosos,Mezcal y destilados|/collections/mezcal-y-destilados,Kombucha y fermentados|/collections/kombucha-y-fermentados,Jugos y aguas frescas artesanales|/collections/jugos-y-aguas-frescas-artesanales' %}
+{% endif %}
+
+{% if sub3 != '' %}
+<style>
+  #ayl-sub3-wrap {
+    margin: 0 0 28px;
+  }
+  .ayl-sub3-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid {{ sub3_color }};
+  }
+  .ayl-sub3-header h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #222;
+    margin: 0;
+  }
+  .ayl-sub3-badge {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background: {{ sub3_color }};
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 50px;
+  }
+  .ayl-sub3-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+  .ayl-sub3-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 11px 14px;
+    background: #fff;
+    border: 1.5px solid #e8e8e8;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #333;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all .15s;
+    line-height: 1.3;
+  }
+  .ayl-sub3-card:hover {
+    border-color: {{ sub3_color }};
+    color: {{ sub3_color }};
+    background: #fafafa;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,.08);
+  }
+  .ayl-sub3-arrow {
+    font-size: 0.75rem;
+    opacity: 0;
+    transition: opacity .15s;
+    flex-shrink: 0;
+    margin-left: 6px;
+  }
+  .ayl-sub3-card:hover .ayl-sub3-arrow { opacity: 1; }
+  .ayl-sub3-divider {
+    height: 1px;
+    background: #eee;
+    margin: 0 0 24px;
+  }
+  @media (max-width: 600px) {
+    .ayl-sub3-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>
+
+<div id="ayl-sub3-wrap">
+  <div class="ayl-sub3-header">
+    <h3>Subcategorías de {{ sub3_titulo }}</h3>
+    <span class="ayl-sub3-badge">Explorar</span>
+  </div>
+  <div class="ayl-sub3-grid">
+    {% assign items = sub3 | split: ',' %}
+    {% for item in items %}
+      {% assign parts = item | split: '|' %}
+      <a class="ayl-sub3-card" href="{{ parts[1] }}">
+        <span>{{ parts[0] }}</span>
+        <span class="ayl-sub3-arrow">→</span>
+      </a>
+    {% endfor %}
+  </div>
+  <div class="ayl-sub3-divider"></div>
+</div>
+{% endif %}

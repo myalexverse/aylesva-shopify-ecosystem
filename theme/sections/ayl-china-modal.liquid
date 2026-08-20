@@ -1,0 +1,304 @@
+{%- style -%}
+  #ayl-china-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+    z-index: 2147483647;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    font-family: 'Inter', sans-serif;
+  }
+
+  #ayl-china-modal.active {
+    display: flex;
+  }
+
+  .china-modal-content {
+    background: #111;
+    width: 100%;
+    max-width: 850px;
+    position: relative;
+    padding: 60px 40px;
+    border: 1px solid #C5A47E;
+    box-shadow: 0 0 50px rgba(197, 164, 126, 0.2);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  /* Decorative corners */
+  .china-modal-content::before, .china-modal-content::after {
+    content: '';
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.4;
+    pointer-events: none;
+  }
+  .china-modal-content::before {
+    top: 10px;
+    left: 10px;
+    border-top: 2px solid #C5A47E;
+    border-left: 2px solid #C5A47E;
+  }
+  .china-modal-content::after {
+    bottom: 10px;
+    right: 10px;
+    border-bottom: 2px solid #C5A47E;
+    border-right: 2px solid #C5A47E;
+  }
+
+  .china-modal-close {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    color: #C5A47E;
+    font-size: 32px;
+    cursor: pointer;
+    z-index: 10;
+    transition: transform 0.3s ease;
+  }
+  .china-modal-close:hover { transform: rotate(90deg); }
+
+  .china-modal-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .china-dragon-logo {
+    width: 80px;
+    margin: 0 auto 20px;
+    display: block;
+    filter: brightness(0) saturate(100%) invert(84%) sepia(21%) saturate(541%) hue-rotate(349deg) brightness(85%) contrast(85%);
+  }
+
+  .china-modal-title {
+    font-family: 'Playfair Display', serif;
+    color: #C5A47E;
+    font-size: 36px;
+    line-height: 1.2;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .china-modal-subtitle {
+    color: #fff;
+    font-size: 16px;
+    max-width: 600px;
+    margin: 0 auto;
+    opacity: 0.9;
+    line-height: 1.6;
+  }
+
+  /* Form Styling */
+  .china-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .china-form-group {
+    position: relative;
+    margin-bottom: 10px;
+  }
+
+  .china-form-group.full-width {
+    grid-column: span 2;
+  }
+
+  .china-form-group i {
+    position: absolute;
+    left: 15px;
+    top: 18px;
+    color: #C5A47E;
+    font-size: 18px;
+  }
+
+  .china-input {
+    width: 100%;
+    background: transparent;
+    border: 1px solid rgba(197, 164, 126, 0.4);
+    color: #fff;
+    padding: 16px 15px 16px 45px;
+    font-size: 14px;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+  }
+
+  .china-input:focus {
+    border-color: #C5A47E;
+    outline: none;
+    background: rgba(197, 164, 126, 0.05);
+  }
+
+  .china-textarea {
+    height: 120px;
+    resize: none;
+  }
+
+  .china-submit-btn {
+    width: 100%;
+    background: #C5A47E;
+    color: #fff;
+    border: none;
+    padding: 20px;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    margin-top: 30px;
+    transition: all 0.3s;
+  }
+
+  .china-submit-btn:hover {
+    background: #b08d65;
+    box-shadow: 0 0 20px rgba(197, 164, 126, 0.4);
+  }
+
+  @media (max-width: 767px) {
+    .china-form-grid { grid-template-columns: 1fr; }
+    .china-form-group.full-width { grid-column: span 1; }
+    .china-modal-title { font-size: 24px; }
+    .china-modal-content { padding: 40px 20px; }
+    .china-modal-content::before, .china-modal-content::after { width: 60px; height: 60px; }
+  }
+{%- endstyle -%}
+
+<div id="ayl-china-modal">
+  <div class="china-modal-content">
+    <span class="china-modal-close" onclick="closeChinaModal()">&times;</span>
+    
+    <div class="china-modal-header">
+      <img src="https://cdn.shopify.com/s/files/1/0550/3352/8405/files/dragon-icon.png?v=1713990000" onerror="this.src='https://img.icons8.com/ios-filled/100/C5A47E/dragon.png'" class="china-dragon-logo" alt="Dragon Logo">
+      <h2 class="china-modal-title">{{ section.settings.title }}</h2>
+      <p class="china-modal-subtitle">{{ section.settings.subtitle }}</p>
+    </div>
+
+    {% form 'contact' %}
+      {% if form.posted_successfully? %}
+        <div style="color: #C5A47E; text-align: center; padding: 20px; font-weight: 700;">
+          ¡Gracias! Su solicitud ha sido enviada con éxito. Nos pondremos en contacto pronto.
+        </div>
+      {% endif %}
+
+      {{ form.errors | default_errors }}
+
+      <div class="china-form-grid">
+        <div class="china-form-group">
+          <i class="mdi mdi-account"></i>
+          <input type="text" name="contact[nombre_completo]" class="china-input" placeholder="Nombre Completo" required>
+        </div>
+        
+        <div class="china-form-group">
+          <i class="mdi mdi-email"></i>
+          <input type="email" name="contact[email]" class="china-input" placeholder="Correo Electrónico de Empresa" required>
+        </div>
+
+        <div class="china-form-group">
+          <i class="mdi mdi-phone"></i>
+          <input type="tel" name="contact[telefono]" class="china-input" placeholder="Teléfono de Contacto" required>
+        </div>
+
+        <div class="china-form-group">
+          <i class="mdi mdi-domain"></i>
+          <input type="text" name="contact[empresa]" class="china-input" placeholder="Nombre de la Empresa / Industria" required>
+        </div>
+
+        <div class="china-form-group full-width">
+          <i class="mdi mdi-format-list-bulleted"></i>
+          <select name="contact[tipo_consulta]" class="china-input" required>
+            <option value="" disabled selected>Tipo de Consulta</option>
+            <option value="Sourcing de Productos">Sourcing de Productos</option>
+            <option value="Logística e Importación">Logística e Importación</option>
+            <option value="Auditoría de Fábricas">Auditoría de Fábricas</option>
+            <option value="Desarrollo de Marca Propia">Desarrollo de Marca Propia</option>
+          </select>
+        </div>
+
+        <div class="china-form-group full-width">
+          <i class="mdi mdi-lead-pencil"></i>
+          <textarea name="contact[body]" class="china-input china-textarea" placeholder="Detalles de su Solicitud" required></textarea>
+        </div>
+      </div>
+
+      <button type="submit" class="china-submit-btn">SOLICITAR CONSULTA ESPECIALIZADA</button>
+    {% endform %}
+  </div>
+</div>
+
+<script>
+  window.openChinaModal = function() {
+    const modal = document.getElementById('ayl-china-modal');
+    if (modal) {
+      modal.classList.add('active');
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+  };
+
+  window.closeChinaModal = function() {
+    const modal = document.getElementById('ayl-china-modal');
+    if (modal) {
+      modal.classList.remove('active');
+      modal.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+  };
+
+  // Close when clicking outside content
+  document.getElementById('ayl-china-modal').addEventListener('click', function(e) {
+    if (e.target === this) {
+      closeChinaModal();
+    }
+  });
+
+  document.addEventListener('click', function(e) {
+    const target = e.target.closest('a');
+    if (target) {
+      const href = target.getAttribute('href');
+      if (href && href.includes('#ayl-china-form')) {
+        e.preventDefault();
+        window.openChinaModal();
+      }
+    }
+  }, true);
+
+  // Check hash on load
+  if (window.location.hash === '#ayl-china-form') {
+    setTimeout(window.openChinaModal, 500);
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Aylesva China Modal",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título",
+      "default": "ATENCIÓN ESPECIALIZADA: AYLESVA CHINA DIRECTO"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtítulo",
+      "default": "Conectamos tu negocio directamente con China. Complete este formulario para una consulta personalizada de sourcing y logística."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Aylesva China Modal"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,719 @@
+{% comment %}
+  ============================================================
+  Aylesva China — Premium import/sourcing landing section
+  Single reusable Shopify section. Almost everything is editable
+  via the Theme Editor and compatible with Translate & Adapt.
+  Repeatable content uses blocks (trust, hero image, source card,
+  timeline step, featured opportunity).
+  ============================================================
+{% endcomment %}
+
+{%- liquid
+  assign navy = section.settings.color_navy
+  assign accent = section.settings.color_accent
+  assign light = section.settings.color_light
+  assign white = section.settings.color_white
+  assign logo_align = section.settings.logo_align
+  assign contact_anchor = '#ac-contact-' | append: section.id
+-%}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  #aylesva-{{ section.id }} {
+    --ac-navy: {{ navy }};
+    --ac-accent: {{ accent }};
+    --ac-light: {{ light }};
+    --ac-white: {{ white }};
+    --ac-ink: #0B1F3A;
+    --ac-muted: #5b6b80;
+    --ac-line: rgba(11,31,58,.10);
+    --ac-radius: 20px;
+    --ac-radius-sm: 16px;
+    --ac-shadow: 0 1px 2px rgba(11,31,58,.04), 0 12px 32px rgba(11,31,58,.08);
+    --ac-shadow-lg: 0 30px 60px -20px rgba(11,31,58,.28);
+    --ac-maxw: 1240px;
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: var(--ac-ink);
+    background: var(--ac-white);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  #aylesva-{{ section.id }} * { box-sizing: border-box; }
+  #aylesva-{{ section.id }} .ac-wrap { max-width: var(--ac-maxw); margin: 0 auto; padding: 0 24px; }
+  #aylesva-{{ section.id }} img { display: block; max-width: 100%; }
+  #aylesva-{{ section.id }} p { margin: 0; }
+  #aylesva-{{ section.id }} h1,#aylesva-{{ section.id }} h2,#aylesva-{{ section.id }} h3 { margin: 0; letter-spacing: -.02em; line-height: 1.08; }
+
+  /* Reveal animation */
+  #aylesva-{{ section.id }} .ac-reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }
+  #aylesva-{{ section.id }} .ac-reveal.ac-in { opacity: 1; transform: none; }
+
+  /* Buttons */
+  #aylesva-{{ section.id }} .ac-btn { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; font-size: 16px; line-height: 1; padding: 16px 26px; border-radius: 999px; text-decoration: none; border: 1px solid transparent; cursor: pointer; transition: transform .25s ease, box-shadow .25s ease, background .25s ease, color .25s ease; white-space: nowrap; }
+  #aylesva-{{ section.id }} .ac-btn--primary { background: var(--ac-accent); color: #fff; box-shadow: 0 10px 24px -8px rgba(214,40,40,.55); }
+  #aylesva-{{ section.id }} .ac-btn--primary:hover { transform: translateY(-2px); box-shadow: 0 16px 30px -10px rgba(214,40,40,.6); }
+  #aylesva-{{ section.id }} .ac-btn--ghost { background: var(--ac-white); color: var(--ac-navy); border-color: var(--ac-line); }
+  #aylesva-{{ section.id }} .ac-btn--ghost:hover { transform: translateY(-2px); border-color: rgba(11,31,58,.25); box-shadow: var(--ac-shadow); }
+  #aylesva-{{ section.id }} .ac-btn--light { background: rgba(255,255,255,.12); color: #fff; border-color: rgba(255,255,255,.22); backdrop-filter: blur(6px); }
+  #aylesva-{{ section.id }} .ac-btn--light:hover { background: #fff; color: var(--ac-navy); transform: translateY(-2px); }
+  #aylesva-{{ section.id }} .ac-btn--sm { padding: 11px 18px; font-size: 14px; }
+
+  #aylesva-{{ section.id }} .ac-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ac-accent); }
+  #aylesva-{{ section.id }} .ac-eyebrow::before { content:""; width: 22px; height: 2px; background: var(--ac-accent); border-radius: 2px; }
+  #aylesva-{{ section.id }} .ac-kicker { display:inline-block; font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ac-accent); margin-bottom: 14px; }
+  #aylesva-{{ section.id }} .ac-section-head { max-width: 720px; margin: 0 auto 56px; text-align: center; }
+  #aylesva-{{ section.id }} .ac-section-head h2 { font-size: clamp(30px, 4vw, 46px); font-weight: 800; }
+  #aylesva-{{ section.id }} .ac-section-head p { margin-top: 16px; font-size: clamp(16px,1.4vw,19px); color: var(--ac-muted); line-height: 1.6; }
+  #aylesva-{{ section.id }} .ac-svg { width: 26px; height: 26px; stroke: currentColor; fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* Logo */
+  #aylesva-{{ section.id }} .ac-logo { display: flex; margin-bottom: 26px; }
+  #aylesva-{{ section.id }} .ac-logo--left { justify-content: flex-start; }
+  #aylesva-{{ section.id }} .ac-logo--center { justify-content: center; }
+  #aylesva-{{ section.id }} .ac-logo--right { justify-content: flex-end; }
+  #aylesva-{{ section.id }} .ac-logo img { width: {{ section.settings.logo_width }}px; height: auto; }
+  #aylesva-{{ section.id }} .ac-logo .ac-logo-text { font-size: 24px; font-weight: 800; letter-spacing: -.02em; color: var(--ac-navy); }
+  #aylesva-{{ section.id }} .ac-logo .ac-logo-text b { color: var(--ac-accent); }
+
+  /* ---------- HERO ---------- */
+  #aylesva-{{ section.id }} .ac-hero { padding: clamp(56px, 8vw, 110px) 0 clamp(40px,6vw,80px); }
+  #aylesva-{{ section.id }} .ac-hero-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(40px,5vw,72px); align-items: center; }
+  #aylesva-{{ section.id }} .ac-hero h1 { font-size: clamp(36px, 5.2vw, 62px); font-weight: 800; margin-top: 22px; }
+  #aylesva-{{ section.id }} .ac-hero .ac-lede { margin-top: 24px; font-size: clamp(17px,1.5vw,20px); line-height: 1.62; color: var(--ac-muted); max-width: 560px; }
+  #aylesva-{{ section.id }} .ac-hero-cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 36px; }
+  #aylesva-{{ section.id }} .ac-trust { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 28px; margin-top: 40px; padding-top: 32px; border-top: 1px solid var(--ac-line); }
+  #aylesva-{{ section.id }} .ac-trust-item { display: flex; align-items: center; gap: 11px; font-weight: 600; font-size: 15px; color: var(--ac-ink); }
+  #aylesva-{{ section.id }} .ac-trust-item .ac-check { flex: none; width: 24px; height: 24px; border-radius: 50%; background: rgba(214,40,40,.10); color: var(--ac-accent); display: grid; place-items: center; }
+  #aylesva-{{ section.id }} .ac-trust-item .ac-check svg { width: 14px; height: 14px; stroke-width: 2.4; }
+
+  /* Masonry collage */
+  #aylesva-{{ section.id }} .ac-collage { columns: 2; column-gap: 16px; }
+  #aylesva-{{ section.id }} .ac-collage .ac-tile { break-inside: avoid; margin-bottom: 16px; border-radius: var(--ac-radius-sm); overflow: hidden; box-shadow: var(--ac-shadow); position: relative; display: block; }
+  #aylesva-{{ section.id }} .ac-collage .ac-tile img { width: 100%; height: auto; transition: transform .6s cubic-bezier(.16,1,.3,1); }
+  #aylesva-{{ section.id }} .ac-collage .ac-tile:hover img { transform: scale(1.07); }
+  #aylesva-{{ section.id }} .ac-collage .ac-tile::after { content:""; position:absolute; inset:0; background: linear-gradient(180deg, transparent 55%, rgba(11,31,58,.18)); opacity: 0; transition: opacity .4s; }
+  #aylesva-{{ section.id }} .ac-collage .ac-tile:hover::after { opacity: 1; }
+
+  /* ---------- SOURCE CARDS ---------- */
+  #aylesva-{{ section.id }} .ac-band { padding: clamp(64px,8vw,104px) 0; }
+  #aylesva-{{ section.id }} .ac-band--gray { background: var(--ac-light); }
+  #aylesva-{{ section.id }} .ac-cards { display: grid; grid-template-columns: repeat(5, 1fr); gap: 22px; }
+  #aylesva-{{ section.id }} .ac-card { background: var(--ac-white); border: 1px solid var(--ac-line); border-radius: var(--ac-radius); overflow: hidden; display: flex; flex-direction: column; transition: transform .35s cubic-bezier(.16,1,.3,1), box-shadow .35s ease, border-color .35s ease; }
+  #aylesva-{{ section.id }} .ac-card:hover { transform: translateY(-8px); box-shadow: var(--ac-shadow-lg); border-color: transparent; }
+  #aylesva-{{ section.id }} .ac-card-media { aspect-ratio: 4/3; overflow: hidden; background: #e9edf3; position: relative; }
+  #aylesva-{{ section.id }} .ac-card-media img { width:100%; height:100%; object-fit: cover; transition: transform .6s cubic-bezier(.16,1,.3,1); }
+  #aylesva-{{ section.id }} .ac-card:hover .ac-card-media img { transform: scale(1.06); }
+  #aylesva-{{ section.id }} .ac-card-ic { position: absolute; left: 14px; top: 14px; width: 42px; height: 42px; border-radius: 12px; background: rgba(255,255,255,.92); backdrop-filter: blur(6px); color: var(--ac-navy); display: grid; place-items: center; box-shadow: 0 6px 16px rgba(11,31,58,.16); }
+  #aylesva-{{ section.id }} .ac-card-body { padding: 22px 22px 24px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  #aylesva-{{ section.id }} .ac-card-body h3 { font-size: 18px; font-weight: 700; }
+  #aylesva-{{ section.id }} .ac-card-body p { font-size: 14.5px; line-height: 1.55; color: var(--ac-muted); }
+  #aylesva-{{ section.id }} .ac-card-body .ac-card-link { margin-top: auto; padding-top: 6px; font-weight: 700; font-size: 14px; color: var(--ac-accent); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+  #aylesva-{{ section.id }} .ac-card-body .ac-card-link svg { width: 15px; height: 15px; transition: transform .25s; }
+  #aylesva-{{ section.id }} .ac-card:hover .ac-card-link svg { transform: translateX(4px); }
+
+  /* ---------- TIMELINE ---------- */
+  #aylesva-{{ section.id }} .ac-timeline { display: grid; grid-template-columns: repeat({{ section.blocks | where: 'type','timeline_step' | size | at_least: 1 }}, 1fr); gap: 28px; position: relative; }
+  #aylesva-{{ section.id }} .ac-timeline::before { content:""; position: absolute; top: 28px; left: 7%; right: 7%; height: 2px; background: repeating-linear-gradient(90deg, var(--ac-line) 0 8px, transparent 8px 16px); z-index: 0; }
+  #aylesva-{{ section.id }} .ac-step { position: relative; z-index: 1; text-align: center; }
+  #aylesva-{{ section.id }} .ac-step-dot { width: 58px; height: 58px; margin: 0 auto 18px; border-radius: 50%; background: var(--ac-white); border: 1px solid var(--ac-line); color: var(--ac-navy); display: grid; place-items: center; box-shadow: var(--ac-shadow); transition: transform .35s ease, background .35s ease, color .35s ease; }
+  #aylesva-{{ section.id }} .ac-step:hover .ac-step-dot { background: var(--ac-navy); color: #fff; transform: translateY(-4px); }
+  #aylesva-{{ section.id }} .ac-step-num { position: absolute; top: -8px; right: calc(50% - 38px); width: 24px; height: 24px; border-radius: 50%; background: var(--ac-accent); color: #fff; font-size: 12px; font-weight: 800; display: grid; place-items: center; box-shadow: 0 4px 10px rgba(214,40,40,.45); }
+  #aylesva-{{ section.id }} .ac-step h3 { font-size: 17px; font-weight: 700; }
+  #aylesva-{{ section.id }} .ac-step p { margin-top: 9px; font-size: 14.5px; line-height: 1.55; color: var(--ac-muted); }
+
+  /* ---------- SUPPLIER BANNER ---------- */
+  #aylesva-{{ section.id }} .ac-banner-outer { padding: clamp(48px,6vw,80px) 0; }
+  #aylesva-{{ section.id }} .ac-banner { position: relative; border-radius: 28px; overflow: hidden; background: linear-gradient(120deg, #07172e 0%, var(--ac-navy) 55%, #14315c 100%); color: #fff; display: grid; grid-template-columns: 1.1fr .9fr; align-items: center; min-height: 380px; box-shadow: var(--ac-shadow-lg); }
+  #aylesva-{{ section.id }} .ac-banner-copy { padding: clamp(36px,5vw,64px); position: relative; z-index: 2; }
+  #aylesva-{{ section.id }} .ac-banner-copy h2 { font-size: clamp(28px,3.6vw,44px); font-weight: 800; color: #ffffff !important; }
+  #aylesva-{{ section.id }} .ac-banner-copy p { margin-top: 18px; font-size: 18px; line-height: 1.6; color: rgba(255,255,255,.82); max-width: 480px; }
+  #aylesva-{{ section.id }} .ac-banner-copy .ac-btn { margin-top: 30px; }
+  #aylesva-{{ section.id }} .ac-banner-media { position: relative; height: 100%; min-height: 320px; }
+  #aylesva-{{ section.id }} .ac-banner-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  #aylesva-{{ section.id }} .ac-banner-media::before { content:""; position: absolute; inset: 0; background: linear-gradient(90deg, var(--ac-navy) 0%, rgba(11,31,58,.55) 35%, transparent 100%); z-index: 1; }
+
+  /* ---------- WORLDWIDE BANNER ---------- */
+  #aylesva-{{ section.id }} .ac-worldwide-outer { padding: clamp(48px,6vw,80px) 0; }
+  #aylesva-{{ section.id }} .ac-worldwide-banner { display: grid; grid-template-columns: 1.15fr .85fr; align-items: center; background: #030a16; border-radius: 28px; overflow: hidden; box-shadow: var(--ac-shadow-lg); border: 1px solid rgba(255,255,255,0.05); min-height: 380px; position: relative; }
+  #aylesva-{{ section.id }} .ac-worldwide-copy { padding: clamp(36px,5vw,64px); position: relative; z-index: 2; }
+  #aylesva-{{ section.id }} .ac-worldwide-copy h2 { font-size: clamp(28px,3.6vw,44px); font-weight: 800; color: #ffffff !important; line-height: 1.25; }
+  #aylesva-{{ section.id }} .ac-worldwide-desc { margin-top: 18px; font-size: 18px; line-height: 1.6; color: rgba(255,255,255,.82); max-width: 520px; }
+  #aylesva-{{ section.id }} .ac-worldwide-desc p { margin: 0; }
+  #aylesva-{{ section.id }} .ac-worldwide-copy .ac-btn { margin-top: 30px; }
+  #aylesva-{{ section.id }} .ac-worldwide-media { position: relative; height: 100%; min-height: 320px; }
+  #aylesva-{{ section.id }} .ac-worldwide-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  #aylesva-{{ section.id }} .ac-worldwide-media::before { content:""; position: absolute; inset: 0; background: linear-gradient(90deg, #030a16 0%, rgba(3,10,22,.55) 35%, transparent 100%); z-index: 1; }
+
+  /* ---------- FEATURED ---------- */
+  #aylesva-{{ section.id }} .ac-feat { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+  #aylesva-{{ section.id }} .ac-feat-card { position: relative; border-radius: var(--ac-radius); overflow: hidden; min-height: 320px; display: flex; align-items: flex-end; color: #fff; text-decoration: none; box-shadow: var(--ac-shadow); transition: transform .4s cubic-bezier(.16,1,.3,1), box-shadow .4s ease; }
+  #aylesva-{{ section.id }} .ac-feat-card:hover { transform: translateY(-8px); box-shadow: var(--ac-shadow-lg); }
+  #aylesva-{{ section.id }} .ac-feat-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .7s cubic-bezier(.16,1,.3,1); z-index: 0; }
+  #aylesva-{{ section.id }} .ac-feat-card:hover img { transform: scale(1.08); }
+  #aylesva-{{ section.id }} .ac-feat-card::after { content:""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(11,31,58,0) 28%, rgba(7,18,38,.55) 62%, rgba(7,18,38,.92) 100%); z-index: 1; }
+  #aylesva-{{ section.id }} .ac-feat-body { position: relative; z-index: 2; padding: 24px; width: 100%; }
+  #aylesva-{{ section.id }} .ac-feat-body h3 { font-size: 21px; font-weight: 700; color: #ffffff !important; text-shadow: 0 2px 5px rgba(0,0,0,0.85); }
+  #aylesva-{{ section.id }} .ac-feat-body p { margin-top: 8px; font-size: 14.5px; line-height: 1.5; color: rgba(255,255,255,.85); max-height: 0; opacity: 0; overflow: hidden; transition: max-height .45s ease, opacity .35s ease, margin .35s ease; }
+  #aylesva-{{ section.id }} .ac-feat-card:hover .ac-feat-body p { max-height: 120px; opacity: 1; }
+  #aylesva-{{ section.id }} .ac-feat-tag { display: inline-flex; align-items: center; gap: 7px; margin-top: 14px; font-weight: 700; font-size: 14px; color: #fff; }
+  #aylesva-{{ section.id }} .ac-feat-tag svg { width: 15px; height: 15px; transition: transform .25s; }
+  #aylesva-{{ section.id }} .ac-feat-card:hover .ac-feat-tag svg { transform: translateX(4px); }
+
+  /* ---------- FORM ---------- */
+  #aylesva-{{ section.id }} .ac-form-wrap { max-width: 880px; margin: 0 auto; background: var(--ac-white); border: 1px solid var(--ac-line); border-radius: 26px; box-shadow: var(--ac-shadow); padding: clamp(28px,4vw,52px); }
+  #aylesva-{{ section.id }} .ac-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  #aylesva-{{ section.id }} .ac-field { display: flex; flex-direction: column; gap: 7px; }
+  #aylesva-{{ section.id }} .ac-field.ac-span2 { grid-column: 1 / -1; }
+  #aylesva-{{ section.id }} .ac-field label { font-size: 13.5px; font-weight: 600; color: var(--ac-ink); }
+  #aylesva-{{ section.id }} .ac-field input, #aylesva-{{ section.id }} .ac-field select, #aylesva-{{ section.id }} .ac-field textarea { font-family: inherit; font-size: 15px; color: var(--ac-ink); background: var(--ac-light); border: 1px solid var(--ac-line); border-radius: 12px; padding: 13px 15px; transition: border-color .2s, box-shadow .2s, background .2s; width: 100%; }
+  #aylesva-{{ section.id }} .ac-field input:focus, #aylesva-{{ section.id }} .ac-field select:focus, #aylesva-{{ section.id }} .ac-field textarea:focus { outline: none; border-color: var(--ac-accent); background: #fff; box-shadow: 0 0 0 4px rgba(214,40,40,.10); }
+  #aylesva-{{ section.id }} .ac-field textarea { resize: vertical; min-height: 110px; }
+  #aylesva-{{ section.id }} .ac-form-note { margin-top: 18px; font-size: 14px; color: var(--ac-muted); display: flex; align-items: center; gap: 9px; }
+  #aylesva-{{ section.id }} .ac-form-actions { margin-top: 24px; }
+  #aylesva-{{ section.id }} .ac-form-actions .ac-btn { width: 100%; justify-content: center; }
+  #aylesva-{{ section.id }} .ac-form-success { background: rgba(20,150,80,.10); border: 1px solid rgba(20,150,80,.3); color: #16794a; border-radius: 14px; padding: 16px 18px; font-weight: 600; margin-bottom: 22px; }
+
+  /* ---------- DISCLAIMER ---------- */
+  #aylesva-{{ section.id }} .ac-disclaimer { background: var(--ac-light); }
+  #aylesva-{{ section.id }} .ac-disclaimer .ac-wrap { padding-top: 40px; padding-bottom: 40px; }
+  #aylesva-{{ section.id }} .ac-disc-inner { display: flex; gap: 16px; align-items: flex-start; max-width: 920px; margin: 0 auto; }
+  #aylesva-{{ section.id }} .ac-disc-ic { flex: none; width: 40px; height: 40px; border-radius: 12px; background: #fff; border: 1px solid var(--ac-line); color: var(--ac-muted); display: grid; place-items: center; }
+  #aylesva-{{ section.id }} .ac-disc-inner p { font-size: 13.5px; line-height: 1.65; color: var(--ac-muted); }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 1100px) {
+    #aylesva-{{ section.id }} .ac-cards { grid-template-columns: repeat(3, 1fr); }
+    #aylesva-{{ section.id }} .ac-feat { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 900px) {
+    #aylesva-{{ section.id }} .ac-hero-grid { grid-template-columns: 1fr; }
+    #aylesva-{{ section.id }} .ac-banner { grid-template-columns: 1fr; }
+    #aylesva-{{ section.id }} .ac-banner-media { min-height: 220px; }
+    #aylesva-{{ section.id }} .ac-banner-media::before { background: linear-gradient(0deg, var(--ac-navy) 0%, transparent 100%); }
+    #aylesva-{{ section.id }} .ac-worldwide-banner { grid-template-columns: 1fr; }
+    #aylesva-{{ section.id }} .ac-worldwide-media { min-height: 250px; }
+    #aylesva-{{ section.id }} .ac-worldwide-media::before { background: linear-gradient(0deg, #030a16 0%, transparent 100%); }
+    #aylesva-{{ section.id }} .ac-cards { grid-template-columns: repeat(2, 1fr); }
+    #aylesva-{{ section.id }} .ac-feat { grid-template-columns: repeat(2, 1fr); }
+    /* vertical timeline */
+    #aylesva-{{ section.id }} .ac-timeline { grid-template-columns: 1fr; gap: 0; }
+    #aylesva-{{ section.id }} .ac-timeline::before { top: 0; bottom: 0; left: 28px; right: auto; width: 2px; height: auto; background: repeating-linear-gradient(180deg, var(--ac-line) 0 8px, transparent 8px 16px); }
+    #aylesva-{{ section.id }} .ac-step { text-align: left; display: grid; grid-template-columns: 58px 1fr; gap: 18px; padding-bottom: 32px; }
+    #aylesva-{{ section.id }} .ac-step-dot { margin: 0; }
+    #aylesva-{{ section.id }} .ac-step-num { right: auto; left: 38px; top: -4px; }
+    #aylesva-{{ section.id }} .ac-step-text { padding-top: 8px; }
+  }
+  @media (max-width: 560px) {
+    #aylesva-{{ section.id }} .ac-wrap { padding: 0 18px; }
+    #aylesva-{{ section.id }} .ac-collage { columns: 2; }
+    #aylesva-{{ section.id }} .ac-cards { grid-template-columns: 1fr; }
+    #aylesva-{{ section.id }} .ac-feat { grid-template-columns: 1fr; }
+    #aylesva-{{ section.id }} .ac-trust { grid-template-columns: 1fr; }
+    #aylesva-{{ section.id }} .ac-form-grid { grid-template-columns: 1fr; }
+    #aylesva-{{ section.id }} .ac-hero-cta .ac-btn { width: 100%; justify-content: center; }
+  }
+</style>
+
+{%- comment -%} Reusable inline SVG icon set selectable per block {%- endcomment -%}
+{%- capture icon_arrow -%}<svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>{%- endcapture -%}
+
+<div id="aylesva-{{ section.id }}">
+
+  {%- comment -%} ============ SECTION 1 — HERO ============ {%- endcomment -%}
+  <section class="ac-hero">
+    <div class="ac-wrap">
+      <div class="ac-hero-grid">
+        <div class="ac-hero-copy ac-reveal">
+          {%- if section.settings.show_logo_hero -%}
+            <div class="ac-logo ac-logo--{{ logo_align }}">
+              {%- if section.settings.logo != blank -%}
+                <img src="{{ section.settings.logo | image_url: width: 600 }}" alt="{{ section.settings.logo.alt | default: shop.name | escape }}" width="{{ section.settings.logo_width }}" loading="eager">
+              {%- else -%}
+                <span class="ac-logo-text">Aylesva <b>Direct</b></span>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+
+          {%- if section.settings.hero_eyebrow != blank -%}<span class="ac-eyebrow">{{ section.settings.hero_eyebrow }}</span>{%- endif -%}
+          <h1>{{ section.settings.hero_headline }}</h1>
+          <div class="ac-lede">{{ section.settings.hero_description }}</div>
+
+          <div class="ac-hero-cta">
+            {%- if section.settings.hero_btn1_text != blank -%}
+              <a href="{{ section.settings.hero_btn1_link | default: contact_anchor }}" class="ac-btn ac-btn--primary">{{ section.settings.hero_btn1_text }}</a>
+            {%- endif -%}
+            {%- if section.settings.hero_btn2_text != blank -%}
+              <a href="{{ section.settings.hero_btn2_link | default: contact_anchor }}" class="ac-btn ac-btn--ghost">{{ section.settings.hero_btn2_text }}</a>
+            {%- endif -%}
+          </div>
+
+          {%- assign trust_blocks = section.blocks | where: 'type', 'trust' -%}
+          {%- if trust_blocks.size > 0 -%}
+            <div class="ac-trust">
+              {%- for block in trust_blocks -%}
+                <div class="ac-trust-item" {{ block.shopify_attributes }}>
+                  <span class="ac-check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  <span>{{ block.settings.text }}</span>
+                </div>
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
+        </div>
+
+        {%- assign hero_imgs = section.blocks | where: 'type', 'hero_image' -%}
+        {%- if hero_imgs.size > 0 -%}
+          <div class="ac-collage ac-reveal">
+            {%- for block in hero_imgs -%}
+              {%- liquid
+                assign src = ''
+                if block.settings.image != blank
+                  assign src = block.settings.image | image_url: width: 800
+                elsif block.settings.image_url != blank
+                  assign src = block.settings.image_url
+                endif
+              -%}
+              {%- if src != blank -%}
+                {%- if block.settings.link != blank -%}<a href="{{ block.settings.link }}" class="ac-tile" {{ block.shopify_attributes }}>{%- else -%}<div class="ac-tile" {{ block.shopify_attributes }}>{%- endif -%}
+                  <img src="{{ src }}" alt="{{ block.settings.alt | escape }}" loading="lazy">
+                {%- if block.settings.link != blank -%}</a>{%- else -%}</div>{%- endif -%}
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} ============ SECTION 1.5 — WORLDWIDE BANNER ============ {%- endcomment -%}
+  {%- if section.settings.worldwide_show -%}
+    <section class="ac-worldwide-outer">
+      <div class="ac-wrap">
+        <div class="ac-worldwide-banner ac-reveal">
+          <div class="ac-worldwide-copy">
+            {%- if section.settings.worldwide_eyebrow != blank -%}<span class="ac-eyebrow" style="color:var(--ac-accent)">{{ section.settings.worldwide_eyebrow }}</span>{%- endif -%}
+            <h2>{{ section.settings.worldwide_title }}</h2>
+            {%- if section.settings.worldwide_desc != blank -%}<div class="ac-worldwide-desc">{{ section.settings.worldwide_desc }}</div>{%- endif -%}
+            {%- if section.settings.worldwide_btn_text != blank -%}
+              <a href="{{ section.settings.worldwide_btn_link | default: contact_anchor }}" class="ac-btn ac-btn--primary">{{ section.settings.worldwide_btn_text }}</a>
+            {%- endif -%}
+          </div>
+          <div class="ac-worldwide-media">
+            {%- liquid
+              assign wsrc = ''
+              if section.settings.worldwide_image != blank
+                assign wsrc = section.settings.worldwide_image | image_url: width: 1200
+              elsif section.settings.worldwide_image_url != blank
+                assign wsrc = section.settings.worldwide_image_url
+              else
+                assign wsrc = 'worldwide-collage.jpg' | asset_url
+              endif
+            -%}
+            {%- if wsrc != blank -%}<img src="{{ wsrc }}" alt="{{ section.settings.worldwide_title | escape }}" loading="lazy">{%- endif -%}
+          </div>
+        </div>
+      </div>
+    </section>
+  {%- endif -%}
+
+  {%- comment -%} ============ SECTION 2 — SOURCE CARDS ============ {%- endcomment -%}
+  {%- assign source_cards = section.blocks | where: 'type', 'source_card' -%}
+  {%- if source_cards.size > 0 -%}
+    <section class="ac-band ac-band--gray">
+      <div class="ac-wrap">
+        <div class="ac-section-head ac-reveal">
+          <h2>{{ section.settings.source_title }}</h2>
+          {%- if section.settings.source_subtitle != blank -%}<p>{{ section.settings.source_subtitle }}</p>{%- endif -%}
+        </div>
+        <div class="ac-cards">
+          {%- for block in source_cards -%}
+            {%- liquid
+              assign src = ''
+              if block.settings.image != blank
+                assign src = block.settings.image | image_url: width: 700
+              elsif block.settings.image_url != blank
+                assign src = block.settings.image_url
+              endif
+            -%}
+            <div class="ac-card ac-reveal" {{ block.shopify_attributes }}>
+              <div class="ac-card-media">
+                {%- if src != blank -%}<img src="{{ src }}" alt="{{ block.settings.title | escape }}" loading="lazy">{%- endif -%}
+                <span class="ac-card-ic">
+                  {%- case block.settings.icon -%}
+                    {%- when 'home' -%}<svg class="ac-svg" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7"/><path d="M5 10v9a1 1 0 001 1h12a1 1 0 001-1v-9"/><path d="M9 21v-6h6v6"/></svg>
+                    {%- when 'materials' -%}<svg class="ac-svg" viewBox="0 0 24 24"><path d="M3 9l9-5 9 5-9 5-9-5z"/><path d="M3 9v6l9 5 9-5V9"/><path d="M12 14v6"/></svg>
+                    {%- when 'machinery' -%}<svg class="ac-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.6 1.6 0 00.3 1.8l.1.1a2 2 0 01-2.8 2.8l-.1-.1a1.6 1.6 0 00-2.7 1.1V21a2 2 0 01-4 0v-.1A1.6 1.6 0 006 19.4l-.1.1a2 2 0 11-2.8-2.8l.1-.1A1.6 1.6 0 003 14H3a2 2 0 010-4h.1A1.6 1.6 0 004.6 6l-.1-.1A2 2 0 117.3 3l.1.1A1.6 1.6 0 0010 3.6V3a2 2 0 014 0v.1a1.6 1.6 0 002.7 1.1l.1-.1a2 2 0 112.8 2.8l-.1.1A1.6 1.6 0 0021 10h.1"/></svg>
+                    {%- when 'box' -%}<svg class="ac-svg" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.7l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.7l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><path d="M3.3 7L12 12l8.7-5M12 22V12"/></svg>
+                    {%- when 'review' -%}<svg class="ac-svg" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+                    {%- when 'ship' -%}<svg class="ac-svg" viewBox="0 0 24 24"><path d="M3 17l1.5-5h15L21 17"/><path d="M2 20h20"/><path d="M12 12V7M9 7h6"/></svg>
+                    {%- when 'solar' -%}<svg class="ac-svg" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="11" rx="1"/><path d="M3 9h18M9 4v11M15 4v11M12 19v2"/></svg>
+                    {%- when 'tools' -%}<svg class="ac-svg" viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 005.4-5.4l-2.5 2.5-2-2 2.5-2.5z"/></svg>
+                    {%- else -%}<svg class="ac-svg" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.7l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.7l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+                  {%- endcase -%}
+                </span>
+              </div>
+              <div class="ac-card-body">
+                <h3>{{ block.settings.title }}</h3>
+                {%- if block.settings.description != blank -%}<p>{{ block.settings.description }}</p>{%- endif -%}
+                {%- if block.settings.btn_text != blank -%}
+                  {%- assign card_link = block.settings.btn_link | default: contact_anchor -%}
+                  <a href="{{ card_link }}" class="ac-card-link" data-ac-scroll>{{ block.settings.btn_text }} <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                {%- endif -%}
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+    </section>
+  {%- endif -%}
+
+  {%- comment -%} ============ SECTION 3 — HOW IT WORKS ============ {%- endcomment -%}
+  {%- assign steps = section.blocks | where: 'type', 'timeline_step' -%}
+  {%- if steps.size > 0 -%}
+    <section class="ac-band">
+      <div class="ac-wrap">
+        <div class="ac-section-head ac-reveal">
+          <h2>{{ section.settings.timeline_title }}</h2>
+          {%- if section.settings.timeline_subtitle != blank -%}<p>{{ section.settings.timeline_subtitle }}</p>{%- endif -%}
+        </div>
+        <div class="ac-timeline">
+          {%- for block in steps -%}
+            <div class="ac-step ac-reveal" {{ block.shopify_attributes }}>
+              <div class="ac-step-dot">
+                <span class="ac-step-num">{{ forloop.index }}</span>
+                {%- case block.settings.icon -%}
+                  {%- when 'chat' -%}<svg class="ac-svg" viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 01-9 8.4 9 9 0 01-4-1L3 20l1.1-4.9A8.4 8.4 0 0112 3a8.4 8.4 0 019 8.5z"/></svg>
+                  {%- when 'search' -%}<svg class="ac-svg" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+                  {%- when 'doc' -%}<svg class="ac-svg" viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 00-2 2v14a2 2 0 002 2h12a2 2 0 002-2V9z"/><path d="M14 3v6h6M9 13h6M9 17h6"/></svg>
+                  {%- when 'handshake' -%}<svg class="ac-svg" viewBox="0 0 24 24"><path d="M11 17l2 2 4-4"/><path d="M3 10l4-4 5 4 3-2 6 5-4 4-3-2-4 3-7-6z"/></svg>
+                  {%- else -%}<svg class="ac-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg>
+                {%- endcase -%}
+              </div>
+              <div class="ac-step-text">
+                <h3>{{ block.settings.title }}</h3>
+                {%- if block.settings.description != blank -%}<p>{{ block.settings.description }}</p>{%- endif -%}
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+    </section>
+  {%- endif -%}
+
+  {%- comment -%} ============ SECTION 4 — SUPPLIER BANNER ============ {%- endcomment -%}
+  <section class="ac-banner-outer">
+    <div class="ac-wrap">
+      <div class="ac-banner ac-reveal">
+        <div class="ac-banner-copy">
+          {%- if section.settings.banner_eyebrow != blank -%}<span class="ac-eyebrow" style="color:#fff">{{ section.settings.banner_eyebrow }}</span>{%- endif -%}
+          <h2 style="margin-top:14px">{{ section.settings.banner_title }}</h2>
+          {%- if section.settings.banner_desc != blank -%}<p>{{ section.settings.banner_desc }}</p>{%- endif -%}
+          {%- if section.settings.banner_btn_text != blank -%}
+            <a href="{{ section.settings.banner_btn_link | default: contact_anchor }}" class="ac-btn ac-btn--light">{{ section.settings.banner_btn_text }}</a>
+          {%- endif -%}
+        </div>
+        <div class="ac-banner-media">
+          {%- liquid
+            assign bsrc = ''
+            if section.settings.banner_image != blank
+              assign bsrc = section.settings.banner_image | image_url: width: 1200
+            elsif section.settings.banner_image_url != blank
+              assign bsrc = section.settings.banner_image_url
+            endif
+          -%}
+          {%- if bsrc != blank -%}<img src="{{ bsrc }}" alt="{{ section.settings.banner_title | escape }}" loading="lazy">{%- endif -%}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} ============ SECTION 5 — FEATURED OPPORTUNITIES ============ {%- endcomment -%}
+  {%- assign feats = section.blocks | where: 'type', 'featured' -%}
+  {%- if feats.size > 0 -%}
+    <section class="ac-band ac-band--gray">
+      <div class="ac-wrap">
+        <div class="ac-section-head ac-reveal">
+          <h2>{{ section.settings.feat_title }}</h2>
+          {%- if section.settings.feat_subtitle != blank -%}<p>{{ section.settings.feat_subtitle }}</p>{%- endif -%}
+        </div>
+        <div class="ac-feat">
+          {%- for block in feats -%}
+            {%- liquid
+              assign src = ''
+              if block.settings.image != blank
+                assign src = block.settings.image | image_url: width: 800
+              elsif block.settings.image_url != blank
+                assign src = block.settings.image_url
+              endif
+              assign card_link = block.settings.link
+              if card_link == blank
+                assign card_link = contact_anchor
+              endif
+            -%}
+            <a href="{{ card_link }}" class="ac-feat-card ac-reveal" {{ block.shopify_attributes }}>
+              {%- if src != blank -%}<img src="{{ src }}" alt="{{ block.settings.title | escape }}" loading="lazy">{%- endif -%}
+              <div class="ac-feat-body">
+                <h3>{{ block.settings.title }}</h3>
+                {%- if block.settings.description != blank -%}<p>{{ block.settings.description }}</p>{%- endif -%}
+                {%- if block.settings.btn_text != blank -%}
+                  <span class="ac-feat-tag">{{ block.settings.btn_text }} <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                {%- endif -%}
+              </div>
+            </a>
+          {%- endfor -%}
+        </div>
+      </div>
+    </section>
+  {%- endif -%}
+
+  {%- comment -%} ============ SECTION 6 — CONTACT FORM ============ {%- endcomment -%}
+  <section class="ac-band" id="{{ contact_anchor | remove: '#' }}">
+    <div class="ac-wrap">
+      <div class="ac-section-head ac-reveal">
+        <h2>{{ section.settings.form_title }}</h2>
+        {%- if section.settings.form_subtitle != blank -%}<p>{{ section.settings.form_subtitle }}</p>{%- endif -%}
+      </div>
+
+      <div class="ac-form-wrap ac-reveal">
+        {%- if section.settings.form_embed != blank -%}
+          {{ section.settings.form_embed }}
+        {%- else -%}
+          {%- form 'contact', id: 'ac-contact', enctype: 'multipart/form-data' -%}
+            {%- if form.posted_successfully? -%}
+              <div class="ac-form-success">{{ section.settings.form_success | default: 'Thank you — your request has been received. We will be in touch shortly.' }}</div>
+            {%- endif -%}
+            <div class="ac-form-grid">
+              <div class="ac-field"><label>Nombre Completo</label><input type="text" name="contact[name]" required></div>
+              <div class="ac-field"><label>Nombre de la Empresa</label><input type="text" name="contact[company]"></div>
+              <div class="ac-field"><label>Teléfono / WhatsApp</label><input type="tel" name="contact[phone]"></div>
+              <div class="ac-field"><label>Correo Electrónico</label><input type="email" name="contact[email]" required></div>
+              <div class="ac-field"><label>Nombre del Producto</label><input type="text" name="contact[product]"></div>
+              <div class="ac-field"><label>Cantidad Estimada</label><input type="text" name="contact[quantity]"></div>
+              <div class="ac-field"><label>¿Ya tienes un proveedor?</label>
+                <select name="contact[has_supplier]"><option>No</option><option>Sí</option><option>No estoy seguro</option></select>
+              </div>
+              <div class="ac-field"><label>Ciudad o País de Entrega</label><input type="text" name="contact[destination]"></div>
+              <div class="ac-field ac-span2"><label>Enlace del Producto</label><input type="url" name="contact[product_link]" placeholder="https://"></div>
+              <div class="ac-field ac-span2"><label>Subir Imagen del Producto</label><input type="file" name="contact[product_image]" accept="image/*"></div>
+              <div class="ac-field ac-span2"><label>Producto de interés</label><textarea name="contact[body]" placeholder="Describe el producto o proyecto de importación que te interesa..."></textarea></div>
+            </div>
+            {%- if section.settings.form_note != blank -%}
+              <p class="ac-form-note"><svg class="ac-svg" style="width:18px;height:18px;color:var(--ac-accent)" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>{{ section.settings.form_note }}</p>
+            {%- endif -%}
+            <div class="ac-form-actions">
+              <button type="submit" class="ac-btn ac-btn--primary">{{ section.settings.form_btn_text | default: 'Submit Request' }}</button>
+            </div>
+          {%- endform -%}
+        {%- endif -%}
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} ============ SECTION 7 — DISCLAIMER ============ {%- endcomment -%}
+  {%- if section.settings.disclaimer != blank -%}
+    <section class="ac-disclaimer">
+      <div class="ac-wrap">
+        <div class="ac-disc-inner ac-reveal">
+          <span class="ac-disc-ic"><svg class="ac-svg" style="width:20px;height:20px" viewBox="0 0 24 24"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9L1.8 18a2 2 0 001.7 3h17a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0z"/></svg></span>
+          <div>{{ section.settings.disclaimer }}</div>
+        </div>
+      </div>
+    </section>
+  {%- endif -%}
+
+</div>
+
+<script>
+  (function(){
+    var root = document.getElementById('aylesva-{{ section.id }}');
+    if(!root) return;
+    var els = root.querySelectorAll('.ac-reveal');
+    if(!('IntersectionObserver' in window)){ els.forEach(function(e){e.classList.add('ac-in');}); return; }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ en.target.style.transitionDelay = (Math.min(en.target.dataset.acIdx||0,6)*60)+'ms'; en.target.classList.add('ac-in'); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    els.forEach(function(e,i){ e.dataset.acIdx = i; io.observe(e); });
+
+    /* Smooth scroll card CTAs to the contact form */
+    root.querySelectorAll('a[data-ac-scroll]').forEach(function(a){
+      a.addEventListener('click', function(ev){
+        var href = a.getAttribute('href') || '';
+        if(href.charAt(0) !== '#') return;
+        var target = document.getElementById(href.slice(1));
+        if(!target) return;
+        ev.preventDefault();
+        var y = target.getBoundingClientRect().top + window.pageYOffset - 16;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Aylesva China",
+  "tag": "section",
+  "class": "aylesva-china-section",
+  "settings": [
+    { "type": "header", "content": "Logo" },
+    { "type": "image_picker", "id": "logo", "label": "Logo image" },
+    { "type": "range", "id": "logo_width", "min": 100, "max": 300, "step": 10, "unit": "px", "label": "Logo width", "default": 180 },
+    { "type": "select", "id": "logo_align", "label": "Logo alignment", "options": [ {"value":"left","label":"Left"}, {"value":"center","label":"Center"}, {"value":"right","label":"Right"} ], "default": "left" },
+    { "type": "checkbox", "id": "show_logo_hero", "label": "Show logo in Hero section", "default": true },
+
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "color_navy", "label": "Primary navy", "default": "#0B1F3A" },
+    { "type": "color", "id": "color_accent", "label": "Accent red", "default": "#D62828" },
+    { "type": "color", "id": "color_light", "label": "Light gray", "default": "#F7F8FA" },
+    { "type": "color", "id": "color_white", "label": "White / background", "default": "#FFFFFF" },
+
+    { "type": "header", "content": "1 · Hero" },
+    { "type": "text", "id": "hero_eyebrow", "label": "Eyebrow", "default": "Import Solutions From China" },
+    { "type": "text", "id": "hero_headline", "label": "Headline", "default": "Import from China with the Support of Aylesva" },
+    { "type": "richtext", "id": "hero_description", "label": "Description", "default": "<p>We help businesses explore products, compare pricing, and identify sourcing opportunities from China. Whether you are looking for prefabricated homes, construction materials, machinery, wholesale products, or already have an existing supplier, we can help you evaluate your options.</p>" },
+    { "type": "text", "id": "hero_btn1_text", "label": "Primary button text", "default": "Request Information" },
+    { "type": "url", "id": "hero_btn1_link", "label": "Primary button link" },
+    { "type": "text", "id": "hero_btn2_text", "label": "Secondary button text", "default": "Already Have a Supplier?" },
+    { "type": "url", "id": "hero_btn2_link", "label": "Secondary button link" },
+    
+    { "type": "header", "content": "1.5 · Worldwide Service" },
+    { "type": "checkbox", "id": "worldwide_show", "label": "Show Worldwide Banner", "default": true },
+    { "type": "text", "id": "worldwide_eyebrow", "label": "Eyebrow", "default": "COBERTURA MUNDIAL" },
+    { "type": "text", "id": "worldwide_title", "label": "Title", "default": "Servicio y Envíos a Nivel Mundial" },
+    { "type": "richtext", "id": "worldwide_desc", "label": "Description", "default": "<p>Podemos enviar e importar tus productos desde China a cualquier parte del mundo. Coordinamos toda la logística internacional, el transporte y el despacho aduanal para entregar tu mercancía de forma rápida y segura en tu destino final.</p>" },
+    { "type": "text", "id": "worldwide_btn_text", "label": "Button text", "default": "Solicitar Información de Logística" },
+    { "type": "url", "id": "worldwide_btn_link", "label": "Button link" },
+    { "type": "image_picker", "id": "worldwide_image", "label": "Banner image" },
+    { "type": "text", "id": "worldwide_image_url", "label": "Banner image URL (fallback)" },
+
+    { "type": "header", "content": "2 · What Can We Help You Import?" },
+    { "type": "text", "id": "source_title", "label": "Title", "default": "What Can We Help You Import?" },
+    { "type": "text", "id": "source_subtitle", "label": "Subtitle", "default": "Explore products and opportunities that may help your business grow." },
+
+    { "type": "header", "content": "3 · How It Works" },
+    { "type": "text", "id": "timeline_title", "label": "Title", "default": "A Simple Process to Get Started" },
+    { "type": "text", "id": "timeline_subtitle", "label": "Subtitle", "default": "From first conversation to coordinated next steps." },
+
+    { "type": "header", "content": "4 · Existing Supplier Banner" },
+    { "type": "text", "id": "banner_eyebrow", "label": "Eyebrow", "default": "Existing Suppliers" },
+    { "type": "text", "id": "banner_title", "label": "Headline", "default": "Already Have a Supplier in China?" },
+    { "type": "richtext", "id": "banner_desc", "label": "Description", "default": "<p>If you already work with a supplier, we can help review pricing and explore alternative opportunities that may improve your margins.</p>" },
+    { "type": "text", "id": "banner_btn_text", "label": "Button text", "default": "Review My Supplier" },
+    { "type": "url", "id": "banner_btn_link", "label": "Button link" },
+    { "type": "image_picker", "id": "banner_image", "label": "Banner image" },
+    { "type": "text", "id": "banner_image_url", "label": "Banner image URL (fallback)", "default": "https://images.unsplash.com/photo-1605745341112-85968b19335b?auto=format&fit=crop&w=1200&q=80" },
+
+    { "type": "header", "content": "5 · Featured Opportunities" },
+    { "type": "text", "id": "feat_title", "label": "Title", "default": "Explore Import Opportunities" },
+    { "type": "text", "id": "feat_subtitle", "label": "Subtitle", "default": "Examples of products and solutions businesses often source from China." },
+
+    { "type": "header", "content": "6 · Contact Form" },
+    { "type": "text", "id": "form_title", "label": "Title", "default": "Request a Quote or Review" },
+    { "type": "text", "id": "form_subtitle", "label": "Subtitle", "default": "Tell us what you are looking for and we will help you explore your options." },
+    { "type": "text", "id": "form_note", "label": "Helper note", "default": "The more information you provide, the better we can guide you." },
+    { "type": "text", "id": "form_btn_text", "label": "Submit button text", "default": "Submit Request" },
+    { "type": "text", "id": "form_success", "label": "Success message", "default": "Thank you — your request has been received. We will be in touch shortly." },
+    { "type": "html", "id": "form_embed", "label": "Custom form embed code", "info": "Paste an embed code (e.g. Typeform, HubSpot). If filled, it replaces the built-in form." },
+
+    { "type": "header", "content": "7 · Disclaimer" },
+    { "type": "richtext", "id": "disclaimer", "label": "Disclaimer text", "default": "<p>Aylesva facilitates initial commercial guidance and information regarding sourcing opportunities from China. Availability, pricing, logistics, permits, duties, taxes, and final terms may vary depending on suppliers and market conditions. All transactions should be independently reviewed and confirmed before any commitment or payment is made.</p>" }
+  ],
+  "blocks": [
+    {
+      "type": "trust",
+      "name": "Trust indicator",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Text", "default": "Reliable Suppliers" }
+      ]
+    },
+    {
+      "type": "hero_image",
+      "name": "Hero collage image",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image upload" },
+        { "type": "text", "id": "image_url", "label": "External image URL" },
+        { "type": "text", "id": "alt", "label": "Alt text" },
+        { "type": "url", "id": "link", "label": "Optional link" }
+      ]
+    },
+    {
+      "type": "source_card",
+      "name": "Source card",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image upload" },
+        { "type": "text", "id": "image_url", "label": "External image URL" },
+        { "type": "select", "id": "icon", "label": "Icon", "options": [ {"value":"home","label":"Home"},{"value":"materials","label":"Materials"},{"value":"machinery","label":"Machinery"},{"value":"box","label":"Box"},{"value":"review","label":"Review"},{"value":"ship","label":"Ship"},{"value":"solar","label":"Solar"},{"value":"tools","label":"Tools"} ], "default": "home" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Card title" },
+        { "type": "textarea", "id": "description", "label": "Description" },
+        { "type": "text", "id": "btn_text", "label": "Button text (optional)", "default": "Request Information" },
+        { "type": "url", "id": "btn_link", "label": "Button link", "info": "Leave empty to smoothly scroll to the contact form." }
+      ]
+    },
+    {
+      "type": "timeline_step",
+      "name": "Timeline step",
+      "settings": [
+        { "type": "select", "id": "icon", "label": "Icon", "options": [ {"value":"chat","label":"Chat"},{"value":"search","label":"Search"},{"value":"doc","label":"Document"},{"value":"handshake","label":"Handshake"} ], "default": "chat" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Step title" },
+        { "type": "textarea", "id": "description", "label": "Description" }
+      ]
+    },
+    {
+      "type": "featured",
+      "name": "Featured opportunity",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image upload" },
+        { "type": "text", "id": "image_url", "label": "External image URL" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Opportunity" },
+        { "type": "textarea", "id": "description", "label": "Description" },
+        { "type": "text", "id": "btn_text", "label": "Button text", "default": "Learn more" },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Aylesva China",
+      "blocks": [
+        { "type": "trust", "settings": { "text": "Reliable Suppliers" } },
+        { "type": "trust", "settings": { "text": "Better Pricing Opportunities" } },
+        { "type": "trust", "settings": { "text": "Expert Guidance" } },
+        { "type": "trust", "settings": { "text": "International Logistics" } },
+
+        { "type": "hero_image", "settings": { "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=800&q=80", "alt": "Modular prefabricated home" } },
+        { "type": "hero_image", "settings": { "image_url": "https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&w=800&q=80", "alt": "Stacked shipping containers" } },
+        { "type": "hero_image", "settings": { "image_url": "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=800&q=80", "alt": "Solar panels" } },
+        { "type": "hero_image", "settings": { "image_url": "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80", "alt": "Construction materials" } },
+        { "type": "hero_image", "settings": { "image_url": "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=800&q=80", "alt": "Industrial machinery" } },
+        { "type": "hero_image", "settings": { "image_url": "https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=800&q=80", "alt": "Warehouse logistics" } },
+        { "type": "hero_image", "settings": { "image_url": "https://images.unsplash.com/photo-1581244277943-fe4a9c777189?auto=format&fit=crop&w=800&q=80", "alt": "Industrial tools" } },
+        { "type": "hero_image", "settings": { "image_url": "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80", "alt": "Furniture" } },
+
+        { "type": "source_card", "settings": { "icon": "home", "title": "Prefabricated Homes & Structures", "description": "Modular houses, steel-frame buildings and ready-to-assemble structures.", "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=700&q=80", "btn_text": "Request Information" } },
+        { "type": "source_card", "settings": { "icon": "materials", "title": "Construction Materials", "description": "Steel, finishes, fixtures and bulk building supplies at scale.", "image_url": "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=700&q=80", "btn_text": "Request Information" } },
+        { "type": "source_card", "settings": { "icon": "machinery", "title": "Machinery & Equipment", "description": "Industrial machinery and equipment for production and operations.", "image_url": "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=700&q=80", "btn_text": "Request Information" } },
+        { "type": "source_card", "settings": { "icon": "box", "title": "Wholesale Products", "description": "Source wholesale merchandise across categories for resale.", "image_url": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=700&q=80", "btn_text": "Request Information" } },
+        { "type": "source_card", "settings": { "icon": "review", "title": "Existing Suppliers Review", "description": "We review your current supplier and surface better alternatives.", "image_url": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=700&q=80", "btn_text": "Request Information" } },
+
+        { "type": "timeline_step", "settings": { "icon": "chat", "title": "Tell Us What You Need", "description": "Share the products, volumes and goals you have in mind." } },
+        { "type": "timeline_step", "settings": { "icon": "search", "title": "We Review Available Options", "description": "We research suppliers, pricing and sourcing opportunities." } },
+        { "type": "timeline_step", "settings": { "icon": "doc", "title": "We Share Information & Alternatives", "description": "You receive clear information and comparable alternatives." } },
+        { "type": "timeline_step", "settings": { "icon": "handshake", "title": "Coordinate Next Steps", "description": "We help you coordinate logistics and the next steps forward." } },
+
+        { "type": "featured", "settings": { "title": "Prefabricated Homes", "description": "Turn-key modular homes built for fast assembly.", "image_url": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=800&q=80", "btn_text": "Learn more" } },
+        { "type": "featured", "settings": { "title": "Steel Structures", "description": "Steel-frame buildings and structural components.", "image_url": "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80", "btn_text": "Learn more" } },
+        { "type": "featured", "settings": { "title": "Solar Solutions", "description": "Panels and systems for energy projects.", "image_url": "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=800&q=80", "btn_text": "Learn more" } },
+        { "type": "featured", "settings": { "title": "Industrial Equipment", "description": "Machinery for manufacturing and operations.", "image_url": "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=800&q=80", "btn_text": "Learn more" } },
+        { "type": "featured", "settings": { "title": "Furniture", "description": "Residential and commercial furniture at scale.", "image_url": "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80", "btn_text": "Learn more" } },
+        { "type": "featured", "settings": { "title": "Construction Supplies", "description": "Bulk building supplies and finishes.", "image_url": "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80", "btn_text": "Learn more" } },
+        { "type": "featured", "settings": { "title": "Containers", "description": "Shipping containers and modular container builds.", "image_url": "https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&w=800&q=80", "btn_text": "Learn more" } },
+        { "type": "featured", "settings": { "title": "Wholesale Merchandise", "description": "Mixed wholesale goods for retail and resale.", "image_url": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80", "btn_text": "Learn more" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

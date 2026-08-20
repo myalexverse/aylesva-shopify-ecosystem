@@ -1,0 +1,732 @@
+{% comment %}
+  ============================================================
+  Aylesva Recursos — Premium Landing Section
+  Didactic financial intermediary landing page.
+  Features: Loan Simulator, Comparison Table & Micro-animations
+  ============================================================
+{% endcomment %}
+
+{%- liquid
+  assign brand_green = section.settings.color_brand
+  assign navy = section.settings.color_navy
+  assign light = section.settings.color_light
+  assign white = section.settings.color_white
+  assign accent = section.settings.color_accent
+  assign logo_align = section.settings.logo_align
+  assign contact_anchor = '#recursos-contact-' | append: section.id
+-%}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  html {
+    scroll-behavior: smooth !important;
+  }
+  #recursos-solutions-{{ section.id }}, #recursos-comparison-{{ section.id }}, #recursos-contact-{{ section.id }} {
+    scroll-margin-top: clamp(80px, 10vw, 120px) !important;
+  }
+  #recursos-{{ section.id }} {
+    --rc-brand: {{ brand_green }};
+    --rc-navy: {{ navy }};
+    --rc-light: {{ light }};
+    --rc-white: {{ white }};
+    --rc-accent: {{ accent }};
+    --rc-accent-blue: #3B82F6;
+    --rc-accent-green: #10B981;
+    --rc-accent-orange: #F59E0B;
+    --rc-ink: #0F172A;
+    --rc-muted: #64748B;
+    --rc-line: rgba(15,23,42,.08);
+    --rc-radius: 24px;
+    --rc-radius-sm: 16px;
+    --rc-shadow: 0 1px 2px rgba(15,23,42,.04), 0 12px 32px rgba(15,23,42,.06);
+    --rc-shadow-lg: 0 30px 60px -20px rgba(15,23,42,.15);
+    --rc-maxw: 1240px;
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: var(--rc-ink);
+    background: linear-gradient(135deg, #FAF5F5 0%, #FAF6F0 100%);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  #recursos-{{ section.id }} * { box-sizing: border-box; }
+  #recursos-{{ section.id }} .rc-wrap { max-width: var(--rc-maxw); margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- TYPOGRAPHY & BUTTONS ---------- */
+  #recursos-{{ section.id }} h1, #recursos-{{ section.id }} h2, #recursos-{{ section.id }} h3, #recursos-{{ section.id }} h4 { margin: 0; line-height: 1.2; font-weight: 800; color: var(--rc-navy); }
+  #recursos-{{ section.id }} p { margin: 0; line-height: 1.6; }
+  #recursos-{{ section.id }} .rc-eyebrow { display: inline-block; font-size: 13px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--rc-brand); margin-bottom: 12px; }
+  
+  #recursos-{{ section.id }} .rc-btn { display: inline-flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; padding: 14px 28px; border-radius: 30px; text-decoration: none; transition: all .25s ease; cursor: pointer; border: none; font-family: inherit; }
+  #recursos-{{ section.id }} .rc-btn--primary { background: var(--rc-brand); color: #fff; box-shadow: 0 4px 14px rgba(45,90,67,.3); }
+  #recursos-{{ section.id }} .rc-btn--primary:hover { background: var(--rc-navy); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(45,90,67,.4); }
+  #recursos-{{ section.id }} .rc-btn--ghost { background: transparent; color: var(--rc-navy); border: 2px solid var(--rc-navy); }
+  #recursos-{{ section.id }} .rc-btn--ghost:hover { background: var(--rc-navy); color: #fff; transform: translateY(-2px); }
+  #recursos-{{ section.id }} .rc-btn--light { background: var(--rc-white); color: var(--rc-navy); box-shadow: 0 4px 12px rgba(0,0,0,.08); }
+  #recursos-{{ section.id }} .rc-btn--light:hover { background: var(--rc-brand); color: #fff; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(45,90,67,.25); }
+
+  /* ---------- LAYOUT SECTIONS ---------- */
+  #recursos-{{ section.id }} .rc-band { padding: clamp(50px,7vw,92px) 0; }
+  #recursos-{{ section.id }} .rc-band--gray { background: rgba(15,23,42,.02); border-top: 1px solid var(--rc-line); border-bottom: 1px solid var(--rc-line); }
+  #recursos-{{ section.id }} .rc-section-head { text-align: center; max-width: 680px; margin: 0 auto clamp(36px,5vw,60px); }
+  #recursos-{{ section.id }} .rc-section-head h2 { font-size: clamp(26px,3.2vw,38px); }
+  #recursos-{{ section.id }} .rc-section-head p { font-size: 16px; color: var(--rc-muted); margin-top: 14px; }
+
+  /* ---------- ANIMATION EFFECTS ---------- */
+  @-webkit-keyframes rc-fadeup { from { opacity: 0; -webkit-transform: translateY(24px); transform: translateY(24px); } to { opacity: 1; -webkit-transform: translateY(0); transform: translateY(0); } }
+  @keyframes rc-fadeup { from { opacity: 0; -webkit-transform: translateY(24px); transform: translateY(24px); } to { opacity: 1; -webkit-transform: translateY(0); transform: translateY(0); } }
+  
+  #recursos-{{ section.id }} .rc-reveal { opacity: 0; -webkit-transform: translateY(24px); transform: translateY(24px); transition: opacity .65s ease, transform .65s ease, -webkit-transform .65s ease; }
+  #recursos-{{ section.id }} .rc-reveal.rc-in { opacity: 1; -webkit-transform: translateY(0); transform: translateY(0); }
+
+  #recursos-{{ section.id }} .rc-hero-unique-copy { position: relative; z-index: 10; -webkit-animation: rc-fadeup 0.85s cubic-bezier(.25, 1, .5, 1) both; animation: rc-fadeup 0.85s cubic-bezier(.25, 1, .5, 1) both; }
+  #recursos-{{ section.id }} .rc-hero-unique-collage { -webkit-animation: rc-fadeup 1s 0.15s cubic-bezier(.25, 1, .5, 1) both; animation: rc-fadeup 1s 0.15s cubic-bezier(.25, 1, .5, 1) both; }
+
+  /* ---------- LOGO HEADER ---------- */
+  #recursos-{{ section.id }} .rc-logo-wrap { padding: 24px 0 12px; }
+  #recursos-{{ section.id }} .rc-logo { display: flex; }
+  #recursos-{{ section.id }} .rc-logo--left { justify-content: flex-start; }
+  #recursos-{{ section.id }} .rc-logo--center { justify-content: center; }
+  #recursos-{{ section.id }} .rc-logo--right { justify-content: flex-end; }
+  #recursos-{{ section.id }} .rc-logo img { height: clamp(48px,6vw,72px); width: auto; object-fit: contain; }
+  #recursos-{{ section.id }} .rc-logo-text { font-size: 26px; font-weight: 800; color: var(--rc-brand); letter-spacing: -0.5px; display: flex; align-items: center; gap: 4px; }
+  #recursos-{{ section.id }} .rc-logo-text b { color: var(--rc-accent); }
+
+  /* ---------- 1. HERO SECTION ---------- */
+  #recursos-{{ section.id }} .rc-hero { padding: clamp(40px,5vw,70px) 0; overflow: hidden; }
+  #recursos-{{ section.id }} .rc-hero-unique-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px,5vw,64px); align-items: center; }
+  #recursos-{{ section.id }} .rc-hero-unique-copy h1 { font-size: clamp(34px,4.5vw,56px); font-weight: 800; letter-spacing: -1.5px; color: var(--rc-navy); }
+  #recursos-{{ section.id }} .rc-lede { font-size: clamp(16px,2vw,19px); line-height: 1.65; color: var(--rc-muted); margin-top: 24px; }
+  #recursos-{{ section.id }} .rc-hero-unique-cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 32px; position: relative; z-index: 20; pointer-events: auto !important; }
+  #recursos-{{ section.id }} .rc-trust { display: flex; flex-wrap: wrap; gap: 16px 28px; margin-top: 40px; padding-top: 28px; border-top: 1px solid var(--rc-line); }
+  #recursos-{{ section.id }} .rc-trust-item { display: flex; align-items: center; gap: 9px; font-size: 14px; font-weight: 700; color: var(--rc-navy); }
+  #recursos-{{ section.id }} .rc-check { width: 22px; height: 22px; border-radius: 50%; background: rgba(45,90,67,.1); color: var(--rc-brand); display: grid; place-items: center; flex: none; }
+  #recursos-{{ section.id }} .rc-check svg { width: 14px; height: 14px; }
+  
+  /* Image collage style for Hero */
+  #recursos-{{ section.id }} .rc-hero-unique-collage { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; position: relative; }
+  #recursos-{{ section.id }} .rc-hero-unique-tile { border-radius: var(--rc-radius); overflow: hidden; box-shadow: var(--rc-shadow); position: relative; aspect-ratio: 4/3; background: var(--rc-light); }
+  #recursos-{{ section.id }} .rc-hero-unique-tile img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+  #recursos-{{ section.id }} .rc-hero-unique-tile:hover img { transform: scale(1.06); }
+  #recursos-{{ section.id }} .rc-hero-unique-tile--1 { grid-column: 1 / 8; grid-row: 1 / 4; aspect-ratio: 16/10; }
+  #recursos-{{ section.id }} .rc-hero-unique-tile--2 { grid-column: 8 / 13; grid-row: 1 / 3; aspect-ratio: 1; }
+  #recursos-{{ section.id }} .rc-hero-unique-tile--3 { grid-column: 8 / 13; grid-row: 3 / 5; aspect-ratio: 4/3; }
+  #recursos-{{ section.id }} .rc-hero-unique-tile--4 { grid-column: 2 / 8; grid-row: 4 / 6; aspect-ratio: 16/9; }
+  @media(max-width:820px) {
+    #recursos-{{ section.id }} .rc-hero-unique-grid { grid-template-columns: 1fr; }
+    #recursos-{{ section.id }} .rc-hero-unique-collage { display: none; }
+  }
+
+  /* ---------- 2. SOLUTIONS (TYPES OF LOANS) ---------- */
+  #recursos-{{ section.id }} .rc-sol-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+  #recursos-{{ section.id }} .rc-sol-card { background: var(--rc-white); border-radius: var(--rc-radius); overflow: hidden; border: 1px solid var(--rc-line); display:flex; flex-direction:column; transition: all .4s cubic-bezier(.25,.8,.25,1); }
+  #recursos-{{ section.id }} .rc-sol-card:hover { transform: translateY(-8px); box-shadow: var(--rc-shadow-lg); border-color: transparent; }
+  #recursos-{{ section.id }} .rc-card-img { height: 180px; width: 100%; background: var(--rc-brand); position: relative; overflow: hidden; }
+  #recursos-{{ section.id }} .rc-card-img img { width:100%; height:100%; object-fit:cover; opacity: 0.85; transition: transform .6s ease; }
+  #recursos-{{ section.id }} .rc-sol-card:hover .rc-card-img img { transform: scale(1.05); }
+  #recursos-{{ section.id }} .rc-card-icon { position: absolute; bottom: -24px; left: 24px; width: 56px; height: 56px; border-radius: 50%; background: var(--rc-brand); color: #fff; display: grid; place-items: center; border: 4px solid var(--rc-white); box-shadow: var(--rc-shadow); }
+  #recursos-{{ section.id }} .rc-card-icon svg { width: 24px; height: 24px; }
+  #recursos-{{ section.id }} .rc-card-body { padding: 40px 24px 30px; flex-grow: 1; display: flex; flex-direction: column; }
+  #recursos-{{ section.id }} .rc-card-eyebrow { display: inline-block; font-size: 11px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; color: var(--rc-brand); margin-bottom: 8px; }
+  #recursos-{{ section.id }} .rc-sol-card h3 { font-size: clamp(20px, 2.5vw, 24px); margin: 0 0 12px; color: var(--rc-navy); }
+  #recursos-{{ section.id }} .rc-sol-card p { font-size: 14.5px; color: var(--rc-muted); line-height: 1.6; margin-bottom: 24px; flex-grow: 1; }
+  #recursos-{{ section.id }} .rc-card-link { font-size: 14.5px; font-weight: 700; color: var(--rc-brand); text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
+  #recursos-{{ section.id }} .rc-card-link svg { transition: transform 0.25s ease; width: 18px; height: 18px; }
+  #recursos-{{ section.id }} .rc-sol-card:hover .rc-card-link svg { transform: translateX(4px); }
+
+  /* ---------- 3. INTERACTIVE SIMULATOR ---------- */
+  .rc-sim-container { background: var(--rc-white); padding: 40px; border-radius: var(--rc-radius); border: 1px solid var(--rc-line); box-shadow: var(--rc-shadow-lg); display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; margin-top: 40px; }
+  .rc-sim-controls { display: flex; flex-direction: column; gap: 28px; }
+  .rc-sim-slider-group { display: flex; flex-direction: column; gap: 10px; }
+  .rc-sim-label-row { display: flex; justify-content: space-between; align-items: center; }
+  .rc-sim-label { font-size: 15px; font-weight: 700; color: var(--rc-navy); }
+  .rc-sim-value { font-size: 20px; font-weight: 800; color: var(--rc-brand); }
+  .rc-sim-input { -webkit-appearance: none; width: 100%; height: 8px; border-radius: 999px; background: var(--rc-light); outline: none; border: 1px solid var(--rc-line); }
+  .rc-sim-input::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%; background: var(--rc-brand); cursor: pointer; border: 2px solid var(--rc-white); box-shadow: var(--rc-shadow); transition: transform 0.15s; }
+  .rc-sim-input::-webkit-slider-thumb:hover { transform: scale(1.15); }
+  .rc-sim-limits { display: flex; justify-content: space-between; font-size: 12px; color: var(--rc-muted); }
+  
+  .rc-sim-results { background: rgba(45,90,67,0.03); padding: 32px; border-radius: var(--rc-radius-sm); border: 1px solid var(--rc-line); display: flex; flex-direction: column; gap: 20px; justify-content: center; }
+  .rc-sim-result-item { text-align: center; }
+  .rc-sim-result-label { font-size: 12px; font-weight: 800; color: var(--rc-muted); letter-spacing: 1.5px; text-transform: uppercase; }
+  .rc-sim-result-value { font-size: clamp(28px, 4vw, 36px); font-weight: 800; color: var(--rc-navy); margin-top: 4px; }
+  .rc-sim-rec-box { background: var(--rc-white); padding: 20px; border-radius: 12px; border: 1px solid var(--rc-line); text-align: center; box-shadow: var(--rc-shadow); }
+  .rc-sim-rec-title { font-size: 11px; font-weight: 800; color: var(--rc-accent); text-transform: uppercase; letter-spacing: 1px; }
+  .rc-sim-rec-name { font-size: 16px; font-weight: 800; color: var(--rc-brand); margin-top: 4px; }
+  @media(max-width:820px) {
+    .rc-sim-container { grid-template-columns: 1fr; gap: 30px; padding: 24px; }
+  }
+
+  /* ---------- 4. COMPARISON TABLE ---------- */
+  .rc-table-wrap { width: 100%; overflow-x: auto; margin-top: 40px; border-radius: var(--rc-radius-sm); border: 1px solid var(--rc-line); background: var(--rc-white); box-shadow: var(--rc-shadow); }
+  .rc-table { width: 100%; border-collapse: collapse; min-width: 750px; font-size: 14.5px; text-align: left; }
+  .rc-table th { background: var(--rc-light); padding: 18px 24px; font-weight: 800; color: var(--rc-navy); border-bottom: 1px solid var(--rc-line); }
+  .rc-table td { padding: 20px 24px; border-bottom: 1px solid var(--rc-line); color: var(--rc-ink); vertical-align: middle; }
+  .rc-table tr:last-child td { border-bottom: none; }
+  .rc-table-badge { display: inline-flex; align-items: center; justify-content: center; padding: 4px 12px; border-radius: 999px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+  .rc-table-badge--blue { background: rgba(59,130,246,0.1); color: var(--rc-accent-blue); }
+  .rc-table-badge--green { background: rgba(16,185,129,0.1); color: var(--rc-accent-green); }
+  .rc-table-badge--orange { background: rgba(245,158,11,0.1); color: var(--rc-accent-orange); }
+
+  /* ---------- 5. MISSION & VISION TABBED ---------- */
+  #recursos-{{ section.id }} .rc-mv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px,5vw,64px); align-items: start; }
+  #recursos-{{ section.id }} .rc-mv-copy h2 { font-size: clamp(28px,3.5vw,42px); line-height: 1.15; margin-bottom: 24px; }
+  #recursos-{{ section.id }} .rc-mv-tabs { display: flex; flex-direction: column; gap: 16px; margin-top: 24px; }
+  #recursos-{{ section.id }} .rc-mv-tab { padding: 20px 24px; border-radius: var(--rc-radius-sm); border: 1px solid var(--rc-line); cursor: pointer; transition: all 0.3s; }
+  #recursos-{{ section.id }} .rc-mv-tab h3 { font-size: 18px; margin-bottom: 6px; color: var(--rc-muted); transition: color 0.3s; }
+  #recursos-{{ section.id }} .rc-mv-tab p { font-size: 14.5px; display: none; color: var(--rc-muted); margin-top: 8px; }
+  #recursos-{{ section.id }} .rc-mv-tab.rc-active { border-color: var(--rc-brand); background: rgba(45,90,67,.02); }
+  #recursos-{{ section.id }} .rc-mv-tab.rc-active h3 { color: var(--rc-brand); font-weight: 800; }
+  #recursos-{{ section.id }} .rc-mv-tab.rc-active p { display: block; }
+  
+  #recursos-{{ section.id }} .rc-mv-val-wrap { background: var(--rc-white); padding: 40px; border-radius: var(--rc-radius); border: 1px solid var(--rc-line); box-shadow: var(--rc-shadow); }
+  #recursos-{{ section.id }} .rc-values-grid { display: flex; flex-direction: column; gap: 20px; margin-top: 24px; }
+  #recursos-{{ section.id }} .rc-value-card { background: var(--rc-light); padding: 24px; border-radius: var(--rc-radius-sm); border: 1px solid var(--rc-line); transition: transform 0.3s; }
+  #recursos-{{ section.id }} .rc-value-card:hover { transform: translateY(-3px); }
+  #recursos-{{ section.id }} .rc-value-card h4 { font-size: 16px; font-weight: 800; color: var(--rc-brand); margin: 0 0 6px; }
+  #recursos-{{ section.id }} .rc-value-card p { font-size: 13.5px; color: var(--rc-muted); }
+  @media(max-width:820px) {
+    #recursos-{{ section.id }} .rc-mv-grid { grid-template-columns: 1fr; gap: 40px; }
+  }
+
+  /* ---------- 6. TIMELINE ---------- */
+  #recursos-{{ section.id }} .rc-timeline { position: relative; max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 32px; }
+  #recursos-{{ section.id }} .rc-timeline::before { content:''; position: absolute; left: 26px; top: 12px; bottom: 12px; width: 2px; background: var(--rc-line); }
+  #recursos-{{ section.id }} .rc-step { display: flex; gap: 24px; position: relative; }
+  #recursos-{{ section.id }} .rc-step-dot { width: 54px; height: 54px; border-radius: 50%; background: var(--rc-white); border: 2px solid var(--rc-brand); display: grid; place-items: center; box-shadow: var(--rc-shadow); flex-shrink: 0; z-index: 1; }
+  #recursos-{{ section.id }} .rc-step-num { font-size: 20px; font-weight: 800; color: var(--rc-brand); }
+  #recursos-{{ section.id }} .rc-step-text { background: var(--rc-white); padding: 24px 30px; border-radius: var(--rc-radius-sm); border: 1px solid var(--rc-line); flex-grow: 1; box-shadow: var(--rc-shadow); }
+  #recursos-{{ section.id }} .rc-step-text h3 { font-size: 18px; margin: 0 0 8px; color: var(--rc-navy); }
+  #recursos-{{ section.id }} .rc-step-text p { font-size: 14.5px; color: var(--rc-muted); line-height: 1.5; }
+
+  /* ---------- 7. STUDY FORM (INTERMEDIARY FLOW) ---------- */
+  #recursos-{{ section.id }} .rc-form-wrap { max-width: 800px; margin: 0 auto; background: var(--rc-white); padding: clamp(24px, 5vw, 48px); border-radius: var(--rc-radius); border: 1px solid var(--rc-line); box-shadow: var(--rc-shadow-lg); }
+  #recursos-{{ section.id }} .rc-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  #recursos-{{ section.id }} .rc-field { display: flex; flex-direction: column; gap: 8px; }
+  #recursos-{{ section.id }} .rc-span2 { grid-column: span 2; }
+  #recursos-{{ section.id }} .rc-field label { font-size: 13.5px; font-weight: 700; color: var(--rc-navy); }
+  #recursos-{{ section.id }} .rc-field input, #recursos-{{ section.id }} .rc-field select, #recursos-{{ section.id }} .rc-field textarea {
+    height: 48px; padding: 0 16px; border-radius: 8px; border: 1px solid var(--rc-line); outline: none; font-family: inherit; font-size: 14.5px; color: var(--rc-ink); transition: border-color 0.25s;
+  }
+  #recursos-{{ section.id }} .rc-field input:focus, #recursos-{{ section.id }} .rc-field select:focus, #recursos-{{ section.id }} .rc-field textarea:focus { border-color: var(--rc-brand); }
+  #recursos-{{ section.id }} .rc-field textarea { height: 120px; padding: 12px 16px; resize: vertical; }
+  #recursos-{{ section.id }} .rc-form-actions { display: flex; justify-content: center; margin-top: 32px; }
+  #recursos-{{ section.id }} .rc-form-note { display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 12.5px; color: var(--rc-muted); margin-top: 18px; text-align: center; }
+  #recursos-{{ section.id }} .rc-form-note svg { width: 16px; height: 16px; flex-shrink: 0; }
+  #recursos-{{ section.id }} .rc-form-success { background: rgba(45,90,67,.08); border: 1px solid var(--rc-brand); color: var(--rc-brand); font-weight: 700; padding: 20px; border-radius: 8px; text-align: center; margin-bottom: 24px; font-size: 15px; line-height: 1.5; }
+  @media(max-width:600px) {
+    #recursos-{{ section.id }} .rc-disclosure-box {
+      background: var(--rc-light);
+      border: 1px solid var(--rc-line);
+      border-radius: var(--rc-radius);
+      padding: 30px;
+      margin-top: 40px;
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--rc-muted);
+      text-align: left;
+    }
+    #recursos-{{ section.id }} .rc-disclosure-box h4 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+      margin: 0 0 16px;
+      color: var(--rc-navy);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-bottom: 1px solid var(--rc-line);
+      padding-bottom: 8px;
+    }
+    #recursos-{{ section.id }} .rc-disclosure-item {
+      margin-bottom: 16px;
+    }
+    #recursos-{{ section.id }} .rc-disclosure-item:last-child {
+      margin-bottom: 0;
+    }
+    #recursos-{{ section.id }} .rc-disclosure-item strong {
+      color: var(--rc-navy);
+      display: block;
+      margin-bottom: 4px;
+      font-size: 12px;
+    }
+    #recursos-{{ section.id }} .rc-disclosure-item ul {
+      margin: 4px 0 0 18px;
+      padding: 0;
+    }
+  }
+
+  /* ============ WHATSAPP BUTTON ============ */
+  #recursos-{{ section.id }} .rc-btn-whatsapp,
+  #recursos-{{ section.id }} a.rc-btn-whatsapp {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 10px !important;
+    background: #25D366 !important;
+    color: #ffffff !important;
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: 700 !important;
+    font-size: 15px !important;
+    padding: 14px 32px !important;
+    border-radius: 60px !important;
+    text-decoration: none !important;
+    transition: background 0.3s ease, transform 0.25s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3) !important;
+    border: none !important;
+    cursor: pointer !important;
+    letter-spacing: 0.02em !important;
+    line-height: 1.2 !important;
+  }
+  #recursos-{{ section.id }} .rc-btn-whatsapp:hover,
+  #recursos-{{ section.id }} a.rc-btn-whatsapp:hover {
+    background: #1EBE5A !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(37, 211, 102, 0.4) !important;
+    color: #ffffff !important;
+  }
+  #recursos-{{ section.id }} .rc-btn-whatsapp svg,
+  #recursos-{{ section.id }} a.rc-btn-whatsapp svg {
+    width: 22px !important;
+    height: 22px !important;
+    min-width: 22px !important;
+    max-width: 22px !important;
+    flex-shrink: 0 !important;
+    fill: #ffffff !important;
+    display: inline-block !important;
+  }
+
+</style>
+
+<div id="recursos-{{ section.id }}">
+
+  {%- comment -%} ============ LOGO HEADER ============ {%- endcomment -%}
+  {%- if section.settings.show_logo_header -%}
+    <div class="rc-logo-wrap">
+      <div class="rc-wrap">
+        <div class="rc-logo rc-logo--{{ logo_align }}">
+          {%- if section.settings.logo != blank -%}
+            <img src="{{ section.settings.logo | image_url: width: 300 }}" alt="Aylesva Recursos" width="150" height="70" loading="eager">
+          {%- else -%}
+            <img src="{{ 'aylesva-recursos-logo-new.png' | asset_url }}" alt="Aylesva Recursos" style="height: clamp(48px, 6vw, 72px); width: auto; object-fit: contain;" loading="eager">
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
+
+  {%- comment -%} ============ HERO SECTION ============ {%- endcomment -%}
+  <header class="rc-hero">
+    <div class="rc-wrap">
+      <div class="rc-hero-unique-grid">
+        
+        <div class="rc-hero-unique-copy rc-reveal">
+          <span class="rc-eyebrow">{{ section.settings.hero_eyebrow }}</span>
+          <h1>{{ section.settings.hero_headline }}</h1>
+          {%- if section.settings.hero_description != blank -%}
+            <div class="rc-lede">{{ section.settings.hero_description }}</div>
+          {%- endif -%}
+          
+          <div class="rc-hero-unique-cta">
+            <a href="{{ contact_anchor }}" class="rc-btn rc-btn--primary" data-rc-scroll>{{ section.settings.hero_btn1_text }}</a>
+            <a href="#recursos-comparison-{{ section.id }}" class="rc-btn rc-btn--ghost" data-rc-scroll>{{ section.settings.hero_btn2_text }}</a>
+          </div>
+          
+          <div class="rc-trust">
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'trust' -%}
+                <div class="rc-trust-item" {{ block.shopify_attributes }}>
+                  <span class="rc-check">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  </span>
+                  <span>{{ block.settings.text }}</span>
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        </div>
+
+        <div class="rc-hero-unique-collage rc-reveal" aria-hidden="true">
+          {%- assign hero_imgs = section.blocks | where: 'type', 'hero_image' -%}
+          {%- for block in hero_imgs limit: 4 -%}
+            {%- assign img_idx = forloop.index -%}
+            <div class="rc-hero-unique-tile rc-hero-unique-tile--{{ img_idx }}" {{ block.shopify_attributes }}>
+              {%- if block.settings.image != blank -%}
+                <img src="{{ block.settings.image | image_url: width: 600 }}" alt="{{ block.settings.alt }}" width="300" height="225" loading="eager">
+              {%- elsif block.settings.image_url != blank -%}
+                <img src="{{ block.settings.image_url }}" alt="{{ block.settings.alt }}" width="300" height="225" loading="eager">
+              {%- else -%}
+                {%- if img_idx == 1 -%}
+                  {%- assign default_img = 'desk_financial_charts.jpg' -%}
+                {%- elsif img_idx == 2 -%}
+                  {%- assign default_img = 'tablet_analytics.jpg' -%}
+                {%- elsif img_idx == 3 -%}
+                  {%- assign default_img = 'corporate_architecture.jpg' -%}
+                {%- elsif img_idx == 4 -%}
+                  {%- assign default_img = 'financial_advisor.jpg' -%}
+                {%- endif -%}
+                <img src="{{ default_img | asset_url }}" alt="{{ block.settings.alt | default: 'Aylesva Recursos' }}" width="300" height="225" loading="eager">
+              {%- endif -%}
+            </div>
+          {%- endfor -%}
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  {%- comment -%} ============ DIDACTIC SOLUTIONS (TYPES OF LOANS) ============ {%- endcomment -%}
+  {%- assign solution_cards = section.blocks | where: 'type', 'solution_card' -%}
+  {%- if solution_cards.size > 0 -%}
+    <section class="rc-band rc-band--gray" id="recursos-solutions-{{ section.id }}">
+      <div class="rc-wrap">
+        <div class="rc-section-head rc-reveal">
+          <h2>{{ section.settings.solutions_title }}</h2>
+          {%- if section.settings.solutions_subtitle != blank -%}<p>{{ section.settings.solutions_subtitle }}</p>{%- endif -%}
+        </div>
+        
+        <div class="rc-sol-grid">
+          {%- for block in solution_cards -%}
+            <div class="rc-sol-card rc-reveal" {{ block.shopify_attributes }}>
+              <div class="rc-card-img">
+                {%- if block.settings.image != blank -%}
+                  <img src="{{ block.settings.image | image_url: width: 800 }}" alt="{{ block.settings.title }}" width="400" height="180" loading="lazy">
+                {%- elsif block.settings.image_url != blank -%}
+                  <img src="{{ block.settings.image_url }}" alt="{{ block.settings.title }}" width="400" height="180" loading="lazy">
+                {%- endif -%}
+                <span class="rc-card-icon">
+                  {%- case block.settings.icon -%}
+                    {%- when 'credit' -%}
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                    {%- when 'company' -%}
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                    {%- when 'home' -%}
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    {%- else -%}
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+                  {%- endcase -%}
+                </span>
+              </div>
+              <div class="rc-card-body">
+                {%- if block.settings.eyebrow != blank -%}
+                  <span class="rc-card-eyebrow">{{ block.settings.eyebrow }}</span>
+                {%- endif -%}
+                <h3>{{ block.settings.title }}</h3>
+                <p>{{ block.settings.description }}</p>
+                <a href="{{ contact_anchor }}" class="rc-card-link" data-rc-scroll>
+                  <span>{{ block.settings.btn_text | default: 'Conocer más' }}</span>
+                  <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+
+
+
+        {%- comment -%} ============ COMPARISON TABLE (CROMATIC BADGES) ============ {%- endcomment -%}
+        <div class="rc-section-head rc-reveal" id="recursos-comparison-{{ section.id }}" style="margin-top: 80px; margin-bottom: 30px;">
+          <h2>Estudio Comparativo de Financiamientos</h2>
+          <p>Comparamos los principales tipos de financiamientos de EE. UU. y México para ayudarte a tomar la mejor decisión de capital.</p>
+        </div>
+
+        <div class="rc-table-wrap rc-reveal">
+          <table class="rc-table">
+            <thead>
+              <tr>
+                <th>Tipo de Préstamo</th>
+                <th>Propósito Principal</th>
+                <th>Velocidad de Respuesta</th>
+                <th>Requisitos</th>
+                <th>Rango de Montos</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Business Lines of Credit</strong></td>
+                <td>Flujo de caja y emergencias inmediatas</td>
+                <td><span class="rc-table-badge rc-table-badge--blue">Rápido (24-48 hrs)</span></td>
+                <td>Bajos (Estados de cuenta)</td>
+                <td>Hasta $150,000 USD</td>
+              </tr>
+              <tr>
+                <td><strong>Working Capital Loans</strong></td>
+                <td>Operación diaria, inventario y nóminas</td>
+                <td><span class="rc-table-badge rc-table-badge--green">Ágil (2-3 días)</span></td>
+                <td>Medios (Estados de cuenta + SAT)</td>
+                <td>Hasta $500,000 USD</td>
+              </tr>
+              <tr>
+                <td><strong>Equipment Financing</strong></td>
+                <td>Compra de maquinaria, tecnología o autos</td>
+                <td><span class="rc-table-badge rc-table-badge--orange">Moderado (3-5 días)</span></td>
+                <td>Medios (Cotización de activos)</td>
+                <td>Hasta $1,000,000 USD</td>
+              </tr>
+              <tr>
+                <td><strong>SBA Loans (USA)</strong></td>
+                <td>Crecimiento a largo plazo y consolidación</td>
+                <td><span class="rc-table-badge rc-table-badge--orange">Lento (2-4 semanas)</span></td>
+                <td>Altos (Garantías + Historial)</td>
+                <td>Hasta $5,000,000 USD</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </section>
+  {%- endif -%}
+
+  {%- comment -%} ============ IDENTITY (MISSION, VISION, VALUES) ============ {%- endcomment -%}
+  <section class="rc-band">
+    <div class="rc-wrap">
+      <div class="rc-mv-grid">
+        
+        <div class="rc-mv-copy rc-reveal">
+          <span class="rc-eyebrow">{{ section.settings.identity_eyebrow | default: 'Quiénes Somos' }}</span>
+          <h2>{{ section.settings.identity_title | default: 'Tu puente hacia el capital ideal' }}</h2>
+          
+          <div class="rc-mv-tabs">
+            <div class="rc-mv-tab rc-active" onclick="RecursosTab(this)">
+              <h3>Misión</h3>
+              <p>{{ section.settings.mission_text }}</p>
+            </div>
+            <div class="rc-mv-tab" onclick="RecursosTab(this)">
+              <h3>Visión</h3>
+              <p>{{ section.settings.vision_text }}</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="rc-mv-val-wrap rc-reveal">
+          <h3 style="font-size: 22px; font-weight:800; color:var(--rc-navy);">Nuestros Valores Comerciales</h3>
+          <div class="rc-values-grid">
+            <div class="rc-value-card">
+              <h4>Transparencia didáctica</h4>
+              <p>Te explicamos con total claridad cómo funciona cada opción del mercado para que tomes la mejor decisión.</p>
+            </div>
+            <div class="rc-value-card">
+              <h4>Match inteligente</h4>
+              <p>Evitamos que envíes solicitudes a ciegas. Buscamos la prestadora (Finqui, etc.) donde tu perfil encaja perfectamente.</p>
+            </div>
+            <div class="rc-value-card">
+              <h4>Estudio sin compromiso</h4>
+              <p>Realizamos tu estudio socioeconómico y de mercado gratis para evaluar tus posibilidades reales.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} ============ TIMELINE SECTION ============ {%- endcomment -%}
+  {%- assign timeline_steps = section.blocks | where: 'type', 'timeline_step' -%}
+  {%- if timeline_steps.size > 0 -%}
+    <section class="rc-band rc-band--gray">
+      <div class="rc-wrap">
+        <div class="rc-section-head rc-reveal">
+          <h2>{{ section.settings.timeline_title }}</h2>
+          {%- if section.settings.timeline_subtitle != blank -%}<p>{{ section.settings.timeline_subtitle }}</p>{%- endif -%}
+        </div>
+        <div class="rc-timeline">
+          {%- for block in timeline_steps -%}
+            <div class="rc-step rc-reveal" {{ block.shopify_attributes }}>
+              <div class="rc-step-dot">
+                <span class="rc-step-num">{{ forloop.index }}</span>
+              </div>
+              <div class="rc-step-text">
+                <h3>{{ block.settings.title }}</h3>
+                <p>{{ block.settings.description }}</p>
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+    </section>
+  {%- endif -%}
+
+  {%- comment -%} ============ STUDY FORM ============ {%- endcomment -%}
+  <section class="rc-band" id="{{ contact_anchor | remove: '#' }}">
+    <div class="rc-wrap">
+      <div class="rc-section-head rc-reveal">
+        <h2>{{ section.settings.form_title }}</h2>
+        {%- if section.settings.form_subtitle != blank -%}<p>{{ section.settings.form_subtitle }}</p>{%- endif -%}
+      </div>
+      
+      {%- if section.settings.embed_form_code != blank -%}
+        <div class="rc-form-wrap rc-reveal" style="min-height:400px; display: flex; flex-direction: column; align-items: center;">
+          <iframe src="https://api.leadconnectorhq.com/widget/form/8biW0OIL5lKLx23bNZFO" style="width:100%;height:100%;min-height:729px;border:none;border-radius:8px" id="inline-8biW0OIL5lKLx23bNZFO" data-layout="{'id':'INLINE'}" data-trigger-type="alwaysShow" data-trigger-value="" data-activation-type="alwaysActivated" data-activation-value="" data-deactivation-type="neverDeactivate" data-deactivation-value="" data-form-name="Finkusa " data-height="729" data-layout-iframe-id="inline-8biW0OIL5lKLx23bNZFO" data-form-id="8biW0OIL5lKLx23bNZFO" title="Finkusa ">
+          </iframe>
+          <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+          
+          <div style="margin-top: 25px; text-align: center; width: 100%;">
+            <a href="https://api.whatsapp.com/send/?phone=524774136612&text&type=phone_number&app_absent=0" target="_blank" rel="noopener" class="rc-btn-whatsapp">
+              <svg viewBox="0 0 24 24" width="24" height="24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Chat en WhatsApp
+            </a>
+          </div>
+        </div>
+      {%- else -%}
+        <div class="rc-form-wrap rc-reveal" style="min-height:400px; display: flex; flex-direction: column; align-items: center;">
+          <iframe src="https://api.leadconnectorhq.com/widget/form/8biW0OIL5lKLx23bNZFO" style="width:100%;height:100%;min-height:729px;border:none;border-radius:8px" id="inline-8biW0OIL5lKLx23bNZFO-fallback" data-layout="{'id':'INLINE'}" data-trigger-type="alwaysShow" data-trigger-value="" data-activation-type="alwaysActivated" data-activation-value="" data-deactivation-type="neverDeactivate" data-deactivation-value="" data-form-name="Finkusa " data-height="729" data-layout-iframe-id="inline-8biW0OIL5lKLx23bNZFO-fallback" data-form-id="8biW0OIL5lKLx23bNZFO" title="Finkusa ">
+          </iframe>
+          <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+          
+          <div style="margin-top: 25px; text-align: center; width: 100%;">
+            <a href="https://api.whatsapp.com/send/?phone=524774136612&text&type=phone_number&app_absent=0" target="_blank" rel="noopener" class="rc-btn-whatsapp">
+              <svg viewBox="0 0 24 24" width="24" height="24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Chat en WhatsApp
+            </a>
+          </div>
+        </div>
+        {%- endif -%}
+        {%- comment -%} ============ REGULATORY & SERVICES DISCLOSURE ============ {%- endcomment -%}
+        <div class="rc-disclosure-box rc-reveal" style="margin-top: 60px;">
+          <h4>Divulgación Regulatoria y de Servicios</h4>
+          
+          <div class="rc-disclosure-item">
+            <strong>1. NO SOMOS UN PRESTAMISTA, CORREDOR O ASESOR FINANCIERO</strong>
+            Aylesva Recursos opera estrictamente como un medio de marketing digital independiente, plataforma publicitaria y servicio de referencia. Aylesva Recursos no es un banco, prestamista, unión de crédito, corredor de hipotecas, corredor de préstamos de consumo, corredor de préstamos comerciales o entidad de servicios de crédito. Aylesva Recursos no solicita, origina, suscribe, negocia, aprueba ni financia préstamos ni ningún producto de financiamiento comercial. No actuamos como agentes, fiduciarios o corredores para posibles prestatarios, propietarios de negocios o prestamistas externos.
+          </div>
+          
+          <div class="rc-disclosure-item">
+            <strong>2. SERVICIOS DE REFERENCIA DE DOBLE PROPÓSITO (CONSUMO Y COMERCIAL)</strong>
+            <ul>
+              <li><strong>Consultas de Consumo:</strong> Completar una solicitud para productos de crédito de consumo te conecta con socios prestamistas externos independientes. Enviar tu información no constituye una solicitud de préstamo. Aylesva Recursos no garantiza la aprobación, ofertas de tasas ni condiciones de financiamiento.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+<script>
+  function RecursosTab(el) {
+    var tabs = el.parentElement.querySelectorAll('.rc-mv-tab');
+    tabs.forEach(function(tab) {
+      tab.classList.remove('rc-active');
+    });
+    el.classList.add('rc-active');
+  }
+
+  (function(){
+    var root = document.getElementById('recursos-{{ section.id }}');
+    if(!root) return;
+    
+    // Reveal animations on scroll
+    var els = root.querySelectorAll('.rc-reveal');
+    if(!('IntersectionObserver' in window)){ 
+      els.forEach(function(e){ e.classList.add('rc-in'); }); 
+      return; 
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ 
+          en.target.classList.add('rc-in'); 
+          io.unobserve(en.target); 
+        }
+      });
+    }, { threshold: 0.1 });
+    els.forEach(function(e){ io.observe(e); });
+
+
+    // Smooth scroll handled natively by CSS scroll-behavior
+
+
+
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Aylesva Recursos",
+  "tag": "section",
+  "class": "recursos-loans-section",
+  "settings": [
+    { "type": "header", "content": "Header Logo" },
+    { "type": "checkbox", "id": "show_logo_header", "label": "Mostrar logotipo", "default": true },
+    { "type": "image_picker", "id": "logo", "label": "Logotipo de Recursos" },
+    { "type": "select", "id": "logo_align", "label": "Alineación del logotipo", "options": [ {"value":"left","label":"Izquierda"}, {"value":"center","label":"Centro"}, {"value":"right","label":"Derecha"} ], "default": "center" },
+
+    { "type": "header", "content": "Diseño y Colores" },
+    { "type": "color", "id": "color_brand", "label": "Color Primario (Rojo Vino)", "default": "#9E1B2A" },
+    { "type": "color", "id": "color_navy", "label": "Gris Obscuro / Texto", "default": "#0F172A" },
+    { "type": "color", "id": "color_light", "label": "Gris Claro", "default": "#F8FAFC" },
+    { "type": "color", "id": "color_white", "label": "Blanco / Fondo", "default": "#FFFFFF" },
+    { "type": "color", "id": "color_accent", "label": "Acento de Marca (Oro)", "default": "#C5A47E" },
+
+    { "type": "header", "content": "1 · Hero" },
+    { "type": "text", "id": "hero_eyebrow", "label": "Subtítulo Hero", "default": "AYLESVA RECURSOS" },
+    { "type": "text", "id": "hero_headline", "label": "Título Principal", "default": "El camino más inteligente para financiar tu negocio" },
+    { "type": "richtext", "id": "hero_description", "label": "Descripción Hero", "default": "<p>Somos tu intermediario financiero inteligente. Tomamos tus datos, analizamos tu perfil socioeconómico y de mercado, y te conectamos de forma directa con la prestadora de servicios ideal (como Finqui y aliados estratégicos) para asegurar las mejores condiciones posibles para ti.<\/p>" },
+    { "type": "text", "id": "hero_btn1_text", "label": "Botón Principal", "default": "Hacer Estudio Financiero" },
+    { "type": "url", "id": "hero_btn1_link", "label": "Enlace del Botón Principal" },
+    { "type": "text", "id": "hero_btn2_text", "label": "Botón Secundario", "default": "Ver Tipos de Préstamos" },
+    { "type": "url", "id": "hero_btn2_link", "label": "Enlace del Botón Secundario" },
+
+    { "type": "header", "content": "2 · Soluciones Financieras" },
+    { "type": "text", "id": "solutions_title", "label": "Título Sección", "default": "Intermediación Financiera Didáctica" },
+    { "type": "text", "id": "solutions_subtitle", "label": "Subtítulo Sección", "default": "Conoce los tipos de financiamiento más populares y dinámicos del mercado para PYMEs y el mercado estadounidense." },
+
+    { "type": "header", "content": "3 · Misión y Visión" },
+    { "type": "text", "id": "identity_eyebrow", "label": "Subtítulo Identidad", "default": "QUIÉNES SOMOS" },
+    { "type": "text", "id": "identity_title", "label": "Título Identidad", "default": "Tu puente hacia el capital ideal" },
+    { "type": "textarea", "id": "mission_text", "label": "Misión", "default": "Facilitar el acceso al financiamiento a través de un análisis inteligente y transparente, conectando a negocios y emprendedores con las mejores soluciones de crédito mediante intermediación digital y didáctica." },
+    { "type": "textarea", "id": "vision_text", "label": "Visión", "default": "Ser el intermediario financiero de referencia, reconocido por nuestra transparencia, innovación en análisis socioeconómico y capacidad de match perfecto entre solicitantes e instituciones de crédito." },
+
+    { "type": "header", "content": "4 · Proceso de Solicitud" },
+    { "type": "text", "id": "timeline_title", "label": "Título Proceso", "default": "Proceso didáctico en 4 pasos" },
+    { "type": "text", "id": "timeline_subtitle", "label": "Subtítulo Proceso", "default": "Cómo logramos ubicarte con la prestadora financiera ideal." },
+
+    { "type": "header", "content": "5 · Formulario de Contacto" },
+    { "type": "textarea", "id": "embed_form_code", "label": "Código Embed del CRM (LeadConnector / GHL)", "info": "Pega aquí el código iframe de LeadConnector. Si está vacío se mostrará el formulario de estudio nativo." },
+    { "type": "text", "id": "form_title", "label": "Título Formulario", "default": "Estudio Socioeconómico y Financiero" },
+    { "type": "text", "id": "form_subtitle", "label": "Subtítulo Formulario", "default": "Completa tus datos básicos para analizar tu perfil y conectarte con la mejor oferta de financiamiento disponible." },
+    { "type": "text", "id": "form_note", "label": "Nota aclaratoria", "default": "Tus datos están completamente protegidos por nuestro Aviso de Privacidad." },
+    { "type": "text", "id": "form_btn_text", "label": "Texto del Botón Enviar", "default": "Enviar Datos para Estudio" },
+    { "type": "text", "id": "form_success", "label": "Mensaje de Éxito", "default": "¡Estudio iniciado! Tus datos han sido recibidos con éxito. Nuestro equipo de analistas de Aylesva Recursos comenzará tu estudio socioeconómico y se comunicará contigo muy pronto." }
+  ],
+  "blocks": [
+    {
+      "type": "trust",
+      "name": "Insignia de Confianza",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Texto de la insignia", "default": "Proceso ágil" }
+      ]
+    },
+    {
+      "type": "hero_image",
+      "name": "Imagen de Collage (Hero)",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Imagen Picker" },
+        { "type": "text", "id": "image_url", "label": "URL de la imagen (alternativa)" },
+        { "type": "text", "id": "alt", "label": "Texto descriptivo (alt)", "default": "Logística y finanzas Recursos" }
+      ]
+    },
+    {
+      "type": "solution_card",
+      "name": "Tarjeta de Solución",
+      "settings": [
+        { "type": "text", "id": "eyebrow", "label": "Copete (Eyebrow)", "default": "LÍNEAS DE CRÉDITO COMERCIALES" },
+        { "type": "text", "id": "title", "label": "Título de la solución", "default": "Business Lines of Credit" },
+        { "type": "textarea", "id": "description", "label": "Descripción", "default": "Una de las opciones más populares en EE. UU. Fondo de capital del cual solo pagas intereses por el monto que decidas retirar." },
+        { "type": "select", "id": "icon", "label": "Icono", "options": [ {"value":"credit","label":"Tarjeta de Crédito"}, {"value":"company","label":"Empresas / PyMEs"}, {"value":"home","label":"Hipotecario / Casa"} ], "default": "credit" },
+        { "type": "text", "id": "btn_text", "label": "Texto del botón", "default": "Learn More" },
+        { "type": "image_picker", "id": "image", "label": "Imagen de fondo" },
+        { "type": "text", "id": "image_url", "label": "URL de la imagen de fondo" }
+      ]
+    },
+    {
+      "type": "timeline_step",
+      "name": "Paso del Proceso",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Título", "default": "1. Completa tus datos" },
+        { "type": "textarea", "id": "description", "label": "Descripción", "default": "Ingresa tu información básica y necesidades financieras en nuestro formulario de estudio." }
+      ]
+    }
+  ]
+}
+{% endschema %}

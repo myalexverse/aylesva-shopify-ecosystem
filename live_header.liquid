@@ -1,0 +1,2400 @@
+{%- assign is_wholesale = false -%}
+{%- if shop.permanent_domain == 'qfwyaq-8z.myshopify.com' or shop.domain contains 'mayoreo' -%}
+  {%- assign is_wholesale = true -%}
+{%- endif -%}
+
+
+<style>
+/* 1. SHARED FONTS (Must be at the very top of style block) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* 2. ESTRUCTURAS DE AISLAMIENTO (Mobile First) */
+.mobile-only-header { display: block !important; }
+.desktop-only-header { display: none !important; }
+
+@media (min-width: 992px) {
+  .mobile-only-header { display: none !important; }
+  .desktop-only-header { display: block !important; }
+  
+  #shopify-section-header-style-2 {
+    position: relative !important;
+    z-index: 99999 !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  
+  /* ANTI-GAP: OVERRIDE FORCED MIN-HEIGHTS FROM THEME.CSS (High Specificity) */
+  body.header_style_2 .site-header, 
+  body.header_style_2 header.site-header, 
+  .header_style_2 header.site-header,
+  header.site-header.header_2,
+  .desktop-only-header {
+    min-height: 0 !important;
+    height: auto !important;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+    background-color: #ffffff !important;
+  }
+  
+  .full-header-wrap, .full-header {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  
+  /* Kill the Breadcrumb ghost space inside the header */
+  .breadcrumb-wrapper, .breadcrumb-wrap, .breadcrumb, [class*="breadcrumb"] {
+    display: none !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    visibility: hidden !important;
+  }
+  
+  .desktop-only-header {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  
+  /* PREMIUM DESKTOP REFINEMENT */
+  #shopify-section-header-style-2 .header-top { background-color: #ffffff !important; } 
+  #shopify-section-header-style-2 .full-header { background-color: #ffffff !important; overflow: visible !important; }
+  
+  #shopify-section-header-style-2 .menu-bar { 
+    background-color: #ffffff !important; 
+    box-shadow: 0 0 0 100vmax #ffffff !important;
+    clip-path: inset(0 -100vmax) !important;
+    position: relative;
+    z-index: 1; /* Bajo el header principal */
+  }
+}
+
+.header_2.site-header * { font-family: 'Inter', sans-serif !important; }
+</style>
+<style>
+/* =========================================================================
+   1. GLOBAL / SHARED
+   ========================================================================= */
+.header_2.site-header * { font-family: 'Inter', sans-serif; }
+
+@media (min-width: 1200px) {
+  .header_2 .header-logo img { max-width: {{ section.settings.logo_width }}px; }
+}
+
+/* =========================================================================
+   2. DESKTOP ONLY (>= 992px)
+   ========================================================================= */
+@media (min-width: 992px) {
+  /* Hide Mobile components */
+  #nike-cat-bar, #nike-drawer, .nike-mobile-actions, .mobile-nike-action {
+    display: none !important;
+  }
+
+  /* Desktop Header Center (White) */
+  .header_2 .full-header {
+    background-color: #ffffff !important;
+    padding: 15px 0 !important;
+    border-bottom: 1px solid #f5f5f5 !important;
+  }
+  .header_2 .full-header .container {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    overflow: visible !important;
+  }
+  
+  /* Desktop Columns */
+  .header_2 .header-left, .header_2 .header-middle, .header_2 .header-right { margin: 0 !important; padding: 0 !important; }
+  .header_2 .header-left { flex: 0 0 auto !important; display: flex !important; justify-content: flex-start !important; min-width: 120px !important; margin-right: 20px !important; }
+  .header_2 .header-middle { flex: 1 1 auto !important; max-width: 650px !important; display: flex !important; justify-content: center !important; margin: 0 10px !important; min-width: 200px !important; }
+  .header_2 .header-right { flex: 0 0 auto !important; display: flex !important; justify-content: flex-end !important; align-items: center !important; gap: 20px !important; min-width: auto !important; }
+  
+  .header_2 .header-logo img { 
+    height: auto !important; 
+    max-width: 100% !important;
+    width: auto !important; 
+    margin: 0 !important;
+    filter: none !important;
+  }
+
+  /* Desktop Menu Bar (Premium Black 100vw - Bleed Trick) */
+  .header_2 .full-header-wrap, .header_2 .menu-bar, .header_2.site-header {
+    overflow: visible !important;
+  }
+  .header_2 .menu-bar { 
+    background-color: #ffffff !important; 
+    width: 100% !important;
+    min-height: 50px !important;
+    display: flex !important;
+    align-items: center !important;
+    border: none !important;
+    position: relative !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: 100vmax 0 0 0 #ffffff, -100vmax 0 0 0 #ffffff !important;
+    clip-path: inset(0 -100vmax) !important;
+  }
+  
+  /* Mega Menu List Styling */
+  .header_2 #tt-megamenu .tt_menus_ul { 
+    display: flex !important; 
+    justify-content: center !important; 
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+  }
+  .header_2 #tt-megamenu .tt_menus_ul > li { position: relative !important; flex: 0 1 auto !important; }
+  .header_2 #tt-megamenu .tt_menus_ul > li > a { 
+    color: #1a1a1a !important; 
+    padding: 15px 10px !important;
+    display: block !important;
+    text-transform: uppercase !important; 
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    white-space: nowrap !important;
+  }
+
+  /* OPTIMIZACIÓN LAPTOPS (14 pulgadas / < 1366px) */
+  @media (max-width: 1366px) {
+    .header_2 #tt-megamenu .tt_menus_ul > li > a { 
+      padding: 15px 8px !important;
+      font-size: 11px !important;
+      letter-spacing: -0.3px !important;
+    }
+    .header_2 .header-right { gap: 10px !important; }
+  }
+
+  @media (max-width: 1199px) {
+    .header_2 #tt-megamenu .tt_menus_ul > li > a { 
+      padding: 12px 6px !important;
+      font-size: 10px !important;
+      letter-spacing: -0.5px !important;
+    }
+    .header_2 .header-middle { margin: 0 10px !important; }
+    .header_2 .header-right { gap: 8px !important; }
+  }
+  
+  /* UNIVERSAL HOVER TRIGGER (Blocks & Linklists) */
+  .header_2 #tt-megamenu li:hover > .tt_sub_menu_wrap,
+  .header_2 .tt_mm_menu:hover > .tt_sub_menu_wrap,
+  .header_2 .tt_menu_item:hover > .tt_sub_menu_wrap,
+  .header_2 .site-nav--has-dropdown:hover > .sub-nav__dropdown,
+  .header_2 .site-nav--has-dropdown:hover > .sub-menu {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    top: 100% !important;
+    z-index: 10000 !important;
+  }
+  
+  .header_2 .tt_sub_menu_wrap, .header_2 .sub-nav__dropdown, .header_2 .sub-menu {
+    background: #ffffff !important;
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1) !important;
+    border: 1px solid #e5e7eb !important;
+    position: absolute !important;
+    display: none;
+    min-width: 220px !important;
+  }
+
+
+  
+  /* 4. PREMIUM ICON ANIMATIONS */
+  .header-right .header-icon-wrapper,
+  .nike-mobile-actions .mobile-nike-action {
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    position: relative !important;
+  }
+  .header-right .header-icon-wrapper:hover,
+  .nike-mobile-actions .mobile-nike-action:hover {
+    transform: scale(1.15) !important;
+  }
+  .header-right .header-icon-wrapper:active,
+  .nike-mobile-actions .mobile-nike-action:active {
+    transform: scale(0.9) !important;
+  }
+  .header-right .header-icon-wrapper svg,
+  .nike-mobile-actions .mobile-nike-action svg {
+    color: #ffffff !important; 
+    transition: color 0.3s ease !important;
+  }
+  .header-right .header-icon-wrapper:hover svg {
+    color: #ffffff !important;
+    opacity: 0.7 !important;
+  }
+  
+  /* Search Bar Modernization */
+  .elegant-search-wrapper .search-bar-custom {
+    border: 2px solid #C5A47E !important;
+    background: #ffffff !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05) !important;
+    border-radius: 50px !important;
+  }
+  .elegant-search-wrapper .custom-select-container {
+    background: transparent !important;
+    border-right: 1px solid #eeeeee !important;
+  }
+  .elegant-search-wrapper #elegant-select-trigger span,
+  .elegant-search-wrapper #elegant-select-trigger svg {
+    color: #C5A47E !important;
+    stroke: #C5A47E !important;
+  }
+  .elegant-search-wrapper .input-container input {
+    color: #1a1a1a !important;
+    background: transparent !important;
+  }
+  .elegant-search-wrapper .input-container input::placeholder {
+    color: #999999 !important;
+  }
+  .elegant-search-wrapper button[type="submit"] {
+    background: #C5A47E !important;
+    color: #ffffff !important;
+  }
+  .elegant-search-wrapper button[type="submit"] svg {
+    stroke: #ffffff !important;
+  }
+  .elegant-search-wrapper button[type="submit"]:hover {
+    background: #b08d65 !important;
+  }
+  
+}
+
+
+
+.drawer-header { padding: 24px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
+.drawer-header h3 { margin: 0; font-size: 20px; font-weight: 700; color: #333; text-transform: uppercase; letter-spacing: 1px; }
+.drawer-close { background: none; border: none; cursor: pointer; font-size: 28px; line-height: 1; color: #999; }
+.drawer-content { flex: 1; overflow-y: auto; padding: 24px; }
+.drawer-footer { padding: 24px; border-top: 1px solid #eee; background: #fafafa; }
+
+.empty-cart-msg { text-align: center; padding-top: 60px; }
+.empty-cart-msg i { font-size: 64px; color: #eee; display: block; margin-bottom: 20px; }
+.empty-cart-msg p { color: #888; font-size: 16px; margin-bottom: 24px; }
+.btn-continue-shopping { 
+  display: inline-block; padding: 14px 28px; background: #000; color: #fff; 
+  border-radius: 4px; text-decoration: none; font-weight: 600; text-transform: uppercase; 
+  letter-spacing: 1px; transition: all 0.3s;
+}
+.btn-continue-shopping:hover { background: #C5A47E; color: #fff; }
+
+/* =========================================================================
+   3. MOBILE ONLY (<= 991px)
+   ========================================================================= */
+@media (max-width: 991px) {
+  /* Corrected Mobile Hierarchy (Logo Right, Icons Left) */
+  #top, .header-top, .header_2 .menu-bar, .header_2 #header-search.input-group {
+    display: none !important;
+  }
+
+  /* PREMIUM WHITE/GREEN COMPACT HEADER */
+  header.header_2 .full-header,
+  .header_2 .full-header-wrap {
+    background-color: #ffffff !important; /* Premium white */
+    padding: 0 !important;
+    min-height: 60px !important;
+    display: block !important;
+    position: sticky !important; /* Ensure it stays fixed at top */
+    top: 0 !important;
+    z-index: 9999 !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important;
+  }
+  
+  .header_2 .full-header .container {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 0 16px !important;
+    height: 60px !important;
+    width: 100% !important;
+  }
+
+  /* Layout order */
+  /* Layout order: Left (Hamburger) | Center (Logo) | Right (Icons) */
+  .header_2 .full-header .container {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 0 16px !important;
+  }
+  .header-left-mobile { flex: 1 !important; display: flex !important; justify-content: flex-start !important; }
+  .header-logo-mobile { flex: 1 !important; display: flex !important; justify-content: center !important; }
+  .nike-mobile-actions { 
+    flex: 1 !important; 
+    display: flex !important; 
+    justify-content: flex-end !important; 
+    gap: 15px !important; 
+    align-items: center !important;
+  }
+  .header_2 .header-left, .header_2 .header-middle, .header_2 .header-right { display: none !important; }
+
+  /* Mobile Logo (Normal color on white) */
+  .header_2 .header-logo img {
+    height: 45px !important;
+    width: auto !important;
+    filter: none !important; /* Remove invert */
+    image-rendering: auto !important;
+    display: block !important;
+  }
+  
+  .nike-mobile-actions svg { color: #1a1a1a !important; stroke: #1a1a1a !important; width: 24px; height: 24px; }
+
+  /* MOBILE CAT CAROUSEL beneath logo */
+  #nike-cat-bar {
+    display: flex !important;
+    height: 48px !important;
+    background: #FFFBFA !important;
+    border-top: 1px solid #f9f0ed !important;
+    border-bottom: 2px solid #FBB0A0 !important;
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+    align-items: center !important;
+    padding: 0 4px !important;
+    scrollbar-width: none;
+  }
+  #nike-cat-bar::-webkit-scrollbar { display: none !important; }
+  .nike-cat-item {
+    display: inline-flex !important;
+    padding: 0 12px !important;
+    color: #4b5563 !important; /* Muted dark text */
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    background: transparent !important;
+    border: none !important;
+    align-items: center !important;
+    text-decoration: none !important;
+    letter-spacing: 0.05em !important;
+  }
+
+  /* DRAWER (Full screen) */
+  #nike-drawer {
+    display: flex !important;
+    position: fixed !important;
+    inset: 0 !important;
+    background: #000000 !important;
+    z-index: 99999 !important;
+    transform: translateX(100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    flex-direction: column !important;
+  }
+  #nike-drawer.open { transform: translateX(0); }
+  .nd-header { 
+    height: 60px; padding: 0 20px; display: flex; align-items: center; 
+    justify-content: flex-end; border-bottom: 1px solid #222; background: #000;
+  }
+  .nd-close {
+    background: #111; border: 1px solid #333; color: #fff;
+    padding: 8px 15px; border-radius: 50px; display: flex; align-items: center;
+    gap: 8px; font-size: 12px; font-weight: 700; text-transform: uppercase;
+    cursor: pointer; transition: all 0.2s ease;
+  }
+  .nd-close:active { background: #222; transform: scale(0.95); }
+  .nd-close svg { width: 18px; height: 18px; stroke-width: 2.5; }
+  
+  /* FIXED DRAWER ACCORDION LOGIC */
+  .nd-item { border-bottom: 1px solid #1a1a1a; }
+  .nd-item .nd-item-btn {
+    width: 100%; padding: 20px 16px; display: flex; align-items: center; justify-content: space-between;
+    background: none; border: none; color: #fff; font-size: 16px; font-weight: 500; text-align: left;
+  }
+  .nd-item .nd-content { display: none; flex-direction: column; background: #0a0a0a; padding-bottom: 10px; }
+  .nd-item.active .nd-content { display: flex !important; }
+  .nd-item.active .nd-item-btn svg { transform: rotate(90deg); }
+  .nd-link { padding: 12px 32px; color: #888; text-decoration: none; font-size: 14px; }
+  .nd-link.all { color: #fff; font-weight: 600; border-top: 1px solid #1a1a1a; margin-top: 5px; }
+}
+</style>
+
+{% capture logoMaxHeight %}{{ section.settings.menu_mobile | minus: 30 }}px{% endcapture %}
+{% capture borderWidth %}{{ settings.border_width }}px{% endcapture %}
+{% capture colorBorder %}{{ settings.color_borders }}{% endcapture %}
+{% assign navMenu = linklists[section.settings.nav_menu] %}
+{%- assign sticky_class = '' -%}
+{% if section.settings.sticky_header %}
+{%- assign sticky_class = 'sticky_header' -%}
+{% endif %}
+<header class="site-header page-element header_2 cart_{{ section.settings.cart_icon_color }} {{ settings.rader_icon_color }}{% if section.settings.display_menu %} menu_enable{% endif %}" data-section-id="{{ section.id }}" data-section-type="header">
+
+<div class="desktop-only-header">
+
+
+  <div class="full-header-wrap {{ sticky_class }}" style="overflow: visible !important;">
+    <div class="full-header" style="overflow: visible !important;{% if section.settings.header_bg != blank %} background:url({{section.settings.header_bg | img_url: "master"}});background-size:cover;{% endif %}">
+      <div class="container" style="overflow: visible !important;">
+        <div class="header-left">
+          <h1 class="header-logo" itemscope itemtype="http://schema.org/Organization">
+            <a href="{{ routes.root_url }}" itemprop="url" style="display:flex; justify-content:flex-start; align-items:center;">
+              <img fetchpriority="high" height="auto" width="{{ section.settings.logo_width | default: 220 }}" src="{{ 'aylesva-logo-mx-v1.png' | asset_url }}" alt="{{ section.settings.logo.alt | default: shop.name }}" itemprop="logo" class="site-header__logo-image" style="max-width: 100%; height: 35px !important; width: auto !important;">
+            </a>
+          </h1>
+        </div>
+        <div class="col-sm-6 header-middle" style="display: flex; align-items: center; justify-content: center; overflow: visible !important; z-index: 100;">
+          <div id="header-search" style="width: 100%; max-width: 600px; overflow: visible !important;">
+            {% render 'search-bar' %}
+          </div>
+        </div>
+
+
+        <div class="header-right" style="display: flex !important; justify-content: flex-end !important; align-items: center !important; min-width: 240px !important; height: 50px !important; overflow: visible !important;">
+          
+          <!-- COUNTRY SWITCHER -->
+          <div class="ayl-country-switcher" style="display: flex; align-items: center; gap: 12px; margin-right: 15px; font-family: 'Inter', sans-serif;">
+            <div class="country-current" style="display: flex; align-items: center; gap: 6px; opacity: 0.6; cursor: default;">
+              <img src="https://flagcdn.com/w40/mx.png" style="width: 18px; height: auto; border-radius: 2px;">
+              <span style="color: #666; font-size: 12px; font-weight: 600; letter-spacing: 0.5px;">México</span>
+            </div>
+            <span style="color: #e5e5e5; font-size: 14px; font-weight: 300;">|</span>
+            <a href="{{ section.settings.usa_link | default: '#' }}" class="country-link" style="display: flex; align-items: center; gap: 6px; text-decoration: none; transition: opacity 0.3s ease;">
+              <img src="https://flagcdn.com/w40/us.png" style="width: 18px; height: auto; border-radius: 2px;">
+              <span style="color: #C5A47E; font-size: 12px; font-weight: 700; letter-spacing: 0.5px;">USA</span>
+            </a>
+          </div>
+
+          <!-- CART ICON -->
+          <div id="cart" class="header-icon-wrapper" style="position: relative !important; display: flex !important; align-items: center !important; justify-content: center !important; width: 34px !important; height: 34px !important; min-width: 34px !important; flex-shrink: 0 !important; margin: 0 !important; padding: 0 !important;">
+            {% if section.settings.display_cart %}  
+            <div class="site-header__cart">
+              <div class="wrapper-top-cart">
+                <a href="{{ routes.cart_url }}" id="cart-products-count" class="site-header_cart_link" onclick="if(window.innerWidth >= 992 && window.aylCartDrawer) { event.preventDefault(); event.stopImmediatePropagation(); window.aylCartDrawer.toggle(); }" style="display: flex; align-items: center; justify-content: center;">          
+                  <svg style="width: 30px !important; height: 30px !important; min-width: 30px !important; color: #1a1a1a !important; flex-shrink: 0 !important;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+                    <path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+                  </svg>
+                  <div class="ayl-premium-cart-badge" style="position: absolute !important; top: -4px !important; right: -6px !important; background: #C5A47E !important; color: #ffffff !important; width: 20px !important; height: 20px !important; min-width: 20px !important; border-radius: 50% !important; display: flex !important; align-items: center !important; justify-content: center !important; font-size: 11px !important; font-weight: 700 !important; border: 2px solid #ffffff !important; padding: 0 !important; margin: 0 !important; box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important; z-index: 10;">
+                    <span id="cart-products-count-text" aria-label="{{ cart.item_count }} artículos en el carrito" style="display: block !important; margin-top: 1px !important;">{{ cart.item_count }}</span>
+                  </div>
+                </a>
+              </div>
+            </div>
+            {% endif %}
+          </div>
+
+          <!-- ACCOUNT ICON (Force Login if not logged in) -->
+          {% if section.settings.display_myaccount %}
+          <div class="myaccount icon-btn header-icon-wrapper" style="width: 34px !important; height: 34px !important; min-width: 34px !important; display: flex !important; align-items: center !important; justify-content: center !important; flex-shrink: 0 !important; margin: 0 !important; padding: 0 !important;">
+            <a href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}" title="{% if customer %}{{ 'customer.account.title' | t }}{% else %}{{ 'layout.customer.log_in' | t }}{% endif %}" style="display: flex !important; align-items: center !important; justify-content: center !important; width: 100% !important; height: 100% !important;">
+              <svg style="width: 32px !important; height: 32px !important; min-width: 32px !important; color: #1a1a1a !important; flex-shrink: 0 !important;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+                <circle cx="12" cy="7" r="4" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></circle>
+              </svg>
+            </a>
+          </div>
+          {% endif %}
+
+          <!-- WISHLIST ICON (Force Login if not logged in) -->
+          <div class="wishlist-icon-div header-icon-wrapper" style="width: 34px !important; height: 34px !important; min-width: 34px !important; display: flex !important; align-items: center !important; justify-content: center !important; flex-shrink: 0 !important; margin: 0 !important; padding: 0 !important;">
+            <a class="wishlist" href="{% if customer %}/pages/wishlist{% else %}{{ routes.account_login_url }}{% endif %}" title="{{ 'general.wishlist.title' | t }}" aria-label="Ver mis favoritos" style="display: flex !important; align-items: center !important; justify-content: center !important; width: 100% !important; height: 100% !important;">
+              <svg style="width: 30px !important; height: 30px !important; min-width: 30px !important; color: #1a1a1a !important; flex-shrink: 0 !important;" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+                <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> <!-- End full-header stack -->
+
+      <script>
+        function openNikeSection(sectionName) {
+          console.log("Opening Nike Section:", sectionName);
+          const drawer = document.getElementById('nike-drawer');
+          if (!drawer) return;
+          
+          drawer.classList.add('open');
+          
+          const items = drawer.querySelectorAll('.nd-item');
+          items.forEach(item => {
+            const btn = item.querySelector('.nd-item-btn');
+            if (btn) {
+              const btnText = (btn.innerText || btn.textContent).toLowerCase();
+              if (btnText.includes(sectionName.toLowerCase())) {
+                item.classList.add('active');
+                setTimeout(() => {
+                  btn.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 300);
+              } else {
+                item.classList.remove('active');
+              }
+            }
+          });
+        }
+      </script>
+
+
+    <!-- BLACK NAVIGATION BAR REBUILD (Clean & Robust) -->
+    <style>
+      .desktop-only-header { 
+        position: relative !important; 
+        z-index: 99999 !important; /* Ensure the whole header stack is on top */
+      }
+      #custom-nav-bar {
+        background-color: #ffffff !important;
+        border-bottom: 1px solid #eeeeee !important;
+        width: 100% !important;
+        min-height: 50px !important;
+        display: flex !important;
+        align-items: center !important;
+        position: relative !important;
+        z-index: 100000 !important;
+        box-shadow: 100vmax 0 0 0 #ffffff, -100vmax 0 0 0 #ffffff !important;
+        clip-path: inset(0 -100vmax) !important;
+      }
+      #custom-nav-bar.fixed {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 999999 !important;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08) !important;
+        animation: slideDownNav 0.3s ease-out !important;
+      }
+      @keyframes slideDownNav { from { transform: translateY(-100%); } to { transform: translateY(0); } }
+      
+      #custom-nav-bar .container {
+        display: flex !important;
+        justify-content: safe center !important; /* Center categories when they fit, align left (flex-start) safely on overflow to enable scrolling */
+        align-items: center !important;
+        width: 100% !important;
+        max-width: 1400px !important;
+        margin: 0 auto !important;
+        overflow-x: auto !important;
+        scrollbar-width: none !important;
+        -ms-overflow-style: none !important;
+        -webkit-overflow-scrolling: touch !important;
+        padding: 0 15px !important;
+      }
+      #custom-nav-bar .container::-webkit-scrollbar {
+        display: none !important;
+      }
+      #custom-nav-bar .nav-menu-list {
+        display: flex !important;
+        list-style: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        gap: 16px !important; /* Optimized base gap to perfectly hold categories on standard screens */
+        flex-wrap: nowrap !important;
+      }
+      #custom-nav-bar .nav-item { position: relative !important; flex: 0 0 auto !important; }
+      #custom-nav-bar .nav-link {
+        color: #1a1a1a !important;
+        text-decoration: none !important;
+        font-size: 11.5px !important; /* Slightly optimized size for better horizontal room */
+        font-weight: 600 !important;
+        text-transform: uppercase !important;
+        padding: 16px 4px !important;
+        display: flex !important;
+        align-items: center !important;
+        white-space: nowrap !important;
+        letter-spacing: 0.1px !important;
+      }
+      #custom-nav-bar .nav-link:hover { color: #C5A47E !important; }
+      /* Hide chevrons and diagonal arrow icons on desktop to save space and keep menu clean in a single line */
+      #custom-nav-bar .nav-link i,
+      #custom-nav-bar .nav-link svg {
+        display: none !important;
+      }
+
+      /* SLEEK SLIDE ARROWS (GLASSMORPHISM) */
+      .nav-scroll-arrow {
+        position: absolute !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        width: 32px !important;
+        height: 32px !important;
+        border-radius: 50% !important;
+        background: rgba(255, 255, 255, 0.92) !important;
+        border: 1px solid rgba(0, 0, 0, 0.08) !important;
+        color: #1a1a1a !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        cursor: pointer !important;
+        z-index: 100002 !important;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.08) !important;
+        transition: opacity 0.3s ease, transform 0.2s ease, background-color 0.2s ease !important;
+        opacity: 0;
+        pointer-events: none;
+        padding: 0 !important;
+      }
+      .nav-scroll-arrow.visible {
+        opacity: 1 !important;
+        pointer-events: auto !important;
+      }
+      .nav-scroll-arrow:hover {
+        background-color: #ffffff !important;
+        color: #C5A47E !important;
+        transform: translateY(-50%) scale(1.08) !important;
+        box-shadow: 0 6px 15px rgba(0,0,0,0.12) !important;
+      }
+      .nav-scroll-arrow:active {
+        transform: translateY(-50%) scale(0.95) !important;
+      }
+      .nav-scroll-arrow svg {
+        width: 14px !important;
+        height: 14px !important;
+        display: block !important;
+      }
+      .nav-scroll-arrow.left-arrow {
+        left: 15px !important;
+      }
+      .nav-scroll-arrow.right-arrow {
+        right: 15px !important;
+      }
+
+      /* EDGE GRADIENT FADES */
+      #custom-nav-bar::before,
+      #custom-nav-bar::after {
+        content: '' !important;
+        position: absolute !important;
+        top: 0 !important;
+        bottom: 0 !important;
+        width: 60px !important;
+        pointer-events: none !important;
+        z-index: 100001 !important;
+        transition: opacity 0.3s ease !important;
+        opacity: 0;
+      }
+      #custom-nav-bar::before {
+        left: 0 !important;
+        background: linear-gradient(to right, rgba(255,255,255,1), rgba(255,255,255,0)) !important;
+      }
+      #custom-nav-bar::after {
+        right: 0 !important;
+        background: linear-gradient(to left, rgba(255,255,255,1), rgba(255,255,255,0)) !important;
+      }
+      #custom-nav-bar.scroll-left-active::before {
+        opacity: 1 !important;
+      }
+      #custom-nav-bar.scroll-right-active::after {
+        opacity: 1 !important;
+      }
+
+      /* RESPONSIVE LAPTOP REFINEMENTS FOR CATEGORIES TO ALWAYS FIT IN ONE LINE */
+      @media (max-width: 1400px) {
+        #custom-nav-bar .nav-menu-list { gap: 10px !important; }
+        #custom-nav-bar .nav-link { font-size: 11px !important; padding: 16px 2px !important; letter-spacing: -0.1px !important; }
+      }
+      @media (max-width: 1200px) {
+        #custom-nav-bar .nav-menu-list { gap: 6px !important; }
+        #custom-nav-bar .nav-link { font-size: 10.5px !important; letter-spacing: -0.2px !important; }
+      }
+      @media (max-width: 1050px) {
+        #custom-nav-bar .nav-menu-list { gap: 4px !important; }
+        #custom-nav-bar .nav-link { font-size: 10px !important; letter-spacing: -0.3px !important; }
+      }
+
+      /* Submenu Styling - Portal Style */
+      .nav-portal-submenu {
+        position: fixed !important;
+        background: #ffffff !important;
+        width: 240px !important;
+        display: none !important;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15) !important;
+        padding: 12px 0 !important;
+        z-index: 2147483647 !important;
+        flex-direction: column !important;
+        border-radius: 12px !important;
+        border: 1px solid #f0f0f0 !important;
+      }
+      .nav-portal-submenu.active { display: flex !important; }
+      .nav-portal-submenu a {
+        color: #444444 !important;
+        font-size: 13px !important;
+        padding: 10px 20px !important;
+        font-weight: 500 !important;
+        text-transform: none !important;
+        display: block !important;
+        line-height: 1.2 !important;
+        border-bottom: 1px solid #f9f9f9 !important;
+        transition: background 0.2s, color 0.2s !important;
+        text-decoration: none !important;
+      }
+      .nav-portal-submenu a:last-child { border-bottom: none !important; }
+      .nav-portal-submenu a:hover { 
+        background-color: #f4f7f6 !important; 
+        color: #2D5A43 !important; 
+      }
+      .nav-portal-submenu a.view-all { 
+        font-weight: 700 !important; 
+        color: #2D5A43 !important;
+        background-color: #eff5f2 !important;
+      }
+
+      /* Hidden original submenus */
+      #custom-nav-bar .nav-submenu { display: none !important; }
+      
+      {% if is_wholesale %}
+        /* Mover logo a la derecha exclusivamente en mayoreo */
+        .header_2 .header-left {
+          padding-left: 60px !important;
+        }
+      {% endif %}
+    </style>
+
+    <nav id="custom-nav-bar" class="custom-nav-bar">
+      <!-- Sleek Slide Arrows -->
+      <button id="nav-arrow-left" class="nav-scroll-arrow left-arrow" aria-label="Desplazar a la izquierda">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+      
+      <div class="container">
+        <ul class="nav-menu-list">
+          {% if is_wholesale %}
+            {%- assign categories = "Catálogo|catalogo,Botas|botas,Camisas|camisas,Chalecos|chalecos,Sombreros|sombreros,¿Cómo Comprar?|como-comprar,Contacto|contacto" | split: ',' -%}
+          {% else %}
+            {%- assign categories = "Mujer|mujer,Hombre|hombre,Niños|ninos,Artesanal|artesanal,Servicios|servicios,Aylesvoy|aylesvoy,Ofertas|ofertas,Mayoreo|mayoreo,Hogar|hogar,Alimentos|alimentos,Electrónicos|electronicos,Vehículos|vehiculos" | split: ',' -%}
+          {% endif %}
+          {% for cat_item in categories %}
+            {% assign parts = cat_item | split: '|' %}
+            {% assign cat_name = parts[0] %}
+            {% assign cat_handle = parts[1] %}
+            <li class="nav-item">
+              {% if is_wholesale %}
+                {%- comment -%} WHOLESALE NAV — simple flat links, no dropdowns {%- endcomment -%}
+                {%- liquid
+                  case cat_handle
+                    when 'botas'
+                      assign ws_href = '/collections/mayoreo-botas'
+                    when 'camisas'
+                      assign ws_href = '/collections/mayoreo-camisas'
+                    when 'chalecos'
+                      assign ws_href = '/collections/mayoreo-chalecos'
+                    when 'sombreros'
+                      assign ws_href = '/collections/mayoreo-sombreros'
+                    when 'catalogo'
+                      assign ws_href = '/collections/all'
+                    when 'como-comprar'
+                      assign ws_href = '/#ayl-home-benefits'
+                    when 'contacto'
+                      assign ws_href = '/pages/contact'
+                  endcase
+                -%}
+                <a href="{{ ws_href }}" class="nav-link">{{ cat_name }}</a>
+              {% else %}
+                {%- comment -%} RETAIL NAV {%- endcomment -%}
+                {% if cat_handle == 'mayoreo' %}
+                  <a href="https://aylesva-mayoreo.myshopify.com" class="nav-link" target="_blank" style="display: flex; align-items: center; gap: 4px;">{{ cat_name }} <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" style="opacity: 0.7;"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></a>
+                {% elsif cat_handle == 'aylesvoy' %}
+                  <a href="https://aylesvoy.myshopify.com/" class="nav-link" target="_blank" style="display: flex; align-items: center; gap: 4px;">{{ cat_name }} <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" style="opacity: 0.7;"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></a>
+                {% else %}
+                  <a href="/pages/{{ cat_handle }}" class="nav-link">{{ cat_name }} <i class="mdi mdi-chevron-down"></i></a>
+                  <div class="nav-submenu">
+                    {% case cat_handle %}
+                      {% when 'mujer' %}
+                        <a href="/collections/ropa-mujer">Ropa</a>
+                        <a href="/collections/calzado-mujer">Calzado</a>
+                        <a href="/collections/ropa-interior-mujer">Ropa Interior</a>
+                        <a href="/collections/joyeria-y-accesorios">Joyería</a>
+                        <a href="/collections/bolsas-y-carteras">Bolsas</a>
+                        <a href="/collections/accesorios-de-moda">Accesorios</a>
+                        <a href="/collections/maternidad">Maternidad</a>
+                      {% when 'hombre' %}
+                        <a href="/collections/ropa-hombre">Ropa</a>
+                        <a href="/collections/calzado-hombre">Calzado</a>
+                        <a href="/collections/ropa-interior-hombre">Ropa Interior</a>
+                        <a href="/collections/accesorios-hombre">Accesorios</a>
+                        <a href="/collections/joyeria">Joyería</a>
+                        <a href="/collections/cuidado-personal">Cuidado Personal</a>
+                      {% when 'ninos' %}
+                        <div class="submenu-title" style="padding: 6px 20px; font-size: 11px; font-weight: 800; text-transform: uppercase; color: #b38d65; letter-spacing: 0.5px; border-bottom: 1px solid #f9f9f9;">Niño</div>
+                        <a href="/collections/ropa-nino">Ropa Niño</a>
+                        <a href="/collections/calzado-nino">Calzado Niño</a>
+                        <a href="/collections/accesorios-nino">Accesorios Niño</a>
+                        <div class="submenu-title" style="padding: 10px 20px 6px; font-size: 11px; font-weight: 800; text-transform: uppercase; color: #b38d65; letter-spacing: 0.5px; border-bottom: 1px solid #f9f9f9;">Niña</div>
+                        <a href="/collections/ropa-nina">Ropa Niña</a>
+                        <a href="/collections/calzado-nina">Calzado Niña</a>
+                        <a href="/collections/accesorios-nina">Accesorios Niña</a>
+                        <div class="submenu-title" style="padding: 10px 20px 6px; font-size: 11px; font-weight: 800; text-transform: uppercase; color: #b38d65; letter-spacing: 0.5px; border-bottom: 1px solid #f9f9f9;">Bebés</div>
+                        <a href="/collections/ropa-bebe">Ropa Bebé</a>
+                        <a href="/collections/calzado-bebe">Calzado Bebé</a>
+                        <a href="/collections/ropa-interior-y-panaleria">Higiene y Pañales</a>
+                        <a href="/collections/accesorios-bebe">Accesorios Bebé</a>
+                      {% when 'artesanal' %}
+                        <a href="/collections/textiles-y-tejidos">Textiles</a>
+                        <a href="/collections/ceramica-y-barro">Cerámica</a>
+                        <a href="/collections/madera">Madera</a>
+                        <a href="/collections/joyeria-artesanal">Joyería</a>
+                        <a href="/collections/cuero-y-piel">Cuero</a>
+                        <a href="/collections/vidrio-y-cristal">Vidrio</a>
+                        <a href="/collections/metal-y-piedra">Metal y Piedra</a>
+                        <a href="/collections/arte-y-pinturas">Arte</a>
+                      {% when 'hogar' %}
+                        <a href="/collections/muebles">Muebles</a>
+                        <a href="/collections/decoracion-del-hogar">Decoración</a>
+                        <a href="/collections/iluminacion">Iluminación</a>
+                        <a href="/collections/cocina-y-comedor">Cocina</a>
+                        <a href="/collections/bano">Baño</a>
+                        <a href="/collections/recamara">Recámara</a>
+                        <a href="/collections/jardin">Jardín</a>
+                      {% when 'alimentos' %}
+                        <a href="/collections/alimentos-artesanales">Alimentos</a>
+                        <a href="/collections/bebidas-artesanales">Bebidas</a>
+                        <a href="/collections/productos-organicos">Orgánicos</a>
+                        <a href="/collections/reposteria">Repostería</a>
+                        <a href="/collections/regalos-gourmet">Regalos Gourmet</a>
+                      {% when 'electronicos' %}
+                        <a href="/collections/telefonos">Teléfonos</a>
+                        <a href="/collections/computadoras">Laptops</a>
+                        <a href="/collections/audio-y-video">Audio y Video</a>
+                        <a href="/collections/videojuegos">Videojuegos</a>
+                        <a href="/collections/electrodomesticos">Línea Blanca</a>
+                        <a href="/collections/gadgets">Gadgets</a>
+                      {% when 'vehiculos' %}
+                        <a href="/collections/autos">Automóviles</a>
+                        <a href="/collections/motos">Motocicletas</a>
+                        <a href="/collections/vehiculos-de-carga">Carga y Trabajo</a>
+                        <a href="/collections/refacciones">Refacciones</a>
+                      {% when 'servicios' %}
+                        <a href="{{ section.settings.solazmar_link | default: 'https://solazmar.com' }}" target="_blank">{{ section.settings.solazmar_title | default: 'Solazmar' }}</a>
+                        <a href="/pages/aylesva-care" style="color: #7C1922 !important; font-weight: 700 !important;">Aylesva Care</a>
+                        <a href="/pages/prestamos-fink" style="color: #1E3A8A !important; font-weight: 700 !important;">Préstamos Fink</a>
+                        <a href="/pages/globalestates" style="color: #C5A47E !important; font-weight: 700 !important;">Global Estates</a>
+                        <a href="/pages/mi-ultima-voluntad" style="color: #B99A45 !important; font-weight: 700 !important;">Mi Última Voluntad</a>
+                        <a href="javascript:void(0)" onclick="window.openChinaModal()" style="color: #C5A47E !important; font-weight: 700 !important;">Aylesva China</a>
+                    {% endcase %}
+                    {% if cat_handle != 'servicios' %}
+                    <a href="/pages/{{ cat_handle }}" class="view-all">Ver todo {{ cat_name }}</a>
+                    {% endif %}
+                  </div>
+                {% endif %}
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+      
+      <button id="nav-arrow-right" class="nav-scroll-arrow right-arrow" aria-label="Desplazar a la derecha">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+    </nav>
+
+    <script type="text/javascript">
+      document.addEventListener('DOMContentLoaded', function() {
+        var navBar = document.getElementById('custom-nav-bar');
+        var navItems = document.querySelectorAll('#custom-nav-bar .nav-item');
+        
+        // Create portals container
+        var portalContainer = document.createElement('div');
+        portalContainer.id = 'nav-submenu-portals';
+        document.body.appendChild(portalContainer);
+
+        navItems.forEach(function(item, index) {
+          var originalSubmenu = item.querySelector('.nav-submenu');
+          if (!originalSubmenu) return;
+
+          // Clone submenu for portal
+          var portalSubmenu = originalSubmenu.cloneNode(true);
+          portalSubmenu.className = 'nav-portal-submenu';
+          if (index >= navItems.length - 2) {
+            portalSubmenu.classList.add('align-right');
+          }
+          portalContainer.appendChild(portalSubmenu);
+
+          var hideTimeout;
+
+          function showPortal() {
+            clearTimeout(hideTimeout);
+            var rect = item.getBoundingClientRect();
+            portalSubmenu.style.top = (rect.bottom - 5) + 'px'; // Tiny overlap
+            
+            if (portalSubmenu.classList.contains('align-right')) {
+               portalSubmenu.style.left = 'auto';
+               portalSubmenu.style.right = (window.innerWidth - rect.right) + 'px';
+            } else {
+               portalSubmenu.style.left = rect.left + 'px';
+               portalSubmenu.style.right = 'auto';
+            }
+            
+            portalSubmenu.classList.add('active');
+          }
+
+          function hidePortal() {
+            hideTimeout = setTimeout(function() {
+              portalSubmenu.classList.remove('active');
+            }, 50);
+          }
+
+          item.addEventListener('mouseenter', showPortal);
+          item.addEventListener('mouseleave', hidePortal);
+          portalSubmenu.addEventListener('mouseenter', showPortal);
+          portalSubmenu.addEventListener('mouseleave', hidePortal);
+        });
+
+        function closeAllPortals() {
+          var activePortals = document.querySelectorAll('.nav-portal-submenu.active');
+          activePortals.forEach(function(portal) {
+            portal.classList.remove('active');
+          });
+        }
+
+        window.addEventListener('scroll', closeAllPortals);
+        var containerElement = navBar.querySelector('.container');
+        if (containerElement) {
+          containerElement.addEventListener('scroll', closeAllPortals);
+        }
+
+        // DYNAMIC SCROLL ARROWS & GRADIENTS MANAGER (LUXURY BRANDING)
+        var leftArrow = document.getElementById('nav-arrow-left');
+        var rightArrow = document.getElementById('nav-arrow-right');
+        var container = navBar ? navBar.querySelector('.container') : null;
+
+        function updateScrollIndicators() {
+          if (!container || !leftArrow || !rightArrow) return;
+          
+          var scrollLeft = container.scrollLeft;
+          var scrollWidth = container.scrollWidth;
+          var clientWidth = container.clientWidth;
+          
+          // Allow a 4px tolerance for fractional subpixel layout calculations
+          var hasLeftScroll = scrollLeft > 4;
+          var hasRightScroll = (scrollWidth - clientWidth - scrollLeft) > 4;
+          
+          if (hasLeftScroll) {
+            leftArrow.classList.add('visible');
+            navBar.classList.add('scroll-left-active');
+          } else {
+            leftArrow.classList.remove('visible');
+            navBar.classList.remove('scroll-left-active');
+          }
+          
+          if (hasRightScroll) {
+            rightArrow.classList.add('visible');
+            navBar.classList.add('scroll-right-active');
+          } else {
+            rightArrow.classList.remove('visible');
+            navBar.classList.remove('scroll-right-active');
+          }
+        }
+        
+        if (container && leftArrow && rightArrow) {
+          container.addEventListener('scroll', updateScrollIndicators);
+          window.addEventListener('resize', updateScrollIndicators);
+          window.addEventListener('scroll', updateScrollIndicators); // Recalculate on sticky scroll toggle
+          
+          // Double timeout queue to cover page load rendering and font layout calculations
+          setTimeout(updateScrollIndicators, 100);
+          setTimeout(updateScrollIndicators, 600);
+          
+          leftArrow.addEventListener('click', function() {
+            container.scrollBy({ left: -250, behavior: 'smooth' });
+          });
+          
+          rightArrow.addEventListener('click', function() {
+            container.scrollBy({ left: 250, behavior: 'smooth' });
+          });
+        }
+
+        function handleSticky() {
+          if (window.innerWidth > 991) {
+            if (window.scrollY > 150) { 
+              navBar.classList.add('fixed');
+            } else {
+              navBar.classList.remove('fixed');
+            }
+          } else {
+            navBar.classList.remove('fixed');
+          }
+        }
+        window.addEventListener('scroll', handleSticky);
+        window.addEventListener('resize', handleSticky);
+        handleSticky();
+      });
+    </script>
+    </div>
+
+  <!-- ============================================== -->
+  <!-- 2. MOBILE ONLY HEADER (Nike Minimalist Style)  -->
+  <!-- ============================================== -->
+  <div class="mobile-only-header">
+    <div id="header-sticky" class="full-header" style="background-color: #ffffff !important; min-height: 60px !important;">
+      <div class="container" style="display: flex !important; align-items: center !important; justify-content: space-between !important; height: 60px !important; padding: 0 16px !important;">
+        
+        <!-- Left: Hamburger -->
+        <div class="header-left-mobile">
+           <button class="mobile-nike-action hamburger" style="background:none;border:none;padding:0;" onclick="document.getElementById('nike-drawer').classList.add('open')" aria-label="Abrir menú de navegación" aria-controls="nike-drawer" aria-expanded="false">
+             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width:24px;height:24px;color:#1a1a1a;" role="img" aria-hidden="true">
+               <line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line>
+             </svg>
+           </button>
+        </div>
+
+        <!-- Center: Logo -->
+        <div class="header-logo-mobile">
+           <a href="{{ routes.root_url }}">
+             <img fetchpriority="high" src="{{ 'aylesva-logo-mx-v1.png' | asset_url }}" alt="{{ shop.name }}" style="height: 32px !important; width: auto !important; filter: none !important;">
+           </a>
+        </div>
+
+        <!-- Right: Actions -->
+        <div class="nike-mobile-actions">
+           <a href="/search" class="mobile-nike-action search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width:24px;height:24px;color:#1a1a1a;"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></a>
+           <a href="javascript:void(0)" class="mobile-nike-action cart open-cart-drawer" style="position: relative;" onclick="if(window.innerWidth >= 992 && window.aylCartDrawer) { event.preventDefault(); event.stopImmediatePropagation(); window.aylCartDrawer.toggle(); }"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width:24px;height:24px;color:#1a1a1a;"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4Z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 01-8 0"></path></svg>{% if cart.item_count > 0 %}<span class="site-header__cart-count" style="position:absolute;top:-6px;right:-8px;background:#C5A47E;color:#fff;font-size:10px;width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;">{{ cart.item_count }}</span>{% endif %}</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Nike Category Bar removed from mobile as per user request -->
+  </div> <!-- Fin de mobile-only-header -->
+
+</header>
+{% comment %} Removed rogue styles that were overriding header colors {% endcomment %}
+
+          
+           <script>
+
+
+  $(document).ready(function() {
+    var url = "/checkout";
+    $('.actions .checkout-btn').click(function() {
+      if ($('#agree').is(':checked')) {
+        window.location = url;
+      }
+      else {
+        alert("{{ 'cart.popup.empty_condition' | t }}");
+        return false;
+      }
+    });
+  });
+
+
+
+
+          function moremenu9() {
+
+                if (jQuery(document).width() <= 1199) {
+      var max_elem = 3;
+    } else {
+      if (jQuery(document).width() >= 1300 && jQuery(document).width() <= 1199) {
+        var max_elem = 3;
+      }
+      else {
+        if (jQuery(document).width() >= 1460 && jQuery(document).width() <= 1299) {
+          var max_elem = 4;
+        }
+        else {
+          if (jQuery(document).width() >= 1559 && jQuery(document).width() <= 1459) {
+            var max_elem = 4;
+          } else {
+  var max_elem = {{ section.settings.more_menu_category }};
+          }
+        }
+      }
+    }
+  var items = jQuery('.header_style_1 .topmenu #accessibleNav > li,  .header_style_2 .topmenu #accessibleNav > li , .header_style_3 .topmenu #accessibleNav > li');
+  var surplus = items.slice(max_elem, items.length);
+  surplus.wrapAll('<li class="more_menu site-nav--has-dropdown menu-item-depth-0"><ul class="top-link sub-nav__dropdown sub-menu mobile-nav__sublist">');
+  jQuery('.more_menu').prepend('<a href="#" class="level-top topmega-menu-link">More</a>');
+  jQuery('.more_menu').mouseover(function() {
+    jQuery(this).children('ul').addClass('shown-link');
+    jQuery('body').addClass('menu-open');
+  })
+  jQuery('.more_menu').mouseout(function() {
+    jQuery(this).children('ul').removeClass('shown-link');
+    jQuery('body').removeClass('menu-open');
+  })
+}
+jQuery(document).ready(function() {
+  moremenu9()
+});
+          
+          
+
+  
+  function moremenuleft() {
+    if (jQuery(document).width() <= 1199) {
+      var d = 5;
+    } else {
+      if (jQuery(document).width() >= 1200 && jQuery(document).width() <= 1429) {
+        var d = 7;
+      }
+      else {
+        if (jQuery(document).width() >= 1430 && jQuery(document).width() <= 1599) {
+          var d = 9;
+        }
+        else {
+          if (jQuery(document).width() >= 1600 && jQuery(document).width() <= 1770) {
+            var d = 10;
+          } else {
+            var d = {{ section.settings.more_menu_category1 }};
+          }
+        }
+      }
+    }
+    var a = "{{ 'general.header.more' | t }}";
+    var b = "{{ 'general.header.less' | t }}";
+    var c = $("#tt-megamenu .tt_menus_ul > li");
+    if (c.length > d) {
+      jQuery("#tt-megamenu ul.tt_menus_ul").append('<li class="tt_menu_item left_more_menu"><div class="level-top left mega-menu-link"><span class="categories">' + a + '<i class="mdi mdi-plus"></i></span></div></li>');
+    }
+    jQuery("#tt-megamenu ul.tt_menus_ul .left_more_menu").click(function () {
+      if (jQuery(this).hasClass("active")) {
+        c.each(function (e) {
+          if (e >= d) {
+            jQuery(this).slideUp(200);
+          }
+        });
+        jQuery(this).removeClass("active");
+        jQuery(".left_more_menu").html('<span class="categories">' + a + '<i class="mdi mdi-plus"></i></span>');
+      } else {
+        c.each(function (e) {
+          if (e >= d) {
+            jQuery(this).slideDown(200);
+          }
+        });
+        jQuery(this).addClass("active");
+        jQuery(".left_more_menu").html('<span class="categories">' + b + ' <i class="mdi mdi-minus"></i></span>');
+      }
+    });
+    c.each(function (e) {
+      if (e >= d) {
+        jQuery(this).css("display", "none");
+      }
+    });
+    if (jQuery(document).width() >= 992) {
+      $(".tt-mega_menu .tt_menus_ul .tt_menu_item").hover(
+        function () {
+          $("body").addClass("open-nav");
+        },
+        function () {
+          $("body").removeClass("open-nav");
+        }
+      );
+    }
+  }
+  jQuery(document).ready(function () {
+    // moremenuleft(); // DISABLING TO ENSURE ALL 10 CATEGORIES SHOW
+  });
+
+
+            if (jQuery(window).width() < 992) {
+
+          $(".mobile-nav__sublist-trigger").click(function(){
+  $(".sub-nav__dropdown.sub-menu.mobile-nav__sublist.items_1").slideToggle();
+});
+
+            }
+
+</script><!-- NIKE STYLE SLIDE-OUT DRAWER -->
+<div id="nike-drawer">
+  <div class="nd-header">
+    <button class="nd-close" onclick="document.getElementById('nike-drawer').classList.remove('open')">
+      Cerrar <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+  </div>
+  {% comment %} Removed duplicate drawer styles {% endcomment %}
+
+  <div class="nd-body">
+    {% if is_wholesale %}
+      {%- assign categories_list = "Catálogo|catalogo,Botas|botas,Camisas|camisas,Chalecos|chalecos,Sombreros|sombreros,¿Cómo Comprar?|como-comprar,Contacto|contacto" | split: ',' -%}
+    {% else %}
+      {%- assign categories_list = "Mujer|mujer,Hombre|hombre,Niños|ninos,Artesanal|artesanal,Servicios|servicios,Aylesvoy|aylesvoy,Ofertas|ofertas,Mayoreo|mayoreo,Hogar|hogar,Alimentos|alimentos,Electrónicos|electronicos,Vehículos|vehiculos" | split: ',' -%}
+    {% endif %}
+    {% for cat_item in categories_list %}
+      {% assign parts = cat_item | split: '|' %}
+      {% assign cat_name = parts[0] %}
+      {% assign cat_handle = parts[1] %}
+      
+      <div class="nd-item">
+        {% if is_wholesale %}
+          {%- comment -%} WHOLESALE MOBILE NAV — flat links {%- endcomment -%}
+          {%- liquid
+            case cat_handle
+              when 'botas'
+                assign ws_href_m = '/collections/mayoreo-botas'
+              when 'camisas'
+                assign ws_href_m = '/collections/mayoreo-camisas'
+              when 'chalecos'
+                assign ws_href_m = '/collections/mayoreo-chalecos'
+              when 'sombreros'
+                assign ws_href_m = '/collections/mayoreo-sombreros'
+              when 'catalogo'
+                assign ws_href_m = '/collections/all'
+              when 'como-comprar'
+                assign ws_href_m = '/#ayl-home-benefits'
+              when 'contacto'
+                assign ws_href_m = '/pages/contact'
+            endcase
+          -%}
+          <a class="nd-item-btn" href="{{ ws_href_m }}" style="text-decoration: none !important; color: #fff !important; outline: none !important; display: flex; align-items: center; justify-content: space-between; width: 100%;">
+            {{ cat_name }}
+          </a>
+        {% else %}
+          {%- comment -%} RETAIL MOBILE NAV {%- endcomment -%}
+          {% if cat_handle == 'mayoreo' %}
+            <a class="nd-item-btn" href="https://aylesva-mayoreo.myshopify.com" target="_blank" style="text-decoration: none !important; color: #fff !important; outline: none !important; display: flex; align-items: center; justify-content: space-between; width: 100%;">
+              {{ cat_name }}
+            </a>
+          {% elsif cat_handle == 'aylesvoy' %}
+            <a class="nd-item-btn" href="https://aylesvoy.myshopify.com/" target="_blank" style="text-decoration: none !important; color: #fff !important; outline: none !important; display: flex; align-items: center; justify-content: space-between; width: 100%;">
+              {{ cat_name }} 
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" style="opacity: 0.7;">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </a>
+          {% else %}
+            <button class="nd-item-btn" onclick="this.parentElement.classList.toggle('active')">{{ cat_name }} <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+            <div class="nd-content">
+              {% if cat_handle == 'servicios' %}
+                <a class="nd-link" href="{{ section.settings.solazmar_link | default: 'https://solazmar.com' }}" target="_blank">{{ section.settings.solazmar_title | default: 'Solazmar' }}</a>
+                <a class="nd-link all" href="/pages/aylesva-care" style="color: #7C1922 !important;">Aylesva Care</a>
+                <a class="nd-link all" href="/pages/prestamos-fink" style="color: #1E3A8A !important;">Préstamos Fink</a>
+                <a class="nd-link all" href="/pages/globalestates" style="color: #C5A47E !important;">Global Estates</a>
+                <a class="nd-link all" href="/pages/mi-ultima-voluntad" style="color: #B99A45 !important;">Mi Última Voluntad</a>
+                <a class="nd-link all" href="javascript:void(0)" onclick="window.openChinaModal()" style="color: #C5A47E !important;">Aylesva China</a>
+              {% else %}
+                {% case cat_handle %}
+                  {% when 'mujer' %}
+                    <a class="nd-link" href="/collections/ropa-mujer">Ropa</a>
+                    <a class="nd-link" href="/collections/calzado-mujer">Calzado</a>
+                    <a class="nd-link" href="/collections/ropa-interior-mujer">Ropa Interior</a>
+                    <a class="nd-link" href="/collections/joyeria-y-accesorios">Joyería</a>
+                    <a class="nd-link" href="/collections/bolsas-y-carteras">Bolsas</a>
+                    <a class="nd-link" href="/collections/accesorios-de-moda">Accesorios</a>
+                    <a class="nd-link" href="/collections/maternidad">Maternidad</a>
+                  {% when 'hombre' %}
+                    <a class="nd-link" href="/collections/ropa-hombre">Ropa</a>
+                    <a class="nd-link" href="/collections/calzado-hombre">Calzado</a>
+                    <a class="nd-link" href="/collections/ropa-interior-hombre">Ropa Interior</a>
+                    <a class="nd-link" href="/collections/accesorios-hombre">Accesorios</a>
+                    <a class="nd-link" href="/collections/joyeria">Joyería</a>
+                    <a class="nd-link" href="/collections/cuidado-personal">Cuidado Personal</a>
+                  {% when 'ninos' %}
+                    <div class="nd-submenu-title" style="padding: 12px 24px 6px; font-size: 11px; font-weight: 800; text-transform: uppercase; color: #b38d65; letter-spacing: 0.5px; opacity: 0.8;">Niño</div>
+                    <a class="nd-link" href="/collections/ropa-nino">Ropa Niño</a>
+                    <a class="nd-link" href="/collections/calzado-nino">Calzado Niño</a>
+                    <a class="nd-link" href="/collections/accesorios-nino">Accesorios Niño</a>
+                    <div class="nd-submenu-title" style="padding: 12px 24px 6px; font-size: 11px; font-weight: 800; text-transform: uppercase; color: #b38d65; letter-spacing: 0.5px; opacity: 0.8;">Niña</div>
+                    <a class="nd-link" href="/collections/ropa-nina">Ropa Niña</a>
+                    <a class="nd-link" href="/collections/calzado-nina">Calzado Niña</a>
+                    <a class="nd-link" href="/collections/accesorios-nina">Accesorios Niña</a>
+                    <div class="nd-submenu-title" style="padding: 12px 24px 6px; font-size: 11px; font-weight: 800; text-transform: uppercase; color: #b38d65; letter-spacing: 0.5px; opacity: 0.8;">Bebés</div>
+                    <a class="nd-link" href="/collections/ropa-bebe">Ropa Bebé</a>
+                    <a class="nd-link" href="/collections/calzado-bebe">Calzado Bebé</a>
+                    <a class="nd-link" href="/collections/ropa-interior-y-panaleria">Higiene y Pañales</a>
+                    <a class="nd-link" href="/collections/accesorios-bebe">Accesorios Bebé</a>
+                  {% when 'artesanal' %}
+                    <a class="nd-link" href="/collections/textiles-y-tejidos">Textiles</a>
+                    <a class="nd-link" href="/collections/ceramica-y-barro">Cerámica</a>
+                    <a class="nd-link" href="/collections/madera">Madera</a>
+                    <a class="nd-link" href="/collections/joyeria-artesanal">Joyería</a>
+                    <a class="nd-link" href="/collections/cuero-y-piel">Cuero</a>
+                    <a class="nd-link" href="/collections/vidrio-y-cristal">Vidrio</a>
+                    <a class="nd-link" href="/collections/metal-y-piedra">Metal y Piedra</a>
+                    <a class="nd-link" href="/collections/arte-y-pinturas">Arte</a>
+                  {% when 'hogar' %}
+                    <a class="nd-link" href="/collections/muebles">Muebles</a>
+                    <a class="nd-link" href="/collections/decoracion-del-hogar">Decoración</a>
+                    <a class="nd-link" href="/collections/iluminacion">Iluminación</a>
+                    <a class="nd-link" href="/collections/cocina-y-comedor">Cocina</a>
+                    <a class="nd-link" href="/collections/bano">Baño</a>
+                    <a class="nd-link" href="/collections/recamara">Recámara</a>
+                    <a class="nd-link" href="/collections/jardin">Jardín</a>
+                  {% when 'alimentos' %}
+                    <a class="nd-link" href="/collections/alimentos-artesanales">Alimentos</a>
+                    <a class="nd-link" href="/collections/bebidas-artesanales">Bebidas</a>
+                    <a class="nd-link" href="/collections/productos-organicos">Orgánicos</a>
+                    <a class="nd-link" href="/collections/reposteria">Repostería</a>
+                    <a class="nd-link" href="/collections/regalos-gourmet">Regalos Gourmet</a>
+                  {% when 'electronicos' %}
+                    <a class="nd-link" href="/collections/telefonos">Teléfonos</a>
+                    <a class="nd-link" href="/collections/computadoras">Laptops</a>
+                    <a class="nd-link" href="/collections/audio-y-video">Audio y Video</a>
+                    <a class="nd-link" href="/collections/videojuegos">Videojuegos</a>
+                    <a class="nd-link" href="/collections/electrodomesticos">Línea Blanca</a>
+                    <a class="nd-link" href="/collections/gadgets">Gadgets</a>
+                  {% when 'vehiculos' %}
+                    <a class="nd-link" href="/collections/autos">Automóviles</a>
+                    <a class="nd-link" href="/collections/motos">Motocicletas</a>
+                    <a class="nd-link" href="/collections/vehiculos-de-carga">Carga y Trabajo</a>
+                    <a class="nd-link" href="/collections/refacciones">Refacciones</a>
+                {% endcase %}
+                <a class="nd-link all" href="/pages/{{ cat_handle }}">Ver todo {{ cat_name }}</a>
+              {% endif %}
+            </div>
+          {% endif %}
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+
+
+
+<script type="text/javascript">
+  document.addEventListener('DOMContentLoaded', function() {
+    function handleSticky() {
+      if (window.innerWidth > 991) {
+        var menuBar = document.querySelector('.header_2 .menu-bar');
+        if (menuBar) {
+          if (window.scrollY > 50) {
+            menuBar.classList.add('fixed');
+          } else {
+            menuBar.classList.remove('fixed');
+          }
+        }
+      }
+    }
+    window.addEventListener('scroll', handleSticky);
+    window.addEventListener('resize', handleSticky);
+    handleSticky();
+  });
+</script>
+
+
+
+{% schema %}
+{
+"name": "Header",
+"settings": [
+    {
+      "type": "url",
+      "id": "usa_link",
+      "label": "Enlace Tienda USA",
+      "default": "/"
+    },
+
+
+          {
+"type": "text",
+"id": "more_menu_category",
+"label": "Select Horizontal More Menu Category",
+"default": "5",
+"info": "Must be add numeric-value Ex: 4, 5,..."
+},
+
+      {
+"type": "text",
+"id": "more_menu_category1",
+"label": "Select Shop Categories More Menu",
+"default": "8",
+"info": "Must be add numeric-value Ex: 4, 5,..."
+},
+
+  
+  
+{
+"type": "image_picker",
+"id": "header_bg",
+"label": "header background image"
+},
+{
+"type": "checkbox",
+"id": "sticky_header",
+"label": "Show Sticky Header",
+"default": true
+},
+{
+"type": "checkbox",
+"id": "header_topbar_show",
+"label": "Show Header Topbar",
+"default": true
+},
+{
+"type": "text",
+"id": "topbar_service",
+"label": "TopBar Service",
+"default": "Wants to explore Upcoming Deals on Weekends?"        
+},
+{
+"type": "url",
+"id": "service_url",
+"label": "TopBar Service link"
+},
+{
+"type": "color",
+"id": "topbar_service_icon_color",
+"label": "TopBar Service icon color",
+"default": "#FF9C00"        
+},
+{
+"type": "header",
+"content": "Logo"
+},
+
+          {
+  "type": "range",
+  "id": "logo_width",
+  "min": 50,
+  "max": 1000,
+  "step": 10,
+  "default": 220,
+  "unit": "px",
+  "label": "Desktop Logo Maximum Width"
+},
+  
+{
+"type": "image_picker",
+"id": "logo",
+"label": "Custom logo",
+"info": "171 x 41px max"
+},
+{
+"type": "header",
+"content": "Servicios Links"
+},
+{
+"type": "text",
+"id": "solazmar_title",
+"label": "Solazmar Title",
+"default": "Solazmar"
+},
+{
+"type": "url",
+"id": "solazmar_link",
+"label": "Solazmar URL"
+},
+{
+"type": "text",
+"id": "aylesvacare_title",
+"label": "Aylesva Care Title",
+"default": "Aylesva Care"
+},
+{
+"type": "url",
+"id": "aylesvacare_link",
+"label": "Aylesva Care URL"
+},
+{
+"type": "text",
+"id": "allcitiesglobal_title",
+"label": "Allcitiesglobal Title",
+"default": "Allcitiesglobal"
+},
+{
+"type": "url",
+"id": "allcitiesglobal_link",
+"label": "Allcitiesglobal URL"
+},
+{
+"type": "text",
+"id": "miultimavoluntad_title",
+"label": "Mi Ultima Voluntad Title",
+"default": "Mi Ultima Voluntad"
+},
+{
+"type": "url",
+"id": "miultimavoluntad_link",
+"label": "Mi Ultima Voluntad URL"
+},
+{
+"type": "text",
+"id": "legalservices_title",
+"label": "Legal Services Title",
+"default": "Legal Services"
+},
+{
+"type": "url",
+"id": "legalservices_link",
+"label": "Legal Services URL"
+},
+{
+"type": "header",
+"content": "more menu category settings"
+},
+{
+"type": "text",
+"id": "email",
+"label": "Email",
+"default": "admin@gmail.com"        
+},
+{
+"type": "url",
+"id": "email_link",
+"label": "Email link"       
+},
+{
+"type": "text",
+"id": "header_service_title",
+"label": "header service title",
+"default": "track order"        
+},
+{
+"type": "url",
+"id": "header_service_url",
+"label": "header service url" 
+},
+{
+"type": "color",
+"id": "header_service_title_clr",
+"label": "header service title color",
+"default": "#222"
+},
+{
+"type": "checkbox",
+"id": "display_wishlist",
+"label": "Display wishlist",
+"default": true
+},
+{
+"type": "checkbox",
+"id": "display_compare",
+"label": "Display compare",
+"default": true
+},
+{
+"type": "checkbox",
+"id": "display_currency",
+"label": "Display Currency Switcher",
+"default": true
+},
+{
+"type": "checkbox",
+"id": "display_language",
+"label": "Display Language Switcher",
+"default": true
+},
+{
+"type": "checkbox",
+"id": "display_cart",
+"label": "Display Cart",
+"default": true
+},
+{
+"type": "checkbox",
+"id": "display_myaccount",
+"label": "Display Myaccount",
+"default": true
+},
+{
+"type": "header",
+"content": "Main Menu"
+},
+{
+"type": "checkbox",
+"id": "display_menu",
+"label": "Display Header menu",
+"default": false
+},
+{
+"type": "link_list",
+"id": "nav_menu",
+"label": "Menu",
+"default": "main-menu"
+},
+{
+"type": "color",
+"id": "menu_bg_color",
+"label": "Menubar background color",
+"default": "#fff"
+},
+{
+"type": "color",
+"id": "menu_txt_color",
+"label": "Menubar text color",
+"default": "#ccc"
+},
+{
+"type": "header",
+"content": "contact us"
+},
+{
+"type": "text",
+"id": "contact_txt_title",
+"label": "contact title"        
+},
+{
+"type": "text",
+"id": "contact_txt_num",
+"label": "contact number"        
+},
+{
+"type": "color",
+"id": "contact_bg_color",
+"label": "contact background color",
+"default": "#25b43c"
+},
+{
+"type": "color",
+"id": "contact_color",
+"label": "contact text color",
+"default": "#fff"
+},
+{
+"type": "text",
+"id": "tt-title",
+"label": "title",
+"default": "shop categories"
+},
+{
+"type": "color",
+"id": "tt-title_bgclr",
+"label": "title background color",
+"default": "#202b38"
+},
+{
+"type": "color",
+"id": "tt-title_clr",
+"label": "title text color",
+"default": "#fff"
+},
+{
+"type": "color",
+"id": "menu_bgclr",
+"label": "menu background color",
+"default": "#111"
+},
+{
+"type": "color",
+"id": "menu_txt_clr",
+"label": "menu text color",
+"default": "#fff"
+}  
+],
+"blocks": [
+{
+"type": "tt_mm_menu",
+"name": "Heading menu",
+"settings": [
+{
+"type": "text",
+"id": "title",
+"label": "Menu Item"
+},
+{
+"type": "url",
+"id": "button_link",
+"label": "Menu Link"
+},
+{
+"type": "image_picker",
+"id": "tt_sub_menu_icon",
+"label": "menu icon"
+},
+{
+"type": "text",
+"id": "tt_mn_class",
+"label": "Custom class"
+},
+{
+"type": "text",
+"id": "tt_mn_sub_heading",
+"label": "Bubble alert text"
+},
+{
+"type": "color",
+"id": "tt_mn_subheading_bg",
+"label": "Bubble alert background",
+"default": "#febb01"
+},
+{
+"type": "color",
+"id": "tt_mn_subheading_color",
+"label": "Bubble alert color",
+"default": "#ffffff"
+},
+{
+"type": "text",
+"id": "tt_mn_sub_contentwidth",
+"label": "Sub-menu width",
+"default": "540px",
+"info": "Ex: 540px or 100% ..."
+},
+{
+"type": "checkbox",
+"id": "tt_mn_show_sub",
+"default": false,
+"label": "Display sub-menu"
+},
+{
+"type": "image_picker",
+"id": "bg_img_collection",
+"label": "Submenu Background image"
+},
+{
+"type": "header",
+"content": "Sub Menu Content"
+},
+{
+"type": "text",
+"id": "tt_sub_menu_cwidth",
+"label": "Content Submenu Width"
+},
+{
+"type": "header",
+"content": "First Menu links"
+},
+{
+"type": "text",
+"id": "tt_sub_menu_ctitle",
+"label": "Column title"
+},
+{
+"type": "url",
+"id": "tt_sub_menu_clink",
+"label": "Sub-menu link"
+},
+{
+"type": "link_list",
+"id": "tt_sub_menu_clinklist",
+"label": "Select a menu"
+},
+{
+"type": "header",
+"content": "Second Menu links"
+},
+{
+"type": "text",
+"id": "tt_sub_menu_csecondtitle",
+"label": "Second column title"
+},
+{
+"type": "url",
+"id": "tt_sub_menu_csecondlink",
+"label": "Second sub-menu link"
+},
+{
+"type": "link_list",
+"id": "tt_sub_menu_csecondlinklist",
+"label": "Select a second menu"
+},
+{
+"type": "header",
+"content": "First Menu Image"
+},
+{
+"type": "text",
+"id": "tt_sub_menu_title",
+"label": "Column title"
+},
+{
+"type": "url",
+"id": "tt_sub_menu_link",
+"label": "Sub-menu link"
+},
+{
+"type": "checkbox",
+"id": "tt_sub_menu_title_show",
+"label": "Show column title",
+"default": true
+},
+{
+"type": "text",
+"id": "tt_sub_menu_width",
+"label": "Sub-menu width"
+},
+{
+"type": "text",
+"id": "tt_sub_menu_customclass",
+"label": "Custom class"
+},
+{
+"type": "text",
+"id": "tt_mn_sub_heading_inner",
+"label": "Bubble alert text"
+},
+{
+"type": "color",
+"id": "tt_mn_subheading_bg_inner",
+"label": "Bubble alert background",
+"default": "#febb01"
+},
+{
+"type": "color",
+"id": "tt_mn_subheading_color_inner",
+"label": "Bubble alert color",
+"default": "#ffffff"
+},
+{
+"type": "image_picker",
+"id": "tt_sub_menu_img",
+"label": "Image"
+},
+{
+"type": "header",
+"content": "Second Menu Image"
+},
+{
+"type": "text",
+"id": "tt_sub_menu_Second_title",
+"label": "Second Column title"
+},
+{
+"type": "url",
+"id": "tt_sub_menu_Second_link",
+"label": "Second Sub-menu link"
+},
+{
+"type": "checkbox",
+"id": "tt_sub_menu_title_Second_show",
+"label": "Second Show column title"
+},
+{
+"type": "text",
+"id": "tt_sub_menu_Second_width",
+"label": "Second Sub-menu width"
+},
+{
+"type": "text",
+"id": "tt_sub_menu_Second_customclass",
+"label": "Second Custom class"
+},
+{
+"type": "text",
+"id": "tt_mn_sub_heading_Second_inner",
+"label": "Second Bubble alert text"
+},
+{
+"type": "color",
+"id": "tt_mn_subheading_bg_Second_inner",
+"label": "Second Bubble alert background"
+},
+{
+"type": "color",
+"id": "tt_mn_subheading_color_Second_inner",
+"label": "Second Bubble alert color"
+},
+{
+"type": "image_picker",
+"id": "tt_sub_menu_Second_img",
+"label": "Second Image"
+},
+{
+"type": "header",
+"content": "Third Menu Image"
+},
+{
+"type": "text",
+"id": "tt_sub_menu_third_title",
+"label": "Third Column title"
+},
+{
+"type": "url",
+"id": "tt_sub_menu_third_link",
+"label": "Third Sub-menu link"
+},
+{
+"type": "checkbox",
+"id": "tt_sub_menu_title_third_show",
+"label": "Third Show column title"
+},
+{
+"type": "text",
+"id": "tt_sub_menu_third_width",
+"label": "Third Sub-menu width"
+},
+{
+"type": "text",
+"id": "tt_sub_menu_third_customclass",
+"label": "Third Custom class"
+},
+{
+"type": "text",
+"id": "tt_mn_sub_heading_third_inner",
+"label": "Third Bubble alert text"
+},
+{
+"type": "color",
+"id": "tt_mn_subheading_bg_third_inner",
+"label": "Third Bubble alert background"
+},
+{
+"type": "color",
+"id": "tt_mn_subheading_color_third_inner",
+"label": "Third Bubble alert color"
+},
+{
+"type": "image_picker",
+"id": "tt_sub_menu_third_img",
+"label": "Third Image"
+},
+{
+"type": "header",
+"content": "Fourth Menu Image"
+},
+{
+"type": "text",
+"id": "tt_sub_menu_fourth_title",
+"label": "Fourth Column title"
+},
+{
+"type": "url",
+"id": "tt_sub_menu_fourth_link",
+"label": "Fourth Sub-menu link"
+},
+{
+"type": "checkbox",
+"id": "tt_sub_menu_title_fourth_show",
+"label": "Fourth Show column title"
+},
+{
+"type": "text",
+"id": "tt_sub_menu_fourth_width",
+"label": "Fourth Sub-menu width"
+},
+{
+"type": "text",
+"id": "tt_sub_menu_fourth_customclass",
+"label": "Fourth Custom class"
+},
+{
+"type": "text",
+"id": "tt_mn_sub_heading_fourth_inner",
+"label": "Fourth Bubble alert text"
+},
+{
+"type": "color",
+"id": "tt_mn_subheading_bg_fourth_inner",
+"label": "Fourth Bubble alert background"
+},
+{
+"type": "color",
+"id": "tt_mn_subheading_color_fourth_inner",
+"label": "Fourth Bubble alert color"
+},
+{
+"type": "image_picker",
+"id": "tt_sub_menu_fourth_img",
+"label": "Fourth Image"
+},
+{
+"type": "header",
+"content": "Fifth Menu Image"
+},
+{
+"type": "text",
+"id": "tt_sub_menu_fifth_title",
+"label": "Fifth Column title"
+},
+{
+"type": "url",
+"id": "tt_sub_menu_fifth_link",
+"label": "Fifth Sub-menu link"
+},
+{
+"type": "checkbox",
+"id": "tt_sub_menu_title_fifth_show",
+"label": "Fifth Show column title"
+},
+{
+"type": "text",
+"id": "tt_sub_menu_fifth_width",
+"label": "Fifth Sub-menu width"
+},
+{
+"type": "text",
+"id": "tt_sub_menu_fifth_customclass",
+"label": "Fifth Custom class"
+},
+{
+"type": "text",
+"id": "tt_mn_sub_heading_fifth_inner",
+"label": "Fifth Bubble alert text"
+},
+{
+"type": "color",
+"id": "tt_mn_subheading_bg_fifth_inner",
+"label": "Fifth Bubble alert background"
+},
+{
+"type": "color",
+"id": "tt_mn_subheading_color_fifth_inner",
+"label": "Fifth Bubble alert color"
+},
+{
+"type": "image_picker",
+"id": "tt_sub_menu_fifth_img",
+"label": "Fifth Image"
+},
+{
+"type": "header",
+"content": "Six Menu Image"
+},
+{
+"type": "text",
+"id": "tt_sub_menu_six_title",
+"label": "Six Column title"
+},
+{
+"type": "url",
+"id": "tt_sub_menu_six_link",
+"label": "Six Sub-menu link"
+},
+{
+"type": "checkbox",
+"id": "tt_sub_menu_title_six_show",
+"label": "Six Show column title"
+},
+{
+"type": "text",
+"id": "tt_sub_menu_six_width",
+"label": "Six Sub-menu width"
+},
+{
+"type": "text",
+"id": "tt_sub_menu_six_customclass",
+"label": "Six Custom class"
+},
+{
+"type": "text",
+"id": "tt_mn_sub_heading_six_inner",
+"label": "Six Bubble alert text"
+},
+{
+"type": "color",
+"id": "tt_mn_subheading_bg_six_inner",
+"label": "Six Bubble alert background"
+},
+{
+"type": "color",
+"id": "tt_mn_subheading_color_six_inner",
+"label": "Six Bubble alert color"
+},
+{
+"type": "image_picker",
+"id": "tt_sub_menu_six_img",
+"label": "Six Image"
+},
+{
+"type": "header",
+"content": "Seven Menu Image"
+},
+{
+"type": "text",
+"id": "tt_sub_menu_seven_title",
+"label": "Seven Column title"
+},
+{
+"type": "url",
+"id": "tt_sub_menu_seven_link",
+"label": "Seven Sub-menu link"
+},
+{
+"type": "checkbox",
+"id": "tt_sub_menu_title_seven_show",
+"label": "Seven Show column title"
+},
+{
+"type": "text",
+"id": "tt_sub_menu_seven_width",
+"label": "Seven Sub-menu width"
+},
+{
+"type": "text",
+"id": "tt_sub_menu_seven_customclass",
+"label": "Seven Custom class"
+},
+{
+"type": "text",
+"id": "tt_mn_sub_heading_seven_inner",
+"label": "Seven Bubble alert text"
+},
+{
+"type": "color",
+"id": "tt_mn_subheading_bg_seven_inner",
+"label": "Seven Bubble alert background"
+},
+{
+"type": "color",
+"id": "tt_mn_subheading_color_seven_inner",
+"label": "Seven Bubble alert color"
+},
+{
+"type": "image_picker",
+"id": "tt_sub_menu_seven_img",
+"label": "Seven Image"
+},
+{
+"type": "header",
+"content": "Eight Menu Image"
+},
+{
+"type": "text",
+"id": "tt_sub_menu_eight_title",
+"label": "Eight Column title"
+},
+{
+"type": "url",
+"id": "tt_sub_menu_eight_link",
+"label": "Eight Sub-menu link"
+},
+{
+"type": "checkbox",
+"id": "tt_sub_menu_title_eight_show",
+"label": "Eight Show column title"
+},
+{
+"type": "text",
+"id": "tt_sub_menu_eight_width",
+"label": "Eight Sub-menu width"
+},
+{
+"type": "text",
+"id": "tt_sub_menu_eight_customclass",
+"label": "Eight Custom class"
+},
+{
+"type": "text",
+"id": "tt_mn_sub_heading_eight_inner",
+"label": "Eight Bubble alert text"
+},
+{
+"type": "color",
+"id": "tt_mn_subheading_bg_eight_inner",
+"label": "Eight Bubble alert background"
+},
+{
+"type": "color",
+"id": "tt_mn_subheading_color_eight_inner",
+"label": "Eight Bubble alert color"
+},
+{
+"type": "image_picker",
+"id": "tt_sub_menu_eight_img",
+"label": "Eight Image"
+},
+{
+"type": "header",
+"content": "Nine Menu Image"
+},
+{
+"type": "text",
+"id": "tt_sub_menu_nine_title",
+"label": "Nine Column title"
+},
+{
+"type": "url",
+"id": "tt_sub_menu_nine_link",
+"label": "Nine Sub-menu link"
+},
+{
+"type": "checkbox",
+"id": "tt_sub_menu_title_nine_show",
+"label": "Nine Show column title"
+},
+{
+"type": "text",
+"id": "tt_sub_menu_nine_width",
+"label": "Nine Sub-menu width"
+},
+{
+"type": "text",
+"id": "tt_sub_menu_nine_customclass",
+"label": "Nine Custom class"
+},
+{
+"type": "text",
+"id": "tt_mn_sub_heading_nine_inner",
+"label": "Nine Bubble alert text"
+},
+{
+"type": "color",
+"id": "tt_mn_subheading_bg_nine_inner",
+"label": "Nine Bubble alert background"
+},
+{
+"type": "color",
+"id": "tt_mn_subheading_color_nine_inner",
+"label": "Nine Bubble alert color"
+},
+{
+"type": "image_picker",
+"id": "tt_sub_menu_nine_img",
+"label": "Nine Image"
+},
+{
+"type": "header",
+"content": "Ten Menu Image"
+},
+{
+"type": "text",
+"id": "tt_sub_menu_ten_title",
+"label": "Ten Column title"
+},
+{
+"type": "url",
+"id": "tt_sub_menu_ten_link",
+"label": "Ten Sub-menu link"
+},
+{
+"type": "checkbox",
+"id": "tt_sub_menu_title_ten_show",
+"label": "Ten Show column title"
+},
+{
+"type": "text",
+"id": "tt_sub_menu_ten_width",
+"label": "Ten Sub-menu width"
+},
+{
+"type": "text",
+"id": "tt_sub_menu_ten_customclass",
+"label": "Ten Custom class"
+},
+{
+"type": "text",
+"id": "tt_mn_sub_heading_ten_inner",
+"label": "Ten Bubble alert text"
+},
+{
+"type": "color",
+"id": "tt_mn_subheading_bg_ten_inner",
+"label": "Ten Bubble alert background"
+},
+{
+"type": "color",
+"id": "tt_mn_subheading_color_ten_inner",
+"label": "Ten Bubble alert color"
+},
+{
+"type": "image_picker",
+"id": "tt_sub_menu_ten_img",
+"label": "Ten Image"
+},
+{
+"type": "header",
+"content": "Eleven Menu Image"
+},
+{
+"type": "text",
+"id": "tt_sub_menu_eleven_title",
+"label": "Eleven Column title"
+},
+{
+"type": "url",
+"id": "tt_sub_menu_eleven_link",
+"label": "Eleven Sub-menu link"
+},
+{
+"type": "checkbox",
+"id": "tt_sub_menu_title_eleven_show",
+"label": "Eleven Show column title"
+},
+{
+"type": "text",
+"id": "tt_sub_menu_eleven_width",
+"label": "Eleven Sub-menu width"
+},
+{
+"type": "text",
+"id": "tt_sub_menu_eleven_customclass",
+"label": "Eleven Custom class"
+},
+{
+"type": "text",
+"id": "tt_mn_sub_heading_eleven_inner",
+"label": "Eleven Bubble alert text"
+},
+{
+"type": "color",
+"id": "tt_mn_subheading_bg_eleven_inner",
+"label": "Eleven Bubble alert background"
+},
+{
+"type": "color",
+"id": "tt_mn_subheading_color_eleven_inner",
+"label": "Eleven Bubble alert color"
+},
+{
+"type": "image_picker",
+"id": "tt_sub_menu_eleven_img",
+"label": "Eleven Image"
+}
+]
+},
+{
+"type": "tt_sub_menu_p",
+"name": "__ sub menu products",
+"settings": [
+{
+"type": "text",
+"id": "tt_sub_menu_ptitle",
+"label": "Column title"
+},
+{
+"type": "url",
+"id": "tt_sub_menu_plink",
+"label": "Sub-menu link"
+},
+{
+"type": "checkbox",
+"id": "tt_sub_menu_ptitle_show",
+"label": "Show column title",
+"default": true
+},
+{
+"type": "text",
+"id": "tt_sub_menu_pwidth",
+"label": "Sub-menu width"
+},
+{
+"type": "text",
+"id": "tt_sub_menu_pcustomclass",
+"label": "Custom class"
+},
+{
+"type": "range",
+"id": "tt_sub_menu_items_desktop",
+"label": "( DESKTOP ) Number of products per row",
+"min": 1,
+"max": 5,
+"step": 1,
+"default": 1
+},
+{
+"type": "range",
+"id": "tt_sub_menu_items_tablet",
+"label": "( TABLET ) Number of products per row",
+"min": 1,
+"max": 5,
+"step": 1,
+"default": 1
+},
+{
+"type": "range",
+"id": "tt_sub_menu_items_mobile",
+"label": "( MOBILE ) Number of products per row",
+"min": 1,
+"max": 5,
+"step": 1,
+"default": 1
+},
+{
+"type": "header",
+"content": "Product in collection"
+},
+{
+"type": "collection",
+"id": "tt_sub_menu_pproduts",
+"label": "Choose collection"
+},
+{
+"type": "text",
+"id": "tt_sub_menu_pprodut_item",
+"label": "Max items show"
+},
+{
+"type": "header",
+"content": "Choose other products"
+},
+{
+"type": "product",
+"id": "tt_sub_menu_potherprodut_1",
+"label": "Choose product"
+},
+{
+"type": "product",
+"id": "tt_sub_menu_potherprodut_2",
+"label": "Choose product"
+},
+{
+"type": "product",
+"id": "tt_sub_menu_potherprodut_3",
+"label": "Choose product"
+},
+{
+"type": "product",
+"id": "tt_sub_menu_potherprodut_4",
+"label": "Choose product"
+}
+]
+}
+]
+}
+{% endschema %}

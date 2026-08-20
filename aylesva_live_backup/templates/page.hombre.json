@@ -1,0 +1,345 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "wrapper": "div#main",
+  "sections": {
+    "hero": {
+      "type": "aylesva-intro-hero",
+      "blocks": {
+        "slide_9pbWb7": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/CAMBIA_LA_VESTIMENTA_202604061216.jpg",
+            "image_alignment": "center",
+            "sub_title": "NUEVA COLECCIÓN",
+            "title": "ESTILO LIMITADO",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30,
+            "btn1_txt": "Ver Ahora",
+            "btn1_link": "",
+            "btn_bg_color": "#ffb300",
+            "btn_txt_color": "#000000",
+            "btn2_txt": "Explorar",
+            "btn2_link": ""
+          }
+        },
+        "slide_VKFcm3": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/CAMBIA_LA_POSE_202604061211.jpg",
+            "image_alignment": "center",
+            "sub_title": "NUEVA COLECCIÓN",
+            "title": "ESTILO LIMITADO",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30,
+            "btn1_txt": "Ver Ahora",
+            "btn1_link": "",
+            "btn_bg_color": "#ffb300",
+            "btn_txt_color": "#000000",
+            "btn2_txt": "Explorar",
+            "btn2_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_9pbWb7",
+        "slide_VKFcm3"
+      ],
+      "settings": {
+        "desktop_height": 80,
+        "mobile_height": 60,
+        "autoplay": true,
+        "autoplay_speed": 5,
+        "show_arrows": true
+      }
+    },
+    "bubbles": {
+      "type": "aylesva-category-bubbles",
+      "blocks": {
+        "b1": {
+          "type": "category",
+          "settings": {
+            "image": "shopify://shop_images/pomelli-image_37.png",
+            "label": "Ropa",
+            "link": "shopify://collections/ropa-hombre"
+          }
+        },
+        "b2": {
+          "type": "category",
+          "settings": {
+            "image": "shopify://shop_images/pomelli-image_40.png",
+            "label": "Calzado",
+            "link": "shopify://collections/calzado-hombre"
+          }
+        },
+        "b3": {
+          "type": "category",
+          "settings": {
+            "image": "shopify://shop_images/pomelli-image_42.png",
+            "label": "Accesorios",
+            "link": "shopify://collections/accesorios-hombre"
+          }
+        },
+        "b4": {
+          "type": "category",
+          "settings": {
+            "image": "shopify://shop_images/pomelli-image_51.png",
+            "label": "relojes",
+            "link": "shopify://collections/relojes-hombre"
+          }
+        },
+        "b5": {
+          "type": "category",
+          "settings": {
+            "image": "shopify://shop_images/pomelli-image_48.png",
+            "label": "casual",
+            "link": "shopify://collections/camisetas-y-polos-hombre"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5"
+      ],
+      "settings": {
+        "title": "COMPRA POR CATEGORÍA",
+        "bg_color": "#ffffff"
+      }
+    },
+    "gender_cards": {
+      "type": "aylesva-gender-cards",
+      "blocks": {
+        "c1": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/pomelli-image_41.png",
+            "label": "Calzado",
+            "link": "shopify://collections/calzado-hombre"
+          }
+        },
+        "c2": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/pomelli-image_39.png",
+            "label": "Camisas",
+            "link": "shopify://collections/camisas-formales-y-casuales"
+          }
+        },
+        "c3": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/pomelli-image_44.png",
+            "label": "Pantalones",
+            "link": "shopify://collections/pantalones-y-jeans-hombre"
+          }
+        },
+        "c4": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/pomelli-image_46.png",
+            "label": "Abrigos y chaquetas",
+            "link": "shopify://collections/abrigos-y-chaquetas-hombre"
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4"
+      ],
+      "settings": {
+        "title": "LO MEJOR PARA ÉL",
+        "bg_color": "#ffffff"
+      }
+    },
+    "main": {
+      "type": "page",
+      "disabled": true,
+      "settings": {}
+    },
+    "aylesva_cooler_carousel_gGbycE": {
+      "type": "aylesva-cooler-carousel",
+      "name": "Cooler Carrusel",
+      "settings": {
+        "title": "Ofertas Destacadas",
+        "collection": "calzado-hombre",
+        "product_limit": 12,
+        "animation_speed": 25,
+        "margin_top": 30,
+        "margin_bottom": 30
+      }
+    },
+    "custom_duo_cooler_banner_JctQ4p": {
+      "type": "custom-duo-cooler-banner",
+      "name": "Duo Cooler Banner",
+      "settings": {
+        "section_title": "Marcas Destacadas",
+        "image_1": "shopify://shop_images/pomelli-image_43.png",
+        "logo_1": "shopify://shop_images/El_General_NEWLogo_Black.png",
+        "button_text_1": "Envíos Gratis",
+        "link_1": "",
+        "video_2": "shopify://files/videos/DJI_20251121133916_0095_D.MOV",
+        "button_text_2": "Envíos Gratis",
+        "link_2": "",
+        "margin_top": 30,
+        "margin_bottom": 30
+      }
+    },
+    "aylesva_cooler_carousel_dAQW9n": {
+      "type": "aylesva-cooler-carousel",
+      "name": "Cooler Carrusel",
+      "settings": {
+        "title": "Ofertas Destacadas",
+        "collection": "accesorios-hombre",
+        "product_limit": 12,
+        "animation_speed": 25,
+        "margin_top": 30,
+        "margin_bottom": 30
+      }
+    },
+    "produdecooler_xdcbwL": {
+      "type": "produdecooler",
+      "name": "Produ Cooler",
+      "settings": {
+        "title": "Ofertas Destacadas",
+        "view_all_text": "Ver más",
+        "view_all_link": "",
+        "collection": "ropa-hombre",
+        "product_limit": 10,
+        "slides_desktop": 5,
+        "autoplay": false,
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
+    "aylesva_cuadro_colecciones_xQqHfr": {
+      "type": "aylesva-cuadro-colecciones",
+      "blocks": {
+        "collection_item_VFk4HD": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "mujer",
+            "image": "shopify://shop_images/long-blonde-hair-at-carnival.jpg",
+            "title": "Mujer"
+          }
+        },
+        "collection_item_bYkCap": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "hombre",
+            "image": "shopify://shop_images/man-puts-his-hand-inside-his-jacket.jpg",
+            "title": ""
+          }
+        },
+        "collection_item_xPgBzc": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "nino",
+            "image": "shopify://shop_images/little-boy-ready-for-school-looking-up.jpg",
+            "title": ""
+          }
+        },
+        "collection_item_AMJVEC": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "nina",
+            "image": "shopify://shop_images/girl-framed-by-heart.jpg",
+            "title": ""
+          }
+        },
+        "collection_item_cGMRNT": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "bebe",
+            "image": "shopify://shop_images/cute-baby-girl-with-pink-bow-headband.jpg",
+            "title": ""
+          }
+        },
+        "collection_item_DWPhcL": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "artesanal",
+            "image": "shopify://shop_images/pomelli-image_cd766c49-22f0-4171-859e-c22f786b7b86.png",
+            "title": ""
+          }
+        },
+        "collection_item_hyqEYa": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "hogar",
+            "image": "shopify://shop_images/sunlight-creeps-through-a-bright-living-room.jpg",
+            "title": ""
+          }
+        },
+        "collection_item_9WiQqG": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "alimentos",
+            "image": "shopify://shop_images/hamburger-and-fries.jpg",
+            "title": ""
+          }
+        },
+        "collection_item_UHfdVN": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "electronicos",
+            "image": "shopify://shop_images/mobile-phone-and-gimbal-in-hand.jpg",
+            "title": ""
+          }
+        },
+        "collection_item_3LdFB4": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "vehiculos",
+            "image": "shopify://shop_images/red-sports-car-wheel-close-up.jpg",
+            "title": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_item_VFk4HD",
+        "collection_item_bYkCap",
+        "collection_item_xPgBzc",
+        "collection_item_AMJVEC",
+        "collection_item_cGMRNT",
+        "collection_item_DWPhcL",
+        "collection_item_hyqEYa",
+        "collection_item_9WiQqG",
+        "collection_item_UHfdVN",
+        "collection_item_3LdFB4"
+      ],
+      "name": "Cuadro Colecciones LOL",
+      "settings": {
+        "title": "Categorías",
+        "view_all_text": "Mostrar todas las categorías",
+        "view_all_link": "",
+        "margin_top": 30,
+        "margin_bottom": 30
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "bubbles",
+    "gender_cards",
+    "main",
+    "aylesva_cooler_carousel_gGbycE",
+    "custom_duo_cooler_banner_JctQ4p",
+    "aylesva_cooler_carousel_dAQW9n",
+    "produdecooler_xdcbwL",
+    "aylesva_cuadro_colecciones_xQqHfr"
+  ]
+}

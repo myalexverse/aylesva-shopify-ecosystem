@@ -1,0 +1,517 @@
+<style>
+  #annoucementbar{
+    background: {{ section.settings.bg_clr }};
+  }
+  #annoucementbar .announce-cnt{
+    color: {{ section.settings.text_clr }};
+  }
+   .annoucement .headerbanner-close a::before , .annoucement .headerbanner-close a::after{
+     background-color:{{section.settings.text_clr}}
+   }
+
+
+
+  /* =============================annucement====================== */
+
+
+     .announce-banner .headerbanner-close a::before , .announce-banner .headerbanner-close a::after{
+     background-color:{{section.settings.text_clr}}
+   }
+
+   .announce-banner .owl-theme .owl-nav {
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    -khtml-opacity: 0;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: all 400ms ease-in-out 0s;
+    -moz-transition: all 400ms ease-in-out 0s;
+    -ms-transition: all 400ms ease-in-out 0s;
+    -o-transition: all 400ms ease-in-out 0s;
+    transition: all 400ms ease-in-out 0s;
+    display: block;
+    margin: 0;
+}
+
+  .announce-banner .owl-theme .owl-nav .owl-prev, .announce-banner .owl-theme .owl-nav .owl-next {
+    bottom: 0;
+    display: block;
+}
+
+  .announce-banner  .owl-theme .owl-nav .owl-next::before {
+    content: "\f142";
+    font-family: "Material Design Icons";
+    font-size: 36px;
+    line-height: 40px;
+    color: #111;
+    -webkit-transition: all 400ms ease-in-out 0s;
+    -moz-transition: all 400ms ease-in-out 0s;
+    -ms-transition: all 400ms ease-in-out 0s;
+    -o-transition: all 400ms ease-in-out 0s;
+    transition: all 400ms ease-in-out 0s;
+}
+
+   .announce-banner .owl-theme .owl-nav .owl-prev::before {
+    color: #111;
+    content: "\f141";
+    font-family: "Material Design Icons";
+    font-size: 36px;
+    line-height: 40px;
+    -webkit-transition: all 400ms ease-in-out 0s;
+    -moz-transition: all 400ms ease-in-out 0s;
+    -ms-transition: all 400ms ease-in-out 0s;
+    -o-transition: all 400ms ease-in-out 0s;
+    transition: all 400ms ease-in-out 0s;
+}
+
+   .announce-banner   .owl-theme .owl-nav .owl-prev,    .announce-banner .owl-theme .owl-nav .owl-next {
+    font-size: 0;
+    height: 40px;
+    width: 40px;
+    padding: 0px;
+    text-align: center;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    background: none;
+    margin: auto;
+    -webkit-transition: all 400ms ease-in-out 0s;
+    -moz-transition: all 400ms ease-in-out 0s;
+    -ms-transition: all 400ms ease-in-out 0s;
+    -o-transition: all 400ms ease-in-out 0s;
+    transition: all 400ms ease-in-out 0s;
+    vertical-align: top;
+}
+
+    .announce-banner  .owl-theme .owl-nav .owl-next {
+    right: -30px;
+}
+
+  .announce-banner .owl-theme .owl-nav .owl-prev {
+
+    left: -30px;
+}
+
+.announce-banner{
+  position: relative;
+}
+  .announce-banner .headerbanner-close a::before , .announce-banner .headerbanner-close a::after{
+    content: '';
+    position: absolute;
+    height: 2px;
+    width: 15px;
+    top: 0;
+    bottom: 0;
+    left: auto;
+    right: 20px;
+    margin: auto;
+    z-index: 2;
+    transform-origin: 50% 50%;
+    background-color: #fff;
+    opacity: 1;
+    -moz-opacity: 1;
+    -khtml-opacity: 1;
+    -webkit-opacity: 1;
+    visibility: visible;
+    -moz-transition: -moz-transform ease .25s;
+    -webkit-transition: -webkit-transform ease .25s;
+    -o-transition: -o-transform ease .25s;
+    -ms-transition: -ms-transform ease .25s;
+    transition: transform ease .25s;
+}
+.announce-banner .headerbanner-close a::before , .announce-banner .headerbanner-close:hover a::after{
+        -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+ .announce-banner .headerbanner-close a::after , .announce-banner .headerbanner-close:hover a::before{
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+ }
+  
+  
+#annoucementbar {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+.annoucement {
+  text-align: center;
+  padding: 10px 25px;
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ayl-announce-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.ayl-announce-icon svg {
+  width: 20px;
+  height: 20px;
+  fill: #FFB300; /* Premium Gold */
+}
+.annoucement .announce-cnt {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0;
+}
+.annoucement .headerbanner-close a {
+  float: none;
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+  width: 20px;
+  height: 20px;
+}
+#annoucementbar a {
+  color: #fff;
+  text-decoration: underline;
+}
+.annoucement .headerbanner-close a::before,
+.annoucement .headerbanner-close a::after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 15px;
+  top: 0;
+  bottom: 0;
+  left: auto;
+  right: 0;
+  margin: auto;
+  z-index: 2;
+  transform-origin: 50% 50%;
+  background-color: #222;
+  opacity: 1;
+  -moz-opacity: 1;
+  -khtml-opacity: 1;
+  -webkit-opacity: 1;
+  visibility: visible;
+  -moz-transition: -moz-transform ease 0.25s;
+  -webkit-transition: -webkit-transform ease 0.25s;
+  -o-transition: -o-transform ease 0.25s;
+  -ms-transition: -ms-transform ease 0.25s;
+  transition: transform ease 0.25s;
+}
+.annoucement .headerbanner-close a::before,
+.annoucement .headerbanner-close:hover a::after {
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.annoucement .headerbanner-close a::after,
+.annoucement .headerbanner-close:hover a::before {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+.announce-banner .owl-theme .owl-nav {
+  -webkit-opacity: 1;
+  -moz-opacity: 1;
+  -khtml-opacity: 1;
+  opacity: 1;
+  visibility: visible;
+  margin:0;
+}
+.announce-banner .owl-theme .owl-nav .owl-next:hover::before,
+.announce-banner .owl-theme .owl-nav .owl-prev:hover::before {
+  color: var(--color-btn-secondary-text);
+}
+.announce-banner .owl-theme .owl-nav .owl-next::before,
+.announce-banner .owl-theme .owl-nav .owl-prev::before {
+  color: var(--color-header-text);
+  font-size: 25px;
+  border: none;
+}
+.announce-banner .owl-theme .owl-nav .owl-prev,
+.announce-banner .owl-theme .owl-nav .owl-next {
+  bottom: 0;
+  display: block;
+   border: none;
+  background: none;
+}
+.shopify-section.index-section.announcement-bar {
+  margin: 0 !important;
+}
+@media (max-width: 1776) {
+  .annoucement {
+    width: 33%;
+  }
+}
+@media (max-width: 1400px) {
+  .annoucement {
+    width: 40%;
+  }
+  .annoucement .swiper-button.swiper-button-prev {
+    left: 20px;
+  }
+  .annoucement .swiper-button.swiper-button-next {
+    right: 20px;
+  }
+}
+@media (max-width: 1299px) {
+  .announce-banner .owl-theme .owl-nav .owl-prev,
+  .announce-banner .owl-theme .owl-nav .owl-next {
+    display: block;
+  }
+}
+@media (max-width: 991px) {
+  .annoucement {
+    padding: 5px 25px;
+  }
+  .annoucement .announce-cnt {
+    font-size: 14px;
+  }
+  .announce-banner .owl-theme .owl-nav .owl-prev,
+  .announce-banner .owl-theme .owl-nav .owl-next {
+    position: absolute;
+    margin: 0;
+  }
+  .announce-banner .owl-theme .owl-nav .owl-prev,
+  .announce-banner .owl-theme .owl-nav .owl-next {
+    height: auto;
+    width: auto;
+    padding: 0;
+  }
+  .announce-banner .owl-carousel .owl-stage-outer {
+    position: relative;
+    overflow: hidden;
+    -webkit-transform: translate3d(0, 0, 0);
+    float: left;
+    width: 100%;
+  }
+  .announce-banner .owl-theme .owl-nav .owl-next::before,
+  .announce-banner .owl-theme .owl-nav .owl-prev::before {
+    font-size: 25px;
+    line-height: 20px;
+    padding: 0;
+  }
+  .announce-banner .owl-theme .owl-nav .owl-next {
+    right: -30px;
+  }
+  .announce-banner .owl-theme .owl-nav .owl-prev {
+    left: -30px;
+  }
+}
+@media (max-width: 767px) {
+  .annoucement {
+    width: 55%;
+  }
+}
+@media (max-width: 575px) {
+  .annoucement {
+    width: 77%;
+  }
+}
+@media (max-width: 500px) {
+  .annoucement {
+    display: flex;
+    align-items: center;
+  }
+}
+@media (max-width: 480px) {
+  .annoucement {
+    width: 80%;
+  }
+
+
+  @media (max-width: 400px){
+.announce-banner .headerbanner-close a::before, .announce-banner .headerbanner-close a::after {
+    top: -9px;
+    right: 4px;
+}
+  
+}
+@media (max-width: 400px) {
+  .annoucement .announce-cnt {
+    font-size: 10px;
+  }
+}
+  
+  
+
+
+  
+</style>
+{% if section.settings.enable_banner != blank %}
+  <div id="annoucementbar" class="announce-banner">
+    <div class="annoucement">
+
+        <div class="owl-carousel owl-theme cms3">
+       
+            {% if section.blocks.size > 0 %}
+              {% for block in section.blocks %}
+                <div class="announce-cnt">
+                  <div class="ayl-announce-item">
+                    {% if block.settings.icon_svg != blank %}
+                      <div class="ayl-announce-icon">{{ block.settings.icon_svg }}</div>
+                    {% endif %}
+                    <div class="ayl-announce-text">{{ block.settings.announce_cnt }}</div>
+                  </div>
+                </div>
+              {% endfor %}
+            {% endif %}
+      
+        </div>
+  
+    </div>
+
+           <div class="headerbanner-close float-end w-auto"><a href="#"></a></div>
+
+    
+  </div>
+{% endif %}
+      <script>
+    $(document).ready(function(){
+
+
+        $(document).ready(function() {
+
+    $('.headerbanner-close').on("click", function(){
+    $('.announce-banner').slideToggle( "slow", function() {
+    });
+    jQuery('body').addClass('headerbanner-close');
+  });
+  });  
+      
+
+      
+  $(" body:not(.rtl) .cms3").owlCarousel({
+    items:1,
+    loop: false,
+    smartSpeed:400,
+      nav : true,
+        dots : false,
+        pagination: true,
+        mouseDrag: true,
+        rtl:false,
+        scrollPerPage: false,
+    responsive: {
+0: {
+items: 1
+
+},
+575: {
+items: 1
+
+},
+      767: {
+items: 1
+
+},
+      991: {
+items: 1
+},
+1199: {
+items: 1
+}
+}
+    }
+  );
+});
+
+      $(document).ready(function(){
+  $(" body.rtl .cms3").owlCarousel({
+    items:1,
+    loop:false,
+    smartSpeed:400,
+      nav : true,
+        dots : false,
+        pagination: true,
+        mouseDrag: true,
+        rtl:false,
+        scrollPerPage: false,
+    responsive: {
+0: {
+items: 1
+
+},
+575: {
+items: 1
+
+},
+      767: {
+items: 1
+
+},
+      991: {
+items: 1
+},
+1199: {
+items: 1
+}
+}
+    }
+  );
+});
+    </script>
+{% schema %}
+{
+"name": "announcement bar",
+"class": "index-section announcement-bar",
+"settings": [
+  {
+"type": "checkbox",
+"id": "enable_banner",
+"label": "Display Announcement bar",
+"default": true
+},
+{
+"type": "color",
+"id": "bg_clr",
+"label": "background Color",
+"default":"#000000"
+},
+{
+"type": "color",
+"id": "text_clr",
+"label": "text Color",
+"default":"#ffffff"
+}
+
+],
+  "blocks": [
+{
+"type": "s_text",
+"name": "About-us",
+"settings": [
+  {
+"type": "textarea",
+"id": "icon_svg",
+"label": "Icono SVG (Dorado)",
+"info": "Pega aquí el código SVG del icono"
+},
+  {
+"type": "html",
+"id": "announce_cnt",
+"label": "Announcement Bar Title"
+}
+]
+}
+],
+"presets": [
+{
+"name": "announcement bar",
+"category": "offer"
+}
+]
+}
+{% endschema %}

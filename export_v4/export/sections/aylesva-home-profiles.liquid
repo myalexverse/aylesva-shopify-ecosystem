@@ -1,0 +1,125 @@
+{% comment %}
+  Aylesva · Home v3 · Selector "Soy…".
+  Cada bloque "profile" trae su propia lista de coincidencias (3 recomendadas)
+  en el campo "matches", una por línea:
+      Rama | Beneficio | Por qué aplica | enlace | trazado SVG del ícono
+{% endcomment %}
+<section class="ay" id="{{ section.settings.anchor }}" style="background:var(--ay-stone);border-bottom:var(--ay-hairline)">
+  <div class="ay-wrap" style="padding-top:88px;padding-bottom:88px">
+    <div style="text-align:center;margin-bottom:44px">
+      <h2 class="ay-h2">{{ section.settings.title }}</h2>
+      {% if section.settings.intro != blank %}<p style="font-size:16px;line-height:1.65;color:rgba(15,23,42,.6);margin:14px 0 0">{{ section.settings.intro }}</p>{% endif %}
+    </div>
+
+    <div class="ay-prof-grid">
+      {% for block in section.blocks %}
+        <button class="ay-prof" type="button" data-prof="{{ forloop.index0 }}" {% if forloop.first %}data-on="1"{% endif %} {{ block.shopify_attributes }}>
+          <span class="ay-prof-img" {% if block.settings.image %}style="background-image:url({{ block.settings.image | image_url: width: 900 }})"{% endif %}></span>
+          <span class="ay-prof-veil"></span>
+          {% unless block.settings.image %}<span class="ay-prof-note">{{ block.settings.image_note }}</span>{% endunless %}
+          <span class="ay-prof-body">
+            <span class="ay-prof-name">{{ block.settings.name }}</span>
+            <span class="ay-prof-desc">{{ block.settings.text }}</span>
+            <span class="ay-prof-mark"></span>
+          </span>
+        </button>
+      {% endfor %}
+    </div>
+
+    <div class="ay-prof-results">
+      {% for block in section.blocks %}
+        <div class="ay-prof-panel" data-prof="{{ forloop.index0 }}" {% if forloop.first %}data-on="1"{% endif %}>
+          <p class="ay-prof-lead">{{ block.settings.lead }}</p>
+          <div class="ay-prof-matches">
+            {% assign rows = block.settings.matches | newline_to_br | split: '<br />' %}
+            {% for row in rows %}
+              {% if row != blank %}
+                {% assign c = row | split: '|' %}
+                <a class="ay-match" href="{{ c[3] | strip }}">
+                  <span class="ay-match-top">
+                    <span class="ay-match-chip"><svg class="ay-icon ay-icon--xs" viewBox="0 0 24 24" stroke-linecap="square" aria-hidden="true">{{ c[4] | strip }}</svg></span>
+                    <span class="ay-match-name">{{ c[0] | strip }}</span>
+                  </span>
+                  <span class="ay-match-plain">{{ c[1] | strip }}</span>
+                  <span class="ay-match-why">{{ c[2] | strip }}</span>
+                  <span class="ay-match-more">Conocer <span class="ay-arrow">&rarr;</span></span>
+                </a>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .ay-prof-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-bottom:40px}
+  .ay-prof{position:relative;display:flex;height:262px;overflow:hidden;border:1px solid rgba(15,23,42,.14);background:none;padding:0;cursor:pointer;text-align:left;transition:all .4s cubic-bezier(.22,.61,.36,1)}
+  .ay-prof[data-on]{border-color:var(--ay-gold);height:276px}
+  .ay-prof-img{position:absolute;inset:0;background:repeating-linear-gradient(135deg,#efece6 0 9px,#e7e3db 9px 18px);background-size:cover;background-position:center;transition:transform .6s cubic-bezier(.22,.61,.36,1)}
+  .ay-prof:hover .ay-prof-img{transform:scale(1.06)}
+  .ay-prof-veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(2,6,23,.08) 0%,rgba(2,6,23,.52) 44%,rgba(2,6,23,.9) 100%)}
+  .ay-prof[data-on] .ay-prof-veil{background:linear-gradient(180deg,rgba(2,6,23,.08) 0%,rgba(2,6,23,.52) 44%,rgba(2,6,23,.94) 100%)}
+  .ay-prof-note{position:absolute;left:16px;top:14px;font-family:var(--ay-font-mono);font-size:8px;letter-spacing:.1em;color:rgba(15,23,42,.55)}
+  .ay-prof-body{position:relative;align-self:flex-end;width:100%;padding:22px;display:flex;flex-direction:column;gap:10px}
+  .ay-prof-name{font-family:var(--ay-font-display);font-size:19px;font-weight:600;color:#fff;letter-spacing:-.015em}
+  .ay-prof-desc{font-size:13px;line-height:1.55;color:rgba(255,255,255,.74);max-width:30ch}
+  .ay-prof-mark{width:32px;height:32px;border:1px solid rgba(197,164,126,.75);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--ay-gold-light);font-size:13px;margin-top:2px;transition:all .35s ease}
+  .ay-prof-mark::before{content:"\2192"}
+  .ay-prof[data-on] .ay-prof-mark{background:var(--ay-gold);border-color:var(--ay-gold);color:var(--ay-ink-800)}
+  .ay-prof[data-on] .ay-prof-mark::before{content:"\2713"}
+
+  .ay-prof-results{border-top:1px solid rgba(197,164,126,.6);padding-top:36px}
+  .ay-prof-panel{display:none}
+  .ay-prof-panel[data-on]{display:block;animation:ay-fade .45s cubic-bezier(.22,.61,.36,1) both}
+  @keyframes ay-fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .ay-prof-lead{font-size:17px;line-height:1.7;color:rgba(15,23,42,.68);margin:0 0 32px;max-width:68ch;text-wrap:pretty}
+  .ay-prof-matches{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+  .ay-match{display:flex;flex-direction:column;gap:13px;border:1px solid rgba(15,23,42,.14);background:#fff;padding:30px 28px 32px;text-decoration:none;color:inherit;transition:all .3s ease}
+  .ay-match:hover{border-color:var(--ay-gold);box-shadow:0 24px 48px -30px rgba(2,6,23,.28);transform:translateY(-3px)}
+  .ay-match-top{display:flex;align-items:center;gap:12px}
+  .ay-match-chip{width:34px;height:34px;flex:0 0 34px;background:var(--ay-ink-800);display:flex;align-items:center;justify-content:center;border-radius:2px}
+  .ay-match-name{font-family:var(--ay-font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ay-gold-text)}
+  .ay-match-plain{font-family:var(--ay-font-display);font-size:20px;font-weight:500;letter-spacing:-.018em;line-height:1.24;text-wrap:pretty}
+  .ay-match-why{font-size:14px;line-height:1.65;color:rgba(15,23,42,.64)}
+  .ay-match-more{font-family:var(--ay-font-mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--ay-gold-text);margin-top:auto;padding-top:18px}
+  @media (prefers-reduced-motion:reduce){ .ay-prof,.ay-prof-img,.ay-prof-panel{transition:none;animation:none} }
+</style>
+
+<script>
+  (function(){
+    var root = document.getElementById('shopify-section-{{ section.id }}');
+    if(!root) return;
+    var btns = root.querySelectorAll('.ay-prof');
+    var panels = root.querySelectorAll('.ay-prof-panel');
+    btns.forEach(function(b,i){
+      b.addEventListener('click', function(){
+        btns.forEach(function(x,k){ if(k===i) x.setAttribute('data-on','1'); else x.removeAttribute('data-on'); });
+        panels.forEach(function(p,k){ if(k===i) p.setAttribute('data-on','1'); else p.removeAttribute('data-on'); });
+      });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Aylesva · Selector de perfil",
+  "settings": [
+    { "type": "text", "id": "anchor", "label": "Ancla (id)", "default": "perfil" },
+    { "type": "textarea", "id": "title", "label": "Titular", "default": "Encuentra tu solución ideal" },
+    { "type": "textarea", "id": "intro", "label": "Texto de entrada", "default": "Selecciona tu perfil y te mostramos solo lo que aplica para ti." }
+  ],
+  "blocks": [
+    { "type": "profile", "name": "Perfil", "limit": 4, "settings": [
+      { "type": "image_picker", "id": "image", "label": "Fotografía (900×1100)" },
+      { "type": "text", "id": "image_note", "label": "Nota si no hay foto aún", "default": "foto pendiente" },
+      { "type": "text", "id": "name", "label": "Perfil", "default": "Soy emprendedor" },
+      { "type": "textarea", "id": "text", "label": "Descripción sobre la foto" },
+      { "type": "textarea", "id": "lead", "label": "Párrafo que aparece al seleccionarlo" },
+      { "type": "textarea", "id": "matches", "label": "Coincidencias · una por línea: Rama | Beneficio | Por qué aplica | enlace | trazado SVG" }
+    ]}
+  ],
+  "presets": [{ "name": "Aylesva · Selector de perfil" }]
+}
+{% endschema %}

@@ -1,0 +1,171 @@
+{% paginate blog.articles by section.settings.blogpage_article_limit %}         
+{% for article in blog.articles %}
+<div class="grid__item blog_list_item col-xs-12">
+  <div class="article  tt-blog-content">
+    {% if section.settings.show_blog_4_img %}
+    {% if article.image %}
+    {% assign image_alt = article.title | escape %}
+    <div class="ttblog_image_holder blog_image_holder col-xs-12">
+      <a href="{{ article.url }}" class="article__grid-image">
+        {{ article | img_url: 'master' | img_tag: article.title }}
+      </a>
+      <span class="bloglinks">
+        <a class="icon zoom" data-lightbox="example-set" href="{{ article | img_url: 'master' }}" title="Click to view Full Image">
+          <i class="mdi mdi-magnify"></i>
+        </a> 
+      </span>
+      {% if section.settings.show_blog_4_date %}
+      <p class="blog-date">
+        <i class="mdi mdi-calendar-blank"></i>
+        <span data-datetime="{{ article.published_at | date: '%Y-%m-%d' }}"><span class="date">{{ article.published_at | date: '%b' }} {{ article.published_at | date: '%d' }} , {{ article.published_at | date: '%Y' }}</span></span>             
+      </p>
+      {% endif %}
+    </div> {% else %}
+    <img loading="lazy" src="{{ 'no-image.gif' | img_url: '600x800' }}"/>
+    {% endif %}
+    {% endif %}
+    <div class="tt-blog-description col-xs-12 col-sm-12">
+      <div class="home-blog-content blog-detail">				
+        <div class="blog_title_wrap"><h1 class="article__title"><a href="{{ article.url }}">{{ article.title }}</a></h1>
+        </div>
+        {% if article.comments_enabled? %}
+        {% assign number_of_comments = article.comments_count %}              
+        <p class="comments-count"> <i class="mdi mdi-comment-multiple" aria-hidden="true"></i> {{  number_of_comments }} comments</p>
+        {% endif %}
+        {% if section.settings.show_blog_4_content %}
+        <div class="col-xs-12 padding_0 blog_descrition"><p>{{ article.content | strip_html | truncate: 200 }}</p></div>
+        {% endif %}
+        {% if article.tags.size > 0 and section.settings.show_blog_4_tag %}
+        <div class="blog-tag">
+          <i class="mdi mdi-tag-multiple" aria-hidden="true"></i>
+          {% for tag in article.tags %}
+          <a class="blog-tags" href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>{% unless forloop.last %} <span class="meta-sep">&#44;</span> {% endunless %}
+          {% endfor %}
+        </div>
+        {% endif %}
+        {% if section.settings.show_linkedin_share or section.settings.show_facebook_share or section.settings.show_twitter_share or section.settings.show_mailto_share or section.settings.show_pinterest_share %}
+        <div class="tt-social-share">
+          {% if section.settings.show_facebook_share %}
+          <div class="facebook">
+            <a target="_blank" href="http://www.facebook.com/sharer.php?u={{ article.url }}"><i class="mdi mdi-facebook"></i></a>
+          </div>
+          {% endif %}
+          {% if section.settings.show_twitter_share %}
+          <div class="twitter">
+            <a target="_blank" href="http://twitter.com/share?url={{ article.url }}"><i class="mdi mdi-twitter"><svg class="icon icon-twitter" viewBox="0 0 20 20" style="width: 16px;height: 30px;align-items: center;justify-content: center;display: inline-block;margin: 0;">
+  <path fill="currentColor" fill-rule="evenodd" d="M7.273 2.8 10.8 7.822 15.218 2.8h1.768l-5.4 6.139 5.799 8.254h-4.658l-3.73-5.31-4.671 5.31H2.558l5.654-6.427L2.615 2.8zm6.242 13.125L5.07 4.109h1.405l8.446 11.816z" clip-rule="evenodd"></path>
+</svg></i></a>
+          </div>
+          {% endif %}
+          {% if section.settings.show_pinterest_share %}
+          <div class="pinterest">
+            <a target="_blank" href="http://pinterest.com/pin/create/button/?url={{ article.url }}"><i class="mdi mdi-pinterest"></i></a>
+          </div>
+          {% endif %}
+          {% if section.settings.show_linkedin_share %}
+          <div class="linkedin">
+            <a target="_blank" href="http://www.linkedin.com/shareArticle?mini=true&url={{ article.url }}"><i class="mdi mdi-linkedin"></i></a>
+          </div>
+          {% endif %}
+        </div>
+        {% endif %}
+        {% if section.settings.show_blog_4_btn %}
+        <div class="blog-btn">
+          <a class="btn" href="{{ article.url }}">{{ 'blogs.article.read_more' | t }}<i class="mdi mdi-chevron-right"></i></a>
+        </div>
+        {% endif %}     
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}    
+{% if paginate.pages > 1 %}
+<div class="text-center pagination_wrap col-xs-12">
+  <ul class="pagination-custom text-center">
+    {% if paginate.previous %}
+    <li><a class="enable-arrow" href="{{ paginate.previous.url }}" title="{{ paginate.previous.title }}"><span class="mdi mdi-chevron-left"></span></a></li>
+    {% else %}
+    <li class="disabled"><span class="mdi mdi-chevronleft"></span></li>
+    {% endif %}
+    {% for part in paginate.parts %}
+    {% if part.is_link %}
+    <li>
+      <a href="{{ part.url }}" title="">{{ part.title }}</a>
+    </li>
+    {% else %}
+    {% if part.title == paginate.current_page %}
+    <li class="active"><span>{{ part.title }}</span></li>
+    {% else %}
+    <li><span>{{ part.title }}</span></li>
+    {% endif %}
+    {% endif %}
+    {% endfor %}
+    {% if paginate.next %}
+    <li><a class="enable-arrow" href="{{ paginate.next.url }}" title="{{ paginate.next.title }}"><span class="mdi mdi-chevron-right"></span></a></li>
+    {% else %}
+    <li class="disabled"><span class="mdi mdi-chevron-right"></span></li>
+    {% endif %}
+  </ul>
+</div>
+{% endif %}
+{% endpaginate %}
+{{ 'lightbox.min.css' | asset_url | stylesheet_tag }} 
+{{ 'lightbox-2.6.min.js' | asset_url | script_tag }}
+{% schema %}
+  {
+    "name": "Blog List Page Section",
+    "settings": [
+	{
+        "type": "checkbox",
+        "id": "show_blog_4_content",
+        "label": "Display Blog content"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_blog_4_img",
+        "label": "Display Blog img"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_blog_4_btn",
+        "label": "Display Blog button"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_blog_4_date",
+        "label": "Display Blog date"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_blog_4_tag",
+        "label": "Display Blog tag"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_facebook_share",
+        "label": "Display Facebook share Icon"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_twitter_share",
+        "label": "Display Twitter share Icon"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_pinterest_share",
+        "label": "Display Pinterest share Icon"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_linkedin_share",
+        "label": "Display LinkedIn share Icon"
+      },
+      {
+        "type": "number",
+        "id": "blogpage_article_limit",
+        "label": "Blog Page Article limit",
+        "default": 6
+      }
+]
+  }
+{% endschema %}

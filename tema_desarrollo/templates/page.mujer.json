@@ -1,0 +1,376 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "wrapper": "div#main",
+  "sections": {
+    "hero": {
+      "type": "aylesva-intro-hero",
+      "blocks": {
+        "slide_8GEGFV": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/conserva_todos_los_202603311435.jpg",
+            "image_alignment": "center",
+            "sub_title": "NUEVA COLECCIÓN",
+            "title": "ENCUENTRA TU ESTILO",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30,
+            "btn1_txt": "Ver Ahora",
+            "btn1_link": "shopify://collections/mujer",
+            "btn_bg_color": "#ffb300",
+            "btn_txt_color": "#000000",
+            "btn2_txt": "Explorar",
+            "btn2_link": "shopify://collections/gorros-y-sombreros-mujer"
+          }
+        },
+        "slide_brVyQU": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/conserva_todos_los_202604061117.jpg",
+            "image_alignment": "center",
+            "sub_title": "NUEVA COLECCIÓN",
+            "title": "MUJER 2026",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30,
+            "btn1_txt": "BLUSAS 2026",
+            "btn1_link": "shopify://collections/blusas-y-camisas",
+            "btn_bg_color": "#ffb300",
+            "btn_txt_color": "#000000",
+            "btn2_txt": "FALDAS 2026",
+            "btn2_link": "shopify://collections/faldas-mujer"
+          }
+        }
+      },
+      "block_order": [
+        "slide_8GEGFV",
+        "slide_brVyQU"
+      ],
+      "settings": {
+        "desktop_height": 80,
+        "mobile_height": 60,
+        "autoplay": true,
+        "autoplay_speed": 5,
+        "show_arrows": true
+      }
+    },
+    "bubbles": {
+      "type": "aylesva-category-bubbles",
+      "blocks": {
+        "category_AB6cit": {
+          "type": "category",
+          "settings": {
+            "image": "shopify://shop_images/pomelli-image_25.png",
+            "label": "blusas y camisas",
+            "link": "shopify://collections/blusas-y-camisas"
+          }
+        },
+        "category_nEQ8jn": {
+          "type": "category",
+          "settings": {
+            "image": "shopify://shop_images/pomelli-image_35.png",
+            "label": "Sudaderas",
+            "link": "shopify://collections/sudaderas-y-hoodies-mujer"
+          }
+        },
+        "category_w6NJqR": {
+          "type": "category",
+          "settings": {
+            "image": "shopify://shop_images/dame_otra_pose_202603311626.jpg",
+            "label": "Pijamas y lencería",
+            "link": "shopify://collections/pijamas-y-lenceria"
+          }
+        },
+        "b1": {
+          "type": "category",
+          "settings": {
+            "image": "shopify://shop_images/pomelli-image_29.png",
+            "label": "Calzado Mujer",
+            "link": "shopify://collections/calzado-mujer"
+          }
+        },
+        "b2": {
+          "type": "category",
+          "settings": {
+            "image": "shopify://shop_images/pomelli-image_30.png",
+            "label": "Vestidos",
+            "link": "shopify://collections/vestidos-mujer"
+          }
+        },
+        "b3": {
+          "type": "category",
+          "settings": {
+            "image": "shopify://shop_images/pomelli-image_31.png",
+            "label": "ACCESORIOS",
+            "link": "shopify://collections/jolleria-mujer"
+          }
+        },
+        "b4": {
+          "type": "category",
+          "settings": {
+            "image": "shopify://shop_images/pomelli-image_33.png",
+            "label": "faldas",
+            "link": "shopify://collections/faldas-mujer"
+          }
+        }
+      },
+      "block_order": [
+        "category_AB6cit",
+        "category_nEQ8jn",
+        "category_w6NJqR",
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ],
+      "settings": {
+        "title": "EXPLORA POR CATEGORÍA",
+        "bg_color": "#ffffff"
+      }
+    },
+    "gender_cards": {
+      "type": "aylesva-gender-cards",
+      "blocks": {
+        "c1": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/pomelli-image_22.png",
+            "label": "Shorts y bermudas Mujer",
+            "link": "shopify://collections/shorts-y-bermudas-mujer"
+          }
+        },
+        "c2": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/pomelli-image_21.png",
+            "label": "Ropa deportiva Mujer",
+            "link": "shopify://collections/mujer-deporte"
+          }
+        },
+        "c3": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/pomelli-image_19.png",
+            "label": "Abrigos y chaquetas de mujer",
+            "link": "shopify://collections/abrigos-y-chaquetas-mujer"
+          }
+        },
+        "c4": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/pomelli-image_20.png",
+            "label": "Pantalones y jeans Mujer",
+            "link": "shopify://collections/pantalones-y-jeans-mujer"
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4"
+      ],
+      "settings": {
+        "title": "Viste a la moda",
+        "bg_color": "#ffffff"
+      }
+    },
+    "main": {
+      "type": "page",
+      "disabled": true,
+      "settings": {}
+    },
+    "aylesva_cooler_carousel_VptmAG": {
+      "type": "aylesva-cooler-carousel",
+      "name": "Cooler Carrusel",
+      "settings": {
+        "title": "Ofertas Destacadas",
+        "collection": "cuidado-personal-global",
+        "product_limit": 12,
+        "animation_speed": 60,
+        "margin_top": 30,
+        "margin_bottom": 30
+      }
+    },
+    "aylesva_cooler_carousel_xfBKgP": {
+      "type": "aylesva-cooler-carousel",
+      "name": "Cooler Carrusel",
+      "settings": {
+        "title": "Ofertas Destacadas",
+        "collection": "pijamas-dama",
+        "product_limit": 12,
+        "animation_speed": 60,
+        "margin_top": 30,
+        "margin_bottom": 30
+      }
+    },
+    "custom_duo_cooler_banner_YGhNyf": {
+      "type": "custom-duo-cooler-banner",
+      "name": "Duo Cooler Banner",
+      "settings": {
+        "section_title": "Marcas Destacadas",
+        "image_1": "shopify://shop_images/conserva_todos_los_202603311431_be484aa7-b6ed-4efd-b534-5788de33de5c.jpg",
+        "logo_1": "shopify://shop_images/El_General_NEWLogo_Black.png",
+        "button_text_1": "Envíos Gratis",
+        "link_1": "shopify://collections/calzado-mujer",
+        "video_2": "shopify://files/videos/Fashion_video_with_202603311736.mov",
+        "button_text_2": "Envíos Gratis",
+        "link_2": "shopify://collections/blusas-y-camisas",
+        "margin_top": 30,
+        "margin_bottom": 30
+      }
+    },
+    "aylesva_cooler_carousel_dhyrYb": {
+      "type": "aylesva-cooler-carousel",
+      "name": "Cooler Carrusel",
+      "settings": {
+        "title": "Estrena Hoy",
+        "collection": "blusas-y-camisas",
+        "product_limit": 12,
+        "animation_speed": 60,
+        "margin_top": 30,
+        "margin_bottom": 30
+      }
+    },
+    "produdecooler_krkR4f": {
+      "type": "produdecooler",
+      "name": "Produ Cooler",
+      "settings": {
+        "title": "Ofertas Destacadas",
+        "view_all_text": "Ver más",
+        "view_all_link": "",
+        "collection": "accesorios-de-moda",
+        "product_limit": 10,
+        "slides_desktop": 5,
+        "autoplay": false,
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
+    "aylesva_cuadro_colecciones_q44Vkc": {
+      "type": "aylesva-cuadro-colecciones",
+      "blocks": {
+        "collection_item_pjrrxY": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "mujer",
+            "image": "shopify://shop_images/long-blonde-hair-at-carnival.jpg",
+            "title": "Mujer"
+          }
+        },
+        "collection_item_pEbLYP": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "hombre",
+            "image": "shopify://shop_images/man-puts-his-hand-inside-his-jacket.jpg",
+            "title": ""
+          }
+        },
+        "collection_item_CM3XgD": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "nino",
+            "image": "shopify://shop_images/little-boy-ready-for-school-looking-up.jpg",
+            "title": ""
+          }
+        },
+        "collection_item_BH8yfJ": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "nina",
+            "image": "shopify://shop_images/girl-framed-by-heart.jpg",
+            "title": ""
+          }
+        },
+        "collection_item_CbGjCm": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "bebe",
+            "image": "shopify://shop_images/cute-baby-girl-with-pink-bow-headband.jpg",
+            "title": ""
+          }
+        },
+        "collection_item_VXD4Fw": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "artesanal",
+            "image": "shopify://shop_images/pomelli-image_cd766c49-22f0-4171-859e-c22f786b7b86.png",
+            "title": ""
+          }
+        },
+        "collection_item_aPXjND": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "hogar",
+            "image": "shopify://shop_images/sunlight-creeps-through-a-bright-living-room.jpg",
+            "title": ""
+          }
+        },
+        "collection_item_aKcKNB": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "alimentos",
+            "image": "shopify://shop_images/hamburger-and-fries.jpg",
+            "title": ""
+          }
+        },
+        "collection_item_UaTNqx": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "electronicos",
+            "image": "shopify://shop_images/mobile-phone-and-gimbal-in-hand.jpg",
+            "title": ""
+          }
+        },
+        "collection_item_4LgVUq": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "vehiculos",
+            "image": "shopify://shop_images/red-sports-car-wheel-close-up.jpg",
+            "title": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_item_pjrrxY",
+        "collection_item_pEbLYP",
+        "collection_item_CM3XgD",
+        "collection_item_BH8yfJ",
+        "collection_item_CbGjCm",
+        "collection_item_VXD4Fw",
+        "collection_item_aPXjND",
+        "collection_item_aKcKNB",
+        "collection_item_UaTNqx",
+        "collection_item_4LgVUq"
+      ],
+      "name": "Cuadro Colecciones LOL",
+      "settings": {
+        "title": "Categorías",
+        "view_all_text": "Mostrar todas las categorías",
+        "view_all_link": "",
+        "margin_top": 30,
+        "margin_bottom": 30
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "bubbles",
+    "gender_cards",
+    "main",
+    "aylesva_cooler_carousel_VptmAG",
+    "aylesva_cooler_carousel_xfBKgP",
+    "custom_duo_cooler_banner_YGhNyf",
+    "aylesva_cooler_carousel_dhyrYb",
+    "produdecooler_krkR4f",
+    "aylesva_cuadro_colecciones_q44Vkc"
+  ]
+}

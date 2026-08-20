@@ -1,0 +1,293 @@
+{% capture borderWidth %}{{ settings.border_width }}px{% endcapture %}
+{% capture colorBorder %}{{ settings.color_borders }}{% endcapture %}
+<footer class="site-footer text-left">
+  <div class="container">
+    <div class="row">
+      <div class="footer-wrap">
+        {% comment %}This checks which parts of the footer are turned on and adjusts the layout accordingly.{% endcomment %}
+        {% if settings.social_twitter_link != blank or settings.social_facebook_link != blank or settings.social_pinterest_link != blank or settings.social_instagram_link != blank or settings.social_tumblr_link != blank or settings.social_snapchat_link != blank or settings.social_youtube_link != blank or settings.social_vimeo_link != blank or settings.social_fancy_link != blank %}
+        {% assign show_social_icons = true %}
+        {% else %}
+        {% assign show_social_icons = false %}
+        {% endif %}
+        {% assign flexifooter = 0 %}
+        {% if show_social_icons %}
+        {% assign flexifooter = flexifooter | plus: 1 %}
+        {% endif %}
+        <div class="text-left grid">
+          <div class="footer-column col-sm-3 instagram">
+            {% if section.settings.footer_insta_title != blank %}
+            <h5 class="widget-title">{{ section.settings.footer_insta_title }}</h5>               
+            {% endif %}
+            <div class="tt-instagram clearfix" data-id="{{ section.id }}">
+              <div class="grid__item">
+                <div id="instafeed-{{ section.id }}" class="instagram">
+                </div></div>
+            </div>
+            <input type="hidden" id="token-{{ section.id }}" value="{{ section.settings.accessToken }}">
+          </div>
+          <div class="col-sm-2 footer-column">
+            <h5 class="widget-title">{{ section.settings.footer_col_title_2 }}</h5>
+            {% if linklists[section.settings.col_2_menu].links != blank %}
+            <ul class="inline-list nav-secondary">
+              {% for link in linklists[section.settings.col_2_menu].links %}
+              <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+          </div>
+          <div class="col-sm-2 footer-column">
+            <h5 class="widget-title">{{ section.settings.footer_col_title_3 }}</h5>
+            {% if linklists[section.settings.col_2_menu].links != blank %}
+            <ul class="inline-list nav-secondary">
+              {% for link in linklists[section.settings.col_3_menu].links %}
+              <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+          </div>
+          <div class="col-sm-2 footer-column">
+            <h5 class="widget-title">{{ section.settings.footer_contact_title }}</h5>
+            <div class="contact-us">
+             <ul class="list-unstyled" style="display: block;">
+          {% if section.settings.contact_address != blank %}
+            <li class="contact-detail float-start w-100">
+              <div class="address">	
+                <i class="mdi mdi-map-marker"></i><div class="contact-address">{{ section.settings.contact_address }}</div>
+              </div>
+            </li>
+            {% endif %}
+           {% if section.settings.contact_no != blank %}
+                      <a href="{{ section.settings.contact_no_url }}">
+                    <li class="contact"><i class="mdi mdi-phone"></i>	<span class="phone">{{ section.settings.contact_no }}</span></li>
+                  </a>
+                    {% endif %}
+          {% if section.settings.contact_email != blank %}
+          <li class="email"><i class="mdi mdi-email-outline"></i><span class="email-address"><a href="mailto:{{ section.settings.contact_email }}">{{ section.settings.contact_email }}</a></span></li>
+          {% endif %}
+        </ul>
+            </div>
+          </div>
+          <div class="col-sm-3 footer-column footer_newsletter">
+            {% if section.settings.newsletter_title != blank %}
+            <h5 class="widget-title">{{ section.settings.newsletter_title }}</h3>
+            <div class="block_content">
+              {% render 'newsletter-form' %}
+            </div>
+            {% endif %}
+            {% comment %}Loop through available payment methods and show their icons.{% endcomment %}
+            {% unless shop.enabled_payment_types == empty %}
+            {% if section.settings.payment_method %}
+            <div class="payment">
+              <ul class="inline-list payment-icons">
+                {%- for type in shop.enabled_payment_types -%}
+                <li>
+                  {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
+                </li>
+                {%- endfor -%}
+              </ul>
+            </div>
+            {% endif %}
+            {% endunless %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="row">
+        <div class="copyright left">
+          <small>
+            {{ 'layout.footer.copyright' | t }} &copy; {{ 'now' | date: "%Y" }}</small> {{ shop.name | link_to: '/' }} | {{ powered_by_link }}<br>
+        </div>
+        {% if show_social_icons %}
+        <div class="follow-us-outer">
+          {% if show_social_icons %}
+          {% comment %}
+          Loop through the social network links
+          {% endcomment %}
+          <ul class="inline-list social-icons">
+            {% if settings.social_twitter_link != blank %}
+            <li>
+              <a class="icon-fallback-text" target="_blank" href="{{ settings.social_twitter_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Twitter' }}">
+                 <span class="mdi mdi-twitter" aria-hidden="true">
+           <svg class="icon icon-twitter" viewBox="0 0 20 20" style="width: 15px;height: 30px;align-items: center;justify-content: center;display: inline-block;">
+               <path fill="currentColor" fill-rule="evenodd" d="M7.273 2.8 10.8 7.822 15.218 2.8h1.768l-5.4 6.139 5.799 8.254h-4.658l-3.73-5.31-4.671 5.31H2.558l5.654-6.427L2.615 2.8zm6.242 13.125L5.07 4.109h1.405l8.446 11.816z" clip-rule="evenodd"></path>
+           </svg>
+         </span>
+                <span class="fallback-text">Twitter</span>
+              </a>
+            </li>
+            {% endif %}
+            {% if settings.social_facebook_link != blank %}
+            <li>
+              <a class="icon-fallback-text" target="_blank" href="{{ settings.social_facebook_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Facebook' }}">
+                <span class="mdi mdi-facebook" aria-hidden="true"></span>
+                <span class="fallback-text">Facebook</span>
+              </a>
+            </li>
+            {% endif %}
+            {% if settings.social_pinterest_link != blank %}
+            <li>
+              <a class="icon-fallback-text" target="_blank" href="{{ settings.social_pinterest_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Pinterest' }}">
+                <span class="mdi mdi-pinterest" aria-hidden="true"></span>
+                <span class="fallback-text">Pinterest</span>
+              </a>
+            </li>
+            {% endif %}
+            {% if settings.social_instagram_link != blank %}
+            <li>
+              <a class="icon-fallback-text" target="_blank" href="{{ settings.social_instagram_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Instagram' }}">
+                <span class="mdi mdi-instagram" aria-hidden="true"></span>
+                <span class="fallback-text">Instagram</span>
+              </a>
+            </li>
+            {% endif %}
+            {% if settings.social_tumblr_link != blank %}
+            <li>
+              <a class="icon-fallback-text" target="_blank" href="{{ settings.social_tumblr_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Tumblr' }}">
+                <span class="mdi mdi-tumblr" aria-hidden="true"></span>
+                <span class="fallback-text">Tumblr</span>
+              </a>
+            </li>
+            {% endif %}
+            {% if settings.social_snapchat_link != blank %}
+            <li>
+              <a class="icon-fallback-text" target="_blank" href="{{ settings.social_snapchat_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Snapchat' }}">
+                <span class="mdi mdi-snapchat" aria-hidden="true"></span>
+                <span class="fallback-text">Snapchat</span>
+              </a>
+            </li>
+            {% endif %}
+            {% if settings.social_youtube_link != blank %}
+            <li>
+              <a class="icon-fallback-text" target="_blank" href="{{ settings.social_youtube_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'YouTube' }}">
+                <span class="mdi mdi-youtube" aria-hidden="true"></span>
+                <span class="fallback-text">YouTube</span>
+              </a>
+            </li>
+            {% endif %}
+            {% if settings.social_vimeo_link != blank %}
+            <li>
+              <a class="icon-fallback-text" target="_blank" href="{{ settings.social_vimeo_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Vimeo' }}">
+                <span class="mdi mdi-vimeo" aria-hidden="true"></span>
+                <span class="fallback-text">Vimeo</span>
+              </a>
+            </li>
+            {% endif %}
+            {% if settings.social_fancy_link != blank %}
+            <li>
+              <a class="icon-fallback-text" target="_blank" href="{{ settings.social_fancy_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Fancy' }}">
+                <span class="mdi mdi-fancy" aria-hidden="true"></span>
+                <span class="fallback-text">Fancy</span>
+              </a>
+            </li>
+            {% endif %}
+          </ul>
+          {% endif %}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</footer>
+{{ 'instagram.js' | asset_url | script_tag }}
+{% schema %}
+{
+"name": "Footer design 1",
+"settings": [
+{
+"type": "header",
+"content": "Instagram settings"
+},
+{
+"type": "text",
+"id": "footer_insta_title",
+"label": "Instagram title",
+"default": "Instagram"
+},
+{
+"type": "text",
+"id": "accessToken",
+"label": "Access Token:",
+"default": "5966598033.1677ed0.682dcbd90170425295f4b76178ed81a9",
+"info": "Use when Get Image from: 'Access Token'. [Where do I find Access Token?](http:\/\/instagram.pixelunion.net)"
+},
+{
+"type": "text",
+"id": "footer_col_title_2",
+"label": "Heading",
+"default": "Footer Title 2"
+},
+{
+"type": "link_list",
+"id": "col_2_menu",
+"label": "Footer Column 2"
+},
+{
+"type": "text",
+"id": "footer_col_title_3",
+"label": "Heading",
+"default": "Footer Title 3"
+},
+{
+"type": "link_list",
+"id": "col_3_menu",
+"label": "Footer Column 3"
+}, {
+"type": "text",
+"id": "footer_contact_title",
+"label": "Contact Title",
+"default": "store information"
+},		
+{
+"type": "richtext",
+"id": "contact_address",
+"label": "Address",
+"default": "<p>My Company, 42 Puffin street 12345 Puffinville France</p>"
+},		
+{
+"type": "text",
+"id": "contact_no",
+"label": "Contact Number",
+"default": "0123-456-789"
+},	
+{
+"type": "url",
+"id": "contact_no_url",
+"label": "Contact Number Link"
+},	
+{
+"type": "text",
+"id": "contact_email",
+"label": "Email Address",
+"default": "sales@yourcompany.com"
+},
+{
+"type": "text",
+"id": "newsletter_title",
+"label": "Newsletter Title",
+"default": "Subscribe to our Newsletter"
+},
+{
+"type": "checkbox",
+"id": "payment_method",
+"label": "Display footer payment method",
+"default": true
+},
+{
+"type": "text",
+"id": "payment_info_title",
+"label": "Payment Info Title",
+"default": "Payment Logo"
+},
+{
+"type": "text",
+"id": "payment_info_desc",
+"label": "Payment Info Description",
+"default": "Payment Accepted by Store"
+}
+]
+}
+{% endschema %}

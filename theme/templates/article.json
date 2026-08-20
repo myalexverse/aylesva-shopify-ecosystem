@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "main": {
+      "type": "article-template",
+      "settings": {
+        "social_sharing": false,
+        "enable_left_sidebar": true
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

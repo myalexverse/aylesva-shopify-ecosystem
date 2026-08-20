@@ -1,0 +1,28 @@
+AYLESVA · HOME — ACTUALIZACIÓN
+
+Reemplaza estos archivos en el tema (sobrescribe los anteriores):
+
+  sections/aylesva-home-universes.liquid ... NUEVO. Sustituye a aylesva-home-split
+                                            en la sección "Qué hacemos".
+  sections/aylesva-home-services.liquid .... las tarjetas ahora llevan fotografía
+                                            con el ícono en cuadro ink traslapado.
+  sections/aylesva-home-needs.liquid ....... animación de entrada escalonada,
+                                            número en contorno dorado e íconos.
+  templates/page.home-aylesva.json ......... actualizado a las secciones nuevas.
+
+  aylesva-home-split.liquid sigue en el paquete: lo usa el bloque de Marketplace.
+
+IMÁGENES NUEVAS QUE HAY QUE SUBIR
+  · Qué hacemos: 1 vertical (1200×1600) + 2 horizontales (900×600).
+  · Servicios: 6 fotografías (900×500), una por rama:
+      Recursos ..... firma de crédito
+      Direct ....... contenedores en puerto
+      Global Estates render de Torre 40
+      Care ......... consulta médica
+      Lanza tu marca tienda en pantalla
+      MUV .......... familia reunida
+
+ANIMACIÓN
+  Va dentro de aylesva-home-needs.liquid, sin librerías: IntersectionObserver
+  agrega la clase .is-in una sola vez por tarjeta. Con prefers-reduced-motion
+  activo las tarjetas aparecen sin movimiento.

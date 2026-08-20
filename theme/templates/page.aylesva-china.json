@@ -1,0 +1,397 @@
+{
+  "sections": {
+    "hero": {
+      "type": "aylesva-corp-hero",
+      "settings": {
+        "eyebrow": "Aylesva Direct · Soluciones de Importación Global",
+        "overlay": 84,
+        "focal": "center",
+        "title": "Importa con el Respaldo de Aylesva Direct",
+        "subtitle": "Ayudamos a tu empresa a explorar productos, comparar fabricantes e identificar oportunidades de suministro y logística internacional desde China. Te acompañamos en todo el proceso de sourcing, calidad y despacho aduanal.",
+        "cta1_label": "Solicitar cotización",
+        "cta1_link": "#contacto",
+        "cta2_label": "Ver categorías",
+        "cta2_link": "#categorias",
+        "image_url": "ay-direct-hero-trade.jpg"
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ],
+      "blocks": {
+        "s1": {
+          "type": "stat",
+          "settings": {
+            "value": "4",
+            "label": "Pasos del proceso"
+          }
+        },
+        "s2": {
+          "type": "stat",
+          "settings": {
+            "value": "8",
+            "label": "Categorías de oportunidad"
+          }
+        },
+        "s3": {
+          "type": "stat",
+          "settings": {
+            "value": "Puerta a puerta",
+            "label": "Alcance logístico"
+          }
+        },
+        "s4": {
+          "type": "stat",
+          "settings": {
+            "value": "24 hrs",
+            "label": "Tiempo de respuesta"
+          }
+        }
+      }
+    },
+    "cobertura": {
+      "type": "aylesva-corp-cards",
+      "settings": {
+        "bg": "#FAFAF8",
+        "columns": 2,
+        "eyebrow": "Cobertura Mundial",
+        "title": "Servicio y Envíos a Nivel Mundial",
+        "intro": "Con Aylesva Direct, enviamos e importamos tus productos desde China y mercados globales a cualquier parte del mundo. Coordinamos toda la logística internacional, el transporte marítimo o aéreo y el despacho aduanal."
+      },
+      "block_order": [
+        "c1",
+        "c2"
+      ],
+      "blocks": {
+        "c1": {
+          "type": "card",
+          "settings": {
+            "tag": "Logística Marítima",
+            "eyebrow": "FCL & LCL",
+            "title": "Contenedores Completos y Consolidados",
+            "text": "Rutas marítimas directas desde los principales puertos de China (Ningbo, Shanghai, Shenzhen, Qingdao) hacia México, Estados Unidos y Latinoamérica con tarifas preferenciales por volumen.",
+            "bullets": "Flete marítimo FCL y LCL consolidado\nTiempos de tránsito optimizados\nMonitoreo y seguimiento continuo de tu carga",
+            "cta_label": "Solicitar Información",
+            "cta_link": "#contacto",
+            "whatsapp_label": "WhatsApp",
+            "whatsapp_url": "https://api.whatsapp.com/send/?phone=524774136612&text=Hola%2C+me+interesa+informaci%C3%B3n+sobre+log%C3%ADstica+mar%C3%ADtima+con+Aylesva+Direct&type=phone_number&app_absent=0",
+            "price": "",
+            "image_url": "ay-direct-worldwide.jpg"
+          }
+        },
+        "c2": {
+          "type": "card",
+          "settings": {
+            "tag": "Aduanas & Cumplimiento",
+            "eyebrow": "Despacho & Normas",
+            "title": "Gestión Aduanal y Tránsito Seguro",
+            "text": "Acompañamiento en clasificación arancelaria, padrón de importadores, cumplimiento de regulaciones normativas y transporte terrestre coordinado hasta las bodegas de tu empresa.",
+            "bullets": "Asesoría en cumplimiento normativo y aranceles\nGestión de pedimentos con agentes aduanales certificados\nEntrega local y transporte terrestre asegurado",
+            "cta_label": "Solicitar Asesoría",
+            "cta_link": "#contacto",
+            "whatsapp_label": "WhatsApp",
+            "whatsapp_url": "https://api.whatsapp.com/send/?phone=524774136612&text=Hola%2C+me+interesa+asesor%C3%ADa+en+gesti%C3%B3n+aduanal+con+Aylesva+Direct&type=phone_number&app_absent=0",
+            "price": "",
+            "image_url": "ay-direct-inspection.jpg"
+          }
+        }
+      }
+    },
+    "categorias": {
+      "type": "aylesva-corp-cards",
+      "settings": {
+        "bg": "#FFFFFF",
+        "columns": 4,
+        "eyebrow": "Qué Importamos",
+        "title": "Categorías que gestionamos",
+        "intro": "Desde estructuras modulares y maquinaria industrial hasta suministros a gran escala, con validación de proveedor e inspección de calidad en origen."
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4"
+      ],
+      "blocks": {
+        "c1": {
+          "type": "card",
+          "settings": {
+            "tag": "Estructuras",
+            "eyebrow": "Prefabricados",
+            "title": "Casas y Estructuras Modulares",
+            "text": "Casas modulares listas para habitar, edificios con estructura de acero y soluciones de arquitectura moderna para proyectos residenciales y comerciales.",
+            "bullets": "Estructura de acero galvanizado\nPaneles térmicos y acabados premium\nMontaje rápido y alta durabilidad",
+            "cta_label": "Cotizar estructuras",
+            "cta_link": "#contacto",
+            "price": "",
+            "image_url": "ay-direct-prefab.jpg"
+          }
+        },
+        "c2": {
+          "type": "card",
+          "settings": {
+            "tag": "Construcción",
+            "eyebrow": "Suministros",
+            "title": "Materiales de Construcción & Acero",
+            "text": "Vigas estructurales, perfiles de aluminio, cancelería, pisos y acabados arquitectónicos de alta resistencia por volumen directo de fábrica.",
+            "bullets": "Precios directos de fábrica\nCertificaciones de calidad ISO\nVolúmenes a gran escala",
+            "cta_label": "Cotizar materiales",
+            "cta_link": "#contacto",
+            "price": "",
+            "image_url": "ay-direct-materials.jpg"
+          }
+        },
+        "c3": {
+          "type": "card",
+          "settings": {
+            "tag": "Industrial",
+            "eyebrow": "Equipamiento",
+            "title": "Maquinaria y Equipos Industriales",
+            "text": "Centros de maquinado CNC, brazos robóticos, líneas de producción y equipos de manufactura para potenciar la capacidad de tu negocio.",
+            "bullets": "Tecnología de última generación\nGarantía y pruebas en fábrica\nAcompañamiento en importación",
+            "cta_label": "Cotizar maquinaria",
+            "cta_link": "#contacto",
+            "price": "",
+            "image_url": "ay-direct-machinery.jpg"
+          }
+        },
+        "c4": {
+          "type": "card",
+          "settings": {
+            "tag": "Auditoría",
+            "eyebrow": "Control de Calidad",
+            "title": "Revisión de Proveedores & Calidad",
+            "text": "¿Ya tienes un proveedor? Auditamos la fábrica en China, realizamos inspección pre-embarque y negociamos mejores condiciones de costo y entrega.",
+            "bullets": "Inspección física en planta\nReporte detallado con fotos y videos\nValidación de licencias y solvencia",
+            "cta_label": "Revisar mi proveedor",
+            "cta_link": "#contacto",
+            "price": "",
+            "image_url": "ay-direct-inspection.jpg"
+          }
+        }
+      }
+    },
+    "proceso": {
+      "type": "aylesva-corp-process",
+      "settings": {
+        "dark": true,
+        "eyebrow": "Cómo funciona",
+        "title": "Cuatro pasos, un solo responsable"
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ],
+      "blocks": {
+        "s1": {
+          "type": "step",
+          "settings": {
+            "title": "Cuéntanos lo que necesitas",
+            "text": "Comparte los productos, volúmenes, especificaciones y objetivos que tienes en mente."
+          }
+        },
+        "s2": {
+          "type": "step",
+          "settings": {
+            "title": "Analizamos las opciones",
+            "text": "Investigamos fabricantes directos, comparamos precios y validamos capacidad productiva."
+          }
+        },
+        "s3": {
+          "type": "step",
+          "settings": {
+            "title": "Presentamos alternativas",
+            "text": "Recibes una cotización clara con costos en destino, aranceles y tiempos estimados."
+          }
+        },
+        "s4": {
+          "type": "step",
+          "settings": {
+            "title": "Coordinamos la logística",
+            "text": "Gestionamos inspección, flete marítimo o aéreo y despacho aduanal hasta tu puerta."
+          }
+        }
+      }
+    },
+    "oportunidades": {
+      "type": "aylesva-corp-features",
+      "settings": {
+        "bg": "#FAFAF8",
+        "eyebrow": "Oportunidades",
+        "title": "Ocho frentes donde podemos abrirte mercado"
+      },
+      "block_order": [
+        "f1",
+        "f2",
+        "f3",
+        "f4",
+        "f5",
+        "f6"
+      ],
+      "blocks": {
+        "f1": {
+          "type": "feature",
+          "settings": {
+            "icon": "<path d=\"M4 21V10l8-6 8 6v11z\"/><path d=\"M10 21v-6h4v6\"/>",
+            "title": "Casas Prefabricadas",
+            "text": "Casas modulares listas para habitar y armar rápidamente."
+          }
+        },
+        "f2": {
+          "type": "feature",
+          "settings": {
+            "icon": "<path d=\"M3 20h18\"/><path d=\"M6 20V7h12v13\"/><path d=\"M6 13h12\"/>",
+            "title": "Estructuras de Acero",
+            "text": "Edificios con estructura de acero y componentes estructurales."
+          }
+        },
+        "f3": {
+          "type": "feature",
+          "settings": {
+            "icon": "<rect x=\"3\" y=\"12\" width=\"18\" height=\"8\"/><path d=\"M12 3v4M6 6l2 2M18 6l-2 2\"/>",
+            "title": "Soluciones Solares",
+            "text": "Paneles y sistemas para proyectos energéticos."
+          }
+        },
+        "f4": {
+          "type": "feature",
+          "settings": {
+            "icon": "<circle cx=\"12\" cy=\"12\" r=\"3.2\"/><path d=\"M12 3v3M12 18v3M3 12h3M18 12h3M6 6l2 2M16 16l2 2M18 6l-2 2M8 16l-2 2\"/>",
+            "title": "Equipos Industriales",
+            "text": "Maquinaria para manufactura y operaciones."
+          }
+        },
+        "f5": {
+          "type": "feature",
+          "settings": {
+            "icon": "<path d=\"M4 18v-6a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v6\"/><path d=\"M4 18h16\"/><path d=\"M8 9V6h8v3\"/>",
+            "title": "Muebles & Acabados",
+            "text": "Mobiliario residencial y comercial a gran escala."
+          }
+        },
+        "f6": {
+          "type": "feature",
+          "settings": {
+            "icon": "<rect x=\"3\" y=\"8\" width=\"18\" height=\"12\"/><path d=\"M3 12h18\"/><path d=\"M9 8V4h6v4\"/>",
+            "title": "Suministros de Construcción",
+            "text": "Suministros de construcción y acabados por volumen."
+          }
+        }
+      }
+    },
+    "contacto": {
+      "type": "aylesva-corp-form",
+      "settings": {
+        "anchor": "contacto",
+        "bg": "#FFFFFF",
+        "eyebrow": "Cotización",
+        "title": "Cuéntanos qué necesitas importar",
+        "text": "Un especialista revisa tu requerimiento y te responde con opciones de proveedor, costos y tiempos.",
+        "form_id": "6kXVcb0baoRwx0UBBTsr",
+        "form_height": 720,
+        "whatsapp_url": "https://api.whatsapp.com/send/?phone=524774136612&text=Hola%2C+me+interesa+informaci%C3%B3n+y+cotizaci%C3%B3n+para+importar+con+Aylesva+Direct&type=phone_number&app_absent=0",
+        "whatsapp_label": "Hablar con un especialista por WhatsApp"
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3"
+      ],
+      "blocks": {
+        "p1": {
+          "type": "point",
+          "settings": {
+            "text": "Búsqueda y validación de fabricantes directos"
+          }
+        },
+        "p2": {
+          "type": "point",
+          "settings": {
+            "text": "Auditoría e inspección de calidad en origen"
+          }
+        },
+        "p3": {
+          "type": "point",
+          "settings": {
+            "text": "Logística internacional y despacho aduanal"
+          }
+        }
+      }
+    },
+    "legal_disclaimer": {
+      "type": "aylesva-corp-legal",
+      "settings": {
+        "bg": "#FAFAF8",
+        "alignment": "left",
+        "title": "Términos de la Plataforma Aylesva Direct, Sourcing B2B y Divulgaciones Regulatorias",
+        "text": "1. Estado Administrativo de la Plataforma de Sourcing:\nAylesva Direct, operando a través de aylesva.com, funciona exclusivamente como una plataforma B2B de tecnología, conserjería administrativa y flujo de trabajo de abastecimiento (sourcing) diseñada para conectar empresas con fabricantes y proveedores extranjeros independientes. Aylesva Direct no es un agente de aduanas con licencia, transitario (freight forwarder), Importador de Registro (IOR), fabricante, distribuidor o emisor de garantías. No asumimos titularidad legal de bienes físicos, no fabricamos productos, no ejecutamos presentaciones aduaneras ni poseemos permisos de importación a nombre de terceros.\n\n2. Importador de Registro (IOR), Aduanas y Aranceles:\nTodos los envíos internacionales, trámites aduanales, aranceles (ej. Sección 301), impuestos y autorizaciones normativas requeridas por agencias (CBP, FDA, CPSC) son responsabilidad legal exclusiva del comprador o de su Importador de Registro designado. Aylesva Direct no asume responsabilidad por inspecciones aduaneras, retenciones, reclasificaciones arancelarias, auditorías de la cadena de suministro (incluyendo UFLPA) o retrasos internacionales.\n\n3. Descargo de Garantías y Cumplimiento de Propiedad Intelectual:\nLas especificaciones, muestras, precios unitarios y mínimos de compra (MOQ) en aylesva.com son proporcionados por fabricantes externos. AYLESVA DIRECT RENUNCIA EXPRESAMENTE A TODA GARANTÍA, EXPRESA O IMPLÍCITA, INCLUYENDO COMERCIABILIDAD, IDONEIDAD O NO INFRACCIÓN. Los compradores son los únicos responsables de realizar auditorías de fábrica, inspecciones de calidad, pruebas de laboratorio y autorizaciones de propiedad intelectual (patentes y marcas) en origen y destino.\n\n4. Estimaciones Analíticas de Logística y Precios:\nLas ilustraciones de costos en destino (landed cost), cotizaciones de fletes, estimaciones arancelarias y tiempos de entrega mostrados son hipotéticos y no vinculantes. No constituyen ofertas comerciales ni compromisos fijos de flete. Los costos reales y fechas de entrega son determinados por proveedores logísticos externos y aduanas internacionales.\n\n5. No Dependencia B2B y Limitación de Responsabilidad:\nAl enviar consultas a Aylesva Direct, el comprador acepta que: (i) realiza transacciones basándose en su propia diligencia debida y revisión legal; (ii) no depende de representaciones escritas o estimaciones de marketing proporcionadas por Aylesva Direct; y (iii) libera y exime de toda responsabilidad a Aylesva Direct por reclamos de incumplimiento de fábrica, responsabilidad de producto, infracción de propiedad intelectual o pérdidas logísticas derivadas de la manufactura externa."
+      }
+    },
+    "ramas": {
+      "type": "aylesva-corp-branches",
+      "settings": {
+        "bg": "#FFFFFF",
+        "eyebrow": "Ecosistema Aylesva",
+        "title": "El mismo respaldo, en cada una de nuestras ramas"
+      },
+      "block_order": [
+        "br1",
+        "br2",
+        "br3",
+        "br4"
+      ],
+      "blocks": {
+        "br1": {
+          "type": "branch",
+          "settings": {
+            "title": "Aylesva Recursos",
+            "text": "Intermediación financiera para tu negocio.",
+            "icon": "<rect x=\"3\" y=\"10\" width=\"18\" height=\"11\"/><path d=\"M3 10 12 4l9 6\"/><path d=\"M9 21v-6h6v6\"/>",
+            "link": "/pages/aylesva-recursos"
+          }
+        },
+        "br2": {
+          "type": "branch",
+          "settings": {
+            "title": "Global Estates",
+            "text": "Bienes raíces y desarrollos de lujo.",
+            "icon": "<path d=\"M3 21V9l6-4 6 4v12\"/><path d=\"M15 21V13h6v8\"/><path d=\"M7 13h2M7 17h2\"/>",
+            "link": "/pages/globalestates"
+          }
+        },
+        "br3": {
+          "type": "branch",
+          "settings": {
+            "title": "Aylesva Care",
+            "text": "Beneficios de salud, seguros y telemedicina.",
+            "icon": "<path d=\"M12 20 4 12.5A4.6 4.6 0 0 1 12 7a4.6 4.6 0 0 1 8 5.5z\"/><path d=\"M8 13h2l1.5-3 2 5 1.5-2h2\"/>",
+            "link": "/pages/aylesva-care"
+          }
+        },
+        "br4": {
+          "type": "branch",
+          "settings": {
+            "title": "Lanza tu tienda en línea",
+            "text": "Tienda propia con nuestro catálogo y envíos.",
+            "icon": "<rect x=\"3\" y=\"4\" width=\"18\" height=\"5\"/><path d=\"M5 9v12h14V9\"/><path d=\"M9 13h6\"/>",
+            "link": "/pages/lanza-tu-propia-marca"
+          }
+        }
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "cobertura",
+    "categorias",
+    "proceso",
+    "oportunidades",
+    "contacto",
+    "legal_disclaimer",
+    "ramas"
+  ]
+}

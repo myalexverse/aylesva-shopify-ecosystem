@@ -1,0 +1,59 @@
+{% comment %}
+  Aylesva · Home · Bloque a dos columnas con chips y galería.
+  Usado para "Qué hacemos" (dos universos) y para el bloque de Marketplace.
+{% endcomment %}
+<section class="ay" id="{{ section.settings.anchor }}" style="background:{{ section.settings.bg }}">
+  <div class="ay-wrap" style="display:grid;grid-template-columns:{% if section.settings.media_right %}1fr 1.05fr{% else %}1.05fr 1fr{% endif %};gap:80px;align-items:center" class="ay-split">
+    <div style="{% unless section.settings.media_right %}order:2{% endunless %}">
+      {% if section.settings.eyebrow != blank %}<p class="ay-eyebrow">{{ section.settings.eyebrow }}</p>{% endif %}
+      <h2 class="ay-h2" style="font-size:clamp(28px,3vw,40px);margin-bottom:22px">{{ section.settings.title }}</h2>
+      <p class="ay-lead" style="max-width:50ch;margin-bottom:32px">{{ section.settings.text }}</p>
+
+      {% if section.settings.chips != blank %}
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:34px">
+          {% assign chips = section.settings.chips | split: ',' %}
+          {% for chip in chips %}
+            <span style="font-size:13px;font-weight:500;color:rgba(15,23,42,.7);border:1px solid rgba(15,23,42,.16);padding:9px 16px;border-radius:var(--ay-radius)">{{ chip | strip }}</span>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      {% if section.settings.cta_label != blank %}
+        <a class="ay-btn ay-btn--primary" href="{{ section.settings.cta_link }}">{{ section.settings.cta_label }}</a>
+      {% endif %}
+    </div>
+
+    <div style="{% unless section.settings.media_right %}order:1{% endunless %};display:grid;grid-template-columns:1fr 1fr;gap:16px">
+      {% for block in section.blocks %}
+        <div class="ay-media" style="height:230px;{% cycle '', 'margin-top:30px' %};border:var(--ay-hairline);{% if block.settings.image %}background-image:url({{ block.settings.image | image_url: width: 900 }}){% else %}background:repeating-linear-gradient(135deg,#efece6 0 8px,#e7e3db 8px 16px){% endif %}" {{ block.shopify_attributes }}></div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  @media (max-width:1024px){ .ay-split{grid-template-columns:1fr !important;gap:40px !important} .ay-split > div{order:0 !important} }
+</style>
+
+{% schema %}
+{
+  "name": "Aylesva · Bloque dos columnas",
+  "settings": [
+    { "type": "text", "id": "anchor", "label": "Ancla (id)", "default": "marketplace" },
+    { "type": "color", "id": "bg", "label": "Fondo", "default": "#FFFFFF" },
+    { "type": "checkbox", "id": "media_right", "label": "Imágenes a la derecha", "default": true },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Marketplace" },
+    { "type": "textarea", "id": "title", "label": "Titular" },
+    { "type": "textarea", "id": "text", "label": "Texto" },
+    { "type": "textarea", "id": "chips", "label": "Etiquetas separadas por coma (categorías)" },
+    { "type": "text", "id": "cta_label", "label": "CTA", "default": "Explorar el catálogo" },
+    { "type": "url", "id": "cta_link", "label": "Enlace del CTA" }
+  ],
+  "blocks": [
+    { "type": "image", "name": "Imagen", "limit": 4, "settings": [
+      { "type": "image_picker", "id": "image", "label": "Imagen (900px)" }
+    ]}
+  ],
+  "presets": [{ "name": "Aylesva · Bloque dos columnas" }]
+}
+{% endschema %}

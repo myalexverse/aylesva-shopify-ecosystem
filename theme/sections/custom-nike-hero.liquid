@@ -1,0 +1,445 @@
+<style>
+  .nike-hero-wrapper {
+    position: relative;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    height: {{ section.settings.desktop_height }}vh;
+    overflow: hidden;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nike-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.7s ease-in-out;
+    z-index: 1;
+  }
+  .nike-slide.is-active {
+    opacity: 1;
+    z-index: 2;
+  }
+  .nike-video-bg {
+    width: 100%;
+    height: 100%;
+    background: #000;
+  }
+  .nike-video-bg video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .nike-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 3;
+  }
+  .nike-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 4;
+    width: 90%;
+    max-width: 1000px;
+    color: #fff;
+    padding: 20px;
+  }
+  .nike-headline {
+    font-family: 'Impact', 'Arial Black', sans-serif !important;
+    font-size: clamp(2.5rem, 8vw, 6rem);
+    text-transform: uppercase;
+    margin: 0 0 15px;
+    line-height: 0.95;
+    letter-spacing: -0.5px;
+    color: #ffffff;
+  }
+  .nike-subtext {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+    font-size: clamp(0.9rem, 2.5vw, 1.25rem);
+    margin-bottom: 30px;
+    line-height: 1.4;
+    font-weight: 500;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @media (max-width: 767px) {
+    .nike-hero-wrapper {
+      height: 23vh !important; /* Ultra-thin as requested */
+      margin-top: -1px !important;
+    }
+    .nike-headline {
+      font-size: 1.7rem !important; /* Slightly adjusted for thin height */
+      letter-spacing: -0.8px !important;
+      font-weight: 900 !important;
+      text-align: left !important;
+      margin: 0 0 2px 0 !important;
+      line-height: 1 !important;
+    }
+    .nike-subtext {
+      font-size: 0.75rem !important;
+      margin: 0 0 12px 0 !important;
+      text-align: left !important;
+      width: 70% !important; /* More width to avoid 'desfase' */
+      line-height: 1.1 !important;
+      font-weight: 400;
+    }
+    .nike-content {
+      top: 50% !important;
+      left: 0 !important;
+      transform: translateY(-50%) !important;
+      text-align: left !important;
+      padding: 0 25px !important;
+      width: 100% !important;
+      z-index: 10 !important;
+    }
+    .nike-btn.btn-gold-square {
+      background: #dfa300 !important;
+      color: #000000 !important;
+      border-radius: 0 !important;
+      padding: 6px 20px !important; /* Even more compact for thin banner */
+      font-weight: 700 !important;
+      font-size: 10px !important;
+      box-shadow: none !important;
+      border: none !important;
+    }
+    
+    .desktop-only { display: none !important; }
+    .mobile-only { display: block !important; }
+    
+    .nike-controls {
+      display: none !important;
+    }
+    
+    .nike-overlay {
+      background: linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 65%, rgba(0,0,0,0) 100%) !important;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .desktop-only { display: block !important; }
+    .mobile-only { display: none !important; }
+    .nike-dot.mobile-only { display: none !important; }
+  }
+
+  .nike-slide.mobile-only { display: none; }
+  
+  .nike-image-bg {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: top right !important; /* Head visibility */
+  }
+
+  .nike-btn {
+    display: inline-block;
+    background: #ffffff;
+    color: #000000;
+    padding: 16px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), background 0.2s ease;
+  }
+  .nike-btn:hover {
+    transform: scale(1.05);
+    background: #f0f0f0;
+  }
+  .nike-controls {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+  .nike-dot {
+    width: 8px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  .nike-dot.is-active {
+    background: #fff;
+    transform: scale(1.3);
+  }
+</style>
+
+{%- assign desktop_blocks_count = 0 -%}
+{%- assign mobile_blocks_count = 0 -%}
+{% for block in section.blocks %}
+  {% if block.type == 'video_slide' %}{% assign desktop_blocks_count = desktop_blocks_count | plus: 1 %}{% endif %}
+  {% if block.type == 'mobile_slide' %}{% assign mobile_blocks_count = mobile_blocks_count | plus: 1 %}{% endif %}
+{% endfor %}
+
+<div class="nike-hero-wrapper" id="NikeHero-{{ section.id }}" data-autoplay="{{ section.settings.autoplay }}" data-speed="{{ section.settings.autoplay_speed | times: 1000 }}">
+  <div class="nike-slides-container" style="width: 100%; height: 100%; position: relative;">
+    {% for block in section.blocks %}
+      {%- assign is_desktop = false -%}
+      {% if block.type == 'video_slide' %}{% assign is_desktop = true %}{% endif %}
+
+      <div class="nike-slide {% if is_desktop %}desktop-only{% else %}mobile-only{% endif %} {% if forloop.first %}is-active{% endif %}" data-index="{{ forloop.index0 }}">
+        
+        {% if block.type == 'video_slide' %}
+          {% if block.settings.video != blank %}
+            <div class="nike-video-bg">
+              {{ block.settings.video | video_tag: autoplay: true, loop: true, muted: true, controls: false, image_size: '1920x' }}
+            </div>
+          {% else %}
+            <div class="nike-video-bg" style="background: #111;"></div>
+          {% endif %}
+        {% else %}
+          {% if block.settings.image != blank %}
+            <div class="nike-image-bg" style="background-image: url('{{ block.settings.image | img_url: 'master' }}');"></div>
+          {% else %}
+            <div class="nike-image-bg" style="background: #222;"></div>
+          {% endif %}
+        {% endif %}
+        
+        <div class="nike-overlay" style="background: rgba(0,0,0,{{ block.settings.overlay_opacity | divided_by: 100.0 }});"></div>
+        
+        <div class="nike-content">
+          {% if block.settings.headline != blank %}
+            <h2 class="nike-headline">{{ block.settings.headline }}</h2>
+          {% endif %}
+          
+          {% if block.settings.subtext != blank %}
+            <p class="nike-subtext">{{ block.settings.subtext }}</p>
+          {% endif %}
+          
+          {% if block.settings.btn_label != blank %}
+            <a href="{{ block.settings.btn_link }}" class="nike-btn {% if block.type == 'mobile_slide' %}btn-gold-square{% endif %}">{{ block.settings.btn_label }}</a>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  {% if section.blocks.size > 1 %}
+    <div class="nike-controls">
+      {% for block in section.blocks %}
+        {%- assign is_desktop = false -%}
+        {% if block.type == 'video_slide' %}{% assign is_desktop = true %}{% endif %}
+        <div class="nike-dot {% if is_desktop %}desktop-only{% else %}mobile-only{% endif %} {% if forloop.first %}is-active{% endif %}" data-dot-index="{{ forloop.index0 }}" onclick="manualNikeSlide({{ forloop.index0 }}, '{{ section.id }}')"></div>
+      {% endfor %}
+    </div>
+  {% endif %}
+</div>
+
+<script>
+  (function() {
+    let nikeInterval = null;
+    let currentNikeIndex = 0;
+    const sectionId = "{{ section.id }}";
+    const wrapper = document.getElementById('NikeHero-' + sectionId);
+    
+    if (!wrapper) return;
+    
+    const isMobile = window.innerWidth < 768;
+    const slidesSelector = isMobile ? '.nike-slide:not(.desktop-only)' : '.nike-slide:not(.mobile-only)';
+    const slides = wrapper.querySelectorAll(slidesSelector);
+    const dots = wrapper.querySelectorAll(isMobile ? '.nike-dot.mobile-only' : '.nike-dot.desktop-only');
+    const totalSlides = slides.length;
+    const isAutoplay = wrapper.getAttribute('data-autoplay') === 'true';
+    const speed = parseInt(wrapper.getAttribute('data-speed')) || 5000;
+
+    window.changeNikeSlide = function(index) {
+      if (index >= totalSlides) index = 0;
+      if (index < 0) index = totalSlides - 1;
+      
+      currentNikeIndex = index;
+      
+      slides.forEach(slide => slide.classList.remove('is-active'));
+      dots.forEach(dot => dot.classList.remove('is-active'));
+      
+      slides[index].classList.add('is-active');
+      if (dots[index]) dots[index].classList.add('is-active');
+    };
+
+    window.manualNikeSlide = function(index) {
+      clearInterval(nikeInterval);
+      window.changeNikeSlide(index);
+      if (isAutoplay) startNikeAutoplay();
+    };
+
+    function startNikeAutoplay() {
+      if (totalSlides <= 1) return;
+      nikeInterval = setInterval(() => {
+        window.changeNikeSlide(currentNikeIndex + 1);
+      }, speed);
+    }
+
+    if (isAutoplay) {
+      startNikeAutoplay();
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Nike Video Banner",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "range",
+      "id": "desktop_height",
+      "label": "Altura Escritorio (vh)",
+      "min": 40,
+      "max": 100,
+      "step": 5,
+      "default": 90,
+      "unit": "vh"
+    },
+    {
+      "type": "range",
+      "id": "mobile_height",
+      "label": "Altura Móvil (vh)",
+      "min": 20,
+      "max": 100,
+      "step": 5,
+      "default": 60,
+      "unit": "vh"
+    },
+    {
+      "type": "header",
+      "content": "Animación"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Rotación Automática",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "autoplay_speed",
+      "label": "Velocidad de Rotación (segundos)",
+      "min": 3,
+      "max": 15,
+      "step": 1,
+      "default": 5,
+      "unit": "s"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "video_slide",
+      "name": "Video (Escritorio)",
+      "settings": [
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Video (Sube un MP4)"
+        },
+        {
+          "type": "text",
+          "id": "headline",
+          "label": "Título Principal",
+          "default": "TU ESTILO. TU CULTURA. TU TIENDA."
+        },
+        {
+          "type": "textarea",
+          "id": "subtext",
+          "label": "Texto Secundario",
+          "default": "Miles de productos que representan quién eres."
+        },
+        {
+          "type": "text",
+          "id": "btn_label",
+          "label": "Texto del Botón",
+          "default": "Comprar Ahora"
+        },
+        {
+          "type": "url",
+          "id": "btn_link",
+          "label": "Enlace del Botón"
+        },
+        {
+          "type": "range",
+          "id": "overlay_opacity",
+          "label": "Opacidad Oscurecido (%)",
+          "min": 0,
+          "max": 90,
+          "step": 5,
+          "default": 40
+        }
+      ]
+    },
+    {
+      "type": "mobile_slide",
+      "name": "Imagen (Móvil)",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Imagen Móvil"
+        },
+        {
+          "type": "text",
+          "id": "headline",
+          "label": "Título Principal",
+          "default": "TU ESTILO. TU CULTURA. TU TIENDA."
+        },
+        {
+          "type": "textarea",
+          "id": "subtext",
+          "label": "Texto Secundario",
+          "default": "Miles de productos que representan quién eres."
+        },
+        {
+          "type": "text",
+          "id": "btn_label",
+          "label": "Texto del Botón",
+          "default": "Comprar Ahora"
+        },
+        {
+          "type": "url",
+          "id": "btn_link",
+          "label": "Enlace del Botón"
+        },
+        {
+          "type": "range",
+          "id": "overlay_opacity",
+          "label": "Opacidad Oscurecido (%)",
+          "min": 0,
+          "max": 90,
+          "step": 5,
+          "default": 30
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Nike Video Banner",
+      "blocks": [
+        {
+          "type": "video_slide"
+        },
+        {
+          "type": "mobile_slide"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

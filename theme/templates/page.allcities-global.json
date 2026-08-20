@@ -1,0 +1,113 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "allcities-global",
+      "settings": {
+        "color_navy": "#0E3153",
+        "color_gold": "#C5A47E",
+        "color_light": "#F8FAFC",
+        "color_white": "#FFFFFF",
+        "hero_eyebrow": "ALL CITIES GLOBAL",
+        "hero_title": "Tu Santuario de Estilo de Vida en México y el Caribe",
+        "hero_subtitle": "Encuentra la casa de tus sueños o tu próxima gran oportunidad de inversión. Te guiamos de forma segura en todo el proceso legal de compra.",
+        "hero_btn1_text": "Iniciar Inversión",
+        "hero_btn2_text": "Ver Propiedades",
+        "hero_image_url": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1800&q=80",
+        "props_title": "Propiedades para Cada Estilo de Vida",
+        "props_subtitle": "Conoce los desarrollos residenciales más exclusivos y con mejor plusvalía del Mar de Cortés y el Caribe.",
+        "info_eyebrow": "GUÍA Y SEGURIDAD",
+        "info_title": "Inversión Inmobiliaria Transparente y Simplificada",
+        "info_description": "Adquirir una propiedad en el extranjero no tiene por qué ser complicado. En All Cities Global te brindamos el acompañamiento legal necesario para realizar adquisiciones transparentes mediante fideicomisos bancarios o estructuración corporativa, garantizando la seguridad de tu patrimonio.",
+        "info_image_url": "https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?auto=format&fit=crop&w=1000&q=80",
+        "timeline_title": "Adquisición Segura en 3 Pasos",
+        "timeline_subtitle": "Un acompañamiento integral de principio a fin.",
+        "form_title": "Encuentra tu Propiedad Ideal",
+        "form_subtitle": "Compártenos tu presupuesto y destino preferido para presentarte las mejores oportunidades off-market.",
+        "form_btn_text": "Solicitar Asesoría",
+        "form_success": "¡Gracias! Tu solicitud ha sido recibida con éxito. Un agente especializado de All Cities Global se pondrá en contacto contigo muy pronto."
+      },
+      "blocks": {
+        "prop_1": {
+          "type": "property_card",
+          "settings": {
+            "title": "Villa Hai",
+            "location": "Altarena, Sea of Cortez",
+            "beds": "3",
+            "baths": "3.5",
+            "area": "2,615.43",
+            "price": "$465,512",
+            "featured_badge": true,
+            "image_url": "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=800&q=80"
+          }
+        },
+        "prop_2": {
+          "type": "property_card",
+          "settings": {
+            "title": "Villa Hamac",
+            "location": "Altarena, Sea of Cortez",
+            "beds": "3",
+            "baths": "3.5",
+            "area": "3,078.48",
+            "price": "$543,904",
+            "featured_badge": true,
+            "image_url": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
+          }
+        },
+        "prop_3": {
+          "type": "property_card",
+          "settings": {
+            "title": "Villa Zaah",
+            "location": "Altarena, Sea of Cortez",
+            "beds": "3",
+            "baths": "3.5",
+            "area": "2,088.19",
+            "price": "$287,782",
+            "featured_badge": true,
+            "image_url": "https://images.unsplash.com/photo-1512915922686-57c11dde9b6b?auto=format&fit=crop&w=800&q=80"
+          }
+        },
+        "step_1": {
+          "type": "timeline_step",
+          "settings": {
+            "title": "1. Selección e Identificación",
+            "description": "Definimos tus preferencias de estilo de vida, ubicación y presupuesto para filtrar las opciones ideales."
+          }
+        },
+        "step_2": {
+          "type": "timeline_step",
+          "settings": {
+            "title": "2. Debida Diligencia Legal",
+            "description": "Estructuración legal y fiscal segura a través de Fideicomiso bancario o constitución de corporación mexicana."
+          }
+        },
+        "step_3": {
+          "type": "timeline_step",
+          "settings": {
+            "title": "3. Entrega y Cierre",
+            "description": "Firma definitiva de escrituras, recepción de llaves y acompañamiento completo post-venta."
+          }
+        }
+      },
+      "block_order": [
+        "prop_1",
+        "prop_2",
+        "prop_3",
+        "step_1",
+        "step_2",
+        "step_3"
+      ]
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

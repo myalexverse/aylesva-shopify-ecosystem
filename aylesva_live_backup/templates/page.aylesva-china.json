@@ -1,0 +1,349 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "aylesva-china",
+      "blocks": {
+        "trust_1": {
+          "type": "trust",
+          "settings": {
+            "text": "Proveedores Confiables"
+          }
+        },
+        "trust_2": {
+          "type": "trust",
+          "settings": {
+            "text": "Mejores Oportunidades de Precio"
+          }
+        },
+        "trust_3": {
+          "type": "trust",
+          "settings": {
+            "text": "Asesoría Experta"
+          }
+        },
+        "trust_4": {
+          "type": "trust",
+          "settings": {
+            "text": "Logística Internacional"
+          }
+        },
+        "hero_img_1": {
+          "type": "hero_image",
+          "settings": {
+            "image_url": "https:\/\/images.unsplash.com\/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=800&q=80",
+            "alt": "Casa prefabricada modular",
+            "link": ""
+          }
+        },
+        "hero_img_2": {
+          "type": "hero_image",
+          "settings": {
+            "image_url": "https:\/\/images.unsplash.com\/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&w=800&q=80",
+            "alt": "Contenedores de envío apilados",
+            "link": ""
+          }
+        },
+        "hero_img_3": {
+          "type": "hero_image",
+          "settings": {
+            "image_url": "https:\/\/images.unsplash.com\/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=800&q=80",
+            "alt": "Paneles solares",
+            "link": ""
+          }
+        },
+        "hero_img_4": {
+          "type": "hero_image",
+          "settings": {
+            "image_url": "https:\/\/images.unsplash.com\/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80",
+            "alt": "Materiales de construcción",
+            "link": ""
+          }
+        },
+        "hero_img_5": {
+          "type": "hero_image",
+          "settings": {
+            "image_url": "https:\/\/images.unsplash.com\/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=800&q=80",
+            "alt": "Maquinaria industrial",
+            "link": ""
+          }
+        },
+        "hero_img_6": {
+          "type": "hero_image",
+          "settings": {
+            "image_url": "https:\/\/images.unsplash.com\/photo-1553413077-190dd305871c?auto=format&fit=crop&w=800&q=80",
+            "alt": "Logística de almacén",
+            "link": ""
+          }
+        },
+        "hero_img_7": {
+          "type": "hero_image",
+          "settings": {
+            "image_url": "https:\/\/images.unsplash.com\/photo-1581244277943-fe4a9c777189?auto=format&fit=crop&w=800&q=80",
+            "alt": "Herramientas industriales",
+            "link": ""
+          }
+        },
+        "hero_img_8": {
+          "type": "hero_image",
+          "settings": {
+            "image_url": "https:\/\/images.unsplash.com\/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80",
+            "alt": "Muebles",
+            "link": ""
+          }
+        },
+        "source_1": {
+          "type": "source_card",
+          "settings": {
+            "image_url": "https:\/\/images.unsplash.com\/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=700&q=80",
+            "icon": "home",
+            "title": "Casas y Estructuras Prefabricadas",
+            "description": "Casas modulares, edificios con estructura de acero y estructuras listas para armar.",
+            "btn_text": "Solicitar Información",
+            "btn_link": ""
+          }
+        },
+        "source_2": {
+          "type": "source_card",
+          "settings": {
+            "image_url": "https:\/\/images.unsplash.com\/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=700&q=80",
+            "icon": "materials",
+            "title": "Materiales de Construcción",
+            "description": "Acero, acabados, accesorios y suministros de construcción a gran escala.",
+            "btn_text": "Solicitar Información",
+            "btn_link": ""
+          }
+        },
+        "source_3": {
+          "type": "source_card",
+          "settings": {
+            "image_url": "https:\/\/images.unsplash.com\/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=700&q=80",
+            "icon": "machinery",
+            "title": "Maquinaria y Equipos",
+            "description": "Maquinaria industrial y equipos para producción y operaciones.",
+            "btn_text": "Solicitar Información",
+            "btn_link": ""
+          }
+        },
+        "source_4": {
+          "type": "source_card",
+          "settings": {
+            "image_url": "https:\/\/images.unsplash.com\/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=700&q=80",
+            "icon": "box",
+            "title": "Productos al Mayoreo",
+            "description": "Adquiere mercancía al por mayor en diversas categorías para reventa.",
+            "btn_text": "Solicitar Información",
+            "btn_link": ""
+          }
+        },
+        "source_5": {
+          "type": "source_card",
+          "settings": {
+            "image_url": "https:\/\/images.unsplash.com\/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=700&q=80",
+            "icon": "review",
+            "title": "Revisión de Proveedores Existentes",
+            "description": "Analizamos tu proveedor actual y te presentamos mejores alternativas de costo y calidad.",
+            "btn_text": "Solicitar Información",
+            "btn_link": ""
+          }
+        },
+        "step_1": {
+          "type": "timeline_step",
+          "settings": {
+            "icon": "chat",
+            "title": "Cuéntanos lo que necesitas",
+            "description": "Comparte los productos, volúmenes y objetivos que tienes en mente."
+          }
+        },
+        "step_2": {
+          "type": "timeline_step",
+          "settings": {
+            "icon": "search",
+            "title": "Analizamos las opciones disponibles",
+            "description": "Investigamos proveedores, precios y oportunidades de suministro."
+          }
+        },
+        "step_3": {
+          "type": "timeline_step",
+          "settings": {
+            "icon": "doc",
+            "title": "Te compartimos información y alternativas",
+            "description": "Recibes información clara y alternativas comparables."
+          }
+        },
+        "step_4": {
+          "type": "timeline_step",
+          "settings": {
+            "icon": "handshake",
+            "title": "Coordinamos los siguientes pasos",
+            "description": "Te ayudamos a coordinar la logística y el camino a seguir."
+          }
+        },
+        "feat_1": {
+          "type": "featured",
+          "settings": {
+            "image_url": "https:\/\/images.unsplash.com\/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=800&q=80",
+            "title": "Casas Prefabricadas",
+            "description": "Casas modulares listas para habitar y armar rápidamente.",
+            "btn_text": "Saber más",
+            "link": ""
+          }
+        },
+        "feat_2": {
+          "type": "featured",
+          "settings": {
+            "image_url": "https:\/\/images.unsplash.com\/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80",
+            "title": "Estructuras de Acero",
+            "description": "Edificios con estructura de acero y componentes estructurales.",
+            "btn_text": "Saber más",
+            "link": ""
+          }
+        },
+        "feat_3": {
+          "type": "featured",
+          "settings": {
+            "image_url": "https:\/\/images.unsplash.com\/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=800&q=80",
+            "title": "Soluciones Solares",
+            "description": "Paneles y sistemas para proyectos energéticos.",
+            "btn_text": "Saber más",
+            "link": ""
+          }
+        },
+        "feat_4": {
+          "type": "featured",
+          "settings": {
+            "image_url": "https:\/\/images.unsplash.com\/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=800&q=80",
+            "title": "Equipos Industriales",
+            "description": "Maquinaria para manufactura y operaciones.",
+            "btn_text": "Saber más",
+            "link": ""
+          }
+        },
+        "feat_5": {
+          "type": "featured",
+          "settings": {
+            "image_url": "https:\/\/images.unsplash.com\/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80",
+            "title": "Muebles",
+            "description": "Mobiliario residencial y comercial a gran escala.",
+            "btn_text": "Saber más",
+            "link": ""
+          }
+        },
+        "feat_6": {
+          "type": "featured",
+          "settings": {
+            "image_url": "https:\/\/images.unsplash.com\/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80",
+            "title": "Suministros de Construcción",
+            "description": "Suministros de construcción y acabados por volumen.",
+            "btn_text": "Saber más",
+            "link": ""
+          }
+        },
+        "feat_7": {
+          "type": "featured",
+          "settings": {
+            "image_url": "https:\/\/images.unsplash.com\/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&w=800&q=80",
+            "title": "Contenedores",
+            "description": "Contenedores marítimos y construcciones modulares con contenedores.",
+            "btn_text": "Saber más",
+            "link": ""
+          }
+        },
+        "feat_8": {
+          "type": "featured",
+          "settings": {
+            "image_url": "https:\/\/images.unsplash.com\/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80",
+            "title": "Mercancía al Mayoreo",
+            "description": "Variedad de productos al por mayor para venta minorista y distribución.",
+            "btn_text": "Saber más",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "trust_1",
+        "trust_2",
+        "trust_3",
+        "trust_4",
+        "hero_img_1",
+        "hero_img_2",
+        "hero_img_3",
+        "hero_img_4",
+        "hero_img_5",
+        "hero_img_6",
+        "hero_img_7",
+        "hero_img_8",
+        "source_1",
+        "source_2",
+        "source_3",
+        "source_4",
+        "source_5",
+        "step_1",
+        "step_2",
+        "step_3",
+        "step_4",
+        "feat_1",
+        "feat_2",
+        "feat_3",
+        "feat_4",
+        "feat_5",
+        "feat_6",
+        "feat_7",
+        "feat_8"
+      ],
+      "settings": {
+        "logo_width": 180,
+        "logo_align": "left",
+        "show_logo_hero": true,
+        "color_navy": "#0b1f3a",
+        "color_accent": "#d62828",
+        "color_light": "#f7f8fa",
+        "color_white": "#ffffff",
+        "hero_eyebrow": "Aylesva Direct · Soluciones de Importación Global",
+        "hero_headline": "Importa con el Respaldo de Aylesva Direct",
+        "hero_description": "<p>Con nuestro servicio Aylesva Direct, ayudamos a tu empresa a explorar productos, comparar precios e identificar oportunidades de suministro internacional y logística desde China. Te acompañamos en todo el proceso de sourcing, calidad y aduanas.<\/p>",
+        "hero_btn1_text": "Solicitar Información",
+        "hero_btn1_link": "",
+        "hero_btn2_text": "¿Ya tienes un proveedor?",
+        "hero_btn2_link": "",
+        "worldwide_show": true,
+        "worldwide_eyebrow": "COBERTURA MUNDIAL",
+        "worldwide_title": "Servicio y Envíos a Nivel Mundial",
+        "worldwide_desc": "<p>Con Aylesva Direct, enviamos e importamos tus productos desde China y mercados globales a cualquier parte del mundo. Coordinamos toda la logística internacional, el transporte y el despacho aduanal.<\/p>",
+        "worldwide_btn_text": "Solicitar Información de Logística",
+        "worldwide_btn_link": "",
+        "worldwide_image_url": "",
+        "source_title": "¿Qué te ayudamos a importar?",
+        "source_subtitle": "Explora productos y oportunidades que pueden hacer crecer tu negocio.",
+        "timeline_title": "Un proceso sencillo para comenzar",
+        "timeline_subtitle": "Desde la primera conversación hasta la coordinación de los siguientes pasos.",
+        "banner_eyebrow": "Proveedores Existentes",
+        "banner_title": "¿Ya tienes un proveedor?",
+        "banner_desc": "<p>Si ya trabajas con un proveedor, con Aylesva Direct podemos ayudarte a revisar precios y explorar oportunidades alternativas que puedan mejorar tus márgenes.<\/p>",
+        "banner_btn_text": "Revisar mi proveedor",
+        "banner_btn_link": "",
+        "banner_image_url": "https:\/\/images.unsplash.com\/photo-1605745341112-85968b19335b?auto=format&fit=crop&w=1200&q=80",
+        "feat_title": "Explora oportunidades de importación",
+        "feat_subtitle": "Ejemplos de productos y soluciones que las empresas suelen importar de China.",
+        "form_title": "Solicita una cotización o revisión",
+        "form_subtitle": "Cuéntanos qué estás buscando y te ayudamos a explorar tus opciones de forma personalizada.",
+        "form_note": "Cuanta más información nos proporciones, mejor podremos guiarte.",
+        "form_btn_text": "Enviar Solicitud",
+        "form_success": "Gracias — tu solicitud ha sido recibida. Nos pondremos en contacto contigo a la brevedad.",
+        "form_embed": "<iframe src=\"https:\/\/api.leadconnectorhq.com\/widget\/form\/6kXVcb0baoRwx0UBBTsr\" style=\"width:100%;height:100%;border:none;border-radius:8px\" id=\"inline-6kXVcb0baoRwx0UBBTsr\" data-layout=\"{'id':'INLINE'}\" data-trigger-type=\"alwaysShow\" data-trigger-value=\"\" data-activation-type=\"alwaysActivated\" data-activation-value=\"\" data-deactivation-type=\"neverDeactivate\" data-deactivation-value=\"\" data-form-name=\"aylesvachinamx\" data-height=\"630\" data-layout-iframe-id=\"inline-6kXVcb0baoRwx0UBBTsr\" data-form-id=\"6kXVcb0baoRwx0UBBTsr\" title=\"aylesvachinamx\">\n<\/iframe>\n<script src=\"https:\/\/link.msgsndr.com\/js\/form_embed.js\"><\/script>",
+        "disclaimer": "<p>Aylesva Direct facilita orientación comercial inicial e información sobre oportunidades de importación. La disponibilidad, precios, logística, permisos, aranceles, impuestos y términos finales pueden variar según los proveedores y las condiciones del mercado. Todas las transacciones deben ser revisadas y confirmadas de manera independiente antes de realizar cualquier compromiso o pago.<\/p>"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

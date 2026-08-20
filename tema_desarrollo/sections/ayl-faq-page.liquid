@@ -1,0 +1,443 @@
+{{ 'base.css' | asset_url | stylesheet_tag }}
+
+<style>
+  .ayl-page-hero {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  
+  .ayl-page-hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(45, 12, 18, 0.7); /* Burgundy toned overlay */
+    z-index: 1;
+  }
+
+  .ayl-page-hero .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 0 20px;
+  }
+
+  .ayl-page-hero h1 {
+    color: #ffffff !important;
+    font-family: 'Outfit', 'Inter', sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  }
+
+  .ayl-page-hero p {
+    color: #C5A47E !important; /* Gold text */
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+    max-width: 600px;
+    margin: 0 auto;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  }
+
+  /* Layout */
+  .ayl-faq-wrapper {
+    max-width: 1100px;
+    margin: 0 auto 80px;
+    padding: 0 24px;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 50px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .ayl-faq-wrapper {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+    .ayl-page-hero h1 {
+      font-size: 2.2rem;
+    }
+    .ayl-page-hero p {
+      font-size: 1rem;
+    }
+  }
+
+  /* Sidebar navigation */
+  .faq-sidebar {
+    position: sticky;
+    top: 100px;
+    height: fit-content;
+  }
+
+  .faq-nav-title {
+    color: #4A0E17;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #C5A47E;
+  }
+
+  .faq-nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .faq-nav-item a {
+    color: #555555;
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .faq-nav-item a::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #ccc;
+    transition: all 0.3s ease;
+  }
+
+  .faq-nav-item a:hover {
+    color: #C5A47E;
+    padding-left: 5px;
+  }
+
+  .faq-nav-item a:hover::before {
+    background: #C5A47E;
+  }
+
+  .faq-nav-item.active a {
+    color: #4A0E17;
+    font-weight: 800;
+  }
+
+  .faq-nav-item.active a::before {
+    background: #4A0E17;
+    width: 8px;
+    height: 8px;
+  }
+
+  /* Accordion Styles */
+  .faq-section-group {
+    margin-bottom: 40px;
+  }
+
+  .faq-group-title {
+    color: #4A0E17;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .faq-group-title::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #eee;
+  }
+
+  .faq-accordion-item {
+    background: #ffffff;
+    border: 1px solid #eaeaea;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.01);
+  }
+
+  .faq-accordion-item:hover {
+    border-color: #C5A47E;
+    box-shadow: 0 4px 10px rgba(74, 14, 23, 0.05);
+  }
+
+  .faq-trigger {
+    width: 100%;
+    padding: 20px 24px;
+    background: none;
+    border: none;
+    outline: none;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .faq-trigger span {
+    color: #4A0E17;
+    font-family: 'Outfit', 'Inter', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+
+  .faq-icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #fdfdfd;
+    border: 1px solid #e0e0e0;
+    color: #4A0E17;
+    transition: all 0.3s ease;
+  }
+
+  .faq-icon::before {
+    content: "+";
+    font-size: 1.1rem;
+    font-weight: bold;
+    display: block;
+    line-height: 1;
+  }
+
+  .faq-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .faq-content-inner {
+    padding: 0 24px 20px 24px;
+    color: #666666;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  /* Active State classes handled by JS */
+  .faq-accordion-item.active {
+    border-color: #4A0E17;
+    background: #fffdfd;
+  }
+
+  .faq-accordion-item.active .faq-trigger {
+    padding-bottom: 12px;
+  }
+
+  .faq-accordion-item.active .faq-icon {
+    background: #4A0E17;
+    color: #ffffff;
+    border-color: #4A0E17;
+    transform: rotate(45deg);
+  }
+
+  .faq-accordion-item.active .faq-icon::before {
+    content: "+";
+  }
+</style>
+
+<div class="ayl-page-hero" style="background-image: linear-gradient(rgba(45, 12, 18, 0.6), rgba(45, 12, 18, 0.6)), url({{ section.settings.image | default: 'mayoreo-faq-banner.png' | asset_url }});">
+  <div class="hero-content">
+    <h1>{{ section.settings.heading | default: "Preguntas Frecuentes" }}</h1>
+    <p>{{ section.settings.subheading | default: "Todo lo que necesitas saber para hacer crecer tu negocio como distribuidor Aylesva" }}</p>
+  </div>
+</div>
+
+<div class="ayl-faq-wrapper">
+  <aside class="faq-sidebar">
+    <h4 class="faq-nav-title">Categorías</h4>
+    <ul class="faq-nav-list">
+      <li class="faq-nav-item active" data-category="all"><a href="#all">Ver Todo</a></li>
+      <li class="faq-nav-item" data-category="general"><a href="#general">General</a></li>
+      <li class="faq-nav-item" data-category="pedidos"><a href="#pedidos">Pedidos</a></li>
+      <li class="faq-nav-item" data-category="envios"><a href="#envios">Envíos</a></li>
+      <li class="faq-nav-item" data-category="pagos"><a href="#pagos">Pagos</a></li>
+    </ul>
+  </aside>
+
+  <div class="faq-main-content">
+    {%- assign categories_list = "general|General,pedidos|Pedidos,envios|Envíos,pagos|Pagos" | split: ',' -%}
+    
+    {% for cat in categories_list %}
+      {%- assign cat_info = cat | split: '|' -%}
+      {%- assign cat_id = cat_info[0] -%}
+      {%- assign cat_title = cat_info[1] -%}
+      
+      <div class="faq-section-group" id="faq-group-{{ cat_id }}" data-category-group="{{ cat_id }}">
+        <h3 class="faq-group-title">{{ cat_title }}</h3>
+        
+        <div class="faq-accordion-list">
+          {%- assign block_found = false -%}
+          {% for block in section.blocks %}
+            {% if block.settings.category == cat_id %}
+              {%- assign block_found = true -%}
+              <div class="faq-accordion-item" {{ block.shopify_attributes }}>
+                <button class="faq-trigger" aria-expanded="false">
+                  <span>{{ block.settings.question }}</span>
+                  <div class="faq-icon" aria-hidden="true"></div>
+                </button>
+                <div class="faq-content">
+                  <div class="faq-content-inner">
+                    {{ block.settings.answer }}
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+          
+          {% unless block_found %}
+            <p style="color: #999; font-style: italic; font-size: 0.95rem; padding: 10px 0;">No hay preguntas en esta categoría por el momento.</p>
+          {% endunless %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Accordion functionality
+    const triggers = document.querySelectorAll('.faq-trigger');
+    
+    triggers.forEach(trigger => {
+      trigger.addEventListener('click', function() {
+        const item = this.parentElement;
+        const content = this.nextElementSibling;
+        const isActive = item.classList.contains('active');
+        
+        // Close all other items in this list
+        const siblingItems = item.parentElement.querySelectorAll('.faq-accordion-item');
+        siblingItems.forEach(sib => {
+          if (sib !== item) {
+            sib.classList.remove('active');
+            sib.querySelector('.faq-content').style.maxHeight = null;
+            sib.querySelector('.faq-trigger').setAttribute('aria-expanded', 'false');
+          }
+        });
+        
+        if (isActive) {
+          item.classList.remove('active');
+          content.style.maxHeight = null;
+          this.setAttribute('aria-expanded', 'false');
+        } else {
+          item.classList.add('active');
+          content.style.maxHeight = content.scrollHeight + "px";
+          this.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    // Sidebar navigation filter
+    const navItems = document.querySelectorAll('.faq-nav-item');
+    const groups = document.querySelectorAll('.faq-section-group');
+    
+    navItems.forEach(nav => {
+      nav.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        // Remove active class
+        navItems.forEach(item => item.classList.remove('active'));
+        this.classList.add('active');
+        
+        const selectedCat = this.getAttribute('data-category');
+        
+        groups.forEach(group => {
+          const groupCat = group.getAttribute('data-category-group');
+          if (selectedCat === 'all' || selectedCat === groupCat) {
+            group.style.display = 'block';
+          } else {
+            group.style.display = 'none';
+          }
+        });
+        
+        // If sidebar link clicked, smooth scroll to content on mobile
+        if (window.innerWidth <= 768) {
+          const mainContent = document.querySelector('.faq-main-content');
+          mainContent.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Preguntas Frecuentes",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Preguntas Frecuentes"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Todo lo que necesitas saber para hacer crecer tu negocio como distribuidor Aylesva"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Hero Image Banner"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Pregunta",
+          "default": "Ingresa la pregunta aquí"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Respuesta",
+          "default": "<p>Ingresa la respuesta detallada aquí.</p>"
+        },
+        {
+          "type": "select",
+          "id": "category",
+          "label": "Categoría",
+          "options": [
+            { "value": "general", "label": "General" },
+            { "value": "pedidos", "label": "Pedidos" },
+            { "value": "envios", "label": "Envíos" },
+            { "value": "pagos", "label": "Pagos" }
+          ],
+          "default": "general"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

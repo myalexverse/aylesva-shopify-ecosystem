@@ -1,0 +1,85 @@
+{% if show_best_products %}
+<div class="widget widget_top_rated_products">
+  <h4 class="widget-title">{{ section.settings.best_title }}</h4> 
+  {% if pro_img_width_height %}
+  {% assign pro_size =  pro_img_width_height %}
+  {% else %}
+  {% assign pro_size= 'small' %}
+  {% endif %}      
+  {%  assign cnt = 1 %}  
+  {%-  assign foundpro = collection.products.count -%}       
+  <ul class="no-bullets top-products owl-carousel">
+    {% for product in collections[bestseller].products limit: limit %}
+    {%- assign mod_3 = cnt | modulo:3 -%}
+    {%- assign collection = collections[bestseller] -%}  
+  {%-  assign foundpro = collection.products.count -%}
+    {% if product_rows %}
+    {% if foundpro >= 9 %}
+    {%  if mod_3 == 1  %}
+    <div class="sidebar-products">
+      {% endif    %}
+      {% endif  %}
+      {% endif %}
+      <div id="product-{{ product.id }}" data-id="product-{{ product.id }}" class="item-row product-layouts">
+      <li class="col-xs-12 product-wrapper sidebar-product{% if product.images.size > 1 %} product_container{% endif %}"> 
+        {% if product.images.size > 0 %}  
+        <div class="image product-thumb col-xs-4 col-sm-4 col-md-4 padding_0">
+          <div class="product-img col-xs-12 padding_0 {{ settings.product_img_hover }}">
+            <a class="thumb product-t" href="{{ product.url | within: collection }}">                                          
+              <img loading="lazy" class="featured-image image_thumb" alt="featured product" src="{{ product.featured_image | product_img_url: pro_size }}">  
+              
+              {% if product.images.size > 1 %}
+              {% if product.images.last %}
+                <div class="second-productimg">
+                <img loading="lazy" class="image_thumb_swap" alt="featured product" src="{{ product.images.last | product_img_url: pro_size }}">  
+                </div>
+              {% endif %}
+              {% endif %}
+            </a>
+            {% if product.images.size > 1 %}
+              {% if product.images.last %}
+              <div class="loader">
+                <div class="preloader-wrapper active">
+                  <div class="spinner-layer"></div>
+                </div>
+              </div>
+              {% endif %} 
+              {% endif %} 
+            {% if product.compare_at_price > product.price %}
+            <span class="sale on-sale-tag">{{ 'products.product.on_sale' | t }}</span>    
+            {% endif %}
+          </div>
+        </div>
+        {% endif %} 
+        <div class="top-products-detail thumb-description col-xs-8 col-sm-8 col-md-8">
+          <h5><a href="{{ product.url | within: collection }}"> {{ product.title }} </a></h5>
+          {% for tag in product.tags %}
+
+          {% endfor %}
+          <div class="top-product-prices">
+            <span class="price">{{ product.price_min | money }}</span>
+            {% if product.compare_at_price_max > product.price %}
+            <del><span class="compare-price">{{ product.compare_at_price_max | money }}</span></del>
+            {% endif %}	
+          </div>
+        </div>
+      </li>
+      </div>
+      {% if product_rows %}
+      {% if foundpro >= 9 %}
+      {%  if mod_3 == 0  %}
+    </div>
+    {% endif    %}
+    {% endif  %}
+    {% assign cnt = cnt | plus: 1 %}
+    {% endif %}
+    {% endfor %}
+    {% if product_rows %}
+    {% if foundpro >= 9 %}
+    {%  if mod_3 == 0  %}
+  </ul> 
+  {% endif    %}
+  {% endif    %}
+  {% endif    %}  
+</div> 
+{% endif %} 

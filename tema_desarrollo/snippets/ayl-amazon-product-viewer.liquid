@@ -1,0 +1,336 @@
+{% comment %}
+  Snippet Maestro: Visor de Producto AMAZON PREMIUM (Inyección Forzada)
+{% endcomment %}
+
+<style>
+  #AylAmazon.ayl-amazon-product-container {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+    color: #000 !important;
+    padding: 0 20px 20px 20px !important; /* Eliminamos padding superior para pegar al header */
+    background: #fff !important;
+    display: block !important;
+    width: 100% !important;
+    margin-top: -10px !important; /* Ajuste fino para subir el contenido */
+  }
+
+  /* BLOQUE 1: IDENTIDAD */
+  #AylAmazon .amz-brand { color: #C5A47E; font-size: 11px; font-weight: 700; text-decoration: none; display: block; margin-bottom: 2px; text-transform: uppercase; letter-spacing: 1.5px; }
+  #AylAmazon h1 {
+    font-size: 19px !important;
+    font-weight: 500 !important;
+    line-height: 1.2 !important;
+    margin: 2px 0 10px 0 !important;
+    color: #000 !important;
+    text-align: left !important;
+  }
+
+  #AylAmazon .amz-ratings { display: flex; align-items: center; gap: 4px; margin-bottom: 12px; }
+  #AylAmazon .amz-stars { color: #f90; font-size: 14px; }
+  #AylAmazon .amz-rating-link { color: #007185; font-size: 13px; text-decoration: none; }
+
+  /* GALERÍA AMAZON */
+  #AylAmazon .amz-gallery-outer {
+    position: relative;
+    margin: 0 0 20px 0 !important;
+    background: #ffffff !important;
+    overflow: hidden !important; 
+    display: block !important;
+    width: auto !important;
+  }
+
+  #AylAmazon .amz-main-slider {
+    display: block !important;
+    background: #ffffff !important;
+    width: 100% !important;
+    overflow: hidden !important; /* Previene desbordes horizontales reales */
+  }
+
+  #AylAmazon .amz-slide {
+    height: 480px !important; /* Altura Fija Absoluta para el contenedor de la imagen */
+    position: relative !important;
+    overflow: hidden !important; 
+  }
+
+  #AylAmazon .amz-main-slider img {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important; 
+    object-position: center !important; 
+    background: #ffffff !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+  }
+
+  /* Ocultar fotos extra antes de Slick sin usar display:none que rompe cálculos de Slick */
+  #AylAmazon .amz-main-slider:not(.slick-initialized) .amz-slide:not(:first-child) {
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+  }
+
+  /* REPARAR DOTS (ELIMINAR NÚMEROS) */
+  #AylAmazon .slick-dots { 
+    bottom: 10px !important; 
+    position: absolute; 
+    width: 100%; 
+    list-style: none; 
+    padding: 0; 
+    text-align: center; 
+    z-index: 10;
+    margin: 0 !important;
+  }
+
+  #AylAmazon .slick-dots li { 
+    display: inline-block !important; 
+    margin: 0 4px !important; 
+    width: 8px !important;
+    height: 8px !important;
+    padding: 0 !important;
+  }
+
+  #AylAmazon .slick-dots li button {
+    font-size: 0 !important; /* ELIMINA LOS NÚMEROS */
+    line-height: 0 !important;
+    display: block !important;
+    width: 8px !important;
+    height: 8px !important;
+    padding: 5px !important;
+    cursor: pointer !important;
+    color: transparent !important;
+    border: 0 !important;
+    outline: none !important;
+    background: #ccc !important; /* Puntos inactivos */
+    border-radius: 50% !important;
+    opacity: 0.8 !important;
+  }
+
+  #AylAmazon .slick-dots li.slick-active button {
+    background: #555 !important; /* Punto activo */
+    opacity: 1 !important;
+  }
+
+  #AylAmazon .slick-dots li button:before {
+    display: none !important; /* Elimina cualquier punto extra generado por temas */
+  }
+  #AylAmazon .slick-dots li { display: inline-block; margin: 0 3px; }
+  #AylAmazon .slick-dots li button:before { font-size: 8px !important; color: #ccc !important; opacity: 1 !important; content: '•'; }
+  #AylAmazon .slick-dots li.slick-active button:before { color: #555 !important; }
+
+  /* BLOQUE 2: VARIANTES */
+  #AylAmazon .amz-variants-card {
+    border-top: 1px solid #D5D9D9;
+    padding: 15px 0;
+  }
+  #AylAmazon .amz-var-label { font-size: 14px; font-weight: 700; margin-bottom: 10px; }
+  #AylAmazon .amz-var-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+  #AylAmazon .amz-var-chip {
+    border: 1px solid #D5D9D9;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 13px;
+    background: #fff;
+    cursor: pointer;
+    min-width: 70px;
+    text-align: center;
+  }
+  #AylAmazon .amz-var-chip.active { border: 2px solid #000; background: #000; color: #fff; font-weight: 700; }
+
+  /* BLOQUE 3: INFO DE COMPRA */
+  #AylAmazon .amz-buy-area { margin-top: 10px; }
+  #AylAmazon .amz-price-big-row { display: flex; align-items: flex-start; }
+  #AylAmazon .amz-price-symbol { font-size: 14px; margin-top: 6px; }
+  #AylAmazon .amz-price-integer { font-size: 32px; font-weight: 500; }
+  #AylAmazon .amz-price-decimal { font-size: 14px; margin-top: 6px; }
+
+  #AylAmazon .amz-msi-tag {
+    background: #E7F3F5;
+    color: #007185;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 13px;
+    display: inline-block;
+    margin: 10px 0;
+  }
+
+  #AylAmazon .amz-cta-box { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
+  #AylAmazon .amz-btn { border: none; border-radius: 4px; padding: 18px; font-size: 14px; font-weight: 700; width: 100%; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s ease; }
+  #AylAmazon .amz-btn-add { background: #000; color: #fff; border: 1px solid #000; }
+  #AylAmazon .amz-btn-buy { background: #fff; color: #000; border: 1px solid #000; }
+
+  /* BLOQUE 4: EXTRAS */
+  #AylAmazon .amz-divider { height: 8px; background: #F0F2F2; margin: 25px -15px; }
+
+  @media (min-width: 768px) {
+    #AylAmazon.ayl-amazon-product-container {
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 30px;
+    }
+  }
+</style>
+
+<div id="AylAmazon" class="ayl-amazon-product-container">
+  
+  {% comment %} 1. IDENTIDAD Y FOTO {% endcomment %}
+  <div class="amz-col-visual">
+    <div class="ayl-amz-identity">
+      <a href="{{ product.vendor | url_for_vendor }}" class="amz-brand">{{ product.vendor }}</a>
+      <h1>{{ product.title }}</h1>
+      <div class="amz-ratings">
+        <span class="amz-stars">★★★★☆</span>
+        <span class="amz-rating-link">428 calificaciones</span>
+      </div>
+    </div>
+
+    <div class="amz-gallery-outer">
+      <div class="amz-main-slider" id="AmzSlider-{{ product.id }}">
+        {% for media in product.media %}
+          <div class="amz-slide">
+            <img src="{{ media | img_url: '1024x1024' }}" alt="{{ media.alt }}">
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  {% comment %} 2. VARIANTES Y COMPRA {% endcomment %}
+  <div class="amz-col-info">
+    {% unless product.has_only_default_variant %}
+      <div class="amz-variants-card">
+        {% for option in product.options_with_values %}
+          {% if option.values.size > 1 %}
+            <div class="amz-var-label">{{ option.name }}: <b>{{ option.selected_value }}</b></div>
+            <div class="amz-var-grid" style="margin-bottom: 20px;">
+              {% for value in option.values %}
+                <div class="amz-var-chip {% if option.selected_value == value %}active{% endif %}" onclick="location.href='?variant={{ product.variants[forloop.index0].id }}'">
+                  {{ value }}
+                </div>
+              {% endfor %}
+            </div>
+          {% else %}
+            <div class="amz-var-label" style="margin-bottom: 20px;">{{ option.name }}: <span style="font-weight: 400; text-transform: uppercase; color: #555;">{{ option.selected_value }}</span></div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endunless %}
+
+    <div class="amz-buy-area">
+      {% assign current_variant = product.selected_or_first_available_variant %}
+      {% assign price_split = current_variant.price | money_without_currency | split: '.' %}
+      
+      <div class="amz-price-big-row">
+        <span class="amz-price-symbol">$</span>
+        <span class="amz-price-integer">{{ price_split[0] }}</span>
+        <span class="amz-price-decimal">{{ price_split[1] | default: '00' }}</span>
+        <span class="amz-price-currency" style="font-size: 14px; font-weight: 700; color: #C5A47E; margin-left: 6px; margin-top: 6px;">{{ cart.currency.iso_code }}</span>
+      </div>
+
+      <div class="amz-msi-tag">Hasta 15 meses sin intereses de $ {{ current_variant.price | divided_by: 15 | money_without_currency }}</div>
+
+      <div class="amz-cta-box">
+        <form action="/cart/add" method="post" enctype="multipart/form-data" id="amz-form-{{ product.id }}">
+          <input type="hidden" name="id" value="{{ current_variant.id }}" id="amz-variant-id-{{ product.id }}">
+          <button type="submit" class="amz-btn amz-btn-add" style="margin-bottom: 10px;">Agregar al carrito</button>
+          <button type="button" class="amz-btn amz-btn-buy" id="amz-buy-btn-{{ product.id }}">Comprar ahora</button>
+        </form>
+      </div>
+
+      <!-- TABS INTEGRADOS (POSICIÓN SUPERIOR) -->
+      <div style="margin-top: 20px;">
+         {% render 'product-tabs', product: product, section: section %}
+      </div>
+    </div>
+  </div>
+
+  {% comment %} 4. EXTRAS {% endcomment %}
+  <div class="amz-extras" style="grid-column: 1 / -1;">
+    <div class="amz-divider"></div>
+
+    <div class="amz-extra-section" id="judgeme_product_reviews">
+      <div style="font-size: 17px; font-weight: 700; margin-bottom: 15px;">Reseñas de clientes</div>
+      <div class='jdgm-widget jdgm-review-widget' data-id='{{ product.id }}'>
+        {{ product.metafields.judgeme.widget }}
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<script>
+  (function() {
+    /* ── Slider de imágenes ──────────────────────────────────── */
+    function initAmzSlider() {
+      var $slider = $('#AmzSlider-{{ product.id }}');
+      if ($slider.length && typeof $.fn.slick !== 'undefined' && !$slider.hasClass('slick-initialized')) {
+        $slider.slick({
+          dots: true,
+          arrows: false,
+          infinite: false,
+          adaptiveHeight: true,
+          slidesToShow: 1,
+          mobileFirst: true,
+          swipe: true,
+          touchMove: true
+        });
+      }
+    }
+    $(document).ready(initAmzSlider);
+    window.addEventListener('load', initAmzSlider);
+    if (document.readyState === 'complete') setTimeout(initAmzSlider, 500);
+    document.addEventListener('shopify:section:load', function() { setTimeout(initAmzSlider, 200); });
+
+    /* ── Botón "Comprar ahora" — Fix Bug ─────────────────────── */
+    /*
+     * PROBLEMA: el botón iba directo a /checkout sin agregar el producto
+     *           al carrito → Shopify redirigía al inicio (carrito vacío).
+     * SOLUCIÓN: fetch POST a /cart/add con la variante seleccionada,
+     *           luego redirect a /checkout.
+     */
+    document.addEventListener('DOMContentLoaded', function() {
+      var buyBtn = document.getElementById('amz-buy-btn-{{ product.id }}');
+      if (!buyBtn) return;
+
+      buyBtn.addEventListener('click', function() {
+        /* Obtener la variante del input oculto (puede haber cambiado si el usuario eligió variante) */
+        var variantInput = document.getElementById('amz-variant-id-{{ product.id }}');
+        var variantId = variantInput ? variantInput.value : '{{ current_variant.id }}';
+
+        if (!variantId) {
+          alert('Por favor selecciona una variante antes de continuar.');
+          return;
+        }
+
+        /* Estado de carga en el botón */
+        buyBtn.textContent = 'Procesando...';
+        buyBtn.disabled = true;
+        buyBtn.style.opacity = '0.7';
+
+        /* Agregar al carrito mediante Fetch */
+        fetch('/cart/add.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ id: variantId, quantity: 1 })
+        })
+        .then(function(res) {
+          if (!res.ok) throw new Error('No se pudo agregar al carrito');
+          return res.json();
+        })
+        .then(function() {
+          /* Éxito: ir a checkout */
+          window.location.href = '/checkout';
+        })
+        .catch(function(err) {
+          console.error('Error al agregar al carrito:', err);
+          buyBtn.textContent = 'Comprar ahora';
+          buyBtn.disabled = false;
+          buyBtn.style.opacity = '1';
+          alert('Hubo un problema al procesar tu compra. Inténtalo de nuevo.');
+        });
+      });
+    });
+  })();
+</script>

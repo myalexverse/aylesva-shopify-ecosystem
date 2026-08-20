@@ -1,0 +1,60 @@
+
+{% if settings.show_site_cookie %}
+
+<div class="cookiestatus">
+<div class="cookie-block {{settings.cookie_style}}">
+        <div id="cookie_message" class="cookie-message-block">
+            <div class="tt-global-inner {% if settings.cookie_style == 'full_bottom' and settings.cookie_style == 'bottom_fix' %} container{% endif %}">
+              <div class="tt-cookie-inner">
+                <span>{{settings.cookie_desc}}<a href="{% if settings.link_url %}{{settings.link_url}}{% else %}#{% endif %}" class="c_link" target="_blank"><strong> {{settings.link_title}}</strong></a></span>
+                <button class="btn" onclick="closeWdCookie()">{{settings.c_btn_txt}}</button>
+              {% if settings.d_btn_txt != blank %}
+              <a class="btn dclinebtn"  href="{{ settings.d_btn_url }}">
+                <span>{{ settings.d_btn_txt }}</span>
+              </a>
+            {% endif %}
+              </div>
+            </div>
+            </div>
+      </div>
+</div>
+<style>
+  .cookie-block #cookie_message{background:{{settings.cookie_bg}};}
+  .cookie-block #cookie_message .tt-cookie-inner > span{color:{{settings.cookie_txt_clr}};}
+  .cookie-block #cookie_message .tt-cookie-inner span a.c_link{color:{{settings.cookie_txt_link_clr}};}
+  .cookie-block #cookie_message .tt-cookie-inner button{color:{{settings.btn_txt_clr}};background:{{settings.btn_bg_clr}};}
+  .cookie-block #cookie_message .tt-cookie-inner button:hover,
+  .cookie-block #cookie_message .tt-cookie-inner button::after,
+  .cookie-block #cookie_message .tt-cookie-inner button:focus,
+  .cookie-block #cookie_message .tt-cookie-inner button:active{color:{{settings.btn_txt_hvr_clr}};background:{{settings.btn_bg_hvr_clr}};}
+</style>
+<script>
+  var cook = 'site_cookie';
+  if($.cookie(cook) != null){
+  	$('.cookie-block').addClass('cookie-close');
+  }
+   function setcookie()
+  {    
+    var vartostr = '1';
+    var expire = new Date();
+    expire.setMonth(expire.getMonth()+12);
+    document.cookie = cook + "=" + escape(vartostr) +";path=/" + ((expire==null)?"" : ("; expires=" + expire.toGMTString()))
+  }
+   function SE_CheckCookies () {
+       if($.cookie(cook)!=1) {
+         var cookies_message = document.getElementById("cookie_message");
+         cookies_message.className += " se-cookies-message-open";
+      }
+  }
+  function closeWdCookie()
+  {
+    $('#cookie_message').slideUp();
+    $('.cookie-block').addClass('cookie-close');
+    setcookie();
+  }
+  document.addEventListener('DOMContentLoaded', function () {
+    SE_CheckCookies();
+  });
+</script>
+
+  {% endif %}

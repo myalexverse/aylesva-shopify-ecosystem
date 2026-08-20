@@ -1,0 +1,971 @@
+[
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "camaras-1"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "celulares"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "damas-spot"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "dji"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "tenis"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "yeti"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "mujer"
+  },
+  {
+    "exists": null,
+    "has_products": null,
+    "error": "HTTPSConnectionPool(host='aylesvamx.myshopify.com', port=443): Read timed out. (read timeout=10)",
+    "handle": "hombre"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "nino"
+  },
+  {
+    "exists": null,
+    "has_products": null,
+    "error": "HTTPSConnectionPool(host='aylesvamx.myshopify.com', port=443): Read timed out. (read timeout=10)",
+    "handle": "nina"
+  },
+  {
+    "exists": null,
+    "has_products": null,
+    "error": "HTTPSConnectionPool(host='aylesvamx.myshopify.com', port=443): Max retries exceeded with url: /collections/bebe/products.json?limit=1 (Caused by ConnectTimeoutError(<HTTPSConnection(host='aylesvamx.myshopify.com', port=443) at 0x106109310>, 'Connection to aylesvamx.myshopify.com timed out. (connect timeout=10)'))",
+    "handle": "bebe"
+  },
+  {
+    "exists": null,
+    "has_products": null,
+    "error": "HTTPSConnectionPool(host='aylesvamx.myshopify.com', port=443): Max retries exceeded with url: /collections/artesanal/products.json?limit=1 (Caused by ConnectTimeoutError(<HTTPSConnection(host='aylesvamx.myshopify.com', port=443) at 0x106109c40>, 'Connection to aylesvamx.myshopify.com timed out. (connect timeout=10)'))",
+    "handle": "artesanal"
+  },
+  {
+    "exists": null,
+    "has_products": null,
+    "error": "HTTPSConnectionPool(host='aylesvamx.myshopify.com', port=443): Max retries exceeded with url: /collections/hogar/products.json?limit=1 (Caused by ConnectTimeoutError(<HTTPSConnection(host='aylesvamx.myshopify.com', port=443) at 0x106109c40>, 'Connection to aylesvamx.myshopify.com timed out. (connect timeout=10)'))",
+    "handle": "hogar"
+  },
+  {
+    "exists": null,
+    "has_products": null,
+    "error": "HTTPSConnectionPool(host='aylesvamx.myshopify.com', port=443): Max retries exceeded with url: /collections/alimentos/products.json?limit=1 (Caused by ConnectTimeoutError(<HTTPSConnection(host='aylesvamx.myshopify.com', port=443) at 0x106109280>, 'Connection to aylesvamx.myshopify.com timed out. (connect timeout=10)'))",
+    "handle": "alimentos"
+  },
+  {
+    "exists": null,
+    "has_products": null,
+    "error": "HTTPSConnectionPool(host='aylesvamx.myshopify.com', port=443): Max retries exceeded with url: /collections/electronicos/products.json?limit=1 (Caused by ConnectTimeoutError(<HTTPSConnection(host='aylesvamx.myshopify.com', port=443) at 0x106047130>, 'Connection to aylesvamx.myshopify.com timed out. (connect timeout=10)'))",
+    "handle": "electronicos"
+  },
+  {
+    "exists": null,
+    "has_products": null,
+    "error": "HTTPSConnectionPool(host='aylesvamx.myshopify.com', port=443): Max retries exceeded with url: /collections/vehiculos/products.json?limit=1 (Caused by ConnectTimeoutError(<HTTPSConnection(host='aylesvamx.myshopify.com', port=443) at 0x106112be0>, 'Connection to aylesvamx.myshopify.com timed out. (connect timeout=10)'))",
+    "handle": "vehiculos"
+  },
+  {
+    "exists": null,
+    "has_products": null,
+    "error": "HTTPSConnectionPool(host='aylesvamx.myshopify.com', port=443): Max retries exceeded with url: /collections/ropa-mujer/products.json?limit=1 (Caused by ConnectTimeoutError(<HTTPSConnection(host='aylesvamx.myshopify.com', port=443) at 0x1060a7370>, 'Connection to aylesvamx.myshopify.com timed out. (connect timeout=10)'))",
+    "handle": "ropa-mujer"
+  },
+  {
+    "exists": null,
+    "has_products": null,
+    "error": "HTTPSConnectionPool(host='aylesvamx.myshopify.com', port=443): Max retries exceeded with url: /collections/calzado-mujer/products.json?limit=1 (Caused by ConnectTimeoutError(<HTTPSConnection(host='aylesvamx.myshopify.com', port=443) at 0x1060a7040>, 'Connection to aylesvamx.myshopify.com timed out. (connect timeout=10)'))",
+    "handle": "calzado-mujer"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "ropa-interior-y-lenceria"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "joyeria-y-accesorios"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "bolsas-y-carteras"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "accesorios-de-moda"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "belleza-y-cuidado-personal"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "maternidad"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "ropa-hombre"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "calzado-hombre"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "ropa-interior-hombre"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "accesorios-hombre"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "joyeria"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "cuidado-personal"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "ropa-nino"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "calzado-nino"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "ropa-interior-nino"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "accesorios-nino"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "ropa-nina"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "calzado-nina"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "ropa-interior-nina"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "accesorios-nina"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "ropa-bebe"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "calzado-bebe"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "ropa-interior-y-panaleria"
+  },
+  {
+    "exists": null,
+    "has_products": null,
+    "error": "HTTPSConnectionPool(host='aylesvamx.myshopify.com', port=443): Read timed out. (read timeout=10)",
+    "handle": "accesorios-bebe"
+  },
+  {
+    "exists": null,
+    "has_products": null,
+    "error": "HTTPSConnectionPool(host='aylesvamx.myshopify.com', port=443): Max retries exceeded with url: /collections/higiene-y-cuidado/products.json?limit=1 (Caused by ConnectTimeoutError(<HTTPSConnection(host='aylesvamx.myshopify.com', port=443) at 0x100be4bb0>, 'Connection to aylesvamx.myshopify.com timed out. (connect timeout=10)'))",
+    "handle": "higiene-y-cuidado"
+  },
+  {
+    "exists": null,
+    "has_products": null,
+    "error": "HTTPSConnectionPool(host='aylesvamx.myshopify.com', port=443): Max retries exceeded with url: /collections/textiles-y-tejidos/products.json?limit=1 (Caused by ConnectTimeoutError(<HTTPSConnection(host='aylesvamx.myshopify.com', port=443) at 0x1061128e0>, 'Connection to aylesvamx.myshopify.com timed out. (connect timeout=10)'))",
+    "handle": "textiles-y-tejidos"
+  },
+  {
+    "exists": null,
+    "has_products": null,
+    "error": "HTTPSConnectionPool(host='aylesvamx.myshopify.com', port=443): Max retries exceeded with url: /collections/ceramica-y-barro/products.json?limit=1 (Caused by ConnectTimeoutError(<HTTPSConnection(host='aylesvamx.myshopify.com', port=443) at 0x106112370>, 'Connection to aylesvamx.myshopify.com timed out. (connect timeout=10)'))",
+    "handle": "ceramica-y-barro"
+  },
+  {
+    "exists": null,
+    "has_products": null,
+    "error": "HTTPSConnectionPool(host='aylesvamx.myshopify.com', port=443): Max retries exceeded with url: /collections/madera/products.json?limit=1 (Caused by ConnectTimeoutError(<HTTPSConnection(host='aylesvamx.myshopify.com', port=443) at 0x10610f6d0>, 'Connection to aylesvamx.myshopify.com timed out. (connect timeout=10)'))",
+    "handle": "madera"
+  },
+  {
+    "exists": null,
+    "has_products": null,
+    "error": "HTTPSConnectionPool(host='aylesvamx.myshopify.com', port=443): Max retries exceeded with url: /collections/joyeria-artesanal/products.json?limit=1 (Caused by ConnectTimeoutError(<HTTPSConnection(host='aylesvamx.myshopify.com', port=443) at 0x106112370>, 'Connection to aylesvamx.myshopify.com timed out. (connect timeout=10)'))",
+    "handle": "joyeria-artesanal"
+  },
+  {
+    "exists": null,
+    "has_products": null,
+    "error": "HTTPSConnectionPool(host='aylesvamx.myshopify.com', port=443): Max retries exceeded with url: /collections/cuero-y-piel/products.json?limit=1 (Caused by ConnectTimeoutError(<HTTPSConnection(host='aylesvamx.myshopify.com', port=443) at 0x106112d30>, 'Connection to aylesvamx.myshopify.com timed out. (connect timeout=10)'))",
+    "handle": "cuero-y-piel"
+  },
+  {
+    "exists": null,
+    "has_products": null,
+    "error": "HTTPSConnectionPool(host='aylesvamx.myshopify.com', port=443): Max retries exceeded with url: /collections/papel-y-carton/products.json?limit=1 (Caused by ConnectTimeoutError(<HTTPSConnection(host='aylesvamx.myshopify.com', port=443) at 0x106047100>, 'Connection to aylesvamx.myshopify.com timed out. (connect timeout=10)'))",
+    "handle": "papel-y-carton"
+  },
+  {
+    "exists": null,
+    "has_products": null,
+    "error": "HTTPSConnectionPool(host='aylesvamx.myshopify.com', port=443): Max retries exceeded with url: /collections/vidrio-y-cristal/products.json?limit=1 (Caused by ConnectTimeoutError(<HTTPSConnection(host='aylesvamx.myshopify.com', port=443) at 0x1060a7130>, 'Connection to aylesvamx.myshopify.com timed out. (connect timeout=10)'))",
+    "handle": "vidrio-y-cristal"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "metal"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "piedra"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "arte-decorativo-y-pinturas"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "velas-y-aromaterapia-artesanal"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "juguetes-y-muncos-tradicionales"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "instrumentos-musicales-artesanales"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "muebles"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "decoracion-del-hogar"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "iluminacion"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "cocina-y-comedor"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "bano"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "recamara"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "recamara-y-ropa-de-cama"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "jardin"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "jardin-y-exterior"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "organizacion-y-almacenamiento"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "arte-y-coleccionables"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "alimentos-artesanales"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "bebidas-artesanales"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "productos-organicos"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "productos-organicos-y-naturales"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "reposteria"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "reposteria-y-panaderia"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "regalos-gourmet"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "canastas-y-regalos-gourmet"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "telefonos"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "telefonos-y-comunicacion"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "computadoras"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "computadoras-y-laptops"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "audio-y-video"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "audio-y-sonido"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "television-y-video"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "fotografia-y-video"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "videojuegos"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "electrodomesticos"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "gadgets"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "wearables-y-gadgets"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "redes-e-internet"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "energia-y-carga"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "seguridad-electronica"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "automoviles"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "motocicletas"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "vehiculos-trabajo"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "vehiculos-de-carga-y-trabajo"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "refacciones"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "accesorios-y-refacciones"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "vehiculos-recreativos"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "transporte-publico-y-comercial"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "all"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "frontpage"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "on-sale"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "ofertas"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "saldos"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "mayoreo"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "2x1"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "blusas-y-camisas"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "vestidos-mujer"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "faldas-mujer"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "pantalones-y-jeans-mujer"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "shorts-y-bermudas-mujer"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "abrigos-y-chaquetas-mujer"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "sudaderas-y-hoodies-mujer"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "trajes-y-blazers-mujer"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "ropa-deportiva-mujer"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "pijamas-y-ropa-de-dormir-mujer"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "overoles-y-monos-mujer"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "tacones-y-stilettos"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "sandalias-mujer"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "flats-y-bailarinas"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "botas-y-botines-mujer"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "tenis-y-sneakers-mujer"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "zapatos-de-trabajo"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "pantuflas-y-chanclas"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "plataformas"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "brasieres-y-bras"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "panties-y-calzones"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "bodies"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "fajas-y-moldeadores"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "medias-y-calcetas"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "pijamas-y-lenceria"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "collares"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "aretes-y-pendientes"
+  },
+  {
+    "exists": null,
+    "has_products": null,
+    "handle": "pulseras-y-brazaletes"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "anillos-mujer"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "relojes-mujer"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "bolsas-de-mano"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "mochilas-mujer"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "clutches-y-sobre"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "bolsas-de-playa"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "carteras-y-billeteras-mujer"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "tote-bags"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "cinturones-mujer"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "bufandas-y-chales"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "gorros-y-sombreros-mujer"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "lentes-de-sol-mujer"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "diademas-y-accesorios-para-el-cabello-mujer"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "maquillaje"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "skincare-cuidado-de-la-piel"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "perfumes-y-fragancias"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "cuidado-del-cabello-mujer"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "cuidado-de-unas"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "ropa-de-embarazo"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "ropa-de-lactancia"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "fajas-postparto"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "camisas-formales-y-casuales"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "camisetas-y-polos-hombre"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "pantalones-y-jeans-hombre"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "shorts-y-bermudas-hombre"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "trajes-y-blazers-hombre"
+  },
+  {
+    "exists": null,
+    "has_products": null,
+    "handle": "abrigos-y-chaquetas-hombre"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "sudaderas-y-hoodies-hombre"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "ropa-deportiva-hombre"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "pijamas-y-ropa-de-dormir-hombre"
+  },
+  {
+    "exists": null,
+    "has_products": null,
+    "handle": "zapatos-formales"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "botas-y-botines-hombre"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "botas-exoticas"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "tenis-y-sneakers-hombre"
+  },
+  {
+    "exists": null,
+    "has_products": null,
+    "handle": "sandalias-y-chanclas"
+  },
+  {
+    "exists": null,
+    "has_products": null,
+    "handle": "mocasines-y-loafers"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "pantuflas-hombre"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "calzoncillos-y-boxers"
+  },
+  {
+    "exists": null,
+    "has_products": null,
+    "handle": "camisetas-interiores-hombre"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "medias-y-calcetines-hombre"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "pijamas-hombre"
+  },
+  {
+    "exists": null,
+    "has_products": null,
+    "handle": "cinturones-hombre"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "corbatas-y-panuelos"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "relojes-hombre"
+  },
+  {
+    "exists": null,
+    "has_products": null,
+    "handle": "lentes-de-sol-hombre"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "gorras-y-sombreros-hombre"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "maletines-y-mochilas"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "anillos-hombre"
+  },
+  {
+    "exists": null,
+    "has_products": null,
+    "handle": "pulseras"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "cadenas-y-collares"
+  },
+  {
+    "exists": true,
+    "has_products": true,
+    "handle": "aretes"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "perfumes-y-colonias"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "cuidado-de-la-barba"
+  },
+  {
+    "exists": null,
+    "has_products": null,
+    "handle": "skincare-masculino"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "cuidado-del-cabello-hombre"
+  },
+  {
+    "exists": true,
+    "has_products": false,
+    "handle": "camisas-vaqueras-y-de-broche"
+  },
+  {
+    "exists": null,
+    "has_products": null,
+    "handle": "chalecos-blazers-y-chamarras"
+  }
+]

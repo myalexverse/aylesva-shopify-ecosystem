@@ -1,0 +1,214 @@
+{% comment %}
+Rich snippets (itemscope, itemtype, etc.) for products are a theme requirement,
+and allow search engines to easily understand what the content is.
+For more information on these Scheme.org tags, visit:
+- http://schema.org/docs/gs.html
+{% endcomment %}
+{% comment %}Check if the product is sold out and set a variable to be used below.{% endcomment %}
+{% assign sold_out = true %}
+{% if product.available  %}
+{% assign sold_out = false %}
+{% endif %}
+<div itemscope itemtype="http://schema.org/Product" id="ProductSection" data-section-id="{{ section.id }}" data-section-type="product-template" data-zoom-enable="{{ section.settings.product_image_zoom_enable }}">
+  <div class="product-single {{ section.settings.thumb_position }} {{ settings.product_layout }}"> 
+    <div class="product-single-wrap">
+      {% comment %} VISOR AMAZON PREMIUM (REDISEÑO TOTAL DESDE CERO) {% endcomment %}
+      {% render "ayl-amazon-product-viewer", product: product, section: section, sold_out: sold_out %}
+    </div>
+
+    <div class="product-single__description rte col-xs-12">
+      <div class="product_tab_wrapper">
+        <ul class="tabs nav nav-tabs">
+          <li class="active"><a data-toggle="tab"  href="#tab-1">{{ 'products.product.description' | t }}</a></li>
+          {% if product.metafields.spr.reviews != "" %}
+          <li><a href="#tab-2" data-toggle="tab">{{ 'products.product.reviews' | t }}</a></li>
+          {% endif %}
+        </ul>
+        <div class="tab-container">
+          <div id="tab-1"  class="tab-pane fade in active">
+            {{ product.description }}
+          </div>
+          {% if product.metafields.spr.reviews != "" %}
+          <div id="tab-2"  class="tab-pane fade">
+           <!-- Start of Judge.me code --><div style='clear:both'></div><div id='judgeme_product_reviews' class='jdgm-widget jdgm-review-widget' data-product-title='{{ product.title | escape }}' data-id='{{ product.id }}' data-auto-install='false'>{{ product.metafields.judgeme.widget }}</div><!-- End of Judge.me code -->
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    {% if section.settings.related_products_enable %}     
+    {% include 'related-products' %}
+    {% endif %}
+    {% include 'recently-viewed-product' %}
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span class="mdi mdi-close"></span></button>
+          <h4 class="modal-title">{{ section.settings.sizechart_lable }}</h4>
+        </div>
+        <div class="modal-body">
+          <div>{{ section.settings.sizechart_info }}</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>    
+{% unless product == empty %}
+<script type="application/json" id="ProductJson-{{ section.id }}">{{ product | json }}</script>
+<script type="application/json" id="ModelJson-{{ section.id }}">{{ product.media | where: 'media_type', 'model' | json }}</script>
+{% endunless %}
+{% comment %}
+To take advantage of a callback on the select dropdown, add option_selection.js
+and customize the JS in timber.productPage as needed.
+Currently, timber.productPage does the following:
+- Hides your <select> tag from above
+- Breaks out the product variants into separate product options, if more than one exists
+- Generates a <select> tag for each product option
+- Enables/disables elements based on variant availability
+Callback notes:
+- Keep the callback available to the global scope (window.selectCallback) so that advanced
+addons can override it.
+* E.g. multiple currencies http://docs.shopify.com/manual/configuration/store-customization/currencies-and-translations/currencies/how-to-toggle-between-two-currencies
+{% endcomment %}
+{{ 'option_selection.js' | shopify_asset_url | script_tag }}
+{{ 'printThis.js' | asset_url | script_tag }}
+{{ 'threesixty.min.js' | asset_url | script_tag }}  
+{% if section.settings.thumb_position == 'vertical_left' or section.settings.thumb_position == 'vertical_right' %}
+<script>
+  window.thumb_position = "vertical";
+</script>  
+{% endif %}
+<script>window.number_of_thumb = {{ section.settings.number_of_thumb }};
+{% for media in product.media %}
+{% case media.media_type %}
+{% when 'video' %}
+jQuery('.video-source video').attr('controls',true);
+  {% endcase %}
+  {% endfor %}
+  $(document).ready(function() {
+    $('.print').on('click', function(e) {
+
+      $('.preview-print').printThis({
+        importStyle: $(this).hasClass('importStyle')
+      });
+    });
+  });
+</script>  
+{% schema %}
+{
+"name": "Product page",
+"settings": [
+{
+"type": "checkbox",
+"id": "product_vendor_enable",
+"label": "Show product vendor"
+},
+{
+"type": "checkbox",
+"id": "product_image_zoom_enable",
+"label": "Enable image zoom"
+},
+{
+"type": "checkbox",
+"id": "related_products_enable",
+"label": "Show related products"
+},
+{
+"type": "checkbox",
+"id": "product_qty_enable",
+"label": "Show quantity selector"
+},
+{
+"type": "checkbox",
+"id": "share_enable",
+"label": "Enable product sharing"
+},
+{
+"type": "checkbox",
+"id": "enable_payment_button",
+"label": "Show dynamic checkout button",
+"default": true
+},
+{
+"type": "text",
+"id": "pro_img_widthheight",
+"default": "600x600",
+"label": "image width and height (widthxheight) format"
+},
+{
+"type": "text",
+"id": "pro_thumb_img_widthheight",
+"default": "100x100",
+"label": "thumb image width and height (widthxheight) format"
+},
+{
+"type": "select",
+"id": "thumb_position",
+"label": "Select Product Thumb Position",
+"default": "horizontal_bottom",
+"options": [
+{
+"value": "horizontal_bottom",
+"label": "Horizontal Bottom"
+},
+{
+"value": "vertical_left",
+"label": "Vertcal Left"
+},
+{
+"value": "vertical_right",
+"label": "Vertcal Right"
+}
+]
+},
+{
+"type": "select",
+"id": "number_of_thumb",
+"label": "Select Number of Product Thumb",
+"default": "3",
+"options": [
+{
+"value": "3",
+"label": "3 Thumbs"
+},
+{
+"value": "4",
+"label": "4 Thumbs"
+},
+{
+"value": "5",
+"label": "5 Thumbs"
+}
+]
+},
+{
+"type": "header",
+"content": "size chart"
+},
+{
+"type": "checkbox",
+"id": "sizechart_enable",
+"label": "Show Size chart"
+},
+{
+"type": "text",
+"id": "sizechart_lable",
+"default": "size chart",
+"label": "size chart"
+},
+{
+"type": "textarea",
+"id": "sizechart_info",
+"label": "size guide information"
+}
+]
+}
+{% endschema %}

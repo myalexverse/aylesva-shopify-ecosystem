@@ -1,0 +1,221 @@
+<div {% if settings.enable_animation != blank %} data-aos="fade-up" {% endif %} class="page-width brands_slider_wrap" data-section-id="{{ section.id }}" >
+  <div class="container">
+    {%- assign product_limit =  n -%}
+    <div class="brands">
+      {% if section.settings.title != blank %}
+      <div class="section-header text-center">
+        <h2 class="tt-title">{{ section.settings.title | escape }}</h2>
+      </div>
+      {% endif %}
+      <div class="brand-bar{% if section.settings.title_enable %} brand-bar--large{% endif %}">
+        <div id="{{ section.settings.addclass }}_list_slider" class="tt-brand_slider owl-carousel product_col_desktop_pro{{ section.settings.product_col_desktop_pro }} product_col_mobile_pro{{ section.settings.product_col_mobile_pro }}">
+          {% if section.blocks.size > 0 %}
+          {% for block in section.blocks limit:product_limit %}
+          <div class="brand-bar__item{% if section.settings.title_enable %} brand-bar__item--large{% endif %}" {{ block.shopify_attributes }}>
+            {% if block.settings.link != blank %}
+            <a href="{{ block.settings.link }}" class="brand-bar__link">
+              {% endif %}
+              {% if block.settings.image != blank %}
+              <img loading="lazy" height="100px" width="140px" src="{{  block.settings.image | img_url: "master" }}" alt="brand-bar__image" />
+              {% else %}
+              {{ 'logo' | placeholder_svg_tag: 'placeholder-svg' }}
+              {% endif %}
+              {% if block.settings.link != blank %}
+            </a>
+            {% endif %}
+          </div>
+          {% endfor %}
+        </div>
+        <div class="customNavigation">
+          <div class="navigation_wrap">
+            <a class="mdi brand_prev prev">{{ 'general.slider.prev' | t }}</a>
+            <a class="mdi brand_next next">{{ 'general.slider.next' | t }}</a>
+          </div>
+        </div>
+      </div>   
+      {% endif %}
+      {% if section.blocks.size == 0 %}
+      {% render 'no-blocks' %}
+      {% endif %}
+    </div>
+  </div>
+</div>
+<style>{% if section.settings.bg != blank %}.brands_slider_wrap .brands{background-color:{{section.settings.bg}};}{% endif %}</style>
+
+
+<script>
+  $(document).ready(function() {
+
+    var brandsowl = $("body:not(.rtl) #brands_list_slider");
+  var brandsowlrtl = $("body.rtl #brands_list_slider");
+  brandsowl.owlCarousel({
+    items: {{section.settings.product_col_desktop_pro}},
+    dots: !1,
+    loop: !1,
+    autoplay: !0,
+    autoplaySpeed: 1500,
+    autoplayHoverPause: true,
+    nav: !0,
+    responsive: {
+      100: {
+        items: 2
+      },
+      320: {
+        items: {{section.settings.product_col_mobile_pro}}
+      },
+      544: {
+        items: 3
+      },
+      992: {
+        items: 4
+      },
+      1200: {
+        items: 5
+      },
+      1630: {
+        items: {{section.settings.product_col_desktop_pro}}
+      }
+    }
+  });
+  brandsowlrtl.owlCarousel({
+    items: {{section.settings.product_col_desktop_pro}},
+    dots: !1,
+    loop: !1,
+    nav: !0,
+    autoplay: !0,
+    autoplaySpeed: 1500,
+    autoplayHoverPause: true,
+    rtl: !0,
+    responsive: {
+      100: {
+        items: 2
+      },
+      320: {
+        items: {{section.settings.product_col_mobile_pro}}
+      },
+      544: {
+        items: 3
+      },
+      992: {
+        items: 4
+      },
+      1200: {
+        items: 5
+      },
+      1630: {
+        items: {{section.settings.product_col_desktop_pro}}
+      }
+    }
+  });
+  $('.brand-bar').each(function() {
+    if ($(this).find('.owl-nav').hasClass('disabled')) {
+      $(this).find('.customNavigation').hide()
+    } else {
+      $(this).find('.customNavigation').show()
+    }
+  });
+  $(".brand_next").click(function() {
+    $(".tt-brand_slider").trigger('next.owl')
+  });
+  $(".brand_prev").click(function() {
+    $(".tt-brand_slider").trigger('prev.owl')
+  });
+});    
+</script>
+
+
+{% schema %}
+{
+"name": "Brand list",
+"class": "index-section",
+"settings": [
+
+
+          {
+"type": "range",
+"id": "product_col_desktop_pro",
+"min": 2,
+"max": 20,
+"step": 1,
+"label": "Number of columns on Desktop",
+"default": 6
+},
+
+
+{
+"type": "range",
+"id": "product_col_mobile_pro",
+"min": 1,
+"max": 5,
+"step": 1,
+"label": "Number of columns on Mobile",
+"default": 2
+},
+
+  
+{
+"type": "text",
+"id": "addclass",
+"label": "Add Class",
+"default": "brands"
+},
+{
+"type": "text",
+"id": "title",
+"label": "Heading",
+"default": "Brand list"
+},
+{
+"type": "color",
+"id": "bg",
+"label": "background color",
+"default": "#fff"
+}
+],
+"blocks": [
+{
+"type": "brand_image",
+"name": "Brand",
+"settings": [
+{
+"type": "image_picker",
+"id": "image",
+"label": "Image"
+},
+{
+"type": "url",
+"id": "link",
+"label": "Link",
+"info": "Optional"
+}
+]
+}
+],
+"presets": [
+{
+"name": "Brand list",
+"category": "Image",
+"blocks": [
+{
+"type": "brand_image"
+},
+{
+"type": "brand_image"
+},
+{
+"type": "brand_image"
+},
+{
+"type": "brand_image"
+},
+{
+"type": "brand_image"
+},
+{
+"type": "brand_image"
+}
+]
+}
+]
+}
+{% endschema %}

@@ -1,0 +1,136 @@
+{% if section.settings.show_notification %}
+  <section class="product-notification pos-{{section.settings.notify_product_pos}}" data-time="{{section.settings.delay_time}}">
+      <a class="closeNotify">
+        <i class="mdi mdi-close" aria-hidden="true"></i>
+      </a>    
+      <div class="product-suggest">
+        <a class="product-image" href=""><img loading="lazy" src="" alt=""></a>
+        <div class="column-right">
+          <label>
+            <span class="lang1">{{section.settings.product_title}}</span>
+          </label>
+          <a class="product-name" href=""></a>
+          <div class="product-price"></div>
+          <div class="from-ago"></div>
+          <div class="time-ago"></div>
+        </div>
+      </div>
+      <div class="hide">
+        {% for block in section.blocks %}
+            {%- assign product_id = 'add_product' | append:i -%}
+            {%- assign block_product_id = block.settings[product_id] -%}
+            {%- if block_product_id != blank -%}
+            {% assign product = all_products[block_product_id] %}
+            {%- unless check_product_id contains product.id -%}
+              <div class="data-product" data-id="{{ product.id }}" data-image="{{ product.featured_image.src | img_url: '600x800' }}" data-url="{{ product.url | within: collection }}" data-title="{{ product.featured_image.alt }}" data-price="{{ product.price |money }}" data-alt="{{ product.featured_image.alt }}" data-local="{{  block.settings.product_location }}" data-time="{{  block.settings.product_time }}"></div>    
+            {%- endunless -%}
+            {%- endif -%}	
+        {% endfor %}	
+      </div>
+  </section>
+{% endif %}
+<script>
+function SomeonePurchased() {
+    if(window.innerWidth > 767 ){
+      if (jQuery.cookie('pr_notification') == 'closed') {
+        jQuery('.product-notification').remove();
+      }
+      jQuery('.closeNotify').bind('click',function(){
+        jQuery('.product-notification').remove();
+        jQuery.cookie('pr_notification', 'closed', {expires:1, path:'/'});
+      });  
+      function toggleSomething() {
+        if($('.product-notification').hasClass('active')){
+          $('.product-notification').removeClass('active')
+        }
+        else{     
+          var number=$('.data-product').length,
+              i = Math.floor(Math.random() * number),         
+              images = $('.product-notification .data-product:eq('+i+')').data('image'),
+              title = $('.product-notification .data-product:eq('+i+')').data('title'),
+              url = $('.product-notification .data-product:eq('+i+')').data('url'),
+              local =  $('.product-notification .data-product:eq('+i+')').data('local'),
+              times =$('.product-notification .data-product:eq('+i+')').data('time');
+
+          $('.product-notification').addClass('active');
+          $('.product-notification .product-image').find('img').attr('src', images );
+          $('.product-notification .product-name').text(title).attr('href', url );
+          $('.product-notification .product-image').attr('href', url );
+          $('.product-notification .time-ago').text(times);
+          $('.product-notification .from-ago').text(local);
+        }
+      }
+      var time = $('.product-notification').data('time');
+      var timer = setInterval(toggleSomething, time);
+      $('.product-notification').hover(function(ev){
+        clearInterval(timer);
+      }, function(ev){
+        timer = setInterval(toggleSomething, time);
+      });
+    }
+  }
+  SomeonePurchased();
+  $(document)
+    .on( 'shopify:section:load', SomeonePurchased )
+    .on( 'shopify:section:unload', SomeonePurchased)
+</script>
+
+{% schema %}
+  {
+    "name": "recomendation product",
+    "settings": [
+		{
+        "type": "checkbox",
+        "id": "show_notification",
+        "label": "Show Product Notification"
+      },
+	  {  "type": "select",
+        "id": "notify_product_pos",
+        "label": "Product Position",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ]
+	},
+	 {
+        "type": "text",
+        "id": "product_title",
+        "label": "Product title"
+      },		
+	{
+        "type": "text",
+        "id": "delay_time",
+        "label": "Delay Time"
+      }
+    ],
+    "blocks": [	
+      {
+        "type": "text_block",
+        "name": "content",
+        "settings": [				
+          {
+            "id": "add_product",
+            "type": "product",
+            "label": "add product"
+          }	,
+		  {
+            "type": "text",
+            "id": "product_location",
+            "label": "Product Location"
+          },
+		  {
+            "type": "text",
+            "id": "product_time",
+            "label": "Product Time"
+      	  }
+        ]
+      }
+    ]
+  }
+{% endschema %}

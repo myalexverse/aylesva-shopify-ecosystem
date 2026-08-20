@@ -1,0 +1,53 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "mi-ultima-voluntad",
+      "settings": {
+        "hero_eyebrow": "Protección para tu familia",
+        "hero_title": "Protege a tu familia incluso cuando ya no puedas estar allí.",
+        "hero_subtitle": "MUV te ayuda a dejar todo en orden, para que las personas que más amas tengan tranquilidad, guía y apoyo cuando más lo necesitan.",
+        "hero_btn1_text": "Programar Consulta Gratis",
+        "hero_btn2_text": "Hablar con un Asesor",
+        "hero_image_url": "https://images.unsplash.com/photo-1659523144224-bdf04a78d999?fm=jpg&q=80&w=2200&auto=format&fit=crop",
+        "pricing_title": "Soporte completo, sin fronteras.",
+        "plan1_items": "Asistencia de repatriación | Guía para tu familia | Soporte internacional | Membresía anual",
+        "plan2_items": "Asistencia de repatriación | Guía para tu familia | Soporte internacional | Membresía anual",
+        "cbx_title": "Tu viaje comienza antes del vuelo.",
+        "cbx_description": "Al adquirir tu membresía MUV, recibes un pase de ida y vuelta GRATIS para cruzar a través del CBX.",
+        "cbx_image_url": "https://www.aylesva.com/cdn/shop/files/pasted-1783109167178-0.png?v=1783110870",
+        "steps_title": "Cuatro pasos sencillos.",
+        "step1_title": "Elige tu membresía",
+        "step2_title": "Recibe tu código y tu información",
+        "step3_title": "Obtén acceso a tus beneficios y asistencia",
+        "step4_title": "Tu familia tiene respaldo y guía cuando más lo necesite",
+        "card_image_url": "https://www.aylesva.com/cdn/shop/files/nuvcard.png?v=1783110936",
+        "faq_title": "Preguntas Frecuentes",
+        "faq_q1": "¿Qué incluye la membresía?",
+        "faq_a1": "Tu membresía anual incluye asistencia de repatriación, guía paso a paso para tu familia, soporte internacional coordinado entre Estados Unidos y tu país de origen, y acceso a beneficios exclusivos como el pase CBX.",
+        "faq_q2": "¿Cómo funciona el beneficio de CBX?",
+        "faq_a2": "Al activar tu membresía, recibes un pase redondo gratis para cruzar el puente de CBX entre San Diego y el Aeropuerto de Tijuana, con menos tiempo de espera y mayor comodidad.",
+        "faq_q3": "¿La cobertura aplica fuera de Estados Unidos?",
+        "faq_a3": "Sí. MUV está diseñado para familias migrantes: la cobertura conecta a Estados Unidos con México y Sudamérica, con coordinación internacional incluida.",
+        "faq_q4": "¿Cómo puedo obtener más información?",
+        "faq_a4": "Puedes hablar con un asesor o solicitar información usando el botón al final de la página. La consulta inicial es gratuita y está disponible en inglés y español.",
+        "form_title": "Solicita Tu Consulta Gratuita",
+        "form_subtitle": "Completa el formulario y un asesor se comunicará contigo.",
+        "embed_form_code": "<iframe src=\"https://api.leadconnectorhq.com/widget/form/DPfokHX747mbGaU8Fobk\" style=\"width:100%;height:100%;border:none;border-radius:8px\" id=\"inline-DPfokHX747mbGaU8Fobk\" data-layout=\"{'id':'INLINE'}\" data-trigger-type=\"alwaysShow\" data-trigger-value=\"\" data-activation-type=\"alwaysActivated\" data-activation-value=\"\" data-deactivation-type=\"neverDeactivate\" data-deactivation-value=\"\" data-form-name=\"aylesvamuvusa\" data-height=\"555\" data-layout-iframe-id=\"inline-DPfokHX747mbGaU8Fobk\" data-form-id=\"DPfokHX747mbGaU8Fobk\" title=\"aylesvamuvusa\"></iframe>",
+        "form_btn_text": "Enviar Solicitud",
+        "form_success": "¡Gracias! Tu solicitud ha sido recibida con éxito. Un asesor de Mi Última Voluntad se pondrá en contacto contigo muy pronto."
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

@@ -1,0 +1,130 @@
+<!-- templates/list-collections.json -->
+{% comment %}
+This page represents the /collections and /products pages.
+It is an optional, but highly recommended, template for your theme.
+More info:
+- http://docs.shopify.com/manual/configuration/store-customization/taking-control-of-collections-listing
+{% endcomment %}
+{% comment %}Loop through each collection, except 'frontpage'{% endcomment %}
+<div class="container">
+  <div class="col-xs-12 col-sm-12 collection_wrapper">
+    <div class="collection_template">
+      <div class="grid">
+        {% if settings.Collection_type =='show_category' %}
+        <div class="grid-uniform list-collection-products {{ settings.Collection_type }}">  
+          {% if settings.use_custom_list_collection %}
+          {% for link in linklists[settings.list-collections].links %}
+          {% assign collection = link.object %}
+          {% unless collection.handle == 'frontpage' %}
+          {% if settings.collection_grid_column == '3' %}
+          {% assign collection_item_width = 'grid__item col-sm-4 col-xs-6' %}
+          {% elsif settings.collection_grid_column == '2' %}
+          {% assign collection_item_width = 'grid__item col-sm-6 col-xs-6' %}
+          {%  elsif settings.collection_grid_column == '4' %}
+          {% assign collection_item_width = 'grid__item col-sm-3 col-xs-6' %}
+          {% endif %}
+          {% assign featured = collection.handle %}
+          {% unless collection_item_width %} {% assign collection_item_width = 'small--grid__item medium-up--one-tenth large-up--one-fifth' %} {% endunless %} {% assign collection_item_img_size = '600x540' %}
+          <div class="grid__item {{collection_item_width}} text-center">
+            <div class="pickgradient-products">
+              {% capture collection_title %}{{ collections[featured].title | escape }}{% endcapture %}
+              <div class="collection-img">
+                <a href="{{ collections[featured].url }}" title="{{ 'collections.general.link_title' | t: title: collection_title }}" class="grid-link">
+                  {% if collections[featured].image %}
+                  {{ collections[featured].image.src | img_url: collection_item_img_size | img_tag: collection_title }}
+                  {% else %}
+                  {{ collections[featured].products.first.featured_image | img_url: collection_item_img_size | img_tag: collection_title }}
+                  {% endif %}
+                </a>
+                <div class="tt-event-overlay">
+                  <p class="collection-count">{{ collection.all_products_count }} {{ 'cart.general.items' | t }}</p>
+                </div>
+              </div>
+              <div class="collection-description">
+                <a href="{{ collections[featured].url }}" title="{{ 'collections.general.link_title' | t: title: collection_title }}" class="grid-link collection-link">
+                  <span class="grid-link__title">{{ collections[featured].title }}</span>
+                </a>
+                <div class="collection-detail">
+                  <span>{{ collection.description | strip_html | truncatewords: 10 }}</span>
+                </div>
+                <p class="collection_btn"><a class="btn collection" href="{{ collections[featured].url }}">Shop Now</a></p>
+              </div>
+            </div>
+          </div>
+          {% endunless %}
+          {% endfor %}  
+          {% else %}
+          {% for collection in collections %}
+          {% unless collection.handle == 'frontpage' %}
+          {% if settings.collection_grid_column == '3' %}
+          {% assign collection_item_width = 'grid__item  medium-up--one-third small--grid__item col-sm-4 col-xs-6' %}
+          {% elsif settings.collection_grid_column == '2' %}
+          {% assign collection_item_width = 'grid__item  medium-up--one-half col-sm-6 col-xs-6' %}
+          {%  elsif settings.collection_grid_column == '4' %}
+          {% assign collection_item_width = 'grid__item  medium-up--one-quarter col-sm-3 col-xs-6' %}
+          {% endif %}
+          {% if  collection.all_products_count > 0 %}
+          {% assign featured = collection.handle %}
+          {% unless collection_item_width %} {% assign collection_item_width = 'small--grid__item medium--one-tenth large--one-fifth' %} {% endunless %} {% assign collection_item_img_size = '600x540' %}
+          <div class="grid__item {{collection_item_width}} text-center">
+            <div class="pickgradient-products">
+              {% capture collection_title %}{{ collections[featured].title | escape }}{% endcapture %}
+              <div class="collection-img">
+                <a href="{{ collections[featured].url }}" title="{{ 'collections.general.link_title' | t: title: collection_title }}" class="grid-link">
+                  {% if collections[featured].image %}
+                  {{ collections[featured].image.src | img_url: collection_item_img_size | img_tag: collection_title }}
+                  {% else %}
+                  {{ collections[featured].products.first.featured_image | img_url: collection_item_img_size | img_tag: collection_title }}
+                  {% endif %}
+                </a>
+                <div class="tt-event-overlay">
+                  <p class="collection-count">{{ collection.all_products_count }} {{ 'cart.general.items' | t }}</p>
+                </div>
+              </div>
+              <div class="collection-description">
+                <a href="{{ collections[featured].url }}" title="{{ 'collections.general.link_title' | t: title: collection_title }}" class="grid-link collection-link">
+                  <span class="grid-link__title">{{ collections[featured].title }}</span>
+                </a>
+                <div class="collection-detail">
+                  <span>{{ collection.description | strip_html | truncatewords: 10 }}</span>
+                </div>
+                <p class="collection_btn"><a class="btn collection" href="{{ collections[featured].url }}">Shop Now</a></p>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+          {% endunless %}
+          {% endfor %}  
+          {% endif %}  
+        </div>
+        {% else %}
+        <div class="list-collection-products {{ settings.Collection_type }} owl-carousel"> 
+          {% for collection in collections %}
+          {% if  collection.all_products_count > 0 %}
+          {% unless collection.handle == 'frontpage' %}
+          <!-- snippets/collection-lists -->
+          {% comment %} This snippet is used to showcase each collection during the loop, 'for product in collection.products' in list-collections.liquid. {% endcomment %} {% capture collection_title %}{{ collection.title | escape }}{% endcapture %}
+          <h1 class="visuallyhidden">{{ 'collections.general.catalog_title' | t }}</h1>
+          <h3 class="h3 text-left text-capitalize">{{ collection_title }}</h3>
+          <hr>
+          <div class="grid-uniform">
+            {% for product in collection.products limit: 5 %} {% assign grid_item_width = 'medium-up--one-third large-up--one-fifth' %} {% assign featured = product %}
+            <div class="grid-item {{ grid_item_width }}">
+              {% render 'product-grid-item', product: product %}
+            </div>
+            {% endfor %}
+          </div>
+          <p class="text-center veiw_all_collections text-capitalize"><a href="{{ collection.url }}" title="{{ 'collections.general.link_title' | t: title: collection_title }}">{{ 'collections.sorting.all_of_collection' | t: collection: collection.title }} <span class="icon icon-chevron-right" aria-hidden="true"></span></a></p>
+          {% unless forloop.last %}<hr>{% endunless %}
+          {% endunless %}
+          {% endif %}
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <style>.list-collection-products.show_products.owl-carousel {display: block;}
+  </style>
+  {{ 'masonry.js' | asset_url | script_tag }}
+  <script>$(window).load(function() {var $container = $(".show_category.list-collection-products");$container.imagesLoaded( function() {$container.masonry({ itemSelector : ".grid__item" , columnWidth: ".grid__item",percentPosition: true}); });});</script>	

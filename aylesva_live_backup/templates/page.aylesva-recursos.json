@@ -1,0 +1,170 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "aylesva-recursos",
+      "settings": {
+        "show_logo_header": true,
+        "logo_align": "center",
+        "color_brand": "#9E1B2A",
+        "color_navy": "#0F172A",
+        "color_light": "#F8FAFC",
+        "color_white": "#FFFFFF",
+        "color_accent": "#C5A47E",
+        "hero_eyebrow": "AYLESVA RECURSOS",
+        "hero_headline": "El camino más inteligente para financiar tu negocio",
+        "hero_description": "<p>Somos tu intermediario financiero inteligente. Tomamos tus datos, analizamos tu perfil socioeconómico y de mercado, y te conectamos de forma directa con la prestadora de servicios ideal (como Finqui y aliados estratégicos) para asegurar las mejores condiciones posibles para ti.<\/p>",
+        "hero_btn1_text": "Hacer Estudio Financiero",
+        "hero_btn1_link": "",
+        "hero_btn2_text": "Ver Tipos de Préstamos",
+        "hero_btn2_link": "",
+        "solutions_title": "Intermediación Financiera Didáctica",
+        "solutions_subtitle": "Conoce los tipos de financiamiento más populares y dinámicos del mercado para PYMEs y el mercado estadounidense.",
+        "identity_eyebrow": "QUIÉNES SOMOS",
+        "identity_title": "Tu puente hacia el capital ideal",
+        "mission_text": "Facilitar el acceso al financiamiento a través de un análisis inteligente y transparente, conectando a negocios y emprendedores con las mejores soluciones de crédito mediante intermediación digital y didáctica.",
+        "vision_text": "Ser el intermediario financiero de referencia, reconocido por nuestra transparencia, innovación en análisis socioeconómico y capacidad de match perfecto entre solicitantes e instituciones de crédito.",
+        "timeline_title": "Proceso didáctico en 4 pasos",
+        "timeline_subtitle": "Cómo logramos ubicarte con la prestadora financiera ideal.",
+        "embed_form_code": "",
+        "form_title": "Estudio Socioeconómico y Financiero",
+        "form_subtitle": "Completa tus datos básicos para analizar tu perfil y conectarte con la mejor oferta de financiamiento disponible.",
+        "form_note": "Tus datos están completamente protegidos por nuestro Aviso de Privacidad.",
+        "form_btn_text": "Enviar Datos para Estudio",
+        "form_success": "¡Estudio iniciado! Tus datos han sido recibidos con éxito. Nuestro equipo de analistas de Aylesva Recursos comenzará tu estudio socioeconómico y se comunicará contigo muy pronto."
+      },
+      "blocks": {
+        "trust_1": {
+          "type": "trust",
+          "settings": {
+            "text": "Match Inteligente"
+          }
+        },
+        "trust_2": {
+          "type": "trust",
+          "settings": {
+            "text": "Estudio de Mercado Gratis"
+          }
+        },
+        "trust_3": {
+          "type": "trust",
+          "settings": {
+            "text": "Intermediación Directa"
+          }
+        },
+        "hero_img_1": {
+          "type": "hero_image",
+          "settings": {
+            "alt": "Análisis financiero"
+          }
+        },
+        "hero_img_2": {
+          "type": "hero_image",
+          "settings": {
+            "alt": "Estudio socioeconómico"
+          }
+        },
+        "hero_img_3": {
+          "type": "hero_image",
+          "settings": {
+            "alt": "Asesoría didáctica"
+          }
+        },
+        "hero_img_4": {
+          "type": "hero_image",
+          "settings": {
+            "alt": "Recursos financieros"
+          }
+        },
+        "sol_1": {
+          "type": "solution_card",
+          "settings": {
+            "eyebrow": "LÍNEAS DE CRÉDITO COMERCIALES",
+            "title": "Business Lines of Credit",
+            "description": "Una de las opciones más populares en EE. UU. Obtienes acceso a un fondo de capital del cual solo pagas intereses por el monto que decidas retirar, ideal para solventar flujos de caja variables.",
+            "icon": "credit",
+            "btn_text": "Simular esta opción",
+            "image_url": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800&q=80"
+          }
+        },
+        "sol_2": {
+          "type": "solution_card",
+          "settings": {
+            "eyebrow": "CAPITAL DE TRABAJO",
+            "title": "Working Capital Loans",
+            "description": "Diseñado para cubrir las necesidades operativas de corto plazo: pago de nóminas, adquisición inmediata de inventarios o pago a proveedores críticos de tu negocio.",
+            "icon": "company",
+            "btn_text": "Simular esta opción",
+            "image_url": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80"
+          }
+        },
+        "sol_3": {
+          "type": "solution_card",
+          "settings": {
+            "eyebrow": "FINANCIAMIENTO DE EQUIPO",
+            "title": "Equipment Financing",
+            "description": "Adquiere maquinaria, tecnología o vehículos comerciales. El mismo equipamiento sirve como garantía del crédito, reduciendo los requisitos colaterales y agilizando la aprobación.",
+            "icon": "home",
+            "btn_text": "Simular esta opción",
+            "image_url": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=80"
+          }
+        },
+        "step_1": {
+          "type": "timeline_step",
+          "settings": {
+            "title": "1. Completa tus datos",
+            "description": "Ingresa tu información básica y necesidades financieras en nuestro formulario de estudio."
+          }
+        },
+        "step_2": {
+          "type": "timeline_step",
+          "settings": {
+            "title": "2. Análisis Socioeconómico",
+            "description": "Nuestros algoritmos y analistas evalúan tu perfil de negocio y capacidad financiera."
+          }
+        },
+        "step_3": {
+          "type": "timeline_step",
+          "settings": {
+            "title": "3. Estudio del Mercado Financiero",
+            "description": "Comparamos ofertas de prestamistas como Finqui y otros socios del mercado mexicano y estadounidense."
+          }
+        },
+        "step_4": {
+          "type": "timeline_step",
+          "settings": {
+            "title": "4. Match y Acomodo Directo",
+            "description": "Te canalizamos con la prestadora con mayor probabilidad de aprobación y mejores tasas para ti."
+          }
+        }
+      },
+      "block_order": [
+        "trust_1",
+        "trust_2",
+        "trust_3",
+        "hero_img_1",
+        "hero_img_2",
+        "hero_img_3",
+        "hero_img_4",
+        "sol_1",
+        "sol_2",
+        "sol_3",
+        "step_1",
+        "step_2",
+        "step_3",
+        "step_4"
+      ]
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

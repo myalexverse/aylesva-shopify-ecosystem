@@ -1,0 +1,1105 @@
+{% comment %}
+  ============================================================
+  AYLESVA — Ultra Luxury Real Estate Landing Section · v2
+  Shopify Custom Section · Liquid + CSS nativo + Vanilla JS
+  ------------------------------------------------------------
+  Cambios v2:
+    · Sin header/nav — la sección inicia en el título del Hero.
+    · Bloque dinámico "project": añade/duplica proyectos
+      completos (Half Manzana, Torre 40, Altarena…) desde el
+      personalizador. Cada proyecto elige su layout:
+        - "Galería" → thumbnails + tarjeta de estado (Half Manzana)
+        - "Pestañas" → tabs inferiores + HUD (Torre 40)
+  ------------------------------------------------------------
+  Bloques:
+    · map_pin   — Pines del mapa (posición %, nombre, estado)
+    · stat      — Barra de estadísticas
+    · project   — Proyecto completo con galería interactiva
+    · property  — Tarjetas "Exquisite Property Collections"
+  Orden de render: Hero → Mapa → Stats → Proyectos (en el orden
+  de los bloques) → Properties → CTA.
+  ============================================================
+{% endcomment %}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+
+{%- assign sid = section.id -%}
+
+<style>
+  /* Fix: Bootstrap row flex container */
+  #shopify-section-{{ sid }} {
+    flex: 0 0 100%;
+    min-width: 0;
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  #ayl-{{ sid }} {
+    flex: 0 0 100%;
+    min-width: 0;
+    width: 100%;
+  }
+
+  /* Fix: full-bleed breakout del container Bootstrap */
+  #ayl-{{ sid }} .ayl-hero,
+  #ayl-{{ sid }} .ayl-map-section,
+  #ayl-{{ sid }} .ayl-stats,
+  #ayl-{{ sid }} .ayl-proj,
+  #ayl-{{ sid }} .ayl-props,
+  #ayl-{{ sid }} .ayl-cta {
+    margin-left: calc(50% - 50vw);
+    width: 100vw;
+  }
+
+  /* ============ AYLESVA · Design tokens ============ */
+  #ayl-{{ sid }} {
+    --ayl-dark: #14262E;
+    --ayl-dark-2: #0E1C23;
+    --ayl-gold: #C08A3E;
+    --ayl-gold-soft: #D3AC6E;
+    --ayl-sand: #F1EBDF;
+    --ayl-cream: #FAF7F1;
+    --ayl-white: #FFFFFF;
+    --ayl-ink: #1C2B33;
+    --ayl-muted: #6E7A80;
+    --ayl-line: rgba(20, 38, 46, 0.12);
+    --ayl-serif: 'Poppins', -apple-system, sans-serif;
+    --ayl-sans: 'Poppins', -apple-system, sans-serif;
+    font-family: var(--ayl-sans);
+    color: var(--ayl-ink);
+    background: var(--ayl-white);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+  }
+  #ayl-{{ sid }} *, #ayl-{{ sid }} *::before, #ayl-{{ sid }} *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  #ayl-{{ sid }} img { display: block; max-width: 100%; }
+  #ayl-{{ sid }} [hidden] { display: none !important; }
+  #ayl-{{ sid }} a { color: inherit; text-decoration: none; }
+  #ayl-{{ sid }} button { font-family: inherit; cursor: pointer; background: none; border: none; }
+
+  #ayl-{{ sid }} .ayl-wrap { max-width: 1280px; margin: 0 auto; padding: 0 clamp(20px, 4vw, 56px); }
+  #ayl-{{ sid }} .ayl-eyebrow {
+    font-size: 12px; letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--ayl-gold); font-weight: 600;
+  }
+  #ayl-{{ sid }} .ayl-serif { font-family: var(--ayl-serif); font-weight: 700; line-height: 1.15; }
+  #ayl-{{ sid }} .ayl-btn-gold {
+    display: inline-flex; align-items: center; gap: 12px;
+    background: var(--ayl-gold); color: var(--ayl-white);
+    font-size: 14px; font-weight: 600; letter-spacing: 0.04em;
+    padding: 15px 28px; border-radius: 4px;
+    transition: background 0.25s ease, transform 0.25s ease;
+  }
+  #ayl-{{ sid }} .ayl-btn-gold:hover { background: #A97733; transform: translateY(-1px); }
+  #ayl-{{ sid }} .ayl-arrow { font-size: 16px; line-height: 1; }
+  #ayl-{{ sid }} .ayl-link-gold {
+    display: inline-flex; align-items: center; gap: 10px;
+    color: var(--ayl-gold); font-weight: 600; font-size: 15px;
+    border-bottom: 1px solid var(--ayl-gold); padding-bottom: 4px;
+    transition: gap 0.25s ease;
+  }
+  #ayl-{{ sid }} .ayl-link-gold:hover { gap: 16px; }
+
+  /* ============ WHATSAPP GREEN BUTTON ============ */
+  #ayl-{{ sid }} .ayl-btn-whatsapp {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: #25D366; color: #ffffff; font-family: var(--ayl-sans);
+    font-weight: 700; font-size: 15px; padding: 14px 32px;
+    border-radius: 60px; text-decoration: none !important;
+    transition: background 0.3s ease, transform 0.25s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3);
+    border: none; cursor: pointer; letter-spacing: 0.02em;
+  }
+  #ayl-{{ sid }} .ayl-btn-whatsapp:hover {
+    background: #1EBE5A; transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(37, 211, 102, 0.4); color: #ffffff;
+  }
+  #ayl-{{ sid }} .ayl-btn-whatsapp svg { width: 22px; height: 22px; flex-shrink: 0; fill: currentColor; }
+  #ayl-{{ sid }} .ayl-cta .ayl-btn-whatsapp { font-size: 16px; padding: 16px 40px; }
+
+  /* ============ HERO (sin nav) ============ */
+  #ayl-{{ sid }} .ayl-hero {
+    position: relative; min-height: 600px; display: flex; flex-direction: column;
+    background: var(--ayl-dark); overflow: hidden;
+  }
+  #ayl-{{ sid }} .ayl-hero__img { position: absolute; inset: 0; }
+  #ayl-{{ sid }} .ayl-hero__img img { width: 100%; height: 100%; object-fit: cover; object-position: center right; }
+  #ayl-{{ sid }} .ayl-hero__img::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(90deg, rgba(240,232,218,0.92) 0%, rgba(240,232,218,0.55) 42%, rgba(240,232,218,0) 68%);
+  }
+  #ayl-{{ sid }} .ayl-hero__content {
+    position: relative; z-index: 2; flex: 1; display: flex; flex-direction: column; justify-content: center;
+    max-width: 520px; padding: clamp(56px, 8vw, 110px) clamp(20px, 4vw, 56px) clamp(56px, 7vw, 96px);
+  }
+  #ayl-{{ sid }} .ayl-hero__title { font-size: clamp(36px, 4.2vw, 52px); color: var(--ayl-ink); margin: 22px 0 26px; }
+  #ayl-{{ sid }} .ayl-hero__sub { font-size: 15px; color: #3E4C53; max-width: 420px; margin-bottom: 40px; line-height: 1.7; }
+  /* ============ MAP ============ */
+  #ayl-{{ sid }} .ayl-map-section { display: grid; grid-template-columns: minmax(320px, 380px) 1fr; background: var(--ayl-sand); }
+  #ayl-{{ sid }} .ayl-map-panel {
+    background: var(--ayl-dark); color: var(--ayl-white);
+    padding: clamp(48px, 6vw, 72px) clamp(28px, 4vw, 52px);
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  #ayl-{{ sid }} .ayl-map-panel h2 { font-size: clamp(30px, 3vw, 40px); margin: 20px 0 24px; color: var(--ayl-white); }
+  #ayl-{{ sid }} .ayl-map-panel p { font-size: 15px; color: rgba(255,255,255,0.66); line-height: 1.75; margin-bottom: 44px; }
+  #ayl-{{ sid }} .ayl-map-panel__stats { display: flex; gap: 40px; }
+  #ayl-{{ sid }} .ayl-map-panel__stats > div { border-left: 1px solid rgba(255,255,255,0.18); padding-left: 20px; }
+  #ayl-{{ sid }} .ayl-map-panel__stats strong { font-family: var(--ayl-serif); font-size: 40px; color: var(--ayl-gold-soft); display: block; line-height: 1; }
+  #ayl-{{ sid }} .ayl-map-panel__stats span { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.55); }
+  #ayl-{{ sid }} .ayl-map-canvas { position: relative; min-height: 560px; overflow: hidden; background: #E5DCCB; }
+  /* Capa geo: se dimensiona con JS para coincidir exactamente con el área
+     renderizada de la imagen (object-fit:contain). Los pines usan % de la
+     imagen real, así quedan fijos sin importar el tamaño de pantalla. */
+  #ayl-{{ sid }} .ayl-map-geo { position: absolute; z-index: 1; }
+  #ayl-{{ sid }} .ayl-map-canvas__img { position: absolute; inset: 0; z-index: 0; }
+  #ayl-{{ sid }} .ayl-map-canvas__img img { width: 100%; height: 100%; object-fit: contain; object-position: center; opacity: 0.9; }
+  #ayl-{{ sid }} .ayl-map-label {
+    position: absolute; font-size: 13px; letter-spacing: 0.3em; text-transform: uppercase;
+    font-weight: 600; color: #8C8272; z-index: 2;
+  }
+  #ayl-{{ sid }} .ayl-pin { position: absolute; z-index: 4; transform: translate(-50%, -50%); }
+  #ayl-{{ sid }} .ayl-pin__dot {
+    width: 18px; height: 18px; border-radius: 50%; background: var(--ayl-gold);
+    border: 3px solid var(--ayl-white); box-shadow: 0 2px 10px rgba(20,38,46,0.3);
+    position: relative; transition: transform 0.2s ease;
+  }
+  #ayl-{{ sid }} .ayl-pin__dot::after {
+    content: ''; position: absolute; inset: -9px; border-radius: 50%;
+    border: 1px solid var(--ayl-gold); opacity: 0.5;
+    animation: ayl-pulse-{{ sid }} 2.4s ease-out infinite;
+  }
+  @keyframes ayl-pulse-{{ sid }} {
+    0% { transform: scale(0.7); opacity: 0.6; }
+    100% { transform: scale(1.6); opacity: 0; }
+  }
+  #ayl-{{ sid }} .ayl-pin:hover .ayl-pin__dot, #ayl-{{ sid }} .ayl-pin.is-open .ayl-pin__dot { transform: scale(1.2); }
+  #ayl-{{ sid }} .ayl-pin__tip {
+    position: absolute; left: 26px; top: 50%; transform: translateY(-50%) translateX(6px);
+    background: var(--ayl-white); border-radius: 6px; padding: 14px 20px; min-width: 170px;
+    box-shadow: 0 14px 34px rgba(20,38,46,0.16); white-space: nowrap;
+    opacity: 0; visibility: hidden; pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+  #ayl-{{ sid }} .ayl-pin:hover .ayl-pin__tip, #ayl-{{ sid }} .ayl-pin.is-open .ayl-pin__tip {
+    opacity: 1; visibility: visible; transform: translateY(-50%) translateX(0);
+  }
+  #ayl-{{ sid }} .ayl-pin__tip strong { display: block; font-size: 14px; font-weight: 700; color: var(--ayl-ink); margin-bottom: 3px; }
+  #ayl-{{ sid }} .ayl-pin__tip span { font-size: 12px; color: var(--ayl-gold); font-weight: 600; }
+  #ayl-{{ sid }} .ayl-pin--flip .ayl-pin__tip { left: auto; right: 26px; }
+  #ayl-{{ sid }} .ayl-map-hint {
+    position: absolute; left: clamp(20px, 3vw, 48px); bottom: 40px; z-index: 3;
+    display: flex; align-items: center; gap: 18px; font-size: 13px; color: #7A7264;
+  }
+  #ayl-{{ sid }} .ayl-compass {
+    width: 56px; height: 56px; border: 1px solid #B9AE99; border-radius: 50%;
+    display: grid; place-items: center; font-family: var(--ayl-serif); font-size: 13px; color: #7A7264;
+    position: relative;
+  }
+  #ayl-{{ sid }} .ayl-compass::before { content: 'N'; position: absolute; top: -18px; font-size: 11px; }
+
+  /* ============ STATS BAR ============ */
+  #ayl-{{ sid }} .ayl-stats { background: var(--ayl-white); border-bottom: 1px solid var(--ayl-line); }
+  #ayl-{{ sid }} .ayl-stats__grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    padding: clamp(36px, 4vw, 56px) 0;
+  }
+  #ayl-{{ sid }} .ayl-stats__item { text-align: center; padding: 8px 20px; border-left: 1px solid var(--ayl-line); }
+  #ayl-{{ sid }} .ayl-stats__item:first-child { border-left: none; }
+  #ayl-{{ sid }} .ayl-stats__icon { color: var(--ayl-gold); margin-bottom: 12px; display: inline-block; }
+  #ayl-{{ sid }} .ayl-stats__num { font-family: var(--ayl-serif); font-size: clamp(36px, 3.4vw, 48px); color: var(--ayl-gold); line-height: 1.05; }
+  #ayl-{{ sid }} .ayl-stats__label { font-size: 13px; color: var(--ayl-muted); margin-top: 6px; }
+
+  /* ============ PROJECT (bloque dinámico) ============ */
+  #ayl-{{ sid }} .ayl-proj { padding: clamp(56px, 7vw, 104px) 0; }
+  #ayl-{{ sid }} .ayl-proj--cream { background: var(--ayl-cream); }
+  #ayl-{{ sid }} .ayl-proj--sand { background: var(--ayl-sand); }
+  #ayl-{{ sid }} .ayl-proj--white { background: var(--ayl-white); }
+  #ayl-{{ sid }} .ayl-proj__grid { display: grid; grid-template-columns: minmax(300px, 400px) 1fr; gap: clamp(36px, 5vw, 72px); align-items: start; }
+  #ayl-{{ sid }} .ayl-proj__title { font-size: clamp(40px, 4.6vw, 60px); margin: 16px 0 14px; }
+  #ayl-{{ sid }} .ayl-loc { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--ayl-muted); margin-bottom: 24px; }
+  #ayl-{{ sid }} .ayl-loc svg { color: var(--ayl-gold); }
+  #ayl-{{ sid }} .ayl-proj__desc { font-size: 15px; color: #4A565C; line-height: 1.75; margin-bottom: 36px; }
+  #ayl-{{ sid }} .ayl-proj__feats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px 12px; margin-bottom: 40px; }
+  #ayl-{{ sid }} .ayl-proj__feat { text-align: center; font-size: 12px; color: #4A565C; line-height: 1.4; }
+  #ayl-{{ sid }} .ayl-proj__feat i {
+    font-style: normal; display: grid; place-items: center; width: 44px; height: 44px;
+    border: 1px solid var(--ayl-line); border-radius: 50%; margin: 0 auto 10px; color: var(--ayl-gold);
+  }
+  #ayl-{{ sid }} .ayl-proj__specs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px 14px; margin-bottom: 36px; }
+  #ayl-{{ sid }} .ayl-proj__spec { display: flex; align-items: flex-start; gap: 10px; font-size: 12px; color: var(--ayl-muted); line-height: 1.35; }
+  #ayl-{{ sid }} .ayl-proj__spec i {
+    font-style: normal; flex: none; width: 34px; height: 34px; border-radius: 50%;
+    border: 1px solid rgba(20,38,46,0.18); display: grid; place-items: center; color: var(--ayl-gold);
+  }
+  #ayl-{{ sid }} .ayl-proj__spec strong { display: block; font-size: 14px; color: var(--ayl-ink); }
+  #ayl-{{ sid }} .ayl-proj__links { display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
+  #ayl-{{ sid }} .ayl-proj__media { min-width: 0; }
+  #ayl-{{ sid }} .ayl-proj__main { position: relative; border-radius: 10px; overflow: hidden; aspect-ratio: 16 / 10; background: #E4DCCB; }
+  #ayl-{{ sid }} .ayl-proj__main img { width: 100%; height: 100%; object-fit: cover; transition: opacity 0.35s ease; }
+  #ayl-{{ sid }} .ayl-proj__main img.is-fading { opacity: 0; }
+  #ayl-{{ sid }} .ayl-proj__main video { width: 100%; height: 100%; object-fit: cover; display: block; }
+  #ayl-{{ sid }} .ayl-proj__card {
+    position: absolute; right: 16px; bottom: 16px; z-index: 2; max-width: calc(100% - 32px);
+    background: rgba(14, 28, 35, 0.82); backdrop-filter: blur(8px);
+    border-radius: 8px; padding: 18px 22px; color: var(--ayl-white);
+  }
+  #ayl-{{ sid }} .ayl-proj__card .k { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+  #ayl-{{ sid }} .ayl-proj__card .v-big { font-family: var(--ayl-serif); font-size: 26px; color: var(--ayl-gold-soft); margin: 2px 0 12px; }
+  #ayl-{{ sid }} .ayl-proj__card .row { display: flex; flex-wrap: wrap; gap: 12px 24px; border-top: 1px solid rgba(255,255,255,0.14); padding-top: 12px; }
+  #ayl-{{ sid }} .ayl-proj__card .v { font-size: 16px; font-weight: 600; margin-top: 2px; }
+  #ayl-{{ sid }} .ayl-thumbs { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; margin-top: 16px; }
+  #ayl-{{ sid }} .ayl-thumb {
+    border-radius: 6px; overflow: hidden; aspect-ratio: 16 / 10; padding: 0;
+    outline: 2px solid transparent; outline-offset: 2px; transition: outline-color 0.2s ease, opacity 0.2s ease;
+    opacity: 0.75; background: #E4DCCB;
+  }
+  #ayl-{{ sid }} .ayl-thumb img { width: 100%; height: 100%; object-fit: cover; }
+  #ayl-{{ sid }} .ayl-thumb:hover { opacity: 1; }
+  #ayl-{{ sid }} .ayl-thumb.is-active { outline-color: var(--ayl-gold); opacity: 1; }
+  #ayl-{{ sid }} .ayl-proj__hud {
+    position: absolute; top: 24px; right: 24px; z-index: 2; width: 132px;
+    background: rgba(14,28,35,0.82); backdrop-filter: blur(8px);
+    border: 1px solid rgba(211,172,110,0.4); border-radius: 8px; color: var(--ayl-white);
+    font-size: 12px; overflow: hidden;
+  }
+  #ayl-{{ sid }} .ayl-proj__hud > div { padding: 12px 14px; border-bottom: 1px solid rgba(255,255,255,0.12); display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+  #ayl-{{ sid }} .ayl-proj__hud > div:last-child { border-bottom: none; }
+  #ayl-{{ sid }} .ayl-proj__hud strong { font-size: 15px; display: block; }
+  #ayl-{{ sid }} .ayl-proj__hud small { color: rgba(255,255,255,0.55); font-size: 10px; letter-spacing: 0.06em; }
+  #ayl-{{ sid }} .ayl-proj__hud .pm { color: var(--ayl-gold-soft); font-size: 14px; line-height: 1.1; }
+  #ayl-{{ sid }} .ayl-proj__tabs { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+  #ayl-{{ sid }} .ayl-proj__tab {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 13px; font-weight: 600; color: var(--ayl-ink);
+    background: var(--ayl-white); border: 1px solid var(--ayl-line);
+    padding: 12px 20px; border-radius: 6px;
+    transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+  }
+  #ayl-{{ sid }} .ayl-proj__tab:hover { border-color: var(--ayl-gold); }
+  #ayl-{{ sid }} .ayl-proj__tab.is-active { background: var(--ayl-gold); border-color: var(--ayl-gold); color: var(--ayl-white); }
+
+  /* ============ PROPERTIES ============ */
+  #ayl-{{ sid }} .ayl-props { background: var(--ayl-white); padding: clamp(56px, 7vw, 104px) 0; }
+  #ayl-{{ sid }} .ayl-props__head { text-align: center; margin-bottom: clamp(36px, 4vw, 56px); }
+  #ayl-{{ sid }} .ayl-props__head h2 { font-size: clamp(32px, 3.6vw, 46px); margin-top: 14px; }
+  #ayl-{{ sid }} .ayl-props__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+  #ayl-{{ sid }} .ayl-prop {
+    border: 1px solid var(--ayl-line); border-radius: 10px; overflow: hidden; background: var(--ayl-white);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+  #ayl-{{ sid }} .ayl-prop:hover { box-shadow: 0 20px 44px rgba(20,38,46,0.12); transform: translateY(-4px); }
+  #ayl-{{ sid }} .ayl-prop__img { position: relative; aspect-ratio: 4 / 3; background: var(--ayl-sand); }
+  #ayl-{{ sid }} .ayl-prop__img img { width: 100%; height: 100%; object-fit: cover; }
+  #ayl-{{ sid }} .ayl-prop__badge {
+    position: absolute; left: 14px; bottom: 14px; width: 34px; height: 34px; border-radius: 50%;
+    background: rgba(14,28,35,0.7); backdrop-filter: blur(4px); display: grid; place-items: center; color: var(--ayl-gold-soft);
+  }
+  #ayl-{{ sid }} .ayl-prop__body { padding: 20px 20px 22px; }
+  #ayl-{{ sid }} .ayl-prop__body h3 { font-size: 17px; font-weight: 700; margin-bottom: 10px; }
+  #ayl-{{ sid }} .ayl-prop__meta { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--ayl-muted); margin-bottom: 14px; }
+  #ayl-{{ sid }} .ayl-prop__foot { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--ayl-line); padding-top: 14px; }
+  #ayl-{{ sid }} .ayl-prop__price { font-size: 14px; color: var(--ayl-muted); }
+  #ayl-{{ sid }} .ayl-prop__price strong { color: var(--ayl-ink); font-size: 16px; }
+  #ayl-{{ sid }} .ayl-prop__go {
+    width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--ayl-gold);
+    display: grid; place-items: center; color: var(--ayl-gold); transition: background 0.25s ease, color 0.25s ease;
+  }
+  #ayl-{{ sid }} .ayl-prop:hover .ayl-prop__go { background: var(--ayl-gold); color: var(--ayl-white); }
+
+  /* ============ CTA FOOTER ============ */
+  #ayl-{{ sid }} .ayl-cta { background: var(--ayl-dark-2); color: var(--ayl-white); padding: clamp(56px, 7vw, 96px) 0; }
+  #ayl-{{ sid }} .ayl-cta__grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(36px, 5vw, 72px); align-items: center; }
+  #ayl-{{ sid }} .ayl-cta h2 { font-size: clamp(34px, 4vw, 52px); color: var(--ayl-white); margin-bottom: 20px; }
+  #ayl-{{ sid }} .ayl-cta p { font-size: 15px; color: rgba(255,255,255,0.6); line-height: 1.75; max-width: 440px; }
+  #ayl-{{ sid }} .ayl-cta__feats { display: grid; gap: 26px; margin-bottom: 36px; }
+  #ayl-{{ sid }} .ayl-cta__feat { display: flex; gap: 16px; align-items: flex-start; }
+  #ayl-{{ sid }} .ayl-cta__feat i {
+    font-style: normal; flex: none; width: 44px; height: 44px; border-radius: 50%;
+    border: 1px solid rgba(211,172,110,0.5); display: grid; place-items: center; color: var(--ayl-gold-soft);
+  }
+  #ayl-{{ sid }} .ayl-cta__feat strong { display: block; font-size: 15px; margin-bottom: 3px; }
+  #ayl-{{ sid }} .ayl-cta__feat span { font-size: 13px; color: rgba(255,255,255,0.55); }
+  #ayl-{{ sid }} .ayl-embed { margin-top: 28px; }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 1024px) {
+    #ayl-{{ sid }} .ayl-map-section { grid-template-columns: 1fr; }
+    #ayl-{{ sid }} .ayl-map-canvas { min-height: 460px; }
+    #ayl-{{ sid }} .ayl-proj__grid, #ayl-{{ sid }} .ayl-cta__grid { grid-template-columns: 1fr; }
+    #ayl-{{ sid }} .ayl-props__grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 640px) {
+    #ayl-{{ sid }} .ayl-hero { min-height: 520px; }
+    #ayl-{{ sid }} .ayl-hero__img::after { background: linear-gradient(180deg, rgba(240,232,218,0.94) 30%, rgba(240,232,218,0.35) 100%); }
+    #ayl-{{ sid }} .ayl-props__grid { grid-template-columns: 1fr; }
+    #ayl-{{ sid }} .ayl-proj__feats { grid-template-columns: repeat(2, 1fr); }
+    #ayl-{{ sid }} .ayl-proj__specs { grid-template-columns: repeat(2, 1fr); }
+    #ayl-{{ sid }} .ayl-proj__card { position: static; margin-top: -6px; border-radius: 0 0 10px 10px; max-width: none; width: 100%; }
+    #ayl-{{ sid }} .ayl-proj__main { border-radius: 10px 10px 0 0; }
+    #ayl-{{ sid }} .ayl-thumbs { grid-template-columns: repeat(5, 1fr); gap: 8px; }
+    #ayl-{{ sid }} .ayl-proj__hud { top: 12px; right: 12px; width: 110px; }
+    #ayl-{{ sid }} .ayl-map-canvas { min-height: 380px; }
+  }
+
+  /* ============ TESTIMONIALS ============ */
+  #ayl-{{ sid }} .ayl-testi {
+    padding: clamp(56px, 7vw, 96px) 0;
+    position: relative; overflow: hidden;
+  }
+  #ayl-{{ sid }} .ayl-testi::before {
+    content: ''; position: absolute; inset: 0; z-index: 0;
+    background: url('{{ "luxury_apartments_bg.jpg" | asset_url }}') center/cover no-repeat;
+    filter: blur(2px); transform: scale(1.05);
+  }
+  #ayl-{{ sid }} .ayl-testi::after {
+    content: ''; position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(180deg, rgba(241,235,223,0.65) 0%, rgba(250,247,241,0.72) 100%);
+  }
+  #ayl-{{ sid }} .ayl-testi > * { position: relative; z-index: 2; }
+  #ayl-{{ sid }} .ayl-testi__head { text-align: center; margin-bottom: clamp(36px, 5vw, 60px); }
+  #ayl-{{ sid }} .ayl-testi__title { font-size: clamp(28px, 3vw, 42px); margin-top: 14px; }
+  #ayl-{{ sid }} .ayl-testi__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  #ayl-{{ sid }} .ayl-testi__card {
+    background: var(--ayl-white); border: 1px solid var(--ayl-line); border-radius: 8px;
+    padding: 32px 28px; display: flex; flex-direction: column; gap: 24px;
+  }
+  #ayl-{{ sid }} .ayl-testi__quote { font-size: 15px; line-height: 1.8; color: #4A565C; flex: 1; font-style: italic; }
+  #ayl-{{ sid }} .ayl-testi__author { border-top: 1px solid #E8E2D9; padding-top: 18px; }
+  #ayl-{{ sid }} .ayl-testi__author strong { display: block; font-size: 14px; color: var(--ayl-ink); font-weight: 600; }
+  #ayl-{{ sid }} .ayl-testi__author span { font-size: 12px; color: var(--ayl-gold); letter-spacing: 0.06em; text-transform: uppercase; margin-top: 3px; display: block; }
+
+  @media (max-width: 991px) {
+    #ayl-{{ sid }} .ayl-testi__grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 767px) {
+    #ayl-{{ sid }} .ayl-testi__grid { grid-template-columns: 1fr; }
+    #ayl-{{ sid }} .ayl-testi__card { padding: 24px 20px; }
+  }
+</style>
+
+<div id="ayl-{{ sid }}">
+
+  {%- comment -%} ==================== HERO (sin nav) ==================== {%- endcomment -%}
+  <header class="ayl-hero">
+    <div class="ayl-hero__img">
+      {%- if section.settings.hero_video != blank -%}
+        {{ section.settings.hero_video | video_tag: image_size: "2400x", autoplay: true, loop: true, controls: false, muted: true, style: "width:100%;height:100%;object-fit:cover;object-position:center;" }}
+      {%- elsif section.settings.hero_image != blank -%}
+        {{ section.settings.hero_image | image_url: width: 2400 | image_tag: loading: 'eager', alt: section.settings.hero_title, style: "width:100%;height:100%;object-fit:cover;object-position:center right;" }}
+      {%- else -%}
+        <img src="{{ 'globalestates-hero-realestate.jpg' | asset_url }}" loading="eager" alt="{{ section.settings.hero_title }}" width="2400" height="1350" style="width:100%;height:100%;object-fit:cover;object-position:center right;">
+      {%- endif -%}
+    </div>
+    <div class="ayl-hero__content">
+      <span class="ayl-eyebrow">{{ section.settings.hero_eyebrow }}</span>
+      <h1 class="ayl-serif ayl-hero__title">{{ section.settings.hero_title }}</h1>
+      <p class="ayl-hero__sub">{{ section.settings.hero_subtitle }}</p>
+    </div>
+  </header>
+
+  {%- comment -%} ==================== MAPA ==================== {%- endcomment -%}
+  <section class="ayl-map-section">
+    <div class="ayl-map-panel">
+      <span class="ayl-eyebrow">{{ section.settings.map_eyebrow }}</span>
+      <h2 class="ayl-serif">{{ section.settings.map_title }}</h2>
+      <p>{{ section.settings.map_desc }}</p>
+      <div class="ayl-map-panel__stats">
+        <div><strong>{{ section.settings.map_stat_1_num }}</strong><span>{{ section.settings.map_stat_1_label }}</span></div>
+        <div><strong>{{ section.settings.map_stat_2_num }}</strong><span>{{ section.settings.map_stat_2_label }}</span></div>
+      </div>
+    </div>
+
+    <div class="ayl-map-canvas" data-ayl-map>
+      {%- if section.settings.map_image != blank -%}
+        <div class="ayl-map-canvas__img">{{ section.settings.map_image | image_url: width: 1800 | image_tag: loading: 'lazy', alt: 'Mapa' }}</div>
+      {%- endif -%}
+      <div class="ayl-map-geo" data-ayl-geo>
+        {%- if section.settings.map_region_1 != blank -%}
+          <span class="ayl-map-label" style="left: {{ section.settings.region_1_x }}%; top: {{ section.settings.region_1_y }}%; transform: translate(-50%, -50%);">{{ section.settings.map_region_1 }}</span>
+        {%- endif -%}
+        {%- if section.settings.map_region_2 != blank -%}
+          <span class="ayl-map-label" style="left: {{ section.settings.region_2_x }}%; top: {{ section.settings.region_2_y }}%; transform: translate(-50%, -50%);">{{ section.settings.map_region_2 }}</span>
+        {%- endif -%}
+
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'map_pin' -%}
+            <div class="ayl-pin {% if block.settings.flip %}ayl-pin--flip{% endif %}"
+                 style="left: {{ block.settings.pos_x }}%; top: {{ block.settings.pos_y }}%;"
+                 tabindex="0" role="button" aria-label="{{ block.settings.name }}"
+                 {{ block.shopify_attributes }}>
+              <div class="ayl-pin__dot"></div>
+              <div class="ayl-pin__tip">
+                <strong>{{ block.settings.name }}</strong>
+                <span>{{ block.settings.status }}</span>
+              </div>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
+      <div class="ayl-map-hint">
+        <span class="ayl-compass">✦</span>
+        <span>{{ section.settings.map_hint }}</span>
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} ==================== STATS ==================== {%- endcomment -%}
+  <section class="ayl-stats">
+    <div class="ayl-wrap">
+      <div class="ayl-stats__grid">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'stat' -%}
+            <div class="ayl-stats__item" {{ block.shopify_attributes }}>
+              <span class="ayl-stats__icon">
+                <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="5" y="8" width="16" height="13" rx="1"/><path d="M5 12h16M9 8V5h8v3"/></svg>
+              </span>
+              <div class="ayl-stats__num">{{ block.settings.number }}</div>
+              <div class="ayl-stats__label">{{ block.settings.label }}</div>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} ==================== PROYECTOS (bloques dinámicos) ==================== {%- endcomment -%}
+  {%- for block in section.blocks -%}
+    {%- if block.type == 'project' -%}
+      <section class="ayl-proj ayl-proj--{{ block.settings.bg }}" data-ayl-project {{ block.shopify_attributes }}>
+        <div class="ayl-wrap">
+          <div class="ayl-proj__grid">
+            <div>
+              <span class="ayl-eyebrow">{{ block.settings.eyebrow }}</span>
+              <h2 class="ayl-serif ayl-proj__title">{{ block.settings.title }}</h2>
+              {%- if block.settings.location != blank -%}
+                <div class="ayl-loc">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M7 12.5S2.5 8.6 2.5 5.5a4.5 4.5 0 1 1 9 0C11.5 8.6 7 12.5 7 12.5z"/><circle cx="7" cy="5.5" r="1.6"/></svg>
+                  {{ block.settings.location }}
+                </div>
+              {%- endif -%}
+              <p class="ayl-proj__desc">{{ block.settings.desc }}</p>
+
+              {%- comment -%} Features: una por línea. "Valor | Etiqueta" → spec con valor destacado; texto simple → feature circular. {%- endcomment -%}
+              {%- assign feat_lines = block.settings.features | strip | newline_to_br | split: '<br />' -%}
+              {%- if block.settings.features != blank -%}
+                {%- if block.settings.layout == 'tabs' -%}
+                  <div class="ayl-proj__specs">
+                    {%- for line in feat_lines -%}
+                      {%- assign parts = line | strip | split: '|' -%}
+                      <div class="ayl-proj__spec"><i>◈</i><div><strong>{{ parts[0] | strip }}</strong>{{ parts[1] | strip }}</div></div>
+                    {%- endfor -%}
+                  </div>
+                {%- else -%}
+                  <div class="ayl-proj__feats">
+                    {%- for line in feat_lines -%}
+                      <div class="ayl-proj__feat"><i>◈</i>{{ line | strip }}</div>
+                    {%- endfor -%}
+                  </div>
+                {%- endif -%}
+              {%- endif -%}
+
+              <div class="ayl-proj__links">
+                {%- for i in (1..3) -%}
+                  {%- capture lk_text -%}link_{{ i }}{%- endcapture -%}
+                  {%- capture lk_url -%}link_{{ i }}_url{%- endcapture -%}
+                  {%- if block.settings[lk_text] != blank -%}
+                    {%- assign this_url = block.settings[lk_url] | downcase -%}
+                    {%- if this_url contains 'whatsapp' -%}
+                      <a href="{{ block.settings[lk_url] }}" target="_blank" rel="noopener" class="ayl-btn-whatsapp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>{{ block.settings[lk_text] }}</a>
+                    {%- else -%}
+                      <a href="{{ block.settings[lk_url] }}" class="ayl-link-gold">{{ block.settings[lk_text] }} <span class="ayl-arrow">→</span></a>
+                    {%- endif -%}
+                  {%- endif -%}
+                {%- endfor -%}
+              </div>
+            </div>
+
+            <div class="ayl-proj__media">
+              {%- comment -%} Primera imagen disponible (2..5) como fallback inicial {%- endcomment -%}
+              {%- assign first_img_url = '' -%}
+              {%- for i in (2..5) -%}
+                {%- capture fk -%}image_{{ i }}{%- endcapture -%}
+                {%- if block.settings[fk] != blank and first_img_url == '' -%}
+                  {%- capture first_img_url -%}{{ block.settings[fk] | image_url: width: 1600 }}{%- endcapture -%}
+                {%- endif -%}
+              {%- endfor -%}
+              <div class="ayl-proj__main">
+                {%- if block.settings.video_1 != blank -%}
+                  {%- assign v1_mp4 = block.settings.video_1.sources | where: 'format', 'mp4' | first -%}
+                  <video data-ayl-video autoplay loop muted playsinline preload="metadata"
+                         {% if block.settings.video_1.preview_image %}poster="{{ block.settings.video_1.preview_image | image_url: width: 1600 }}"{% endif %}
+                         src="{{ v1_mp4.url }}"></video>
+                  <img data-ayl-main src="{{ first_img_url }}" alt="{{ block.settings.title }}" hidden>
+                {%- else -%}
+                  <img data-ayl-main src="{{ first_img_url }}" alt="{{ block.settings.title }}" {% if first_img_url == '' %}hidden{% endif %}>
+                {%- endif -%}
+
+                {%- comment -%} Layout galería → tarjeta de estado {%- endcomment -%}
+                {%- if block.settings.layout == 'gallery' and block.settings.status != blank -%}
+                  <div class="ayl-proj__card">
+                    <div class="k">{{ block.settings.status_label }}</div>
+                    <div class="v-big">{{ block.settings.status }}</div>
+                    <div class="row">
+                      {%- if block.settings.start != blank -%}<div><div class="k">{{ block.settings.start_label }}</div><div class="v">{{ block.settings.start }}</div></div>{%- endif -%}
+                      {%- if block.settings.delivery != blank -%}<div><div class="k">{{ block.settings.delivery_label }}</div><div class="v">{{ block.settings.delivery }}</div></div>{%- endif -%}
+                    </div>
+                  </div>
+                {%- endif -%}
+
+                {%- comment -%} Layout pestañas → HUD lateral. Líneas "Valor | Etiqueta". {%- endcomment -%}
+                {%- if block.settings.layout == 'tabs' and block.settings.hud != blank -%}
+                  <div class="ayl-proj__hud">
+                    {%- assign hud_lines = block.settings.hud | strip | newline_to_br | split: '<br />' -%}
+                    {%- for line in hud_lines -%}
+                      {%- assign parts = line | strip | split: '|' -%}
+                      <div><div><strong>{{ parts[0] | strip }}</strong><small>{{ parts[1] | strip }}</small></div><span class="pm">{% if forloop.first %}⌖{% else %}＋<br>－{% endif %}</span></div>
+                    {%- endfor -%}
+                  </div>
+                {%- endif -%}
+              </div>
+
+              {%- comment -%} Selector de imágenes: thumbnails o pestañas según layout {%- endcomment -%}
+              {%- if block.settings.layout == 'tabs' -%}
+                <div class="ayl-proj__tabs" role="tablist">
+                  {%- for i in (1..5) -%}
+                    {%- capture img_key -%}image_{{ i }}{%- endcapture -%}
+                    {%- capture lbl_key -%}label_{{ i }}{%- endcapture -%}
+                    {%- assign v_img = block.settings[img_key] -%}
+                    {%- assign v_lbl = block.settings[lbl_key] -%}
+                    {%- if v_lbl != blank -%}
+                      <button class="ayl-proj__tab {% if forloop.first %}is-active{% endif %}"
+                              data-ayl-switch
+                              {% if forloop.first %}data-show-video{% endif %}
+                              data-full="{%- if v_img != blank -%}{{ v_img | image_url: width: 1600 }}{%- endif -%}"
+                              role="tab" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}">
+                        {{ v_lbl }}
+                      </button>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </div>
+              {%- else -%}
+                <div class="ayl-thumbs">
+                  {%- for i in (1..5) -%}
+                    {%- capture img_key -%}image_{{ i }}{%- endcapture -%}
+                    {%- assign v_img = block.settings[img_key] -%}
+                    {%- if v_img != blank -%}
+                      <button class="ayl-thumb {% if forloop.first %}is-active{% endif %}"
+                              data-ayl-switch
+                              data-full="{{ v_img | image_url: width: 1600 }}"
+                              aria-label="Ver imagen {{ i }}">
+                        {{ v_img | image_url: width: 400 | image_tag: loading: 'lazy', alt: 'Gallery thumbnail' }}
+                      </button>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </div>
+              {%- endif -%}
+            </div>
+          </div>
+        </div>
+      </section>
+    {%- endif -%}
+  {%- endfor -%}
+
+  {%- comment -%} ==================== PROPERTIES ==================== {%- endcomment -%}
+  <section class="ayl-props">
+    <div class="ayl-wrap">
+      <div class="ayl-props__head">
+        <span class="ayl-eyebrow">{{ section.settings.props_eyebrow }}</span>
+        <h2 class="ayl-serif">{{ section.settings.props_title }}</h2>
+      </div>
+      <div class="ayl-props__grid">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'property' -%}
+            <a href="{{ block.settings.url }}" class="ayl-prop" {{ block.shopify_attributes }}>
+              <div class="ayl-prop__img">
+                {%- if block.settings.image != blank -%}
+                  {{ block.settings.image | image_url: width: 800 | image_tag: loading: 'lazy', alt: block.settings.title }}
+                {%- else -%}
+                  {{ 'lifestyle-2' | placeholder_svg_tag }}
+                {%- endif -%}
+                <span class="ayl-prop__badge">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M2 6.5 7 2l5 4.5V12H2z"/></svg>
+                </span>
+              </div>
+              <div class="ayl-prop__body">
+                <h3>{{ block.settings.title }}</h3>
+                <div class="ayl-prop__meta">
+                  <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.1"><rect x="1.5" y="1.5" width="10" height="10"/><path d="M1.5 8h4v3.5"/></svg>
+                  {{ block.settings.size }}
+                </div>
+                <div class="ayl-prop__foot">
+                  <span class="ayl-prop__price">{{ block.settings.price_prefix }} <strong>{{ block.settings.price }}</strong></span>
+                  <span class="ayl-prop__go">→</span>
+                </div>
+              </div>
+            </a>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} ==================== TESTIMONIALS ==================== {%- endcomment -%}
+  {%- assign testimonial_blocks = section.blocks | where: "type", "testimonial" -%}
+  {%- if testimonial_blocks.size > 0 -%}
+    <section class="ayl-testi">
+      <div class="ayl-wrap">
+        <div class="ayl-testi__head">
+          <span class="ayl-eyebrow">{{ section.settings.testi_eyebrow }}</span>
+          <h2 class="ayl-serif ayl-testi__title">{{ section.settings.testi_title }}</h2>
+        </div>
+        <div class="ayl-testi__grid">
+          {%- for block in testimonial_blocks -%}
+            <div class="ayl-testi__card" {{ block.shopify_attributes }}>
+              <p class="ayl-testi__quote">{{ block.settings.quote }}</p>
+              <div class="ayl-testi__author">
+                <strong>{{ block.settings.author }}</strong>
+                <span>{{ block.settings.author_title }}</span>
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+    </section>
+  {%- endif -%}
+
+  {%- comment -%} ==================== CTA FOOTER ==================== {%- endcomment -%}
+  <section class="ayl-cta">
+    {%- if section.settings.cta_feat_1_title == blank -%}
+      {%- comment -%} Centered layout without features columns {%- endcomment -%}
+      <div class="ayl-wrap" style="max-width: 700px; text-align: center; margin-left: auto; margin-right: auto;">
+        <h2 class="ayl-serif" style="color:var(--ayl-white);margin-bottom:12px;">{{ section.settings.cta_title }}</h2>
+        <p style="color:rgba(255,255,255,0.6);margin-bottom:32px;">{{ section.settings.cta_desc }}</p>
+        {%- if section.settings.cta_embed_code != blank -%}
+          <div class="ayl-embed">
+            {{ section.settings.cta_embed_code }}
+          </div>
+          <p style="color:rgba(255,255,255,0.4);font-size:12px;line-height:1.6;margin-top:20px;margin-bottom:24px;">Aylesva actúa como facilitador independiente y proporciona información y orientación sobre oportunidades inmobiliarias ofrecidas por desarrolladores, corredores y socios externos. La disponibilidad de propiedades, precios, opciones de financiamiento y elegibilidad están sujetos a cambios sin previo aviso y pueden variar según la ubicación y el proveedor.</p>
+        {%- endif -%}
+        {%- assign cta_url_lower = section.settings.cta_url | downcase -%}
+        {%- if section.settings.cta_label != blank and cta_url_lower contains 'whatsapp' -%}
+          <a href="{{ section.settings.cta_url }}" target="_blank" rel="noopener" class="ayl-btn-whatsapp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>{{ section.settings.cta_label }}</a>
+        {%- elsif section.settings.cta_label != blank -%}
+          <a href="{{ section.settings.cta_url }}" class="ayl-btn-gold">{{ section.settings.cta_label }} <span class="ayl-arrow">→</span></a>
+        {%- endif -%}
+      </div>
+    {%- else -%}
+      {%- comment -%} Split grid layout with features {%- endcomment -%}
+      <div class="ayl-wrap">
+        <div class="ayl-cta__grid">
+          <div>
+            <h2 class="ayl-serif">{{ section.settings.cta_title }}</h2>
+            <p>{{ section.settings.cta_desc }}</p>
+
+            <div class="ayl-embed">
+              <!-- INSERTAR AQUÍ EL EMBED CODE DEL FORMULARIO -->
+              {{ section.settings.cta_embed_code }}
+            </div>
+          </div>
+          <div>
+            <div class="ayl-cta__feats">
+              <div class="ayl-cta__feat"><i>◈</i><div><strong>{{ section.settings.cta_feat_1_title }}</strong><span>{{ section.settings.cta_feat_1_desc }}</span></div></div>
+              <div class="ayl-cta__feat"><i>✦</i><div><strong>{{ section.settings.cta_feat_2_title }}</strong><span>{{ section.settings.cta_feat_2_desc }}</span></div></div>
+            </div>
+            {%- assign cta_url_check = section.settings.cta_url | downcase -%}
+            {%- if cta_url_check contains 'whatsapp' -%}
+              <a href="{{ section.settings.cta_url }}" target="_blank" rel="noopener" class="ayl-btn-whatsapp"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>{{ section.settings.cta_label }}</a>
+            {%- else -%}
+              <a href="{{ section.settings.cta_url }}" class="ayl-btn-gold">{{ section.settings.cta_label }} <span class="ayl-arrow">→</span></a>
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+    {%- endif -%}
+  </section>
+
+</div>
+
+<script>
+  (function () {
+    var root = document.getElementById('ayl-{{ sid }}');
+    if (!root) return;
+
+    /* ---------- Mapa: capa geo con object-fit CONTAIN ----------
+       La imagen usa object-fit:contain (mapa completo siempre visible).
+       La capa geo se dimensiona con JS para coincidir exactamente con el
+       área renderizada de la imagen. Los pines en % quedan fijos al mapa
+       sin importar el tamaño de pantalla. */
+    var mapCanvas = root.querySelector('[data-ayl-map]');
+    var geoLayer = root.querySelector('[data-ayl-geo]');
+    var geoImg = mapCanvas ? mapCanvas.querySelector('.ayl-map-canvas__img img') : null;
+    function layoutMapGeo() {
+      if (!mapCanvas || !geoLayer || !geoImg || !geoImg.naturalWidth) return;
+      var cw = mapCanvas.clientWidth, ch = mapCanvas.clientHeight;
+      var iw = geoImg.naturalWidth, ih = geoImg.naturalHeight;
+      /* contain: el mapa completo es visible, pines siempre correctos */
+      var scale = Math.min(cw / iw, ch / ih);
+      var w = iw * scale, h = ih * scale;
+      geoLayer.style.position = 'absolute';
+      geoLayer.style.width = w + 'px';
+      geoLayer.style.height = h + 'px';
+      geoLayer.style.left = (cw - w) / 2 + 'px';
+      geoLayer.style.top = (ch - h) / 2 + 'px';
+    }
+    if (geoImg) {
+      if (geoImg.complete) layoutMapGeo();
+      geoImg.addEventListener('load', layoutMapGeo);
+      window.addEventListener('resize', layoutMapGeo);
+      if (window.ResizeObserver && mapCanvas) new ResizeObserver(layoutMapGeo).observe(mapCanvas);
+    }
+
+    /* ---------- Asistente de pines (solo en el editor de temas) ----------
+       1. Haz clic en cualquier punto del mapa
+       2. Aparece un menú para elegir qué pin mover
+       3. Selecciona el pin → se mueve visualmente y se copian las coordenadas
+       4. Actualiza Posición X / Y en el panel lateral del pin */
+    if (window.Shopify && window.Shopify.designMode && geoLayer) {
+      geoLayer.style.cursor = 'crosshair';
+
+      /* Banner de instrucciones */
+      var banner = document.createElement('div');
+      banner.style.cssText = 'position:absolute;top:8px;left:50%;transform:translateX(-50%);z-index:10;background:rgba(20,38,46,0.92);color:#D3AC6E;font:600 12px/1.4 sans-serif;padding:8px 16px;border-radius:6px;white-space:nowrap;pointer-events:none;box-shadow:0 4px 14px rgba(0,0,0,.3)';
+      banner.textContent = '📍 Haz clic en el mapa → elige un pin → se mueve ahí';
+      geoLayer.appendChild(banner);
+
+      /* Estilos del menú */
+      var menuCSS = document.createElement('style');
+      menuCSS.textContent = [
+        '.ayl-pin-menu{position:absolute;z-index:20;background:#14262E;border:1px solid rgba(211,172,110,.5);border-radius:8px;padding:6px 0;min-width:200px;box-shadow:0 12px 32px rgba(0,0,0,.4);font-family:var(--ayl-sans,sans-serif);overflow:hidden;animation:ayl-fade .15s ease}',
+        '.ayl-pin-menu__title{padding:8px 16px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.45);border-bottom:1px solid rgba(255,255,255,.1)}',
+        '.ayl-pin-menu__btn{display:flex;align-items:center;gap:10px;width:100%;padding:10px 16px;font-size:13px;font-weight:600;color:#fff;background:none;border:none;cursor:pointer;text-align:left;transition:background .15s}',
+        '.ayl-pin-menu__btn:hover{background:rgba(192,138,62,.25)}',
+        '.ayl-pin-menu__btn .dot{width:12px;height:12px;border-radius:50%;background:#C08A3E;border:2px solid #fff;flex:none}',
+        '.ayl-pin-menu__btn .name{flex:1}',
+        '.ayl-pin-menu__btn .status{font-size:11px;color:rgba(255,255,255,.4);font-weight:400}',
+        '@keyframes ayl-fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}'
+      ].join('\n');
+      document.head.appendChild(menuCSS);
+
+      var activeMenu = null;
+
+      function removeMenu() {
+        if (activeMenu) { activeMenu.remove(); activeMenu = null; }
+        var oldMarker = geoLayer.querySelector('.ayl-coord-marker');
+        if (oldMarker) oldMarker.remove();
+      }
+
+      geoLayer.addEventListener('click', function (e) {
+        /* Si se hizo clic en un pin existente, no hacer nada */
+        if (e.target.closest('.ayl-pin')) return;
+        /* Cerrar menú anterior si existe */
+        removeMenu();
+
+        var r = geoLayer.getBoundingClientRect();
+        var px = Math.round((e.clientX - r.left) / r.width * 100);
+        var py = Math.round((e.clientY - r.top) / r.height * 100);
+
+        /* Marcador visual en la posición clickeada */
+        var marker = document.createElement('div');
+        marker.className = 'ayl-coord-marker';
+        marker.style.cssText = 'position:absolute;width:22px;height:22px;border-radius:50%;background:#C08A3E;border:3px solid #fff;box-shadow:0 2px 12px rgba(0,0,0,.5);transform:translate(-50%,-50%);z-index:15;pointer-events:none;animation:ayl-fade .2s ease';
+        marker.style.left = px + '%';
+        marker.style.top = py + '%';
+        geoLayer.appendChild(marker);
+
+        /* Recopilar pines del DOM */
+        var pinEls = geoLayer.querySelectorAll('.ayl-pin');
+        if (!pinEls.length) return;
+
+        /* Crear menú */
+        var menu = document.createElement('div');
+        menu.className = 'ayl-pin-menu';
+        var menuLeft = e.clientX - r.left + 16;
+        var menuTop = e.clientY - r.top - 20;
+        if (menuLeft + 220 > r.width) menuLeft = e.clientX - r.left - 220;
+        if (menuTop + 160 > r.height) menuTop = e.clientY - r.top - 160;
+        if (menuTop < 0) menuTop = 8;
+        menu.style.left = menuLeft + 'px';
+        menu.style.top = menuTop + 'px';
+
+        var title = document.createElement('div');
+        title.className = 'ayl-pin-menu__title';
+        title.textContent = '¿Mover cuál pin aquí?';
+        menu.appendChild(title);
+
+        pinEls.forEach(function (pin, idx) {
+          var nameEl = pin.querySelector('.ayl-pin__tip strong');
+          var statusEl = pin.querySelector('.ayl-pin__tip span');
+          var pinName = nameEl ? nameEl.textContent.trim() : 'Pin ' + (idx + 1);
+          var pinStatus = statusEl ? statusEl.textContent.trim() : '';
+
+          var btn = document.createElement('button');
+          btn.className = 'ayl-pin-menu__btn';
+          btn.innerHTML = '<span class="dot"></span><span class="name">' + pinName + '</span><span class="status">' + pinStatus + '</span>';
+
+          btn.addEventListener('click', function (ev) {
+            ev.stopPropagation();
+            pin.style.left = px + '%';
+            pin.style.top = py + '%';
+            banner.innerHTML = '✅ <b>' + pinName + '</b> movido a X: ' + px + ' · Y: ' + py + ' — <span style="opacity:.6">Actualiza Posición X / Y en el panel</span>';
+            banner.style.color = '#fff';
+            try { navigator.clipboard.writeText('X: ' + px + '  Y: ' + py); } catch (err) {}
+            removeMenu();
+            setTimeout(function () {
+              banner.textContent = '📍 Haz clic en el mapa → elige un pin → se mueve ahí';
+              banner.style.color = '#D3AC6E';
+            }, 6000);
+          });
+
+          menu.appendChild(btn);
+        });
+
+        geoLayer.appendChild(menu);
+        activeMenu = menu;
+      });
+
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') removeMenu(); });
+      document.addEventListener('click', function (e) {
+        if (activeMenu && !e.target.closest('.ayl-pin-menu') && !e.target.closest('[data-ayl-geo]')) removeMenu();
+      });
+    }
+
+    /* ---------- Mapa: pines con tooltip (hover via CSS, click/tap via JS) ---------- */
+    var pins = root.querySelectorAll('.ayl-pin');
+    pins.forEach(function (pin) {
+      pin.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var wasOpen = pin.classList.contains('is-open');
+        pins.forEach(function (p) { p.classList.remove('is-open'); });
+        if (!wasOpen) pin.classList.add('is-open');
+      });
+      pin.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pin.click(); }
+      });
+    });
+    document.addEventListener('click', function () {
+      pins.forEach(function (p) { p.classList.remove('is-open'); });
+    });
+
+    /* ---------- Cross-fade helper ---------- */
+    function swapImage(img, src) {
+      if (!src || img.getAttribute('src') === src) return;
+      img.classList.add('is-fading');
+      var pre = new Image();
+      pre.onload = function () {
+        img.src = src;
+        requestAnimationFrame(function () { img.classList.remove('is-fading'); });
+      };
+      pre.onerror = function () { img.classList.remove('is-fading'); };
+      pre.src = src;
+    }
+
+    /* ---------- Proyectos: cada bloque cablea sus thumbnails o pestañas ---------- */
+    root.querySelectorAll('[data-ayl-project]').forEach(function (proj) {
+      var mainImg = proj.querySelector('[data-ayl-main]');
+      var mainVideo = proj.querySelector('[data-ayl-video]');
+      if (!mainImg) return;
+      var switches = proj.querySelectorAll('[data-ayl-switch]');
+      switches.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          switches.forEach(function (b) {
+            b.classList.remove('is-active');
+            if (b.hasAttribute('role')) b.setAttribute('aria-selected', 'false');
+          });
+          btn.classList.add('is-active');
+          if (btn.hasAttribute('role')) btn.setAttribute('aria-selected', 'true');
+          if (btn.hasAttribute('data-show-video') && mainVideo) {
+            mainImg.hidden = true;
+            mainVideo.hidden = false;
+            mainVideo.play();
+          } else {
+            if (mainVideo) { mainVideo.hidden = true; mainVideo.pause(); }
+            mainImg.hidden = false;
+            swapImage(mainImg, btn.getAttribute('data-full'));
+          }
+        });
+      });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "AYLESVA Luxury Landing",
+  "tag": "section",
+  "class": "aylesva-luxury-landing",
+  "settings": [
+    { "type": "header", "content": "Hero" },
+    { "type": "video", "id": "hero_video", "label": "Video hero (reemplaza imagen)" },
+    { "type": "image_picker", "id": "hero_image", "label": "Imagen hero" },
+    { "type": "text", "id": "hero_eyebrow", "label": "Eyebrow", "default": "Exclusive Developments" },
+    { "type": "text", "id": "hero_title", "label": "Título", "default": "Homes with a Sense of Future" },
+    { "type": "textarea", "id": "hero_subtitle", "label": "Subtítulo", "default": "Premium lifestyle communities in Mexico and El Salvador, created for discerning investors." },
+    { "type": "header", "content": "Mapa" },
+    { "type": "image_picker", "id": "map_image", "label": "Imagen del mapa (fondo)" },
+    { "type": "text", "id": "map_eyebrow", "label": "Eyebrow", "default": "Our Developments" },
+    { "type": "text", "id": "map_title", "label": "Título", "default": "Strategic Locations, Extraordinary Opportunities" },
+    { "type": "textarea", "id": "map_desc", "label": "Descripción", "default": "Discover our exclusive projects in the most sought-after coastal destinations." },
+    { "type": "text", "id": "map_stat_1_num", "label": "Stat 1 — número", "default": "5" },
+    { "type": "text", "id": "map_stat_1_label", "label": "Stat 1 — etiqueta", "default": "Active Projects" },
+    { "type": "text", "id": "map_stat_2_num", "label": "Stat 2 — número", "default": "2" },
+    { "type": "text", "id": "map_stat_2_label", "label": "Stat 2 — etiqueta", "default": "Countries" },
+    { "type": "text", "id": "map_region_1", "label": "Región 1", "default": "Mexico" },
+    { "type": "range", "id": "region_1_x", "label": "Región 1 — Posición X (%)", "min": 0, "max": 100, "step": 1, "default": 38 },
+    { "type": "range", "id": "region_1_y", "label": "Región 1 — Posición Y (%)", "min": 0, "max": 100, "step": 1, "default": 10 },
+    { "type": "text", "id": "map_region_2", "label": "Región 2", "default": "El Salvador" },
+    { "type": "range", "id": "region_2_x", "label": "Región 2 — Posición X (%)", "min": 0, "max": 100, "step": 1, "default": 85 },
+    { "type": "range", "id": "region_2_y", "label": "Región 2 — Posición Y (%)", "min": 0, "max": 100, "step": 1, "default": 24 },
+    { "type": "text", "id": "map_hint", "label": "Hint", "default": "Explore our developments — click on a location" },
+    { "type": "header", "content": "Properties" },
+    { "type": "text", "id": "props_eyebrow", "label": "Eyebrow", "default": "Luxury Living" },
+    { "type": "text", "id": "props_title", "label": "Título", "default": "Exquisite Property Collections" },
+    { "type": "header", "content": "CTA Footer" },
+    { "type": "text", "id": "cta_title", "label": "Título", "default": "Invest in Places People Dream About." },
+    { "type": "textarea", "id": "cta_desc", "label": "Descripción", "default": "Schedule a private presentation with our investment specialists and explore exclusive opportunities." },
+    { "type": "text", "id": "cta_feat_1_title", "label": "Feature 1 — título", "default": "Private Presentation" },
+    { "type": "text", "id": "cta_feat_1_desc", "label": "Feature 1 — descripción", "default": "Personalized investment analysis" },
+    { "type": "text", "id": "cta_feat_2_title", "label": "Feature 2 — título", "default": "Exclusive Access" },
+    { "type": "text", "id": "cta_feat_2_desc", "label": "Feature 2 — descripción", "default": "Priority access to new developments" },
+    { "type": "text", "id": "cta_label", "label": "Botón — texto", "default": "Schedule a Presentation" },
+    { "type": "url", "id": "cta_url", "label": "Botón — URL" },
+    { "type": "html", "id": "cta_embed_code", "label": "Embed code del formulario (CRM)", "info": "Pega aquí el código de tu formulario. También puedes pegarlo directamente en el div marcado con el comentario <!-- INSERTAR AQUÍ EL EMBED CODE DEL FORMULARIO -->." },
+    { "type": "header", "content": "Testimonios" },
+    { "type": "text", "id": "testi_eyebrow", "label": "Eyebrow", "default": "Exclusive Developments" },
+    { "type": "text", "id": "testi_title", "label": "Título", "default": "Why Buyers Choose us" }
+  ],
+  "blocks": [
+    {
+      "type": "project",
+      "name": "Proyecto",
+      "settings": [
+        { "type": "select", "id": "layout", "label": "Layout", "options": [ { "value": "gallery", "label": "Galería (thumbnails + tarjeta de estado)" }, { "value": "tabs", "label": "Pestañas (tabs + HUD)" } ], "default": "gallery" },
+        { "type": "select", "id": "bg", "label": "Fondo", "options": [ { "value": "cream", "label": "Crema" }, { "value": "sand", "label": "Arena" }, { "value": "white", "label": "Blanco" } ], "default": "cream" },
+        { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "El Salvador" },
+        { "type": "text", "id": "title", "label": "Título", "default": "Half Manzana" },
+        { "type": "text", "id": "location", "label": "Ubicación", "default": "La Unión, El Salvador" },
+        { "type": "textarea", "id": "desc", "label": "Descripción" },
+        { "type": "textarea", "id": "features", "label": "Features / Specs", "info": "Una por línea. Galería: texto simple (p. ej. 'Beachfront Development'). Pestañas: 'Valor | Etiqueta' (p. ej. '24 | Floors')." },
+        { "type": "text", "id": "link_1", "label": "Link 1 — texto", "default": "Explore Project" },
+        { "type": "url", "id": "link_1_url", "label": "Link 1 — URL" },
+        { "type": "text", "id": "link_2", "label": "Link 2 — texto" },
+        { "type": "url", "id": "link_2_url", "label": "Link 2 — URL" },
+        { "type": "text", "id": "link_3", "label": "Link 3 — texto" },
+        { "type": "url", "id": "link_3_url", "label": "Link 3 — URL" },
+        { "type": "header", "content": "Tarjeta de estado (layout Galería)" },
+        { "type": "text", "id": "status_label", "label": "Estado — etiqueta", "default": "Project Status" },
+        { "type": "text", "id": "status", "label": "Estado — valor", "default": "Pre-sale" },
+        { "type": "text", "id": "start_label", "label": "Inicio — etiqueta", "default": "Construction Start" },
+        { "type": "text", "id": "start", "label": "Inicio — valor" },
+        { "type": "text", "id": "delivery_label", "label": "Entrega — etiqueta", "default": "Estimated Delivery" },
+        { "type": "text", "id": "delivery", "label": "Entrega — valor" },
+        { "type": "header", "content": "HUD (layout Pestañas)" },
+        { "type": "textarea", "id": "hud", "label": "HUD", "info": "Hasta 3 líneas 'Valor | Etiqueta' (p. ej. '360° | View')." },
+        { "type": "header", "content": "Media (hasta 5)" },
+        { "type": "video", "id": "video_1", "label": "Video 1 (principal — pestaña 360° View)", "info": "Se reproduce en bucle, silenciado y sin controles." },
+        { "type": "text", "id": "label_1", "label": "Etiqueta 1 (pestaña)", "default": "360° View" },
+        { "type": "image_picker", "id": "image_2", "label": "Imagen 2" },
+        { "type": "text", "id": "label_2", "label": "Etiqueta 2 (pestaña)" },
+        { "type": "image_picker", "id": "image_3", "label": "Imagen 3" },
+        { "type": "text", "id": "label_3", "label": "Etiqueta 3 (pestaña)" },
+        { "type": "image_picker", "id": "image_4", "label": "Imagen 4" },
+        { "type": "text", "id": "label_4", "label": "Etiqueta 4 (pestaña)" },
+        { "type": "image_picker", "id": "image_5", "label": "Imagen 5" },
+        { "type": "text", "id": "label_5", "label": "Etiqueta 5 (pestaña)" }
+      ]
+    },
+    {
+      "type": "map_pin",
+      "name": "Pin del mapa",
+      "settings": [
+        { "type": "text", "id": "name", "label": "Nombre", "default": "Puerto Vallarta" },
+        { "type": "text", "id": "status", "label": "Estado", "default": "Pre-sale" },
+        { "type": "range", "id": "pos_x", "label": "Posición X (%)", "min": 0, "max": 100, "step": 1, "default": 30 },
+        { "type": "range", "id": "pos_y", "label": "Posición Y (%)", "min": 0, "max": 100, "step": 1, "default": 30 },
+        { "type": "checkbox", "id": "flip", "label": "Tooltip a la izquierda", "default": false }
+      ]
+    },
+    {
+      "type": "stat",
+      "name": "Estadística",
+      "settings": [
+        { "type": "text", "id": "number", "label": "Número", "default": "5" },
+        { "type": "text", "id": "label", "label": "Etiqueta", "default": "Exclusive Developments" }
+      ]
+    },
+    {
+      "type": "property",
+      "name": "Propiedad",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Imagen" },
+        { "type": "text", "id": "title", "label": "Título", "default": "Villas (Beachfront)" },
+        { "type": "text", "id": "size", "label": "Tamaño", "default": "300 m²" },
+        { "type": "text", "id": "price_prefix", "label": "Prefijo de precio", "default": "From" },
+        { "type": "text", "id": "price", "label": "Precio", "default": "$800,000 USD" },
+        { "type": "url", "id": "url", "label": "URL" }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "name": "Testimonio / Opinión",
+      "settings": [
+        { "type": "textarea", "id": "quote", "label": "Cita / Testimonio", "default": "WHY BUYERS CHOOSE..." },
+        { "type": "text", "id": "author", "label": "Autor (p. ej. Altarena)", "default": "Altarena" },
+        { "type": "text", "id": "author_title", "label": "Título del Autor", "default": "Exclusive Coastal Community" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "AYLESVA Luxury Landing",
+      "blocks": [
+        { "type": "map_pin", "settings": { "name": "Puerto Vallarta", "status": "Pre-sale", "pos_x": 26, "pos_y": 24 } },
+        { "type": "map_pin", "settings": { "name": "Torre 40", "status": "Under Construction", "pos_x": 32, "pos_y": 42 } },
+        { "type": "map_pin", "settings": { "name": "Half Manzana", "status": "Pre-sale", "pos_x": 74, "pos_y": 46, "flip": true } },
+        { "type": "map_pin", "settings": { "name": "Costa del Sol", "status": "Pre-sale", "pos_x": 70, "pos_y": 62, "flip": true } },
+        { "type": "stat", "settings": { "number": "5", "label": "Exclusive Developments" } },
+        { "type": "stat", "settings": { "number": "72", "label": "Luxury Units" } },
+        { "type": "stat", "settings": { "number": "2", "label": "Countries" } },
+        { "type": "stat", "settings": { "number": "2028", "label": "Projected Completion" } },
+        {
+          "type": "project",
+          "settings": {
+            "layout": "gallery", "bg": "cream",
+            "eyebrow": "El Salvador", "title": "Half Manzana", "location": "La Unión, El Salvador",
+            "desc": "An exclusive beachfront development that seamlessly blends modern luxury with the natural beauty of the Pacific coast.",
+            "features": "Beachfront Development\nHigh ROI Potential\nPremium Lifestyle\nSecure Investment",
+            "link_1": "Explore Project", "link_2": "Master Plan", "link_3": "Available Units",
+            "status": "Pre-sale", "start": "Q3 2025", "delivery": "2028"
+          }
+        },
+        {
+          "type": "project",
+          "settings": {
+            "layout": "tabs", "bg": "sand",
+            "eyebrow": "Under Construction", "title": "Torre 40", "location": "Puerto Vallarta, Mexico",
+            "desc": "A modern residential tower that redefines luxury living in the heart of Puerto Vallarta.",
+            "features": "24 | Floors\n72 | Exclusive Units\n2027 | Est. Delivery\nInfinity Pool | Rooftop\nPanoramic Views | Ocean & City\n24/7 Security | & Concierge",
+            "link_1": "Explore Torre 40", "link_2": "", "link_3": "",
+            "hud": "360° | View\n24 | Floors\nFloor 12 | Units",
+            "label_1": "360° View", "label_2": "Floor Plans", "label_3": "Amenities", "label_4": "Gallery", "label_5": "Construction Progress"
+          }
+        },
+        {
+          "type": "project",
+          "settings": {
+            "layout": "gallery", "bg": "white",
+            "eyebrow": "New Development", "title": "Altarena", "location": "México",
+            "desc": "A new signature development by AYLESVA. Update this description with the final project details.",
+            "features": "Premium Location\nHigh ROI Potential\nPremium Lifestyle\nSecure Investment",
+            "link_1": "Explore Project", "link_2": "Master Plan", "link_3": "Available Units",
+            "status": "Pre-sale", "start": "", "delivery": ""
+          }
+        },
+        { "type": "property", "settings": { "title": "Villas (Beachfront)", "size": "300 m²", "price_prefix": "From", "price": "$800,000 USD" } },
+        { "type": "property", "settings": { "title": "Villas (Back Row)", "size": "300 m²", "price_prefix": "From", "price": "$400,000 USD" } },
+        { "type": "property", "settings": { "title": "Oceanfront Cabanas", "size": "80 m²", "price_prefix": "From", "price": "$200,000 USD" } },
+        { "type": "property", "settings": { "title": "Condominium Units", "size": "Various Sizes", "price_prefix": "", "price": "Price on Call" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

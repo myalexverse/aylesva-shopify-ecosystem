@@ -1,0 +1,88 @@
+AYLESVA · INVENTARIO DE IMÁGENES
+Súbelas en Shopify → Contenido → Archivos y asígnalas desde el editor de temas.
+
+CONVENCIÓN DE NOMBRES
+  ay-<pagina>-<seccion>-<detalle>.jpg      p. ej. ay-care-plan-health.jpg
+  Formato: JPG a calidad 80 (WebP si el tema ya lo sirve).
+  Recorta al tamaño indicado; Shopify genera las variantes menores.
+
+------------------------------------------------------------------------
+YA EXISTEN EN EL CDN DE LA TIENDA (reutilizar, no volver a subir)
+------------------------------------------------------------------------
+  Torre 40 ........... /cdn/shop/files/preview_images/3430260eb86c4aff8bfaa5be820ca0a7...
+  Paradise Bay ....... /cdn/shop/files/paradisebay2.png
+  Altarena ........... /cdn/shop/files/Altarena2.png
+  Puente CBX ......... /cdn/shop/files/pasted-1783109167178-0.png
+  Tarjeta MUV ........ /cdn/shop/files/nuvcard.png
+  Pasos Lanza marca .. /cdn/shop/t/8/assets/lanza-step-select.jpg
+                       /cdn/shop/t/8/assets/lanza-step-launch.jpg
+                       /cdn/shop/t/8/assets/lanza-step-shipping.jpg
+  Servicios L. marca . /cdn/shop/t/8/assets/lanza-service-webdesign.jpg
+                       /cdn/shop/t/8/assets/lanza-service-connect.jpg
+
+------------------------------------------------------------------------
+HOME  (9 imágenes nuevas)
+------------------------------------------------------------------------
+  Hero ....................... 2400×1600  render del ecosistema (panel, tarjeta, paquetería)
+  Qué hacemos · vertical ..... 1200×1600  equipo Aylesva en oficina
+  Qué hacemos · universo 1 ....  900×600  producto curado del marketplace
+  Qué hacemos · universo 2 ....  900×600  reunión de asesoría
+  Servicios · Recursos ........  900×500  firma de crédito / manos y documentos
+  Servicios · Direct ..........  900×500  contenedores en puerto
+  Servicios · Global Estates ..  900×500  render de Torre 40 (reutilizable del CDN)
+  Servicios · Care ............  900×500  consulta médica
+  Servicios · Lanza tu marca ..  900×500  tienda en pantalla de laptop
+  Servicios · MUV .............  900×500  familia reunida
+  Marketplace (4 piezas) ......  900×600  artesanal, moda, hogar, alimentos
+  Resultados (3 piezas) ....... 1200×800  Torre 40, collage de tiendas, logística
+
+------------------------------------------------------------------------
+GLOBAL ESTATES
+------------------------------------------------------------------------
+  Hero ....................... 2400×1600  vista aérea costera o lobby de lujo
+  Tarjetas de desarrollo ..... 1200×800   Torre 40, Paradise Bay, Altarena (CDN)
+  PENDIENTE: fotografía final de Torre 40 en 2400px (hoy es un render de vista previa)
+
+------------------------------------------------------------------------
+AYLESVA RECURSOS
+------------------------------------------------------------------------
+  Hero ....................... 2400×1600  distrito financiero o mesa de trabajo
+  Tarjetas de crédito (3) .... 1200×800   línea de crédito, capital de trabajo, equipo
+  Los actuales son fotografías de stock: sustituir por material propio o licenciado.
+
+------------------------------------------------------------------------
+AYLESVA DIRECT
+------------------------------------------------------------------------
+  Hero ....................... 2400×1600  puerto o terminal de contenedores
+  Categorías (5) ............. 1200×800   prefabricadas, materiales, maquinaria,
+                                          mayoreo, revisión de proveedores
+  Los actuales son fotografías de stock: sustituir por material propio o licenciado.
+
+------------------------------------------------------------------------
+AYLESVA CARE
+------------------------------------------------------------------------
+  Hero ....................... 2400×1600  consulta médica o familia
+  Planes (3) ................. 1200×800   Health & Household, Supplemental, Homezie
+  PENDIENTE: logotipos oficiales de New Benefits, Aflac, UHOne y Briotech
+             (SVG o PNG transparente, alto 40px, en escala de gris)
+
+------------------------------------------------------------------------
+LANZA TU PROPIA MARCA
+------------------------------------------------------------------------
+  Hero ....................... 2400×1600  emprendedor con su tienda en pantalla
+  Pasos (3) y servicios (2) .. ya en el CDN del tema (ver arriba)
+  PENDIENTE: capturas de las 23 marcas lanzadas, 900×600 cada una
+
+------------------------------------------------------------------------
+MI ÚLTIMA VOLUNTAD
+------------------------------------------------------------------------
+  Hero ....................... 2400×1600  familia migrante, tono cálido y sobrio
+  CBX y tarjeta MUV .......... ya en el CDN (ver arriba)
+
+------------------------------------------------------------------------
+TRATAMIENTO
+------------------------------------------------------------------------
+  · Nada de filtros de color ni viñeteados: el velo ink de la sección hace el trabajo.
+  · Fotografía limpia, luz natural, sin sobrecarga de elementos.
+  · Personas: gesto sobrio y profesional, nunca poses de stock exageradas.
+  · En heros el sujeto va a la DERECHA del cuadro: la izquierda la ocupa el texto.

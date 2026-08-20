@@ -1,0 +1,156 @@
+{% comment %}
+  Aylesva · Home v3 · Recorrido animado ("Cómo funciona").
+  Pestañas por servicio; los nodos se encienden en secuencia y el conector
+  dorado se traza. Cada nodo es clicable. Sin librerías.
+  Estructura: una pestaña + su grupo de nodos por bloque "flow".
+  Los pasos de cada flujo se escriben en el campo "steps" (uno por línea):
+      Título | Descripción | Quién | nombre-de-icono
+{% endcomment %}
+<section class="ay ay-journey" id="{{ section.id }}" style="background:var(--ay-ink-800);color:#fff">
+  <div class="ay-wrap" style="padding-top:88px;padding-bottom:88px">
+    <div class="ay-journey-head">
+      <div>
+        {% if section.settings.eyebrow != blank %}<p class="ay-eyebrow ay-eyebrow--dark">{{ section.settings.eyebrow }}</p>{% endif %}
+        <h2 class="ay-h2" style="color:#fff;font-weight:300;letter-spacing:-.03em">{{ section.settings.title }}</h2>
+      </div>
+      {% if section.settings.intro != blank %}<p style="font-size:16px;line-height:1.7;color:rgba(255,255,255,.62);margin:0">{{ section.settings.intro }}</p>{% endif %}
+    </div>
+
+    <div class="ay-journey-tabs">
+      {% for block in section.blocks %}
+        <button class="ay-jtab" type="button" data-flow="{{ forloop.index0 }}" {% if forloop.first %}data-on="1"{% endif %}>
+          {% if block.settings.icon != blank %}<svg class="ay-icon ay-icon--sm" viewBox="0 0 24 24" stroke-linecap="square" aria-hidden="true">{{ block.settings.icon }}</svg>{% endif %}
+          {{ block.settings.name }}
+        </button>
+      {% endfor %}
+    </div>
+
+    {% for block in section.blocks %}
+      <div class="ay-jflow" data-flow="{{ forloop.index0 }}" {% if forloop.first %}data-on="1"{% endif %} {{ block.shopify_attributes }}>
+        <div class="ay-jnodes">
+          {% assign rows = block.settings.steps | newline_to_br | split: '<br />' %}
+          {% for row in rows %}
+            {% if row != blank %}
+              {% assign cells = row | split: '|' %}
+              <div class="ay-jnode" data-node="{{ forloop.index0 }}" {% if forloop.first %}data-on="1" data-current="1"{% endif %}>
+                <span class="ay-jseg"><span class="ay-jseg-fill"></span></span>
+                <span class="ay-jdot"><svg class="ay-icon ay-icon--md" viewBox="0 0 24 24" stroke-linecap="square" aria-hidden="true">{{ cells[3] | strip }}</svg><span class="ay-jpulse"></span></span>
+                <span class="ay-jn">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+                <span class="ay-jt">{{ cells[0] | strip }}</span>
+                <span class="ay-jd">{{ cells[1] | strip }}</span>
+                <span class="ay-jw">{{ cells[2] | strip }}</span>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <div class="ay-jfoot">
+          <p class="ay-jout">{{ block.settings.outcome }}</p>
+          <a class="ay-btn ay-btn--gold" href="{{ block.settings.link }}">{{ section.settings.cta_label }} &rarr;</a>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+<style>
+  .ay-journey-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:72px;align-items:end;margin-bottom:44px}
+  .ay-journey-tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:52px}
+  .ay-jtab{display:flex;align-items:center;gap:10px;padding:13px 22px;border-radius:var(--ay-radius);font-family:var(--ay-font-body);font-size:14px;font-weight:600;letter-spacing:.01em;cursor:pointer;border:1px solid rgba(255,255,255,.26);background:transparent;color:rgba(255,255,255,.8);transition:all .25s ease}
+  .ay-jtab:hover{border-color:var(--ay-gold)}
+  .ay-jtab[data-on]{background:var(--ay-gold);border-color:var(--ay-gold);color:var(--ay-ink-800)}
+  .ay-jtab[data-on] .ay-icon{stroke:var(--ay-ink-800)}
+
+  .ay-jflow{display:none}
+  .ay-jflow[data-on]{display:block}
+  .ay-jnodes{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:32px;padding-top:8px}
+  .ay-jnode{position:relative;display:flex;flex-direction:column;cursor:pointer;opacity:.42;transition:opacity .5s ease}
+  .ay-jnode[data-on]{opacity:1}
+  .ay-jseg{position:absolute;top:41px;left:74px;right:-32px;height:1px;background:rgba(255,255,255,.16)}
+  .ay-jnode:last-child .ay-jseg{display:none}
+  .ay-jseg-fill{position:absolute;inset:0;background:linear-gradient(90deg,rgba(197,164,126,.55),var(--ay-gold));transform:scaleX(0);transform-origin:left;transition:transform .8s cubic-bezier(.22,.61,.36,1)}
+  .ay-jnode[data-done] .ay-jseg-fill{transform:scaleX(1)}
+  .ay-jdot{position:relative;width:66px;height:66px;margin:8px 0 26px;border-radius:50%;border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;transition:all .5s cubic-bezier(.22,.61,.36,1)}
+  .ay-jnode[data-on] .ay-jdot{border-color:rgba(197,164,126,.6)}
+  .ay-jnode[data-current] .ay-jdot{border-color:var(--ay-gold);background:var(--ay-gold);transform:scale(1.06)}
+  .ay-icon--md{width:26px;height:26px;stroke:rgba(255,255,255,.35)}
+  .ay-jnode[data-on] .ay-icon--md{stroke:var(--ay-gold)}
+  .ay-jnode[data-current] .ay-icon--md{stroke:var(--ay-ink-800)}
+  .ay-jpulse{position:absolute;inset:-1px;border-radius:50%;border:1px solid rgba(197,164,126,.7);opacity:0}
+  .ay-jnode[data-current] .ay-jpulse{opacity:1;animation:ay-pulse 2s ease-out infinite}
+  @keyframes ay-pulse{0%,100%{transform:scale(1);opacity:.5}50%{transform:scale(1.7);opacity:0}}
+  .ay-jn{font-family:var(--ay-font-mono);font-size:10px;letter-spacing:.16em;color:var(--ay-gold);margin-bottom:10px}
+  .ay-jt{font-family:var(--ay-font-display);font-size:19px;font-weight:500;letter-spacing:-.015em;line-height:1.25;margin-bottom:10px;text-wrap:pretty}
+  .ay-jd{font-size:14px;line-height:1.6;color:rgba(255,255,255,.6);max-width:30ch}
+  .ay-jw{font-family:var(--ay-font-mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:14px}
+  .ay-jfoot{display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap;margin-top:52px;padding-top:32px;border-top:1px solid rgba(255,255,255,.16)}
+  .ay-jout{font-size:16px;line-height:1.6;color:rgba(255,255,255,.72);max-width:60ch;margin:0}
+
+  @media (max-width:1024px){ .ay-journey-head{grid-template-columns:1fr;gap:24px} }
+  @media (prefers-reduced-motion:reduce){
+    .ay-jnode{opacity:1}
+    .ay-jseg-fill{transform:scaleX(1)}
+    .ay-jpulse{display:none}
+  }
+</style>
+
+<script>
+  (function(){
+    var root = document.getElementById('shopify-section-{{ section.id }}');
+    if(!root) return;
+    var tabs = root.querySelectorAll('.ay-jtab');
+    var flows = root.querySelectorAll('.ay-jflow');
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var flow = 0, node = 0, timer = null;
+
+    function paint(){
+      flows.forEach(function(f,i){ if(i===flow) f.setAttribute('data-on','1'); else f.removeAttribute('data-on'); });
+      tabs.forEach(function(t,i){ if(i===flow) t.setAttribute('data-on','1'); else t.removeAttribute('data-on'); });
+      var nodes = flows[flow].querySelectorAll('.ay-jnode');
+      nodes.forEach(function(n,i){
+        if(i<=node) n.setAttribute('data-on','1'); else n.removeAttribute('data-on');
+        if(i===node) n.setAttribute('data-current','1'); else n.removeAttribute('data-current');
+        if(i<node) n.setAttribute('data-done','1'); else n.removeAttribute('data-done');
+      });
+    }
+    function play(){
+      if(reduce) return;
+      clearInterval(timer);
+      timer = setInterval(function(){
+        var n = flows[flow].querySelectorAll('.ay-jnode').length || 1;
+        node = (node+1) % n; paint();
+      }, {{ section.settings.step_seconds | times: 1000 | default: 2200 }});
+    }
+    tabs.forEach(function(t,i){
+      t.addEventListener('click', function(){ flow = i; node = 0; paint(); play(); });
+    });
+    flows.forEach(function(f){
+      f.querySelectorAll('.ay-jnode').forEach(function(n,i){
+        n.addEventListener('click', function(){ node = i; paint(); play(); });
+      });
+    });
+    paint(); play();
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Aylesva · Recorrido",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Cómo funciona" },
+    { "type": "textarea", "id": "title", "label": "Titular", "default": "Mira el recorrido completo, paso por paso." },
+    { "type": "textarea", "id": "intro", "label": "Texto de entrada", "default": "Elige un servicio y el recorrido se dibuja solo: qué haces tú, qué hacemos nosotros y qué recibes al final." },
+    { "type": "range", "id": "step_seconds", "label": "Segundos por paso", "min": 1, "max": 6, "step": 1, "default": 2 },
+    { "type": "text", "id": "cta_label", "label": "Texto del botón", "default": "Empezar este proceso" }
+  ],
+  "blocks": [
+    { "type": "flow", "name": "Recorrido", "limit": 6, "settings": [
+      { "type": "text", "id": "name", "label": "Nombre de la pestaña" },
+      { "type": "textarea", "id": "icon", "label": "Trazado SVG del ícono de la pestaña" },
+      { "type": "textarea", "id": "steps", "label": "Pasos (Título | Descripción | Quién | SVG)" },
+      { "type": "textarea", "id": "outcome", "label": "Qué recibes al final" },
+      { "type": "url", "id": "link", "label": "Enlace del botón" }
+    ]}
+  ],
+  "presets": [{ "name": "Aylesva · Recorrido" }]
+}
+{% endschema %}

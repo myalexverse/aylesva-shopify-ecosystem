@@ -1,0 +1,119 @@
+{% comment %}
+
+  A snippet to include a search bar anywhere in your theme.
+  Note we are using 'input-group' for the layout. Look under Forms > Input Groups for some demos.
+
+  More information:
+   - http://docs.shopify.com/themes/liquid-variables/search
+
+  To return only products in results:
+    - http://docs.shopify.com/manual/configuration/store-customization/return-only-product-in-storefront-search-results
+    - Or manually add type=product to the search URL as a query parameter
+    - Uncomment hidden input with value="product" below
+
+{% endcomment %}
+<div class="elegant-search-wrapper" style="width: 100%; max-width: 650px; position: relative; z-index: 100000;">
+  <form action="/search" method="get" class="search-bar-custom" role="search" style="display: flex; align-items: stretch; width: 100%; height: 48px; border: 2px solid #C5A47E; border-radius: 50px; background: #fff; overflow: visible !important; box-shadow: 0 2px 10px rgba(0,0,0,0.05); transition: all 0.3s ease;">
+    <input type="hidden" name="type" value="product">
+    <input type="hidden" name="collection" id="search-collection-handle" value="">
+
+    {% if settings.search_collection != blank %}
+    <!-- Custom Elegant Selector -->
+    <div class="custom-select-container" style="position: relative; border-right: 1px solid #eee; background: #fcfcfc; border-radius: 50px 0 0 50px; flex-shrink: 0; display: flex; align-items: center;">
+      <div id="elegant-select-trigger" onclick="toggleElegantMenu()" style="display: flex; align-items: center; gap: 8px; padding: 0 15px 0 20px; height: 100%; cursor: pointer; min-width: 140px; user-select: none;">
+        <span id="selected-collection-label" style="font-size: 11px; font-weight: 700; color: #C5A47E; text-transform: uppercase; letter-spacing: 0.5px;">Colecciones</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="#C5A47E" stroke-width="3" style="width: 12px; height: 12px;"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+
+      <!-- Elegant Dropdown Menu -->
+      <ul id="elegant-dropdown-menu" style="display: none; position: absolute; top: calc(100% + 8px); left: 0; background: #fff; width: 220px; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.15); z-index: 10000; padding: 10px 0; margin: 0; list-style: none; border: 1px solid #f0f0f0; max-height: 400px; overflow-y: auto;">
+        <li onclick="selectElegantCollection('', 'Colecciones')" style="padding: 10px 20px; font-size: 13px; color: #2D5A43; font-weight: 600; cursor: pointer; transition: background 0.2s;" onmouseover="this.style.background='#f4f7f6'" onmouseout="this.style.background='transparent'">Todas las Colecciones</li>
+        {% for collection in collections %}
+          <li onclick="selectElegantCollection('{{ collection.handle }}', '{{ collection.title }}')" style="padding: 10px 20px; font-size: 13px; color: #444; cursor: pointer; transition: background 0.2s; border-top: 1px solid #f9f9f9;" onmouseover="this.style.background='#f4f7f6'; this.style.color='#2D5A43'" onmouseout="this.style.background='transparent'; this.style.color='#444'">{{ collection.title }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+
+    <div class="input-container" style="flex: 1; display: flex; align-items: center; position: relative; height: 100%; border: none !important;">
+      <input type="search" name="q" id="search-input-desktop" value="{{ search.terms | escape }}" placeholder="Busca productos, prendas..." aria-label="Buscar" style="flex: 1; border: none !important; background: transparent !important; padding: 0 20px !important; outline: none !important; font-size: 14px !important; height: 100% !important; line-height: 48px !important; color: #1a1a1a; font-family: inherit; -webkit-appearance: none; display: block !important; margin: 0 !important;">
+    </div>
+
+    <button type="submit" style="background: #C5A47E; color: #fff; border: none; padding: 0 25px; border-radius: 0 50px 50px 0; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; transition: background 0.3s ease; min-width: 120px;" onmouseover="this.style.background='#b08d65'" onmouseout="this.style.background='#C5A47E'">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width: 18px; height: 18px;"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      <span style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Buscar</span>
+    </button>
+  </form>
+</div>
+
+<script>
+function toggleElegantMenu() {
+  const menu = document.getElementById('elegant-dropdown-menu');
+  const trigger = document.getElementById('elegant-select-trigger');
+  const isVisible = menu.getAttribute('data-visible') === 'true';
+
+  if (isVisible) {
+    hideElegantMenu();
+  } else {
+    showElegantMenu();
+  }
+}
+
+function showElegantMenu() {
+  const menu = document.getElementById('elegant-dropdown-menu');
+  const trigger = document.getElementById('elegant-select-trigger');
+  
+  // Mover al body para evitar overflow:hidden
+  document.body.appendChild(menu);
+  
+  const rect = trigger.getBoundingClientRect();
+  menu.style.position = 'fixed';
+  menu.style.top = (rect.bottom + window.scrollY + 8 - window.pageYOffset) + 'px';
+  menu.style.left = rect.left + 'px';
+  menu.style.display = 'block';
+  menu.setAttribute('data-visible', 'true');
+  
+  // Asegurar z-index máximo
+  menu.style.zIndex = '2147483647';
+  
+  setTimeout(() => {
+    document.addEventListener('click', closeMenuOnOutsideClick);
+    window.addEventListener('scroll', hideElegantMenu);
+    window.addEventListener('resize', hideElegantMenu);
+  }, 10);
+}
+
+function hideElegantMenu() {
+  const menu = document.getElementById('elegant-dropdown-menu');
+  if (menu) {
+    menu.style.display = 'none';
+    menu.setAttribute('data-visible', 'false');
+    document.removeEventListener('click', closeMenuOnOutsideClick);
+    window.removeEventListener('scroll', hideElegantMenu);
+    window.removeEventListener('resize', hideElegantMenu);
+  }
+}
+
+function closeMenuOnOutsideClick(e) {
+  const trigger = document.getElementById('elegant-select-trigger');
+  const menu = document.getElementById('elegant-dropdown-menu');
+  if (trigger && !trigger.contains(e.target) && menu && !menu.contains(e.target)) {
+    hideElegantMenu();
+  }
+}
+
+function selectElegantCollection(handle, title) {
+  if (handle && handle !== '') {
+    window.location.href = '/collections/' + handle;
+  } else {
+    window.location.href = '/collections/all';
+  }
+  hideElegantMenu();
+}
+
+// Asegurar que el input sea cliqueable
+document.getElementById('search-input-desktop').addEventListener('click', function(e) {
+    this.focus();
+    e.stopPropagation();
+});
+</script>

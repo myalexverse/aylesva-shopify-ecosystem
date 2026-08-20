@@ -1,0 +1,438 @@
+{% comment %}
+  Aylesva · Home v3 · Hero interactivo con Gran Vitrina Cinemática y Dock de Servicios.
+  En móvil, la gran vitrina de imágenes rotativas se posiciona arriba para comunicar qué hace Grupo Aylesva desde el primer segundo.
+{% endcomment %}
+<section class="ay ay-hero3" id="{{ section.id }}">
+  <div class="ay-wrap ay-hero3-grid">
+    
+    <!-- Bloque 1: Titular e Introducción -->
+    <div class="ay-hero3-intro">
+      {% if section.settings.eyebrow != blank %}<p class="ay-eyebrow">{{ section.settings.eyebrow }}</p>{% endif %}
+      <h1 class="ay-h1 ay-hero3-title">
+        {{ section.settings.title_a }} <span style="color:var(--ay-gold-text)">{{ section.settings.title_gold }}</span> {{ section.settings.title_b }}
+      </h1>
+      <p class="ay-hero3-sub">{{ section.settings.subtitle }}</p>
+    </div>
+
+    <!-- Bloque 2: Gran Vitrina Cinemática + Dock (En móvil aparece inmediatamente tras el título) -->
+    <div class="ay-hero3-showcase">
+      
+      <!-- Gran Vitrina Cinemática -->
+      <div class="ay-hero3-stage">
+        {% for block in section.blocks %}
+          {%- assign raw_img = block.settings.image_url | default: block.settings.image -%}
+          {%- capture stage_img_src -%}
+            {%- if raw_img.src -%}{{ raw_img | image_url: width: 1600 }}
+            {%- elsif raw_img contains 'http' -%}{{ raw_img }}
+            {%- elsif raw_img contains 'shopify://shop_images/' -%}{%- assign ch = raw_img | remove: 'shopify://shop_images/' -%}{{ ch | file_img_url: '1600x' }}
+            {%- elsif raw_img contains '.jpg' or raw_img contains '.png' or raw_img contains '.webp' -%}{{ raw_img | asset_url }}
+            {%- endif -%}
+          {%- endcapture -%}
+          {%- assign stage_img_src = stage_img_src | strip -%}
+          
+          <a class="ay-stage-slide" data-stage="{{ forloop.index0 }}" href="{{ block.settings.link }}" {% if forloop.first %}data-on="1"{% endif %} {{ block.shopify_attributes }}>
+            <span class="ay-stage-img" {% if stage_img_src != blank %}style="background-image:url({{ stage_img_src }})"{% endif %}></span>
+            <span class="ay-stage-veil"></span>
+            
+            <div class="ay-stage-overlay">
+              <div class="ay-stage-badge">
+                <span class="ay-stage-index">0{{ forloop.index }}</span>
+                {% if block.settings.icon != blank %}<svg class="ay-icon ay-icon--sm" viewBox="0 0 24 24" stroke-linecap="square" aria-hidden="true">{{ block.settings.icon }}</svg>{% endif %}
+                <span class="ay-stage-tag">{{ block.settings.label }}</span>
+              </div>
+              <div class="ay-stage-headline">{{ block.settings.short }}</div>
+              <div class="ay-stage-link-hint">Explorar solución <span>&rarr;</span></div>
+            </div>
+          </a>
+        {% endfor %}
+      </div>
+
+      <!-- Dock de Navegación de los 6 Servicios -->
+      <div class="ay-hero3-dock">
+        {% for block in section.blocks %}
+          {%- assign raw_img_thumb = block.settings.image_url | default: block.settings.image -%}
+          {%- capture thumb_src -%}
+            {%- if raw_img_thumb.src -%}{{ raw_img_thumb | image_url: width: 320 }}
+            {%- elsif raw_img_thumb contains 'http' -%}{{ raw_img_thumb }}
+            {%- elsif raw_img_thumb contains 'shopify://shop_images/' -%}{%- assign ch = raw_img_thumb | remove: 'shopify://shop_images/' -%}{{ ch | file_img_url: '320x' }}
+            {%- elsif raw_img_thumb contains '.jpg' or raw_img_thumb contains '.png' or raw_img_thumb contains '.webp' -%}{{ raw_img_thumb | asset_url }}
+            {%- endif -%}
+          {%- endcapture -%}
+          {%- assign thumb_src = thumb_src | strip -%}
+          
+          <button type="button" class="ay-dock-btn" data-dock="{{ forloop.index0 }}" {% if forloop.first %}data-on="1"{% endif %}>
+            <span class="ay-dock-thumb" {% if thumb_src != blank %}style="background-image:url({{ thumb_src }})"{% endif %}></span>
+            <span class="ay-dock-info">
+              <span class="ay-dock-name">
+                {% if block.settings.icon != blank %}<svg class="ay-dock-icon" viewBox="0 0 24 24" stroke-linecap="square" aria-hidden="true">{{ block.settings.icon }}</svg>{% endif %}
+                {{ block.settings.label }}
+              </span>
+              <span class="ay-dock-sub">{{ block.settings.short }}</span>
+            </span>
+            <span class="ay-dock-progress"></span>
+          </button>
+        {% endfor %}
+      </div>
+
+    </div>
+
+    <!-- Bloque 3: Claim Dinámico y Botones de Acción -->
+    <div class="ay-hero3-actions">
+      <div class="ay-hero3-claim">
+        {% for block in section.blocks %}
+          <div class="ay-claim" data-claim="{{ forloop.index0 }}" {% if forloop.first %}data-on="1"{% endif %}>
+            <div class="ay-claim-label">{{ block.settings.label }}</div>
+            <div class="ay-claim-title">{{ block.settings.claim }}</div>
+            <div class="ay-claim-desc">{{ block.settings.description }}</div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="ay-hero3-cta">
+        {% for block in section.blocks %}
+          <a class="ay-btn ay-btn--primary ay-claim-cta" data-claim="{{ forloop.index0 }}" href="{{ block.settings.link }}" {% if forloop.first %}data-on="1"{% endif %}>{{ block.settings.cta }} &rarr;</a>
+        {% endfor %}
+        {% if section.settings.cta2_label != blank %}
+          <a class="ay-btn ay-btn--outline" href="{{ section.settings.cta2_link }}">{{ section.settings.cta2_label }}</a>
+        {% endif %}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .ay-hero3{background:var(--ay-stone);border-bottom:var(--ay-hairline);position:relative;overflow:hidden}
+  .ay-hero3 .ay-wrap{padding:48px var(--ay-pad-x) 56px}
+  
+  /* Desktop Layout con CSS Grid */
+  .ay-hero3-grid{
+    display:grid;
+    grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr);
+    grid-template-areas:
+      "intro showcase"
+      "actions showcase";
+    gap:28px 56px;
+    align-items:center;
+  }
+  .ay-hero3-intro{grid-area:intro}
+  .ay-hero3-actions{grid-area:actions}
+  .ay-hero3-showcase{grid-area:showcase;display:flex;flex-direction:column;gap:14px}
+  
+  .ay-hero3-title{font-size:clamp(32px,3.5vw,48px);line-height:1.06;margin:0 0 16px}
+  .ay-hero3-sub{font-size:16px;line-height:1.55;color:rgba(15,23,42,.7);max-width:42ch;margin:0;text-wrap:pretty}
+
+  .ay-hero3-claim{position:relative;border-left:2.5px solid var(--ay-gold);padding:2px 0 2px 20px;min-height:92px;margin-bottom:22px}
+  .ay-claim{position:absolute;inset:0 0 auto 20px;opacity:0;pointer-events:none;transition:opacity .35s cubic-bezier(.16,1,.3,1),transform .35s cubic-bezier(.16,1,.3,1);transform:translateY(8px)}
+  .ay-claim[data-on]{opacity:1;transform:none;position:relative;inset:auto;left:0;pointer-events:auto}
+  .ay-claim-label{font-family:var(--ay-font-mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ay-gold-text);margin-bottom:6px}
+  .ay-claim-title{font-family:var(--ay-font-display);font-size:22px;font-weight:400;letter-spacing:-.02em;line-height:1.22;margin-bottom:8px;text-wrap:pretty;color:var(--ay-ink-900)}
+  .ay-claim-desc{font-size:13.5px;line-height:1.55;color:rgba(15,23,42,.68);max-width:46ch}
+
+  .ay-hero3-cta{display:flex;gap:14px;flex-wrap:wrap}
+  .ay-claim-cta{display:none}
+  .ay-claim-cta[data-on]{display:inline-block}
+  .ay-btn--outline{border:1px solid rgba(15,23,42,.2);color:var(--ay-ink-800);background:transparent}
+  .ay-btn--outline:hover{border-color:var(--ay-gold);color:var(--ay-gold-text)}
+
+  /* Gran Vitrina Cinemática */
+  .ay-hero3-stage{
+    position:relative;
+    height:370px;
+    border-radius:var(--ay-radius);
+    overflow:hidden;
+    background:#020617;
+    border:1px solid rgba(197,164,126,0.3);
+    box-shadow:0 20px 40px -12px rgba(2,6,23,0.22), 0 0 0 1px rgba(197,164,126,0.2);
+  }
+  
+  .ay-stage-slide{
+    position:absolute;
+    inset:0;
+    opacity:0;
+    visibility:hidden;
+    text-decoration:none;
+    display:block;
+    transition:opacity .6s cubic-bezier(.16,1,.3,1), visibility .6s;
+    pointer-events:none;
+  }
+  .ay-stage-slide[data-on]{
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+    z-index:2;
+  }
+
+  /* Zoom estilo Ken Burns cinematográfico 4x más grande */
+  .ay-stage-img{
+    position:absolute;
+    inset:0;
+    background-size:cover;
+    background-position:center;
+    transform:scale(1.0);
+    transition:transform 3.4s cubic-bezier(.16,1,.3,1), filter .6s ease;
+    will-change:transform;
+  }
+  .ay-stage-slide[data-on] .ay-stage-img{
+    transform:scale(1.08);
+    filter:contrast(1.04) brightness(1.03);
+  }
+  .ay-stage-slide:hover .ay-stage-img{
+    transform:scale(1.12);
+  }
+
+  .ay-stage-veil{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg,rgba(2,6,23,.12) 0%,rgba(2,6,23,.42) 38%,rgba(2,6,23,.94) 100%);
+  }
+  .ay-stage-overlay{
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:0;
+    padding:24px 28px;
+    z-index:3;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+  .ay-stage-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:var(--ay-font-mono);
+    font-size:10px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--ay-gold-light);
+  }
+  .ay-stage-index{
+    display:inline-block;
+    padding:2px 6px;
+    background:rgba(197,164,126,0.22);
+    border:1px solid rgba(197,164,126,0.45);
+    border-radius:4px;
+    font-weight:600;
+  }
+  .ay-stage-headline{
+    font-family:var(--ay-font-display);
+    font-size:24px;
+    font-weight:500;
+    color:#fff;
+    letter-spacing:-.015em;
+    line-height:1.2;
+    text-wrap:pretty;
+    text-shadow:0 2px 10px rgba(0,0,0,0.5);
+  }
+  .ay-stage-link-hint{
+    font-family:var(--ay-font-mono);
+    font-size:11px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--ay-gold-light);
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    margin-top:4px;
+    transition:gap .25s ease;
+  }
+  .ay-stage-slide:hover .ay-stage-link-hint{gap:10px;color:#fff}
+
+  /* Dock de Navegación de 6 Servicios */
+  .ay-hero3-dock{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+  }
+  .ay-dock-btn{
+    position:relative;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:8px 12px;
+    background:#fff;
+    border:1px solid rgba(15,23,42,.12);
+    border-radius:var(--ay-radius);
+    cursor:pointer;
+    text-align:left;
+    transition:border-color .3s ease, transform .3s ease, box-shadow .3s ease, background-color .3s ease;
+    overflow:hidden;
+  }
+  .ay-dock-btn:hover{
+    border-color:var(--ay-gold);
+    transform:translateY(-2px);
+    background:#faf8f5;
+  }
+  .ay-dock-btn[data-on]{
+    border-color:var(--ay-gold);
+    background:#faf7f2;
+    transform:translateY(-3px);
+    box-shadow:0 8px 20px -6px rgba(197,164,126,0.4), 0 0 0 1px rgba(197,164,126,0.6);
+    z-index:2;
+  }
+  .ay-dock-thumb{
+    width:36px;
+    height:36px;
+    border-radius:4px;
+    background-size:cover;
+    background-position:center;
+    flex-shrink:0;
+    border:1px solid rgba(15,23,42,.1);
+  }
+  .ay-dock-info{
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+    min-width:0;
+  }
+  .ay-dock-name{
+    display:flex;
+    align-items:center;
+    gap:5px;
+    font-family:var(--ay-font-mono);
+    font-size:9.5px;
+    font-weight:600;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--ay-ink-900);
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  .ay-dock-icon{width:11px;height:11px;stroke:var(--ay-gold-text);flex-shrink:0}
+  .ay-dock-sub{
+    font-size:11px;
+    color:rgba(15,23,42,.58);
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    line-height:1.2;
+  }
+  
+  .ay-dock-progress{
+    position:absolute;
+    bottom:0;
+    left:0;
+    height:2.5px;
+    width:0;
+    background:linear-gradient(90deg, var(--ay-gold) 0%, #edd3a8 100%);
+    transition:width .35s cubic-bezier(.16,1,.3,1);
+  }
+  .ay-dock-btn[data-on] .ay-dock-progress{
+    width:100%;
+  }
+
+  /* Responsive Móvil y Tablet */
+  @media (max-width:1024px){
+    .ay-hero3-grid{
+      display:flex;
+      flex-direction:column;
+      gap:24px;
+    }
+    .ay-hero3-stage{height:300px}
+    .ay-hero3-dock{grid-template-columns:repeat(3,1fr);gap:8px}
+  }
+  @media (max-width:640px){
+    .ay-hero3 .ay-wrap{padding:28px 16px 36px !important}
+    .ay-hero3-grid{gap:20px}
+    
+    /* Titular compacto en móvil */
+    .ay-hero3-title{font-size:clamp(26px,7vw,34px) !important;line-height:1.1 !important;margin:0 0 10px !important}
+    .ay-hero3-sub{font-size:14.5px !important;line-height:1.5 !important;margin:0 !important}
+
+    /* Vitrina de fotos al tope de la pantalla */
+    .ay-hero3-stage{height:250px !important;box-shadow:0 12px 28px -8px rgba(0,0,0,0.3) !important}
+    .ay-stage-overlay{padding:16px 16px !important}
+    .ay-stage-headline{font-size:18px !important;line-height:1.25 !important}
+    .ay-stage-badge{font-size:9px !important}
+    .ay-stage-link-hint{font-size:9.5px !important}
+
+    /* Selector de 2 columnas táctiles */
+    .ay-hero3-dock{grid-template-columns:repeat(2,1fr) !important;gap:8px !important}
+    .ay-dock-btn{padding:7px 9px !important}
+    .ay-dock-thumb{width:28px !important;height:28px !important}
+    .ay-dock-name{font-size:8.5px !important}
+    .ay-dock-sub{font-size:9.5px !important}
+
+    /* Claim y botones debajo */
+    .ay-hero3-claim{min-height:auto !important;margin-bottom:16px !important;padding-left:14px !important}
+    .ay-claim-title{font-size:17px !important;line-height:1.25 !important}
+    .ay-claim-desc{font-size:13px !important;line-height:1.5 !important}
+    .ay-hero3-cta{flex-direction:column;gap:10px !important}
+    .ay-hero3-cta .ay-btn{width:100% !important;text-align:center !important;justify-content:center !important}
+  }
+  @media (prefers-reduced-motion:reduce){ .ay-stage-slide,.ay-stage-img,.ay-claim,.ay-dock-progress{transition:none} }
+</style>
+
+<script>
+  (function(){
+    var root = document.getElementById('shopify-section-{{ section.id }}') || document.getElementById('{{ section.id }}');
+    if(!root) return;
+    var stages = root.querySelectorAll('.ay-stage-slide');
+    var docks = root.querySelectorAll('.ay-dock-btn');
+    var claims = root.querySelectorAll('.ay-claim');
+    var ctas = root.querySelectorAll('.ay-claim-cta');
+    if(!stages.length) return;
+    var i = 0, hold = false, timer = null;
+    var delay = {{ section.settings.rotate_seconds | default: 3.2 | times: 1000 }};
+
+    function show(n){
+      i = n;
+      [stages, docks, claims, ctas].forEach(function(set){
+        for(var k=0;k<set.length;k++){
+          if(k===n) set[k].setAttribute('data-on','1'); else set[k].removeAttribute('data-on');
+        }
+      });
+    }
+    function start(){
+      if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      clearInterval(timer);
+      timer = setInterval(function(){ if(!hold) show((i+1)%stages.length); }, delay);
+    }
+    docks.forEach(function(btn,n){
+      btn.addEventListener('mouseenter', function(){ hold = true; show(n); });
+      btn.addEventListener('mouseleave', function(){ hold = false; start(); });
+      btn.addEventListener('click', function(){ hold = true; show(n); });
+      btn.addEventListener('focus', function(){ hold = true; show(n); });
+      btn.addEventListener('blur', function(){ hold = false; start(); });
+      btn.addEventListener('touchstart', function(){ hold = true; show(n); }, { passive: true });
+    });
+    stages.forEach(function(stg,n){
+      stg.addEventListener('mouseenter', function(){ hold = true; });
+      stg.addEventListener('mouseleave', function(){ hold = false; start(); });
+    });
+    start();
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Aylesva · Hero v3",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Grupo Aylesva" },
+    { "type": "text", "id": "title_a", "label": "Titular · parte 1", "default": "Todo lo que necesitas para" },
+    { "type": "text", "id": "title_gold", "label": "Titular · en dorado", "default": "crecer, invertir y proteger" },
+    { "type": "text", "id": "title_b", "label": "Titular · cierre", "default": "tu futuro." },
+    { "type": "textarea", "id": "subtitle", "label": "Subtítulo", "default": "Seis servicios para tu negocio, tu patrimonio y tu familia." },
+    { "type": "range", "id": "rotate_seconds", "label": "Rotación automática (segundos)", "min": 2, "max": 8, "step": 1, "default": 3 },
+    { "type": "text", "id": "cta2_label", "label": "Texto botón secundario", "default": "Habla con un asesor" },
+    { "type": "url", "id": "cta2_link", "label": "Enlace botón secundario" }
+  ],
+  "blocks": [
+    { "type": "world", "name": "Servicio", "limit": 6, "settings": [
+      { "type": "image_picker", "id": "image", "label": "Fotografía (900×700)" },
+      { "type": "text", "id": "image_url", "label": "URL o nombre de asset de imagen" },
+      { "type": "text", "id": "image_note", "label": "Nota si no hay foto aún", "default": "foto pendiente" },
+      { "type": "textarea", "id": "icon", "label": "Trazado SVG del ícono" },
+      { "type": "text", "id": "label", "label": "Etiqueta (Financiamiento, Inversión…)" },
+      { "type": "text", "id": "short", "label": "Promesa corta (3-4 palabras)" },
+      { "type": "text", "id": "claim", "label": "Claim al activar" },
+      { "type": "textarea", "id": "description", "label": "Descripción" },
+      { "type": "text", "id": "cta", "label": "Texto del botón", "default": "Conoce más" },
+      { "type": "url", "id": "link", "label": "Enlace a la landing" }
+    ]}
+  ],
+  "presets": [{ "name": "Aylesva · Hero v3" }]
+}
+{% endschema %}

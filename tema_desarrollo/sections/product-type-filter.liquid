@@ -1,0 +1,64 @@
+<div data-section-id="{{ section.id }}"  data-section-type="product-category-filter" class="tt-product-category-filter" style="">
+  {% if section.settings.title_1 != blank or section.settings.text_1  %}
+        <div class="box-heading tthometab-title section-header">
+          {% endif %}   
+           {% if section.settings.title_1 != blank %}
+        <h2 class="tt-title" style="color:{{ section.settings.title_1_clr }};">{{ section.settings.title_1 }}</h2>
+        {% endif %}
+        {% if section.settings.text_1 != blank %}
+          <div class="short-desc"> <p style="color:{{ section.settings.text_1_clr }};">{{ section.settings.text_1}}</p></div> 
+        {% endif %}  
+           {% if section.settings.title_1 != blank or section.settings.caption_1  %}
+        </div>
+      {% endif %}
+    <div class="container padding_0">
+      <div class="tt-product-filters" data-id="product-{{ section.id }}">
+        <ul  class="clearfix">
+          <li ><a href="#" class="filter-all" data-filter="*">all</a></li>
+        {% for product_type in shop.types %}
+        <li><a href="#" data-filter=".term-{{product_type}}">{{ product_type }}</a></li>
+        {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <div data-id="product-{{ section.id }}" class="isotop_filter_wrap  tt-product-items">
+        {% for product in collections['all'].products limit : section.settings.number_of_products  %}
+          {% assign featured = product %}
+          <div class="col-md-3 masonry term-{{product.type}} {{product.type}} tt-product-item">
+            {% include 'product-grid-masonry-item' %}
+          </div>
+    {% endfor %}
+    </div>
+</div>
+{% schema %}
+  {
+    "name": "product Isotop filter",
+    "settings": [ {
+        "type": "text",
+        "id": "title_1",
+		"default": "products Category Filter",
+        "label": "Heading"
+        },
+        {
+        "type": "textarea",
+        "id": "text_1",
+        "label": "Description"
+        },
+		{
+        "type": "text",
+        "id": "number_of_products",
+		"default": "20",
+        "label": "number of products to display integer values"
+        }
+		],
+         "presets": [
+          {
+            "name": "product Isotop filter",
+            "category": "TemplateTrip"
+          }
+        ]
+  }
+{% endschema %}
+
+{{ 'isotope.pkgd.min.js' | asset_url | script_tag }}
+<script>$(document).ready(function(){prodcutIsotope()});function prodcutIsotope(){var $portfoliocontainer=$('.tt-product-items');$('.tt-product-item').css({visibility:"visible",opacity:"0"});$portfoliocontainer.imagesLoaded(function(){$portfoliocontainer.fadeIn(1000).isotope({transitionDuration:'0.6s',itemSelector:'.tt-product-item',resizable:!0,layoutMode:'packery',sortBy:'origorder'});$('.tt-product-item').each(function(index){$(this).delay(80*index).animate({opacity:1},200)})});$('.tt-product-filters a').on('click',function(){$('.tt-product-items').addClass('animatedcontainer');$(this).closest('.tt-product-filters').find('a').removeClass('active');$(this).addClass('active');var selector=$(this).attr('data-filter');var portfolioID=$(this).closest('.tt-product-filters').data("id");$('.tt-product-items[data-id='+portfolioID+']').isotope({filter:selector});return!1})}</script>

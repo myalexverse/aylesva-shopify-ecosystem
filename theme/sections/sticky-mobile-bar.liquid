@@ -1,0 +1,321 @@
+
+
+<style>
+  /*--------------------------Mobile bar sticky------------------------------*/
+@media (min-width: 992px) {
+	.shopify-section.mobilebar {
+		display: none;
+	}
+}
+
+.template-index .main-content .shopify-section.mobilebar {
+	margin: 0 !important;
+}
+
+.main-sticky-data {
+	background-color: #fff;
+	text-align: center;
+	padding: 8px 0;
+	float: left;
+	width: 100%;
+	box-shadow: 0 0 5px rgb(0 0 0 / 10%);
+	-webkit-box-shadow: 0 0 5px rgb(0 0 0 / 10%);
+	-moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+	-ms-box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+	-o-box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	top: auto;
+	right: 0;
+	z-index: 4;
+	transition: all 400ms ease-in-out 0s;
+	-webkit-transition: all 400ms ease-in-out 0s;
+	-moz-transition: all 400ms ease-in-out 0s;
+	-o-transition: all 400ms ease-in-out 0s;
+	-ms-transition: all 400ms ease-in-out 0s;
+	transform: translateY(100%);
+	-webkit-transform: translateY(100%);
+	-moz-transform: translateY(100%);
+	-o-transform: translateY(100%);
+	-ms-transform: translateY(100%);
+}
+
+.main-sticky-data .sticky-data {
+	float: left;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	text-align: center;
+}
+
+.main-sticky-data.fixed {
+	transform: translateY(0);
+	-webkit-transform: translateY(0);
+	-moz-transform: translateY(0);
+	-o-transform: translateY(0);
+	-ms-transform: translateY(0);
+}
+
+  .sticky_cnt.Cart a i{
+
+    height: 26px;
+    display: inline-block;
+  }
+
+    .sticky_cnt.Cart a i:before{
+    font-size: 28px;
+    height: 26px;
+    width: 50px;
+    line-height: 26px;
+          color: #222;
+  }
+
+
+
+    .sticky_cnt.Account a i{
+
+    height: 26px;
+    display: inline-block;
+  }
+
+    .sticky_cnt.Account a i:before{
+    font-size: 28px;
+    height: 26px;
+    width: 50px;
+    line-height: 26px;
+          color: #222;
+
+  }
+  
+
+  
+
+.sticky_cnt {
+	float: left;
+	width: 100%;
+	padding: 0 5px;
+	overflow: hidden;
+}
+
+.sticky_cnt a:last-child {
+	float: left;
+	width: 100%;
+	overflow: hidden;
+}
+
+.main-sticky-data .sticky-data svg {
+	color: #222;
+}
+
+.sticky_title {
+	float: left;
+	width: 100%;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	margin: 3px 0 0;
+	color: #222;
+      line-height: 20px;
+
+	font-weight: 500;
+}
+
+@media (max-width: 480px) {
+	.sticky_title {
+		font-size: 10px;
+	}
+
+	.main-sticky-data .sticky-data svg {
+		width: 20px;
+		height: 20px;
+	}
+}
+
+/*--------------------------Mobile bar sticky End------------------------------*/
+</style>
+
+
+
+{% if section.settings.mobile_bar %}
+<div id="stickydata" class="main-sticky-data">
+<div class="sticky-data">
+
+<div class="sticky_cnt {{ section.settings.title_1  }}">                            
+<div class="sticky_img">
+<a href="{{ section.settings.url_1 }}">          
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+</a>
+</div>                
+{% if section.settings.url_1  != blank  %}
+<a href="{{ section.settings.url_1 }}">
+{% endif %}
+<div class="sticky_title">{{ section.settings.title_1 }}</div>
+{% if section.settings.url_1 != blank  %}
+</a>                
+{% endif %}
+</div>
+
+<div class="sticky_cnt {{ section.settings.title_2  }}">                            
+<div class="sticky_img">
+<a href="{{ section.settings.url_2 }}">          
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-grid"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+</a>
+</div>                
+{% if section.settings.url_2  != blank  %}
+<a href="{{ section.settings.url_2 }}">
+{% endif %}
+<div class="sticky_title">{{ section.settings.title_2 }}</div>
+{% if section.settings.url_2 != blank  %}
+</a>                
+{% endif %}
+</div>
+
+
+<div class="sticky_cnt {{ section.settings.title_3  }}">                            
+<div class="sticky_img">
+<a href="{{ section.settings.url_3 }}">          
+<i class="mdi mdi-cart-outline"></i></a>
+</div>                
+{% if section.settings.url_3  != blank  %}
+<a href="{{ section.settings.url_3 }}">
+{% endif %}
+<div class="sticky_title">{{ section.settings.title_3 }}</div>
+{% if section.settings.url_3 != blank  %}
+</a>                
+{% endif %}
+</div>
+
+<div class="sticky_cnt {{ section.settings.title_4  }}">                            
+<div class="sticky_img">
+<a href="{{ section.settings.url_4 }}">          
+<i class="mdi mdi-account-outline"></i></a>
+</div>                
+{% if section.settings.url_4  != blank  %}
+<a href="{{ section.settings.url_4 }}">
+{% endif %}
+<div class="sticky_title">{{ section.settings.title_4 }}</div>
+{% if section.settings.url_4 != blank  %}
+</a>                
+{% endif %}
+</div>
+<div class="sticky_cnt {{ section.settings.title_5  }}">                            
+<div class="sticky_img">
+<a href="{{ section.settings.url_5 }}">          
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+</a>
+</div>                
+{% if section.settings.url_5  != blank  %}
+<a href="{{ section.settings.url_5 }}">
+{% endif %}
+<div class="sticky_title">{{ section.settings.title_5 }}</div>
+{% if section.settings.url_5 != blank  %}
+</a>                
+{% endif %}
+</div>
+</div>
+</div>
+
+<script>
+
+   /*--------------------Mobile Sticky--------------------*/
+function stickyScroll () {
+	if($(window).scrollTop() > 100 && $('.main-sticky-data').attr('data-hidden') == 1){
+		$('.main-sticky-data').attr('data-hidden',0);
+		$('.main-sticky-data').addClass("fixed");
+	} 
+	else if($(window).scrollTop() < 100 && $('.main-sticky-data').attr('data-hidden') == 0) {
+		$('.main-sticky-data').attr('data-hidden',1);
+		$('.main-sticky-data').removeClass("fixed");
+	}
+	else if($(window).scrollTop() == $(document).height() - $(window).height()) {
+		$('.main-sticky-data').attr('data-hidden',1);
+		$('.main-sticky-data').removeClass("fixed");
+	}
+}
+$(window).scroll(function(){
+		stickyScroll();
+}) 
+/*---------------------------END-------------------------------*/
+
+</script>
+{% endif %}
+{% schema %}
+{
+"name": "mobile-bar",
+"class": "index-section mobilebar",
+      "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+"settings": [
+{
+"type": "checkbox",
+"id": "mobile_bar",
+"label": "Mobile Bar",
+"default": true
+},
+{
+"type": "url",
+"id": "url_1",
+"label": "URL 1"
+},
+{
+"type": "text",
+"id": "title_1",
+"label": "Title 1",
+  "default": "Home"
+},
+{
+"type": "url",
+"id": "url_2",
+"label": "URL 2"
+},
+{
+"type": "text",
+"id": "title_2",
+"label": "Title 2",
+    "default": "Catogory"
+},
+{
+"type": "url",
+"id": "url_3",
+"label": "URL 3"
+
+},
+{
+"type": "text",
+"id": "title_3",
+"label": "Title 3",
+        "default": "Cart"
+},
+{
+"type": "url",
+"id": "url_4",
+"label": "URL 4"
+},
+{
+"type": "text",
+"id": "title_4",
+"label": "Title 4",
+          "default": "Account"
+},
+{
+"type": "url",
+"id": "url_5",
+"label": "URL 5"
+},
+{
+"type": "text",
+"id": "title_5",
+"label": "Title 5",
+            "default": "Wishlist"
+}
+],
+"presets": [
+{
+"name": "mobile-bar",
+"category": "TT CMS section"
+}
+]
+}
+{% endschema %}

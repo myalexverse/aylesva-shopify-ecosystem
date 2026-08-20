@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  doc-page:not(:defined) { visibility: hidden; }
+  body { margin: 0; }
+</style>
+<script src="./doc-page.js"></script>
+</helmet>
+
+<doc-page margin="0.85in">
+  <div style="font-family: Manrope, system-ui, sans-serif; color: #0F172A; font-size: 10.5pt; line-height: 1.6;">
+
+    <div style="display: flex; align-items: baseline; gap: 14px; padding-bottom: 14px; border-bottom: 1px solid #C5A47E; margin-bottom: 40px;">
+      <span style="font-family: Sora, sans-serif; font-weight: 600; letter-spacing: 0.22em; font-size: 11pt; text-transform: uppercase;">Aylesva</span>
+      <span style="font-family: 'IBM Plex Mono', monospace; font-size: 8pt; letter-spacing: 0.12em; text-transform: uppercase; color: #9A7B52;">Handoff de implementación · Shopify · Gold &amp; Ink v1</span>
+    </div>
+
+    <h1 style="font-family: Sora, sans-serif; font-weight: 300; font-size: 30pt; line-height: 1.08; letter-spacing: -0.03em; margin: 0 0 18px;">Cómo llevar el nuevo diseño a Shopify</h1>
+    <p style="font-size: 12pt; line-height: 1.6; color: rgba(15,23,42,0.7); margin: 0 0 36px; max-width: 62ch;">Siete secciones universales sustituyen a los diseños dispares de las seis landings de servicio. Cada sección se configura desde el editor de temas: el mismo código sirve para Global Estates, Recursos, Direct, Care, Lanza tu Marca y MUV.</p>
+
+    <h2 style="font-family: Sora, sans-serif; font-weight: 500; font-size: 15pt; letter-spacing: -0.02em; margin: 0 0 12px;">1. Qué te entrego</h2>
+    <p style="margin: 0 0 10px;">Carpeta <code style="font-family: 'IBM Plex Mono', monospace; font-size: 9.5pt;">export/</code> con archivos listos para copiar al tema:</p>
+    <table style="width: 100%; border-collapse: collapse; margin: 0 0 12px; font-size: 9.5pt;">
+      <thead>
+        <tr style="background: #0F172A; color: #E3CCAE; font-family: 'IBM Plex Mono', monospace; font-size: 8pt; letter-spacing: 0.1em; text-transform: uppercase;">
+          <th style="text-align: left; padding: 9px 12px;">Archivo</th>
+          <th style="text-align: left; padding: 9px 12px;">Destino en el tema</th>
+          <th style="text-align: left; padding: 9px 12px;">Para qué sirve</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom: 1px solid rgba(15,23,42,0.12);"><td style="padding: 9px 12px; font-family: 'IBM Plex Mono', monospace;">aylesva-corp-tokens.liquid</td><td style="padding: 9px 12px;">snippets/</td><td style="padding: 9px 12px;">Fuentes, colores y clases base. Todo depende de él.</td></tr>
+        <tr style="border-bottom: 1px solid rgba(15,23,42,0.12);"><td style="padding: 9px 12px; font-family: 'IBM Plex Mono', monospace;">aylesva-corp-hero.liquid</td><td style="padding: 9px 12px;">sections/</td><td style="padding: 9px 12px;">Portada con imagen, 2 CTA y hasta 4 cifras.</td></tr>
+        <tr style="border-bottom: 1px solid rgba(15,23,42,0.12);"><td style="padding: 9px 12px; font-family: 'IBM Plex Mono', monospace;">aylesva-corp-features.liquid</td><td style="padding: 9px 12px;">sections/</td><td style="padding: 9px 12px;">Cuadrícula de beneficios con ícono.</td></tr>
+        <tr style="border-bottom: 1px solid rgba(15,23,42,0.12);"><td style="padding: 9px 12px; font-family: 'IBM Plex Mono', monospace;">aylesva-corp-process.liquid</td><td style="padding: 9px 12px;">sections/</td><td style="padding: 9px 12px;">Pasos 1-2-3-4, en ink o en crema.</td></tr>
+        <tr style="border-bottom: 1px solid rgba(15,23,42,0.12);"><td style="padding: 9px 12px; font-family: 'IBM Plex Mono', monospace;">aylesva-corp-cards.liquid</td><td style="padding: 9px 12px;">sections/</td><td style="padding: 9px 12px;">Tarjetas con foto: desarrollos, planes, préstamos, categorías.</td></tr>
+        <tr style="border-bottom: 1px solid rgba(15,23,42,0.12);"><td style="padding: 9px 12px; font-family: 'IBM Plex Mono', monospace;">aylesva-corp-form.liquid</td><td style="padding: 9px 12px;">sections/</td><td style="padding: 9px 12px;">Contenedor del embed de GoHighLevel + aviso legal.</td></tr>
+        <tr style="border-bottom: 1px solid rgba(15,23,42,0.12);"><td style="padding: 9px 12px; font-family: 'IBM Plex Mono', monospace;">aylesva-corp-faq.liquid</td><td style="padding: 9px 12px;">sections/</td><td style="padding: 9px 12px;">Acordeón de preguntas, sin JavaScript.</td></tr>
+        <tr><td style="padding: 9px 12px; font-family: 'IBM Plex Mono', monospace;">aylesva-corp-branches.liquid</td><td style="padding: 9px 12px;">sections/</td><td style="padding: 9px 12px;">Banda del ecosistema al pie de cada landing.</td></tr>
+      </tbody>
+    </table>
+    <p style="margin: 0 0 34px; color: rgba(15,23,42,0.6); font-size: 9.5pt;">Las maquetas de referencia en alta fidelidad son los archivos <code style="font-family: 'IBM Plex Mono', monospace;">*.dc.html</code> del proyecto: ahí están los textos y las medidas exactas de cada página.</p>
+
+    <h2 style="font-family: Sora, sans-serif; font-weight: 500; font-size: 15pt; letter-spacing: -0.02em; margin: 0 0 12px;">2. Instalación (una vez)</h2>
+    <ol style="margin: 0 0 34px; padding-left: 22px; display: grid; gap: 9px;">
+      <li>Copia el snippet a <code style="font-family: 'IBM Plex Mono', monospace;">snippets/</code> y las siete secciones a <code style="font-family: 'IBM Plex Mono', monospace;">sections/</code>.</li>
+      <li>En <code style="font-family: 'IBM Plex Mono', monospace;">layout/theme.liquid</code>, dentro de <code style="font-family: 'IBM Plex Mono', monospace;">&lt;head&gt;</code>, agrega <code style="font-family: 'IBM Plex Mono', monospace;">{% render 'aylesva-corp-tokens' %}</code>.</li>
+      <li>Sube al tema las imágenes de cada rama (Content → Files) antes de configurar las secciones.</li>
+      <li>Duplica el tema antes de tocar las páginas en producción.</li>
+    </ol>
+
+    <h2 style="font-family: Sora, sans-serif; font-weight: 500; font-size: 15pt; letter-spacing: -0.02em; margin: 0 0 12px;">3. Orden de secciones por página</h2>
+    <p style="margin: 0 0 12px;">Cada landing usa una plantilla de página propia (<code style="font-family: 'IBM Plex Mono', monospace;">templates/page.&lt;rama&gt;.json</code>) y apila las secciones en este orden. Es el orden de las maquetas.</p>
+    <table style="width: 100%; border-collapse: collapse; margin: 0 0 12px; font-size: 9.5pt;">
+      <thead>
+        <tr style="background: #0F172A; color: #E3CCAE; font-family: 'IBM Plex Mono', monospace; font-size: 8pt; letter-spacing: 0.1em; text-transform: uppercase;">
+          <th style="text-align: left; padding: 9px 12px;">Página</th>
+          <th style="text-align: left; padding: 9px 12px;">Secuencia</th>
+          <th style="text-align: left; padding: 9px 12px;">Form ID (GHL)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom: 1px solid rgba(15,23,42,0.12);"><td style="padding: 9px 12px;">Global Estates</td><td style="padding: 9px 12px;">hero → features → cards (mapa/intro) → cards (3 desarrollos, 1 col) → process (ink) → form → branches</td><td style="padding: 9px 12px; font-family: 'IBM Plex Mono', monospace; font-size: 8.5pt;">8tPsdSSw70XYgG77oYYW</td></tr>
+        <tr style="border-bottom: 1px solid rgba(15,23,42,0.12);"><td style="padding: 9px 12px;">Aylesva Recursos</td><td style="padding: 9px 12px;">hero → cards (3 préstamos) → tabla comparativa* → features (valores, ink) → process (4 pasos) → form → branches</td><td style="padding: 9px 12px; font-family: 'IBM Plex Mono', monospace; font-size: 8.5pt;">8biW0OIL5lKLx23bNZFO</td></tr>
+        <tr style="border-bottom: 1px solid rgba(15,23,42,0.12);"><td style="padding: 9px 12px;">Aylesva Direct</td><td style="padding: 9px 12px;">hero → cards (cobertura) → cards (5 categorías) → process (ink) → features (8 oportunidades) → form → branches</td><td style="padding: 9px 12px; font-family: 'IBM Plex Mono', monospace; font-size: 8.5pt;">6kXVcb0baoRwx0UBBTsr</td></tr>
+        <tr style="border-bottom: 1px solid rgba(15,23,42,0.12);"><td style="padding: 9px 12px;">Aylesva Care</td><td style="padding: 9px 12px;">hero → cards (3 planes con precio) → features (2 pilares, ink) → process (3 pasos) → form → branches</td><td style="padding: 9px 12px; font-family: 'IBM Plex Mono', monospace; font-size: 8.5pt;">vDnep2WEYdM0V7jw95KX</td></tr>
+        <tr style="border-bottom: 1px solid rgba(15,23,42,0.12);"><td style="padding: 9px 12px;">Lanza tu Marca</td><td style="padding: 9px 12px;">hero → features (4 beneficios) → features (3 pilares) → cards (marcas) → cards (3 pasos con foto) → cards (2 servicios) → form → branches</td><td style="padding: 9px 12px; font-family: 'IBM Plex Mono', monospace; font-size: 8.5pt;">ENbMAneKkZAPTdITGH2n</td></tr>
+        <tr><td style="padding: 9px 12px;">Mi Última Voluntad</td><td style="padding: 9px 12px;">hero → features (3 razones) → cards (2 membresías) → cards (CBX) → process (4 pasos) → faq → form → branches</td><td style="padding: 9px 12px; font-family: 'IBM Plex Mono', monospace; font-size: 8.5pt;">DPfokHX747mbGaU8Fobk</td></tr>
+      </tbody>
+    </table>
+    <p style="margin: 0 0 34px; color: rgba(15,23,42,0.6); font-size: 9.5pt;">*La tabla comparativa de Recursos es el único bloque que no viene como sección: son cinco columnas de datos fijos. Se puede maquetar dentro de una sección de texto enriquecido siguiendo el estilo de la maqueta (encabezado ink, filas separadas por hairline, montos en mono dorado), o pedirme una sección dedicada.</p>
+
+    <h2 style="font-family: Sora, sans-serif; font-weight: 500; font-size: 15pt; letter-spacing: -0.02em; margin: 0 0 12px;">4. Reglas que no se negocian</h2>
+    <div style="display: grid; gap: 10px; margin: 0 0 34px;">
+      <div style="border-left: 2px solid #C5A47E; padding: 2px 0 2px 16px;"><strong>Un solo dorado y con moderación.</strong> #C5A47E para íconos, eyebrows, líneas y botón secundario; nunca como fondo de sección ni para párrafos. Sobre fondo claro, el texto dorado usa #9A7B52 para cumplir contraste.</div>
+      <div style="border-left: 2px solid #C5A47E; padding: 2px 0 2px 16px;"><strong>Alternancia de fondos.</strong> Crema (#FAFAF8) y blanco se alternan; nunca dos secciones crema seguidas. Ink (#0F172A) máximo dos veces por página, siempre separando bloques claros.</div>
+      <div style="border-left: 2px solid #C5A47E; padding: 2px 0 2px 16px;"><strong>Tracking.</strong> Titulares en Sora con tracking negativo; eyebrows en IBM Plex Mono con tracking positivo. Ese contraste es la firma visual: no lo iguales.</div>
+      <div style="border-left: 2px solid #C5A47E; padding: 2px 0 2px 16px;"><strong>Íconos.</strong> Trazo de 1.25px sobre retícula de 24px, sin relleno, sin círculo de fondo, sin sombra. Solo el set aprobado en el UI Kit.</div>
+      <div style="border-left: 2px solid #C5A47E; padding: 2px 0 2px 16px;"><strong>Fotografía.</strong> En heros, velo ink al 92→35% de izquierda a derecha, con el texto siempre en la zona oscura. Fotos de producto o inmueble con marco dorado interior de 1px a 12px del borde. Nada de bordes redondeados mayores a 2px.</div>
+      <div style="border-left: 2px solid #C5A47E; padding: 2px 0 2px 16px;"><strong>Hover.</strong> Tarjetas: elevación de 3px y sombra difusa. Botones: cambio de tono más 2px de elevación. Nada de escalados ni transiciones mayores a .3s.</div>
+    </div>
+
+    <h2 style="font-family: Sora, sans-serif; font-weight: 500; font-size: 15pt; letter-spacing: -0.02em; margin: 0 0 12px;">5. Formularios de GoHighLevel</h2>
+    <p style="margin: 0 0 34px;">La sección de formulario inserta el widget por iframe con el ID que le pases y carga <code style="font-family: 'IBM Plex Mono', monospace;">form_embed.js</code> con <code style="font-family: 'IBM Plex Mono', monospace;">defer</code>. Ajusta el alto desde el editor hasta que no aparezca scroll interno. Para que el formulario luzca como la maqueta, en GoHighLevel configura el tema del formulario con: fuente Manrope, campos con borde de 1px rgba(15,23,42,.18) sin radio, foco en #C5A47E, botón #0F172A con texto blanco. Si el diseño del widget no puede alinearse, avísame y lo sustituimos por campos nativos con envío a la API.</p>
+
+    <h2 style="font-family: Sora, sans-serif; font-weight: 500; font-size: 15pt; letter-spacing: -0.02em; margin: 0 0 12px;">6. Pendientes de contenido</h2>
+    <ul style="margin: 0 0 34px; padding-left: 22px; display: grid; gap: 8px;">
+      <li>Testimonios reales de Global Estates (3, con nombre y desarrollo).</li>
+      <li>Capturas y nombres de las 23 marcas lanzadas.</li>
+      <li>Logotipos oficiales de New Benefits, Aflac, UHOne y Briotech para Care.</li>
+      <li>Fotografía definitiva de Torre 40, Paradise Bay y Altarena en 2400px de ancho.</li>
+      <li>Confirmación de los textos del proceso de Global Estates, que redacté a partir del contenido existente.</li>
+    </ul>
+
+    <h2 style="font-family: Sora, sans-serif; font-weight: 500; font-size: 15pt; letter-spacing: -0.02em; margin: 0 0 12px;">7. Orden de despliegue sugerido</h2>
+    <p style="margin: 0 0 12px;">Empieza por Global Estates: es la página con más variedad de bloques, así que valida el sistema completo. Una vez aprobada, las cinco restantes son configuración, no código.</p>
+    <p style="margin: 0; color: rgba(15,23,42,0.6); font-size: 9.5pt;">Antes de publicar, revisa en móvil que ninguna cuadrícula quede con una tarjeta huérfana y que los CTA del hero mantengan 44px de alto mínimo.</p>
+  </div>
+</doc-page>
+</x-dc>
+</body>
+</html>

@@ -1,0 +1,633 @@
+{% comment %}
+  ayl-collection-desktop-header.liquid
+  Desktop-only header section containing the collection hero banner, quick category strip, trust bar, and toolbar.
+{% endcomment %}
+
+<header class="ayl-modern-header hidden-xs">
+  <style>
+    .ayl-modern-header { margin-bottom: 25px; margin-top: 0px; }
+    
+    /* EDITORIAL HERO BANNER STYLE */
+    .ayl-collection-hero {
+      position: relative;
+      width: 100%;
+      height: 380px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      color: #ffffff;
+      margin-bottom: 30px;
+      overflow: hidden;
+      border-radius: 8px;
+      box-sizing: border-box;
+    }
+    .ayl-collection-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.3) 60%, rgba(0,0,0,0.05) 100%);
+      z-index: 1;
+    }
+    .ayl-collection-hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 650px;
+      padding: 0 45px;
+      box-sizing: border-box;
+      text-align: left;
+    }
+    .ayl-collection-hero-title {
+      font-family: 'Playfair Display', 'Didot', 'Georgia', serif;
+      font-size: clamp(32px, 4vw, 44px);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #ffffff;
+      margin: 0 0 12px 0;
+      line-height: 1.15;
+    }
+    .ayl-collection-hero-description {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.6;
+      margin: 0 0 20px 0;
+      border-left: 3px solid #C5A47E;
+      padding-left: 14px;
+    }
+    .ayl-collection-hero-stats {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+      margin-top: 25px;
+    }
+    .ayl-hero-stat-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 13px;
+      color: #ffffff;
+      background: transparent;
+      border: none;
+      padding: 0;
+      border-radius: 0;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+    .ayl-hero-stat-item svg {
+      width: 24px;
+      height: 24px;
+      stroke: #C5A47E;
+      fill: none;
+      flex-shrink: 0;
+    }
+    .ayl-stat-text-wrap {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.25;
+      text-align: left;
+    }
+    .ayl-stat-val {
+      font-weight: 700;
+      font-size: 14px;
+      color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .ayl-stat-lbl {
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 11px;
+      font-weight: 400;
+    }
+
+    /* QUICK CATEGORIES STRIP STYLE */
+    .ayl-quick-categories-container {
+      width: 100%;
+      margin-bottom: 30px;
+      box-sizing: border-box;
+      text-align: left;
+    }
+    .ayl-quick-categories-title {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: #C5A47E;
+      letter-spacing: 1.5px;
+      margin: 0 0 14px 0;
+    }
+    .ayl-quick-categories-strip {
+      display: flex;
+      gap: 14px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .ayl-quick-categories-strip::-webkit-scrollbar {
+      display: none;
+    }
+    .ayl-quick-category-card {
+      flex: 0 0 100px;
+      text-align: center;
+      background: #ffffff;
+      padding: 12px 8px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+      border: 1px solid #eeeeee;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+    .ayl-quick-category-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 14px rgba(197, 164, 126, 0.12);
+      border-color: #C5A47E;
+    }
+    .ayl-quick-category-image {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: #fcf8f2;
+      border: 1.5px solid #eaeaea;
+      margin-bottom: 8px;
+      transition: border-color 0.3s ease;
+      flex-shrink: 0;
+    }
+    .ayl-quick-category-card:hover .ayl-quick-category-image {
+      border-color: #C5A47E;
+    }
+    .ayl-quick-category-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .ayl-quick-category-name {
+      font-size: 11px;
+      font-weight: 700;
+      color: #1a1a1a;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 100%;
+    }
+
+    /* TRUST BAR STYLE */
+    .ayl-quick-trust-bar {
+      width: 100%;
+      background-color: #ffffff;
+      border: 1px solid #eaeaea;
+      border-radius: 8px;
+      padding: 10px 15px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      margin-bottom: 30px;
+      box-sizing: border-box;
+    }
+    .ayl-quick-trust-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #1a1a1a;
+    }
+    .ayl-quick-trust-item svg {
+      width: 14px;
+      height: 14px;
+      stroke: #C5A47E;
+    }
+
+    /* PREMIUM TOOLBAR STYLE */
+    .ayl-new-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+      border-bottom: 1px solid #eaeaea;
+      margin-bottom: 25px;
+      width: 100%;
+    }
+    .ayl-new-toolbar-left {
+      font-size: 14px;
+      font-weight: 700;
+      color: #1a1a1a;
+    }
+    .ayl-new-toolbar-right {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .ayl-new-sort-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: #71717a;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .ayl-new-sort-select {
+      border: 1px solid #eaeaea;
+      background: #ffffff;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      outline: none;
+      text-transform: uppercase;
+      color: #1a1a1a;
+      letter-spacing: 0.5px;
+      padding: 6px 12px;
+      border-radius: 4px;
+    }
+    .ayl-new-grid-modes {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-left: 1.5px solid #eaeaea;
+      padding-left: 12px;
+    }
+    .ayl-grid-mode-btn {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      color: #a1a1aa;
+      padding: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.2s ease;
+    }
+    .ayl-grid-mode-btn.active {
+      color: #C5A47E;
+    }
+    .ayl-grid-mode-btn svg {
+      width: 16px;
+      height: 16px;
+    }
+  </style>
+
+  {%- assign hero_image_url = "" -%}
+  {%- if results.image -%}
+    {%- assign hero_image_url = results.image | img_url: '1920x' -%}
+  {%- elsif results.handle == 'ropa-hombre' or results.handle == 'hombre' -%}
+    {%- assign hero_image_url = 'ropa-hombre-hero-bg.png' | asset_url -%}
+  {%- elsif results.handle == 'ropa-mujer' or results.handle == 'mujer' -%}
+    {%- assign hero_image_url = 'ropa-mujer-hero-bg.png' | asset_url -%}
+  {%- elsif results.handle == 'calzado-hombre' -%}
+    {%- assign hero_image_url = 'calzado-hombre-hero-bg.png' | asset_url -%}
+  {%- elsif results.handle == 'calzado-mujer' -%}
+    {%- assign hero_image_url = 'calzado-mujer-hero-bg.png' | asset_url -%}
+  {%- elsif results.handle == 'ropa-nino' or results.handle == 'nino' -%}
+    {%- assign hero_image_url = 'ropa-nino-hero-bg.png' | asset_url -%}
+  {%- elsif results.handle == 'ropa-nina' or results.handle == 'nina' -%}
+    {%- assign hero_image_url = 'ropa-nina-hero-bg.png' | asset_url -%}
+  {%- elsif results.handle == 'ropa-bebe' or results.handle == 'bebe' -%}
+    {%- assign hero_image_url = 'ropa-bebe-hero-bg.png' | asset_url -%}
+  {%- endif -%}
+
+  {%- if hero_image_url != "" -%}
+    {%- assign hero_bg_position = "center" -%}
+    {%- if results.handle == 'calzado-mujer' or results.handle == 'calzado-hombre' -%}
+      {%- assign hero_bg_position = "bottom" -%}
+    {%- endif -%}
+    <div class="ayl-collection-hero" style="background-image: url('{{ hero_image_url }}'); background-position: {{ hero_bg_position }};">
+      <div class="ayl-collection-hero-content">
+        <h1 class="ayl-collection-hero-title">
+          {%- if results.handle == 'ropa-hombre' or results.handle == 'hombre' -%}
+            ROPA HOMBRE
+          {%- elsif results.handle == 'ropa-mujer' or results.handle == 'mujer' -%}
+            ROPA MUJER
+          {%- elsif results.handle == 'calzado-hombre' -%}
+            CALZADO HOMBRE
+          {%- elsif results.handle == 'calzado-mujer' -%}
+            CALZADO MUJER
+          {%- elsif results.handle == 'ropa-nino' or results.handle == 'nino' -%}
+            ROPA NIÑO
+          {%- elsif results.handle == 'ropa-nina' or results.handle == 'nina' -%}
+            ROPA NIÑA
+          {%- elsif results.handle == 'ropa-bebe' or results.handle == 'bebe' -%}
+            ROPA BEBÉ
+          {%- else -%}
+            {{ results.title }}
+          {%- endif -%}
+        </h1>
+        <div class="ayl-collection-hero-description">
+          {%- if results.handle == 'ropa-hombre' or results.handle == 'hombre' -%}
+            Más de 839 productos seleccionados para hombres que buscan estilo, calidad y autenticidad.
+          {%- elsif results.handle == 'ropa-mujer' or results.handle == 'mujer' -%}
+            Colección exclusiva de ropa, botas y accesorios para mujer. Diseños premium que combinan tradición y estilo moderno.
+          {%- elsif results.handle == 'calzado-hombre' -%}
+            Colección exclusiva de botas, botines y zapatos para hombre. Diseños premium que combinan tradición, comodidad y estilo moderno.
+          {%- elsif results.handle == 'calzado-mujer' -%}
+            Colección exclusiva de tacones, plataformas, botas y sandalias para mujer. Diseños premium que unen elegancia, comodidad and estilo moderno.
+          {%- elsif results.handle == 'ropa-nino' or results.handle == 'nino' -%}
+            Colección de ropa, calzado y accesorios para niño. Diseños premium con un toque western-casual, cómodos y duraderos para sus aventuras diarias.
+          {%- elsif results.handle == 'ropa-nina' or results.handle == 'nina' -%}
+            Colección de ropa, calzado y accesorios para niña. Diseños premium con un toque western-casual, cómodos, alegres y duraderos para acompañarla en sus aventuras.
+          {%- elsif results.handle == 'ropa-bebe' or results.handle == 'bebe' -%}
+            Colección de ropa, calzado y accesorios para bebé. Diseños premium con un toque western-casual, extremadamente suaves, cómodos y seguros para su piel delicada.
+          {%- else -%}
+            {{ results.description | strip_html | truncatewords: 25 }}
+          {%- endif -%}
+        </div>
+        
+        <div class="ayl-collection-hero-stats">
+          <div class="ayl-hero-stat-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+              <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+              <line x1="12" y1="22.08" x2="12" y2="12"></line>
+            </svg>
+            <div class="ayl-stat-text-wrap">
+              <span class="ayl-stat-val">{{ results.products_count | default: results.results_count }}</span>
+              <span class="ayl-stat-lbl">Productos</span>
+            </div>
+          </div>
+          <div class="ayl-hero-stat-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+            <div class="ayl-stat-text-wrap">
+              <span class="ayl-stat-val">Nuevas llegadas</span>
+              <span class="ayl-stat-lbl">cada semana</span>
+            </div>
+          </div>
+          <div class="ayl-hero-stat-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="1" y="3" width="15" height="13" rx="2" ry="2"></rect>
+              <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+              <circle cx="5.5" cy="18.5" r="2.5"></circle>
+              <circle cx="18.5" cy="18.5" r="2.5"></circle>
+            </svg>
+            <div class="ayl-stat-text-wrap">
+              <span class="ayl-stat-val">Envíos a</span>
+              <span class="ayl-stat-lbl">todo México</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {%- else -%}
+    <div class="ayl-col-title-wrap" style="border-left: 6px solid #C5A47E; padding-left: 20px; margin-bottom: 25px; margin-top: 20px;">
+      {% if search.performed %}
+        <h1 style="font-size: 36px; font-weight: 800; text-transform: uppercase; letter-spacing: -0.5px; margin: 0; color: #000;">Resultados para: "{{ search.terms }}"</h1>
+      {% else %}
+        <h1 style="font-size: 36px; font-weight: 800; text-transform: uppercase; letter-spacing: -0.5px; margin: 0; color: #000;">{{ results.title }}</h1>
+      {% endif %}
+      {% if results.description != blank %}
+        <div class="description" style="font-size: 14px; color: #777; margin-top: 10px; max-width: 900px; line-height: 1.7;">{{ results.description }}</div>
+      {% endif %}
+    </div>
+  {%- endif -%}
+
+  <!-- DYNAMIC QUICK CATEGORIES CAROUSEL -->
+  {%- assign current_handle = results.handle -%}
+  {%- assign subcategories_data = "" -%}
+
+  {%- if current_handle == 'hombre' or current_handle == 'ropa-hombre' -%}
+    {%- assign subcategories_data = "Camisas|/collections/camisas-formales-y-casuales|camisas-formales-y-casuales,Jeans|/collections/pantalones-y-jeans-hombre|pantalones-y-jeans-hombre,Vaquera|/collections/camisas-vaqueras-y-de-broche|camisas-vaqueras-y-de-broche,Chalecos|/collections/chalecos-blazers-y-chamarras|chalecos-blazers-y-chamarras,Botas|/collections/botas-y-botines-hombre|botas-y-botines-hombre,Playeras|/collections/camisetas-y-polos-hombre|camisetas-y-polos-hombre,Chamarras|/collections/abrigos-y-chaquetas-hombre|abrigos-y-chaquetas-hombre,Ofertas|/collections/ofertas|ofertas" -%}
+  {%- elsif current_handle == 'mujer' or current_handle == 'ropa-mujer' -%}
+    {%- assign subcategories_data = "Ropa|/collections/ropa-mujer|ropa-mujer,Calzado|/collections/calzado-mujer|calzado-mujer,Lencería|/collections/pijamas-y-lenceria|pijamas-y-lenceria,Joyería|/collections/joyeria-y-accesorios|joyeria-y-accesorios,Bolsas|/collections/bolsas-y-carteras|bolsas-y-carteras,Accesorios|/collections/accesorios-de-moda|accesorios-de-moda,Maternidad|/collections/maternidad|maternidad" -%}
+  {%- elsif current_handle == 'nino' or current_handle == 'ropa-nino' -%}
+    {%- assign subcategories_data = "Ropa|/collections/ropa-nino|ropa-nino,Calzado|/collections/calzado-nino|calzado-nino,Ropa Interior|/collections/ropa-interior-nino|ropa-interior-nino,Accesorios|/collections/accesorios-nino|accesorios-nino" -%}
+  {%- elsif current_handle == 'nina' or current_handle == 'ropa-nina' -%}
+    {%- assign subcategories_data = "Ropa|/collections/ropa-nina|ropa-nina,Calzado|/collections/calzado-nina|calzado-nina,Ropa Interior|/collections/ropa-interior-nina|ropa-interior-nina,Accesorios|/collections/accesorios-nina|accesorios-nina" -%}
+  {%- elsif current_handle == 'bebe' or current_handle == 'ropa-bebe' -%}
+    {%- assign subcategories_data = "Ropa|/collections/ropa-bebe|ropa-bebe,Calzado|/collections/calzado-bebe|calzado-bebe,Pañales|/collections/ropa-interior-y-panaleria|ropa-interior-y-panaleria,Accesorios|/collections/accesorios-bebe|accesorios-bebe" -%}
+  {%- elsif current_handle == 'calzado-hombre' -%}
+    {%- assign subcategories_data = "Zapatos Formales|/collections/zapatos-formales|zapatos-formales,Botas|/collections/botas-y-botines-hombre|botas-y-botines-hombre,Botas Exóticas|/collections/botas-exoticas|botas-exoticas,Tenis|/collections/tenis-y-sneakers-hombre|tenis-y-sneakers-hombre,Sandalias|/collections/sandalias-y-chanclas|sandalias-y-chanclas,Mocasines|/collections/mocasines-y-loafers|mocasines-y-loafers,Pantuflas|/collections/pantuflas-hombre|pantuflas-hombre" -%}
+  {%- elsif current_handle == 'calzado-mujer' -%}
+    {%- assign subcategories_data = "Tacones y stilettos|/collections/tacones-y-stilettos|tacones-y-stilettos,Sandalias Mujer|/collections/sandalias-mujer|sandalias-mujer,Botas y botines Mujer|/collections/botas-y-botines-mujer|botas-y-botines-mujer,Tenis y sneakers Mujer|/collections/tenis-y-sneakers-mujer|tenis-y-sneakers-mujer,Zapatos de trabajo|/collections/zapatos-de-trabajo|zapatos-de-trabajo" -%}
+  {%- endif -%}
+
+  {%- if subcategories_data != "" -%}
+    <div class="ayl-quick-categories-container">
+      <h3 class="ayl-quick-categories-title">Categorías populares</h3>
+      <div class="ayl-quick-categories-strip">
+        {%- assign sub_items = subcategories_data | split: ',' -%}
+        {%- for item in sub_items -%}
+          {%- assign parts = item | split: '|' -%}
+          {%- assign cat_name = parts[0] -%}
+          {%- assign cat_url = parts[1] -%}
+          {%- assign sub_coll_handle = parts[2] -%}
+          {%- assign sub_coll = collections[sub_coll_handle] -%}
+          
+          {%- assign sub_img_url = "" -%}
+          {%- if current_handle == 'hombre' or current_handle == 'ropa-hombre' -%}
+            {%- if cat_name == 'Camisas' -%}
+              {%- assign sub_img_url = 'https://cdn.shopify.com/s/files/1/0784/2375/2727/files/044079.jpg?v=1773965871' -%}
+            {%- elsif cat_name == 'Jeans' -%}
+              {%- assign sub_img_url = 'https://cdn.shopify.com/s/files/1/0784/2375/2727/files/044975.jpg?v=1773968936' -%}
+            {%- elsif cat_name == 'Vaquera' -%}
+              {%- assign sub_img_url = 'https://cdn.shopify.com/s/files/1/0784/2375/2727/files/023075.jpg?v=1773962147' -%}
+            {%- elsif cat_name == 'Chalecos' -%}
+              {%- assign sub_img_url = 'https://cdn.shopify.com/s/files/1/0784/2375/2727/files/127086.jpg?v=1773971262' -%}
+            {%- elsif cat_name == 'Botas' -%}
+              {%- assign sub_img_url = 'cat-botas-hombre.png' | asset_url -%}
+            {%- elsif cat_name == 'Playeras' -%}
+              {%- assign sub_img_url = 'https://cdn.shopify.com/s/files/1/0784/2375/2727/files/043602.jpg?v=1773964556' -%}
+            {%- elsif cat_name == 'Chamarras' -%}
+              {%- assign sub_img_url = 'https://cdn.shopify.com/s/files/1/0784/2375/2727/files/127086.jpg?v=1773971262' -%}
+            {%- endif -%}
+          {%- elsif current_handle == 'mujer' or current_handle == 'ropa-mujer' -%}
+            {%- if cat_name == 'Ropa' -%}
+              {%- assign sub_img_url = 'cat-ropa.png' | asset_url -%}
+            {%- elsif cat_name == 'Calzado' -%}
+              {%- assign sub_img_url = 'cat-calzado.png' | asset_url -%}
+            {%- elsif cat_name == 'Lencería' -%}
+              {%- assign sub_img_url = 'cat-lenceria.png' | asset_url -%}
+            {%- elsif cat_name == 'Joyería' -%}
+              {%- assign sub_img_url = 'cat-joyeria.png' | asset_url -%}
+            {%- elsif cat_name == 'Bolsas' -%}
+              {%- assign sub_img_url = 'cat-bolsas.png' | asset_url -%}
+            {%- elsif cat_name == 'Accesorios' -%}
+              {%- assign sub_img_url = 'cat-accesorios.png' | asset_url -%}
+            {%- elsif cat_name == 'Belleza' -%}
+              {%- assign sub_img_url = 'cat-belleza.png' | asset_url -%}
+            {%- elsif cat_name == 'Maternidad' -%}
+              {%- assign sub_img_url = 'cat-maternidad.png' | asset_url -%}
+            {%- endif -%}
+          {%- elsif current_handle == 'calzado-hombre' -%}
+            {%- if cat_name == 'Zapatos Formales' -%}
+              {%- assign sub_img_url = 'cat-zapatos-formales.png' | asset_url -%}
+            {%- elsif cat_name == 'Botas' -%}
+              {%- assign sub_img_url = 'cat-botas-hombre.png' | asset_url -%}
+            {%- elsif cat_name == 'Botas Exóticas' -%}
+              {%- assign sub_img_url = 'cat-botas-exoticas.png' | asset_url -%}
+            {%- elsif cat_name == 'Tenis' -%}
+              {%- assign sub_img_url = 'cat-tenis-hombre.png' | asset_url -%}
+            {%- elsif cat_name == 'Sandalias' -%}
+              {%- assign sub_img_url = 'cat-sandalias-hombre.png' | asset_url -%}
+            {%- elsif cat_name == 'Mocasines' -%}
+              {%- assign sub_img_url = 'cat-mocasines-hombre.png' | asset_url -%}
+            {%- elsif cat_name == 'Pantuflas' -%}
+              {%- assign sub_img_url = 'cat-pantuflas-hombre.png' | asset_url -%}
+            {%- endif -%}
+          {%- elsif current_handle == 'calzado-mujer' -%}
+            {%- if cat_name == 'Tacones y stilettos' -%}
+              {%- assign sub_img_url = 'cat-tacones-mujer.png' | asset_url -%}
+            {%- elsif cat_name == 'Sandalias Mujer' -%}
+              {%- assign sub_img_url = 'cat-sandalias-mujer.png' | asset_url -%}
+            {%- elsif cat_name == 'Flats y bailarinas' -%}
+              {%- assign sub_img_url = 'cat-flats-mujer.png' | asset_url -%}
+            {%- elsif cat_name == 'Botas y botines Mujer' -%}
+              {%- assign sub_img_url = 'cat-botas-mujer.png' | asset_url -%}
+            {%- elsif cat_name == 'Tenis y sneakers Mujer' -%}
+              {%- assign sub_img_url = 'cat-tenis-mujer.png' | asset_url -%}
+            {%- elsif cat_name == 'Zapatos de trabajo' -%}
+              {%- assign sub_img_url = 'cat-trabajo-mujer.png' | asset_url -%}
+            {%- elsif cat_name == 'Pantuflas y chanclas' -%}
+              {%- assign sub_img_url = 'cat-pantuflas-mujer.png' | asset_url -%}
+            {%- elsif cat_name == 'Plataformas' -%}
+              {%- assign sub_img_url = 'cat-plataformas-mujer.png' | asset_url -%}
+            {%- endif -%}
+          {%- elsif current_handle == 'nino' or current_handle == 'ropa-nino' -%}
+            {%- if cat_name == 'Ropa' -%}
+              {%- assign sub_img_url = 'cat-ropa-nino.png' | asset_url -%}
+            {%- elsif cat_name == 'Calzado' -%}
+              {%- assign sub_img_url = 'cat-calzado-nino.png' | asset_url -%}
+            {%- elsif cat_name == 'Ropa Interior' -%}
+              {%- assign sub_img_url = 'cat-interior-nino.png' | asset_url -%}
+            {%- elsif cat_name == 'Accesorios' -%}
+              {%- assign sub_img_url = 'cat-accesorios-nino.png' | asset_url -%}
+            {%- endif -%}
+          {%- elsif current_handle == 'nina' or current_handle == 'ropa-nina' -%}
+            {%- if cat_name == 'Ropa' -%}
+              {%- assign sub_img_url = 'cat-ropa-nina.png' | asset_url -%}
+            {%- elsif cat_name == 'Calzado' -%}
+              {%- assign sub_img_url = 'cat-calzado-nina.png' | asset_url -%}
+            {%- elsif cat_name == 'Ropa Interior' -%}
+              {%- assign sub_img_url = 'cat-interior-nina.png' | asset_url -%}
+            {%- elsif cat_name == 'Accesorios' -%}
+              {%- assign sub_img_url = 'cat-accesorios-nina.png' | asset_url -%}
+            {%- endif -%}
+          {%- elsif current_handle == 'bebe' or current_handle == 'ropa-bebe' -%}
+            {%- if cat_name == 'Ropa' -%}
+              {%- assign sub_img_url = 'cat-ropa-bebe.png' | asset_url -%}
+            {%- elsif cat_name == 'Calzado' -%}
+              {%- assign sub_img_url = 'cat-calzado-bebe.png' | asset_url -%}
+            {%- elsif cat_name == 'Pañales' -%}
+              {%- assign sub_img_url = 'cat-panales-bebe.png' | asset_url -%}
+            {%- elsif cat_name == 'Accesorios' -%}
+              {%- assign sub_img_url = 'cat-accesorios-bebe.png' | asset_url -%}
+            {%- endif -%}
+          {%- endif -%}
+
+          {%- if sub_img_url == "" -%}
+            {%- if sub_coll.image != blank -%}
+              {%- assign sub_img_url = sub_coll.image | img_url: '200x200', crop: 'center' -%}
+            {%- elsif sub_coll.products.first.featured_image != blank -%}
+              {%- assign sub_img_url = sub_coll.products.first.featured_image | img_url: '200x200', crop: 'center' -%}
+            {%- endif -%}
+          {%- endif -%}
+          
+          <a href="{{ cat_url }}" class="ayl-quick-category-card">
+            <div class="ayl-quick-category-image">
+              {%- if cat_name == 'Ofertas' -%}
+                <div style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; background: #ffffff;">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#C5A47E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 28px; height: 28px;">
+                    <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+                    <line x1="7" y1="7" x2="7.01" y2="7"></line>
+                  </svg>
+                </div>
+              {%- elsif sub_img_url != "" -%}
+                <img src="{{ sub_img_url }}" alt="{{ cat_name }}" loading="lazy">
+              {%- else -%}
+                {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+              {%- endif -%}
+            </div>
+            <span class="ayl-quick-category-name">{{ cat_name }}</span>
+          </a>
+        {%- endfor -%}
+      </div>
+    </div>
+  {%- endif -%}
+
+  <!-- TRUST BAR -->
+  <div class="ayl-quick-trust-bar">
+    <div class="ayl-quick-trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="2" ry="2"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+      <span>Envío a todo México</span>
+    </div>
+    <div class="ayl-quick-trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      <span>Productos verificados</span>
+    </div>
+    <div class="ayl-quick-trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      <span>Pagos seguros</span>
+    </div>
+    <div class="ayl-quick-trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      <span>Atención personalizada</span>
+    </div>
+  </div>
+
+  <!-- RESTYLED TOOLBAR -->
+  <div class="ayl-new-toolbar">
+    <div class="ayl-new-toolbar-left" style="display: flex; align-items: center; gap: 20px;">
+      <button class="ayl-filter-toggle-btn" aria-label="Filtros" style="display: flex; align-items: center; gap: 8px; background: #1c1c1e; color: #fff; border: none; padding: 10px 18px; border-radius: 6px; font-size: 13px; font-weight: 700; cursor: pointer; transition: background 0.2s ease;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width: 14px; height: 14px;"><line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line><line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line><line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line><line x1="1" y1="14" x2="7" y2="14"></line><line x1="9" y1="8" x2="15" y2="8"></line><line x1="17" y1="16" x2="23" y2="16"></line></svg>
+        Filtros
+      </button>
+      
+      <a href="{{ results.url }}" class="ayl-clear-all-link" style="font-size: 13px; font-weight: 600; color: #C5A47E; text-decoration: none; transition: color 0.2s ease;">Limpiar todo</a>
+      
+      <span class="ayl-product-count-text" style="font-size: 14px; font-weight: 700; color: #1c1c1e; margin-left: 10px;">{{ results.products_count | default: results.results_count }} Productos</span>
+    </div>
+    
+    <script>
+      (function() {
+        var btn = document.currentScript.previousElementSibling.querySelector('.ayl-filter-toggle-btn');
+        btn.addEventListener('click', function() {
+          var sidebar = document.getElementById('left-column') || document.getElementById('right-column');
+          var wrapper = document.querySelector('.collection_wrapper');
+          if (!sidebar || !wrapper) return;
+          var isHidden = window.getComputedStyle(sidebar).display === 'none';
+          if (isHidden) {
+            sidebar.style.setProperty('display', 'block', 'important');
+            wrapper.classList.remove('col-sm-12');
+            wrapper.classList.remove('col-sm-offset-3');
+            wrapper.classList.add('col-sm-9');
+          } else {
+            sidebar.style.setProperty('display', 'none', 'important');
+            wrapper.classList.remove('col-sm-12');
+            wrapper.classList.add('col-sm-9');
+            if (sidebar.id === 'left-column') {
+              wrapper.classList.add('col-sm-offset-3');
+            }
+          }
+        });
+      })();
+    </script>
+
+    <div class="ayl-new-toolbar-right">
+      {% if settings.collection_sort_enable %}
+        <div class="ayl-sort-wrap" style="display: flex; align-items: center; gap: 8px;">
+          <span class="ayl-new-sort-label">Ordenar por:</span>
+          {%- assign sort_by = results.sort_by | default: results.default_sort_by -%}
+          <select name="sort_by" class="ayl-new-sort-select" onchange="location.href='?sort_by=' + this.value">
+            {%- for option in results.sort_options -%}
+              <option value="{{ option.value }}" {% if option.value == sort_by %}selected{% endif %}>{{ option.name }}</option>
+            {%- endfor -%}
+          </select>
+        </div>
+      {% endif %}
+      
+      <div class="ayl-new-grid-modes">
+        <button class="ayl-grid-mode-btn active" aria-label="Vista de cuadrícula">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        </button>
+        <button class="ayl-grid-mode-btn" aria-label="Vista de lista">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>

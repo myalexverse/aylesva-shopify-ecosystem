@@ -1,0 +1,174 @@
+{% comment %} Aylesva · Testimonios de clientes reales (Gold & Ink) {% endcomment %}
+<section class="ay ay-testimonials" id="testimonios-{{ section.id }}" style="background:{{ section.settings.bg | default: '#FFFFFF' }};border-top:var(--ay-hairline)">
+  <div class="ay-wrap">
+    
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:48px;margin-bottom:56px;flex-wrap:wrap">
+      <div>
+        {% if section.settings.eyebrow != blank %}
+          <p class="ay-eyebrow">{{ section.settings.eyebrow }}</p>
+        {% endif %}
+        <h2 class="ay-h2" style="max-width:26ch">{{ section.settings.title }}</h2>
+      </div>
+      {% if section.settings.note != blank %}
+        <div style="font-family:var(--ay-font-mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ay-gold-text);border:1px dashed var(--ay-gold);padding:10px 14px">
+          {{ section.settings.note }}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="ay-testimonials__grid">
+      {% for block in section.blocks %}
+        {%- assign av = block.settings.avatar -%}
+        {%- capture av_src -%}
+          {%- if av.src -%}{{ av | image_url: width: 160 }}
+          {%- elsif av contains 'http' -%}{{ av }}
+          {%- elsif av contains 'shopify://shop_images/' -%}{%- assign cav = av | remove: 'shopify://shop_images/' -%}{{ cav | file_img_url: '160x' }}
+          {%- elsif av contains '.jpg' or av contains '.png' or av contains '.webp' -%}{{ av | asset_url }}
+          {%- endif -%}
+        {%- endcapture -%}
+        {%- assign av_src = av_src | strip -%}
+
+        <div class="ay-testimonial-card" {{ block.shopify_attributes }}>
+          <div>
+            <div class="ay-testimonial-stars" aria-label="{{ block.settings.rating | default: 5 }} estrellas">
+              <span>◈</span> <span>◈</span> <span>◈</span> <span>◈</span> <span>◈</span>
+            </div>
+            <p class="ay-testimonial-quote">{{ block.settings.quote }}</p>
+          </div>
+
+          <div class="ay-testimonial-author">
+            {% if av_src != blank %}
+              <div class="ay-testimonial-avatar">
+                <img src="{{ av_src }}" alt="{{ block.settings.name | escape }}" loading="lazy">
+              </div>
+            {% else %}
+              <div class="ay-testimonial-avatar ay-testimonial-avatar--placeholder"></div>
+            {% endif %}
+            <div>
+              <div class="ay-testimonial-name">{{ block.settings.name }}</div>
+              {% if block.settings.meta != blank %}
+                <div class="ay-testimonial-meta">{{ block.settings.meta }}</div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .ay-testimonials__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  .ay-testimonial-card {
+    border: var(--ay-hairline);
+    padding: 40px 36px 32px;
+    background: #FAFAF8;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 32px;
+    min-height: 320px;
+    transition: all 0.3s ease;
+  }
+  .ay-testimonial-card:hover {
+    background: #fff;
+    box-shadow: 0 26px 52px -30px rgba(2,6,23,0.28);
+    transform: translateY(-3px);
+  }
+  .ay-testimonial-stars {
+    color: var(--ay-gold);
+    font-size: 13px;
+    letter-spacing: 0.35em;
+    margin-bottom: 22px;
+  }
+  .ay-testimonial-quote {
+    font-family: var(--ay-font-display);
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 1.6;
+    letter-spacing: -0.01em;
+    color: rgba(15,23,42,0.88);
+    margin: 0;
+    text-wrap: pretty;
+  }
+  .ay-testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding-top: 22px;
+    border-top: var(--ay-hairline);
+  }
+  .ay-testimonial-avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex: 0 0 52px;
+    border: 2px solid var(--ay-gold);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  .ay-testimonial-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+  .ay-testimonial-avatar--placeholder {
+    background: repeating-linear-gradient(135deg, #d8d4cc 0 5px, #cfcac1 5px 10px);
+  }
+  .ay-testimonial-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ay-ink-900);
+  }
+  .ay-testimonial-meta {
+    font-family: var(--ay-font-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ay-gold-text);
+    margin-top: 4px;
+  }
+
+  @media (max-width: 1024px) {
+    .ay-testimonials__grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Aylesva · Testimonios",
+  "settings": [
+    { "type": "color", "id": "bg", "label": "Fondo de la sección", "default": "#FFFFFF" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Testimonios" },
+    { "type": "textarea", "id": "title", "label": "Titular", "default": "Inversionistas que ya dieron el paso" },
+    { "type": "text", "id": "note", "label": "Etiqueta lateral", "default": "Experiencias Verificadas" }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonio",
+      "limit": 6,
+      "settings": [
+        { "type": "textarea", "id": "quote", "label": "Cita del testimonio" },
+        { "type": "text", "id": "name", "label": "Nombre del cliente" },
+        { "type": "text", "id": "meta", "label": "Proyecto y Ubicación" },
+        { "type": "text", "id": "avatar", "label": "Foto del cliente (archivo de asset o URL)" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Aylesva · Testimonios"
+    }
+  ]
+}
+{% endschema %}

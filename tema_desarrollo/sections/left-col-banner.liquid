@@ -1,0 +1,77 @@
+<div class="widget">
+  <div class="img_banner">
+    <a href="{{section.settings.banner_link }}">
+    <img loading="lazy" height="auto" width="305px" src="{{  section.settings.left_banner | img_url: "305x" }}" alt="left_banner" />
+    </a>
+    <div class="banner-description">
+    {% if section.settings.subtitle !="" %}
+      <div class="subtitle" style="color:{{ section.settings.subtitle_color }}">{{ section.settings.subtitle }}</div>
+    {% endif %}
+    {% if section.settings.title !="" %}
+      <div class="title" style="color:{{ section.settings.title_color }}">{{ section.settings.title }}</div>
+    {% endif %}
+    {% if section.settings.desc !="" %}
+      <div class="desc" style="color:{{ section.settings.desc_color }}">{{ section.settings.desc }}</div>
+    {% endif %}
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Left Sidebar Banner",
+    "settings": [
+ 	{
+        "type": "image_picker",
+        "id": "left_banner",
+        "label": "Image"
+      },
+{
+        "type": "url",
+        "id": "banner_link",
+        "label": "Banner link"
+      },
+	{
+        "type": "textarea",
+        "id": "title",
+        "label": "Title",
+		"default":"exclusive"
+      },
+		{
+        "type": "textarea",
+        "id": "subtitle",
+        "label": "Sub Title",
+		"default":"surface pro."
+      },
+		{
+        "type": "textarea",
+        "id": "desc",
+        "label": "Description",
+		"default":"for desktop pc"
+      },
+		{
+          "type": "color",
+          "id": "title_color",
+          "label": "Title Color",
+          "default":"#fff"
+          },
+          {
+          "type": "color",
+          "id": "subtitle_color",
+          "label": "Subtitle Color",
+          "default":"#fff"
+          },
+		{
+          "type": "color",
+          "id": "desc_color",
+          "label": "Description Color",
+          "default":"#fff"
+          }
+	],
+    "presets": [
+      {
+        "name": "Left Sidebar Banner",
+        "category": "Left Sidebar"
+      }
+    ]
+  }
+{% endschema %}

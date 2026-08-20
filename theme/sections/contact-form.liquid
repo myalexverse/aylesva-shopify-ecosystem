@@ -1,0 +1,111 @@
+{% comment %}
+This page template is a requirement if you are submitting your theme to the Shopify Theme Store.Be sure to select page.contact as the template from the admin page to have this template take effect.
+For information on adding more fields, visit:- http://docs.shopify.com/support/configuration/store-customization/adding-fields-to-the-liquid-contact-form
+{% endcomment %}
+<div class="contact-us-page float-start w-100">
+  <div class="container">
+    <h2 class="contact-title float-start w-100">Contact Us</h2>
+    <div class="contact-us float-start w-100">
+      <div class="row">
+        <div class="contact_wrapper col-sm-8">
+          <div class="contact-us-form">
+            {% form 'contact' %}
+            {% if form.posted_successfully? %}
+            <p class="note form-success">
+              {{ 'contact.form.post_success' | t }}
+            </p>
+            {% endif %}
+            {{ form.errors | default_errors }}
+            <div id="contactFormWrapper">
+              {% assign name_attr = 'contact.form.name' | t | handle %}
+              <label for="contactFormName" class="form-label--hidden">
+                <span class="visuallyhidden">
+                  {{ 'contact.form.name' | t }}
+                </span>
+              </label>
+              <input type="text" id="contactFormName" name="contact[{{ name_attr }}]" placeholder="{{ 'contact.form.name' | t }}" autocapitalize="words" value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.name }}{% endif %}">
+              <label for="contactFormEmail" class="form-label--hidden">
+                <span class="visuallyhidden">
+                  {{ 'contact.form.email' | t }}
+                </span>
+              </label>
+              <input type="email" id="contactFormEmail" name="contact[email]" placeholder="{{ 'contact.form.email' | t }}" autocorrect="off" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}">
+              {% assign name_attr = 'contact.form.phone' | t | handle %}
+              <label for="contactFormPhone" class="form-label--hidden">
+                <span class="visuallyhidden">
+                  {{ 'contact.form.phone' | t }}
+                </span>
+              </label>
+              <input type="tel" id="contactFormPhone" name="contact[{{ name_attr }}]" placeholder="{{ 'contact.form.phone' | t }}" pattern="[0-9\-]*" value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.phone }}{% endif %}">
+              <label for="contactFormMessage" class="form-label--hidden">
+                <span class="visuallyhidden">
+                  {{ 'contact.form.message' | t }}
+                </span>
+              </label>
+              <textarea rows="10" id="contactFormMessage" name="contact[body]" placeholder="{{ 'contact.form.message' | t }}">{% if form.body %}{{ form.body }}{% endif %}</textarea>
+              <input type="submit" class="btn right" value="{{ 'contact.form.send' | t }}">
+            </div>
+            {% endform %}
+          </div>
+        </div>
+        <div class="rte col-sm-4">
+          <div class="address-container float-start w-100">
+            {{ page.content }}
+            <div class="social-sharing float-start w-100">
+              <h3 class="social-title">Follow Us :</h3>
+              {% if settings.show_linkedin_share or settings.show_facebook_share or settings.show_twitter_share or settings.show_google_plus_share or settings.show_mailto_share or settings.show_pinterest_share %}
+              <div class="tt-social-share float-start w-100 d-flex">
+                <a  target="_blank" href="http://www.facebook.com/sharer.php?u={{ article.url }}">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                </a>
+                 <a target="_blank" href="http://twitter.com/share?url={{ article.url }}">
+                  <i class="mdi mdi-twitter"><svg class="icon icon-twitter" viewBox="0 0 20 20" height="18" width="18">
+  <path fill="currentColor" fill-rule="evenodd" d="M7.273 2.8 10.8 7.822 15.218 2.8h1.768l-5.4 6.139 5.799 8.254h-4.658l-3.73-5.31-4.671 5.31H2.558l5.654-6.427L2.615 2.8zm6.242 13.125L5.07 4.109h1.405l8.446 11.816z" clip-rule="evenodd"></path>
+</svg></i>
+                </a>
+                <a target="_blank" href="http://instagram.com/shareArticle?mini=true&url={{ article.url }}">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+                <a target="_blank" href="http://www.linkedin.com/shareArticle?mini=true&url={{ article.url }}">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                </a>
+              </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        {% if section.settings.map_api_key != blank %}
+        <div class="contact-us-map">
+          <div id="google_map" data-section-id="{{ section.id }}" data-section-type="map-section">
+            <div id="map">{{ section.settings.map_api_key }}</div>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+"name": "Google Map",
+"presets": [
+{
+"name": "Google Map Block",
+"category": "TemplateTrip"
+}
+],
+"settings": [
+{
+  "type": "html",
+  "id": "map_api_key",
+  "label": "Enter You map iframe"
+},
+{
+"type": "textarea",
+"id": "map_custom_style",
+"label": "Enter Map Custom Style JavaScript Code"
+}
+]
+}
+{% endschema %}
+

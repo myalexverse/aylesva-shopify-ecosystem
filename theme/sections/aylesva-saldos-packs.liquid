@@ -1,0 +1,903 @@
+<!-- Google Fonts Import for high-end boutique aesthetics -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  /* Base Container & Section Spacing */
+  .saldos-packs-section {
+    position: relative;
+    padding: 60px 0;
+    background: #ffffff;
+    font-family: 'Outfit', sans-serif;
+    overflow: hidden;
+  }
+
+  .saldos-packs-container {
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 25px;
+    position: relative;
+  }
+
+  /* Section Header Row */
+  .packs-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 35px;
+  }
+  .packs-section-title {
+    font-size: clamp(20px, 3.5vw, 24px);
+    font-weight: 700;
+    color: #1a1a1a;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0;
+  }
+  .packs-section-link {
+    font-size: 12px;
+    font-weight: 700;
+    color: #C5A47E;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.3s ease;
+  }
+  .packs-section-link:hover {
+    color: #b08d65;
+  }
+  .packs-section-link svg {
+    width: 14px;
+    height: 14px;
+    transition: transform 0.3s ease;
+  }
+  .packs-section-link:hover svg {
+    transform: translateX(4px);
+  }
+
+  /* Carousel Outer Wrapper with absolute arrows positioning */
+  .packs-carousel-wrapper {
+    position: relative;
+    width: 100%;
+  }
+
+  /* Track Scroll Area */
+  .packs-carousel-track {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE 10+ */
+    -webkit-overflow-scrolling: touch;
+    padding: 10px 0 30px 0;
+    scroll-behavior: smooth;
+  }
+  .packs-carousel-track::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+  }
+
+  /* PACK CARD STRUCTURE */
+  .pack-card {
+    flex: 0 0 calc(20% - 16px); /* Perfect 5 columns on desktop */
+    min-width: 235px;
+    background: #ffffff;
+    border: 1px solid #eeeeee;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+  }
+  .pack-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+    border-color: rgba(197, 164, 126, 0.3);
+  }
+
+  /* Card Image Area with Floating Tag */
+  .pack-card-image-wrap {
+    position: relative;
+    width: 100%;
+    padding-top: 100%; /* Perfect square 1:1 image ratio */
+    overflow: hidden;
+    background: #f8f8f8;
+  }
+  .pack-card-image-wrap img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .pack-card:hover .pack-card-image-wrap img {
+    transform: scale(1.06);
+  }
+
+  /* Hot/Trending Tag */
+  .pack-card-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 5px 10px;
+    background: #111111;
+    border: 1px solid rgba(197, 164, 126, 0.3);
+    border-radius: 4px;
+    color: #ffffff;
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  }
+  .pack-card-badge span.badge-icon {
+    color: #C5A47E;
+    font-size: 10px;
+  }
+
+  /* Card Body */
+  .pack-card-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  
+  .pack-card-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.25;
+    margin: 0 0 4px 0;
+    text-transform: none;
+  }
+  
+  .pack-card-pieces {
+    font-size: 12.5px;
+    font-weight: 500;
+    color: #888888;
+    margin-bottom: 12px;
+  }
+
+  /* Custom Bullet Points */
+  .pack-card-bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    border-bottom: 1px solid #f6f6f6;
+    padding-bottom: 15px;
+  }
+  .pack-card-bullet {
+    font-family: 'Inter', sans-serif;
+    font-size: 12.5px;
+    color: #555555;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .pack-card-bullet::before {
+    content: '•';
+    color: #C5A47E;
+    font-weight: 900;
+    font-size: 14px;
+  }
+
+  /* Financial Metrics Table */
+  .pack-card-metrics {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #f6f6f6;
+  }
+  .metric-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+  }
+  .metric-label {
+    color: #555555;
+    font-weight: 400;
+  }
+  .metric-value {
+    color: #1a1a1a;
+    font-weight: 700;
+  }
+
+  /* Gain Box (Green Banner Box) */
+  .pack-card-gain-box {
+    background: #effaf3;
+    border-radius: 6px;
+    padding: 12px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .gain-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .gain-label {
+    font-size: 10px;
+    font-weight: 600;
+    color: #2e7d32;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+  }
+  .gain-value {
+    font-size: 15px;
+    font-weight: 700;
+    color: #2e7d32;
+    line-height: 1;
+  }
+  .gain-percent {
+    font-size: 16px;
+    font-weight: 700;
+    color: #2e7d32;
+  }
+
+  /* Footer Section: Difficulty Dot & Cart Button */
+  .pack-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+  }
+  .pack-level {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .level-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+  .level-dot.green { background: #2e7d32; }
+  .level-dot.yellow { background: #dfa300; }
+  .level-dot.red { background: #d32f2f; }
+  
+  .level-text {
+    font-size: 10px;
+    font-weight: 600;
+    color: #555555;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* Golden Ajax Cart Button */
+  .pack-card-cart-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 6px;
+    background: #C5A47E;
+    color: #ffffff;
+    border: none;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 10px rgba(197, 164, 126, 0.2);
+  }
+  .pack-card-cart-btn:hover {
+    background: #1a1a1a;
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  }
+  .pack-card-cart-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* Slider Navigation Arrows */
+  .packs-carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 1px solid #eeeeee;
+    color: #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.2s ease;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .packs-carousel-wrapper:hover .packs-carousel-arrow.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .packs-carousel-arrow:hover {
+    background: #C5A47E;
+    color: #ffffff;
+    border-color: #C5A47E;
+    transform: translateY(-50%) scale(1.05);
+  }
+  .packs-carousel-arrow.left-arrow {
+    left: -22px;
+  }
+  .packs-carousel-arrow.right-arrow {
+    right: -22px;
+  }
+  .packs-carousel-arrow svg {
+    width: 20px;
+    height: 20px;
+    stroke-width: 2;
+  }
+
+  /* RESPONSIVE BREAKPOINTS */
+  @media (max-width: 1350px) {
+    .packs-carousel-arrow.left-arrow { left: -10px; }
+    .packs-carousel-arrow.right-arrow { right: -10px; }
+  }
+
+  @media (max-width: 1200px) {
+    .pack-card {
+      flex: 0 0 calc(25% - 15px); /* 4 columns on medium screens */
+    }
+  }
+
+  @media (max-width: 991px) {
+    .pack-card {
+      flex: 0 0 calc(33.333% - 14px); /* 3 columns on tablet */
+    }
+    .packs-carousel-arrow {
+      display: none !important; /* Hide arrows on touch devices */
+    }
+  }
+
+  /* ULTIMATE MOBILE VERSION SWIPER (Infinite Edge Scroll - Zara/Nike standard) */
+  @media (max-width: 767px) {
+    .saldos-packs-section {
+      padding: 40px 0;
+    }
+    .saldos-packs-container {
+      padding: 0 15px;
+    }
+    .packs-section-header {
+      margin-bottom: 25px;
+    }
+    
+    /* Bleed track to screen edges on mobile for a stunning swiper look */
+    .packs-carousel-track {
+      width: 100vw !important;
+      margin-left: calc(-50vw + 50%) !important;
+      padding: 10px 20px 25px 20px !important;
+      gap: 16px !important;
+    }
+    
+    .pack-card {
+      /* Card width of 248px on mobile swiper ensures ALL financial details fit perfectly without clutter */
+      flex: 0 0 248px !important; 
+      min-width: 248px !important;
+      border-radius: 10px !important;
+    }
+    .pack-card-body {
+      padding: 18px 16px !important;
+    }
+    .pack-card-title {
+      font-size: 14.5px !important;
+    }
+    .pack-card-pieces {
+      font-size: 12px !important;
+      margin-bottom: 10px !important;
+    }
+    .pack-card-bullets {
+      margin-bottom: 15px !important;
+      padding-bottom: 12px !important;
+    }
+    .pack-card-bullet {
+      font-size: 12px !important;
+    }
+    .metric-row {
+      font-size: 11.5px !important;
+    }
+    .gain-value {
+      font-size: 14px !important;
+    }
+    .gain-percent {
+      font-size: 14.5px !important;
+    }
+    .pack-card-gain-box {
+      padding: 10px 12px !important;
+      margin-bottom: 16px !important;
+    }
+    .pack-card-cart-btn {
+      width: 36px !important;
+      height: 36px !important;
+    }
+    .pack-card-cart-btn svg {
+      width: 16px !important;
+      height: 16px !important;
+    }
+  }
+</style>
+
+<div class="saldos-packs-section" id="SaldosPacksSection-{{ section.id }}">
+  <div class="saldos-packs-container">
+    
+    <!-- Header -->
+    <div class="packs-section-header">
+      <h2 class="packs-section-title">{{ section.settings.title }}</h2>
+      {% if section.settings.link_text != blank %}
+        <a href="{{ section.settings.link_url | default: '#' }}" class="packs-section-link">
+          {{ section.settings.link_text }}
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      {% endif %}
+    </div>
+
+    <!-- Carousel -->
+    <div class="packs-carousel-wrapper">
+      
+      <!-- Slide Left Arrow -->
+      <button class="packs-carousel-arrow left-arrow" id="slide-arrow-left-{{ section.id }}" aria-label="Desplazar a la izquierda">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+
+      <!-- Track of Cards -->
+      <div class="packs-carousel-track" id="packs-track-{{ section.id }}">
+        
+        {% for block in section.blocks %}
+          {% if block.type == 'pack_card' %}
+            
+            {%- assign product_obj = all_products[block.settings.product] -%}
+            {%- assign pack_url = product_obj.url | default: '#' -%}
+            {%- assign pack_variant_id = product_obj.first_available_variant.id -%}
+            
+            <div class="pack-card" {{ block.shopify_attributes }}>
+              
+              <!-- Square Image Wrapper -->
+              <div class="pack-card-image-wrap">
+                {% if block.settings.badge_text != blank %}
+                  <div class="pack-card-badge">
+                    {% if block.settings.badge_icon != blank %}
+                      <span class="badge-icon">{{ block.settings.badge_icon }}</span>
+                    {% endif %}
+                    <span>{{ block.settings.badge_text }}</span>
+                  </div>
+                {% endif %}
+                
+                <a href="{{ pack_url }}">
+                  {% if block.settings.image != blank %}
+                    <img loading="lazy" src="{{ block.settings.image | img_url: '450x450', crop: 'center' }}" alt="{{ block.settings.title | escape }}">
+                  {% else %}
+                    {%- assign fallback_img = '' -%}
+                    {%- assign card_title = block.settings.title | default: product_obj.title | default: '' -%}
+                    {%- if card_title contains 'Botas & Accesorios' or card_title contains 'Botas y Accesorios' -%}
+                      {%- assign fallback_img = 'aylesva-pack-botas.png' -%}
+                    {%- elsif card_title contains 'Ropa Country' -%}
+                      {%- assign fallback_img = 'aylesva-pack-ropa.png' -%}
+                    {%- elsif card_title contains 'Cinturones' -%}
+                      {%- assign fallback_img = 'aylesva-pack-cinturones.png' -%}
+                    {%- elsif card_title contains 'Bolsas & Accesorios' or card_title contains 'Bolsas y Accesorios' -%}
+                      {%- assign fallback_img = 'aylesva-pack-bolsas.png' -%}
+                    {%- elsif card_title contains 'Botas Selectas' -%}
+                      {%- assign fallback_img = 'aylesva-pack-botas-selectas.png' -%}
+                    {%- endif -%}
+                    
+                    {%- if fallback_img != blank -%}
+                      <img loading="lazy" src="{{ fallback_img | asset_url }}" alt="{{ block.settings.title | escape }}">
+                    {%- elsif product_obj.featured_image != blank -%}
+                      <img loading="lazy" src="{{ product_obj.featured_image | img_url: '450x450', crop: 'center' }}" alt="{{ block.settings.title | escape }}">
+                    {%- else -%}
+                      <!-- Unsplash high-quality country placeholder image -->
+                      <img loading="lazy" src="https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=450" alt="Pack de ropa">
+                    {%- endif -%}
+                  {% endif %}
+                </a>
+              </div>
+
+              <!-- Content Body -->
+              <div class="pack-card-body">
+                
+                <h3 class="pack-card-title">
+                  <a href="{{ pack_url }}" style="text-decoration: none; color: inherit;">
+                    {{ block.settings.title | default: product_obj.title | default: 'Pack Premium' }}
+                  </a>
+                </h3>
+                
+                <div class="pack-card-pieces">
+                  {{ block.settings.pieces }}
+                </div>
+
+                <!-- Viñetas de lo que incluye -->
+                <ul class="pack-card-bullets">
+                  {% if block.settings.bullet_1 != blank %}
+                    <li class="pack-card-bullet">{{ block.settings.bullet_1 }}</li>
+                  {% endif %}
+                  {% if block.settings.bullet_2 != blank %}
+                    <li class="pack-card-bullet">{{ block.settings.bullet_2 }}</li>
+                  {% endif %}
+                  {% if block.settings.bullet_3 != blank %}
+                    <li class="pack-card-bullet">{{ block.settings.bullet_3 }}</li>
+                  {% endif %}
+                  {% if block.settings.bullet_4 != blank %}
+                    <li class="pack-card-bullet">{{ block.settings.bullet_4 }}</li>
+                  {% endif %}
+                </ul>
+
+                <!-- Financial Cost Table -->
+                <div class="pack-card-metrics">
+                  <div class="metric-row">
+                    <span class="metric-label">Costo del pack</span>
+                    <span class="metric-value">
+                      {% if block.settings.cost != blank %}
+                        {{ block.settings.cost }}
+                      {% elsif product_obj.price != blank %}
+                        {{ product_obj.price | money_without_trailing_zeros }}
+                      {% else %}
+                        $4,999 MXN
+                      {% endif %}
+                    </span>
+                  </div>
+                  <div class="metric-row">
+                    <span class="metric-label">Valor estimado de reventa</span>
+                    <span class="metric-value">{{ block.settings.resale_value }}</span>
+                  </div>
+                </div>
+
+                <!-- Gain Green Banner Box -->
+                <div class="pack-card-gain-box">
+                  <div class="gain-left">
+                    <span class="gain-label">Ganancia estimada</span>
+                    <span class="gain-value">{{ block.settings.gain_amount }}</span>
+                  </div>
+                  <div class="gain-percent">
+                    {{ block.settings.gain_percent }}
+                  </div>
+                </div>
+
+                <!-- Card Footer (Level & Golden Cart Button) -->
+                <div class="pack-card-footer">
+                  <div class="pack-level">
+                    <span class="level-dot {{ block.settings.level_dot }}"></span>
+                    <span class="level-text">{{ block.settings.level_text }}</span>
+                  </div>
+
+                  <!-- Ajax Cart Button -->
+                  <button 
+                    type="button" 
+                    class="pack-card-cart-btn" 
+                    aria-label="Agregar al carrito"
+                    {% if pack_variant_id != blank %}
+                      onclick="ajaxAddPack({{ pack_variant_id }}, this)"
+                    {% else %}
+                      onclick="window.location.href='{{ pack_url }}'"
+                    {% endif %}
+                  >
+                    <!-- Shopping Cart SVG vector icon -->
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="9" cy="21" r="1"/>
+                      <circle cx="20" cy="21" r="1"/>
+                      <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                    </svg>
+                  </button>
+                </div>
+
+              </div>
+              
+            </div>
+          {% endif %}
+        {% endfor %}
+
+      </div>
+
+      <!-- Slide Right Arrow -->
+      <button class="packs-carousel-arrow right-arrow" id="slide-arrow-right-{{ section.id }}" aria-label="Desplazar a la derecha">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+
+    </div>
+
+  </div>
+</div>
+
+<script>
+  (function() {
+    const sId = "{{ section.id }}";
+    const track = document.getElementById('packs-track-' + sId);
+    const leftArrow = document.getElementById('slide-arrow-left-' + sId);
+    const rightArrow = document.getElementById('slide-arrow-right-' + sId);
+    
+    if (!track || !leftArrow || !rightArrow) return;
+
+    function checkPacksScroll() {
+      const scrollLeft = track.scrollLeft;
+      const scrollWidth = track.scrollWidth;
+      const clientWidth = track.clientWidth;
+      
+      // Allow 4px tolerance
+      const canScrollLeft = scrollLeft > 4;
+      const canScrollRight = (scrollWidth - clientWidth - scrollLeft) > 4;
+      
+      if (canScrollLeft) {
+        leftArrow.classList.add('visible');
+      } else {
+        leftArrow.classList.remove('visible');
+      }
+      
+      if (canScrollRight) {
+        rightArrow.classList.add('visible');
+      } else {
+        rightArrow.classList.remove('visible');
+      }
+    }
+
+    track.addEventListener('scroll', checkPacksScroll);
+    window.addEventListener('resize', checkPacksScroll);
+    
+    // Initial timeouts
+    setTimeout(checkPacksScroll, 200);
+    setTimeout(checkPacksScroll, 800);
+
+    leftArrow.addEventListener('click', function() {
+      track.scrollBy({ left: -280, behavior: 'smooth' });
+    });
+
+    rightArrow.addEventListener('click', function() {
+      track.scrollBy({ left: 280, behavior: 'smooth' });
+    });
+
+    // Ajax add to cart action with loader feedback
+    window.ajaxAddPack = function(variantId, btnElement) {
+      if (!variantId) return;
+      
+      const originalHtml = btnElement.innerHTML;
+      btnElement.disabled = true;
+      
+      // Loading SVG
+      btnElement.innerHTML = `
+        <svg class="loading-spin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="animation: spinPacks 0.8s linear infinite; width: 16px; height: 16px;">
+          <circle cx="12" cy="12" r="10" stroke-dasharray="32" stroke-dashoffset="8"></circle>
+        </svg>
+      `;
+
+      // Inline Keyframes Inject if not exists
+      if (!document.getElementById('packs-spin-style')) {
+        const style = document.createElement('style');
+        style.id = 'packs-spin-style';
+        style.innerHTML = '@keyframes spinPacks { to { transform: rotate(360deg); } }';
+        document.head.appendChild(style);
+      }
+
+      const formData = {
+        'items': [{
+          'id': variantId,
+          'quantity': 1
+        }]
+      };
+
+      fetch('/cart/add.js', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      })
+      .then(response => response.json())
+      .then(data => {
+        // Success Feedback
+        btnElement.innerHTML = `
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="color: #2e7d32; width: 18px; height: 18px;">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        `;
+        
+        // Trigger Shopify cart update event if theme supports it
+        document.dispatchEvent(new CustomEvent('cart:updated', {
+          bubbles: true,
+          detail: data
+        }));
+        
+        // Open Cart Drawer / Redirect to Cart after 1 sec
+        setTimeout(() => {
+          btnElement.innerHTML = originalHtml;
+          btnElement.disabled = false;
+          
+          // Try to trigger drawer opening
+          const cartDrawer = document.getElementById('cart-drawer') || document.querySelector('.cart-drawer') || document.querySelector('[data-cart-drawer]');
+          if (cartDrawer) {
+            cartDrawer.classList.add('active');
+          } else {
+            // Fallback to reload page or redirect to cart
+            window.location.reload();
+          }
+        }, 1200);
+      })
+      .catch((error) => {
+        console.error('Error adding to cart:', error);
+        btnElement.innerHTML = originalHtml;
+        btnElement.disabled = false;
+      });
+    };
+
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Saldos Packs Destacados",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título de la Sección",
+      "default": "PACKS COUNTRY DESTACADOS"
+    },
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "Texto del Enlace Superior",
+      "default": "VER TODOS LOS PACKS"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Enlace Superior"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "pack_card",
+      "name": "Tarjeta de Pack",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Branding de la Tarjeta"
+        },
+        {
+          "type": "text",
+          "id": "badge_icon",
+          "label": "Emoji/Icono de Tag",
+          "default": "🔥"
+        },
+        {
+          "type": "text",
+          "id": "badge_text",
+          "label": "Texto de Tag (Badge)",
+          "default": "MÁS VENDIDO"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Imagen del Pack"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Producto en Shopify",
+          "info": "Se usará para enlazar el botón de compra al carrito."
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Título del Pack",
+          "info": "Si se deja en blanco, se usará el título del producto de Shopify."
+        },
+        {
+          "type": "text",
+          "id": "pieces",
+          "label": "Cantidad de Piezas",
+          "default": "25 piezas"
+        },
+        {
+          "type": "header",
+          "content": "Viñetas de lo que incluye"
+        },
+        {
+          "type": "text",
+          "id": "bullet_1",
+          "label": "Viñeta 1",
+          "default": "Botas country"
+        },
+        {
+          "type": "text",
+          "id": "bullet_2",
+          "label": "Viñeta 2",
+          "default": "Cinturones"
+        },
+        {
+          "type": "text",
+          "id": "bullet_3",
+          "label": "Viñeta 3",
+          "default": "Sombreros"
+        },
+        {
+          "type": "text",
+          "id": "bullet_4",
+          "label": "Viñeta 4",
+          "default": "Accesorios"
+        },
+        {
+          "type": "header",
+          "content": "Valores Financieros"
+        },
+        {
+          "type": "text",
+          "id": "cost",
+          "label": "Costo de inversión del pack",
+          "default": "$4,999 MXN",
+          "info": "Si se deja en blanco, se usará el precio del producto."
+        },
+        {
+          "type": "text",
+          "id": "resale_value",
+          "label": "Valor estimado de reventa",
+          "default": "$12,000 MXN"
+        },
+        {
+          "type": "text",
+          "id": "gain_amount",
+          "label": "Ganancia estimada (Monto)",
+          "default": "+$7,001 MXN"
+        },
+        {
+          "type": "text",
+          "id": "gain_percent",
+          "label": "Porcentaje de ganancia",
+          "default": "+69%"
+        },
+        {
+          "type": "header",
+          "content": "Nivel de Dificultad (Footer)"
+        },
+        {
+          "type": "select",
+          "id": "level_dot",
+          "label": "Color de Punto de Nivel",
+          "options": [
+            { "value": "green", "label": "Verde (Principiante)" },
+            { "value": "yellow", "label": "Amarillo (Intermedio)" },
+            { "value": "red", "label": "Rojo (Avanzado)" }
+          ],
+          "default": "green"
+        },
+        {
+          "type": "text",
+          "id": "level_text",
+          "label": "Texto del Nivel",
+          "default": "Nivel: PRINCIPIANTE"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Saldos Packs Destacados"
+    }
+  ]
+}
+{% endschema %}

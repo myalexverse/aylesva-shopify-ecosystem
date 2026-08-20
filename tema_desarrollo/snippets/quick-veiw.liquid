@@ -1,0 +1,199 @@
+<!-- Begin quick-view-template -->
+<div class="clearfix" id="quickview-template" style="display:none">
+  <div class="overlay"></div>
+  <div class="content clearfix">
+   <div class="quick-shop-modal-bg"><div class="quickloader"><div class="spinner"></div></div></div>
+    <div class="product-img images col-xs-12 col-sm-5">      
+      <div class="quickview-featured-image product-photo-container"></div>
+      <div class="more-view-wrapper">
+        <ul class="product-photo-thumbs product-wrapper-owlslider owl-carousel owl-theme ">
+        </ul>
+      </div>
+    </div>
+    <div class="product-shop summary col-xs-12 col-sm-7">
+      <div class="product-item product-detail-section">
+        <h2 class="product-title"><a>&nbsp;</a></h2>
+        <p class="item-text product-description"></p>
+        <div class="prices product_price product-price__price">
+          
+          <span class="price h2 money" id="QProductPrice"></span>
+          <span class="compare-price" id="QComparePrice"></span>
+
+<span class="discount-percentage" style="display:none;"></span>
+
+          <div class="pro_price">         </div>
+        </div>
+        <div class="product-info">
+          <p class="product-inventory"><label>{{ 'products.product.availability' | t }}</label><span></span></p>    
+        </div>
+        <div class="details clearfix">
+          <form action="/cart/add" method="post" class="variants">
+            <select name='id' style="display:none"></select>
+             <div class="grid--uniform product-single__addtocart">
+            <div class="qty-section quantity-box">
+              <label>{{ 'products.product.quantity' | t }}</label>              
+              <div class="qty-box-set">
+              <input type="number" name="quantity" id="Quick-Qty" value="1" min="1" class="quantity">
+              <div class="qnt_wrap">
+                <div class="inc button qtyplus"><i class="mdi mdi-plus"></i></div>
+                <div class="dec button qtyminus"><i class="mdi mdi-minus"></i></div>
+              </div>
+               </div>          
+              <div class="actions shake-animation">
+                <button type="button" class="add-to-cart-btn btn ">
+                 
+                  {{ 'products.product.add_to_cart' | t }}
+                </button>
+              </div>
+            </div>  
+            </div>
+          </form>
+        </div>     
+      </div>
+    </div>  
+ <a href="javascript:void(0)" class="close-window"></a> 
+  </div>
+ 
+</div>
+{{ 'option_selection.js' | shopify_asset_url | script_tag }}
+<!-- End of quick-view-template -->
+<script type="text/javascript">
+  
+  {% comment %} Shopify.doNotTriggerClickOnThumb= !1;
+var selectCallbackQuickview=function(variant, selector) {
+    var productItem=jQuery('.quick-view .product-item');
+    addToCart=productItem.find('.add-to-cart-btn'),
+    productPrice=productItem.find('.price'),
+    comparePrice=productItem.find('.compare-price'),
+    totalPrice=productItem.find('.total-price span'),
+    inventory=productItem.find('.product-inventory'),
+    inventory_item=productItem.find('.product-inventory span');
+    if(variant) {
+        if(variant.available) {
+            addToCart.removeClass('disabled').removeAttr('disabled').text('{{ 'products.product.add_to_cart' | t }}');
+            inventory.css("opacity", "1")
+        }
+        else {
+            addToCart.val('Sold Out').addClass('disabled').attr('disabled', 'disabled');
+            inventory.css("opacity", "0")
+        }
+        productPrice.html(Shopify.formatMoney(variant.price, theme.moneyFormat));
+        if(variant.compare_at_price>variant.price) {
+            comparePrice.html(Shopify.formatMoney(variant.compare_at_price, theme.moneyFormat)).show();
+            Currency.convertAll(window.shop_currency, Currency.cookie.read(), 'span.money', 'money_format');
+            productPrice.addClass('on-sale')
+        }
+        else {
+            comparePrice.hide();
+            productPrice.removeClass('on-sale')
+        }
+        var inventoryInfo=productItem.find('.product-inventory span');
+      
+        if(variant.available) {
+          inventoryInfo.text(window.in_stock);
+          inventoryInfo.addClass("in_stock");
+          inventoryInfo.removeClass("many_in_stock out_of_stock");
+          jQuery(".qty-box-set").css( 'display', 'inline-block' );
+        }
+        else {
+          inventoryInfo.text(window.out_of_stock);
+          inventoryInfo.addClass("out_of_stock");
+          inventoryInfo.removeClass("in_stock many_in_stock");
+          jQuery(".qty-box-set").css( 'display', 'none' );
+        }
+
+        if(variant&&variant.featured_image) {
+            var newImage=Shopify.resizeImage(variant.featured_image.src, 'small');
+            newImage=newImage.replace(/https?: /, '');
+            jQuery('.quick-view .quickview-more-views img').each(function() {
+                var grandSize=jQuery(this).attr('src');
+                if(grandSize==newImage) {
+                    jQuery(this).parent().trigger('click');
+                    return !1
+                }
+            }
+            )
+        }
+    }
+    else {
+        addToCart.text('Unavailable').addClass('disabled').attr('disabled', 'disabled');
+        inventory.css("opacity", "0")
+    }
+    Currency.convertAll(window.shop_currency, Currency.cookie.read(), 'span.money', 'money_format')
+} {% endcomment %}
+
+
+
+Shopify.doNotTriggerClickOnThumb = !1;
+
+  var selectCallbackQuickview = function (variant, selector) {
+    var productItem = jQuery('.quick-view .product-item');
+    var addToCart = productItem.find('.add-to-cart-btn'),
+        productPrice = productItem.find('.price'),
+        comparePrice = productItem.find('.compare-price'),
+        totalPrice = productItem.find('.total-price span'),
+        inventory = productItem.find('.product-inventory'),
+        inventory_item = productItem.find('.product-inventory span');
+
+    if (variant) {
+      // ✅ Variant Available
+      if (variant.available) {
+        addToCart.removeClass('disabled')
+          .removeAttr('disabled')
+          .text('{{ "products.product.add_to_cart" | t }}'); // ✅ Fixed
+        inventory.css("opacity", "1");
+      } else {
+        addToCart.text('Sold Out') // ✅ Fixed
+          .addClass('disabled')
+          .attr('disabled', 'disabled');
+        inventory.css("opacity", "0");
+      }
+
+      // ✅ Update Price
+      productPrice.html(Shopify.formatMoney(variant.price, theme.moneyFormat));
+      if (variant.compare_at_price > variant.price) {
+        comparePrice.html(Shopify.formatMoney(variant.compare_at_price, theme.moneyFormat)).show();
+        Currency.convertAll(window.shop_currency, Currency.cookie.read(), 'span.money', 'money_format');
+        productPrice.addClass('on-sale');
+      } else {
+        comparePrice.hide();
+        productPrice.removeClass('on-sale');
+      }
+
+      // ✅ Inventory Info
+      var inventoryInfo = productItem.find('.product-inventory span');
+      if (variant.available) {
+        inventoryInfo.text(window.in_stock);
+        inventoryInfo.addClass("in_stock").removeClass("many_in_stock out_of_stock");
+        jQuery(".qty-box-set").css('display', 'inline-block');
+      } else {
+        inventoryInfo.text(window.out_of_stock);
+        inventoryInfo.addClass("out_of_stock").removeClass("in_stock many_in_stock");
+        jQuery(".qty-box-set").css('display', 'none');
+      }
+
+      // ✅ Change Variant Image
+      if (variant && variant.featured_image) {
+        var newImage = Shopify.resizeImage(variant.featured_image.src, 'small');
+        newImage = newImage.replace(/https?:/, '');
+        jQuery('.quick-view .quickview-more-views img').each(function () {
+          var grandSize = jQuery(this).attr('src');
+          if (grandSize == newImage) {
+            jQuery(this).parent().trigger('click');
+            return !1;
+          }
+        });
+      }
+
+    } else {
+      // ✅ No Variant Available
+      addToCart.text('Unavailable') // ✅ Fixed
+        .addClass('disabled')
+        .attr('disabled', 'disabled');
+      inventory.css("opacity", "0");
+    }
+
+    // ✅ Currency Convert
+    Currency.convertAll(window.shop_currency, Currency.cookie.read(), 'span.money', 'money_format');
+  }
+</script>

@@ -1,0 +1,145 @@
+{% comment %}
+  Aylesva Premium Slider (Mercury Storefront)
+  A high-performance, monochromatic product slider section with native scroll-snap.
+{% endcomment %}
+
+{{ 'aylesva-premium-product-card.css' | asset_url | stylesheet_tag }}
+
+<style>
+  .ayl-premium-slider { padding: 60px 0; background: {{ section.settings.bg_color }}; overflow: hidden; position: relative; }
+  .ayl-slider-container { max-width: 1400px; margin: 0 auto; padding: 0 20px; position: relative; }
+  
+  .ayl-slider-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px; }
+  .ayl-slider-title { font-size: 32px; font-weight: 800; text-transform: uppercase; letter-spacing: -0.03em; margin: 0; }
+  .ayl-slider-subtitle { font-size: 14px; font-weight: 500; color: #666; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 8px; }
+
+  /* Track & Cards */
+  .ayl-slider-track { 
+    display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 20px 0;
+    scrollbar-width: none; -ms-overflow-style: none;
+  }
+  .ayl-slider-track::-webkit-scrollbar { display: none; }
+  
+  .ayl-slider-track .ayl-premium-product-card { 
+    flex: 0 0 calc(25% - 15px); scroll-snap-align: start; 
+  }
+
+  /* Navigation UI inside Header */
+  .ayl-header-nav { display: flex; gap: 10px; }
+  .ayl-nav-dot { 
+    width: 45px; height: 45px; border: 1px solid #ddd; border-radius: 50%; display: flex; align-items: center; justify-content: center; 
+    cursor: pointer; transition: all 0.3s ease; background: #fff;
+  }
+  .ayl-nav-dot:hover { background: #000; color: #fff; border-color: #000; }
+  .ayl-nav-dot svg { width: 18px; height: 18px; }
+
+  @media (max-width: 1024px) {
+    .ayl-slider-track .ayl-premium-product-card { flex: 0 0 calc(33.33% - 14px); }
+    .ayl-slider-title { font-size: 24px; }
+  }
+  @media (max-width: 767px) {
+    .ayl-slider-track .ayl-premium-product-card { flex: 0 0 calc(50% - 10px); }
+    .ayl-header-nav { display: none; }
+    .ayl-slider-header { flex-direction: column; align-items: flex-start; gap: 10px; }
+  }
+</style>
+
+<section class="ayl-premium-slider" id="PremiumSlider-{{ section.id }}">
+  <div class="ayl-slider-container">
+    <div class="ayl-slider-header">
+      <div class="ayl-title-group">
+        {% if section.settings.subtitle != blank %}
+          <span class="ayl-slider-subtitle">{{ section.settings.subtitle }}</span>
+        {% endif %}
+        {% if section.settings.title != blank %}
+          <h2 class="ayl-slider-title">{{ section.settings.title }}</h2>
+        {% endif %}
+      </div>
+      
+      <div class="ayl-header-nav">
+        <button class="ayl-nav-dot prev-btn" aria-label="Anterior">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+        <button class="ayl-nav-dot next-btn" aria-label="Siguiente">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="ayl-slider-track-wrap">
+      <div class="ayl-slider-track scroll-smooth">
+        {%- assign collection = collections[section.settings.collection] -%}
+        {% for product in collection.products limit: section.settings.limit %}
+          {% render 'ayl-product-card-grid', product: product, grid_item_width: '' %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const section = document.querySelector('#PremiumSlider-{{ section.id }}');
+    const track = section.querySelector('.ayl-slider-track');
+    const nextBtn = section.querySelector('.next-btn');
+    const prevBtn = section.querySelector('.prev-btn');
+
+    if (nextBtn && prevBtn && track) {
+      nextBtn.addEventListener('click', () => {
+        const itemWidth = track.querySelector('.ayl-premium-product-card').offsetWidth + 20;
+        track.scrollBy({ left: itemWidth * 2, behavior: 'smooth' });
+      });
+
+      prevBtn.addEventListener('click', () => {
+        const itemWidth = track.querySelector('.ayl-premium-product-card').offsetWidth + 20;
+        track.scrollBy({ left: -itemWidth * 2, behavior: 'smooth' });
+      });
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Aylesva Premium Slider",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtítulo",
+      "default": "NUEVA LLEGADA"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título",
+      "default": "COLECCIÓN IMPRESCINDIBLE"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Colección"
+    },
+    {
+      "type": "range",
+      "id": "limit",
+      "min": 4,
+      "max": 30,
+      "step": 1,
+      "label": "Máximo de Productos",
+      "default": 12
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Color de Fondo",
+      "default": "#ffffff"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Aylesva Premium Slider",
+      "category": "Collection"
+    }
+  ]
+}
+{% endschema %}

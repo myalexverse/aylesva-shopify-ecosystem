@@ -1,0 +1,189 @@
+/* 
+  Aylesva MX - Premium Mobile UX Optimization
+  Refined Version for Definitive Grid and Minimalist UI
+*/
+
+@media (max-width: 767px) {
+  /* 1. Global Resets and Hiding Desktop Elements */
+  #left-column, #right-column, .filter-wrapper, .view-mode, .sorting_wrapper, 
+  .section-header, .breadcrumb, .hidden-xs, .pro_btn, .btn_wrapper, 
+  .ayl-mobile-cats, .nike-cat-bar {
+    display: none !important;
+  }
+
+  /* 2. Premium 2-Column Grid (ayl-premium-grid) */
+  .ayl-premium-grid .products-grid-view, 
+  .ayl-premium-grid .row {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    padding: 10px 6px !important;
+    background: #fff !important;
+    width: 100% !important;
+    margin: 0 !important;
+    gap: 0 !important;
+  }
+
+  .ayl-premium-grid .grid-item {
+    flex: 0 0 50% !important;
+    width: 50% !important;
+    max-width: 50% !important;
+    padding: 6px !important;
+    margin: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    background: #fff !important;
+    animation: aylFadeUp 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
+  }
+
+  @keyframes aylFadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* 3. Product Wrapper (Image Area) */
+  .product-wrapper {
+    position: relative !important;
+    background: #f4f4f4 !important;
+    overflow: hidden !important;
+    margin-bottom: 10px !important;
+  }
+
+  .product-wrapper img {
+    position: relative !important;
+    width: 100% !important; 
+    height: auto !important;
+    object-fit: cover !important;
+    display: block !important;
+    transition: transform 0.8s ease;
+  }
+
+  /* 4. H&M Style Badges and Wishlist */
+  .ayl-sale-badge-new {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: #F05E5E !important; /* Orange Coral Badge */
+    color: #ffffff !important;
+    font-size: 11px;
+    font-weight: 800 !important;
+    padding: 4px 12px !important;
+    z-index: 2;
+    border-radius: 20px !important;
+  }
+
+  .ayl-price-current {
+    font-size: 18px;
+    font-weight: 700;
+    color: #F05E5E !important; /* Orange Coral Price */
+    margin-right: 10px;
+  }
+
+  .ayl-wishlist-container {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    z-index: 3;
+    background: rgba(255,255,255,0.9);
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+
+  .ayl-wishlist-container svg {
+    display: block;
+    color: #1a1a1a;
+  }
+
+  /* 5. Product Info Styling */
+  .product-description {
+    padding: 0 !important;
+    text-align: left !important;
+  }
+
+  .grid-view-item__title {
+    font-family: inherit;
+    color: #F05E5E !important; /* Orange Coral Price */
+    font-weight: 800 !important;
+    font-size: 1.15rem !important;
+    letter-spacing: -0.02em !important;
+    background: rgba(240, 94, 94, 0.05);
+    padding: 4px 10px;
+    border-radius: 8px;
+    margin-bottom: 4px !important;
+    height: 32px;
+    overflow: hidden;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  .grid-view-item__title a { color: #1a1a1a !important; text-decoration: none; }
+
+  .grid-view-item__meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .product-price__price {
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    color: #d0021b !important; /* Premium Sale Red */
+  }
+
+  .compare_price {
+    font-size: 11px !important;
+    color: #999 !important;
+    text-decoration: line-through;
+    font-weight: 400 !important;
+  }
+
+  /* 6. Swatches Styling */
+  .ayl-swatch-mobile {
+    margin-top: 4px;
+  }
+
+  .ayl-swatch-mobile .item-swatch {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .ayl-swatch-mobile .item-swatch li {
+    padding: 0;
+    margin: 0;
+  }
+
+  .ayl-swatch-mobile .item-swatch label {
+    width: 10px !important;
+    height: 10px !important;
+    border-radius: 2px !important;
+    display: block;
+    border: 1px solid rgba(0,0,0,0.1);
+  }
+
+  /* Staggered animation for grid items */
+  .ayl-premium-grid .grid-item:nth-child(2n) { animation-delay: 0.1s; }
+  .ayl-premium-grid .grid-item:nth-child(3n) { animation-delay: 0.15s; }
+  .ayl-premium-grid .grid-item:nth-child(4n) { animation-delay: 0.2s; }
+
+  /* 7. Action Buttons Alignment Fix */
+  .grid-view-item .btn_wrapper .pro_btn,
+  .grid-view-item .btn_wrapper .pro_btn .btn,
+  .grid-view-item .btn_wrapper .pro_btn a {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    line-height: 1 !important;
+    padding: 0 !important;
+  }
+}

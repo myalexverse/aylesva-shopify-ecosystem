@@ -1,0 +1,96 @@
+<section id="shopify-section-{{ section.id }}" class="ayl-trust-logos-section">
+  <div class="ayl-trust-logos-container">
+    <div class="ayl-trust-eyebrow">
+      {{ section.settings.eyebrow_text | escape }}
+    </div>
+    <div class="ayl-trust-logos">
+      <img src="{{ 'trust-logos-strip.jpg' | asset_url }}" alt="Shopify Partners, Google Cloud, AWS, DHL, SAT, Banorte, HSBC" class="ayl-trust-img" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<style>
+  #shopify-section-{{ section.id }} {
+    --ayl-bg: #FAFAF8;
+    --ayl-border: rgba(0, 0, 0, 0.06);
+    background-color: var(--ayl-bg);
+    border-top: 1px solid var(--ayl-border);
+    border-bottom: 1px solid var(--ayl-border);
+    padding: 1.8rem 0;
+    overflow: hidden;
+  }
+  
+  #shopify-section-{{ section.id }} .ayl-trust-logos-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+  }
+  
+  #shopify-section-{{ section.id }} .ayl-trust-eyebrow {
+    font-family: 'Inter', 'Poppins', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #999;
+    white-space: nowrap;
+    flex-shrink: 0;
+    line-height: 1.4;
+    max-width: 100px;
+  }
+  
+  #shopify-section-{{ section.id }} .ayl-trust-logos {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  #shopify-section-{{ section.id }} .ayl-trust-img {
+    max-width: 100%;
+    height: auto;
+    max-height: 40px;
+    object-fit: contain;
+    filter: grayscale(100%) opacity(0.55);
+    transition: filter 0.4s ease;
+  }
+
+  #shopify-section-{{ section.id }} .ayl-trust-img:hover {
+    filter: grayscale(0%) opacity(1);
+  }
+  
+  @media (max-width: 1024px) {
+    #shopify-section-{{ section.id }} .ayl-trust-logos-container {
+      flex-direction: column;
+      text-align: center;
+      gap: 1rem;
+    }
+    #shopify-section-{{ section.id }} .ayl-trust-eyebrow {
+      max-width: none;
+    }
+    #shopify-section-{{ section.id }} .ayl-trust-img {
+      max-height: 30px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Trust Logos",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow_text",
+      "label": "Eyebrow Text",
+      "default": "CONFIANZA QUE NOS RESPALDA"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trust Logos"
+    }
+  ]
+}
+{% endschema %}

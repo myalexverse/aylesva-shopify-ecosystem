@@ -1,0 +1,59 @@
+{
+  "sections": {
+    "main": {
+      "type": "product-template",
+      "blocks": {
+        "4b5cd151-1d12-4b24-aeca-7b0c62bb7a0d": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "dropdown"
+          }
+        }
+      },
+      "block_order": [
+        "4b5cd151-1d12-4b24-aeca-7b0c62bb7a0d"
+      ],
+      "settings": {
+        "product_layout": "design_1",
+        "addtocart_sticky_bar": true,
+        "reviews": true,
+        "description": true,
+        "product_vendor_enable": true,
+        "show_product_type": true,
+        "show_availability": true,
+        "show_wishlist": true,
+        "show_print": false,
+        "product_image_zoom_enable": true,
+        "related_products_enable": true,
+        "product_qty_enable": true,
+        "share_enable": true,
+        "enable_payment_button": true,
+        "pro_facebook": true,
+        "pro_twitter": true,
+        "pro_linkedin": true,
+        "pro_pinterest": true,
+        "pro_tumblr": false,
+        "pro_email": false,
+        "pro_whatsapp": false,
+        "pro_img_widthheight": "870x1131",
+        "pro_thumb_img_widthheight": "88x114",
+        "thumb_position": "horizontal_bottom",
+        "number_of_thumb": "4",
+        "sizechart_enable": true,
+        "sizechart_lable": "size chart",
+        "Shipping_deatils": ""
+      }
+    },
+    "ayl_recently_viewed_7VCK7F": {
+      "type": "ayl-recently-viewed",
+      "name": "Recientemente Vistos Premium",
+      "settings": {
+        "title": "Productos Recientemente Vistos"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "ayl_recently_viewed_7VCK7F"
+  ]
+}

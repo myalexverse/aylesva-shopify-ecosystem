@@ -1,0 +1,238 @@
+{% unless section.settings.hide_on_mobile %}
+<div  {% if settings.enable_animation != blank %} data-aos="fade-up" {% endif %} class="container">
+  <div data-section-id="{{ section.id }}"  data-section-type="tt-collection-slider-wrap" class="tt-collection-slider-wrap"  style="background:{{section.settings.bg_color}}" {% if section.settings.bg_image != blank %} style="background-image: url({{section.settings.bg_image | img_url : 'master'}})" {% endif %}>
+    {%- assign category_limit =  8 -%}
+    <div class="tt-collection-slider-wrap-inner">
+      <div class="collection_slider_wrap">
+        {% if section.settings.title != blank  %}
+        <div class="section-header section-header--small">
+          {% endif %}            
+          {% if section.settings.title != blank %}
+          <h2 class="tt-title" style="color:{{section.settings.title_color }}">{{ section.settings.title }}</h2>  
+          {% endif %}
+          {% if section.settings.sub_title != blank %}
+          <div class="short-desc"> <p style="color:{{section.settings.sub_title_color }}">{{ section.settings.sub_title }}</p>  </div>
+          {% endif %}
+          {% if section.settings.title != blank  %}
+        </div>
+        {% endif %}
+        <div class="collection_cms_slider_wrap">
+          {% if section.blocks.size > 0 %}  
+          <div class="row">
+            <div class="collection_cms_slider owl-carousel product_col_desktop_pro{{ section.settings.product_col_desktop_pro }} product_col_mobile_pro{{ section.settings.product_col_mobile_pro }}">
+              {% for block in section.blocks limit:category_limit %}  
+              {%- assign collection = collections[block.settings.collection_cat_id] -%}   
+              <div class="collection_cat_item col-xs-12">          
+                <a href="{{ collection.url }}">
+                  <div class="collection_cms_overlay"></div>
+                  <div class="collection_img col-sm-5 col-xs-5"><img loading="lazy" height="160px" width="160px" src="{{ block.settings.image_1 | img_url: "160x160"  }}" alt="category featured" /></div>
+                  <div class="tt-collection-content col-sm-7 col-xs-7">
+                    <div class="collection_title">{{ collection.title }}</div>
+                    <div class="cat-description">
+                      {% if section.settings.collection_desc != blank %}
+                      <div class="description">{{ block.settings.collection_desc | truncatewords : 9 }}</div>{% endif %}
+                      <p class="desc">{{ collection.all_products_count }} <span>{{ 'cart.general.items' | t }}</span></p> 
+                    </div>
+                  </div>
+                </a>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+          {% endif %}
+          <div class="customNavigation"><a class="mdi mdi-chevron-left prev">{{ 'general.slider.prev' | t }}</a><a class="mdi mdi-chevron-right next">{{ 'general.slider.next' | t }}</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endunless %}
+<script>
+  $(document).ready(function() {
+
+    $('body:not(.rtl) .collection_cms_slider').owlCarousel({             
+    nav : true,
+    dots : false,
+    autoplay:true,
+    autoplaySpeed:1500,
+    loop: false,
+    responsive: {
+      100: {
+        items: 1
+      },
+                  320: {
+               items: {{section.settings.product_col_mobile_pro}}
+            },
+      400: {
+        items: 2
+      },
+      600: {
+        items: 3
+      },
+      992: {
+        items: 5
+      },
+      1260: {
+        items: 6
+      },
+      1660: {
+               items: {{section.settings.product_col_desktop_pro}}
+      }
+    }
+  });
+  $('body.rtl .collection_cms_slider').owlCarousel({
+    nav : true,
+    rtl:true,
+    loop: true,
+    autoplay:true,
+    autoplaySpeed:1500,
+    dots : false,
+    responsive: {
+      100: {
+        items: 1
+      },
+                  320: {
+               items: {{section.settings.product_col_mobile_pro}}
+            },
+      400: {
+        items: 2
+      },
+      600: {
+        items: 3
+      },
+      992: {
+        items: 5
+      },
+      1260: {
+        items: 6
+      },
+      1660: {
+               items: {{section.settings.product_col_desktop_pro}}
+      }
+    }
+  });
+
+  if(jQuery(".collection_cms_slider .owl-nav").hasClass('disabled')){
+    jQuery(".collection_cms_slider_wrap .customNavigation").hide();
+  }else{
+    jQuery(".collection_cms_slider_wrap .customNavigation").show();
+  }
+  jQuery(".collection_cms_slider_wrap .customNavigation .next").click(function(){
+    jQuery('.collection_cms_slider_wrap .collection_cms_slider').trigger('next.owl');
+  });
+  jQuery(".collection_cms_slider_wrap .customNavigation .prev").click(function(){
+    jQuery('.collection_cms_slider_wrap .collection_cms_slider').trigger('prev.owl');
+  }); 
+});    
+</script>
+
+
+
+
+{% schema %}
+{
+"name": "Collection CMS Slider",
+"class": "category-featured index-section",
+"settings": [
+            {
+"type": "checkbox",
+"id": "hide_on_mobile",
+"label": "Hide on Mobile",
+"default": false
+},
+            {
+"type": "range",
+"id": "product_col_desktop_pro",
+"min": 2,
+"max": 20,
+"step": 1,
+"label": "Number of columns on Desktop",
+"default": 8
+},
+
+
+{
+"type": "range",
+"id": "product_col_mobile_pro",
+"min": 1,
+"max": 3,
+"step": 1,
+"label": "Number of columns on Mobile",
+"default": 1
+},
+  
+  
+
+  
+{
+"type": "color",
+"id": "bg_color",
+"label": "Background Color",
+"default":"#fff"
+},
+{
+"type": "image_picker",
+"id": "bg_image",
+"label": "Background Image"
+},
+{
+"type": "text",
+"id": "title",
+"label": "Heading"
+},
+{
+"type": "color",
+"id": "title_color",
+"label": "Title Color",
+"default":"#000"
+},
+{
+"type": "text",
+"id": "sub_title",
+"label": "Sub Heading"
+},
+{
+"type": "color",
+"id": "sub_title_color",
+"label": "Title Color",
+"default":"#000"
+}
+],
+"blocks": [
+{
+"type": "text_collection",
+"name": "collection cms",
+"settings": [
+{
+"type": "image_picker",
+"id": "image_1",
+"label": "Image",
+"info": "Size: 140x140"
+},
+{
+"type": "collection",
+"id": "collection_cat_id",
+"label": "Select collection"
+},
+{
+"type": "textarea",
+"id": "collection_desc",
+"label": "Description"
+}          
+]
+}
+],
+"presets": [
+{
+"name": "Collection CMS Slider",
+"category": "TemplateTrip",
+"blocks": [
+{
+"type": "text_collection"
+}     
+
+]
+}
+]
+}
+{% endschema %}

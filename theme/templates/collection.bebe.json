@@ -1,0 +1,27 @@
+{
+  "sections": {
+    "main": {
+      "type": "collection",
+      "settings": {
+        "enable_sidecategory": true,
+        "linkedlist": "main-menu",
+        "linkedlist_title": "Categorías",
+        "show_filter": true,
+        "collapse_on_larger_devices": false,
+        "enable_sorting": true,
+        "enable_sidebar_multiple_choice": true,
+        "show_best_products": true,
+        "best_title": "Top Ventas",
+        "bestseller": "electronicss",
+        "pro_img_width_height": "100x100",
+        "limit": "25",
+        "product_rows": false,
+        "promo_link": "#",
+        "promo_title": ""
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

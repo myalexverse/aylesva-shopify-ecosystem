@@ -1,0 +1,13 @@
+<div id="shopify-section-sidebar-promoimage" class="shopify-section">
+  <div class="widget widget_promo_img" data-section-id="{{ section.id }}" >
+    <ul>
+      {% if promo_img != blank %}
+      <li>
+        <a href="{{ section.settings.promo_link }}" title="{{ promo_title }}"> 
+          <img loading="lazy" src="{{ promo_img | img_url : 'master' }}" alt="{{ promo_title }}" title="{{ promo_title }}" />
+        </a>
+      </li>
+      {% endif %}
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,48 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "faq",
+      "blocks": {
+        "1515838707365": {
+          "type": "text",
+          "settings": {
+            "title": "What is Lorem Ipsum?",
+            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+          }
+        },
+        "1515838710078": {
+          "type": "text",
+          "settings": {
+            "title": "Why do we use it?",
+            "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."
+          }
+        },
+        "1515838714117": {
+          "type": "text",
+          "settings": {
+            "title": "Where does it come from?",
+            "description": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old."
+          }
+        }
+      },
+      "block_order": [
+        "1515838707365",
+        "1515838710078",
+        "1515838714117"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

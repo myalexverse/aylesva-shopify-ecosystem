@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  body { margin: 0; background: #FAFAF8; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; text-decoration: none; }
+  a:hover { color: #C5A47E; }
+</style>
+</helmet>
+
+<div style="font-family: Manrope, system-ui, sans-serif; color: #0F172A; background: #FAFAF8;">
+
+  <!-- NAV DEL GRUPO -->
+  <div style="background: #020617; color: #fff;">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 9px 48px; display: flex; justify-content: space-between; align-items: center; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.55);">
+      <span>Grupo Aylesva · Capital · Direct · Care · Global Estates · Commerce</span>
+      <div style="display: flex; gap: 22px;">
+        <a href="#">México</a>
+        <a href="#">USA</a>
+      </div>
+    </div>
+  </div>
+  <div style="background: #0F172A; color: #fff; border-bottom: 1px solid rgba(255,255,255,0.1); position: sticky; top: 0; z-index: 40;">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 20px 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px 40px; flex-wrap: wrap;">
+      <div style="display: flex; align-items: baseline; gap: 16px; flex: 0 0 auto; white-space: nowrap;">
+        <span style="font-family: Sora, sans-serif; font-weight: 600; letter-spacing: 0.24em; font-size: 15px; text-transform: uppercase;">Aylesva</span>
+        <span style="width: 1px; height: 13px; background: rgba(255,255,255,0.25);"></span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #E3CCAE;">Global Estates</span>
+      </div>
+      <div style="display: flex; gap: 26px; font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.8); flex: 1 1 auto; justify-content: center; flex-wrap: wrap;">
+        <a href="#desarrollos" style="white-space: nowrap;">Desarrollos</a>
+        <a href="#respaldo" style="white-space: nowrap;">Por qué Aylesva</a>
+        <a href="#proceso" style="white-space: nowrap;">Proceso</a>
+        <a href="#testimonios" style="white-space: nowrap;">Testimonios</a>
+        <a href="#contacto" style="white-space: nowrap;">Contacto</a>
+      </div>
+      <div style="display: flex; align-items: center; gap: 18px; flex: 0 0 auto;">
+        <a href="#contacto" style="background: #C5A47E; color: #0F172A; padding: 13px 26px; font-size: 13px; font-weight: 700; letter-spacing: 0.04em; border-radius: 2px; white-space: nowrap; transition: all .25s ease;" style-hover="background: #E3CCAE; color: #0F172A;">Agenda tu consulta</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div style="position: relative; background: #020617; overflow: hidden;">
+    <div style="position: absolute; inset: 0; background-image: url('https://aylesva.mx/cdn/shop/files/preview_images/3430260eb86c4aff8bfaa5be820ca0a7.thumbnail.0000000000_2400x.jpg?v=1785968820'); background-size: cover; background-position: center;"></div>
+    <div style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(2,6,23,0.94) 0%, rgba(2,6,23,0.78) 48%, rgba(2,6,23,0.38) 100%);"></div>
+    <div style="position: relative; max-width: 1440px; margin: 0 auto; padding: 132px 48px 0;">
+      <div style="max-width: 760px;">
+        <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 30px;">
+          <span style="width: 26px; height: 1px; background: #C5A47E;"></span>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: #E3CCAE;">Global Estates · Con el Respaldo de Aylesva</span>
+        </div>
+        <h1 style="font-family: Sora, sans-serif; font-weight: 300; font-size: 64px; line-height: 1.05; letter-spacing: -0.03em; color: #fff; margin: 0 0 26px; text-wrap: balance;">Bienes Raíces, con Todo Nuestro Respaldo</h1>
+        <p style="font-size: 19px; line-height: 1.65; color: rgba(255,255,255,0.75); max-width: 50ch; margin: 0 0 40px; text-wrap: pretty;">Te acompañamos de principio a fin para asegurar que tu inversión sea clara, segura y libre de riesgos.</p>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+          <a href="#desarrollos" style="background: #C5A47E; color: #0F172A; padding: 18px 36px; font-size: 14px; font-weight: 700; letter-spacing: 0.04em; border-radius: 2px; transition: all .25s ease;" style-hover="background: #E3CCAE; transform: translateY(-2px); box-shadow: 0 16px 34px -16px rgba(197,164,126,0.55);">Nuestros Desarrollos</a>
+          <a href="#contacto" style="border: 1px solid rgba(255,255,255,0.42); color: #fff; padding: 17px 35px; font-size: 14px; font-weight: 600; letter-spacing: 0.04em; border-radius: 2px; transition: all .25s ease;" style-hover="border-color: #fff; background: rgba(255,255,255,0.08);">Agenda una consulta gratuita</a>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.14); margin-top: 96px; border-top: 1px solid rgba(197,164,126,0.5);">
+        <sc-for list="{{ heroStats }}" as="s" hint-placeholder-count="4">
+          <div style="padding: 30px 34px 34px; background: rgba(2,6,23,0.55);">
+            <div style="font-family: Sora, sans-serif; font-size: 40px; font-weight: 300; color: #fff; letter-spacing: -0.02em;">{{ s.v }}</div>
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-top: 8px;">{{ s.k }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURES / RESPALDO -->
+  <div id="respaldo" style="background: #FAFAF8; border-top: 1px solid rgba(15,23,42,0.08); border-bottom: 1px solid rgba(15,23,42,0.08);">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 104px 48px;">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; margin-bottom: 60px;">
+        <div>
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 22px;">
+            <span style="width: 24px; height: 1px; background: #C5A47E;"></span>
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #9A7B52;">Desarrollos Exclusivos</span>
+          </div>
+          <h2 style="font-family: Sora, sans-serif; font-weight: 400; font-size: 42px; line-height: 1.12; letter-spacing: -0.028em; margin: 0;">¿Por Qué Confiar en Aylesva?</h2>
+        </div>
+        <p style="font-size: 16px; line-height: 1.7; color: rgba(15,23,42,0.62); margin: 0; text-wrap: pretty;">Comprar una propiedad en otro país no tiene que ser abrumador. Te guiamos en cada paso del camino para que puedas invertir con confianza y tomar decisiones informadas.</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(15,23,42,0.12); border: 1px solid rgba(15,23,42,0.12);">
+        <sc-for list="{{ pillars }}" as="f" hint-placeholder-count="3">
+          <div style="background: #fff; padding: 48px 40px 52px; transition: all .3s ease;" style-hover="background: #fff; box-shadow: 0 26px 52px -30px rgba(2,6,23,0.3); transform: translateY(-3px); z-index: 2;">
+            <div style="height: 34px;">{{ f.el }}</div>
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: #9A7B52; margin: 30px 0 14px;">{{ f.eyebrow }}</div>
+            <div style="font-family: Sora, sans-serif; font-size: 21px; font-weight: 500; letter-spacing: -0.015em; margin-bottom: 14px;">{{ f.t }}</div>
+            <div style="font-size: 15px; line-height: 1.7; color: rgba(15,23,42,0.64);">{{ f.d }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <!-- INTRO / VERIFICACIÓN -->
+  <div style="background: #fff; border-bottom: 1px solid rgba(15,23,42,0.08);">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 104px 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 88px; align-items: center;">
+      <div>
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 22px;">
+          <span style="width: 24px; height: 1px; background: #C5A47E;"></span>
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #9A7B52;">Nuestros Desarrollos</span>
+        </div>
+        <h2 style="font-family: Sora, sans-serif; font-weight: 400; font-size: 42px; line-height: 1.12; letter-spacing: -0.028em; margin: 0 0 24px; text-wrap: balance;">Ubicaciones Verificadas, Inversiones Seguras.</h2>
+        <p style="font-size: 17px; line-height: 1.7; color: rgba(15,23,42,0.66); margin: 0 0 40px; max-width: 52ch; text-wrap: pretty;">Cada proyecto que presentamos ha sido verificado por nuestro equipo. Conocemos personalmente a los desarrolladores y supervisamos el avance de cada obra.</p>
+        <div style="display: flex; gap: 56px; padding-top: 28px; border-top: 1px solid rgba(15,23,42,0.14);">
+          <div>
+            <div style="font-family: Sora, sans-serif; font-size: 34px; font-weight: 300;">3</div>
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(15,23,42,0.5); margin-top: 6px;">Proyectos Verificados</div>
+          </div>
+          <div>
+            <div style="font-family: Sora, sans-serif; font-size: 34px; font-weight: 300;">2</div>
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(15,23,42,0.5); margin-top: 6px;">Países</div>
+          </div>
+        </div>
+      </div>
+      <div style="position: relative; border: 1px solid rgba(15,23,42,0.12); background: #fff;">
+        <div style="height: 460px; background-image: url('https://aylesva.mx/cdn/shop/files/mapofmexico.jpg?v=1784050790&width=1800'); background-size: cover; background-position: center; filter: saturate(0.85);"></div>
+        <div style="position: absolute; inset: 12px; border: 1px solid rgba(197,164,126,0.85); pointer-events: none;"></div>
+        <div style="position: absolute; left: 28px; bottom: 28px; right: 28px; background: rgba(2,6,23,0.86); padding: 20px 24px; display: flex; justify-content: space-between; align-items: center; gap: 20px;">
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: #E3CCAE;">México · El Salvador</span>
+          <span style="font-size: 13px; color: rgba(255,255,255,0.75);">Explora nuestros desarrollos — haz clic en una ubicación</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DESARROLLOS -->
+  <div id="desarrollos" style="background: #FAFAF8;">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 104px 48px 40px;">
+      <div style="display: flex; justify-content: space-between; align-items: end; gap: 60px;">
+        <div>
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #9A7B52; margin-bottom: 20px;">Con Nuestro Respaldo</div>
+          <h2 style="font-family: Sora, sans-serif; font-weight: 400; font-size: 42px; line-height: 1.12; letter-spacing: -0.028em; margin: 0; max-width: 24ch; text-wrap: balance;">Propiedades Que Hemos Verificado Para Ti</h2>
+        </div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: rgba(15,23,42,0.45); text-align: right; line-height: 1.7;">3 desarrollos<br />2 países</div>
+      </div>
+    </div>
+    <div style="max-width: 1440px; margin: 0 auto; padding: 0 48px 104px; display: grid; gap: 40px;">
+      <sc-for list="{{ projects }}" as="p" hint-placeholder-count="3">
+        <div style="display: grid; grid-template-columns: 1.05fr 1fr; border: 1px solid rgba(15,23,42,0.12); background: #fff; transition: all .3s ease;" style-hover="box-shadow: 0 30px 60px -34px rgba(2,6,23,0.35); transform: translateY(-3px);">
+          <div style="position: relative; min-height: 440px; background-size: cover; background-position: center; background-color: #16203a; background-image: {{ p.bg }};">
+            <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(2,6,23,0.45) 0%, rgba(2,6,23,0.05) 45%, rgba(2,6,23,0.6) 100%);"></div>
+            <div style="position: absolute; top: 24px; left: 24px; background: rgba(2,6,23,0.85); color: #E3CCAE; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; padding: 9px 14px;">{{ p.status }}</div>
+            <div style="position: absolute; bottom: 24px; left: 24px; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.12em; color: rgba(255,255,255,0.6);">{{ p.imgNote }}</div>
+          </div>
+          <div style="padding: 56px 56px 52px; display: flex; flex-direction: column;">
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: #9A7B52; margin-bottom: 16px;">{{ p.place }}</div>
+            <h3 style="font-family: Sora, sans-serif; font-weight: 400; font-size: 36px; letter-spacing: -0.025em; margin: 0 0 18px;">{{ p.name }}</h3>
+            <p style="font-size: 16px; line-height: 1.7; color: rgba(15,23,42,0.66); margin: 0 0 32px; text-wrap: pretty;">{{ p.desc }}</p>
+            <div style="display: grid; gap: 14px; padding-top: 26px; border-top: 1px solid rgba(15,23,42,0.12);">
+              <sc-for list="{{ p.bullets }}" as="b" hint-placeholder-count="4">
+                <div style="display: flex; gap: 14px; align-items: flex-start; font-size: 15px; line-height: 1.5; color: rgba(15,23,42,0.78);">
+                  <span style="color: #C5A47E; font-size: 11px; line-height: 1.9; flex: 0 0 auto;">◈</span>
+                  <span>{{ b }}</span>
+                </div>
+              </sc-for>
+            </div>
+            <div style="display: flex; gap: 14px; margin-top: 40px; flex-wrap: wrap;">
+              <a href="#contacto" style="background: #0F172A; color: #fff; padding: 16px 30px; font-size: 13px; font-weight: 600; letter-spacing: 0.04em; border-radius: 2px; transition: all .25s ease;" style-hover="background: #020617; box-shadow: 0 14px 30px -14px rgba(2,6,23,0.5);">Solicitar información</a>
+              <a href="#contacto" style="border: 1px solid #C5A47E; color: #9A7B52; padding: 15px 29px; font-size: 13px; font-weight: 600; letter-spacing: 0.04em; border-radius: 2px; transition: all .25s ease;" style-hover="background: #C5A47E; color: #fff;">Chat en WhatsApp</a>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- PROCESO -->
+  <div id="proceso" style="background: #0F172A;">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 112px 48px;">
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 22px;">
+        <span style="width: 24px; height: 1px; background: #C5A47E;"></span>
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #E3CCAE;">Cómo funciona</span>
+      </div>
+      <h2 style="font-family: Sora, sans-serif; font-weight: 300; font-size: 46px; line-height: 1.1; letter-spacing: -0.03em; color: #fff; margin: 0 0 76px; max-width: 26ch; text-wrap: balance;">Tres pasos, contigo en cada uno</h2>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 52px;">
+        <sc-for list="{{ steps }}" as="p" hint-placeholder-count="3">
+          <div style="border-top: 1px solid rgba(197,164,126,0.45); padding-top: 30px;">
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.2em; color: #C5A47E; margin-bottom: 26px;">{{ p.n }}</div>
+            <div style="font-family: Sora, sans-serif; font-size: 25px; font-weight: 400; letter-spacing: -0.015em; color: #fff; margin-bottom: 14px;">{{ p.t }}</div>
+            <div style="font-size: 15px; line-height: 1.75; color: rgba(255,255,255,0.62);">{{ p.d }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA INTERMEDIO ANCHO COMPLETO -->
+  <div style="position: relative; background: #020617; overflow: hidden;">
+    <div style="position: absolute; inset: 0; background-image: url('https://aylesva.mx/cdn/shop/files/altanera5.jpg?v=1784050860&width=1800'); background-size: cover; background-position: center;"></div>
+    <div style="position: absolute; inset: 0; background: rgba(2,6,23,0.82);"></div>
+    <div style="position: relative; max-width: 1440px; margin: 0 auto; padding: 96px 48px; display: flex; justify-content: space-between; align-items: center; gap: 64px; flex-wrap: wrap;">
+      <div style="max-width: 60ch;">
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #E3CCAE; margin-bottom: 20px;">Sin presión, sin letras pequeñas</div>
+        <h2 style="font-family: Sora, sans-serif; font-weight: 300; font-size: 40px; line-height: 1.15; letter-spacing: -0.028em; color: #fff; margin: 0; text-wrap: balance;">¿Listo Para Dar el Primer Paso? Estamos Aquí Para Ayudarte.</h2>
+      </div>
+      <a href="#contacto" style="background: #C5A47E; color: #0F172A; padding: 20px 40px; font-size: 14px; font-weight: 700; letter-spacing: 0.04em; border-radius: 2px; transition: all .25s ease; white-space: nowrap;" style-hover="background: #E3CCAE; transform: translateY(-2px); box-shadow: 0 16px 34px -16px rgba(197,164,126,0.55);">Agenda una consulta gratuita</a>
+    </div>
+  </div>
+
+  <!-- TESTIMONIOS -->
+  <div id="testimonios" style="background: #fff;">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 104px 48px;">
+      <div style="display: flex; justify-content: space-between; align-items: end; gap: 48px; margin-bottom: 56px;">
+        <div>
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #9A7B52; margin-bottom: 20px;">Testimonios</div>
+          <h2 style="font-family: Sora, sans-serif; font-weight: 400; font-size: 42px; line-height: 1.12; letter-spacing: -0.028em; margin: 0; max-width: 26ch;">Inversionistas que ya dieron el paso</h2>
+        </div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: #9A7B52; border: 1px dashed #C5A47E; padding: 10px 14px;">Pendiente: testimonios reales</div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;">
+        <sc-for list="{{ testimonials }}" as="t" hint-placeholder-count="3">
+          <div style="border: 1px solid rgba(15,23,42,0.12); padding: 40px 36px 32px; background: #FAFAF8; display: flex; flex-direction: column; justify-content: space-between; gap: 32px; min-height: 300px; transition: all .3s ease;" style-hover="background: #fff; box-shadow: 0 26px 52px -30px rgba(2,6,23,0.28); transform: translateY(-3px);">
+            <div>
+              <div style="color: #C5A47E; font-size: 12px; letter-spacing: 0.3em; margin-bottom: 22px;">◈ ◈ ◈ ◈ ◈</div>
+              <div style="font-family: Sora, sans-serif; font-size: 19px; font-weight: 300; line-height: 1.5; letter-spacing: -0.01em; color: rgba(15,23,42,0.85);">{{ t.quote }}</div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 14px; padding-top: 22px; border-top: 1px solid rgba(15,23,42,0.12);">
+              <div style="width: 42px; height: 42px; border-radius: 50%; background: repeating-linear-gradient(135deg, #d8d4cc 0 5px, #cfcac1 5px 10px); flex: 0 0 42px;"></div>
+              <div>
+                <div style="font-size: 14px; font-weight: 600;">{{ t.name }}</div>
+                <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(15,23,42,0.5); margin-top: 4px;">{{ t.meta }}</div>
+              </div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORMULARIO -->
+  <div id="contacto" style="background: #FAFAF8; border-top: 1px solid rgba(15,23,42,0.08);">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 104px 48px;">
+      <div style="display: grid; grid-template-columns: 1fr 1.05fr; border: 1px solid rgba(15,23,42,0.12); background: #fff;">
+        <div style="padding: 72px 60px; background: #FAFAF8; display: flex; flex-direction: column; justify-content: space-between; gap: 48px;">
+          <div>
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #9A7B52; margin-bottom: 22px;">Hablemos</div>
+            <h2 style="font-family: Sora, sans-serif; font-weight: 400; font-size: 38px; line-height: 1.14; letter-spacing: -0.026em; margin: 0 0 20px; text-wrap: balance;">Agenda una consulta gratuita sin compromiso.</h2>
+            <p style="font-size: 16px; line-height: 1.7; color: rgba(15,23,42,0.64); margin: 0; max-width: 44ch;">Te explicamos todo lo que necesitas saber antes de invertir. Sin presión, sin letras pequeñas.</p>
+          </div>
+          <div style="display: grid; gap: 16px;">
+            <div style="display: flex; gap: 14px; align-items: flex-start; font-size: 14px; line-height: 1.5; color: rgba(15,23,42,0.72);"><span style="width: 6px; height: 6px; flex: 0 0 6px; margin-top: 7px; background: #C5A47E; border-radius: 50%;"></span>Atención en español e inglés</div>
+            <div style="display: flex; gap: 14px; align-items: flex-start; font-size: 14px; line-height: 1.5; color: rgba(15,23,42,0.72);"><span style="width: 6px; height: 6px; flex: 0 0 6px; margin-top: 7px; background: #C5A47E; border-radius: 50%;"></span>Proyectos en México y El Salvador</div>
+            <div style="display: flex; gap: 14px; align-items: flex-start; font-size: 14px; line-height: 1.5; color: rgba(15,23,42,0.72);"><span style="width: 6px; height: 6px; flex: 0 0 6px; margin-top: 7px; background: #C5A47E; border-radius: 50%;"></span>Acompañamiento hasta la entrega de llaves</div>
+          </div>
+          <div style="font-size: 12px; line-height: 1.7; color: rgba(15,23,42,0.5); border-top: 1px solid rgba(15,23,42,0.12); padding-top: 22px;">Aylesva actúa como facilitador independiente y proporciona información y orientación sobre oportunidades inmobiliarias ofrecidas por desarrolladores, corredores y socios externos. La disponibilidad de propiedades, precios, opciones de financiamiento y elegibilidad están sujetos a cambios sin previo aviso y pueden variar según la ubicación y el proveedor.</div>
+        </div>
+        <div style="padding: 60px; border-left: 1px solid rgba(15,23,42,0.12);">
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(15,23,42,0.4); margin-bottom: 32px;">Embed GoHighLevel · form 8tPsdSSw70XYgG77oYYW</div>
+          <div style="display: grid; gap: 24px;">
+            <div>
+              <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(15,23,42,0.55); margin-bottom: 9px;">Nombre completo</div>
+              <div style="border: 1px solid rgba(15,23,42,0.18); padding: 15px 16px; font-size: 15px; color: rgba(15,23,42,0.35); transition: border-color .2s ease;" style-hover="border-color: #C5A47E;">Nombre y apellido</div>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+              <div>
+                <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(15,23,42,0.55); margin-bottom: 9px;">Correo</div>
+                <div style="border: 1px solid rgba(15,23,42,0.18); padding: 15px 16px; font-size: 15px; color: rgba(15,23,42,0.35); transition: border-color .2s ease;" style-hover="border-color: #C5A47E;">nombre@correo.com</div>
+              </div>
+              <div>
+                <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(15,23,42,0.55); margin-bottom: 9px;">WhatsApp</div>
+                <div style="border: 1px solid rgba(15,23,42,0.18); padding: 15px 16px; font-size: 15px; color: rgba(15,23,42,0.35); transition: border-color .2s ease;" style-hover="border-color: #C5A47E;">+52 (000) 000 0000</div>
+              </div>
+            </div>
+            <div>
+              <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(15,23,42,0.55); margin-bottom: 9px;">Desarrollo de interés</div>
+              <div style="border: 1px solid rgba(15,23,42,0.18); padding: 15px 16px; font-size: 15px; color: rgba(15,23,42,0.5); display: flex; justify-content: space-between; align-items: center; transition: border-color .2s ease;" style-hover="border-color: #C5A47E;"><span>Torre 40 · Puerto Vallarta</span><span style="color: #C5A47E;">▾</span></div>
+            </div>
+            <div>
+              <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(15,23,42,0.55); margin-bottom: 9px;">Presupuesto estimado</div>
+              <div style="border: 1px solid rgba(15,23,42,0.18); padding: 15px 16px; font-size: 15px; color: rgba(15,23,42,0.5); display: flex; justify-content: space-between; align-items: center; transition: border-color .2s ease;" style-hover="border-color: #C5A47E;"><span>Selecciona un rango</span><span style="color: #C5A47E;">▾</span></div>
+            </div>
+            <div>
+              <div style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(15,23,42,0.55); margin-bottom: 9px;">Mensaje</div>
+              <div style="border: 1px solid rgba(15,23,42,0.18); padding: 15px 16px; font-size: 15px; color: rgba(15,23,42,0.35); min-height: 84px; transition: border-color .2s ease;" style-hover="border-color: #C5A47E;">Cuéntanos qué estás buscando</div>
+            </div>
+            <div style="background: #0F172A; color: #fff; padding: 18px; text-align: center; font-size: 14px; font-weight: 600; letter-spacing: 0.04em; cursor: pointer; border-radius: 2px; transition: all .25s ease;" style-hover="background: #020617; box-shadow: 0 14px 30px -14px rgba(2,6,23,0.6);">Agenda tu consulta</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BANDA DE OTRAS RAMAS -->
+  <div style="background: #fff; border-top: 1px solid rgba(15,23,42,0.08);">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 96px 48px;">
+      <div style="display: flex; justify-content: space-between; align-items: end; gap: 48px; margin-bottom: 44px;">
+        <div>
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #9A7B52; margin-bottom: 20px;">Ecosistema Aylesva</div>
+          <h2 style="font-family: Sora, sans-serif; font-weight: 400; font-size: 34px; line-height: 1.15; letter-spacing: -0.025em; margin: 0; max-width: 30ch;">El mismo respaldo, en cada una de nuestras ramas</h2>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(15,23,42,0.12); border: 1px solid rgba(15,23,42,0.12);">
+        <sc-for list="{{ branches }}" as="b" hint-placeholder-count="4">
+          <a href="#" style="background: #FAFAF8; padding: 40px 32px 44px; display: block; transition: all .3s ease;" style-hover="background: #0F172A;">
+            <div style="height: 30px;">{{ b.el }}</div>
+            <div style="font-family: Sora, sans-serif; font-size: 18px; font-weight: 500; letter-spacing: -0.01em; margin: 26px 0 10px;">{{ b.name }}</div>
+            <div style="font-size: 14px; line-height: 1.6; color: rgba(15,23,42,0.6);">{{ b.d }}</div>
+            <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: #9A7B52; margin-top: 26px;">Conocer →</div>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER DEL GRUPO -->
+  <div style="background: #020617; color: #fff;">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 80px 48px 40px; display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 64px;">
+      <div>
+        <div style="font-family: Sora, sans-serif; font-weight: 600; letter-spacing: 0.24em; font-size: 15px; text-transform: uppercase; margin-bottom: 22px;">Aylesva</div>
+        <p style="font-size: 14px; line-height: 1.75; color: rgba(255,255,255,0.6); margin: 0 0 26px; max-width: 40ch;">Una plataforma dedicada a la curaduría editorial de productos premium, conectando artesanos y marcas de lujo con el estilo de vida contemporáneo.</p>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; line-height: 2; color: rgba(255,255,255,0.5);">Calle Benito Juarez 116<br />sales@aylesva.com</div>
+      </div>
+      <div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: #C5A47E; margin-bottom: 20px;">Servicios</div>
+        <div style="display: grid; gap: 12px; font-size: 14px; color: rgba(255,255,255,0.7);">
+          <a href="#">Global Estates</a>
+          <a href="#">Aylesva Capital</a>
+          <a href="#">Aylesva Direct</a>
+          <a href="#">Aylesva Care</a>
+          <a href="#">Aylesva Commerce</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: #C5A47E; margin-bottom: 20px;">Nuestra Empresa</div>
+        <div style="display: grid; gap: 12px; font-size: 14px; color: rgba(255,255,255,0.7);">
+          <a href="#">Ayuda / Contacto</a>
+          <a href="#">Nuestra Historia</a>
+          <a href="#">Términos de Servicio</a>
+          <a href="#">Aviso de Privacidad</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: #C5A47E; margin-bottom: 20px;">Recibe Nuestras Ofertas</div>
+        <p style="font-size: 14px; line-height: 1.65; color: rgba(255,255,255,0.6); margin: 0 0 18px;">Únete a nuestra colección curada y sé el primero en conocer lanzamientos exclusivos.</p>
+        <div style="display: flex; border: 1px solid rgba(255,255,255,0.25);">
+          <div style="flex: 1; padding: 13px 14px; font-size: 13px; color: rgba(255,255,255,0.4);">tu@correo.com</div>
+          <div style="background: #C5A47E; color: #0F172A; padding: 13px 18px; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; cursor: pointer; transition: background .25s ease;" style-hover="background: #E3CCAE;">SUSCRIBIR</div>
+        </div>
+      </div>
+    </div>
+    <div style="max-width: 1440px; margin: 0 auto; padding: 28px 48px 44px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.08em; color: rgba(255,255,255,0.42);">
+      <span>© 2026 Aylesva MX</span>
+      <span>Capital · Direct · Care · Global Estates · Commerce</span>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;gold&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#C5A47E&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#C5A47E&quot;,&quot;#E3CCAE&quot;,&quot;#B08D5B&quot;],&quot;section&quot;:&quot;Marca&quot;}}">
+const I = {
+  shield: '<path d="M12 3l8 3v6c0 5-4 8-8 9-4-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/>',
+  advisor: '<circle cx="12" cy="8" r="3.5"/><path d="M5 21c0-4 3.2-6.5 7-6.5s7 2.5 7 6.5"/>',
+  global: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c3 3 3 15 0 18-3-3-3-15 0-18z"/>',
+  capital: '<rect x="3" y="10" width="18" height="11"/><path d="M3 10 12 4l9 6"/><path d="M9 21v-6h6v6"/>',
+  direct: '<rect x="2" y="8" width="13" height="9"/><path d="M15 11h4l3 3v3h-7z"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="19" r="2"/>',
+  care: '<path d="M12 20 4 12.5A4.6 4.6 0 0 1 12 7a4.6 4.6 0 0 1 8 5.5z"/><path d="M8 13h2l1.5-3 2 5 1.5-2h2"/>',
+  commerce: '<rect x="3" y="4" width="18" height="5"/><path d="M5 9v12h14V9"/><path d="M9 13h6"/>'
+};
+
+function icon(svg, size, color) {
+  return React.createElement('svg', {
+    width: size, height: size, viewBox: '0 0 24 24', fill: 'none',
+    stroke: color || '#C5A47E', strokeWidth: 1.25, strokeLinecap: 'square',
+    style: { display: 'block' },
+    dangerouslySetInnerHTML: { __html: svg }
+  });
+}
+
+class Component extends DCLogic {
+  renderVals() {
+    const gold = this.props.gold ?? '#C5A47E';
+    return {
+      heroStats: [
+        { v: '3', k: 'Desarrollos Exclusivos' },
+        { v: '72', k: 'Unidades de Lujo' },
+        { v: '2', k: 'Países' },
+        { v: '2027', k: 'Entrega Proyectada' }
+      ],
+      projects: [
+        {
+          name: 'Torre 40', place: 'Puerto Vallarta, México', status: 'En Construcción',
+          desc: 'Una torre residencial moderna que redefine la vida de lujo en el corazón de Puerto Vallarta.',
+          bullets: ['24 pisos · 72 unidades exclusivas', 'Entrega estimada 2027', 'Alberca infinity en rooftop', 'Vistas panorámicas al océano y la ciudad', 'Seguridad 24/7 y concierge'],
+          bg: "url('https://aylesva.mx/cdn/shop/files/preview_images/3430260eb86c4aff8bfaa5be820ca0a7.thumbnail.0000000000_2400x.jpg?v=1785968820')",
+          imgNote: 'render de torre · reemplazar por foto final'
+        },
+        {
+          name: 'Paradise Bay', place: 'La Unión, El Salvador', status: 'Preventa',
+          desc: 'Adquiere tu lugar en el destino costero más prometedor de El Salvador. Descubre oportunidades exclusivas de bienes raíces rodeadas de playas vírgenes, turismo en crecimiento y un valor excepcional a largo plazo.',
+          bullets: ['Cerca del nuevo aeropuerto internacional', 'Cerca de la futura Bitcoin City', 'Adyacente al nuevo Puerto de La Unión', 'Inversión Segura'],
+          bg: "url('https://aylesva.mx/cdn/shop/files/paradisebay2.png?v=1784050809&width=1200')",
+          imgNote: 'paradisebay2.png'
+        },
+        {
+          name: 'Altarena', place: 'Sonora, México', status: 'Nuevo Desarrollo',
+          desc: 'Ubicado a lo largo de la costa prístina de Sonora, Altarena es una comunidad exclusiva con plan maestro rodeada de uno de los paisajes naturales más extraordinarios de México.',
+          bullets: ['Espectaculares dunas y paisajes desérticos', 'Estilo de vida tranquilo rodeado de naturaleza', 'Herencia cultural auténtica', 'Potencial de inversión excepcional'],
+          bg: "url('https://aylesva.mx/cdn/shop/files/Altarena2.png?v=1784050859&width=1200')",
+          imgNote: 'Altarena2.png'
+        }
+      ],
+      pillars: [
+        { eyebrow: 'Compra con confianza', t: 'Guía de Inicio a Fin', d: 'Comprar una propiedad en otro país no tiene que ser abrumador. Te guiamos en cada paso del camino para que puedas invertir con confianza, evitar errores costosos y tomar decisiones informadas.', el: icon(I.shield, 34, gold) },
+        { eyebrow: 'Protege tu inversión', t: 'Experiencia Local de Confianza', d: 'Te ayudamos a evitar estafas, costos ocultos y errores costosos proporcionándote orientación confiable y experiencia local durante todo el proceso de compra.', el: icon(I.global, 34, gold) },
+        { eyebrow: 'Estamos contigo en cada paso', t: 'Acompañamiento de Inicio a Fin', d: 'Desde tu primera consulta hasta el día que recibes tus llaves, Aylesva permanece a tu lado. Nuestro equipo te brinda orientación continua y se asegura de que cada etapa de tu inversión sea clara, segura y sin estrés.', el: icon(I.advisor, 34, gold) }
+      ],
+      steps: [
+        { n: '01', t: 'Consulta gratuita', d: 'Agendas una llamada sin compromiso. Escuchamos qué buscas, en qué plazo y con qué presupuesto, y te explicamos cómo funciona comprar en México o El Salvador.' },
+        { n: '02', t: 'Selección verificada', d: 'Te presentamos únicamente desarrollos que nuestro equipo ya visitó y validó: desarrollador, avance de obra, permisos y condiciones comerciales.' },
+        { n: '03', t: 'Acompañamiento hasta las llaves', d: 'Coordinamos contratos, pagos y seguimiento de obra contigo. Un asesor responde tus preguntas hasta el día de la entrega.' }
+      ],
+      testimonials: [
+        { quote: 'Espacio para el testimonio real del cliente. Tres o cuatro líneas máximo, con una idea concreta sobre el proceso.', name: 'Nombre del cliente', meta: 'Torre 40 · Puerto Vallarta' },
+        { quote: 'Espacio para el testimonio real del cliente. Ideal: menciona el miedo inicial y cómo se resolvió.', name: 'Nombre del cliente', meta: 'Paradise Bay · El Salvador' },
+        { quote: 'Espacio para el testimonio real del cliente. Ideal: resultado o cifra concreta de su inversión.', name: 'Nombre del cliente', meta: 'Altarena · Sonora' }
+      ],
+      branches: [
+        { name: 'Aylesva Capital', d: 'Financiamiento y préstamos para personas y empresas.', el: icon(I.capital, 30, gold) },
+        { name: 'Aylesva Direct', d: 'Importación y logística desde China, puerta a puerta.', el: icon(I.direct, 30, gold) },
+        { name: 'Aylesva Care', d: 'Beneficios de salud, seguros y telemedicina.', el: icon(I.care, 30, gold) },
+        { name: 'Aylesva Commerce', d: 'Distribución mayorista y expansión B2B.', el: icon(I.commerce, 30, gold) }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,172 @@
+AYLESVA · SISTEMA VISUAL "GOLD & INK"
+Paquete de implementación para Shopify · v1 · agosto 2026
+
+========================================================================
+1. QUÉ CONTIENE ESTE ZIP
+========================================================================
+
+snippets/
+  aylesva-corp-tokens.liquid ....... Fuentes, colores y clases base.
+                                     OBLIGATORIO: todo lo demás depende de él.
+
+sections/  (13 secciones configurables desde el editor de temas)
+  aylesva-corp-hero.liquid ......... Portada con foto, velo ink, 2 CTA y cifras.
+  aylesva-corp-features.liquid ..... Cuadrícula de beneficios con ícono.
+  aylesva-corp-process.liquid ...... Pasos numerados (ink o crema).
+  aylesva-corp-cards.liquid ........ Tarjetas con foto: planes, desarrollos, categorías.
+  aylesva-corp-table.liquid ........ Tabla comparativa de 5 columnas.
+  aylesva-corp-faq.liquid .......... Acordeón (sin JavaScript).
+  aylesva-corp-form.liquid ......... Contenedor del embed de GoHighLevel + aviso legal.
+  aylesva-corp-branches.liquid ..... Banda del ecosistema (pie de cada landing).
+  aylesva-home-hero.liquid ......... Hero de la Home (crema, imagen a la derecha).
+  aylesva-home-stats.liquid ........ Banda de cifras del grupo (ink).
+  aylesva-home-universes.liquid .... "Qué hacemos": los dos universos.
+  aylesva-home-services.liquid ..... "Qué hace cada servicio" (6 tarjetas).
+  aylesva-home-needs.liquid ........ "¿Con qué necesidad llegas hoy?" (animada).
+  aylesva-home-split.liquid ........ Bloque a dos columnas (usado en Marketplace).
+
+templates/  (7 páginas, con TODOS los textos ya cargados)
+  page.home-aylesva.json
+  page.globalestates.json
+  page.aylesva-recursos.json
+  page.aylesva-direct.json
+  page.aylesva-care.json
+  page.lanza-tu-propia-marca.json
+  page.mi-ultima-voluntad.json
+
+maquetas/         Los diseños en alta fidelidad. Abre cualquier .html en el
+                  navegador para ver el resultado esperado, con medidas reales.
+IMAGENES.txt      Inventario de cada imagen: dónde va, medida y de dónde sacarla.
+ICONOS.txt        El set completo de íconos aprobados, listo para copiar y pegar.
+CAMBIOS-HOME.txt  Historial del último cambio en la Home.
+
+========================================================================
+2. INSTALACIÓN (una sola vez, ~20 minutos)
+========================================================================
+
+  1. Duplica el tema actual antes de tocar nada.
+
+  2. Copia el contenido de snippets/ y sections/ a las carpetas del mismo
+     nombre del tema. No renombres los archivos: los templates JSON los
+     buscan por nombre exacto.
+
+  3. En layout/theme.liquid, dentro de <head>, agrega:
+
+         {% render 'aylesva-corp-tokens' %}
+
+     Ponlo DESPUÉS de la hoja de estilos del tema para que las variables
+     del sistema ganen. Solo una vez, no por página.
+
+  4. Copia los 7 archivos de templates/ a la carpeta templates/ del tema.
+
+  5. Sube las imágenes en Contenido → Archivos (ver IMAGENES.txt).
+
+  6. Para cada página: Contenido → Páginas → [la página] → Plantilla de tema
+     y elige la que corresponde:
+
+         Home ................... home-aylesva
+         Global Estates ......... globalestates
+         Aylesva Recursos ....... aylesva-recursos
+         Aylesva Direct ......... aylesva-direct
+         Aylesva Care ........... aylesva-care
+         Lanza tu propia marca .. lanza-tu-propia-marca
+         Mi Última Voluntad ..... mi-ultima-voluntad
+
+     El nombre del template debe coincidir con el handle de la página.
+     Si un handle es distinto en la tienda, renombra el archivo JSON
+     (page.<handle>.json) en lugar de cambiar el handle.
+
+  7. Abre cada página en el editor de temas y asigna las imágenes a cada
+     sección. Los textos ya están cargados: no hay que teclear nada.
+
+  8. Si quieres que la Home sea la portada del sitio, copia el contenido de
+     page.home-aylesva.json dentro de templates/index.json.
+
+========================================================================
+3. FORMULARIOS (GoHighLevel)
+========================================================================
+
+Los IDs ya vienen dentro de cada template:
+
+  Global Estates ......... 8tPsdSSw70XYgG77oYYW
+  Aylesva Recursos ....... 8biW0OIL5lKLx23bNZFO
+  Aylesva Direct ......... 6kXVcb0baoRwx0UBBTsr
+  Aylesva Care ........... vDnep2WEYdM0V7jw95KX
+  Lanza tu propia marca .. ENbMAneKkZAPTdITGH2n
+  Mi Última Voluntad ..... DPfokHX747mbGaU8Fobk
+  Home ................... PENDIENTE (la sección queda vacía hasta llenarlo)
+
+La sección inserta el widget por iframe y carga form_embed.js con defer.
+Ajusta "Alto del formulario" desde el editor hasta que no haya scroll interno.
+
+Para que el widget se vea como la maqueta, en GoHighLevel configura el tema
+del formulario así:
+  · Tipografía: Manrope
+  · Campos: borde 1px rgba(15,23,42,.18), sin radio, fondo blanco
+  · Foco: #C5A47E
+  · Botón: fondo #0F172A, texto blanco, sin radio
+
+Si el widget no puede alinearse a eso, avísanos: lo cambiamos por campos
+nativos de Shopify enviando a la API de GHL.
+
+========================================================================
+4. REGLAS DEL SISTEMA (no negociables)
+========================================================================
+
+COLOR
+  Ink #0F172A / #020617 ... fondos institucionales, texto y botón primario.
+  Gold #C5A47E ............ íconos, eyebrows, líneas y botón secundario.
+                            NUNCA como fondo de sección ni en párrafos.
+  Gold texto #9A7B52 ...... el dorado sobre fondo claro usa este tono
+                            (el #C5A47E no pasa contraste AA en texto).
+  Stone #FAFAF8 ........... fondo secundario. Alterna con blanco;
+                            nunca dos secciones crema seguidas.
+  Ink como fondo: máximo dos veces por página.
+
+TIPOGRAFÍA
+  Sora ........... titulares. Peso 300-400 y tracking NEGATIVO (-0.028em).
+  Manrope ........ texto corrido.
+  IBM Plex Mono .. eyebrows, cifras y etiquetas. Mayúsculas y tracking
+                   POSITIVO (0.2em). El contraste entre ambos trackings
+                   es la firma del sistema: no lo iguales.
+  Mínimos: 15px en texto de tarjeta, 16-17px en párrafos de sección.
+
+ÍCONOS
+  Retícula 24×24, trazo 1.25px, sin relleno, sin círculo de fondo, sin sombra.
+  Solo el set de ICONOS.txt. No mezclar con librerías de terceros.
+
+FOTOGRAFÍA
+  Heros: velo ink en degradado 92% → 35% de izquierda a derecha; el texto
+  siempre sobre la zona oscura.
+  Fotos de producto o inmueble: marco dorado interior de 1px a 12px del borde.
+  Radio de esquina máximo 2px en todo el sistema.
+
+MICRO-INTERACCIONES
+  Tarjetas: -3px de elevación + sombra difusa.
+  Botones: cambio de tono + 2px de elevación.
+  Transiciones de .25s a .3s. Nada de escalados ni rebotes.
+  La sección de necesidades de la Home anima su entrada con
+  IntersectionObserver y respeta prefers-reduced-motion.
+
+========================================================================
+5. QA ANTES DE PUBLICAR
+========================================================================
+
+  [ ] Ninguna cuadrícula queda con una tarjeta huérfana en tablet (2 col).
+  [ ] Los CTA del hero mantienen 44px de alto mínimo en móvil.
+  [ ] Los formularios no tienen scroll interno.
+  [ ] La banda del ecosistema NO incluye la rama de la página actual.
+  [ ] Ningún texto dorado sobre fondo claro usa #C5A47E (debe ser #9A7B52).
+  [ ] El disclaimer de New Benefits aparece completo en Aylesva Care.
+  [ ] Los enlaces entre landings resuelven (ver handles en el punto 2.6).
+
+========================================================================
+6. PENDIENTES DE CONTENIDO (del lado de Aylesva)
+========================================================================
+
+  · Testimonios reales de Global Estates (3, con nombre y desarrollo).
+  · Capturas y nombres de las 23 marcas lanzadas.
+  · Logotipos oficiales de New Benefits, Aflac, UHOne y Briotech.
+  · Fotografía definitiva de Torre 40, Paradise Bay y Altarena a 2400px.
+  · ID del formulario general de la Home.
+  · Las 9 imágenes nuevas de la Home (ver IMAGENES.txt).

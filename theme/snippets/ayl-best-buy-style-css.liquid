@@ -1,0 +1,249 @@
+<style>
+  /* Aylesva Best Buy Professional UI - PIXEL PERFECT RE-ENGINEERING */
+  :root {
+    --bb-blue: #0046be;
+    --bb-yellow: #fff200;
+    --bb-red: #bb0628;
+    --bb-text: #1b252c;
+    --bb-text-muted: #555f66;
+    --bb-border: #e0e6ef;
+    --bb-bg-buy-box: #f6f7f8;
+    --bb-bg-light: #ffffff;
+    --bb-success: #008a00;
+    --bb-border-btn: #c5cbd5;
+    --bb-radius: 8px;
+    --bb-radius-lg: 12px;
+  }
+
+  /* 0. ANIMACIONES PREMIUM */
+  @keyframes aylFadeInUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .ayl-animate-in { animation: aylFadeInUp 0.5s cubic-bezier(0.2, 1, 0.3, 1) forwards; }
+
+  /* 1. LAYOUT ESTRUCTURAL - PIXEL PERFECT */
+  .ayl-bestbuy-layout {
+    display: grid;
+    grid-template-columns: 85px 1fr 400px; /* Thumbs | Main | Info */
+    gap: 32px;
+    margin: 32px auto 64px auto;
+    align-items: flex-start;
+    max-width: 1360px;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+  
+  /* 2. MINIATURAS VERTICALES */
+  .ayl-bb-thumbnails { 
+    position: sticky;
+    top: 20px;
+  }
+  .ayl-bb-thumb-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .ayl-bb-thumb-item {
+    width: 72px;
+    height: 72px;
+    border: 1px solid var(--bb-border);
+    cursor: pointer;
+    transition: all 0.2s;
+    border-radius: 4px;
+    padding: 2px;
+    background: #fff;
+    overflow: hidden;
+  }
+  .ayl-bb-thumb-item.active { border: 2px solid var(--bb-blue); padding: 1px; }
+  .ayl-bb-thumb-item img { width: 100%; height: 100%; object-fit: contain; }
+
+  /* 3. IMAGEN PRINCIPAL - RATIO 1:1 CENTRADO */
+  .ayl-bb-main-image {
+    background: #fff;
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Forzado Best Buy */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    box-sizing: border-box;
+    border: 1px solid var(--bb-border); /* Sutil separación */
+    border-radius: var(--bb-radius);
+  }
+  .product-single__photos {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .product-single__photos img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  /* 4. INFORMACIÓN DEL PRODUCTO - LA "BUY BOX" */
+  .ayl-bb-product-info {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .ayl-bb-identity-block { margin-bottom: 4px; }
+  .ayl-bb-brand { color: var(--bb-blue); font-size: 14px; font-weight: 700; text-decoration: none !important; display: block; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em; }
+  
+  .product-single__title {
+    font-size: 24px !important;
+    font-weight: 700 !important;
+    line-height: 1.2 !important;
+    color: var(--bb-text);
+    margin: 0 0 16px 0 !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 3 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+  }
+
+  /* LA CAJA DE COMPRA (BUY BOX) */
+  .ayl-bb-buy-box {
+    background: var(--bb-bg-buy-box);
+    border: 1px solid var(--bb-border);
+    border-radius: var(--bb-radius-lg);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+
+  /* PRECIO DESTACADO */
+  .ayl-bb-current-price {
+    font-size: 34px !important;
+    font-weight: 800 !important;
+    color: var(--bb-text);
+    display: block;
+    line-height: 1;
+    letter-spacing: -0.01em;
+  }
+  .ayl-bb-savings-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 10px;
+  }
+  .ayl-bb-savings-tag {
+    background: var(--bb-red);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 800;
+    padding: 3px 10px;
+    border-radius: 4px;
+  }
+  .ayl-bb-was-price {
+    color: var(--bb-text-muted);
+    text-decoration: line-through;
+    font-size: 14px;
+  }
+
+  /* BOTÓN ADD TO CART - DISEÑO REAL */
+  #AddToCart {
+    background: var(--bb-yellow) !important;
+    color: #000 !important;
+    font-weight: 800 !important;
+    font-size: 17px !important;
+    height: 52px !important;
+    border: 1px solid var(--bb-border-btn) !important;
+    border-radius: var(--bb-radius) !important;
+    width: 100% !important;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    text-transform: none !important;
+    box-sizing: border-box !important;
+  }
+  #AddToCart:hover:not(:disabled) { 
+    background: #fdf200 !important; 
+    border-color: #9ca3af !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1) !important;
+  }
+  #AddToCart:active { transform: translateY(0); }
+  
+  #AddToCart:disabled {
+    background: #e0e0e0 !important;
+    color: #86868b !important;
+    border-color: #d1d1d6 !important;
+    cursor: not-allowed !important;
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  /* 5. RATINGS */
+  .ayl-bb-ratings {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
+  .ayl-bb-stars { color: #f0ad4e; font-size: 14px; }
+  .ayl-bb-rating-link { color: var(--bb-blue); font-size: 13px; font-weight: 600; text-decoration: none !important; }
+  .ayl-bb-rating-link:hover { text-decoration: underline !important; }
+
+  /* MÓVIL OPTIMIZADO */
+  @media (max-width: 991px) {
+    .ayl-bestbuy-layout {
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin: 0;
+      padding: 0;
+    }
+    .ayl-bb-thumbnails { display: none; }
+    .ayl-bb-main-image {
+      aspect-ratio: auto;
+      height: 400px;
+      padding: 0;
+      border: none;
+      border-radius: 0;
+    }
+    .ayl-bb-product-info { padding: 20px; gap: 20px; }
+    .ayl-bb-buy-box { border: none; background: transparent; padding: 0; box-shadow: none; }
+    
+    .ayl-bb-mobile-sticky {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: #fff;
+      padding: 12px 20px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      border-top: 1px solid var(--bb-border);
+      z-index: 1000;
+      box-shadow: 0 -4px 15px rgba(0,0,0,0.1);
+      align-items: center;
+      box-sizing: border-box;
+    }
+    .ayl-bb-sticky-price { font-size: 22px; font-weight: 800; color: var(--bb-text); }
+    .ayl-bb-add-btn {
+      background: var(--bb-yellow);
+      padding: 0 32px;
+      height: 50px;
+      border-radius: 8px;
+      font-weight: 800;
+      font-size: 15px;
+      border: 1px solid var(--bb-border-btn);
+    }
+    .product-single__title { font-size: 22px !important; -webkit-line-clamp: 4 !important; }
+  }
+</style>
+
+</style>

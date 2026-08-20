@@ -1,0 +1,17 @@
+{% if cart.item_count > 0 %}
+<span class="cart-heading">{{ 'cart.general.cart_item' | t }}</span>
+<div class="btn btn-inverse btn-block btn-lg dropdown-toggle">
+  <i class="mdi mdi-cart-outline"></i>
+  <div id="CartCount_sticky" class="site-header__cart-count">
+    <span  class="cart-products-count" aria-hidden="true">{{ cart.item_count }}</span>
+  </div>
+</div>
+{% else %}
+<span class="cart-heading">{{ 'cart.general.cart_item' | t }}</span>
+<div class="btn btn-inverse btn-block btn-lg dropdown-toggle">
+  <i class="mdi mdi-cart-outline"></i>
+  <div id="CartCount_sticky" class="site-header__cart-count">
+    <span  class="cart-products-count" aria-hidden="true">0</span>
+  </div>
+</div>
+{% endif %}

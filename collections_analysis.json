@@ -1,0 +1,50 @@
+[
+  {
+    "id": 484977803287,
+    "handle": "camaras-1",
+    "title": "Cámaras",
+    "has_products": -1,
+    "type": "custom",
+    "published": true
+  },
+  {
+    "id": 485791563799,
+    "handle": "celulares",
+    "title": "celulares",
+    "has_products": 1,
+    "type": "custom",
+    "published": true
+  },
+  {
+    "id": 485516541975,
+    "handle": "damas-spot",
+    "title": "damas spot",
+    "has_products": 1,
+    "type": "custom",
+    "published": true
+  },
+  {
+    "id": 485787435031,
+    "handle": "dji",
+    "title": "dji",
+    "has_products": 1,
+    "type": "custom",
+    "published": true
+  },
+  {
+    "id": 485787402263,
+    "handle": "tenis",
+    "title": "Tenis",
+    "has_products": 1,
+    "type": "custom",
+    "published": true
+  },
+  {
+    "id": 484753408023,
+    "handle": "yeti",
+    "title": "Yeti",
+    "has_products": 1,
+    "type": "custom",
+    "published": true
+  }
+]

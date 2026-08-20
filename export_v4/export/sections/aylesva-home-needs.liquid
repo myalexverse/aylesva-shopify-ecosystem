@@ -1,0 +1,86 @@
+{% comment %}
+  Aylesva · Home · Rutas por necesidad (ink) con animación de entrada.
+  Las tarjetas suben escalonadas al entrar en pantalla y la línea dorada se traza.
+  Respeta prefers-reduced-motion. Sin dependencias.
+{% endcomment %}
+<section class="ay" style="background:var(--ay-ink-800)">
+  <div class="ay-wrap">
+    {% if section.settings.eyebrow != blank %}<p class="ay-eyebrow ay-eyebrow--dark">{{ section.settings.eyebrow }}</p>{% endif %}
+    <h2 class="ay-h2" style="color:#fff;font-weight:300;font-size:clamp(30px,3.4vw,44px);letter-spacing:-.03em;max-width:30ch;margin-bottom:20px">{{ section.settings.title }}</h2>
+    <p class="ay-lead" style="font-size:16px;color:rgba(255,255,255,.62);max-width:60ch;margin-bottom:52px">{{ section.settings.intro }}</p>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.16);border:var(--ay-hairline-dark)" class="ay-needs">
+      {% for block in section.blocks %}
+        {% assign d = forloop.index0 | times: 90 %}
+        <a class="ay-need" href="{{ block.settings.link }}" style="animation-delay:{{ d }}ms" {{ block.shopify_attributes }}>
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:20px">
+            <span class="ay-need-num">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+            {% if block.settings.icon != blank %}
+              <span class="ay-need-icon"><svg class="ay-icon" style="width:26px;height:26px" viewBox="0 0 24 24" stroke-linecap="square" aria-hidden="true">{{ block.settings.icon }}</svg></span>
+            {% endif %}
+          </div>
+          <span class="ay-need-q">{{ block.settings.question }}</span>
+          <div style="margin-top:auto">
+            <div class="ay-need-rule" style="animation-delay:{{ d | plus: 260 }}ms"></div>
+            <span class="ay-need-to">{{ block.settings.target }} <span class="ay-need-arrow">&rarr;</span></span>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .ay-need{background:var(--ay-ink-800);padding:32px 30px 34px;display:flex;flex-direction:column;gap:20px;text-decoration:none;opacity:0;transition:background .3s ease}
+  .ay-need:hover{background:var(--ay-ink-900)}
+  .ay-need.is-in{animation:ay-need-in .72s cubic-bezier(.22,.61,.36,1) forwards}
+  .ay-need.is-in .ay-need-rule{animation:ay-rule-in .8s cubic-bezier(.22,.61,.36,1) forwards}
+  .ay-need-num{font-family:var(--ay-font-display);font-size:40px;font-weight:200;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(197,164,126,.75);transition:color .35s ease}
+  .ay-need:hover .ay-need-num{color:rgba(197,164,126,.16)}
+  .ay-need-q{font-family:var(--ay-font-display);font-size:19px;font-weight:400;color:#fff;letter-spacing:-.012em;line-height:1.35;text-wrap:pretty}
+  .ay-need-to{display:block;font-family:var(--ay-font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ay-gold);padding-top:14px}
+  .ay-need-rule{height:1px;background:linear-gradient(90deg,rgba(197,164,126,.85),rgba(255,255,255,.12));transform:scaleX(0);transform-origin:left}
+  .ay-need-arrow{display:inline-block;transition:transform .35s cubic-bezier(.22,.61,.36,1)}
+  .ay-need:hover .ay-need-arrow{transform:translateX(6px)}
+  .ay-need-icon{display:block;opacity:.55;transition:transform .45s cubic-bezier(.22,.61,.36,1),opacity .35s ease}
+  .ay-need:hover .ay-need-icon{opacity:1;transform:translateY(-3px)}
+  @keyframes ay-need-in{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+  @keyframes ay-rule-in{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+  @media (prefers-reduced-motion:reduce){
+    .ay-need,.ay-need.is-in{opacity:1;animation:none}
+    .ay-need-rule{transform:none !important;animation:none !important}
+  }
+  @media (max-width:1024px){ .ay-needs{grid-template-columns:1fr 1fr !important} }
+  @media (max-width:640px){ .ay-needs{grid-template-columns:1fr !important} }
+</style>
+
+<script>
+  (function(){
+    var els = document.querySelectorAll('#shopify-section-{{ section.id }} .ay-need');
+    if(!('IntersectionObserver' in window)){ els.forEach(function(el){ el.classList.add('is-in'); }); return; }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('is-in'); io.unobserve(e.target); } });
+    }, { threshold: .25, rootMargin: '0px 0px -8% 0px' });
+    els.forEach(function(el){ io.observe(el); });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Aylesva · Rutas por necesidad",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Encuentra tu ruta" },
+    { "type": "textarea", "id": "title", "label": "Titular", "default": "¿Con qué necesidad llegas hoy?" },
+    { "type": "textarea", "id": "intro", "label": "Texto de entrada", "default": "Empieza por el objetivo, no por el nombre del servicio. Cada ruta te lleva a la rama que lo resuelve." }
+  ],
+  "blocks": [
+    { "type": "need", "name": "Necesidad", "limit": 6, "settings": [
+      { "type": "textarea", "id": "question", "label": "Necesidad, en primera persona" },
+      { "type": "textarea", "id": "icon", "label": "Trazado SVG del ícono" },
+      { "type": "text", "id": "target", "label": "Rama que la resuelve" },
+      { "type": "url", "id": "link", "label": "Enlace" }
+    ]}
+  ],
+  "presets": [{ "name": "Aylesva · Rutas por necesidad" }]
+}
+{% endschema %}

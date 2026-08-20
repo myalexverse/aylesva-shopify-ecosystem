@@ -1,0 +1,106 @@
+{% comment %}
+  Aylesva MX - Premium Mobile Collection Header
+  H&M-style header with bold title, categories, and sort/filter bar.
+  Used only on mobile.
+{% endcomment %}
+
+<div class="ayl-mobile-header">
+  <div class="ayl-mobile-header-top">
+    <h1 class="ayl-collection-title">{{ collection.title | upcase }}</h1>
+  </div>
+
+  <div class="ayl-mobile-categories">
+    <div class="ayl-chips-scroll">
+      {%- if section.settings.linkedlist -%}
+        {%- for link in linklists[section.settings.linkedlist].links -%}
+          <a href="{{ link.url }}" class="ayl-chip {% if link.active %}active{% endif %}">
+            {{ link.title | upcase }}
+          </a>
+        {%- endfor -%}
+      {%- else -%}
+        {% comment %} Fallback to collection tags if no linklist is defined {% endcomment %}
+        {%- for tag in collection.all_tags limit: 8 -%}
+          <a href="{{ collection.url }}/{{ tag | handle }}" class="ayl-chip">
+            {{ tag | upcase }}
+          </a>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+
+  <div class="ayl-mobile-controls">
+    <div class="ayl-control-btn sort-trigger" onclick="document.getElementById('SortBy').click();">
+      <span>CLASIFICAR POR</span>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+    </div>
+    <div class="ayl-control-btn filter-trigger" onclick="$('.filter-left, .filter-right, .filter-toggle').first().click();">
+      <span>FILTRO</span>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line><line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line><line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line><line x1="1" y1="14" x2="7" y2="14"></line><line x1="9" y1="8" x2="15" y2="8"></line><line x1="17" y1="16" x2="23" y2="16"></line></svg>
+    </div>
+  </div>
+</div>
+
+<style>
+/* Integrated Mobile Header Styles for instant load */
+.ayl-mobile-header {
+  display: block;
+  padding: 15px 0 0;
+  background: #fff;
+  border-bottom: 2px solid #f2f2f2;
+}
+.ayl-collection-title {
+  font-family: inherit; /* Fallback to theme default */
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin: 0 16px 15px;
+  line-height: 1;
+}
+.ayl-mobile-categories {
+  padding-bottom: 15px;
+}
+.ayl-chips-scroll {
+  display: flex;
+  overflow-x: auto;
+  gap: 8px;
+  padding: 0 16px;
+  scrollbar-width: none;
+}
+.ayl-chips-scroll::-webkit-scrollbar { display: none; }
+.ayl-chip {
+  padding: 8px 16px;
+  border: 1px solid #1a1a1a;
+  border-radius: 0; /* H&M style is often rectangular or slightly rounded, using 0 for minimalist */
+  font-size: 11px;
+  font-weight: 700;
+  text-decoration: none;
+  color: #1a1a1a;
+  white-space: nowrap;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.ayl-chip.active, .ayl-chip:first-child { 
+  background: #1a1a1a;
+  color: #fff;
+}
+.ayl-mobile-controls {
+  display: flex;
+  border-top: 1px solid #eee;
+  padding: 12px 16px;
+  justify-content: space-between;
+  align-items: center;
+}
+.ayl-control-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #1a1a1a;
+  cursor: pointer;
+  padding: 4px 0;
+}
+/* Mask/Overlay if used in grid view */
+@media (min-width: 768px) {
+  .ayl-mobile-header { display: none !important; }
+}
+</style>

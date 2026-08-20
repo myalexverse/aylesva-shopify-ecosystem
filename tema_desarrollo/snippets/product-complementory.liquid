@@ -1,0 +1,27 @@
+{% assign on_sale = false %}
+{% if featured.compare_at_price > featured.price %}{% assign on_sale = true %}{% endif %}
+{% assign sold_out = true %}
+{% if featured.available  %}{% assign sold_out = false %}{% endif %}
+{% unless grid_image_width %}{%- assign grid_image_width = '600x600' -%}{% endunless %}
+{%- assign price = product.price -%}
+{%- assign grid_image_width = '270x270' -%}
+<div id="product-{{ product.id }}" data-id="product-{{ product.id }}"  data-col="{{ product.id }}" class="item-row product-{{ product.id }} product-layouts col-xs-12 grid-view-item{% unless product.available %} product-price--sold-out grid-view-item--sold-out{% endunless %}" data-ajax-enabled="{{ settings.use_ajax_cart }}">  
+  <div class="product-wrapper{% if product.images.size > 1 %} product_container{% endif %}">
+    <div class="thumbs product-thumb">
+      <div class="product-image col-xs-12 padding_0">
+        <a class="grid-view-item__link grid-view-item__links" href="{{ product.url | within: collection }}">
+          <img class="grid-view-item__image featured-image image_thumb" height="244" width="222" src="{{ product.featured_media | img_url: settings.product_image_width_height }}" alt="{{ product.featured_image.alt }}">
+        </a>
+      </div>  
+      
+    </div>  
+    <div class="product-description">
+      <a class="grid-view-item__link grid-link__title h4 grid-view-item__title" href="{{ product.url | within: collection }}">{{ product.title | strip_html | truncate: 40 }}</a>
+      <div class="grid-view-item__meta">
+        {% capture price %}{{ product.price | money }}{% endcapture %}
+        {% render 'product-price-listing', product: product, show_vendor: section.settings.show_vendor %}
+      </div> 
+    </div>  
+    
+  </div>
+</div>

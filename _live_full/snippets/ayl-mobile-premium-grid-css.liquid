@@ -1,0 +1,184 @@
+<style>
+/* 
+  ayl-perfect-grid.css (Inline)
+  Premium 2-Column Mobile Grid - NUCLEAR VERSION
+*/
+
+@media (max-width: 767px) {
+  /* 1. NUCLEAR HIDE SIDEBARS & CATEGORY BAR */
+  #left-column, #right-column, .sidebar, .left-sidebar, .right-sidebar,
+  .ayl-mobile-cats, .cat-bar, .nike-cat-bar, .collection-header {
+    display: none !important;
+  }
+  
+  /* Force main content area to take over */
+  .col-main, .collection_wrapper {
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* 2. FORCE 2 COLUMNS ON OUR UNIQUE CLASSES */
+  .ayl-force-grid-parent {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    flex-direction: row !important;
+    margin: 0 -4px !important; 
+    padding: 6px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  
+  .ayl-force-grid-item {
+    width: 50% !important;
+    flex: 0 0 50% !important;
+    max-width: 50% !important;
+    padding: 4px !important; 
+    clear: none !important;
+    float: none !important;
+    display: block !important;
+    margin-bottom: 12px !important;
+    box-sizing: border-box !important;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: aylGridFadeUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  }
+
+  /* Target all general grid/list containers just in case */
+  .products-grid-view, .products-list-view, .shop_masonry {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    flex-direction: row !important;
+    margin: 0 -4px !important; 
+    padding: 5px !important;
+    width: 100% !important;
+    height: auto !important; /* Kill masonry height */
+    box-sizing: border-box !important;
+  }
+  
+  /* 3. TARGET ALL PRODUCT ITEMS (GRID & LIST & MASONRY) */
+  .products-grid-view .grid-item,
+  .products-list-view .grid-item,
+  .shop_masonry .ms-item,
+  .grid-uniform .grid-item,
+  .products-grid-view [class*="col-xs-12"],
+  .products-list-view [class*="col-xs-12"] {
+    width: 50% !important;
+    flex: 0 0 50% !important;
+    max-width: 50% !important;
+    padding: 4px !important; 
+    clear: none !important;
+    float: left !important;
+    margin: 0 0 10px 0 !important;
+    position: relative !important; /* Kill masonry absolute */
+    top: auto !important;
+    left: auto !important;
+    box-sizing: border-box !important;
+    
+    /* Animation */
+    opacity: 0;
+    transform: translateY(15px);
+    animation: aylGridFadeUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  }
+
+  @keyframes aylGridFadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* 4. Product Wrapper Styling */
+  .product-wrapper {
+    position: relative !important;
+    background: #f7f7f7 !important; 
+    border-radius: 6px !important; 
+    aspect-ratio: 4 / 5 !important; 
+    height: auto !important;
+    overflow: hidden !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04); 
+    margin-bottom: 0 !important; 
+    width: 100% !important;
+  }
+
+  /* Image centering and blend mode */
+  .product-wrapper .featured-image,
+  .product-wrapper .image_thumb,
+  .product-wrapper img {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    width: 90% !important;
+    height: 90% !important;
+    object-fit: contain !important; 
+    mix-blend-mode: darken !important; 
+    background: transparent !important;
+  }
+
+  /* 5. Wishlist Button Placement */
+  .ayl-wishlist-mobile-injected,
+  .product-wrapper .add-to-wishlist {
+    position: absolute !important;
+    bottom: 10px !important;
+    right: 10px !important;
+    z-index: 20 !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  
+  .add-to-wishlist.pro_btn {
+    background: #ffffff !important;
+    width: 36px !important;
+    height: 36px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.12) !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+  }
+  
+  .add-to-wishlist.pro_btn i {
+    font-size: 18px !important;
+    color: #333 !important;
+    margin: 0 !important;
+    line-height: 1 !important;
+  }
+
+  /* Hide messy UI */
+  .btn_wrapper, .main_btn_wrapper, .pro_btn:not(.add-to-wishlist), 
+  .product-desc, .grid-view-item__vendor, .ttqtyprogress, .flip-countdown {
+    display: none !important;
+  }
+
+  /* 6. Typography */
+  .product-description {
+    padding: 10px 4px 0 !important;
+    text-align: left !important;
+  }
+  
+  .grid-view-item__title {
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    text-transform: capitalize !important;
+    color: #222 !important;
+    line-height: 1.2 !important;
+    margin: 0 0 4px 0 !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+  }
+  
+  .product-price__price {
+    font-size: 14px !important;
+    font-weight: 800 !important;
+    color: #e60023 !important; 
+  }
+}
+</style>

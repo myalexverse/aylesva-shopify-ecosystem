@@ -1,0 +1,206 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "wrapper": "div#main",
+  "sections": {
+    "hero": {
+      "type": "aylesva-ofertas-hero",
+      "settings": {
+        "image_desktop": "shopify://shop_images/quita_el_elemento_circular_que_202605201356.jpg",
+        "image_mobile": "shopify://shop_images/quita_el_elemento_circular_que_202605201356.jpg",
+        "overlay_opacity": 0,
+        "pretitle": "OFERTAS",
+        "title_white": "HASTA",
+        "title_gold": "70% OFF",
+        "subtext": "Tus marcas favoritas a precios increíbles",
+        "countdown_label": "Las ofertas terminan en:",
+        "countdown_date": "2026-06-03T23:59:59",
+        "btn1_label": "COMPRAR OFERTAS",
+        "btn1_link": "",
+        "btn2_label": "VER TODO",
+        "btn2_link": "",
+        "show_badge": false,
+        "badge_text_top": "ÚLTIMAS",
+        "badge_text_bottom": "PIEZAS",
+        "badge_bg": "#c5a47e",
+        "badge_color": "#000000"
+      }
+    },
+    "categories": {
+      "type": "aylesva-category-pills",
+      "blocks": {
+        "block_1": {
+          "type": "category_pill",
+          "settings": {
+            "title": "Mujer",
+            "subtext": "Ver ofertas",
+            "link": ""
+          }
+        },
+        "block_2": {
+          "type": "category_pill",
+          "settings": {
+            "title": "Hombre",
+            "subtext": "Ver ofertas",
+            "link": ""
+          }
+        },
+        "block_3": {
+          "type": "category_pill",
+          "settings": {
+            "title": "Zapatos",
+            "subtext": "Ver ofertas",
+            "link": ""
+          }
+        },
+        "block_4": {
+          "type": "category_pill",
+          "settings": {
+            "title": "Bolsas",
+            "subtext": "Ver ofertas",
+            "link": ""
+          }
+        },
+        "block_5": {
+          "type": "category_pill",
+          "settings": {
+            "title": "Accesorios",
+            "subtext": "Ver ofertas",
+            "link": ""
+          }
+        },
+        "block_6": {
+          "type": "category_pill",
+          "settings": {
+            "title": "Hogar",
+            "subtext": "Ver ofertas",
+            "link": ""
+          }
+        },
+        "block_7": {
+          "type": "category_pill",
+          "settings": {
+            "title": "Belleza",
+            "subtext": "Ver ofertas",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "block_1",
+        "block_2",
+        "block_3",
+        "block_4",
+        "block_5",
+        "block_6",
+        "block_7"
+      ],
+      "settings": {
+        "bg_color": "#ffffff",
+        "card_bg_color": "#faf8f6"
+      }
+    },
+    "flash_offers": {
+      "type": "aylesva-ofertas-flash",
+      "blocks": {
+        "flash_1": {
+          "type": "flash_banner",
+          "settings": {
+            "bg_color": "#9e1c1c",
+            "text_color": "#ffffff",
+            "pretitle": "HASTA",
+            "title": "70% OFF",
+            "description": "En selección de productos",
+            "btn_label": "COMPRAR",
+            "btn_link": "",
+            "fallback_image_name": "flash-mujer-rojo.png"
+          }
+        },
+        "flash_2": {
+          "type": "flash_banner",
+          "settings": {
+            "bg_color": "#464141",
+            "text_color": "#ffffff",
+            "pretitle": "HASTA",
+            "title": "60% OFF",
+            "description": "En calzado y accesorios",
+            "btn_label": "COMPRAR",
+            "btn_link": "",
+            "fallback_image_name": "flash-sneakers.png"
+          }
+        },
+        "flash_3": {
+          "type": "flash_banner",
+          "settings": {
+            "bg_color": "#ebd8c3",
+            "text_color": "#111111",
+            "pretitle": "HASTA",
+            "title": "50% OFF",
+            "description": "En bolsas seleccionadas",
+            "btn_label": "COMPRAR",
+            "btn_link": "",
+            "fallback_image_name": "flash-bolsa.png"
+          }
+        },
+        "flash_4": {
+          "type": "flash_banner",
+          "settings": {
+            "bg_color": "#464141",
+            "text_color": "#ffffff",
+            "pretitle": "HASTA",
+            "title": "40% OFF",
+            "description": "En nueva temporada",
+            "btn_label": "COMPRAR",
+            "btn_link": "",
+            "fallback_image_name": "flash-mujer-lentes.png"
+          }
+        }
+      },
+      "block_order": [
+        "flash_1",
+        "flash_2",
+        "flash_3",
+        "flash_4"
+      ],
+      "settings": {
+        "heading": "OFERTAS FLASH",
+        "show_lightning": true,
+        "link_text": "Ver todas las ofertas flash",
+        "link_url": "",
+        "section_bg": "#ffffff",
+        "padding_top": 35,
+        "padding_bottom": 35
+      }
+    },
+    "deals_hub": {
+      "type": "aylesva-deals-hub",
+      "settings": {
+        "collection": "saldos",
+        "hero_collection": "",
+        "carousel_collection": "",
+        "show_promo_bar": true,
+        "pb_title_1": "Hasta 70% de descuento",
+        "pb_sub_1": "en productos seleccionados",
+        "pb_title_2": "Envío gratis",
+        "pb_sub_2": "en compras +$899",
+        "pb_title_3": "Pagos seguros",
+        "pb_sub_3": "Compra con confianza",
+        "pb_title_4": "Devoluciones fáciles",
+        "pb_sub_4": "Hasta 30 días"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "categories",
+    "flash_offers",
+    "deals_hub"
+  ]
+}

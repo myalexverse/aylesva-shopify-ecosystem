@@ -1,0 +1,27 @@
+name: Shopify Theme Check & Linting
+
+on:
+  push:
+    branches: [ main, mayoreo-store-theme ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  theme-check:
+    name: Run Theme Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+          bundler-cache: false
+
+      - name: Install Theme Check
+        run: gem install theme-check
+
+      - name: Run Shopify Theme Check on Source
+        run: theme-check tema_desarrollo/ --fail-level error

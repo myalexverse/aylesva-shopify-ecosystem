@@ -1,0 +1,375 @@
+<div   {% if settings.enable_animation != blank %} data-aos="fade-up" {% endif %} data-section-id="{{ section.id }}"  data-section-type="product-tab-type-1" class="product-tab-type-1 tab-model-wrap {{ section.settings.class }}">
+  {%- assign collection = collections[section.settings.collection] -%}
+  {%- assign grid_item_width = 'small--one-half medium-up--one-quarter' -%}
+  {%- assign image_size = '600x600' -%}
+  {%- assign product_limit =  10 -%}
+  <div class="container"> 
+    <div class="grid__item{% if section.settings.type_bg != "rgba(0,0,0,0)" %} has_bg{% endif %}">        
+      {% if section.settings.title_1 != blank or section.settings.text_1  %}
+      <div class="box-heading tthometab-title section-header">
+        {% endif %}  
+        {% if section.settings.title_1 != blank %}
+        <h2 class="tt-title">{{ section.settings.title_1 }}</h2>
+        {% endif %}
+        {% if section.settings.title_1 != blank or section.settings.caption_1  %}
+        <ul id="tab_product_{{ section.id }}" class="nav nav-tabs"> 
+          {%  assign block_size = 1 %} 
+          {% for block in section.blocks %} 
+          {% if block.settings.title != blank %}
+          <li class="tabs{% if block_size == 1 %} active{% endif %}"><a href="#tabs-{{ block.id }}" data-toggle="tab" aria-expanded="false">{{ block.settings.title }}</a></li>     
+          {% endif %}
+          {% assign block_size = block_size | plus: 1 %}
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+      {% if section.blocks.size > 0 %} 
+      <div class="TTProduct-Tab-container"> 
+        <div class="TTProduct-Tab"> 
+          <div class="tab-inner tab-content tab-container{% if section.settings.product_rows %} two_rows{% endif %}">   
+            <div class="row">
+              {%  assign block_size = 1 %}  
+              {% for block in section.blocks %}
+              {%- assign collection = collections[block.settings.collection] -%}   
+              {%  assign cnt = 1 %}  
+              {%-  assign foundpro = collection.products.count -%} 
+              <div id="tabs-{{ block.id }}" class="contents tab-pane fade product_col_desktop_pro{{ section.settings.product_col_desktop_pro }} product_col_mobile_pro{{ section.settings.product_col_mobile_pro }}{% if block_size == 1 %} in active{% endif %}">
+                <div class="{{ block.settings.title | handle }}-{{ block.id }} {{ block.settings.title | handle }}-wrap owl-carousel owl-theme">
+                  {% for product in collection.products %}
+                  {%- assign mod_2 = cnt | modulo:2 -%}
+                  {% if section.settings.product_rows %}
+                  {% if foundpro >= 8 %}
+                  {%  if mod_2 != 0  %}
+                  <div class='li_single'>
+                    {% endif    %}
+                    {% endif  %}
+                    {% endif %}
+                    {% render 'ayl-product-card-grid', collection: collection, product: product, grid_item_width: grid_item_width %}
+                    {% if section.settings.product_rows %}
+                    {% if foundpro >= 8 %}
+                    {%  if mod_2 == 0  %}
+                  </div>
+                  {% endif    %}
+                  {% endif  %}
+                  {% assign cnt = cnt | plus: 1 %}
+                  {% endif %}
+                  {% endfor %}
+                  {% if section.settings.product_rows %}
+                  {% if foundpro >= 8 %}
+                  {%  if mod_2 != 0  %}
+                </div>
+                                
+                {% endif    %}
+                {% endif    %}
+                {% endif    %}   
+
+                
+              </div>              
+            <div class="{{ block.settings.title | handle }}-nav customNavigation">
+                <div class="navigation_wrap">
+                  <a class="prev mdi-chevron-left">{{ 'general.slider.prev' | t }}</a>
+                  <a class="next mdi-chevron-right">{{ 'general.slider.next' | t }}</a> 
+                </div>
+             </div>
+
+                          {% if block.settings.btn_title1 != blank %}
+
+        <a href="{{ block.settings.category_btn_urls }}" class="ttcategory-btn btn-border">
+                      {{ block.settings.btn_title1 }}
+         </a>
+               {% endif    %} 
+            </div> 
+
+
+
+            <script type = "text/javascript" > 
+              
+              jQuery(document).ready(function () {
+   if (jQuery("body:not(.rtl)").hasClass('both_sidebar')) {
+      var tab_carousel_1 = $("body.both_sidebar:not(.rtl) .{{ block.settings.title | handle }}-{{ block.id }}");
+      jQuery(tab_carousel_1).owlCarousel({
+         items: {{section.settings.product_col_desktop_pro}},
+         autoPlay: !1,
+         stopOnHover: !1,
+         loop: !1,
+         responsive: {
+            100: {
+               items: 2
+            },
+            320: {
+               items: 2
+            },
+            481: {
+               items: 2
+            },
+            768: {
+               items: 2
+            },
+            992: {
+               items: 3
+            },
+            1200: {
+               items: 4
+            },
+            1460: {
+               items: 5
+            },
+            1700: {
+               items: {{section.settings.product_col_desktop_pro}}
+            }
+         },
+         nav: !0,
+         dots: !1
+      })
+   } else {
+      var tab_carousel = $("body:not(.rtl.both_sidebar) .{{ block.settings.title | handle }}-{{ block.id }}");
+      jQuery(tab_carousel).owlCarousel({
+         items: {{section.settings.product_col_desktop_pro}},
+         autoPlay: !1,
+         stopOnHover: !1,
+         loop: !1,
+         responsive: {
+            100: {
+               items: 2
+            },
+            320: {
+               items: 2
+            },
+            481: {
+               items: 2
+            },
+            768: {
+               items: 2
+            },
+            992: {
+               items: 3
+            },
+            1200: {
+               items: 4
+            },
+            1460: {
+               items: 5
+            },
+            1700: {
+               items: {{section.settings.product_col_desktop_pro}}
+            }
+         },
+         nav: !0,
+         dots: !1
+      })
+   }
+   if (jQuery("body.rtl").hasClass('both_sidebar')) {
+      var tab_carousel2_1 = $("body.both_sidebar .{{ block.settings.title | handle }}-{{ block.id }}");
+      jQuery(tab_carousel2_1).owlCarousel({
+         items: {{section.settings.product_col_desktop_pro}},
+         autoPlay: !1,
+         stopOnHover: !1,
+         loop: !1,
+         rtl: !0,
+         responsive: {
+            100: {
+               items: 2
+            },
+            320: {
+               items: 2
+            },
+            481: {
+               items: 2
+            },
+            768: {
+               items: 2
+            },
+            992: {
+               items: 3
+            },
+            1200: {
+               items: 4
+            },
+            1460: {
+               items: 5
+            },
+            1700: {
+               items: {{section.settings.product_col_desktop_pro}}
+            }
+         },
+         nav: !0,
+         dots: !1
+      })
+   } else {
+      var tab_carousel2 = $("body.rtl:not(.both_sidebar) .{{ block.settings.title | handle }}-{{ block.id }}");
+      jQuery(tab_carousel2).owlCarousel({
+         items: {{section.settings.product_col_desktop_pro}},
+         autoPlay: !1,
+         stopOnHover: !1,
+         loop: !1,
+         rtl: !0,
+         responsive: {
+            100: {
+               items: 2
+            },
+            320: {
+               items: 2
+            },
+            481: {
+               items: 2
+            },
+            768: {
+               items: 2
+            },
+            992: {
+               items: 3
+            },
+            1200: {
+               items: 4
+            },
+            1460: {
+               items: 5
+            },
+            1700: {
+               items: {{section.settings.product_col_desktop_pro}}
+            }
+         },
+         nav: !0,
+         dots: !1
+      })
+   }
+   jQuery(".{{ block.settings.title | handle }}-nav .next").click(function () {
+      jQuery(".{{ block.settings.title | handle }}-{{ block.id }}").trigger('next.owl')
+   });
+   jQuery(".{{ block.settings.title | handle }}-nav .prev").click(function () {
+      jQuery(".{{ block.settings.title | handle }}-{{ block.id }}").trigger('prev.owl')
+   })
+});
+jQuery(window).load(function () {
+   if (jQuery(".{{ block.settings.title | handle }}-wrap").find('.owl-nav').hasClass('disabled')) {
+      jQuery(".{{ block.settings.title | handle }}-nav").hide()
+   } else {
+      jQuery(".{{ block.settings.title | handle }}-nav").show()
+   }
+});
+jQuery(window).resize(function () {
+   if (jQuery(".{{ block.settings.title | handle }}-wrap").find('.owl-nav').hasClass('disabled')) {
+      jQuery(".{{ block.settings.title | handle }}-nav").hide()
+   } else {
+      jQuery(".{{ block.settings.title | handle }}-nav").show()
+   }
+}) 
+                </script>
+            
+            
+
+            
+            <!-- <script type="text/javascript">jQuery(document).ready(function(){if(jQuery("body:not(.rtl)").hasClass('both_sidebar')){var tab_carousel_1=$("body.both_sidebar:not(.rtl) .{{ block.settings.title | handle }}-{{ block.id }}");jQuery(tab_carousel_1).owlCarousel({items:{{section.settings.product_col}},autoPlay:!1,stopOnHover:!1,loop:!1,responsive:{100:{items:1},481:{items:2},768:{items:2},992:{items:3},1200:{items:4},1460:{items:5},1700:{items:{{section.settings.product_col}}}},nav:!0,dots:!1})}else{var tab_carousel=$("body:not(.rtl.both_sidebar) .{{ block.settings.title | handle }}-{{ block.id }}");jQuery(tab_carousel).owlCarousel({items:{{section.settings.product_col}},autoPlay:!1,stopOnHover:!1,loop:!1,responsive:{100:{items:1},481:{items:2},768:{items:2},992:{items:3},1200:{items:4},1460:{items:5},1700:{items:{{section.settings.product_col}}}},nav:!0,dots:!1})}if(jQuery("body.rtl").hasClass('both_sidebar')){var tab_carousel2_1=$("body.both_sidebar .{{ block.settings.title | handle }}-{{ block.id }}");jQuery(tab_carousel2_1).owlCarousel({items:{{section.settings.product_col}},autoPlay:!1,stopOnHover:!1,loop:!1,rtl:!0,responsive:{100:{items:1},481:{items:2},768:{items:2},992:{items:3},1200:{items:4},1460:{items:5},1700:{items:{{section.settings.product_col}}}},nav:!0,dots:!1})}else{var tab_carousel2=$("body.rtl:not(.both_sidebar) .{{ block.settings.title | handle }}-{{ block.id }}");jQuery(tab_carousel2).owlCarousel({items:{{section.settings.product_col}},autoPlay:!1,stopOnHover:!1,loop:!1,rtl:!0,responsive:{100:{items:1},481:{items:2},768:{items:2},992:{items:3},1200:{items:4},1460:{items:5},1700:{items:{{section.settings.product_col}}}},nav:!0,dots:!1})}jQuery(".{{ block.settings.title | handle }}-nav .next").click(function(){jQuery(".{{ block.settings.title | handle }}-{{ block.id }}").trigger('next.owl')});jQuery(".{{ block.settings.title | handle }}-nav .prev").click(function(){jQuery(".{{ block.settings.title | handle }}-{{ block.id }}").trigger('prev.owl')})});jQuery(window).load(function(){if(jQuery(".{{ block.settings.title | handle }}-wrap").find('.owl-nav').hasClass('disabled')){jQuery(".{{ block.settings.title | handle }}-nav").hide()}else{jQuery(".{{ block.settings.title | handle }}-nav").show()}});jQuery(window).resize(function(){if(jQuery(".{{ block.settings.title | handle }}-wrap").find('.owl-nav').hasClass('disabled')){jQuery(".{{ block.settings.title | handle }}-nav").hide()}else{jQuery(".{{ block.settings.title | handle }}-nav").show()}})</script>
+            {% assign block_size = block_size | plus: 1 %} -->
+            {% endfor %}
+          </div><!--End tabs container-->
+        </div><!--End tabs-->
+      </div>
+    </div>                          
+    {% endif %}
+    </div>
+</div> 
+</div>
+<style>.product-tab .product-tab-type-1 .grid__item{float:left;width:100%;background-color:{{ section.settings.type_bg }};}.tthometab-title .tt-title{color:{{ section.settings.title_1_clr }};}</style>
+{% schema %}
+{
+  "name": "Sortable Products",
+  "class": "index-section product-tab ok",
+  "settings": [
+ 		{
+          "type": "text",
+          "id": "class",
+          "label": "Add Class"
+        },
+		{
+          "type": "checkbox",
+          "id": "product_rows",
+          "label": "2 Rows Product",
+          "info" : "2 Row Only Work When, More Then 8 Product On Your Collection"
+
+          
+        },
+        {
+"type": "range",
+"id": "product_col_desktop_pro",
+"min": 2,
+"max": 20,
+"step": 1,
+"label": "Number of columns on Desktop",
+"default": 6
+},
+
+
+{
+"type": "range",
+"id": "product_col_mobile_pro",
+"min": 1,
+"max": 3,
+"step": 1,
+"label": "Number of columns on Mobile",
+"default": 2
+},
+        {
+        "type": "color",
+        "id": "type_bg",
+        "label": "Background color",
+        "default": "#fff"
+        },
+        {
+        "type": "text",
+        "id": "title_1",
+        "label": "Heading"
+        },
+        {
+        "type": "color",
+        "id": "title_1_clr",
+        "label": "Heading",
+        "default": "#000"
+        }
+        ],
+        "blocks": [	
+          {
+            "type": "text_block",
+            "name": "Column",
+            "settings": [
+             {
+            "type": "text",
+            "id": "title",
+            "label": "Collection Name",
+            "default": "Tab Name"
+          },	
+
+          {
+            "id": "collection",
+            "type": "collection",
+            "label": "Collection"
+          }	,
+                    {
+"type": "text",
+"id": "btn_title1",
+"label": "Product button Title",
+  "info":"Leave it blank if you don't want to use button",
+ "default": "Sell All Product"                          
+
+},
+     {
+"type": "url",
+"id": "category_btn_urls",
+"label": "Product button link"
+}
+          ]
+          }
+        ],
+        "presets": [
+          {
+            "name": "Sortable Products",
+            "category": "Collection",
+            "blocks": [
+              {
+                "type": "text_block"
+              }        
+            ]
+          }
+        ]
+}
+{% endschema %}

@@ -1,0 +1,411 @@
+/* ═══════════════════════════════════════════════════════════════
+   Aylesva Premium Pagination v3.0
+   Standalone — no conflicts with theme globals
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ─── Root container ─────────────────────────────────────────── */
+.ayl-pg-root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  width: 100%;
+  padding: 48px 0 40px;
+  font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  position: relative;
+}
+
+/* ─── Progress Track ─────────────────────────────────────────── */
+.ayl-pg-track {
+  position: relative;
+  width: min(360px, 90%);
+  height: 3px;
+  background: rgba(0,0,0,0.07);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.ayl-pg-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  border-radius: 99px;
+  background: linear-gradient(90deg, #222 0%, #555 100%);
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: width;
+}
+
+.ayl-pg-bar::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: -1px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #111;
+  box-shadow: 0 0 6px 2px rgba(0,0,0,0.3);
+}
+
+/* ─── Meta: Página X de Y ────────────────────────────────────── */
+.ayl-pg-meta {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: #888;
+  text-transform: uppercase;
+}
+
+.ayl-pg-meta__current {
+  font-size: 14px;
+  font-weight: 800;
+  color: #111;
+  letter-spacing: -0.01em;
+}
+
+.ayl-pg-meta__total {
+  font-size: 13px;
+  font-weight: 700;
+  color: #444;
+}
+
+/* ─── Navigation Bar ─────────────────────────────────────────── */
+.ayl-pg-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ─── Number Buttons ─────────────────────────────────────────── */
+.ayl-pg-numbers {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ayl-pg-num {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 42px;
+  height: 42px;
+  padding: 0 4px;
+  border-radius: 50%;
+  font-size: 14px;
+  font-weight: 600;
+  color: #444;
+  background: #fff;
+  border: 1.5px solid #e5e5e5;
+  text-decoration: none !important;
+  transition:
+    color 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease,
+    transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.25s ease;
+  cursor: pointer;
+  /* entry animation */
+  opacity: 0;
+  transform: translateY(12px) scale(0.9);
+}
+
+/* Entry keyframe */
+@keyframes ayl-num-enter {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.ayl-pg-num--enter {
+  animation: ayl-num-enter 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Hover */
+.ayl-pg-num:not(.ayl-pg-num--active):hover {
+  border-color: #111;
+  color: #111;
+  background: #f7f7f7;
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  text-decoration: none !important;
+}
+
+/* ─── Active Number ───────────────────────────────────────────── */
+.ayl-pg-num--active {
+  color: #fff !important;
+  background: #111 !important;
+  border-color: #111 !important;
+  transform: scale(1.15) !important;
+  box-shadow: 0 6px 22px rgba(0,0,0,0.25) !important;
+  cursor: default;
+  opacity: 1 !important;
+  font-weight: 700;
+}
+
+/* Animated ring around active number */
+.ayl-pg-num__ring {
+  position: absolute;
+  inset: -5px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(0,0,0,0.15);
+  animation: ayl-ring-pulse 2.4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes ayl-ring-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50%       { transform: scale(1.18); opacity: 0; }
+}
+
+.ayl-pg-num__inner {
+  position: relative;
+  z-index: 1;
+  line-height: 1;
+}
+
+/* ─── Ellipsis ───────────────────────────────────────────────── */
+.ayl-pg-ellipsis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 42px;
+  color: #aaa;
+  font-size: 16px;
+  letter-spacing: 2px;
+  user-select: none;
+}
+
+/* ─── Arrow Buttons ──────────────────────────────────────────── */
+.ayl-pg-arrow {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 42px;
+  padding: 0 18px;
+  border-radius: 99px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #222;
+  background: #fff;
+  border: 1.5px solid #e5e5e5;
+  text-decoration: none !important;
+  cursor: pointer;
+  overflow: hidden;
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.25s ease;
+
+  /* entry */
+  animation: ayl-arrow-enter 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes ayl-arrow-enter {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.ayl-pg-prev { animation-delay: 0ms; }
+.ayl-pg-next { animation-delay: 80ms; }
+
+/* Hover arrows */
+.ayl-pg-arrow:not(.ayl-pg-arrow--disabled):hover {
+  background: #111;
+  border-color: #111;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+  text-decoration: none !important;
+}
+
+.ayl-pg-arrow:not(.ayl-pg-arrow--disabled):hover svg {
+  stroke: #fff;
+}
+
+/* Disabled arrows */
+.ayl-pg-arrow--disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* Ripple */
+.ayl-pg-arrow__ripple {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: rgba(255,255,255,0.35);
+  transform: scale(0);
+  opacity: 0;
+  pointer-events: none;
+}
+
+@keyframes ayl-ripple-pop {
+  0%   { transform: scale(0); opacity: 0.6; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+.ayl-pg-arrow__ripple.ayl-ripple--go {
+  animation: ayl-ripple-pop 0.45s ease-out forwards;
+}
+
+/* ─── Mobile Dot Navigator ───────────────────────────────────── */
+.ayl-pg-dots {
+  display: none; /* hidden on desktop */
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  max-width: 260px;
+}
+
+.ayl-pg-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ccc;
+  display: block;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.ayl-pg-dot--active {
+  background: #111;
+  width: 20px;
+  border-radius: 99px;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   DESKTOP — override inside @media desktop
+   ═══════════════════════════════════════════════════════════════ */
+@media (min-width: 768px) {
+  .ayl-pg-root {
+    gap: 20px;
+    padding: 60px 0 48px;
+  }
+
+  .ayl-pg-track {
+    width: 400px;
+    height: 4px;
+  }
+
+  .ayl-pg-num {
+    min-width: 46px;
+    height: 46px;
+    font-size: 15px;
+  }
+
+  .ayl-pg-num--active {
+    transform: scale(1.18) !important;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.22) !important;
+  }
+
+  .ayl-pg-arrow {
+    height: 46px;
+    padding: 0 22px;
+    font-size: 14px;
+  }
+
+  .ayl-pg-arrow__label {
+    display: inline; /* show text on desktop */
+  }
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   MOBILE — max-width: 767px
+   ═══════════════════════════════════════════════════════════════ */
+@media (max-width: 767px) {
+  .ayl-pg-root {
+    gap: 14px;
+    padding: 32px 0 28px;
+  }
+
+  /* Hide the text label on mobile arrows */
+  .ayl-pg-arrow__label {
+    display: none;
+  }
+
+  /* Compact arrows (icon-only circles) */
+  .ayl-pg-arrow {
+    min-width: 40px;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border-radius: 50%;
+    justify-content: center;
+  }
+
+  /* Smaller page numbers */
+  .ayl-pg-num {
+    min-width: 36px;
+    height: 36px;
+    font-size: 13px;
+    gap: 4px;
+  }
+
+  .ayl-pg-numbers {
+    gap: 4px;
+  }
+
+  .ayl-pg-nav {
+    gap: 6px;
+  }
+
+  /* Show mobile dots, hide overflow page numbers */
+  .ayl-pg-dots {
+    display: flex;
+  }
+
+  /* On mobile: hide number bar if there are many pages, show only prev/active/next */
+  /* Show dots nav as alternative indicator — keep both */
+  .ayl-pg-meta {
+    font-size: 11px;
+  }
+
+  .ayl-pg-meta__current {
+    font-size: 13px;
+  }
+
+  .ayl-pg-track {
+    width: 260px;
+    height: 3px;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Very small phones (< 400px)
+   ═══════════════════════════════════════════════════════════════ */
+@media (max-width: 399px) {
+  /* Hide the number list — rely on dots + prev/next only */
+  .ayl-pg-numbers {
+    display: none;
+  }
+
+  .ayl-pg-dots {
+    display: flex;
+  }
+
+  .ayl-pg-nav {
+    gap: 16px;
+  }
+
+  .ayl-pg-arrow {
+    min-width: 44px;
+    width: 44px;
+    height: 44px;
+  }
+}

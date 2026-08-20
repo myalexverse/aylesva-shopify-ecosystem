@@ -1,0 +1,779 @@
+{% comment %}
+  Aylesva · Tarjetas con Desplegables de Galería y Slider Interactivo (Gold & Ink)
+  Soporta galería deslizante (slider con flechas ‹ ›, miniaturas, pestañas temáticas y swipe).
+{% endcomment %}
+
+{%- assign sid = section.id -%}
+
+<section class="ay ay-cards-section" id="{{ section.settings.anchor | default: 'desarrollos' }}" style="background:{{ section.settings.bg | default: '#FAFAF8' }};border-top:var(--ay-hairline)">
+  <div class="ay-wrap">
+    
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:76px;align-items:end;margin-bottom:56px" class="ay-head">
+      <div>
+        {% if section.settings.eyebrow != blank %}<p class="ay-eyebrow">{{ section.settings.eyebrow }}</p>{% endif %}
+        <h2 class="ay-h2">{{ section.settings.title }}</h2>
+      </div>
+      {% if section.settings.intro != blank %}<p class="ay-lead" style="font-size:16px">{{ section.settings.intro }}</p>{% endif %}
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat({{ section.settings.columns | default: 3 }},1fr);gap:30px" class="ay-cards">
+      {% for block in section.blocks %}
+        {%- assign block_handle = block.settings.title | handle -%}
+        
+        {%- comment -%} Resolución robusta de URLs para hasta 5 imágenes por desarrollo {%- endcomment -%}
+        {%- assign raw_1 = block.settings.image_url | default: block.settings.image -%}
+        {%- assign raw_2 = block.settings.image_2 -%}
+        {%- assign raw_3 = block.settings.image_3 -%}
+        {%- assign raw_4 = block.settings.image_4 -%}
+        {%- assign raw_5 = block.settings.image_5 -%}
+
+        {%- capture img_1_src -%}
+          {%- if raw_1.src -%}{{ raw_1 | image_url: width: 1600 }}
+          {%- elsif raw_1 contains 'http' -%}{{ raw_1 }}
+          {%- elsif raw_1 contains 'shopify://shop_images/' -%}{%- assign c1 = raw_1 | remove: 'shopify://shop_images/' -%}{{ c1 | file_img_url: '1600x' }}
+          {%- elsif raw_1 contains '.jpg' or raw_1 contains '.png' or raw_1 contains '.webp' -%}{{ raw_1 | asset_url }}
+          {%- endif -%}
+        {%- endcapture -%}
+        {%- assign img_1_src = img_1_src | strip -%}
+
+        {%- capture img_2_src -%}
+          {%- if raw_2.src -%}{{ raw_2 | image_url: width: 1600 }}
+          {%- elsif raw_2 contains 'http' -%}{{ raw_2 }}
+          {%- elsif raw_2 contains 'shopify://shop_images/' -%}{%- assign c2 = raw_2 | remove: 'shopify://shop_images/' -%}{{ c2 | file_img_url: '1600x' }}
+          {%- elsif raw_2 contains '.jpg' or raw_2 contains '.png' or raw_2 contains '.webp' -%}{{ raw_2 | asset_url }}
+          {%- endif -%}
+        {%- endcapture -%}
+        {%- assign img_2_src = img_2_src | strip -%}
+
+        {%- capture img_3_src -%}
+          {%- if raw_3.src -%}{{ raw_3 | image_url: width: 1600 }}
+          {%- elsif raw_3 contains 'http' -%}{{ raw_3 }}
+          {%- elsif raw_3 contains 'shopify://shop_images/' -%}{%- assign c3 = raw_3 | remove: 'shopify://shop_images/' -%}{{ c3 | file_img_url: '1600x' }}
+          {%- elsif raw_3 contains '.jpg' or raw_3 contains '.png' or raw_3 contains '.webp' -%}{{ raw_3 | asset_url }}
+          {%- endif -%}
+        {%- endcapture -%}
+        {%- assign img_3_src = img_3_src | strip -%}
+
+        {%- capture img_4_src -%}
+          {%- if raw_4.src -%}{{ raw_4 | image_url: width: 1600 }}
+          {%- elsif raw_4 contains 'http' -%}{{ raw_4 }}
+          {%- elsif raw_4 contains 'shopify://shop_images/' -%}{%- assign c4 = raw_4 | remove: 'shopify://shop_images/' -%}{{ c4 | file_img_url: '1600x' }}
+          {%- elsif raw_4 contains '.jpg' or raw_4 contains '.png' or raw_4 contains '.webp' -%}{{ raw_4 | asset_url }}
+          {%- endif -%}
+        {%- endcapture -%}
+        {%- assign img_4_src = img_4_src | strip -%}
+
+        {%- capture img_5_src -%}
+          {%- if raw_5.src -%}{{ raw_5 | image_url: width: 1600 }}
+          {%- elsif raw_5 contains 'http' -%}{{ raw_5 }}
+          {%- elsif raw_5 contains 'shopify://shop_images/' -%}{%- assign c5 = raw_5 | remove: 'shopify://shop_images/' -%}{{ c5 | file_img_url: '1600x' }}
+          {%- elsif raw_5 contains '.jpg' or raw_5 contains '.png' or raw_5 contains '.webp' -%}{{ raw_5 | asset_url }}
+          {%- endif -%}
+        {%- endcapture -%}
+        {%- assign img_5_src = img_5_src | strip -%}
+
+        <article 
+          id="card-{{ block_handle }}"
+          data-card-id="card-{{ forloop.index }}"
+          style="background:#fff;border:var(--ay-hairline);display:flex;flex-direction:column;transition:all .3s ease" 
+          class="ay-card-img" 
+          {{ block.shopify_attributes }}
+        >
+          <!-- Contenedor multimedia con botón de galería -->
+          <div class="ay-media ay-media--framed" style="height:220px;position:relative;overflow:hidden;background:#E8E2D7">
+            {%- if img_1_src != blank -%}
+              <img src="{{ img_1_src }}" alt="{{ block.settings.title | escape }}" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;" loading="lazy">
+            {%- endif -%}
+
+            {% if block.settings.tag != blank %}
+              <span style="position:absolute;top:18px;left:18px;background:var(--ay-gold);color:var(--ay-ink-800);font-family:var(--ay-font-mono);font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;padding:7px 12px;z-index:3">{{ block.settings.tag }}</span>
+            {% endif %}
+
+            <!-- Botón de acción / galería -->
+            {%- if img_2_src != blank or img_3_src != blank -%}
+              <button 
+                type="button" 
+                class="ay-gallery-trigger"
+                data-open-modal="modal-{{ sid }}-{{ forloop.index }}"
+                aria-label="Abrir galería de {{ block.settings.title | escape }}"
+              >
+                <span>✦</span> Ver planos y galería
+              </button>
+            {%- elsif block.settings.cta_link != blank -%}
+              <a 
+                href="{{ block.settings.cta_link }}" 
+                class="ay-gallery-trigger"
+                style="text-decoration:none;display:inline-flex;align-items:center;gap:6px"
+              >
+                <span>→</span> {{ block.settings.cta_label | default: 'Ver información' }}
+              </a>
+            {%- endif -%}
+          </div>
+
+          <div style="padding:34px 32px 36px;display:flex;flex-direction:column;gap:15px;flex:1">
+            {% if block.settings.eyebrow != blank %}
+              <p style="font-family:var(--ay-font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ay-gold-text);margin:0">{{ block.settings.eyebrow }}</p>
+            {% endif %}
+            <h3 class="ay-h3" style="font-size:23px">
+              {% if block.settings.cta_link != blank %}
+                <a href="{{ block.settings.cta_link }}" style="color:inherit;text-decoration:none;transition:color .2s ease" onmouseover="this.style.color='var(--ay-gold-text)'" onmouseout="this.style.color='inherit'">{{ block.settings.title }}</a>
+              {% else %}
+                {{ block.settings.title }}
+              {% endif %}
+            </h3>
+            <p class="ay-body">{{ block.settings.text }}</p>
+
+            {% if block.settings.bullets != blank %}
+              <ul style="list-style:none;margin:8px 0 0;padding:22px 0 0;border-top:var(--ay-hairline);display:grid;gap:12px">
+                {% assign items = block.settings.bullets | newline_to_br | split: '<br />' %}
+                {% for item in items %}
+                  {% if item != blank %}
+                    <li style="display:flex;gap:13px;align-items:flex-start;font-size:15px;line-height:1.5;color:rgba(15,23,42,.78)">
+                      <span style="color:var(--ay-gold);flex:0 0 auto">&#9672;</span><span>{{ item | strip }}</span>
+                    </li>
+                  {% endif %}
+                {% endfor %}
+              </ul>
+            {% endif %}
+
+            {% if block.settings.price != blank %}
+              <div style="display:flex;align-items:baseline;gap:10px;padding-top:20px;margin-top:auto;border-top:var(--ay-hairline)">
+                <span style="font-family:var(--ay-font-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(15,23,42,.45)">Desde solo</span>
+                <span style="font-family:var(--ay-font-display);font-size:28px;font-weight:400;letter-spacing:-.02em">{{ block.settings.price }}</span>
+                <span style="font-size:13px;color:rgba(15,23,42,.55)">{{ block.settings.price_suffix }}</span>
+              </div>
+            {% endif %}
+
+            <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:auto;padding-top:14px">
+              {% if block.settings.cta_label != blank %}
+                <a class="ay-btn ay-btn--dark" style="padding:12px 20px;font-size:12px;letter-spacing:.04em" href="{{ block.settings.cta_link | default: '#contacto' }}">
+                  {{ block.settings.cta_label }}
+                </a>
+              {% endif %}
+              {% if block.settings.whatsapp_url != blank %}
+                <a class="ay-btn-whatsapp-sm" href="{{ block.settings.whatsapp_url }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;background:#25D366;color:#fff!important;font-size:12px;font-weight:700;padding:11px 16px;border-radius:var(--ay-radius);text-decoration:none;transition:all .25s ease">
+                  <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                  <span>{{ block.settings.whatsapp_label | default: 'WhatsApp' }}</span>
+                </a>
+              {% endif %}
+            </div>
+          </div>
+        </article>
+
+        <!-- ==================== MODAL DE GALERÍA DESPLEGABLE CON SLIDER ==================== -->
+        <div id="modal-{{ sid }}-{{ forloop.index }}" class="ay-proj-modal" aria-hidden="true" role="dialog">
+          <div class="ay-proj-modal__backdrop" data-close-modal></div>
+          
+          <div class="ay-proj-modal__shell">
+            <!-- Barra superior del modal -->
+            <div class="ay-proj-modal__header">
+              <div>
+                <div style="display:flex;align-items:center;gap:12px;margin-bottom:6px">
+                  {% if block.settings.tag != blank %}
+                    <span class="ay-proj-modal__badge">{{ block.settings.tag }}</span>
+                  {% endif %}
+                  <span class="ay-proj-modal__loc">{{ block.settings.eyebrow }}</span>
+                </div>
+                <h3 class="ay-proj-modal__title">{{ block.settings.title }}</h3>
+              </div>
+              <button type="button" class="ay-proj-modal__close" data-close-modal aria-label="Cerrar ventana">✕</button>
+            </div>
+
+            <!-- Cuerpo del modal: Slider deslizante y detalles -->
+            <div class="ay-proj-modal__body">
+              
+              <!-- SLIDER INTERACTIVO -->
+              <div class="ay-slider" data-ay-slider>
+                
+                <!-- Escenario de visualización con flechas de navegación -->
+                <div class="ay-slider__stage">
+                  <button type="button" class="ay-slider__btn ay-slider__btn--prev" data-slide-prev aria-label="Imagen anterior">
+                    &#8249;
+                  </button>
+
+                  <div class="ay-slider__track" data-slider-track>
+                    {%- if img_1_src != blank -%}
+                      <div class="ay-slider__item is-active" data-index="0" data-label="Portada">
+                        <img src="{{ img_1_src }}" alt="{{ block.settings.title | escape }} - Portada">
+                        <div class="ay-slider__caption">Vista Principal · {{ block.settings.title }}</div>
+                      </div>
+                    {%- endif -%}
+
+                    {%- if img_2_src != blank -%}
+                      <div class="ay-slider__item" data-index="1" data-label="{{ block.settings.label_2 | default: 'Planos' }}">
+                        <img src="{{ img_2_src }}" alt="{{ block.settings.title | escape }} - {{ block.settings.label_2 | default: 'Planos' }}">
+                        <div class="ay-slider__caption">{{ block.settings.label_2 | default: 'Planos Arquitectónicos' }}</div>
+                      </div>
+                    {%- endif -%}
+
+                    {%- if img_3_src != blank -%}
+                      <div class="ay-slider__item" data-index="2" data-label="{{ block.settings.label_3 | default: 'Amenidades' }}">
+                        <img src="{{ img_3_src }}" alt="{{ block.settings.title | escape }} - {{ block.settings.label_3 | default: 'Amenidades' }}">
+                        <div class="ay-slider__caption">{{ block.settings.label_3 | default: 'Amenidades & Rooftop' }}</div>
+                      </div>
+                    {%- endif -%}
+
+                    {%- if img_4_src != blank -%}
+                      <div class="ay-slider__item" data-index="3" data-label="{{ block.settings.label_4 | default: 'Galería' }}">
+                        <img src="{{ img_4_src }}" alt="{{ block.settings.title | escape }} - {{ block.settings.label_4 | default: 'Galería' }}">
+                        <div class="ay-slider__caption">{{ block.settings.label_4 | default: 'Galería de Vistas' }}</div>
+                      </div>
+                    {%- endif -%}
+
+                    {%- if img_5_src != blank -%}
+                      <div class="ay-slider__item" data-index="4" data-label="{{ block.settings.label_5 | default: 'Avance de Obra' }}">
+                        <img src="{{ img_5_src }}" alt="{{ block.settings.title | escape }} - {{ block.settings.label_5 | default: 'Avance de Obra' }}">
+                        <div class="ay-slider__caption">{{ block.settings.label_5 | default: 'Avance de Obra en Construcción' }}</div>
+                      </div>
+                    {%- endif -%}
+                  </div>
+
+                  <button type="button" class="ay-slider__btn ay-slider__btn--next" data-slide-next aria-label="Imagen siguiente">
+                    &#8250;
+                  </button>
+
+                  <div class="ay-slider__counter" data-slide-counter>1 / 1</div>
+                </div>
+
+                <!-- Tira de Miniaturas y Pestañas Interactivas -->
+                <div class="ay-slider__thumbs" data-slider-thumbs>
+                  {%- if img_1_src != blank -%}
+                    <button type="button" class="ay-slider__thumb is-active" data-thumb-index="0">
+                      <img src="{{ img_1_src }}" alt="Portada">
+                      <span>Portada</span>
+                    </button>
+                  {%- endif -%}
+                  {%- if img_2_src != blank -%}
+                    <button type="button" class="ay-slider__thumb" data-thumb-index="1">
+                      <img src="{{ img_2_src }}" alt="{{ block.settings.label_2 }}">
+                      <span>{{ block.settings.label_2 | default: 'Planos' }}</span>
+                    </button>
+                  {%- endif -%}
+                  {%- if img_3_src != blank -%}
+                    <button type="button" class="ay-slider__thumb" data-thumb-index="2">
+                      <img src="{{ img_3_src }}" alt="{{ block.settings.label_3 }}">
+                      <span>{{ block.settings.label_3 | default: 'Amenidades' }}</span>
+                    </button>
+                  {%- endif -%}
+                  {%- if img_4_src != blank -%}
+                    <button type="button" class="ay-slider__thumb" data-thumb-index="3">
+                      <img src="{{ img_4_src }}" alt="{{ block.settings.label_4 }}">
+                      <span>{{ block.settings.label_4 | default: 'Galería' }}</span>
+                    </button>
+                  {%- endif -%}
+                  {%- if img_5_src != blank -%}
+                    <button type="button" class="ay-slider__thumb" data-thumb-index="4">
+                      <img src="{{ img_5_src }}" alt="{{ block.settings.label_5 }}">
+                      <span>{{ block.settings.label_5 | default: 'Avance' }}</span>
+                    </button>
+                  {%- endif -%}
+                </div>
+
+              </div>
+
+              <!-- Descripción y detalles del proyecto -->
+              <div class="ay-proj-modal__details">
+                <p style="font-size:15px;line-height:1.65;color:rgba(15,23,42,0.8);margin-bottom:20px">{{ block.settings.text }}</p>
+                
+                {% if block.settings.bullets != blank %}
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:20px 0;border-top:var(--ay-hairline);border-bottom:var(--ay-hairline);margin-bottom:24px">
+                    {% assign items = block.settings.bullets | newline_to_br | split: '<br />' %}
+                    {% for item in items %}
+                      {% if item != blank %}
+                        <div style="display:flex;gap:10px;align-items:flex-start;font-size:13px;color:rgba(15,23,42,0.85)">
+                          <span style="color:var(--ay-gold)">◈</span><span>{{ item | strip }}</span>
+                        </div>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                {% endif %}
+
+                <!-- Acciones directas del Modal -->
+                <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap">
+                  <a href="#contacto" data-close-modal class="ay-btn ay-btn--dark" style="padding:14px 28px;font-size:13px">
+                    Solicitar asesoría para {{ block.settings.title }}
+                  </a>
+                  {% if block.settings.whatsapp_url != blank %}
+                    <a href="{{ block.settings.whatsapp_url }}" target="_blank" rel="noopener" class="ay-btn-whatsapp" style="padding:13px 24px;font-size:13px">
+                      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                      <span>Chat en WhatsApp</span>
+                    </a>
+                  {% endif %}
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .ay-card-img:hover{transform:translateY(-3px);box-shadow:0 28px 56px -32px rgba(2,6,23,.32)}
+  .ay-card-img.ay-card-highlight {
+    animation: ay-card-glow 2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    border-color: var(--ay-gold) !important;
+    position: relative;
+    z-index: 10;
+  }
+  @keyframes ay-card-glow {
+    0% { transform: translateY(-8px); box-shadow: 0 0 0 0 rgba(197,164,126,0.9), 0 30px 60px -20px rgba(2,6,23,0.4); }
+    50% { transform: translateY(-8px); box-shadow: 0 0 0 16px rgba(197,164,126,0), 0 30px 60px -20px rgba(2,6,23,0.4); }
+    100% { transform: translateY(0); box-shadow: 0 28px 56px -32px rgba(2,6,23,.32); }
+  }
+
+  /* Disparador de galería en tarjeta */
+  .ay-gallery-trigger {
+    position: absolute;
+    bottom: 14px;
+    right: 14px;
+    background: rgba(2,6,23,0.88);
+    backdrop-filter: blur(6px);
+    color: #fff;
+    font-family: var(--ay-font-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 8px 14px;
+    border-radius: var(--ay-radius);
+    border: 1px solid rgba(197,164,126,0.4);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.25s ease;
+    z-index: 4;
+  }
+  .ay-gallery-trigger:hover {
+    background: var(--ay-ink-900);
+    border-color: var(--ay-gold);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.3);
+  }
+  .ay-gallery-trigger span {
+    color: var(--ay-gold);
+  }
+
+  /* ==================== ESTILOS DEL MODAL Y SLIDER ==================== */
+  .ay-proj-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .ay-proj-modal.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+  .ay-proj-modal__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(2,6,23,0.85);
+    backdrop-filter: blur(10px);
+  }
+  .ay-proj-modal__shell {
+    position: relative;
+    z-index: 2;
+    background: #fff;
+    width: 100%;
+    max-width: 980px;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: var(--ay-radius);
+    box-shadow: 0 32px 80px -20px rgba(0,0,0,0.6);
+    border: var(--ay-hairline);
+    transform: scale(0.94) translateY(16px);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .ay-proj-modal.is-open .ay-proj-modal__shell {
+    transform: scale(1) translateY(0);
+  }
+  .ay-proj-modal__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 36px;
+    background: var(--ay-stone);
+    border-bottom: var(--ay-hairline);
+  }
+  .ay-proj-modal__badge {
+    background: var(--ay-gold);
+    color: var(--ay-ink-900);
+    font-family: var(--ay-font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+  }
+  .ay-proj-modal__loc {
+    font-family: var(--ay-font-mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ay-gold-text);
+  }
+  .ay-proj-modal__title {
+    font-family: var(--ay-font-display);
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--ay-ink-900);
+    margin: 0;
+  }
+  .ay-proj-modal__close {
+    background: #fff;
+    border: var(--ay-hairline);
+    color: var(--ay-ink-900);
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    font-size: 16px;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .ay-proj-modal__close:hover {
+    background: var(--ay-ink-900);
+    color: #fff;
+  }
+  .ay-proj-modal__body {
+    padding: 36px;
+  }
+
+  /* SLIDER INTERACTIVO */
+  .ay-slider {
+    margin-bottom: 24px;
+  }
+  .ay-slider__stage {
+    position: relative;
+    width: 100%;
+    height: 460px;
+    background: #0f172a;
+    border-radius: var(--ay-radius);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ay-slider__track {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+  .ay-slider__item {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ay-slider__item.is-active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 2;
+  }
+  .ay-slider__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+  }
+  .ay-slider__caption {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    background: rgba(2,6,23,0.85);
+    backdrop-filter: blur(6px);
+    color: #E3CCAE;
+    font-family: var(--ay-font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 8px 14px;
+    border-radius: 2px;
+    z-index: 4;
+  }
+
+  /* Botones de navegación (Flechas) */
+  .ay-slider__btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.9);
+    border: none;
+    color: var(--ay-ink-900);
+    font-size: 26px;
+    line-height: 1;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    transition: all 0.2s ease;
+  }
+  .ay-slider__btn:hover {
+    background: #fff;
+    transform: translateY(-50%) scale(1.1);
+    color: var(--ay-gold-text);
+  }
+  .ay-slider__btn--prev { left: 16px; }
+  .ay-slider__btn--next { right: 16px; }
+
+  .ay-slider__counter {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: rgba(2,6,23,0.8);
+    backdrop-filter: blur(6px);
+    color: #fff;
+    font-family: var(--ay-font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    padding: 6px 12px;
+    border-radius: 2px;
+    z-index: 4;
+  }
+
+  /* Miniaturas / Pestañas de slider */
+  .ay-slider__thumbs {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+  }
+  .ay-slider__thumb {
+    flex: 0 0 110px;
+    height: 70px;
+    border: 2px solid transparent;
+    border-radius: var(--ay-radius);
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    background: #111827;
+    padding: 0;
+    transition: all 0.2s ease;
+  }
+  .ay-slider__thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.6;
+    transition: opacity 0.2s ease;
+  }
+  .ay-slider__thumb span {
+    position: absolute;
+    bottom: 2px;
+    left: 2px;
+    right: 2px;
+    background: rgba(2,6,23,0.85);
+    color: #fff;
+    font-family: var(--ay-font-mono);
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 4px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .ay-slider__thumb:hover img {
+    opacity: 0.85;
+  }
+  .ay-slider__thumb.is-active {
+    border-color: var(--ay-gold);
+    box-shadow: 0 0 0 2px rgba(197,164,126,0.4);
+  }
+  .ay-slider__thumb.is-active img {
+    opacity: 1;
+  }
+
+  @media (max-width: 1024px) {
+    .ay-cards{grid-template-columns:1fr 1fr !important}
+    .ay-head{grid-template-columns:1fr !important;gap:24px !important}
+    .ay-slider__stage { height: 320px; }
+    .ay-proj-modal__header { padding: 20px 24px; }
+    .ay-proj-modal__body { padding: 24px; }
+    .ay-slider__thumb { flex: 0 0 85px; height: 55px; }
+  }
+  @media (max-width: 640px) {
+    .ay-cards{grid-template-columns:1fr !important}
+    .ay-proj-modal { padding: 12px; }
+    .ay-slider__stage { height: 260px; }
+    .ay-slider__btn { width: 36px; height: 36px; font-size: 20px; }
+  }
+</style>
+
+<script>
+  (function() {
+    // Abrir modales de galería
+    document.querySelectorAll('[data-open-modal]').forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        var modalId = btn.getAttribute('data-open-modal');
+        var modal = document.getElementById(modalId);
+        if (modal) {
+          modal.classList.add('is-open');
+          document.body.style.overflow = 'hidden';
+          // Inicializar contador del slider
+          var slider = modal.querySelector('[data-ay-slider]');
+          if (slider) updateSliderState(slider, 0);
+        }
+      });
+    });
+
+    // Cerrar modales
+    document.querySelectorAll('[data-close-modal]').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var modal = btn.closest('.ay-proj-modal');
+        if (modal) {
+          modal.classList.remove('is-open');
+          document.body.style.overflow = '';
+        }
+      });
+    });
+
+    // Cerrar con Escape
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.ay-proj-modal.is-open').forEach(function(m) {
+          m.classList.remove('is-open');
+        });
+        document.body.style.overflow = '';
+      }
+    });
+
+    // Función controladora del Slider
+    function updateSliderState(slider, targetIndex) {
+      var items = slider.querySelectorAll('.ay-slider__item');
+      var thumbs = slider.querySelectorAll('.ay-slider__thumb');
+      var counter = slider.querySelector('[data-slide-counter]');
+      var total = items.length;
+      if (total === 0) return;
+
+      if (targetIndex < 0) targetIndex = total - 1;
+      if (targetIndex >= total) targetIndex = 0;
+
+      items.forEach(function(item, idx) {
+        item.classList.toggle('is-active', idx === targetIndex);
+      });
+
+      thumbs.forEach(function(thumb, idx) {
+        thumb.classList.toggle('is-active', idx === targetIndex);
+      });
+
+      if (counter) {
+        counter.textContent = (targetIndex + 1) + ' / ' + total;
+      }
+      slider.setAttribute('data-current-index', targetIndex);
+    }
+
+    // Inicializar controles de cada slider
+    document.querySelectorAll('[data-ay-slider]').forEach(function(slider) {
+      var prevBtn = slider.querySelector('[data-slide-prev]');
+      var nextBtn = slider.querySelector('[data-slide-next]');
+      var thumbs = slider.querySelectorAll('[data-thumb-index]');
+
+      function getCur() {
+        return parseInt(slider.getAttribute('data-current-index') || '0', 10);
+      }
+
+      if (prevBtn) {
+        prevBtn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          updateSliderState(slider, getCur() - 1);
+        });
+      }
+
+      if (nextBtn) {
+        nextBtn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          updateSliderState(slider, getCur() + 1);
+        });
+      }
+
+      thumbs.forEach(function(thumb) {
+        thumb.addEventListener('click', function() {
+          var idx = parseInt(thumb.getAttribute('data-thumb-index'), 10);
+          updateSliderState(slider, idx);
+        });
+      });
+
+      // Swipe táctil para móviles
+      var startX = 0;
+      slider.querySelector('.ay-slider__stage').addEventListener('touchstart', function(e) {
+        startX = e.changedTouches[0].screenX;
+      }, { passive: true });
+
+      slider.querySelector('.ay-slider__stage').addEventListener('touchend', function(e) {
+        var endX = e.changedTouches[0].screenX;
+        if (startX - endX > 40) {
+          updateSliderState(slider, getCur() + 1); // Swipe izquierda -> siguiente
+        } else if (endX - startX > 40) {
+          updateSliderState(slider, getCur() - 1); // Swipe derecha -> anterior
+        }
+      }, { passive: true });
+    });
+
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Aylesva · Tarjetas",
+  "settings": [
+    { "type": "text", "id": "anchor", "label": "ID de ancla (ej: desarrollos)", "default": "desarrollos" },
+    { "type": "color", "id": "bg", "label": "Fondo", "default": "#FAFAF8" },
+    { "type": "range", "id": "columns", "label": "Columnas", "min": 2, "max": 4, "step": 1, "default": 3 },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+    { "type": "textarea", "id": "title", "label": "Titular" },
+    { "type": "textarea", "id": "intro", "label": "Texto de entrada" }
+  ],
+  "blocks": [
+    { "type": "card", "name": "Tarjeta", "limit": 8, "settings": [
+      { "type": "text", "id": "image", "label": "Imagen 1 / Portada" },
+      { "type": "text", "id": "image_url", "label": "URL alternativa Portada" },
+      { "type": "text", "id": "image_2", "label": "Imagen 2 (Planos)" },
+      { "type": "text", "id": "label_2", "label": "Etiqueta Imagen 2", "default": "Planos" },
+      { "type": "text", "id": "image_3", "label": "Imagen 3 (Amenidades)" },
+      { "type": "text", "id": "label_3", "label": "Etiqueta Imagen 3", "default": "Amenidades" },
+      { "type": "text", "id": "image_4", "label": "Imagen 4 (Galería)" },
+      { "type": "text", "id": "label_4", "label": "Etiqueta Imagen 4", "default": "Galería" },
+      { "type": "text", "id": "image_5", "label": "Imagen 5 (Avance de Obra)" },
+      { "type": "text", "id": "label_5", "label": "Etiqueta Imagen 5", "default": "Avance de Obra" },
+      { "type": "text", "id": "tag", "label": "Etiqueta sobre la imagen (Preventa, Popular…)" },
+      { "type": "text", "id": "eyebrow", "label": "Eyebrow (ubicación, categoría)" },
+      { "type": "text", "id": "title", "label": "Título" },
+      { "type": "textarea", "id": "text", "label": "Descripción" },
+      { "type": "textarea", "id": "bullets", "label": "Viñetas (una por línea)" },
+      { "type": "text", "id": "price", "label": "Precio (opcional)" },
+      { "type": "text", "id": "price_suffix", "label": "Sufijo de precio", "default": "/mes" },
+      { "type": "text", "id": "cta_label", "label": "Enlace de acción", "default": "Solicitar información" },
+      { "type": "url", "id": "cta_link", "label": "Destino" },
+      { "type": "text", "id": "whatsapp_label", "label": "Texto WhatsApp", "default": "WhatsApp" },
+      { "type": "text", "id": "whatsapp_url", "label": "Enlace WhatsApp" }
+    ]}
+  ],
+  "presets": [{ "name": "Aylesva · Tarjetas" }]
+}
+{% endschema %}

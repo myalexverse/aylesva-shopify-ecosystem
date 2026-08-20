@@ -1,0 +1,204 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "wrapper": "div#main",
+  "sections": {
+    "hero": {
+      "type": "aylesva-saldos-hero",
+      "settings": {}
+    },
+    "saldos_packs": {
+      "type": "aylesva-saldos-packs",
+      "settings": {
+        "title": "PACKS COUNTRY DESTACADOS",
+        "link_text": "VER TODOS LOS PACKS",
+        "link_url": "/collections/packs"
+      },
+      "blocks": {
+        "pack_1": {
+          "type": "pack_card",
+          "settings": {
+            "badge_icon": "🔥",
+            "badge_text": "MÁS VENDIDO",
+            "title": "Pack Botas & Accesorios",
+            "product": "pack-botas-accesorios",
+            "pieces": "25 piezas",
+            "bullet_1": "Botas country",
+            "bullet_2": "Cinturones",
+            "bullet_3": "Sombreros",
+            "bullet_4": "Accesorios",
+            "cost": "$6,999 MXN",
+            "resale_value": "$12,000 MXN",
+            "gain_amount": "+$5,001 MXN",
+            "gain_percent": "+71%",
+            "level_dot": "green",
+            "level_text": "Nivel: PRINCIPIANTE"
+          }
+        },
+        "pack_2": {
+          "type": "pack_card",
+          "settings": {
+            "badge_icon": "⚡",
+            "badge_text": "ALTA ROTACIÓN",
+            "title": "Pack Ropa Country Mujer",
+            "product": "pack-ropa-country-mujer",
+            "pieces": "40 piezas",
+            "bullet_1": "Camisas",
+            "bullet_2": "Blusas bordadas",
+            "bullet_3": "Jeans",
+            "bullet_4": "Vestidos",
+            "cost": "$7,499 MXN",
+            "resale_value": "$13,500 MXN",
+            "gain_amount": "+$6,001 MXN",
+            "gain_percent": "+80%",
+            "level_dot": "yellow",
+            "level_text": "Nivel: INTERMEDIO"
+          }
+        },
+        "pack_3": {
+          "type": "pack_card",
+          "settings": {
+            "badge_icon": "⭐",
+            "badge_text": "TOP RENTABLE",
+            "title": "Pack Cinturones Premium",
+            "product": "pack-cinturones-premium",
+            "pieces": "60 piezas",
+            "bullet_1": "Cinturones de piel",
+            "bullet_2": "Conchos y hebillas",
+            "bullet_3": "Diseños exclusivos",
+            "bullet_4": "Calidad artesanal",
+            "cost": "$5,799 MXN",
+            "resale_value": "$9,800 MXN",
+            "gain_amount": "+$4,001 MXN",
+            "gain_percent": "+69%",
+            "level_dot": "green",
+            "level_text": "Nivel: PRINCIPIANTE"
+          }
+        },
+        "pack_4": {
+          "type": "pack_card",
+          "settings": {
+            "badge_icon": "🧥",
+            "badge_text": "TENDENCIA",
+            "title": "Pack Bolsas & Accesorios",
+            "product": "pack-bolsas-accesorios",
+            "pieces": "30 piezas",
+            "bullet_1": "Bolsas con flecos",
+            "bullet_2": "Carteras country",
+            "bullet_3": "Accesorios tendencia",
+            "bullet_4": "Detalles en cuero",
+            "cost": "$6,299 MXN",
+            "resale_value": "$10,500 MXN",
+            "gain_amount": "+$4,201 MXN",
+            "gain_percent": "+67%",
+            "level_dot": "yellow",
+            "level_text": "Nivel: INTERMEDIO"
+          }
+        },
+        "pack_5": {
+          "type": "pack_card",
+          "settings": {
+            "badge_icon": "💛",
+            "badge_text": "FAVORITO",
+            "title": "Pack Botas Selectas",
+            "product": "pack-botas-selectas",
+            "pieces": "15 piezas",
+            "bullet_1": "Botas de diferentes estilos",
+            "bullet_2": "Piel genuina",
+            "bullet_3": "Diseños exclusivos",
+            "bullet_4": "Horma premium",
+            "cost": "$8,999 MXN",
+            "resale_value": "$16,000 MXN",
+            "gain_amount": "+$7,001 MXN",
+            "gain_percent": "+78%",
+            "level_dot": "red",
+            "level_text": "Nivel: AVANZADO"
+          }
+        }
+      },
+      "block_order": [
+        "pack_1",
+        "pack_2",
+        "pack_3",
+        "pack_4",
+        "pack_5"
+      ]
+    },
+    "saldos_features": {
+      "type": "aylesva-saldos-features",
+      "settings": {
+        "calc_title": "CALCULA TUS GANANCIAS",
+        "calc_margin": 65,
+        "why_title": "¿POR QUÉ ELEGIR NUESTROS PACKS?",
+        "testimonials_title": "EMPRENDEDORES QUE YA FACTURAN"
+      },
+      "blocks": {
+        "test_1": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Empecé con un pack de botas y cinturones y hoy tengo mi propia marca de ropa country.",
+            "author": "Valeria R.",
+            "role": "Emprendedora Aylesva"
+          }
+        },
+        "test_2": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "El margen de ganancia es real. En mi primera semana vendí todo el pack de bolsas y recuperé mi inversión.",
+            "author": "Sofía M.",
+            "role": "Boutique Online"
+          }
+        },
+        "test_3": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Excelente calidad de piel. Mis clientes quedaron fascinados con los cinturones y sombreros country.",
+            "author": "Gabriela L.",
+            "role": "Distribuidora Autorizada"
+          }
+        }
+      },
+      "block_order": [
+        "test_1",
+        "test_2",
+        "test_3"
+      ]
+    },
+    "saldos_cta": {
+      "type": "aylesva-saldos-cta",
+      "settings": {
+        "title": "¿LISTO PARA EMPRENDER TU MARCA COUNTRY?",
+        "subtitle": "Elige tu pack y comienza tu negocio hoy mismo.",
+        "btn_label": "VER TODOS LOS PACKS",
+        "btn_link": "/collections/packs"
+      }
+    },
+    "saldos_trustbar": {
+      "type": "aylesva-saldos-trustbar",
+      "settings": {
+        "trust1_title": "PAGOS 100% SEGUROS",
+        "trust1_sub": "Compra con confianza",
+        "trust2_title": "ENVÍOS RÁPIDOS",
+        "trust2_sub": "A todo México",
+        "trust3_title": "DEVOLUCIONES FÁCILES",
+        "trust3_sub": "Hasta 30 días",
+        "trust4_title": "ATENCIÓN 24/7",
+        "trust4_sub": "Siempre para apoyarte"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "saldos_packs",
+    "saldos_features",
+    "saldos_cta",
+    "saldos_trustbar"
+  ]
+}

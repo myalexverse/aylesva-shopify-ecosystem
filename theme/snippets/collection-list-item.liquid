@@ -1,0 +1,27 @@
+<!-- /templates/collection.liquid -->
+{% comment %}
+The contents of the collection.liquid template can be found in /sections/collection-template.liquid
+{% endcomment %}
+<div class="container">
+  <!-- /snippets/collection.liquid -->
+  {% if settings.collection_sidebar_use == "left_sidebar" %}
+  <div class="col-xs-12 col-sm-3 left-sidebar sidebar">
+    {% render 'collection-sidebar' %}
+  </div>
+  <div class="col-xs-12 col-sm-9 collection_wrapper">
+    {% section 'collection-template' %}
+  </div>
+  {% endif %}
+  {% if settings.collection_sidebar_use == "right_sidebar" %}
+  <div class="col-xs-12 col-sm-9 collection_wrapper">
+    {% section 'collection-template' %}
+  </div>
+  <!-- /snippets/collection.liquid -->
+  <div class="col-xs-12 col-sm-3 right-sidebar sidebar">
+    {% render 'collection-sidebar' %}
+  </div>
+  {% endif %}
+  {% if settings.collection_sidebar_use == "full_width" %}
+  {% section 'collection-template' %}
+  {% endif %}
+</div>

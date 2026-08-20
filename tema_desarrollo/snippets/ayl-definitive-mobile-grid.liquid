@@ -1,0 +1,289 @@
+{% comment %}
+  ayl-definitive-mobile-grid.liquid
+  V4 - INTERACTION & PAGINATION UPDATE
+  Includes: 
+  - Second Image Cross-Fade on Interaction.
+  - Professional Shopping Bag Icon (Green Finish).
+  - Minimalist Pagination Controls.
+{% endcomment %}
+
+<style>
+  @media (max-width: 767px) {
+    /* VISIBILITY FIX - Ensure filter drawer remains accessible */
+    .collection_wrapper > .hidden-xs, 
+    .collection_wrapper > .row,
+    .collection_wrapper > .products-grid-view,
+    .cat-bar, .ayl-mobile-cats {
+      display: none !important;
+    }
+    
+    /* CUSTOM FILTER DRAWER SYSTEM */
+    .ayl-custom-filter-drawer {
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+      background: #fff; z-index: 3000000;
+      display: none; flex-direction: column;
+      animation: slideUp 0.3s ease;
+    }
+    .ayl-custom-filter-drawer.active { display: flex; }
+    
+    .ayl-filter-drawer-header {
+      padding: 20px; border-bottom: 1px solid #eee;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .ayl-filter-drawer-header h2 { font-size: 18px; font-weight: 900; text-transform: uppercase; margin: 0; }
+    .ayl-filter-drawer-content {
+      flex: 1; overflow-y: auto; padding: 20px;
+    }
+    
+    .ayl-custom-filter-drawer .widget-title { 
+      font-size: 14px; font-weight: 800; text-transform: uppercase; 
+      margin: 20px 0 10px; border-bottom: 2px solid #1a1a1a; padding-bottom: 5px;
+    }
+    .ayl-custom-filter-drawer ul { list-style: none; padding: 0; margin: 0; }
+    .ayl-custom-filter-drawer li { padding: 8px 0; border-bottom: 1px solid #f2f2f2; }
+    .ayl-custom-filter-drawer a { text-decoration: none; color: #333; font-size: 13px; font-weight: 500; }
+    .ayl-custom-filter-drawer .dt-menu-expand { float: right; cursor: pointer; font-weight: 900; }
+    .ayl-custom-filter-drawer .children { padding-left: 15px; display: none; }
+    .ayl-custom-filter-drawer .facet-checkbox { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+    .ayl-custom-filter-drawer input[type="checkbox"] { width: 18px; height: 18px; }
+    .sidebar-block > *:not(.facets-container), .collection_sidebar > *:not(.facets-container) {
+      display: none !important;
+    }
+    .facets-container > *:not(.mobile-facets__wrapper) {
+      display: none !important;
+    }
+    .mobile-facets__wrapper { display: block !important; position: static !important; }
+
+    /* Force parent containers to eliminate top gap */
+    html, body, #shopify-section-collection, .content_wrap, .main-content, #shopify-section-collection-template, .collection_wrapper, .page-header, .tt-breadcrumb, .breadcrumb-wrapper {
+      padding-top: 0 !important;
+      margin-top: 0 !important;
+    }
+
+    .ayl-mobile-container {
+      display: block !important;
+      background: #ffffff;
+      width: calc(100% + 30px);
+      margin: -125px 0 0 -34px !important; /* User requested -34px specifically */
+      box-sizing: border-box;
+      padding-bottom: 40px;
+      overflow-x: hidden;
+      position: relative;
+      z-index: 10;
+    }
+
+    /* 1. HEADER */
+    .ayl-mob-header { padding: 0px 15px 10px; }
+    .ayl-mob-header h1 {
+      font-size: 32px;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin: 0 0 15px;
+      letter-spacing: -0.5px;
+    }
+    .ayl-mob-tabs { display: flex; gap: 8px; margin-bottom: 20px; }
+    .ayl-tab {
+      flex: 1; padding: 12px 5px; text-align: center;
+      border: 1.5px solid #1a1a1a; font-size: 10px;
+      font-weight: 800; text-transform: uppercase;
+      letter-spacing: 1px; text-decoration: none; color: #1a1a1a;
+    }
+    .ayl-tab.active { background: #1a1a1a; color: #fff; }
+
+    /* 2. FILTERS */
+    .ayl-filters-bar {
+      display: flex; justify-content: space-between; align-items: center;
+      border-top: 1px solid #1a1a1a; border-bottom: 1px solid #1a1a1a;
+      padding: 14px 16px; font-size: 11px; font-weight: 800;
+      text-transform: uppercase; letter-spacing: 1px;
+      background: #fff;
+    }
+    .ayl-filter-btn, .ayl-sort-btn { 
+      display: flex; align-items: center; gap: 8px; cursor: pointer; 
+      transition: opacity 0.2s;
+    }
+    .ayl-filter-btn:active, .ayl-sort-btn:active { opacity: 0.5; }
+    
+    /* Sort Overlay */
+    #ayl-sort-overlay {
+      position: fixed; bottom: 0; left: 0; right: 0; top: 0;
+      background: rgba(0,0,0,0.5); z-index: 100000;
+      display: none; align-items: flex-end;
+    }
+    #ayl-sort-overlay.active { display: flex; }
+    .ayl-sort-content {
+      background: #fff; width: 100%; padding: 20px 0;
+      border-radius: 20px 20px 0 0; animation: slideUp 0.3s ease;
+    }
+    .ayl-sort-content h3 { 
+      font-size: 14px; font-weight: 900; text-transform: uppercase; 
+      text-align: center; padding: 10px 0 20px; border-bottom: 1px solid #eee;
+      margin: 0 0 10px;
+    }
+    .ayl-sort-option {
+      padding: 16px 24px; font-size: 12px; font-weight: 600;
+      display: flex; justify-content: space-between; text-decoration: none; color: #000;
+    }
+    .ayl-sort-option.active { font-weight: 900; background: #f9f9f9; }
+    
+    @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+
+    /* 3. GRID */
+    .ayl-grid { display: flex; flex-wrap: wrap; padding: 10px 4px; }
+    .ayl-item { width: 50%; padding: 6px; box-sizing: border-box; margin-bottom: 15px; }
+
+    /* IMAGE HOVER ANIMATION (Swap) */
+    .ayl-img-box {
+      position: relative; width: 100%; aspect-ratio: 1 / 1.35;
+      background: #f4f4f4; border-radius: 2px; overflow: hidden;
+      margin-bottom: 10px;
+    }
+    .ayl-img-box img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: opacity 0.5s ease;
+    }
+    .ayl-img-secondary {
+      position: absolute; top: 0; left: 0; opacity: 0;
+    }
+    /* On interaction (touch or focus) ONLY if it has a secondary image */
+    .ayl-has-hover:active .ayl-img-primary,
+    .ayl-has-hover:focus .ayl-img-primary { opacity: 0; }
+    .ayl-has-hover:active .ayl-img-secondary,
+    .ayl-has-hover:focus .ayl-img-secondary { opacity: 1; }
+
+    /* PROFESSIONAL CART ICON (Green Sticker Style) */
+    .ayl-cart-sticker {
+      position: absolute; bottom: 10px; right: 10px;
+      width: 40px; height: 40px; background: #008a00; /* Professional Green */
+      border-radius: 50%; display: flex; align-items: center;
+      justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      z-index: 5; border: none; cursor: pointer;
+    }
+    .ayl-cart-sticker svg { width: 20px; height: 20px; color: #ffffff; }
+
+    /* INFO */
+    .ayl-prod-title {
+      font-size: 11px; font-weight: 500; text-transform: uppercase;
+      color: #1a1a1a; margin-bottom: 4px; line-height: 1.4;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .ayl-current-price { color: #1a1a1a; font-weight: 800; font-size: 14px; }
+    .ayl-old-price { 
+      color: #999; text-decoration: line-through; font-size: 10px; margin-right: 5px; 
+    }
+    .ayl-price-currency {
+      color: #C5A47E; font-weight: 900; margin-left: 6px; font-size: 13px;
+      letter-spacing: 0.05em; vertical-align: baseline;
+    }
+    
+    /* Ensure theme filter toggles are reachable */
+    .filter-toggle-wrap { display: block !important; visibility: visible !important; height: auto !important; }
+    .filter-toggle { display: none !important; }
+    .off-canvas.position-left { z-index: 200000 !important; }
+    .js-off-canvas-overlay { z-index: 199999 !important; }
+  }
+</style>
+
+<div class="ayl-mobile-container visible-xs">
+  <header class="ayl-mob-header">
+    {% if search.performed %}
+      <h1>Resultados: "{{ search.terms }}"</h1>
+    {% else %}
+      <h1>{{ results.title }}</h1>
+    {% endif %}
+    <div class="ayl-mob-tabs">
+      <a href="/" class="ayl-tab active">Inicio</a>
+      <a href="/collections/all" class="ayl-tab">Catálogo</a>
+      <a href="/pages/contact" class="ayl-tab">Contacto</a>
+    </div>
+  </header>
+
+  <div class="ayl-filters-bar">
+    <div class="ayl-sort-btn" onclick="document.getElementById('ayl-sort-overlay').classList.add('active')">
+      Clasificar por <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+    </div>
+    <div class="ayl-filter-btn" onclick="document.getElementById('ayl-custom-filter-drawer').classList.add('active');">
+      Filtro <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line><line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line><line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line><line x1="1" y1="14" x2="7" y2="14"></line><line x1="9" y1="8" x2="15" y2="8"></line><line x1="17" y1="16" x2="23" y2="16"></line></svg>
+    </div>
+  </div>
+
+  <!-- Reprogrammed Filter Drawer -->
+  <div id="ayl-custom-filter-drawer" class="ayl-custom-filter-drawer">
+    <div class="ayl-filter-drawer-header">
+      <h2>Filtros</h2>
+      <div onclick="document.getElementById('ayl-custom-filter-drawer').classList.remove('active')" style="font-weight: 900; font-size: 20px; cursor: pointer;">&times;</div>
+    </div>
+    <div class="ayl-filter-drawer-content">
+      {% render 'aylesva-sidebar-cats' %}
+      {% render 'sidebar-category', enable_sidecategory: true, linkedlist: section.settings.linkedlist, linkedlist_title: section.settings.linkedlist_title %}
+      {% render 'facets', results: results, show_filter: true, collapse_on_larger_devices: false %}
+    </div>
+    <div style="padding: 20px; border-top: 1px solid #eee;">
+      <button class="ayl-tab active" style="width: 100%;" onclick="document.getElementById('ayl-custom-filter-drawer').classList.remove('active')">Ver Resultados</button>
+    </div>
+  </div>
+
+  <!-- Sorting Overlay -->
+  <div id="ayl-sort-overlay" onclick="this.classList.remove('active')">
+    <div class="ayl-sort-content" onclick="event.stopPropagation()">
+      <h3>Ordenar por</h3>
+      {%- assign sort_by = results.sort_by | default: results.default_sort_by -%}
+      {%- for option in results.sort_options -%}
+        <a href="?sort_by={{ option.value }}" class="ayl-sort-option {% if option.value == sort_by %}active{% endif %}">
+          {{ option.name }}
+          {% if option.value == sort_by %}<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>{% endif %}
+        </a>
+      {%- endfor -%}
+      <div style="padding: 10px;">
+        <button class="ayl-tab active" style="width: 100%; border-radius: 0;" onclick="document.getElementById('ayl-sort-overlay').classList.remove('active')">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="ayl-grid">
+    {% assign items = results.products | default: results.results %}
+    {% for product in items %}
+      {% if product.object_type == 'article' or product.object_type == 'page' %}{% continue %}{% endif %}
+      <div class="ayl-item {% if product.images.size > 1 %}ayl-has-hover{% endif %}" tabindex="0">
+        <div class="ayl-product-card">
+          <a href="{{ product.url }}" class="ayl-link">
+            <div class="ayl-img-box">
+              <!-- Primary Image -->
+              <img class="ayl-img-primary" src="{{ product.featured_image | img_url: '600x' }}" alt="{{ product.title }}" loading="lazy">
+              <!-- Secondary Image (Switch on interaction) -->
+              {% if product.images.size > 1 %}
+                <img class="ayl-img-secondary" src="{{ product.images[1] | img_url: '600x' }}" alt="{{ product.title }}" loading="lazy">
+              {% endif %}
+              
+              <!-- Professional Cart Icon (Shopify standard add-to-cart link) -->
+              <form method="post" action="/cart/add" class="ayl-cart-form">
+                <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+                <button type="submit" class="ayl-cart-sticker" aria-label="Añadir al carrito">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                  </svg>
+                </button>
+              </form>
+            </div>
+          </a>
+
+          <div class="ayl-info">
+            <h3 class="ayl-prod-title">{{ product.title }}</h3>
+            <div class="ayl-price">
+              {% if product.compare_at_price > product.price %}
+                <span class="ayl-old-price">{{ product.compare_at_price | money }}</span>
+              {% endif %}
+              <span class="ayl-current-price">{{ product.price | money }}</span>
+              <span class="ayl-price-currency">{{ cart.currency.iso_code }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <!-- PREMIUM PAGINATION v3 -->
+  {% render 'aylesva-premium-pagination', paginate: paginate %}
+</div>

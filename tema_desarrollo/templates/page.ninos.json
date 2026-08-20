@@ -1,0 +1,220 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "wrapper": "div#main",
+  "sections": {
+    "hero": {
+      "type": "aylesva-intro-hero",
+      "blocks": {
+        "slide1": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/little-boy-ready-for-school-looking-up.jpg",
+            "image_alignment": "center",
+            "sub_title": "BOYS COLLECTION",
+            "title": "AVENTURA Y\nESTILO NIÑOS",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 25,
+            "btn1_txt": "Ver Ropa",
+            "btn1_link": "shopify:\/\/collections\/ropa-nino",
+            "btn_bg_color": "#ffb300",
+            "btn_txt_color": "#000000",
+            "btn2_txt": "Ver Calzado",
+            "btn2_link": "shopify:\/\/collections\/calzado-nino"
+          }
+        },
+        "slide2": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/girl-framed-by-heart.jpg",
+            "image_alignment": "center",
+            "sub_title": "GIRLS COLLECTION",
+            "title": "BRILLO Y\nESTILO NIÑAS",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 25,
+            "btn1_txt": "Ver Ropa",
+            "btn1_link": "shopify:\/\/collections\/ropa-nina",
+            "btn_bg_color": "#ffb300",
+            "btn_txt_color": "#000000",
+            "btn2_txt": "Ver Calzado",
+            "btn2_link": "shopify:\/\/collections\/calzado-nina"
+          }
+        },
+        "slide3": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/cute-baby-girl-with-pink-bow-headband.jpg",
+            "image_alignment": "center",
+            "sub_title": "BABY COLLECTION",
+            "title": "SUAVIDAD Y\nCONFORT BEBÉS",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 25,
+            "btn1_txt": "Ver Ropa",
+            "btn1_link": "shopify:\/\/collections\/ropa-bebe",
+            "btn_bg_color": "#ffb300",
+            "btn_txt_color": "#000000",
+            "btn2_txt": "Ver Calzado",
+            "btn2_link": "shopify:\/\/collections\/calzado-bebe"
+          }
+        }
+      },
+      "block_order": [
+        "slide1",
+        "slide2",
+        "slide3"
+      ],
+      "settings": {
+        "desktop_height": 80,
+        "mobile_height": 60,
+        "autoplay": true,
+        "autoplay_speed": 6,
+        "show_arrows": true
+      }
+    },
+    "bubbles": {
+      "type": "aylesva-category-bubbles",
+      "blocks": {
+        "b1": {
+          "type": "category",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/pomelli-image_53.png",
+            "label": "Ropa Niño",
+            "link": "shopify:\/\/collections\/ropa-nino"
+          }
+        },
+        "b2": {
+          "type": "category",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/pomelli-image_cd766c49-22f0-4171-859e-c22f786b7b86.png",
+            "label": "Ropa Niña",
+            "link": "shopify:\/\/collections\/ropa-nina"
+          }
+        },
+        "b3": {
+          "type": "category",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/pomelli-image_67.png",
+            "label": "Calzado Niño/a",
+            "link": "shopify:\/\/collections\/calzado-nino"
+          }
+        },
+        "b4": {
+          "type": "category",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/cute-baby-girl-with-pink-bow-headband.jpg",
+            "label": "Bebés",
+            "link": "shopify:\/\/collections\/bebe"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ],
+      "settings": {
+        "title": "CATEGORÍAS DESTACADAS",
+        "bg_color": "#ffffff"
+      }
+    },
+    "gender_cards": {
+      "type": "aylesva-gender-cards",
+      "blocks": {
+        "c1": {
+          "type": "card",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/little-boy-ready-for-school-looking-up.jpg",
+            "label": "Colección Niño",
+            "link": "shopify:\/\/collections\/ropa-nino"
+          }
+        },
+        "c2": {
+          "type": "card",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/girl-framed-by-heart.jpg",
+            "label": "Colección Niña",
+            "link": "shopify:\/\/collections\/ropa-nina"
+          }
+        },
+        "c3": {
+          "type": "card",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/cute-baby-girl-with-pink-bow-headband.jpg",
+            "label": "Colección Bebé",
+            "link": "shopify:\/\/collections\/bebe"
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3"
+      ],
+      "settings": {
+        "title": "ENCUENTRA TU ESTILO",
+        "bg_color": "#ffffff"
+      }
+    },
+    "main": {
+      "type": "page",
+      "disabled": true,
+      "settings": {}
+    },
+    "carousel_nino": {
+      "type": "aylesva-cooler-carousel",
+      "name": "Carrusel Niño",
+      "settings": {
+        "title": "MODA NIÑO",
+        "collection": "camisetas-y-polos-nino",
+        "product_limit": 12,
+        "animation_speed": 25,
+        "margin_top": 30,
+        "margin_bottom": 30
+      }
+    },
+    "carousel_nina": {
+      "type": "aylesva-cooler-carousel",
+      "name": "Carrusel Niña",
+      "settings": {
+        "title": "MODA NIÑA",
+        "collection": "ropa-nina",
+        "product_limit": 12,
+        "animation_speed": 25,
+        "margin_top": 30,
+        "margin_bottom": 30
+      }
+    },
+    "carousel_bebe": {
+      "type": "aylesva-cooler-carousel",
+      "name": "Carrusel Bebé",
+      "settings": {
+        "title": "MODA BEBÉ",
+        "collection": "ropa-bebe",
+        "product_limit": 12,
+        "animation_speed": 25,
+        "margin_top": 30,
+        "margin_bottom": 30
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "bubbles",
+    "gender_cards",
+    "main",
+    "carousel_nino",
+    "carousel_nina",
+    "carousel_bebe"
+  ]
+}

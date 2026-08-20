@@ -1,0 +1,182 @@
+{%- style -%}
+  .aylesva-cards-{{ section.id }} {
+    padding: 60px 20px;
+    background: {{ section.settings.bg_color }};
+  }
+
+  .cards-container {
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+
+  .cards-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .main-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  .gender-card {
+    position: relative;
+    border-radius: 12px 100px 12px 12px; /* EL "CORTE" ASIMÉTRICO AYLESVA */
+    overflow: hidden;
+    height: 500px;
+    text-decoration: none;
+    background: #eee;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .gender-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+    z-index: 2;
+    transition: opacity 0.3s ease;
+  }
+
+  .gender-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  }
+
+  .gender-card-image {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s ease;
+    z-index: 1;
+  }
+
+  .gender-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .gender-card:hover .gender-card-image {
+    transform: scale(1.1);
+  }
+
+  .gender-card-label {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    z-index: 3;
+    color: #fff;
+  }
+
+  .gender-card-label h3 {
+    font-size: 32px;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin: 0;
+    letter-spacing: -0.02em;
+    color: #fff;
+  }
+
+  @media (max-width: 1024px) {
+    .main-cards-grid { grid-template-columns: repeat(2, 1fr); }
+    .gender-card { height: 400px; }
+  }
+
+  @media (max-width: 600px) {
+    .main-cards-grid { grid-template-columns: 1fr; }
+    .gender-card { 
+      height: 350px; 
+      border-radius: 10px 80px 10px 10px; /* Radio ajustado para móvil */
+    }
+    .gender-card-label h3 { font-size: 24px; }
+  }
+{%- endstyle -%}
+
+<section class="aylesva-cards-{{ section.id }}">
+  <div class="cards-container">
+    {% if section.settings.title != blank %}
+      <div class="cards-header">
+        <h2 style="font-size: 16px; text-transform: uppercase; letter-spacing: 0.25em; font-weight: 800;">{{ section.settings.title }}</h2>
+      </div>
+    {% endif %}
+
+    <div class="main-cards-grid">
+      {% for block in section.blocks %}
+        <a href="{{ block.settings.link }}" class="gender-card" {{ block.shopify_attributes }}>
+          <div class="gender-card-image">
+            {% if block.settings.image != blank %}
+              <img src="{{ block.settings.image | img_url: '800x1200', crop: 'center' }}" alt="{{ block.settings.label }}" loading="lazy">
+            {% else %}
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            {% endif %}
+          </div>
+          
+          <div class="gender-card-label">
+            <h3>{{ block.settings.label }}</h3>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Aylesva Gender Cards",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título de la sección",
+      "default": "BUSCA POR GÉNERO"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Color de Fondo",
+      "default": "#ffffff"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Tarjeta Portero",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Imagen de fondo"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Etiqueta",
+          "default": "Categoría"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Enlace"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Aylesva Gender Cards",
+      "category": "Navigation",
+      "blocks": [
+        { "type": "card", "settings": { "label": "Mujer" } },
+        { "type": "card", "settings": { "label": "Hombre" } },
+        { "type": "card", "settings": { "label": "Niños" } },
+        { "type": "card", "settings": { "label": "Bebés" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

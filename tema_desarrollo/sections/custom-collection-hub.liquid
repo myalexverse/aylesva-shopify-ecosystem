@@ -1,0 +1,411 @@
+{%- style -%}
+  .collection-hub-section {
+    padding-bottom: 50px;
+    background-color: #f8f9fa;
+  }
+
+  /* Hero Banner */
+  .ch-hero {
+    position: relative;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    margin-bottom: 40px;
+    overflow: hidden;
+  }
+
+  .ch-hero::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.5) 100%);
+  }
+
+  .ch-hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 800px;
+    padding: 20px;
+  }
+
+  .ch-hero-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    line-height: 1;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  }
+
+  .ch-hero-subtitle {
+    font-size: 1.25rem;
+    font-weight: 300;
+    margin-bottom: 25px;
+    opacity: 1;
+  }
+
+  .ch-hero-btn {
+    display: inline-block;
+    padding: 12px 35px;
+    background: #0084d0;
+    color: #fff;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform 0.2s;
+  }
+
+  .ch-hero-btn:hover {
+    transform: translateY(-2px);
+    background: #006bbd;
+  }
+
+  /* Icon Strip */
+  .ch-categories-container {
+    max-width: 1200px;
+    margin: 0 auto 50px;
+    padding: 0 20px;
+  }
+
+  .ch-section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #333;
+    padding-left: 10px;
+  }
+
+  .ch-categories-strip {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding: 10px 0 25px;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* IE/Edge */
+  }
+
+  .ch-categories-strip::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+  }
+
+  .ch-category-card {
+    flex: 0 0 160px;
+    text-align: center;
+    background: #fff;
+    padding: 20px 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: block;
+  }
+
+  .ch-category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  }
+
+  .ch-category-image {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 15px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #f0f0f0;
+    border: 3px solid #eee;
+  }
+
+  .ch-category-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .ch-category-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #444;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* Featured Grid */
+  .ch-feature-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .ch-feature-banner {
+    position: relative;
+    height: 280px;
+    border-radius: 12px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    text-decoration: none;
+    display: block;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  }
+
+  .ch-feature-banner::before {
+    content: '';
+    position: absolute;
+    top:0; left:0; width:100%; height:100%;
+    background: linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 70%);
+    z-index: 1;
+    transition: opacity 0.3s;
+  }
+
+  .ch-feature-content {
+    position: relative;
+    z-index: 2;
+    padding: 40px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #fff;
+  }
+
+  .ch-feature-promo {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #ffda00;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+  }
+
+  .ch-feature-title {
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    line-height: 1.1;
+  }
+
+  .ch-feature-cta {
+    font-size: 0.9rem;
+    font-weight: 600;
+    background: rgba(255,255,255,0.2);
+    padding: 8px 15px;
+    border-radius: 4px;
+    width: fit-content;
+    backdrop-filter: blur(5px);
+  }
+
+  @media (max-width: 767px) {
+    .ch-hero {
+      height: 300px;
+    }
+    .ch-hero-title {
+      font-size: 2.2rem;
+    }
+    .ch-feature-grid {
+      grid-template-columns: 1fr;
+    }
+    .ch-category-card {
+      flex: 0 0 130px;
+    }
+    .ch-feature-banner {
+      height: 220px;
+    }
+    .ch-feature-content {
+      padding: 25px;
+    }
+    .ch-feature-title {
+      font-size: 1.5rem;
+    }
+  }
+{%- endstyle -%}
+
+<section class="collection-hub-section" id="CollectionHub-{{ section.id }}">
+  
+  {%- for block in section.blocks -%}
+    {%- if block.type == 'hero' -%}
+      <div class="ch-hero" style="background-image: url('{{ block.settings.image | img_url: '1920x' }}');" {{ block.shopify_attributes }}>
+        <div class="ch-hero-content">
+          {%- if block.settings.title != blank -%}
+            <h1 class="ch-hero-title">{{ block.settings.title }}</h1>
+          {%- endif -%}
+          {%- if block.settings.subtitle != blank -%}
+            <p class="ch-hero-subtitle">{{ block.settings.subtitle }}</p>
+          {%- endif -%}
+          {%- if block.settings.btn_txt != blank -%}
+            <a href="{{ block.settings.btn_link }}" class="ch-hero-btn">{{ block.settings.btn_txt }}</a>
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endif -%}
+  {%- endfor -%}
+
+  <div class="ch-categories-container">
+    <h3 class="ch-section-title">{{ section.settings.icons_title }}</h3>
+    <div class="ch-categories-strip">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'category_icon' -%}
+          <a href="{{ block.settings.link }}" class="ch-category-card" {{ block.shopify_attributes }}>
+            <div class="ch-category-image">
+              {%- if block.settings.image != blank -%}
+                <img src="{{ block.settings.image | img_url: '200x200', crop: 'center' }}" alt="{{ block.settings.title }}" loading="lazy">
+              {%- else -%}
+                {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+              {%- endif -%}
+            </div>
+            <span class="ch-category-name">{{ block.settings.title }}</span>
+          </a>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+
+  <div class="ch-feature-grid">
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'feature_banner' -%}
+        <a href="{{ block.settings.link }}" class="ch-feature-banner" style="background-image: url('{{ block.settings.image | img_url: '800x600' }}');" {{ block.shopify_attributes }}>
+          <div class="ch-feature-content">
+            {%- if block.settings.promo_text != blank -%}
+              <span class="ch-feature-promo">{{ block.settings.promo_text }}</span>
+            {%- endif -%}
+            {%- if block.settings.title != blank -%}
+              <h4 class="ch-feature-title">{{ block.settings.title }}</h4>
+            {%- endif -%}
+            <span class="ch-feature-cta">{{ section.settings.cta_text | default: 'Ver Más' }}</span>
+          </div>
+        </a>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+
+</section>
+
+{% schema %}
+{
+  "name": "Collection Hub",
+  "settings": [
+    {
+      "type": "text",
+      "id": "icons_title",
+      "label": "Título de Iconos",
+      "default": "Categorías"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Texto del Botón en Banners",
+      "default": "Ver Productos"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "hero",
+      "name": "Banner Hero",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Imagen Hero"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Título",
+          "default": "Nueva Colección"
+        },
+        {
+          "type": "textarea",
+          "id": "subtitle",
+          "label": "Subtítulo",
+          "default": "Explora lo último en tendencias"
+        },
+        {
+          "type": "text",
+          "id": "btn_txt",
+          "label": "Texto Botón",
+          "default": "Explorar"
+        },
+        {
+          "type": "url",
+          "id": "btn_link",
+          "label": "Enlace Botón"
+        }
+      ]
+    },
+    {
+      "type": "category_icon",
+      "name": "Icono de Categoría",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Imagen Icono"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Nombre",
+          "default": "Sub-categoría"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Enlace"
+        }
+      ]
+    },
+    {
+      "type": "feature_banner",
+      "name": "Banner Destacado",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Imagen Banner"
+        },
+        {
+          "type": "text",
+          "id": "promo_text",
+          "label": "Texto Promo (ej. HASTA 50% OFF)",
+          "default": "HASTA 30% OFF"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Título Banner",
+          "default": "Sección Destacada"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Enlace"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection Hub",
+      "blocks": [
+        { "type": "hero" },
+        { "type": "category_icon" },
+        { "type": "category_icon" },
+        { "type": "feature_banner" },
+        { "type": "feature_banner" }
+      ]
+    }
+  ]
+}
+{% endschema %}

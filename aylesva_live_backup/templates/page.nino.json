@@ -1,0 +1,344 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "wrapper": "div#main",
+  "sections": {
+    "hero": {
+      "type": "aylesva-intro-hero",
+      "blocks": {
+        "slide1": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/dame_una_fotografia_202604061622.jpg",
+            "image_alignment": "center",
+            "sub_title": "BOYS COLLECTION",
+            "title": "AVENTURA Y\nESTILO NIÑOS",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 25,
+            "btn1_txt": "Ver Ropa",
+            "btn1_link": "shopify://collections/ropa-nino",
+            "btn_bg_color": "#ffb300",
+            "btn_txt_color": "#000000",
+            "btn2_txt": "Ver Calzado",
+            "btn2_link": "shopify://collections/calzado-nino"
+          }
+        },
+        "slide2": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/dame_una_fotografia_202604061619.jpg",
+            "image_alignment": "center",
+            "sub_title": "DIVERSIÓN ASEGURADA",
+            "title": "JUGUETES Y\nJUEGOS",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30,
+            "btn1_txt": "Explorar Ahora",
+            "btn1_link": "shopify://collections/juguetes-nino",
+            "btn_bg_color": "#ffb300",
+            "btn_txt_color": "#000000",
+            "btn2_txt": "Escolar",
+            "btn2_link": "shopify://collections/escolar-nino"
+          }
+        }
+      },
+      "block_order": [
+        "slide1",
+        "slide2"
+      ],
+      "settings": {
+        "desktop_height": 80,
+        "mobile_height": 60,
+        "autoplay": true,
+        "autoplay_speed": 6,
+        "show_arrows": true
+      }
+    },
+    "bubbles": {
+      "type": "aylesva-category-bubbles",
+      "blocks": {
+        "b1": {
+          "type": "category",
+          "settings": {
+            "image": "shopify://shop_images/pomelli-image_53.png",
+            "label": "Ropa",
+            "link": "shopify://collections/ropa-nino"
+          }
+        },
+        "b2": {
+          "type": "category",
+          "settings": {
+            "image": "shopify://shop_images/pomelli-image_67.png",
+            "label": "Calzado",
+            "link": "shopify://collections/calzado-nino"
+          }
+        },
+        "b3": {
+          "type": "category",
+          "settings": {
+            "image": "shopify://shop_images/pomelli-image_64.jpg",
+            "label": "Juguetes",
+            "link": "shopify://collections/juguetes-nino"
+          }
+        },
+        "b4": {
+          "type": "category",
+          "settings": {
+            "image": "shopify://shop_images/pomelli-image_70.png",
+            "label": "Escolar",
+            "link": "shopify://collections/escolar-nino"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ],
+      "settings": {
+        "title": "CATEGORÍAS DESTACADAS",
+        "bg_color": "#ffffff"
+      }
+    },
+    "gender_cards": {
+      "type": "aylesva-gender-cards",
+      "blocks": {
+        "c1": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/pomelli-image_66.png",
+            "label": "Deportes",
+            "link": "shopify://collections/deportes-nino"
+          }
+        },
+        "c2": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/pomelli-image_69.png",
+            "label": "Accesorios",
+            "link": "shopify://collections/accesorios-nino"
+          }
+        },
+        "c3": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/pomelli-image_56.png",
+            "label": "Personajes",
+            "link": "shopify://collections/personajes-nino"
+          }
+        },
+        "c4": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/pomelli-image_68.png",
+            "label": "Lo Nuevo",
+            "link": "shopify://collections/nino"
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4"
+      ],
+      "settings": {
+        "title": "SEGMENTOS POPULARES",
+        "bg_color": "#ffffff"
+      }
+    },
+    "main": {
+      "type": "page",
+      "disabled": true,
+      "settings": {}
+    },
+    "aylesva_cooler_carousel_ramgxM": {
+      "type": "aylesva-cooler-carousel",
+      "name": "Cooler Carrusel",
+      "settings": {
+        "title": "CAMISAS NIÑOS",
+        "collection": "camisetas-y-polos-nino",
+        "product_limit": 12,
+        "animation_speed": 25,
+        "margin_top": 30,
+        "margin_bottom": 30
+      }
+    },
+    "aylesva_cooler_carousel_jTa8jm": {
+      "type": "aylesva-cooler-carousel",
+      "name": "Cooler Carrusel",
+      "settings": {
+        "title": "Calidad Aylesva",
+        "collection": "calzado-nino",
+        "product_limit": 12,
+        "animation_speed": 25,
+        "margin_top": 30,
+        "margin_bottom": 30
+      }
+    },
+    "simbibannercooler_FENjMP": {
+      "type": "simbibannercooler",
+      "name": "Simbi Banner Cooler",
+      "settings": {
+        "bg_color": "#006847",
+        "video_url": "",
+        "image_fallback": "shopify://shop_images/3dgifmaker09805.gif",
+        "title": "LA PÁGINA DE MÉXICO",
+        "text": "<p>Con el respaldo del e-commerce #1 de Latinoamérica</p>",
+        "logo_text": "Queremos hacer historia y crear la pagina de e-comerce numero 1 de mexico.",
+        "button_label": "EMPIEZA A COMPRAR",
+        "button_link": "shopify://collections"
+      }
+    },
+    "aylesva_cooler_carousel_pkgwPp": {
+      "type": "aylesva-cooler-carousel",
+      "name": "Cooler Carrusel",
+      "settings": {
+        "title": "Ofertas Destacadas",
+        "collection": "accesorios-nino",
+        "product_limit": 12,
+        "animation_speed": 25,
+        "margin_top": 30,
+        "margin_bottom": 30
+      }
+    },
+    "aylesva_cooler_carousel_bX8BRj": {
+      "type": "aylesva-cooler-carousel",
+      "name": "Cooler Carrusel",
+      "settings": {
+        "title": "Calidad Aylesva",
+        "collection": "chaquetas-y-abrigos-nino",
+        "product_limit": 12,
+        "animation_speed": 25,
+        "margin_top": 30,
+        "margin_bottom": 30
+      }
+    },
+    "aylesva_cuadro_colecciones_mRprVC": {
+      "type": "aylesva-cuadro-colecciones",
+      "blocks": {
+        "collection_item_QdQxcT": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "mujer",
+            "image": "shopify://shop_images/long-blonde-hair-at-carnival.jpg",
+            "title": "Mujer"
+          }
+        },
+        "collection_item_9rhceT": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "hombre",
+            "image": "shopify://shop_images/man-puts-his-hand-inside-his-jacket.jpg",
+            "title": ""
+          }
+        },
+        "collection_item_cwDkUD": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "nino",
+            "image": "shopify://shop_images/little-boy-ready-for-school-looking-up.jpg",
+            "title": ""
+          }
+        },
+        "collection_item_UtrhRa": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "nina",
+            "image": "shopify://shop_images/girl-framed-by-heart.jpg",
+            "title": ""
+          }
+        },
+        "collection_item_XkyLat": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "bebe",
+            "image": "shopify://shop_images/cute-baby-girl-with-pink-bow-headband.jpg",
+            "title": ""
+          }
+        },
+        "collection_item_QQExnN": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "artesanal",
+            "image": "shopify://shop_images/pomelli-image_cd766c49-22f0-4171-859e-c22f786b7b86.png",
+            "title": ""
+          }
+        },
+        "collection_item_TcMBRW": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "hogar",
+            "image": "shopify://shop_images/sunlight-creeps-through-a-bright-living-room.jpg",
+            "title": ""
+          }
+        },
+        "collection_item_NW3mfB": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "alimentos",
+            "image": "shopify://shop_images/hamburger-and-fries.jpg",
+            "title": ""
+          }
+        },
+        "collection_item_chTbpd": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "electronicos",
+            "image": "shopify://shop_images/mobile-phone-and-gimbal-in-hand.jpg",
+            "title": ""
+          }
+        },
+        "collection_item_feDNjg": {
+          "type": "collection_item",
+          "settings": {
+            "collection": "vehiculos",
+            "image": "shopify://shop_images/red-sports-car-wheel-close-up.jpg",
+            "title": ""
+          }
+        }
+      },
+      "block_order": [
+        "collection_item_QdQxcT",
+        "collection_item_9rhceT",
+        "collection_item_cwDkUD",
+        "collection_item_UtrhRa",
+        "collection_item_XkyLat",
+        "collection_item_QQExnN",
+        "collection_item_TcMBRW",
+        "collection_item_NW3mfB",
+        "collection_item_chTbpd",
+        "collection_item_feDNjg"
+      ],
+      "name": "Cuadro Colecciones LOL",
+      "settings": {
+        "title": "Categorías",
+        "view_all_text": "Mostrar todas las categorías",
+        "view_all_link": "",
+        "margin_top": 30,
+        "margin_bottom": 30
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "bubbles",
+    "gender_cards",
+    "main",
+    "aylesva_cooler_carousel_ramgxM",
+    "aylesva_cooler_carousel_jTa8jm",
+    "simbibannercooler_FENjMP",
+    "aylesva_cooler_carousel_pkgwPp",
+    "aylesva_cooler_carousel_bX8BRj",
+    "aylesva_cuadro_colecciones_mRprVC"
+  ]
+}

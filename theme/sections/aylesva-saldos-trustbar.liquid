@@ -1,0 +1,362 @@
+<!-- Google Fonts Import for high-end boutique aesthetics -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  .saldos-trustbar-section {
+    position: relative;
+    padding: {{ section.settings.padding_top_desktop }}px 0 {{ section.settings.padding_bottom_desktop }}px 0;
+    background: #fafafa;
+    font-family: 'Outfit', sans-serif;
+  }
+
+  .saldos-trustbar-container {
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 25px;
+  }
+
+  /* Main horizontal trust bar panel */
+  .saldos-trustbar-wrapper {
+    background: #ffffff;
+    border-top: 1px solid #eeeeee;
+    border-bottom: 1px solid #eeeeee;
+    padding: 24px 0;
+  }
+
+  /* Grid Layout (4 Columns on Desktop) */
+  .saldos-trustbar-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    align-items: center;
+  }
+
+  /* Individual Trust Item styling */
+  .trustbar-card-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding: 0 10px;
+    border-right: 1px solid #eeeeee;
+  }
+  .trustbar-card-item:last-child {
+    border-right: none;
+  }
+
+  .trustbar-card-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #C5A47E;
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+  }
+  .trustbar-card-icon svg {
+    width: 100%;
+    height: 100%;
+    stroke-width: 1.5;
+  }
+
+  .trustbar-card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .trustbar-card-title {
+    font-size: 11.5px;
+    font-weight: 700;
+    color: #1a1a1a;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    line-height: 1.25;
+    margin: 0 0 2px 0;
+  }
+
+  .trustbar-card-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    color: #888888;
+    line-height: 1.35;
+    margin: 0;
+  }
+
+  /* RESPONSIVE TABLETS & MOBILES BREAKPOINTS */
+  @media (max-width: 991px) {
+    .saldos-trustbar-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px 15px;
+    }
+    .trustbar-card-item {
+      justify-content: flex-start;
+      border-right: none;
+      padding: 0 15px;
+    }
+    .trustbar-card-item:nth-child(odd) {
+      border-right: 1px solid #eeeeee;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .saldos-trustbar-section {
+      padding: {{ section.settings.padding_top_mobile }}px 0 {{ section.settings.padding_bottom_mobile }}px 0;
+    }
+    .saldos-trustbar-container {
+      padding: 0; /* Remove container padding for full-bleed mobile swipe experience */
+    }
+    
+    /* Sleek Horizontal Swipe Carrusel for mobile, Zara/Nike inspired */
+    .saldos-trustbar-wrapper {
+      padding: 18px 0;
+      overflow-x: auto !important;
+      scrollbar-width: none !important; /* Hide scrollbars in Firefox */
+      -ms-overflow-style: none !important;  /* Hide scrollbars in IE/Edge */
+      -webkit-overflow-scrolling: touch !important;
+      width: 100vw !important;
+      border-left: none !important;
+      border-right: none !important;
+    }
+    .saldos-trustbar-wrapper::-webkit-scrollbar {
+      display: none !important; /* Hide scrollbars in Chrome/Safari */
+    }
+
+    .saldos-trustbar-grid {
+      display: flex !important;
+      flex-wrap: nowrap !important;
+      gap: 24px !important;
+      width: max-content !important;
+      padding: 0 20px !important;
+    }
+
+    .trustbar-card-item {
+      flex: 0 0 auto !important;
+      width: auto !important;
+      min-width: 210px;
+      padding: 0 20px 0 0 !important;
+      border-right: 1px solid #eeeeee !important;
+    }
+    .trustbar-card-item:last-child {
+      border-right: none !important;
+      padding-right: 0 !important;
+    }
+
+    .trustbar-card-icon {
+      width: 28px;
+      height: 28px;
+    }
+    .trustbar-card-title {
+      font-size: 11px;
+    }
+    .trustbar-card-subtitle {
+      font-size: 10.5px;
+    }
+  }
+</style>
+
+<div class="saldos-trustbar-section" id="SaldosTrustbarSection-{{ section.id }}">
+  <div class="saldos-trustbar-container">
+    <div class="saldos-trustbar-wrapper">
+      <div class="saldos-trustbar-grid">
+        
+        <!-- Trust Item 1: Pagos 100% Seguros -->
+        <div class="trustbar-card-item">
+          <div class="trustbar-card-icon">
+            <!-- Secure Shopping Bag SVG outline -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18"/>
+              <path d="M16 10a4 4 0 0 1-8 0"/>
+              <rect x="9" y="14" width="6" height="4" rx="1" stroke-width="1.2"/>
+            </svg>
+          </div>
+          <div class="trustbar-card-content">
+            <h4 class="trustbar-card-title">{{ section.settings.trust1_title }}</h4>
+            <p class="trustbar-card-subtitle">{{ section.settings.trust1_sub }}</p>
+          </div>
+        </div>
+
+        <!-- Trust Item 2: Envíos Rápidos -->
+        <div class="trustbar-card-item">
+          <div class="trustbar-card-icon">
+            <!-- Express Delivery Truck SVG outline -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="1" y="3" width="15" height="13"/>
+              <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+              <circle cx="5.5" cy="18.5" r="2.5"/>
+              <circle cx="18.5" cy="18.5" r="2.5"/>
+            </svg>
+          </div>
+          <div class="trustbar-card-content">
+            <h4 class="trustbar-card-title">{{ section.settings.trust2_title }}</h4>
+            <p class="trustbar-card-subtitle">{{ section.settings.trust2_sub }}</p>
+          </div>
+        </div>
+
+        <!-- Trust Item 3: Devoluciones Fáciles -->
+        <div class="trustbar-card-item">
+          <div class="trustbar-card-icon">
+            <!-- Target + circular return arrow SVG outline -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 2a10 10 0 0 1 7.54 16.59"/>
+              <path d="M12 22a10 10 0 0 1-7.54-16.59"/>
+              <polyline points="12 2 12 6 8 6"/>
+              <polyline points="12 22 12 18 16 18"/>
+            </svg>
+          </div>
+          <div class="trustbar-card-content">
+            <h4 class="trustbar-card-title">{{ section.settings.trust3_title }}</h4>
+            <p class="trustbar-card-subtitle">{{ section.settings.trust3_sub }}</p>
+          </div>
+        </div>
+
+        <!-- Trust Item 4: Atención 24/7 -->
+        <div class="trustbar-card-item">
+          <div class="trustbar-card-icon">
+            <!-- Customer Support Headphones SVG outline -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 18v-6a9 9 0 0 1 18 0v6"/>
+              <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>
+            </svg>
+          </div>
+          <div class="trustbar-card-content">
+            <h4 class="trustbar-card-title">{{ section.settings.trust4_title }}</h4>
+            <p class="trustbar-card-subtitle">{{ section.settings.trust4_sub }}</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Saldos Footer Trust Bar",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Elemento 1: Pagos Seguros"
+    },
+    {
+      "type": "text",
+      "id": "trust1_title",
+      "label": "Título",
+      "default": "PAGOS 100% SEGUROS"
+    },
+    {
+      "type": "text",
+      "id": "trust1_sub",
+      "label": "Subtítulo",
+      "default": "Compra con confianza"
+    },
+    {
+      "type": "header",
+      "content": "Elemento 2: Envíos Rápidos"
+    },
+    {
+      "type": "text",
+      "id": "trust2_title",
+      "label": "Título",
+      "default": "ENVÍOS RÁPIDOS"
+    },
+    {
+      "type": "text",
+      "id": "trust2_sub",
+      "label": "Subtítulo",
+      "default": "A todo México"
+    },
+    {
+      "type": "header",
+      "content": "Elemento 3: Devoluciones Fáciles"
+    },
+    {
+      "type": "text",
+      "id": "trust3_title",
+      "label": "Título",
+      "default": "DEVOLUCIONES FÁCILES"
+    },
+    {
+      "type": "text",
+      "id": "trust3_sub",
+      "label": "Subtítulo",
+      "default": "Hasta 30 días"
+    },
+    {
+      "type": "header",
+      "content": "Elemento 4: Atención 24/7"
+    },
+    {
+      "type": "text",
+      "id": "trust4_title",
+      "label": "Título",
+      "default": "ATENCIÓN 24/7"
+    },
+    {
+      "type": "text",
+      "id": "trust4_sub",
+      "label": "Subtítulo",
+      "default": "Siempre para apoyarte"
+    },
+    {
+      "type": "header",
+      "content": "Espaciado de Sección (Desktop)"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Padding Superior Desktop",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Padding Inferior Desktop",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 40,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Espaciado de Sección (Móvil)"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding Superior Móvil",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 15,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding Inferior Móvil",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 25,
+      "unit": "px"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Saldos Footer Trust Bar",
+      "category": "Store Information"
+    }
+  ]
+}
+{% endschema %}

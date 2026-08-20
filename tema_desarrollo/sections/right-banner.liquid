@@ -1,0 +1,107 @@
+<div class="ttcmsrightbanner">
+          <div class="ttbanner1 ttbanner">
+            <div class="feature-row__item ttbanner-img" {% if section.settings.banner2_bg != blank %}style="background: {{ section.settings.banner2_bg }}"{% endif %}>
+              <div class="banner_img">
+                <a>
+                  {% if section.settings.banner_image1 != blank %}
+                  <img loading="lazy" height="auto" width="300" src="{{  section.settings.banner_image1 | img_url: "300x" }}" alt="rightbanner-image" />
+                  {% else %}
+                  {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                  {% endif %}
+                </a>
+                  <div class="ttbanner-content">
+                <div class="ttbaaner-title" style="color:{{section.settings.title1_color}};">{{ section.settings.banner_title1 }}</div>
+                <div class="ttbaaner-subtitle" style="color:{{section.settings.subtitle1_color}};">{{ section.settings.banner_subtitle1 }}</div>
+                <div class="ttbaaner-button">
+              		<a href="{{section.settings.banner_link1 }}">{{section.settings.btn1_txt}}</a>
+            	</div>  
+              </div>
+              </div>
+            </div>
+          </div>
+</div>
+<style>.ttcmsrightbanner .ttbanner-content .ttbaaner-button > a{background:{{section.settings.btn1_color}};color:{{section.settings.btntxt1_color}};}.ttcmsrightbanner .ttbanner-content .ttbaaner-button > a:hover{background:{{section.settings.btnhover1_color}};color:{{section.settings.btntxthover1_color}};}</style>
+{% schema %}
+  {
+    "name": "right banner",
+    "class": "rightbanner col-sm-3 col-xs-3",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "banner_image1",
+        "label": "Image"
+      },
+        {
+        "type": "url",
+        "id": "banner_link1",
+        "label": "Banner link"
+      },
+		 {
+        "type": "color",
+        "id": "banner1_bg",
+        "label": "banner background color",
+		"default": "#f4f3f0"
+      },
+	 {
+        "type": "text",
+        "id": "banner_title1",
+        "label": "Banner Title",
+		"default": "jackets"
+      },
+	 {
+        "type": "text",
+        "id": "banner_subtitle1",
+        "label": "Banner Subtitle",
+		"default": "women"
+      },
+	{
+        "type": "color",
+        "id": "title1_color",
+        "label": "Title color",
+		"default": "#fff"
+      },
+ 		{
+        "type": "color",
+        "id": "subtitle1_color",
+        "label": "Subtitle color",
+		"default": "#fff"
+      },
+	{
+        "type": "text",
+        "id": "btn1_txt",
+        "label": "button text",
+		"default": "explore more"
+      },
+	{
+        "type": "color",
+        "id": "btn1_color",
+        "label": "button background color",
+		"default": "#FD694B"
+      },
+	{
+        "type": "color",
+        "id": "btntxt1_color",
+        "label": "button text color",
+		"default": "#fff"
+      },
+ 	{
+        "type": "color",
+        "id": "btnhover1_color",
+        "label": "button hover background color",
+		"default": "#000000"
+      },
+	{
+        "type": "color",
+        "id": "btntxthover1_color",
+        "label": "button hover text color",
+		"default": "#fff"
+      }
+    ],
+    "presets": [
+      {
+        "name": "right banner",
+        "category": "Image"
+      }
+    ]
+  }
+{% endschema %}

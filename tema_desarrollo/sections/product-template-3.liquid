@@ -1,0 +1,167 @@
+{% comment %} Rich snippets (itemscope, itemtype, etc.) for products are a theme requirement, and allow search engines to easily understand what the content is. For more information on these Scheme.org tags, visit: - http://schema.org/docs/gs.html {%
+endcomment %} {% comment %} Check if the product is sold out and set a variable to be used below. {% endcomment %} 
+{% assign sold_out = true %} {% if product.available %} {% assign sold_out = false %} {% endif %}
+{% for media in product.media %}
+{% if media.media_type == 'image' %}
+{% endif %}
+{% if media.media_type == 'external_video' %}
+{% assign external_video = media | external_video_tag %}
+{% endif %}
+{% if media.media_type == 'video' %}
+{% assign video = media | video_tag: class: 'media-video', image_size: "1024x", autoplay: true %}
+{% endif %}
+{% if media.media_type == 'model' %}
+{% assign model_view = media | model_viewer_tag %}
+{% endif %}
+{% endfor %}
+<div itemscope itemtype="http://schema.org/Product" id="ProductSection" class="{{ settings.product_layout }}" data-section-id="{{ section.id }}" data-section-type="product-template" data-zoom-enable="{{ section.settings.product_image_zoom_enable }}">
+  <div class="product-single {{ settings.thumb_position }} {{ settings.product_layout }}">
+    <div class="row">
+      <div class="product-single-wrap col-xs-12">
+      {% comment %} VISOR AMAZON PREMIUM (REDISEÑO TOTAL DESDE CERO) {% endcomment %}
+      {% render "ayl-amazon-product-viewer", product: product, section: section, sold_out: sold_out %}
+    </div>
+        <div class="product-single__description rte col-xs-12">
+          <div class="product_tab_wrapper col-xs-12">
+            <ul class="tabs nav nav-tabs">
+              <li class="active"><a data-toggle="tab" href="#tab-1">{{ 'products.product.description' | t }}</a></li>
+              {% if product.metafields.spr.reviews != "" %}
+              <li><a href="#tab-2" data-toggle="tab">{{ 'products.product.reviews' | t }}</a></li>
+              {% endif %}
+            </ul>
+            <div class="tab-container">
+              <div id="tab-1" class="tab-pane fade in active">
+                {{ product.description }}
+              </div>
+              {% if product.metafields.spr.reviews != "" %}
+              <div id="tab-2" class="tab-pane fade">
+                <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
+              </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        {% if section.settings.related_products_enable %} {% include 'related-products' %} {% endif %} {% include 'recently-viewed-product' %}
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span class="mdi mdi-close"></span></button>
+          <h4 class="modal-title">{{ section.settings.sizechart_lable }}</h4>
+        </div>
+        <div class="modal-body">
+          <div>{{ section.settings.sizechart_info }}</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+{% unless product == empty %}
+<script type="application/json" id="ProductJson-{{ section.id }}">{{ product | json }}</script>
+<script type="application/json" id="ModelJson-{{ section.id }}">{{ product.media | where: 'media_type', 'model' | json }}</script>
+{% endunless %} {% comment %} To take advantage of a callback on the select dropdown, add option_selection.js and customize the JS in timber.productPage as needed. Currently, timber.productPage does the following: - Hides your <select> tag from above
+- Breaks out the product variants into separate product options, if more than one exists
+- Generates a <select> tag for each product option
+- Enables/disables elements based on variant availability
+Callback notes:
+- Keep the callback available to the global scope (window.selectCallback) so that advanced
+addons can override it.
+* E.g. multiple currencies http://docs.shopify.com/manual/configuration/store-customization/currencies-and-translations/currencies/how-to-toggle-between-two-currencies
+{% endcomment %}
+{{ 'option_selection.js' | shopify_asset_url | script_tag }}
+{{ 'printThis.js' | asset_url | script_tag }}
+{{ 'threesixty.min.js' | asset_url | script_tag }}  
+<script>
+  {% for media in product.media %}
+  {% case media.media_type %}
+  {% when 'video' %}
+  jQuery('.video-source video').attr('controls',true);
+  {% endcase %}
+  {% endfor %}
+  $(document).ready(function() {
+    $('.print').on('click', function(e) {
+
+      $('.preview-print').printThis({
+        importStyle: $(this).hasClass('importStyle')
+      });
+    });
+  });
+</script>
+{% schema %}
+{
+"name": "Product page",
+"settings": [
+{
+"type": "checkbox",
+"id": "product_vendor_enable",
+"label": "Show product vendor",
+"default": true
+},
+{
+"type": "checkbox",
+"id": "product_image_zoom_enable",
+"label": "Enable image zoom",
+"default": true
+},
+{
+"type": "checkbox",
+"id": "related_products_enable",
+"label": "Show related products",
+"default": true
+},
+{
+"type": "checkbox",
+"id": "product_qty_enable",
+"label": "Show quantity selector",
+"default": true
+},
+{
+"type": "checkbox",
+"id": "share_enable",
+"label": "Enable product sharing",
+"default": true
+},
+{
+"type": "checkbox",
+"id": "enable_payment_button",
+"label": "Show dynamic checkout button",
+"default": true
+},
+{
+"type": "text",
+"id": "pro_img_widthheight",
+"default": "278x278",
+"label": "image width and height (widthxheight) format"
+},
+{
+"type": "header",
+"content": "size chart"
+},
+{
+"type": "checkbox",
+"id": "sizechart_enable",
+"label": "Show Size chart"
+},
+{
+"type": "text",
+"id": "sizechart_lable",
+"default": "size chart",
+"label": "size chart"
+},
+{
+"type": "textarea",
+"id": "sizechart_info",
+"label": "size guide information"
+}
+]
+}
+{% endschema %}

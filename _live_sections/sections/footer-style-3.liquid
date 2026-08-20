@@ -1,0 +1,519 @@
+
+
+<style>
+
+       @media (min-width: 1200px) {
+  .foote-logo img{
+  max-width: {{ section.settings.logo_width }}px;
+  }
+  }
+  </style>
+
+
+{% capture borderWidth %}{{ settings.border_width }}px{% endcapture %}
+{% capture colorBorder %}{{ settings.color_borders }}{% endcapture %}
+
+{% if settings.social_twitter_link != blank or settings.social_facebook_link != blank or settings.social_pinterest_link != blank or settings.social_instagram_link != blank or settings.social_tumblr_link != blank or settings.social_snapchat_link != blank or settings.social_youtube_link != blank or settings.social_vimeo_link != blank or settings.social_fancy_link != blank %}
+{% assign show_social_icons = true %}
+{% else %}
+{% assign show_social_icons = false %}
+{% endif %}
+
+{% assign flexifooter = 0 %}
+{% if show_social_icons %}
+{% assign flexifooter = flexifooter | plus: 1 %}
+{% endif %}
+
+
+
+{% if section.settings.shownews != blank %}
+<div data-section-id="{{ section.id }}"  data-section-type="newsletter-wrap" class="newsletter_{{ section.settings.newsletter_icon }} Newsletter-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="block_newsletter">
+        {% if section.settings.newsletter_title != blank %}
+          <div class="tt-content col-sm-6">
+            <h1 class="col-xs-12 news-title" style="color:{{ section.settings.newsletter_txt_color }};">
+              {{ section.settings.newsletter_title }}
+            </h1>
+          </div>
+          <div class="block_content col-sm-6">
+            {% render 'newsletter-form' %}
+          </div>
+          {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+
+<div class="footer_fixed_wrap"> 
+  <footer class="site-footer footer-model-3 text-left" data-section-id="{{ section.id }}" >
+    <div class="footer-wrap{% if template == 'index' %} {% endif %}">
+      <div class="container">
+        <div class="row">
+          {% comment %}
+          This checks which parts of the footer are turned on and adjusts the layout accordingly.
+          {% endcomment %}
+
+          <div class="text-left grid">
+
+                         {% if section.settings.about != blank %}
+            <div class="col-sm-4 footer-column footer-about-wrap">
+              <div class="logo-wallmart">
+                {% if section.settings.footer_logo != blank %}
+                <div class="foote-logo"><img loading="lazy" height="auto" width="220px" src="{{  section.settings.footer_logo | img_url: "220x" }}" alt="footer-logo" /></div>
+                {% endif %}
+                <div class="tt-desc">{{ section.settings.about_desc }}</div>
+                <div class="wallmart_logo_block">
+                  <ul class="wallmart-list">
+                    <li class="checked">
+                      <a href="{{ section.settings.url_wallmart_checked }}"><img loading="lazy" height="auto" width="54px" src="{{  section.settings.wallmart_checked | img_url: "54x" }}" alt="wallmart-image" /></a>
+                    </li>
+                    <li class="pro">
+                      <a href="{{ section.settings.url_wallmart_pro }}"><img loading="lazy" height="auto" width="54px" src="{{  section.settings.wallmart_pro | img_url: "54x" }}" alt="wallmart-image" /></a>
+                    </li>
+                    <li class="qualified">
+                      <a href="{{ section.settings.url_wallmart_qualified }}"><img loading="lazy" height="auto" width="54px" src="{{  section.settings.wallmart_qualified | img_url: "54x" }}" alt="wallmart-image" /></a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+                {% endif %}
+
+             {% if section.settings.linklist1 != blank %}
+            <div class="col-sm-2 footer-column  ">
+              <div class="footer-links {% if section.settings.foote-toggle != blank %} yescall {% endif %}">
+                <h5 class="widget-title">{{ section.settings.footer_col_title_1 }}</h5>
+                {% if linklists[section.settings.col_1_menu].links != blank %}
+                <ul class="inline-list nav-secondary">
+                  {% for link in linklists[section.settings.col_1_menu].links %}
+                  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                  {% endfor %}
+                </ul>
+                {% endif %}
+              </div>
+            </div>
+ {% endif %}
+  {% if section.settings.linklist2 != blank %}
+            <div class="col-sm-2 footer-column  ">
+              <div class="footer-links {% if section.settings.foote-toggle != blank %} yescall {% endif %}">
+                <h5 class="widget-title">{{ section.settings.footer_col_title_2 }}</h5>
+                {% if linklists[section.settings.col_2_menu].links != blank %}
+                <ul class="inline-list nav-secondary">
+                  {% for link in linklists[section.settings.col_2_menu].links %}
+                  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                  {% endfor %}
+                </ul>
+                {% endif %}
+              </div>
+            </div>
+{% endif %}
+
+              {% if section.settings.contactshow != blank %}
+            <div class="col-sm-4 footer-column  ">
+              <div class="contactus-footer {% if section.settings.foote-toggle != blank %} yescall {% endif %}">
+                <h5 class="widget-title">{{ section.settings.footer_contact_title }}</h5>
+
+                <ul class="list-unstyled" style="display: block;">
+          {% if section.settings.contact_address != blank %}
+            <li class="contact-detail float-start w-100">
+              <div class="address">	
+                <i class="mdi mdi-map-marker"></i><div class="contact-address">{{ section.settings.contact_address }}</div>
+              </div>
+            </li>
+            {% endif %}
+         {% if section.settings.contact_no != blank %}
+                      <a href="{{ section.settings.contact_no_url }}">
+                    <li class="contact"><i class="mdi mdi-phone"></i>	<span class="phone">{{ section.settings.contact_no }}</span></li>
+                  </a>
+                    {% endif %}
+          {% if section.settings.contact_email != blank %}
+          <li class="email"><i class="mdi mdi-email-outline"></i><span class="email-address"><a href="mailto:{{ section.settings.contact_email }}">{{ section.settings.contact_email }}</a></span></li>
+          {% endif %}
+        </ul>
+
+                {% if show_social_icons %}
+                <div class="follow-us-outer">
+                  {% if show_social_icons %}
+                  {% comment %}
+                  Loop through the social network links
+                  {% endcomment %}
+                  <ul class="inline-list social-icons">
+                    {% if settings.social_twitter_link != blank %}
+                    <li>
+                      <a class="icon-fallback-text" target="_blank" href="{{ settings.social_twitter_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Twitter' }}">
+                         <span class="mdi mdi-twitter" aria-hidden="true">
+           <svg class="icon icon-twitter" viewBox="0 0 20 20" style="width: 15px;height: 30px;align-items: center;justify-content: center;display: inline-block;">
+               <path fill="currentColor" fill-rule="evenodd" d="M7.273 2.8 10.8 7.822 15.218 2.8h1.768l-5.4 6.139 5.799 8.254h-4.658l-3.73-5.31-4.671 5.31H2.558l5.654-6.427L2.615 2.8zm6.242 13.125L5.07 4.109h1.405l8.446 11.816z" clip-rule="evenodd"></path>
+           </svg>
+         </span>
+                        <span class="fallback-text">Twitter</span>
+                      </a>
+                    </li>
+                    {% endif %}
+                    {% if settings.social_facebook_link != blank %}
+                    <li>
+                      <a class="icon-fallback-text" target="_blank" href="{{ settings.social_facebook_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Facebook' }}">
+                        <span class="mdi mdi-facebook" aria-hidden="true"></span>
+                        <span class="fallback-text">Facebook</span>
+                      </a>
+                    </li>
+                    {% endif %}
+                    {% if settings.social_pinterest_link != blank %}
+                    <li>
+                      <a class="icon-fallback-text" target="_blank" href="{{ settings.social_pinterest_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Pinterest' }}">
+                        <span class="mdi mdi-pinterest" aria-hidden="true"></span>
+                        <span class="fallback-text">Pinterest</span>
+                      </a>
+                    </li>
+                    {% endif %}
+                    {% if settings.social_instagram_link != blank %}
+                    <li>
+                      <a class="icon-fallback-text" target="_blank" href="{{ settings.social_instagram_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Instagram' }}">
+                        <span class="mdi mdi-instagram" aria-hidden="true"></span>
+                        <span class="fallback-text">Instagram</span>
+                      </a>
+                    </li>
+                    {% endif %}
+                    {% if settings.social_tumblr_link != blank %}
+                    <li>
+                      <a class="icon-fallback-text" target="_blank" href="{{ settings.social_tumblr_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Tumblr' }}">
+                        <span class="mdi mdi-tumblr" aria-hidden="true"></span>
+                        <span class="fallback-text">Tumblr</span>
+                      </a>
+                    </li>
+                    {% endif %}
+                    {% if settings.social_snapchat_link != blank %}
+                    <li>
+                      <a class="icon-fallback-text" target="_blank" href="{{ settings.social_snapchat_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Snapchat' }}">
+                        <span class="mdi mdi-snapchat" aria-hidden="true"></span>
+                        <span class="fallback-text">Snapchat</span>
+                      </a>
+                    </li>
+                    {% endif %}
+                    {% if settings.social_youtube_link != blank %}
+                    <li>
+                      <a class="icon-fallback-text" target="_blank" href="{{ settings.social_youtube_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'YouTube' }}">
+                        <span class="mdi mdi-youtube" aria-hidden="true"></span>
+                        <span class="fallback-text">YouTube</span>
+                      </a>
+                    </li>
+                    {% endif %}
+                    {% if settings.social_vimeo_link != blank %}
+                    <li>
+                      <a class="icon-fallback-text" target="_blank" href="{{ settings.social_vimeo_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Vimeo' }}">
+                        <span class="mdi mdi-vimeo" aria-hidden="true"></span>
+                        <span class="fallback-text">Vimeo</span>
+                      </a>
+                    </li>
+                    {% endif %}
+                    {% if settings.social_fancy_link != blank %}
+                    <li>
+                      <a class="icon-fallback-text" target="_blank" href="{{ settings.social_fancy_link }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Fancy' }}">
+                        <span class="mdi mdi-fancy" aria-hidden="true"></span>
+                        <span class="fallback-text">Fancy</span>
+                      </a>
+                    </li>
+                    {% endif %}
+                  </ul>
+                  {% endif %}
+                </div>
+                {% endif %}
+              </div>
+            </div>
+{% endif %}
+
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="copyright left">
+          <small>
+            {{ 'layout.footer.copyright' | t }} &copy; {{ 'now' | date: "%Y" }}</small> {{ shop.name | link_to: '/' }} | {{ powered_by_link }}<br>
+        </div>
+        {% unless shop.enabled_payment_types == empty %}
+        {% assign payment_icons_available = 'amazon_payments,american_express,apple_pay,bitcoin,cirrus,dankort,diners_club,discover,dogecoin,dwolla,forbrugsforeningen,interac,jcb,litecoin,maestro,master,paypal,visa' | split: ',' %}
+        <div class="payment col-sm-12">  
+          <ul class="inline-list payment-icons">
+            {%- for type in shop.enabled_payment_types -%}
+            <li>
+              {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
+            </li>
+            {%- endfor -%}
+          </ul>
+        </div>
+        {% endunless %}
+
+      </div>
+    </div>
+  </footer>
+</div>
+
+<style>{% if section.settings.newsletter_subtxt_color != blank %}.Newsletter-wrapper .block_newsletter .tt-content .tt-desc {color:  {{ section.settings.newsletter_subtxt_color }};}{% endif %}.Newsletter-wrapper .block_newsletter form .input-group .input-group-btn .btn{background: {{ section.settings.btn_bg_color }};color: {{ section.settings.btn_txt_color }}}.Newsletter-wrapper .block_newsletter form .input-group .input-group-btn .btn:hover{background: {{ section.settings.btn_hoverbg_color }};color: {{ section.settings.btn_hovertxt_color }}}.block_newsletter .news-title::before{color: {{section.settings.newsletter_icon_color}};}div#shopify-section-footer-style-3 .Newsletter-wrapper{background: {{ section.settings.newsletter_bg }};}@media(max-width:480px){.block_newsletter .icon-fallback-text .icon{color:{{section.settings.btn_txt_color}};}.block_newsletter .icon-fallback-text .icon:hover{color:{{section.settings.btn_hovertxt_color}};}}</style>
+
+{% schema %}
+{
+"name": "Footer Design 3",
+"settings": [
+
+
+          {
+"type": "checkbox",
+"id": "foote-toggle",
+"label": "Disable Toggle Mobile and Tab",
+"default": true
+},
+
+            {
+"type": "header",
+"content": "Newsletter"
+},
+
+                  {
+        "type": "checkbox",
+        "id": "shownews",
+        "label": "Display Newsletter",
+        "default": true
+      },
+
+
+  
+{
+"type": "color",
+"id": "newsletter_bg",
+"label": "Newsletter Background Color",
+"default": "#f5f5f5"
+},
+{
+"type": "color",
+"id": "newsletter_txt_color",
+"label": "Newsletter Text Color",
+"default": "#000000"
+},
+{
+"type": "color",
+"id": "btn_txt_color",
+"label": "Button Text Color",
+"default": "#ffffff"
+},
+{
+"type": "color",
+"id": "btn_bg_color",
+"label": "Button Background Color",
+"default": "#000000"
+},
+{
+"type": "color",
+"id": "btn_hovertxt_color",
+"label": "Button Hover Text Color",
+"default": "#000000"
+},
+{
+"type": "color",
+"id": "btn_hoverbg_color",
+"label": "Button Hover Background Color",
+"default": "#fdd413"
+},
+{
+"type": "color",
+"id": "newsletter_icon_color",
+"label": "Newsletter Icon Color",
+"default": "#fdd413"
+},
+{
+"type": "text",
+"id": "newsletter_title",
+"label": "Newsletter Title",
+"default": "Sign Up For Newsletter"
+}, 
+{
+"type": "text",
+"id": "newsletter_desc",
+"label": "Newsletter Description",
+"default": "Wants to get latest updates! sign up for free."
+},
+
+      {
+"type": "header",
+"content": "Store Information"
+},
+
+                {
+        "type": "checkbox",
+        "id": "about",
+        "label": "Display About",
+        "default": true
+      },
+  
+  
+{
+"type": "image_picker",
+"id": "footer_logo",
+"label": "Footer Logo"
+},	
+
+
+          {
+  "type": "range",
+  "id": "logo_width",
+  "min": 50,
+  "max": 1000,
+  "step": 10,
+  "default": 240,
+  "unit": "px",
+  "label": "Desktop Logo Maximum Width"
+},
+  
+{
+"type": "textarea",
+"id": "about_desc",
+"label": "About Text",
+"default": "Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type"
+},
+{
+"type": "image_picker",
+"id": "wallmart_checked",
+"label": "wallmart image1"
+},
+{
+"type": "url",
+"id": "url_wallmart_checked",
+"label": "wallmart image1 url"
+},
+{
+"type": "image_picker",
+"id": "wallmart_pro",
+"label": "wallmart image2"
+},
+{
+"type": "url",
+"id": "url_wallmart_pro",
+"label": "wallmart image2 url"
+},
+{
+"type": "image_picker",
+"id": "wallmart_qualified",
+"label": "wallmart image3"
+},
+{
+"type": "url",
+"id": "url_wallmart_qualified",
+"label": "wallmart image3 url"
+},
+
+        {
+"type": "header",
+"content": "Link List 1"
+},
+
+                {
+        "type": "checkbox",
+        "id": "linklist1",
+        "label": "Display Link List 1",
+        "default": true
+      },
+  
+{
+"type": "text",
+"id": "footer_col_title_1",
+"label": "Heading",
+"default": "Footer Title 1"
+},
+{
+"type": "link_list",
+"id": "col_1_menu",
+"label": "Footer Column 1"
+},
+
+          {
+"type": "header",
+"content": "Link List 2"
+},
+
+                {
+        "type": "checkbox",
+        "id": "linklist2",
+        "label": "Display Link List 2",
+        "default": true
+      },
+{
+"type": "text",
+"id": "footer_col_title_2",
+"label": "Heading",
+"default": "Footer Title 2"
+},	
+{
+"type": "link_list",
+"id": "col_2_menu",
+"label": "Footer Column 2"
+},
+
+   
+
+          {
+"type": "header",
+"content": "Store Information"
+},
+
+                {
+        "type": "checkbox",
+        "id": "contactshow",
+        "label": "Display Store Information",
+        "default": true
+      },
+  
+{
+"type": "text",
+"id": "footer_contact_title",
+"label": "Contact Title",
+"default": "store information"
+},			
+{
+"type": "richtext",
+"id": "contact_address",
+"label": "Address",
+"default": "<p>My Company, 42 Puffin street 12345 Puffinville France</p>"
+},		
+{
+"type": "text",
+"id": "contact_no",
+"label": "Contact Number",
+"default": "0123-456-789"
+},		
+{
+"type": "url",
+"id": "contact_no_url",
+"label": "Contact Number Link"
+},
+{
+"type": "text",
+"id": "contact_email",
+"label": "Email Address",
+"default": "sales@yourcompany.com"
+},
+{
+"type": "header",
+"content": "Services"
+},
+{
+"type": "color",
+"id": "title_color",
+"label": "Title Color",
+"default":"#000"
+},
+{
+"type": "color",
+"id": "title_hover_color",
+"label": "Title Hover Color",
+"default":"#000"
+}
+]
+}
+{% endschema %}

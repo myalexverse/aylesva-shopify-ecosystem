@@ -1,0 +1,19 @@
+{%- form 'localization', class: 'selectors-form', data-disclosure-form: '' -%}
+<div class="selectors-form__item">
+<div class="disclosure" data-disclosure-locale>
+  <a class="language_wrapper dropdown-toggle disclosure__toggle" href=""  aria-expanded="false" aria-controls="lang-list" aria-describedby="lang-heading" data-disclosure-toggle>
+    <span class="language_code">{{ form.current_locale.endonym_name }}</span><span class="mdi mdi-chevron-down"></span><span class="mdi mdi-chevron-up"></span>
+  </a>
+  <ul id="lang-list" class="disclosure-list language flag-dropdown-menu" data-disclosure-list>
+    {% for locale in form.available_locales %}
+    <li class="disclosure-list__item {% if locale.iso_code == form.current_locale.iso_code %}disclosure-list__item--current{% endif %}">
+      <a class="disclosure-list__option" href="/{{ locale.iso_code }}" lang="{{ locale.iso_code }}" {% if locale.iso_code == form.current_locale.iso_code %}aria-current="true"{% endif %} data-value="{{ locale.iso_code }}" data-disclosure-option>
+        {{ locale.endonym_name }}
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+  <input type="hidden" name="locale_code" id="LocaleSelector" value="{{ form.current_locale.iso_code }}" data-disclosure-input/>
+</div>
+</div>
+{%- endform -%}

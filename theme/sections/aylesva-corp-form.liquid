@@ -1,0 +1,124 @@
+{% comment %}
+  Aylesva · Contenedor de formulario (embed GoHighLevel o formulario nativo con WhatsApp).
+{% endcomment %}
+<section class="ay" id="{{ section.settings.anchor }}" style="background:{{ section.settings.bg }};border-top:var(--ay-hairline);border-bottom:var(--ay-hairline)">
+  <div class="ay-wrap" style="padding-top:80px;padding-bottom:80px">
+    <div style="display:grid;grid-template-columns:1fr 1.05fr;border:var(--ay-hairline);background:#fff;border-radius:var(--ay-radius);overflow:hidden" class="ay-form-shell">
+      <div style="padding:60px 48px;background:var(--ay-stone);display:flex;flex-direction:column;justify-content:space-between;gap:36px">
+        <div>
+          {% if section.settings.eyebrow != blank %}<p class="ay-eyebrow">{{ section.settings.eyebrow }}</p>{% endif %}
+          <h2 class="ay-h2" style="font-size:36px;margin-bottom:16px">{{ section.settings.title }}</h2>
+          <p class="ay-lead" style="font-size:15.5px;max-width:44ch;color:rgba(15,23,42,.7)">{{ section.settings.text }}</p>
+        </div>
+
+        {% if section.blocks.size > 0 %}
+          <ul style="list-style:none;margin:0;padding:0;display:grid;gap:14px">
+            {% for block in section.blocks %}
+              <li style="display:flex;gap:12px;align-items:flex-start;font-size:13.5px;line-height:1.5;color:rgba(15,23,42,.75)" {{ block.shopify_attributes }}>
+                <span style="width:6px;height:6px;flex:0 0 6px;margin-top:7px;background:var(--ay-gold);border-radius:50%"></span>{{ block.settings.text }}
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+
+        <div style="border-top:var(--ay-hairline);padding-top:20px">
+          <a href="https://wa.me/524774136612?text=Hola%20Grupo%20Aylesva,%20solicito%20asesoría%20sobre%20sus%20servicios." target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:10px;background:rgba(37,211,102,0.12);border:1px solid rgba(37,211,102,0.35);color:#128c7e;padding:10px 18px;border-radius:6px;font-family:var(--ay-font-body);font-size:13px;font-weight:600;text-decoration:none;transition:all .2s ease">
+            <svg style="width:18px;height:18px;fill:#25D366" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824z"/></svg>
+            Atención Inmediata por WhatsApp
+          </a>
+          {% if section.settings.legal != blank %}
+            <p class="ay-legal" style="margin-top:14px;font-size:11.5px;color:rgba(15,23,42,.5)">{{ section.settings.legal }}</p>
+          {% endif %}
+        </div>
+      </div>
+
+      <div style="padding:48px 48px;border-left:var(--ay-hairline);display:flex;flex-direction:column;justify-content:center" class="ay-form-embed">
+        {% if section.settings.form_id != blank %}
+          <iframe
+            src="https://api.leadconnectorhq.com/widget/form/{{ section.settings.form_id }}"
+            style="width:100%;height:{{ section.settings.form_height }}px;border:none;display:block"
+            id="ghl-{{ section.settings.form_id }}"
+            title="{{ section.settings.title | escape }}"
+            loading="lazy"></iframe>
+          <script src="https://link.msgsndr.com/js/form_embed.js" defer></script>
+        {% else %}
+          {% form 'contact', id: 'aylesva-native-contact-form' %}
+            {% if form.posted_successfully? %}
+              <div style="padding:16px;background:rgba(37,211,102,0.15);border:1px solid #25D366;border-radius:6px;color:#020617;font-weight:600;margin-bottom:20px;font-size:14px">
+                ✓ Gracias por contactar a Grupo Aylesva. Un asesor se comunicará contigo a la brevedad.
+              </div>
+            {% endif %}
+            {{ form.errors | default_errors }}
+            <div style="display:grid;gap:16px">
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px" class="ay-form-duo">
+                <div>
+                  <label style="display:block;font-family:var(--ay-font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(15,23,42,.6);margin-bottom:6px">Nombre completo *</label>
+                  <input type="text" name="contact[name]" required placeholder="Ej. Carlos Mendoza" style="width:100%;padding:11px 14px;border:1px solid rgba(15,23,42,.2);border-radius:4px;font-family:var(--ay-font-body);font-size:13.5px;outline:none;background:#fff">
+                </div>
+                <div>
+                  <label style="display:block;font-family:var(--ay-font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(15,23,42,.6);margin-bottom:6px">Teléfono / WhatsApp *</label>
+                  <input type="tel" name="contact[phone]" required placeholder="+52 477 000 0000" style="width:100%;padding:11px 14px;border:1px solid rgba(15,23,42,.2);border-radius:4px;font-family:var(--ay-font-body);font-size:13.5px;outline:none;background:#fff">
+                </div>
+              </div>
+              <div>
+                <label style="display:block;font-family:var(--ay-font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(15,23,42,.6);margin-bottom:6px">Correo electrónico *</label>
+                <input type="email" name="contact[email]" required placeholder="carlos@empresa.com" style="width:100%;padding:11px 14px;border:1px solid rgba(15,23,42,.2);border-radius:4px;font-family:var(--ay-font-body);font-size:13.5px;outline:none;background:#fff">
+              </div>
+              <div>
+                <label style="display:block;font-family:var(--ay-font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(15,23,42,.6);margin-bottom:6px">Servicio de interés</label>
+                <select name="contact[servicio]" style="width:100%;padding:11px 14px;border:1px solid rgba(15,23,42,.2);border-radius:4px;font-family:var(--ay-font-body);font-size:13.5px;outline:none;background:#fff">
+                  <option value="General">Asesoría Integral General</option>
+                  <option value="Financiamiento / Aylesva Recursos">Financiamiento PYME · Aylesva Recursos</option>
+                  <option value="Importaciones / Aylesva Direct">Importación desde China · Aylesva Direct</option>
+                  <option value="Inversión / Global Estates">Inversión Inmobiliaria · Global Estates</option>
+                  <option value="E-commerce / Lanza tu Marca">Lanza tu Tienda Online · E-commerce</option>
+                  <option value="Salud / Aylesva Care">Salud y Telemedicina · Aylesva Care</option>
+                  <option value="Previsión / Mi Última Voluntad">Protección y Repatriación · Mi Última Voluntad</option>
+                </select>
+              </div>
+              <div>
+                <label style="display:block;font-family:var(--ay-font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(15,23,42,.6);margin-bottom:6px">Mensaje o detalles de tu proyecto</label>
+                <textarea name="contact[body]" rows="3" placeholder="Cuéntanos brevemente qué necesitas..." style="width:100%;padding:11px 14px;border:1px solid rgba(15,23,42,.2);border-radius:4px;font-family:var(--ay-font-body);font-size:13.5px;outline:none;background:#fff"></textarea>
+              </div>
+              <button type="submit" class="ay-btn ay-btn--primary" style="width:100%;justify-content:center;padding:13px">Enviar solicitud de asesoría &rarr;</button>
+            </div>
+          {% endform %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .ay-form-embed iframe{background:transparent}
+  @media (max-width:1024px){
+    .ay-form-shell{grid-template-columns:1fr !important}
+    .ay-form-embed{border-left:none !important;border-top:var(--ay-hairline) !important;padding:36px 24px !important}
+    .ay-form-shell > div:first-child{padding:36px 24px !important}
+  }
+  @media (max-width:640px){
+    .ay-form-duo{grid-template-columns:1fr !important}
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Aylesva · Formulario",
+  "settings": [
+    { "type": "text", "id": "anchor", "label": "Ancla (id)", "default": "contacto" },
+    { "type": "color", "id": "bg", "label": "Fondo", "default": "#FFFFFF" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Contacto" },
+    { "type": "textarea", "id": "title", "label": "Titular", "default": "Inicia la conversación con un asesor" },
+    { "type": "textarea", "id": "text", "label": "Texto descriptivo", "default": "Compártenos tus datos y un especialista de la rama correspondiente te contactará en menos de 24 horas hábiles." },
+    { "type": "text", "id": "form_id", "label": "ID del formulario de GoHighLevel (dejar vacío para formulario nativo)" },
+    { "type": "range", "id": "form_height", "label": "Altura del formulario (px)", "min": 400, "max": 900, "step": 20, "default": 560 },
+    { "type": "textarea", "id": "legal", "label": "Aviso de privacidad", "default": "Tus datos están protegidos por el Aviso de Privacidad de Grupo Aylesva y no se comparten con terceros." }
+  ],
+  "blocks": [
+    { "type": "point", "name": "Garantía", "settings": [
+      { "type": "text", "id": "text", "label": "Texto de garantía" }
+    ]}
+  ],
+  "presets": [{ "name": "Aylesva · Formulario" }]
+}
+{% endschema %}

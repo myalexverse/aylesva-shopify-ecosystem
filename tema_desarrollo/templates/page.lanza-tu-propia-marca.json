@@ -1,0 +1,322 @@
+{
+  "sections": {
+    "hero": {
+      "type": "aylesva-corp-hero",
+      "settings": {
+        "eyebrow": "Comercio Electrónico Llave en Mano",
+        "overlay": 84,
+        "focal": "center",
+        "image": "ay-lanza-hero-entrepreneur.jpg",
+        "title": "Lanza tu tienda en línea con nuestro catálogo y logística",
+        "subtitle": "Te entregamos una tienda profesional en Shopify con más de 1,500 productos listos. Sin inventario, sin logística — tú solo te enfocas en vender.",
+        "cta1_label": "Quiero mi tienda en línea",
+        "cta1_link": "#contacto",
+        "cta2_label": "Ver tiendas lanzadas",
+        "cta2_link": "#marcas"
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ],
+      "blocks": {
+        "s1": {
+          "type": "stat",
+          "settings": {
+            "value": "23",
+            "label": "Tiendas lanzadas"
+          }
+        },
+        "s2": {
+          "type": "stat",
+          "settings": {
+            "value": "+1,500",
+            "label": "Productos disponibles"
+          }
+        },
+        "s3": {
+          "type": "stat",
+          "settings": {
+            "value": "100%",
+            "label": "Envíos gestionados"
+          }
+        },
+        "s4": {
+          "type": "stat",
+          "settings": {
+            "value": "24 hrs",
+            "label": "Tiempo de respuesta"
+          }
+        }
+      }
+    },
+    "beneficios": {
+      "type": "aylesva-corp-features",
+      "settings": {
+        "bg": "#FFFFFF",
+        "eyebrow": "Beneficios",
+        "title": "Todo lo técnico, resuelto"
+      },
+      "block_order": [
+        "f1",
+        "f2",
+        "f3",
+        "f4"
+      ],
+      "blocks": {
+        "f1": {
+          "type": "feature",
+          "settings": {
+            "icon": "<path d=\"M4 12a8 8 0 0 1 13.5-5.8L20 8\"/><path d=\"M20 12a8 8 0 0 1-13.5 5.8L4 16\"/><path d=\"M20 4v4h-4M4 20v-4h4\"/>",
+            "title": "Sincronización automática",
+            "text": "Más de 1,500 productos con inventario, variantes y precios siempre actualizados."
+          }
+        },
+        "f2": {
+          "type": "feature",
+          "settings": {
+            "icon": "<rect x=\"2\" y=\"8\" width=\"13\" height=\"9\"/><path d=\"M15 11h4l3 3v3h-7z\"/><circle cx=\"6\" cy=\"19\" r=\"2\"/><circle cx=\"18\" cy=\"19\" r=\"2\"/>",
+            "title": "Envío directo desde almacén",
+            "text": "Cada pedido se envía directamente desde nuestro centro logístico a la puerta de tu cliente."
+          }
+        },
+        "f3": {
+          "type": "feature",
+          "settings": {
+            "icon": "<rect x=\"3\" y=\"4\" width=\"18\" height=\"5\"/><path d=\"M5 9v12h14V9\"/><path d=\"M9 13h6\"/>",
+            "title": "100% Nativo en Shopify",
+            "text": "Tu tienda funciona sobre la infraestructura líder mundial de Shopify, lista para cobrar."
+          }
+        },
+        "f4": {
+          "type": "feature",
+          "settings": {
+            "icon": "<path d=\"M4 20V8M10 20V4M16 20v-9M22 20h-20\"/>",
+            "title": "Crece a tu ritmo",
+            "text": "Agrega más productos y amplía categorías a tu catálogo conforme tu negocio escale."
+          }
+        }
+      }
+    },
+    "portafolio": {
+      "type": "aylesva-corp-portfolio",
+      "settings": {
+        "bg": "#FAFAF8",
+        "eyebrow": "Resultados Reales",
+        "title": "Tiendas lanzadas con Aylesva.",
+        "subtitle": "Sitios reales, activos hoy.",
+        "desc": "Cada tarjeta es una tienda real construida y lanzada por nuestro equipo. Haz clic en cualquiera para conocer el proyecto."
+      }
+    },
+    "proceso": {
+      "type": "aylesva-corp-cards",
+      "settings": {
+        "bg": "#FFFFFF",
+        "columns": 3,
+        "eyebrow": "Cómo funciona",
+        "title": "Tres pasos para estar vendiendo"
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3"
+      ],
+      "blocks": {
+        "c1": {
+          "type": "card",
+          "settings": {
+            "image": "ay-lanza-step-select.jpg",
+            "tag": "Paso 01",
+            "eyebrow": "Catálogo",
+            "title": "Elige tus productos",
+            "text": "Selecciona de nuestro catálogo de +1,500 productos de alta demanda y calidad artesanal los que quieres vender bajo tu marca.",
+            "cta_label": "",
+            "price": ""
+          }
+        },
+        "c2": {
+          "type": "card",
+          "settings": {
+            "image": "ay-lanza-step-launch.jpg",
+            "tag": "Paso 02",
+            "eyebrow": "Diseño & Tienda",
+            "title": "Lanzamos tu tienda",
+            "text": "Diseñamos y construimos tu tienda profesional en Shopify, personalizada con tu identidad visual y lista para recibir clientes.",
+            "cta_label": "",
+            "price": ""
+          }
+        },
+        "c3": {
+          "type": "card",
+          "settings": {
+            "image": "ay-lanza-step-shipping.jpg",
+            "tag": "Paso 03",
+            "eyebrow": "Logística",
+            "title": "Tú vendes, nosotros enviamos",
+            "text": "Cada pedido se empaca y envía desde nuestro almacén directo a la puerta de tu cliente con código de rastreo automatizado.",
+            "cta_label": "",
+            "price": ""
+          }
+        }
+      }
+    },
+    "servicios": {
+      "type": "aylesva-corp-cards",
+      "settings": {
+        "bg": "#FAFAF8",
+        "columns": 2,
+        "eyebrow": "Servicios",
+        "title": "Dos formas de empezar"
+      },
+      "block_order": [
+        "c1",
+        "c2"
+      ],
+      "blocks": {
+        "c1": {
+          "type": "card",
+          "settings": {
+            "image": "ay-lanza-service-web.jpg",
+            "tag": "Popular",
+            "eyebrow": "Modalidad 01",
+            "title": "Creamos tu Página Web",
+            "text": "Diseñamos y desarrollamos tu tienda en línea desde cero — profesional, optimizada y lista para vender. Desde la identidad visual hasta la última línea de código.",
+            "bullets": "Diseño personalizado en Shopify\nCatálogo de +1,500 productos integrado\nOptimizado para móviles y pasarelas de pago\nCapacitación para operar tu tienda",
+            "cta_label": "Solicitar mi tienda",
+            "cta_link": "#contacto",
+            "whatsapp_label": "WhatsApp",
+            "whatsapp_url": "https:\/\/api.whatsapp.com\/send\/?phone=524774136612&text=Hola%2C+me+interesa+crear+mi+p%C3%A1gina+web+con+Aylesva&type=phone_number&app_absent=0",
+            "price": ""
+          }
+        },
+        "c2": {
+          "type": "card",
+          "settings": {
+            "image": "ay-lanza-service-marketplace.jpg",
+            "tag": "Multicanal",
+            "eyebrow": "Modalidad 02",
+            "title": "Conecta tus Productos a Aylesva",
+            "text": "¿Ya fabricas o tienes productos propios? Creamos tu página web y conectamos tu catálogo al marketplace de aylesva.mx para que llegues a miles de clientes nuevos.",
+            "bullets": "Tu tienda propia + presencia en aylesva.mx\nSincronización automatizada de inventario\nMayor alcance y volumen de ventas\nAcceso a red logística Aylesva",
+            "cta_label": "Conectar mi catálogo",
+            "cta_link": "#contacto",
+            "whatsapp_label": "WhatsApp",
+            "whatsapp_url": "https:\/\/api.whatsapp.com\/send\/?phone=524774136612&text=Hola%2C+tengo+mis+propios+productos+y+quiero+conectarlos+a+Aylesva&type=phone_number&app_absent=0",
+            "price": ""
+          }
+        }
+      }
+    },
+    "contacto": {
+      "type": "aylesva-corp-form",
+      "settings": {
+        "anchor": "contacto",
+        "bg": "#FFFFFF",
+        "eyebrow": "Empieza hoy",
+        "title": "Cuéntanos qué tienda quieres lanzar",
+        "text": "Un especialista te contacta para definir catálogo, diseño y tiempos de lanzamiento.",
+        "form_id": "ENbMAneKkZAPTdITGH2n",
+        "form_height": 720,
+        "whatsapp_url": "https:\/\/api.whatsapp.com\/send\/?phone=524774136612&text=Hola%2C+me+gustar%C3%ADa+informaci%C3%B3n+para+lanzar+mi+tienda+en+l%C3%ADnea+con+Aylesva&type=phone_number&app_absent=0",
+        "whatsapp_label": "Hablar con un asesor por WhatsApp"
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3"
+      ],
+      "blocks": {
+        "p1": {
+          "type": "point",
+          "settings": {
+            "text": "Sin inversión forzada en inventario"
+          }
+        },
+        "p2": {
+          "type": "point",
+          "settings": {
+            "text": "23 tiendas ya lanzadas con este modelo"
+          }
+        },
+        "p3": {
+          "type": "point",
+          "settings": {
+            "text": "Logística, empaque y rastreo incluidos"
+          }
+        }
+      }
+    },
+    "legal_disclaimer": {
+      "type": "aylesva-corp-legal",
+      "settings": {
+        "bg": "#FAFAF8",
+        "alignment": "left",
+        "title": "Incubación de Marca, Incorporación de Vendedores y Divulgaciones de la Plataforma",
+        "text": "1. Estado de la Plataforma y Contratista Independiente:\nAylesva (\"Aylesva\"), operando a través de aylesva.com, proporciona servicios de tecnología, administración, facilitación de la cadena de suministro y habilitación de marcas. La participación en los programas de lanzamiento de marca o incorporación de vendedores de Aylesva no crea una sociedad legal, empresa conjunta, agencia, franquicia, relación laboral ni fiduciaria expresa o implícita entre Aylesva y ningún vendedor, propietario de marca o solicitante. Los vendedores operan como empresas comerciales completamente independientes. Aylesva no es Comerciante de Registro (Merchant of Record), copropietario ni garante de marcas de terceros lanzadas a través de la plataforma.\n\n2. Descargo de Responsabilidad Absoluto sobre Ganancias y Desempeño (Aviso FTC):\nCualquier caso de éxito, ilustraciones de ingresos, proyecciones de márgenes o métricas de crecimiento mostradas en aylesva.com son ilustraciones analíticas hipotéticas con fines educativos y contextuales. Aylesva no ofrece garantías con respecto a futuras ventas, márgenes, éxito operativo o viabilidad de ninguna marca lanzada. Los resultados comerciales dependen enteramente de la selección de productos, precios, demanda, capital y ejecución del vendedor. Este programa no constituye una oportunidad de negocio garantizada, venta de franquicia ni vehículo de ingresos pasivos.\n\n3. Propiedad Intelectual y Garantía de No Infracción:\nLos solicitantes y vendedores asumen la responsabilidad legal exclusiva de verificar que sus marcas, logotipos, diseños y materiales no infrinjan marcas comerciales, derechos de autor o patentes de terceros. Al enviar activos a aylesva.com, el vendedor garantiza que posee la propiedad legal total o licencias autorizadas para toda la propiedad intelectual enviada. El envío de ideas o conceptos a Aylesva no crea una obligación de confidencialidad más allá de la revisión estándar, ni restringe a Aylesva de apoyar a otros clientes en categorías similares.\n\n4. Cumplimiento Regulatorio y Limitación de Responsabilidad de Producto:\nLos vendedores que lanzan marcas son única y exclusivamente responsables de garantizar que todos los productos cumplan con las leyes aplicables (ej. reglas de etiquetado, CPSC, FDA y regulaciones aduaneras). AYLESVA RENUNCIA EXPRESAMENTE A TODA RESPONSABILIDAD ESTRICTA POR PRODUCTOS, GARANTÍA DE COMERCIABILIDAD E IDONEIDAD PARA UN PROPÓSITO PARTICULAR EN RELACIÓN CON LOS PRODUCTOS DE LA MARCA DEL VENDEDOR. Los vendedores acuerdan defender, indemnizar y eximir de responsabilidad a Aylesva de cualquier reclamo de consumidores, defectos de productos, multas o acciones de infracción derivadas de sus operaciones.\n\n5. No Dependencia Comercial:\nAl postularse o utilizar los servicios de Aylesva, el solicitante declara que: (i) participa en este acuerdo basándose únicamente en su propia evaluación legal e independiente; (ii) no ha dependido de representaciones, reclamos de ganancias ni promesas de marketing de Aylesva; y (iii) Aylesva no asume ninguna responsabilidad por el desempeño de la marca, incumplimientos de proveedores o pérdidas de mercado."
+      }
+    },
+    "ramas": {
+      "type": "aylesva-corp-branches",
+      "settings": {
+        "bg": "#FFFFFF",
+        "eyebrow": "Ecosistema Aylesva",
+        "title": "El mismo respaldo, en cada una de nuestras ramas"
+      },
+      "block_order": [
+        "br1",
+        "br2",
+        "br3",
+        "br4"
+      ],
+      "blocks": {
+        "br1": {
+          "type": "branch",
+          "settings": {
+            "title": "Global Estates",
+            "text": "Bienes raíces y desarrollos de lujo.",
+            "icon": "<path d=\"M3 21V9l6-4 6 4v12\"/><path d=\"M15 21V13h6v8\"/><path d=\"M7 13h2M7 17h2\"/>",
+            "link": "/pages/globalestates"
+          }
+        },
+        "br2": {
+          "type": "branch",
+          "settings": {
+            "title": "Aylesva Recursos",
+            "text": "Intermediación financiera para tu negocio.",
+            "icon": "<rect x=\"3\" y=\"10\" width=\"18\" height=\"11\"/><path d=\"M3 10 12 4l9 6\"/><path d=\"M9 21v-6h6v6\"/>",
+            "link": "/pages/aylesva-recursos"
+          }
+        },
+        "br3": {
+          "type": "branch",
+          "settings": {
+            "title": "Aylesva Direct",
+            "text": "Importación y logística desde China.",
+            "icon": "<rect x=\"2\" y=\"8\" width=\"13\" height=\"9\"/><path d=\"M15 11h4l3 3v3h-7z\"/><circle cx=\"6\" cy=\"19\" r=\"2\"/><circle cx=\"18\" cy=\"19\" r=\"2\"/>",
+            "link": "/pages/aylesva-direct"
+          }
+        },
+        "br4": {
+          "type": "branch",
+          "settings": {
+            "title": "Aylesva Care",
+            "text": "Beneficios de salud, seguros y telemedicina.",
+            "icon": "<path d=\"M12 20 4 12.5A4.6 4.6 0 0 1 12 7a4.6 4.6 0 0 1 8 5.5z\"/><path d=\"M8 13h2l1.5-3 2 5 1.5-2h2\"/>",
+            "link": "/pages/aylesva-care"
+          }
+        }
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "beneficios",
+    "portafolio",
+    "proceso",
+    "servicios",
+    "contacto",
+    "legal_disclaimer",
+    "ramas"
+  ]
+}

@@ -1,0 +1,205 @@
+<section id="shopify-section-{{ section.id }}" class="ayl-cta-section">
+  <div class="ayl-cta-container">
+    {% if section.settings.eyebrow != blank %}
+      <div class="ayl-cta-eyebrow">{{ section.settings.eyebrow | escape }}</div>
+    {% endif %}
+    
+    {% if section.settings.headline != blank %}
+      <h2 class="ayl-cta-headline">{{ section.settings.headline | escape }}</h2>
+    {% endif %}
+    
+    {% if section.settings.subtitle != blank %}
+      <p class="ayl-cta-subtitle">{{ section.settings.subtitle | escape }}</p>
+    {% endif %}
+    
+    <div class="ayl-cta-buttons">
+      {% if section.settings.primary_cta_text != blank %}
+        <a href="{{ section.settings.primary_cta_link | default: '#' }}" class="ayl-cta-primary">
+          {{ section.settings.primary_cta_text | escape }}
+        </a>
+      {% endif %}
+      
+      {% if section.settings.secondary_cta_text != blank %}
+        <a href="{{ section.settings.secondary_cta_link | default: '#' }}" class="ayl-cta-secondary">
+          {{ section.settings.secondary_cta_text | escape }}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<style>
+  #shopify-section-{{ section.id }} {
+    --ayl-dark: #0C0C0F;
+    --ayl-gold: #C5A47E;
+    background-color: var(--ayl-dark);
+    position: relative;
+    padding: 120px 0;
+    overflow: hidden;
+  }
+  
+  #shopify-section-{{ section.id }}::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 80%;
+    background: radial-gradient(ellipse, rgba(197, 164, 126, 0.15) 0%, rgba(12, 12, 15, 0) 70%);
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  #shopify-section-{{ section.id }} .ayl-cta-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  #shopify-section-{{ section.id }} .ayl-cta-eyebrow {
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ayl-gold);
+    margin-bottom: 1.5rem;
+  }
+  
+  #shopify-section-{{ section.id }} .ayl-cta-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: 44px;
+    color: #FFFFFF;
+    margin: 0 0 1.5rem 0;
+    line-height: 1.2;
+    font-weight: 600;
+  }
+  
+  #shopify-section-{{ section.id }} .ayl-cta-subtitle {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    color: #a1a1a6;
+    margin: 0 0 3rem 0;
+    line-height: 1.6;
+    max-width: 600px;
+  }
+  
+  #shopify-section-{{ section.id }} .ayl-cta-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  #shopify-section-{{ section.id }} .ayl-cta-primary {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--ayl-dark);
+    background-color: #FFFFFF;
+    padding: 1rem 2rem;
+    border-radius: 9999px;
+    text-decoration: none;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  #shopify-section-{{ section.id }} .ayl-cta-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  }
+  
+  #shopify-section-{{ section.id }} .ayl-cta-secondary {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #FFFFFF;
+    background-color: transparent;
+    padding: 1rem 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 9999px;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  #shopify-section-{{ section.id }} .ayl-cta-secondary:hover {
+    border-color: #FFFFFF;
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  @media (max-width: 768px) {
+    #shopify-section-{{ section.id }} .ayl-cta-headline {
+      font-size: 32px;
+    }
+    #shopify-section-{{ section.id }} .ayl-cta-subtitle {
+      font-size: 16px;
+    }
+    #shopify-section-{{ section.id }} .ayl-cta-buttons {
+      flex-direction: column;
+      width: 100%;
+    }
+    #shopify-section-{{ section.id }} .ayl-cta-primary,
+    #shopify-section-{{ section.id }} .ayl-cta-secondary {
+      width: 100%;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Ecosystem CTA",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Text",
+      "default": "COMIENZA HOY"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "¿Listo para impulsar tu negocio?"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Nuestro equipo de expertos está listo para ayudarte a dar el siguiente paso."
+    },
+    {
+      "type": "text",
+      "id": "primary_cta_text",
+      "label": "Primary CTA Text",
+      "default": "Comenzar ahora →"
+    },
+    {
+      "type": "url",
+      "id": "primary_cta_link",
+      "label": "Primary CTA Link"
+    },
+    {
+      "type": "text",
+      "id": "secondary_cta_text",
+      "label": "Secondary CTA Text",
+      "default": "Habla con un asesor"
+    },
+    {
+      "type": "url",
+      "id": "secondary_cta_link",
+      "label": "Secondary CTA Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ecosystem CTA"
+    }
+  ]
+}
+{% endschema %}

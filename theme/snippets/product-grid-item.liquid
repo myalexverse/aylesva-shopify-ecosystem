@@ -1,0 +1,256 @@
+<!-- snippets/product-grid-item.liquid -->
+{% comment %}
+
+This snippet is used to showcase each product during the loop,
+'for product in collection.products' in collection.liquid.
+
+A liquid variable (grid_item_width) is set just before the this
+snippet is included to change the size of the container.
+Once the variable is set on a page, all future instances of this
+snippet will use that width. Overwrite the variable to adjust this.
+
+Example
+- assign grid_item_width = 'large--one-quarter medium--one-half'
+
+{% endcomment %}
+
+
+{% comment %}
+Set the default grid_item_width if no variable is set
+{% endcomment %}
+{% unless grid_item_width %}
+{% assign grid_item_width = 'large-up--one-third medium-up--one-half' %}
+{% endunless %}
+{% unless grid_image_width %}
+{%- assign grid_image_width = '600x600' -%}
+{% endunless %}
+{% if settings.product_image_width_height != nil %}
+{% else %}
+{%- assign grid_image_width = '270x270' -%}
+{% endif %}
+{% if featured.title == '' %}
+{% comment %}add default state for product block in storefront editor{% endcomment %}
+{% capture product_title %}{{ 'home_page.onboarding.product_title' | t }}{% endcapture %}
+{% else %}
+{% capture product_title %}{{ featured.title | escape }}{% endcapture %}
+{% endif %}
+{% comment %}
+Check if the product is on sale and set a variable to be used below.
+{% endcomment %}
+{% assign on_sale = false %}
+{% if featured.compare_at_price > featured.price %}
+{% assign on_sale = true %}
+{% endif %}
+{% comment %}
+Check if the product is sold out and set a variable to be used below.
+{% endcomment %}
+{% assign sold_out = true %}
+{% if featured.available  %}
+{% assign sold_out = false %}
+{% endif %}
+{% comment %}
+Set a class for sold-out and on-sale items
+{% endcomment %}
+<div id="product-{{ product.id }}" data-id="product-{{ product.id }}" class="grid-view-item {{ settings.product_hover_btn }} product-layouts item-row {% if sold_out %} sold-out{% endif %}{% if on_sale %} on-sale{% endif %}{% if forloop.last %} last{% endif %}">
+  <div class="product-wrapper">  
+    {% if settings.product_hover_btn =="style1" %}<div class="ttimg-bg"></div>{% endif %}
+    <div class="thumbs product-thumb">
+      <div class="product-image col-xs-12 padding_0 {{ settings.product_img_hover }}">
+        {% if settings.product_hover_btn =="style2" %}
+        {% assign c_f = product.metafields.c_f %}
+        {% assign key = 'custom_label' %}
+        {% if c_f.custom_label != nil %}
+        <span class="custom_lable">{{ c_f.custom_label }}</span>
+        {% endif %}
+        {% if product.compare_at_price > product.price %}
+        <span class="product-price__sale-label">{{ 'products.product.on_sale' | t }}</span>
+        {% endif %}
+        {% endif %}
+        {% if settings.product_hover_btn =="style2" %}
+        {% if settings.show_vendor %}
+        <div class="grid-view-item__vendor">{{ product.vendor }}</div>
+        {% endif %}
+        <div class="h4 grid-view-item__title">
+          <a class="grid-view-item__link grid-link__title" href="{{ product.url | within: collection }}">{{ product.title }}</a>
+        </div>
+        {% if settings.collections_show_rating %}   
+        <div class="spr-badges grid-item-meta">
+          <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+        </div>
+        {% endif %}
+        {% endif %}
+        <a class="grid-view-item__link" href="{{ product.url | within: collection }}">
+          {% if product.images.last %} 
+          <img loading="lazy" height="auto" width="218" class="image_thumb_swap" src="{{ product.images.last | product_img_url: settings.product_image_width_height }}" alt="{{ product.images.last.alt | escape }}" />
+          {% endif %}
+          <img loading="lazy" height="auto" width="218" class="grid-view-item__image featured-image image_thumb" src="{{ product.featured_image.src | img_url: settings.product_image_width_height }}" alt="{{ product.featured_image.alt }}">
+
+          {% if product.images.size > 1 %}
+          {% if product.images.last %}
+          <div class="loader">
+            <div class="preloader-wrapper active">
+              <div class="spinner-layer"></div>
+            </div>
+          </div>
+          {% endif %} 
+          {% endif %} 
+        </a> 
+        {% if settings.product_hover_btn !="style2" %}
+        {% if product.compare_at_price > product.price %}
+        <span class="product-price__sale-label">{{ 'products.product.on_sale' | t }}</span>
+        {% endif %}
+        {% endif %}
+        {% if product.title %}
+        {%- assign compare_at_price = product.compare_at_price -%} 
+        {%- assign price = product.price -%}          
+        {% else %} 
+        {%- assign compare_at_price = 1999 -%}
+        {%- assign price = 1999 -%}
+        {% endif %}
+        {% if compare_at_price > price %}
+        {% if settings.sale_show_percentage %}
+        <span class="discount-percentage">-{{ product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | round }}%</span> 
+        {% endif %}
+        {% endif %}
+        {% if product.available %} 
+        {% else %}
+        <div class="sold-out-tag text-center">
+          <span class="tag">{{ 'products.product.sold_out' | t }}</span>
+        </div>
+        {% endif %}
+        {% if settings.product_hover_btn !="style3" %}
+        {% if settings.enable_compare %}
+        <div class="add-to-compare pro_btn"> 
+          <div class="default-comparebutton-{{ product.handle }} loading"><a class="add-in-compare-js btn" data-comparehandle="{{ product.handle }}" title="{{ 'products.compare.add_to_compare' | t }}"><i class="mdi mdi-checkbox-blank-outline"></i><span class="tooltip-label">{{ 'products.compare.add_to_compare' | t }}</span><i class="mdi mdi-checkbox-marked-outline"></i></a></div>
+        </div>
+        {% endif %} 
+        {% endif %}
+        {% if settings.product_hover_btn !="style2" %}
+        {% assign c_f = product.metafields.c_f %}
+        {% assign key = 'custom_label' %}
+        {% if c_f.custom_label != nil %}
+        <span class="custom_lable">{{ c_f.custom_label }}</span>
+        {% endif %}
+        {% endif %}
+        {% if settings.product_hover_btn =="style3" %}
+        <div class="main_btn_wrapper">
+          <div class="btn_wrapper">
+            {% if settings.enable_wishlist %}       
+            {% render 'wishlist-icon', product: product %}         
+            {% endif %} 
+            {% if settings.enable_compare %}
+            <div class="add-to-compare pro_btn"> 
+              <div class="default-comparebutton-{{ product.handle }} loading"><a class="add-in-compare-js btn" data-comparehandle="{{ product.handle }}" title="{{ 'products.compare.add_to_compare' | t }}"><i class="mdi mdi-repeat"></i><span class="tooltip-label">{{ 'products.compare.add_to_compare' | t }}</span><i class="mdi mdi-repeat-once"></i></a></div>
+            </div>
+            {% endif %}
+            {% if settings.enable_quick_view %}       
+            {% render 'quickveiw-icon', product: product %}         
+            {% endif %} 
+          </div>
+        </div>
+        {% endif %} 
+      </div>
+    </div>
+    <div class="product-description">
+      <div class="product-description-wrap">
+        {% if settings.display_color_variant %}     
+        {% render 'item-swatch', product: product %}
+        {% endif %}
+        {% if settings.product_hover_btn !="style2" %}
+        {% if settings.show_vendor %}
+        <div class="grid-view-item__vendor">{{ product.vendor }}</div>
+        {% endif %}
+        {% endif %}
+        {% if settings.product_hover_btn =="style1" %}
+        {% if settings.collections_show_rating %}
+        <div class="spr-badges grid-item-meta">
+          <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+        </div>
+        {% endif %}
+        {% endif %}
+        {% if settings.product_hover_btn !="style2" %}
+        <div class="h4 grid-view-item__title">
+          <a class="grid-view-item__link grid-link__title" href="{{ product.url | within: collection }}">{{ product.title }}</a>
+        </div>
+        {% endif %}
+        {% if settings.product_hover_btn =="style3" %}
+        {% if settings.collections_show_rating %}
+        <div class="spr-badges grid-item-meta">
+          <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+        </div>
+        {% endif %}
+        {% endif %}
+        <div class="product-desc rte">{{ product.description | strip_html | truncatewords: 12 }}</div>
+        {% if settings.product_hover_btn =="style2" %}
+        <div class="price-btn">
+          {% if settings.show_vendor %}
+          <div class="grid-view-item__vendor">{{ product.vendor }}</div>
+          {% endif %}
+          {% endif %}
+          <div class="grid-view-item__meta">
+            {% capture price %}{{ product.price | money }}{% endcapture %}
+            <div class="grid-link__org_price">
+              {% render 'product-price', product: product %}
+            </div> 
+          </div>
+          {% if settings.product_hover_btn =="style2" %}
+        </div>
+        {% endif %}
+        {% if settings.product_hover_btn =="style2" %}
+        {% if settings.enable_add_cart %}
+        {% if product.available %}    
+        <div class="pro_btn add_tocart">
+          <form  action="/cart/add" method="post" class="variants clearfix cart-form-{{ product.id }}">                                    
+            <input type="hidden" name="id" value="{{ product.variants[0].id }}" />  
+            <a class="add-cart-btn btn">
+              <i class="mdi mdi-plus"></i><span class="add_cart">{{ 'products.product.add_to_cart' | t }}</span>
+            </a>
+          </form>   
+        </div>  
+        {% endif %} {% endif %}{% endif %}
+        {% if product.available %}
+        <div class="ttqtyprogress">
+          <span class="QuantityAvailable"> available: </span>
+          <span class="quantity">{{ product.variants.first.inventory_quantity }}</span>
+          <div class="progress">
+            <div class="progress-bar" role="progressbar"></div>
+          </div>
+        </div>
+        {% endif %}
+        {% if settings.enable_countdown %}        
+        {% assign c_f = product.metafields.c_f %}
+        {% assign key = 'countdown' %}
+        {% if c_f.countdown != nil %}
+        <div class="flip-countdown simple-countdown"><div class="countdown-container flip-countdown" data-countdown="{{ c_f.countdown }}"></div></div>
+        {% endif %}
+        {% endif %} 
+        <div class="btn_wrapper">
+          {% if settings.enable_add_cart %}
+          {% if product.available %}    
+          <div class="pro_btn add_tocart">
+            <form  action="/cart/add" method="post" class="variants clearfix cart-form-{{ product.id }}">                                    
+              <input type="hidden" name="id" value="{{ product.variants[0].id }}" />  
+              <a class="add-cart-btn btn">
+                <i class="mdi mdi-plus"></i><span class="add_cart">{{ 'products.product.add_to_cart' | t }}</span>
+              </a>
+            </form>   
+          </div>  
+          {% endif %} {% endif %}
+          {% if settings.enable_wishlist %}       
+          {% render 'wishlist-icon', product: product %}         
+          {% endif %}
+          {% if settings.product_hover_btn =="style3" %}
+          {% if settings.enable_compare %}
+          <div class="add-to-compare pro_btn"> 
+            <div class="default-comparebutton-{{ product.handle }} loading"><a class="add-in-compare-js btn" data-comparehandle="{{ product.handle }}" title="{{ 'products.compare.add_to_compare' | t }}"><i class="mdi mdi-repeat"></i><span class="tooltip-label">{{ 'products.compare.add_to_compare' | t }}</span><i class="mdi mdi-repeat-once"></i></a></div>
+          </div>
+          {% endif %}
+          {% endif %}
+          {% if settings.enable_quick_view %}       
+          {% render 'quickveiw-icon', product: product %}         
+          {% endif %} 
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

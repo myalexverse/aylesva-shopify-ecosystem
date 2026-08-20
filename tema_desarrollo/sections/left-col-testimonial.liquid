@@ -1,0 +1,131 @@
+<div data-section-id="{{ section.id }}"  data-section-type="testimonial-wrap" class="widget ttleft-testimonial-wrap" style="{% if section.settings.bg_color != "rgba(0,0,0,0)" %}background:{{section.settings.bg_color }}{% endif %}">{% if section.settings.title != blank %}
+        <h4 class="widget-title" style="color:{{section.settings.title_color }}">{{ section.settings.title }}</h4>  
+        {% endif %}       
+      <div class="tttestimonial-wrap">
+       <div class="tttestimonial-inner">
+      <div class="grid__item testimonials_wrap owl-carousel">
+        {% if section.blocks.size > 0 %}  
+        {% for block in section.blocks %}      
+          <div class="testimonial-block testimonial-content">
+            <div class="testimonial-image"> 
+                {% if  block.settings.image_1 != blank %}
+                <img loading="lazy" height="80px" width="80px" src="{{  block.settings.image_1 | img_url: "80x80" }}" alt="testimonial-image" />
+                {% endif %} 
+            </div>
+             <div class="testimonial-title">
+            {% if block.settings.author_name != blank %}
+                <div class="testimonial-user-title" style="color:{{block.settings.author_color }}">
+                <h5>{{ block.settings.author_name }}</h5>
+                </div>
+                <div class="testimonial-user-desc" style="color:{{block.settings.author_descolor }}"><span>{{ block.settings.author_designation }}</span></div>
+                {% endif %}
+            </div>
+            <div class="testimonial-content-desc" style="color:{{block.settings.des_color }}"> 
+                  {% if block.settings.text_desc != blank %}
+                  <p>{{ block.settings.text_desc }}</p>
+                  {% endif %} 
+          
+            </div>
+          </div>
+        {% endfor %}         
+        {% endif %}   
+      </div>
+        </div>
+    </div> 
+    </div>
+{% schema %}
+{
+"name": "Left Sidebar Testimonial",
+ "max_blocks":6,
+"settings": [
+		  {
+          "type": "color",
+          "id": "bg_color",
+          "label": "background Color",
+          "default":"#fff"
+          },
+          {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+		  "default":"Testimonials"
+          },
+          {
+          "type": "color",
+          "id": "title_color",
+          "label": "Title Color",
+          "default":"#000"
+          }
+          ],
+          "blocks": [
+          {
+          "type": "text",
+          "name": "Testimonial",
+          "settings": [
+          {
+          "type": "textarea",
+          "id": "text_desc",
+          "label": "Description",
+		  "default":"Duis faucibus enim vitae nunc molestie, nec facilisis arcu pulvinar. Nullam mattis arcu convallis, bibendum dui ac, laoreet est."
+          },
+          {
+          "type": "color",
+          "id": "des_color",
+          "label": "Description Color",
+          "default":"#000"
+          },
+          {
+          "type": "image_picker",
+          "id": "image_1",
+          "label": "Image",
+          "info": "Size: 140x140"
+          },
+          {
+          "type": "text",
+          "id": "image_1_heading",
+          "label": "Image"
+          },
+          {
+          "type": "text",
+          "id": "author_name",
+          "label": "author name",
+          "default":"john doe"
+          },
+          {
+          "type": "text",
+          "id": "author_designation",
+          "label": "Designation",
+          "default":"web designer"
+          },
+          {
+          "type": "color",
+          "id": "author_color",
+          "label": "Author Color",
+          "default":"#000"
+          },
+          {
+          "type": "color",
+          "id": "author_descolor",
+          "label": "Designation Color",
+          "default":"#000"
+          }
+          ]
+          }
+          ],
+ "presets": [
+    {
+     "name": "Left Sidebar Testimonial",
+      "category": "Left Sidebar",
+      "blocks": [
+        {
+          "type": "text"
+        },
+        {
+          "type": "text"
+        }       
+ 		
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,357 @@
+<section id="ayl-home-ecosystem-{{ section.id }}" class="ayl-ecosystem-section">
+  <div class="ayl-eco-container">
+    {% if section.settings.eyebrow != blank %}
+      <div class="ayl-eco-header">
+        <h2 class="ayl-eco-eyebrow">{{ section.settings.eyebrow }}</h2>
+      </div>
+    {% endif %}
+
+    <div class="ayl-eco-grid">
+      {% for block in section.blocks %}
+        {% assign accent = block.settings.accent_color | default: '#000000' %}
+        <a href="{{ block.settings.link_url }}" class="ayl-eco-card" style="--accent: {{ accent }};" {{ block.shopify_attributes }}>
+          <div class="ayl-eco-icon-wrap">
+            <div class="ayl-eco-icon">
+              {% if block.settings.icon_image != blank %}
+                <img src="{{ block.settings.icon_image | asset_url }}" alt="{{ block.settings.title }}" width="36" height="36" loading="lazy">
+              {% else %}
+                {{ block.settings.icon }}
+              {% endif %}
+            </div>
+          </div>
+          <h3 class="ayl-eco-title">{{ block.settings.title }}</h3>
+          {% if block.settings.subtitle != blank %}
+            <p class="ayl-eco-subtitle">{{ block.settings.subtitle }}</p>
+          {% endif %}
+          <p class="ayl-eco-desc">{{ block.settings.description }}</p>
+          <span class="ayl-eco-link">
+            {{ block.settings.link_text }}
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </span>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  #ayl-home-ecosystem-{{ section.id }} {
+    background-color: #FAFAF8;
+    padding: 24px 24px 40px;
+    display: flex;
+    justify-content: center;
+    font-family: 'Inter', 'Poppins', system-ui, sans-serif;
+    overflow: hidden;
+  }
+  #ayl-home-ecosystem-{{ section.id }} .ayl-eco-container {
+    max-width: 1400px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  #ayl-home-ecosystem-{{ section.id }} .ayl-eco-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  #ayl-home-ecosystem-{{ section.id }} .ayl-eco-eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 11px;
+    color: #999;
+    margin: 0;
+    font-weight: 600;
+  }
+  #ayl-home-ecosystem-{{ section.id }} .ayl-eco-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    width: 100%;
+  }
+  #ayl-home-ecosystem-{{ section.id }} .ayl-eco-card {
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 12px;
+    padding: 22px 20px;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    text-decoration: none;
+    box-sizing: border-box;
+    opacity: 0;
+    transform: translateY(16px);
+    position: relative;
+    overflow: hidden;
+  }
+  #ayl-home-ecosystem-{{ section.id }} .ayl-eco-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--accent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  #ayl-home-ecosystem-{{ section.id }} .ayl-eco-card:hover::before {
+    opacity: 1;
+  }
+  #ayl-home-ecosystem-{{ section.id }} .ayl-eco-card.ayl-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  #ayl-home-ecosystem-{{ section.id }} .ayl-eco-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    border-color: color-mix(in srgb, var(--accent) 30%, transparent);
+  }
+
+  #ayl-home-ecosystem-{{ section.id }} .ayl-eco-icon-wrap {
+    margin-bottom: 14px;
+  }
+
+  #ayl-home-ecosystem-{{ section.id }} .ayl-eco-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: color-mix(in srgb, var(--accent) 10%, transparent);
+    color: var(--accent);
+    transition: all 0.3s ease;
+    overflow: hidden;
+  }
+  #ayl-home-ecosystem-{{ section.id }} .ayl-eco-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  #ayl-home-ecosystem-{{ section.id }} .ayl-eco-card:hover .ayl-eco-icon {
+    background: color-mix(in srgb, var(--accent) 18%, transparent);
+    transform: scale(1.05);
+  }
+  #ayl-home-ecosystem-{{ section.id }} .ayl-eco-icon svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  #ayl-home-ecosystem-{{ section.id }} .ayl-eco-title {
+    font-weight: 700;
+    font-size: 16px;
+    color: #1A1A1A;
+    margin: 0 0 3px 0;
+    letter-spacing: -0.01em;
+  }
+  #ayl-home-ecosystem-{{ section.id }} .ayl-eco-subtitle {
+    font-weight: 500;
+    font-size: 12px;
+    color: var(--accent);
+    margin: 0 0 8px 0;
+  }
+  #ayl-home-ecosystem-{{ section.id }} .ayl-eco-desc {
+    font-weight: 400;
+    font-size: 13px;
+    color: #777;
+    line-height: 1.55;
+    margin: 0 0 14px 0;
+    flex-grow: 1;
+  }
+  #ayl-home-ecosystem-{{ section.id }} .ayl-eco-link {
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--accent);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: auto;
+    transition: gap 0.3s ease;
+  }
+  #ayl-home-ecosystem-{{ section.id }} .ayl-eco-card:hover .ayl-eco-link {
+    gap: 8px;
+  }
+
+  @media (max-width: 767px) {
+    #ayl-home-ecosystem-{{ section.id }} { padding: 32px 16px; }
+    #ayl-home-ecosystem-{{ section.id }} .ayl-eco-card {
+      width: 100%;
+      max-width: 400px;
+    }
+  }
+  @media (min-width: 768px) and (max-width: 1024px) {
+    #ayl-home-ecosystem-{{ section.id }} .ayl-eco-card {
+      width: calc((100% - 32px) / 3);
+    }
+  }
+  @media (min-width: 1025px) {
+    #ayl-home-ecosystem-{{ section.id }} .ayl-eco-grid {
+      flex-wrap: nowrap;
+    }
+    #ayl-home-ecosystem-{{ section.id }} .ayl-eco-card {
+      width: calc((100% - 64px) / 5);
+      min-width: 0;
+    }
+  }
+</style>
+
+<script>
+  (function() {
+    document.addEventListener('DOMContentLoaded', function() {
+      var sectionId = 'ayl-home-ecosystem-{{ section.id }}';
+      var section = document.getElementById(sectionId);
+      if (!section) return;
+      var cards = section.querySelectorAll('.ayl-eco-card');
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            cards.forEach(function(card, index) {
+              setTimeout(function() {
+                card.classList.add('ayl-visible');
+              }, index * 80);
+            });
+            observer.disconnect();
+          }
+        });
+      }, { threshold: 0.05 });
+      observer.observe(section);
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Ecosystem Cards",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Text",
+      "default": "NUESTRO ECOSISTEMA DE SOLUCIONES"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "service_card",
+      "name": "Service Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description"
+        },
+        {
+          "type": "html",
+          "id": "icon",
+          "label": "Icon (SVG fallback)"
+        },
+        {
+          "type": "text",
+          "id": "icon_image",
+          "label": "Icon Image (asset filename)",
+          "info": "e.g. eco-icon-commerce.jpg"
+        },
+        {
+          "type": "color",
+          "id": "accent_color",
+          "label": "Accent Color"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Link URL"
+        },
+        {
+          "type": "text",
+          "id": "link_text",
+          "label": "Link Text",
+          "default": "Explorar →"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ecosystem Cards",
+      "blocks": [
+        {
+          "type": "service_card",
+          "settings": {
+            "title": "Commerce",
+            "subtitle": "Lanza y escala tu negocio online",
+            "description": "Tiendas online, dropshipping, integración al marketplace y logística 360°.",
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"9\" cy=\"21\" r=\"1\"></circle><circle cx=\"20\" cy=\"21\" r=\"1\"></circle><path d=\"M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6\"></path></svg>",
+            "accent_color": "#2D8F5E",
+            "link_url": "/pages/lanza-tu-propia-marca",
+            "link_text": "Explorar"
+          }
+        },
+        {
+          "type": "service_card",
+          "settings": {
+            "title": "Capital",
+            "subtitle": "Financiamiento para crecer",
+            "description": "Capital de trabajo e inversión para impulsar tu empresa y hacerla crecer.",
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"1\" y=\"4\" width=\"22\" height=\"16\" rx=\"2\" ry=\"2\"></rect><line x1=\"1\" y1=\"10\" x2=\"23\" y2=\"10\"></line></svg>",
+            "accent_color": "#C5A47E",
+            "link_url": "/pages/aylesva-recursos",
+            "link_text": "Explorar"
+          }
+        },
+        {
+          "type": "service_card",
+          "settings": {
+            "title": "Direct",
+            "subtitle": "Importa sin complicaciones",
+            "description": "Conectamos tu negocio con proveedores internacionales de forma segura y eficiente.",
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><line x1=\"2\" y1=\"12\" x2=\"22\" y2=\"12\"></line><path d=\"M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z\"></path></svg>",
+            "accent_color": "#3B82F6",
+            "link_url": "/pages/aylesva-direct",
+            "link_text": "Explorar"
+          }
+        },
+        {
+          "type": "service_card",
+          "settings": {
+            "title": "Estates",
+            "subtitle": "Inversiones que trascienden",
+            "description": "Propiedades premium en destinos exclusivos con alta plusvalía y estilo de vida.",
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"4\" y=\"2\" width=\"16\" height=\"20\" rx=\"2\" ry=\"2\"></rect><path d=\"M9 22v-4h6v4\"></path><path d=\"M8 6h.01\"></path><path d=\"M16 6h.01\"></path><path d=\"M12 6h.01\"></path><path d=\"M12 10h.01\"></path><path d=\"M12 14h.01\"></path><path d=\"M16 10h.01\"></path><path d=\"M16 14h.01\"></path><path d=\"M8 10h.01\"></path><path d=\"M8 14h.01\"></path></svg>",
+            "accent_color": "#1A1A1A",
+            "link_url": "/pages/globalestates",
+            "link_text": "Explorar"
+          }
+        },
+        {
+          "type": "service_card",
+          "settings": {
+            "title": "Care",
+            "subtitle": "Protege lo que más importa",
+            "description": "Servicios de previsión, respaldo y planificación patrimonial para tu tranquilidad.",
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z\"></path></svg>",
+            "accent_color": "#8B5CF6",
+            "link_url": "/pages/aylesva-care",
+            "link_text": "Explorar"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

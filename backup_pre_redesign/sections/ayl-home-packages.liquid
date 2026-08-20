@@ -1,0 +1,619 @@
+{% comment %}
+  Aylesva Distribuidores Wholesale Packages
+  Responsive grid featuring three tiered wholesale packages (12, 24, 48 pcs) with pricing and estimated profits.
+{% endcomment %}
+
+<div class="ayl-packages-section" id="packages">
+  <div class="ayl-packages-container">
+    
+    <div class="ayl-packages-header">
+      <span class="ayl-packages-pretitle">{{ section.settings.pre_title }}</span>
+      <h2 class="ayl-packages-title">{{ section.settings.title }}</h2>
+      <div class="ayl-divider"><span class="ayl-divider-diamond">♦</span></div>
+    </div>
+    
+    <div class="ayl-packages-grid">
+      
+      <!-- Package 1: Starter -->
+      <div class="ayl-package-card">
+        <div class="ayl-pkg-header">
+          <span class="ayl-pkg-icon">★</span>
+          <h3 class="ayl-pkg-name">{{ section.settings.pkg1_name }}</h3>
+        </div>
+        <div class="ayl-pkg-qty-wrap">
+          <span class="ayl-pkg-qty">{{ section.settings.pkg1_qty }}</span>
+          <span class="ayl-pkg-qty-lbl">PIEZAS</span>
+        </div>
+        <p class="ayl-pkg-tagline">{{ section.settings.pkg1_tagline }}</p>
+        <div class="ayl-pkg-price">{{ section.settings.pkg1_price }}</div>
+        <div class="ayl-pkg-profit">
+          <span class="ayl-pkg-profit-lbl">Ganancia estimada:</span>
+          <span class="ayl-pkg-profit-val">{{ section.settings.pkg1_profit }}</span>
+        </div>
+        <a href="{{ section.settings.pkg1_link | default: '/collections/all' }}" class="ayl-pkg-btn">
+          Armar mi Paquete
+        </a>
+        <div class="ayl-pkg-unit-cost">
+          {{ section.settings.pkg1_unit_cost }}<br>
+          <span style="font-size: 11px; color: #c5a47e; font-weight: 600; display: block; margin-top: 4px;">(Aplica markup de +20% en carrito)</span>
+        </div>
+      </div>
+      
+      <!-- Package 2: Emprendedor (Highlighted) -->
+      <div class="ayl-package-card ayl-package-card--highlighted">
+        <div class="ayl-pkg-badge">MÁS POPULAR</div>
+        <div class="ayl-pkg-header">
+          <span class="ayl-pkg-icon">👑</span>
+          <h3 class="ayl-pkg-name">{{ section.settings.pkg2_name }}</h3>
+        </div>
+        <div class="ayl-pkg-qty-wrap">
+          <span class="ayl-pkg-qty">{{ section.settings.pkg2_qty }}</span>
+          <span class="ayl-pkg-qty-lbl">PIEZAS</span>
+        </div>
+        <p class="ayl-pkg-tagline">{{ section.settings.pkg2_tagline }}</p>
+        <div class="ayl-pkg-price">{{ section.settings.pkg2_price }}</div>
+        <div class="ayl-pkg-profit">
+          <span class="ayl-pkg-profit-lbl">Ganancia estimada:</span>
+          <span class="ayl-pkg-profit-val">{{ section.settings.pkg2_profit }}</span>
+        </div>
+        <a href="{{ section.settings.pkg2_link | default: '/collections/all' }}" class="ayl-pkg-btn">
+          Armar mi Paquete
+        </a>
+        <div class="ayl-pkg-unit-cost">
+          {{ section.settings.pkg2_unit_cost }}<br>
+          <span style="font-size: 11px; color: #c5a47e; font-weight: 600; display: block; margin-top: 4px;">(Aplica markup de +15% en carrito)</span>
+        </div>
+      </div>
+
+      <!-- Package 4: Negocio Elite (36 pieces) -->
+      <div class="ayl-package-card">
+        <div class="ayl-pkg-header">
+          <span class="ayl-pkg-icon">⚡</span>
+          <h3 class="ayl-pkg-name">{{ section.settings.pkg4_name }}</h3>
+        </div>
+        <div class="ayl-pkg-qty-wrap">
+          <span class="ayl-pkg-qty">{{ section.settings.pkg4_qty }}</span>
+          <span class="ayl-pkg-qty-lbl">PIEZAS</span>
+        </div>
+        <p class="ayl-pkg-tagline">{{ section.settings.pkg4_tagline }}</p>
+        <div class="ayl-pkg-price">{{ section.settings.pkg4_price }}</div>
+        <div class="ayl-pkg-profit">
+          <span class="ayl-pkg-profit-lbl">Ganancia estimada:</span>
+          <span class="ayl-pkg-profit-val">{{ section.settings.pkg4_profit }}</span>
+        </div>
+        <a href="{{ section.settings.pkg4_link | default: '/collections/all' }}" class="ayl-pkg-btn">
+          Armar mi Paquete
+        </a>
+        <div class="ayl-pkg-unit-cost">
+          {{ section.settings.pkg4_unit_cost }}<br>
+          <span style="font-size: 11px; color: #c5a47e; font-weight: 600; display: block; margin-top: 4px;">(Aplica markup de +10% en carrito)</span>
+        </div>
+      </div>
+      
+      <!-- Package 3: Tienda Pro -->
+      <div class="ayl-package-card">
+        <div class="ayl-pkg-header">
+          <span class="ayl-pkg-icon">💎</span>
+          <h3 class="ayl-pkg-name">{{ section.settings.pkg3_name }}</h3>
+        </div>
+        <div class="ayl-pkg-qty-wrap">
+          <span class="ayl-pkg-qty">{{ section.settings.pkg3_qty }}</span>
+          <span class="ayl-pkg-qty-lbl">PIEZAS</span>
+        </div>
+        <p class="ayl-pkg-tagline">{{ section.settings.pkg3_tagline }}</p>
+        <div class="ayl-pkg-price">{{ section.settings.pkg3_price }}</div>
+        <div class="ayl-pkg-profit">
+          <span class="ayl-pkg-profit-lbl">Ganancia estimada:</span>
+          <span class="ayl-pkg-profit-val">{{ section.settings.pkg3_profit }}</span>
+        </div>
+        <a href="{{ section.settings.pkg3_link | default: '/collections/all' }}" class="ayl-pkg-btn">
+          Armar mi Paquete
+        </a>
+        <div class="ayl-pkg-unit-cost">
+          {{ section.settings.pkg3_unit_cost }}<br>
+          <span style="font-size: 11px; color: #c5a47e; font-weight: 600; display: block; margin-top: 4px;">(Aplica markup de +5% en carrito)</span>
+        </div>
+      </div>
+      
+    </div>
+    
+    <div class="ayl-packages-footer">
+      <p class="ayl-packages-disclaimer">{{ section.settings.disclaimer }}</p>
+    </div>
+    
+  </div>
+</div>
+
+{% style %}
+  .ayl-packages-section {
+    width: 100%;
+    background-color: #ffffff;
+    padding: 80px 0;
+    box-sizing: border-box;
+  }
+
+  .ayl-packages-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
+
+  .ayl-packages-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .ayl-packages-pretitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: #C5A47E;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  .ayl-packages-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 700;
+    color: #1a1a1a;
+    letter-spacing: 0.05em;
+    margin: 0 0 16px 0;
+    text-transform: uppercase;
+  }
+
+  .ayl-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    color: #C5A47E;
+  }
+
+  .ayl-divider::before,
+  .ayl-divider::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 1px;
+    background-color: #E6E2DA;
+  }
+
+  .ayl-divider-diamond {
+    font-size: 11px;
+    line-height: 1;
+  }
+
+  .ayl-packages-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    align-items: stretch;
+  }
+
+  @media (max-width: 1199px) {
+    .ayl-packages-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .ayl-packages-grid {
+      grid-template-columns: 1fr;
+      gap: 45px;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+  }
+
+  .ayl-package-card {
+    position: relative;
+    background-color: #ffffff;
+    border: 1px solid #EFECE6;
+    border-radius: 16px;
+    padding: 40px 30px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+  }
+
+  .ayl-package-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+  }
+
+  /* Highlighted Card Style (Emprendedor) */
+  .ayl-package-card--highlighted {
+    border: 2px solid #C5A47E;
+    box-shadow: 0 10px 30px rgba(197, 164, 126, 0.12);
+  }
+
+  .ayl-package-card--highlighted:hover {
+    box-shadow: 0 15px 40px rgba(197, 164, 126, 0.2);
+  }
+
+  .ayl-pkg-badge {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #C5A47E;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 30px;
+    box-shadow: 0 4px 10px rgba(197, 164, 126, 0.3);
+  }
+
+  .ayl-pkg-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 24px;
+    gap: 8px;
+  }
+
+  .ayl-pkg-icon {
+    font-size: 24px;
+    line-height: 1;
+    color: #C5A47E;
+  }
+
+  .ayl-pkg-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #1a1a1a;
+    letter-spacing: 0.05em;
+    margin: 0;
+    text-transform: uppercase;
+  }
+
+  .ayl-pkg-qty-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+
+  .ayl-pkg-qty {
+    font-family: 'Playfair Display', serif;
+    font-size: 72px;
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+
+  .ayl-pkg-qty-lbl {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    color: #706861;
+    letter-spacing: 0.15em;
+    margin-top: 4px;
+  }
+
+  .ayl-pkg-tagline {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #706861;
+    margin: 0 0 28px 0;
+    min-height: 20px;
+  }
+
+  .ayl-pkg-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 16px;
+  }
+
+  .ayl-pkg-profit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    background-color: #F8F7F3;
+    padding: 12px 24px;
+    border-radius: 8px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 28px;
+  }
+
+  .ayl-pkg-profit-lbl {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    color: #706861;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .ayl-pkg-profit-val {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #2d6b2d;
+  }
+
+  .ayl-pkg-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 16px;
+    border-radius: 4px;
+    text-decoration: none !important;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    margin-bottom: 12px;
+    border: 2px solid #1a1a1a;
+  }
+
+  .ayl-pkg-btn:hover {
+    background-color: #C5A47E;
+    border-color: #C5A47E;
+    color: #ffffff;
+  }
+
+  /* Custom Highlight button background */
+  .ayl-package-card--highlighted .ayl-pkg-btn {
+    background-color: #C5A47E;
+    border-color: #C5A47E;
+  }
+
+  .ayl-package-card--highlighted .ayl-pkg-btn:hover {
+    background-color: #1a1a1a;
+    border-color: #1a1a1a;
+  }
+
+  .ayl-pkg-unit-cost {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: #999;
+  }
+
+  .ayl-packages-footer {
+    text-align: center;
+    margin-top: 40px;
+  }
+
+  .ayl-packages-disclaimer {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: #999;
+    margin: 0;
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Ayl Wholesale Packages",
+  "settings": [
+    {
+      "type": "text",
+      "id": "pre_title",
+      "label": "Etiqueta Superior",
+      "default": "Elige tu nivel"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título Principal",
+      "default": "Paquetes Mayoreo"
+    },
+    {
+      "type": "textarea",
+      "id": "disclaimer",
+      "label": "Nota Legal / Exclusión",
+      "default": "* La ganancia estimada puede variar según el precio de venta al público."
+    },
+    {
+      "type": "header",
+      "content": "Paquete 1 (Starter)"
+    },
+    {
+      "type": "text",
+      "id": "pkg1_name",
+      "label": "Nombre del Paquete",
+      "default": "Starter"
+    },
+    {
+      "type": "text",
+      "id": "pkg1_qty",
+      "label": "Cantidad de Piezas",
+      "default": "12"
+    },
+    {
+      "type": "text",
+      "id": "pkg1_tagline",
+      "label": "Descripción corta",
+      "default": "Ideal para empezar"
+    },
+    {
+      "type": "text",
+      "id": "pkg1_price",
+      "label": "Precio total",
+      "default": "$2,490 MXN"
+    },
+    {
+      "type": "text",
+      "id": "pkg1_profit",
+      "label": "Ganancia Estimada",
+      "default": "+$2,000 MXN"
+    },
+    {
+      "type": "text",
+      "id": "pkg1_unit_cost",
+      "label": "Costo unitario",
+      "default": "Desde $207 por pieza"
+    },
+    {
+      "type": "url",
+      "id": "pkg1_link",
+      "label": "Enlace del Paquete"
+    },
+    {
+      "type": "header",
+      "content": "Paquete 2 (Emprendedor)"
+    },
+    {
+      "type": "text",
+      "id": "pkg2_name",
+      "label": "Nombre del Paquete",
+      "default": "Emprendedor"
+    },
+    {
+      "type": "text",
+      "id": "pkg2_qty",
+      "label": "Cantidad de Piezas",
+      "default": "24"
+    },
+    {
+      "type": "text",
+      "id": "pkg2_tagline",
+      "label": "Descripción corta",
+      "default": "Mayor margen, mayor crecimiento"
+    },
+    {
+      "type": "text",
+      "id": "pkg2_price",
+      "label": "Precio total",
+      "default": "$4,490 MXN"
+    },
+    {
+      "type": "text",
+      "id": "pkg2_profit",
+      "label": "Ganancia Estimada",
+      "default": "+$5,000 MXN"
+    },
+    {
+      "type": "text",
+      "id": "pkg2_unit_cost",
+      "label": "Costo unitario",
+      "default": "Desde $187 por pieza"
+    },
+    {
+      "type": "url",
+      "id": "pkg2_link",
+      "label": "Enlace del Paquete"
+    },
+    {
+      "type": "header",
+      "content": "Paquete 4 (Negocio Elite - 36 pzas)"
+    },
+    {
+      "type": "text",
+      "id": "pkg4_name",
+      "label": "Nombre del Paquete",
+      "default": "Negocio Elite"
+    },
+    {
+      "type": "text",
+      "id": "pkg4_qty",
+      "label": "Cantidad de Piezas",
+      "default": "36"
+    },
+    {
+      "type": "text",
+      "id": "pkg4_tagline",
+      "label": "Descripción corta",
+      "default": "El equilibrio perfecto para tu negocio"
+    },
+    {
+      "type": "text",
+      "id": "pkg4_price",
+      "label": "Precio total",
+      "default": "$6,290 MXN"
+    },
+    {
+      "type": "text",
+      "id": "pkg4_profit",
+      "label": "Ganancia Estimada",
+      "default": "+$8,000 MXN"
+    },
+    {
+      "type": "text",
+      "id": "pkg4_unit_cost",
+      "label": "Costo unitario",
+      "default": "Desde $175 por pieza"
+    },
+    {
+      "type": "url",
+      "id": "pkg4_link",
+      "label": "Enlace del Paquete"
+    },
+    {
+      "type": "header",
+      "content": "Paquete 3 (Tienda Pro)"
+    },
+    {
+      "type": "text",
+      "id": "pkg3_name",
+      "label": "Nombre del Paquete",
+      "default": "Tienda Pro"
+    },
+    {
+      "type": "text",
+      "id": "pkg3_qty",
+      "label": "Cantidad de Piezas",
+      "default": "48"
+    },
+    {
+      "type": "text",
+      "id": "pkg3_tagline",
+      "label": "Descripción corta",
+      "default": "Máximo descuento y ganancia"
+    },
+    {
+      "type": "text",
+      "id": "pkg3_price",
+      "label": "Precio total",
+      "default": "$7,990 MXN"
+    },
+    {
+      "type": "text",
+      "id": "pkg3_profit",
+      "label": "Ganancia Estimada",
+      "default": "+$11,000 MXN"
+    },
+    {
+      "type": "text",
+      "id": "pkg3_unit_cost",
+      "label": "Costo unitario",
+      "default": "Desde $166 por pieza"
+    },
+    {
+      "type": "url",
+      "id": "pkg3_link",
+      "label": "Enlace del Paquete"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ayl Wholesale Packages"
+    }
+  ]
+}
+{% endschema %}

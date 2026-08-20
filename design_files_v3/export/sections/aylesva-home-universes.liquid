@@ -1,0 +1,59 @@
+{% comment %}
+  Aylesva · Home · "Qué hacemos": titular + imagen vertical a la izquierda,
+  párrafo y dos tarjetas con fotografía a la derecha.
+{% endcomment %}
+<section class="ay" style="background:{{ section.settings.bg }}">
+  <div class="ay-wrap" style="display:grid;grid-template-columns:.9fr 1.1fr;gap:80px;align-items:start" class="ay-universes">
+    <div>
+      {% if section.settings.eyebrow != blank %}<p class="ay-eyebrow">{{ section.settings.eyebrow }}</p>{% endif %}
+      <h2 class="ay-h2" style="margin-bottom:40px">{{ section.settings.title }}</h2>
+      <div class="ay-media ay-media--framed" style="height:380px;border:var(--ay-hairline);{% if section.settings.image %}background-image:url({{ section.settings.image | image_url: width: 1200 }}){% else %}background:repeating-linear-gradient(135deg,#efece6 0 10px,#e7e3db 10px 20px){% endif %}"></div>
+    </div>
+
+    <div>
+      <p class="ay-lead" style="margin-bottom:44px">{{ section.settings.text }}</p>
+      <div class="ay-grid" style="grid-template-columns:1fr 1fr">
+        {% for block in section.blocks %}
+          <div style="background:var(--ay-stone);display:flex;flex-direction:column" {{ block.shopify_attributes }}>
+            <div class="ay-media" style="height:190px;{% if block.settings.image %}background-image:url({{ block.settings.image | image_url: width: 900 }}){% else %}background:repeating-linear-gradient(135deg,#efece6 0 8px,#e7e3db 8px 16px){% endif %}"></div>
+            <div style="padding:32px 32px 36px;display:flex;flex-direction:column;flex:1">
+              <p style="font-family:var(--ay-font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ay-gold-text);margin:0 0 16px">{{ block.settings.tag }}</p>
+              <h3 class="ay-h3" style="font-size:22px;margin-bottom:12px">{{ block.settings.title }}</h3>
+              <p class="ay-body" style="margin-bottom:26px">{{ block.settings.text }}</p>
+              <a class="ay-link" style="align-self:start;margin-top:auto" href="{{ block.settings.link }}">{{ block.settings.cta }} &rarr;</a>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @media (max-width:1024px){ .ay-universes{grid-template-columns:1fr !important;gap:40px !important} }
+  @media (max-width:640px){ .ay-universes .ay-grid{grid-template-columns:1fr !important} }
+</style>
+
+{% schema %}
+{
+  "name": "Aylesva · Qué hacemos",
+  "settings": [
+    { "type": "color", "id": "bg", "label": "Fondo", "default": "#FFFFFF" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Qué hacemos" },
+    { "type": "textarea", "id": "title", "label": "Titular", "default": "Dos formas de trabajar con nosotros, un mismo respaldo." },
+    { "type": "image_picker", "id": "image", "label": "Imagen vertical (1200×1600)" },
+    { "type": "textarea", "id": "text", "label": "Párrafo" }
+  ],
+  "blocks": [
+    { "type": "universe", "name": "Universo", "limit": 2, "settings": [
+      { "type": "image_picker", "id": "image", "label": "Fotografía (900×600)" },
+      { "type": "text", "id": "tag", "label": "Para quién es" },
+      { "type": "text", "id": "title", "label": "Título" },
+      { "type": "textarea", "id": "text", "label": "Descripción" },
+      { "type": "text", "id": "cta", "label": "Enlace", "default": "Ver más" },
+      { "type": "url", "id": "link", "label": "Destino" }
+    ]}
+  ],
+  "presets": [{ "name": "Aylesva · Qué hacemos" }]
+}
+{% endschema %}

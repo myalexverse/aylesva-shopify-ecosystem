@@ -1,0 +1,132 @@
+<div {% if settings.enable_animation != blank %} data-aos="fade-up" {% endif %} class="container">
+  <div class="ttcmsbottombanner">
+    <div class="bottombanner-img">
+      <div class="banner_img">
+        <a>
+          {% if section.settings.banner_image != blank %}
+          <img loading="lazy" height="280" width="1540" src="{{  section.settings.banner_image | img_url: "master" }}" alt="bottom-banner" />
+          {% else %}
+          {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+          {% endif %}
+        </a>
+        <div class="bottombanner-content">
+          {% if section.settings.banner_subtitle != blank %}
+          <div class="bottombanner-subtitle" style="color: {{ section.settings.subtitle_color }}">{{ section.settings.banner_subtitle }}</div>{% endif %}
+          {% if section.settings.banner_title != blank %}<div class="bottombanner-title" style="color: {{ section.settings.title_color }}">{{ section.settings.banner_title }}</div>{% endif %}
+          {% if section.settings.banner_desc != blank %}<div class="bottombanner-desc" style="color: {{ section.settings.desc_color }}">{{ section.settings.banner_desc }}</div>{% endif %}
+          {% if section.settings.banner_button_text != blank %}
+          <div class="banner-button">
+            <a class="btn" href="{{ section.settings.banner_button_link }}">{{section.settings.banner_button_text}}</a>
+          </div>  
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  .ttcmsbottombanner .banner_img .bottombanner-content .banner-button a.btn {
+    background: {{ section.settings.button_bg_color }};
+    color: {{ section.settings.button_text_color }};
+  }
+  .ttcmsbottombanner .banner_img .bottombanner-content .banner-button a.btn:hover {
+    background: {{ section.settings.button_bghover_color }};
+    color: {{ section.settings.button_texthover_color }};
+  }
+</style>
+{% schema %}
+{
+"name": "Bottom Banner",
+"class": "index-section bottom-banner",
+"settings": [
+{
+"type": "color",
+"id": "title_color",
+"label": "Title color",
+"default": "#eb3039"
+},
+{
+"type": "color",
+"id": "subtitle_color",
+"label": "Subtitle color",
+"default": "#000"
+},		
+{
+"type": "color",
+"id": "desc_color",
+"label": "description color",
+"default": "#000"
+},
+{
+"type": "image_picker",
+"id": "banner_image",
+"label": "Image"
+},
+{
+"type": "url",
+"id": "banner_link",
+"label": "Banner link"
+},
+{
+"type": "color",
+"id": "banner_bg",
+"label": "banner background color",
+"default": "#f4f3f0"
+},
+{
+"type": "text",
+"id": "banner_title",
+"label": "Banner Title",
+"default": "best ever deals"
+},
+{
+"type": "text",
+"id": "banner_subtitle",
+"label": "Banner Subtitle",
+"default": "not just a deal"
+},
+{
+"type": "text",
+"id": "banner_desc",
+"label": "banner description",
+"default": "the biggest ever shopping festival!"
+},
+{
+"type": "text",
+"id": "banner_button_text",
+"label": "button text",
+"default": "show more"
+},
+{
+"type": "color",
+"id": "button_bg_color",
+"label": "button background color",
+"default": "#FFD203"
+},
+{
+"type": "color",
+"id": "button_text_color",
+"label": "button text color",
+"default": "#000000"
+},
+{
+"type": "color",
+"id": "button_bghover_color",
+"label": "button hover background color",
+"default": "#000000"
+},
+{
+"type": "color",
+"id": "button_texthover_color",
+"label": "button hover text color",
+"default": "#fff"
+}
+],
+"presets": [
+{
+"name": "Bottom Banner",
+"category": "Image"
+}
+]
+}
+{% endschema %}

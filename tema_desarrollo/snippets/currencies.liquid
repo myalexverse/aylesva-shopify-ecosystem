@@ -1,0 +1,11 @@
+{{ "currencies.js" | asset_url  | script_tag }}
+{{ "jquery.currencies.min.js" | asset_url | script_tag }}
+
+<script type="text/javascript">jQuery('.currencies li').on('click',function(){jQuery('.currencies li').removeClass('active');jQuery(this).addClass('active');var selectedValue=jQuery(this).find('input[type=hidden]').val();jQuery('.currencies_src option').attr('selected',!1);jQuery('.currencies_src option[value='+selectedValue+']').attr('selected',!0);Currency.convertAll(Currency.currentCurrency,selectedValue);jQuery('.currency_code').html($(this).find('a').html())});Currency.format='money_format';var shopCurrency='{{ shop.currency }}';Currency.moneyFormats[shopCurrency].money_format={{shop.money_format|strip_html|json}};var defaultCurrency='{{ shop.currency }}';var cookieCurrency=Currency.cookie.read();jQuery('span.money span.money').each(function(){jQuery(this).parents('span.money').removeClass('money')});jQuery('span.money').each(function(){jQuery(this).attr('data-currency-{{ shop.currency }}',jQuery(this).html())});if(cookieCurrency==null){if(shopCurrency!==defaultCurrency){Currency.convertAll(shopCurrency,defaultCurrency)}
+else{Currency.currentCurrency=defaultCurrency}}
+else if(jQuery('[name=currencies]').size()&&jQuery('[name=currencies] option[value='+cookieCurrency+']').size()===0){Currency.currentCurrency=shopCurrency;Currency.cookie.write(shopCurrency)}
+else if(cookieCurrency===shopCurrency){Currency.currentCurrency=shopCurrency}
+else{Currency.convertAll(shopCurrency,cookieCurrency);jQuery('.currencies li').removeClass('active');jQuery('.currencies .currency-'+cookieCurrency).addClass('active');jQuery('.currency_code').html(jQuery('.currencies .currency-'+cookieCurrency).find('a').html())}
+jQuery('.currencies_src').on("change",function(e){var newCurrency=jQuery(e.currentTarget).find(':selected').attr('value');Currency.convertAll(Currency.currentCurrency,newCurrency);jQuery('.selected-currency').text(Currency.currentCurrency);if($('.template-product').length!=0)
+{updatePricing()}});function currenciesCallbackSpecial(id){jQuery(id).each(function(){jQuery(this).attr('data-currency-{{ shop.currency }}',jQuery(this).html())});Currency.convertAll(shopCurrency,Currency.cookie.read(),id,'{{ settings.currency_format }}')}
+</script>

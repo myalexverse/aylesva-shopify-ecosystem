@@ -1,0 +1,486 @@
+<style>
+  .premium-hero-wrapper {
+    position: relative;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    height: {{ section.settings.desktop_height }}vh;
+    overflow: hidden;
+    background: #000;
+  }
+
+  .premium-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;
+    display: none;
+  }
+  .premium-slide.is-active {
+    opacity: 1;
+    z-index: 2;
+    display: block;
+  }
+
+  /* Desktop Video/Image BG */
+  .premium-bg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .premium-bg video, .premium-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .premium-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0) 100%);
+    z-index: 3;
+  }
+
+  .premium-content {
+    position: absolute;
+    top: 50%;
+    left: 8%;
+    transform: translateY(-50%);
+    z-index: 4;
+    width: 90%;
+    max-width: 700px;
+    color: #fff;
+    text-align: left;
+  }
+
+  .premium-headline {
+    font-family: 'Playfair Display', serif !important;
+    font-size: clamp(2.5rem, 6vw, 5.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    color: #ffffff;
+  }
+
+  .premium-subtext {
+    font-family: 'Inter', sans-serif !important;
+    font-size: clamp(1rem, 1.8vw, 1.4rem);
+    margin-bottom: 35px;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+  }
+
+  .premium-btn {
+    display: inline-block;
+    background: #C5A47E;
+    color: #ffffff;
+    padding: 18px 45px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+  }
+  .premium-btn:hover {
+    background: #b08d65;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(197, 164, 126, 0.4);
+  }
+
+  /* Navigation Controls */
+  .premium-nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 45px;
+    height: 60px;
+    background: rgba(197, 164, 126, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    cursor: pointer;
+    z-index: 10;
+    transition: background 0.3s;
+  }
+  .premium-nav-arrow:hover { background: #C5A47E; }
+  .nav-prev { left: 0; }
+  .nav-next { right: 0; }
+
+  .premium-counter {
+    position: absolute;
+    bottom: 40px;
+    right: 5%;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    z-index: 10;
+    background: rgba(0,0,0,0.3);
+    padding: 5px 15px;
+    border-radius: 4px;
+  }
+
+  .premium-dots {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    z-index: 10;
+  }
+  .premium-dot {
+    width: 10px;
+    height: 10px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .premium-dot.is-active {
+    background: #C5A47E;
+    transform: scale(1.3);
+  }
+
+  /* Ticker Bar */
+  .premium-ticker {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    background: #C5A47E;
+    padding: 12px 0;
+    overflow: hidden;
+    position: relative;
+    z-index: 5;
+  }
+  .ticker-content {
+    display: flex;
+    white-space: nowrap;
+    animation: tickerScroll 30s linear infinite;
+  }
+  .ticker-item {
+    font-family: 'Inter', sans-serif;
+    color: #fff;
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0 50px;
+    display: flex;
+    align-items: center;
+  }
+  @keyframes tickerScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* Mobile Specifics (Preserving Nike Optimization) */
+  @media (max-width: 767px) {
+    .premium-hero-wrapper, .premium-ticker {
+      width: 100vw !important;
+      max-width: none !important;
+      margin-left: calc(-50vw + 50%) !important;
+      border-radius: 0 !important;
+    }
+    .premium-hero-wrapper {
+      height: 23vh !important;
+    }
+    .premium-overlay {
+      background: linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%);
+    }
+    .premium-content {
+      left: 20px;
+      width: 85%;
+    }
+    .premium-headline {
+      font-size: 1.8rem !important;
+      margin-bottom: 5px;
+      line-height: 1;
+    }
+    .premium-subtext {
+      font-size: 0.8rem !important;
+      margin-bottom: 12px;
+    }
+    .premium-btn {
+      padding: 8px 20px;
+      font-size: 11px;
+    }
+    .premium-ticker { padding: 8px 0; }
+    .ticker-item { font-size: 10px; padding: 0 30px; }
+    .premium-nav-arrow, .premium-counter, .premium-dots { display: none !important; }
+    
+    .premium-desktop-only { display: none !important; }
+    .premium-mobile-only { display: block !important; }
+  }
+
+  @media (min-width: 768px) {
+    .premium-mobile-only { display: none !important; }
+    .premium-desktop-only { display: block !important; }
+  }
+</style>
+
+<div class="premium-hero-section" id="PremiumHeroSection-{{ section.id }}">
+  <div class="premium-hero-wrapper" id="PremiumHero-{{ section.id }}" data-autoplay="{{ section.settings.autoplay }}" data-speed="{{ section.settings.autoplay_speed | times: 1000 }}">
+    
+    <!-- Arrows -->
+    <div class="premium-nav-arrow nav-prev" onclick="window.premiumSlider_{{ section.id | replace: '-', '_' }}.manualSlide(-1)">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    </div>
+    <div class="premium-nav-arrow nav-next" onclick="window.premiumSlider_{{ section.id | replace: '-', '_' }}.manualSlide(1)">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </div>
+
+    <!-- Counter -->
+    <div class="premium-counter" style="display: none;"><span class="current-num">1</span> / <span class="total-num">1</span></div>
+
+    <div class="premium-slides-container" style="width: 100%; height: 100%; position: relative;">
+      {% for block in section.blocks %}
+        {%- assign is_valid = false -%}
+        {%- if block.type == 'video_slide' and block.settings.video != blank -%}{%- assign is_valid = true -%}{%- endif -%}
+        {%- if block.type == 'image_slide' and block.settings.image != blank -%}{%- assign is_valid = true -%}{%- endif -%}
+        {%- if block.type == 'mobile_slide' and block.settings.image != blank -%}{%- assign is_valid = true -%}{%- endif -%}
+        {%- if block.type == 'mobile_video_slide' and block.settings.video != blank -%}{%- assign is_valid = true -%}{%- endif -%}
+
+        {%- if is_valid -%}
+          <div class="premium-slide {% if block.type contains 'mobile' %}premium-mobile-only{% else %}premium-desktop-only{% endif %}" data-slide-index="{{ forloop.index0 }}">
+            <div class="premium-bg">
+              {% if block.type == 'video_slide' %}
+                {{ block.settings.video | video_tag: autoplay: true, loop: true, muted: true, controls: false, image_size: '1920x' }}
+              {% elsif block.type == 'image_slide' %}
+                <img loading="lazy" src="{{ block.settings.image | img_url: '1920x' }}" alt="{{ block.settings.headline | escape }}">
+              {% elsif block.type == 'mobile_video_slide' %}
+                {{ block.settings.video | video_tag: autoplay: true, loop: true, muted: true, controls: false, image_size: '800x' }}
+              {% else %}
+                <img loading="lazy" src="{{ block.settings.image | img_url: '800x' }}" alt="{{ block.settings.headline | escape }}">
+              {% endif %}
+            </div>
+            
+            <div class="premium-overlay" style="background: linear-gradient(to right, rgba(0,0,0,{{ block.settings.overlay_opacity | divided_by: 100.0 }}) 0%, rgba(0,0,0,{{ block.settings.overlay_opacity | divided_by: 150.0 }}) 50%, rgba(0,0,0,0) 100%);"></div>
+            
+            <div class="premium-content">
+              {% if block.settings.headline != blank %}
+                <h2 class="premium-headline">{{ block.settings.headline }}</h2>
+              {% endif %}
+              
+              {% if block.settings.subtext != blank %}
+                <p class="premium-subtext">{{ block.settings.subtext }}</p>
+              {% endif %}
+              
+              {% if block.settings.btn_label != blank %}
+                <a href="{{ block.settings.btn_link }}" class="premium-btn">{{ block.settings.btn_label }}</a>
+              {% endif %}
+            </div>
+          </div>
+        {%- endif -%}
+      {% endfor %}
+    </div>
+
+    <div class="premium-dots">
+      {% for block in section.blocks %}
+        {%- assign is_valid = false -%}
+        {%- if block.type == 'video_slide' and block.settings.video != blank -%}{%- assign is_valid = true -%}{%- endif -%}
+        {%- if block.type == 'image_slide' and block.settings.image != blank -%}{%- assign is_valid = true -%}{%- endif -%}
+        {%- if block.type == 'mobile_slide' and block.settings.image != blank -%}{%- assign is_valid = true -%}{%- endif -%}
+        {%- if block.type == 'mobile_video_slide' and block.settings.video != blank -%}{%- assign is_valid = true -%}{%- endif -%}
+
+        {%- if is_valid -%}
+          <div class="premium-dot {% if block.type contains 'mobile' %}premium-mobile-only{% else %}premium-desktop-only{% endif %}" data-dot-index="{{ forloop.index0 }}" onclick="window.premiumSlider_{{ section.id | replace: '-', '_' }}.goToSlide({{ forloop.index0 }})"></div>
+        {%- endif -%}
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- Ticker Bar -->
+  {% if section.settings.ticker_text != blank %}
+  <div class="premium-ticker">
+    <div class="ticker-content">
+      {% for i in (1..6) %}
+        <div class="ticker-item">{{ section.settings.ticker_text }}</div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+</div>
+
+<script>
+  (function() {
+    const sId = "{{ section.id }}";
+    const wrapper = document.getElementById('PremiumHero-' + sId);
+    if (!wrapper) return;
+
+    const isMobile = window.innerWidth < 768;
+    const slides = Array.from(wrapper.querySelectorAll(isMobile ? '.premium-slide.premium-mobile-only' : '.premium-slide.premium-desktop-only'));
+    const dots = Array.from(wrapper.querySelectorAll(isMobile ? '.premium-dot.premium-mobile-only' : '.premium-dot.premium-desktop-only'));
+    console.log("AYLESVA HERO DEBUG:", { sectionId: sId, totalSlides: slides.length, totalDots: dots.length, isMobile: isMobile });
+    const total = slides.length;
+    const isAutoplay = wrapper.getAttribute('data-autoplay') === 'true';
+    const speed = parseInt(wrapper.getAttribute('data-speed')) || 7000;
+    let currentIdx = 0;
+    let interval = null;
+
+    const slider = {
+      init: function() {
+        if (total <= 0) return;
+        
+        if (total > 1) {
+          const counter = wrapper.querySelector('.premium-counter');
+          if (counter) {
+            counter.style.display = 'block';
+            counter.querySelector('.total-num').innerText = total;
+          }
+        } else {
+          wrapper.querySelectorAll('.premium-nav-arrow, .premium-counter, .premium-dots').forEach(el => el.style.display = 'none');
+        }
+
+        this.changeSlide(0);
+        if (isAutoplay && total > 1) this.startAutoplay();
+      },
+      changeSlide: function(idx) {
+        if (idx >= total) idx = 0;
+        if (idx < 0) idx = total - 1;
+        currentIdx = idx;
+
+        slides.forEach(s => s.classList.remove('is-active'));
+        dots.forEach(d => d.classList.remove('is-active'));
+
+        if (slides[idx]) slides[idx].classList.add('is-active');
+        if (dots[idx]) dots[idx].classList.add('is-active');
+        
+        const currentNumEl = wrapper.querySelector('.current-num');
+        if (currentNumEl) currentNumEl.innerText = idx + 1;
+      },
+      manualSlide: function(dir) {
+        this.stopAutoplay();
+        this.changeSlide(currentIdx + dir);
+        if (isAutoplay) this.startAutoplay();
+      },
+      goToSlide: function(globalIdx) {
+        this.stopAutoplay();
+        // Find the local index in the filtered slides array
+        const targetIdx = slides.findIndex(s => s.getAttribute('data-slide-index') == globalIdx);
+        if (targetIdx !== -1) this.changeSlide(targetIdx);
+        if (isAutoplay) this.startAutoplay();
+      },
+      startAutoplay: function() {
+        this.stopAutoplay();
+        interval = setInterval(() => this.changeSlide(currentIdx + 1), speed);
+      },
+      stopAutoplay: function() {
+        if (interval) clearInterval(interval);
+      }
+    };
+
+    window['premiumSlider_' + sId.replace(/-/g, '_')] = slider;
+    slider.init();
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Aylesva Premium Hero",
+  "settings": [
+    {
+      "type": "range",
+      "id": "desktop_height",
+      "label": "Altura Escritorio (vh)",
+      "min": 40,
+      "max": 100,
+      "step": 5,
+      "default": 65
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Autoplay",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "autoplay_speed",
+      "label": "Velocidad (s)",
+      "min": 3,
+      "max": 15,
+      "step": 1,
+      "default": 7
+    },
+    {
+      "type": "text",
+      "id": "ticker_text",
+      "label": "Texto de la Barra Dorada",
+      "default": "OFERTAS FLASH DE FIN DE SEMANA - DESCUENTOS ADICIONALES EN ELECTRÓNICA Y MODA"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "video_slide",
+      "name": "Video (Escritorio)",
+      "settings": [
+        { "type": "video", "id": "video", "label": "Video" },
+        { "type": "text", "id": "headline", "label": "Título", "default": "NUEVA COLECCIÓN" },
+        { "type": "textarea", "id": "subtext", "label": "Subtexto", "default": "Estilo que define tu cultura" },
+        { "type": "text", "id": "btn_label", "label": "Botón", "default": "DESCUBRE LA EDICIÓN" },
+        { "type": "url", "id": "btn_link", "label": "Enlace" },
+        { "type": "range", "id": "overlay_opacity", "label": "Opacidad Oscurecido (%)", "min": 0, "max": 90, "default": 60 }
+      ]
+    },
+    {
+      "type": "image_slide",
+      "name": "Imagen (Escritorio)",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Imagen" },
+        { "type": "text", "id": "headline", "label": "Título", "default": "NUEVA COLECCIÓN" },
+        { "type": "textarea", "id": "subtext", "label": "Subtexto", "default": "Estilo que define tu cultura" },
+        { "type": "text", "id": "btn_label", "label": "Botón", "default": "DESCUBRE LA EDICIÓN" },
+        { "type": "url", "id": "btn_link", "label": "Enlace" },
+        { "type": "range", "id": "overlay_opacity", "label": "Opacidad Oscurecido (%)", "min": 0, "max": 90, "default": 50 }
+      ]
+    },
+    {
+      "type": "mobile_slide",
+      "name": "Imagen (Móvil)",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Imagen Móvil" },
+        { "type": "text", "id": "headline", "label": "Título", "default": "NUEVA COLECCIÓN" },
+        { "type": "textarea", "id": "subtext", "label": "Subtexto", "default": "Estilo que define tu cultura" },
+        { "type": "text", "id": "btn_label", "label": "Botón", "default": "DESCUBRE LA EDICIÓN" },
+        { "type": "url", "id": "btn_link", "label": "Enlace" },
+        { "type": "range", "id": "overlay_opacity", "label": "Opacidad Oscurecido (%)", "min": 0, "max": 90, "default": 50 }
+      ]
+    },
+    {
+      "type": "mobile_video_slide",
+      "name": "Video (Móvil)",
+      "settings": [
+        { "type": "video", "id": "video", "label": "Video Móvil" },
+        { "type": "text", "id": "headline", "label": "Título", "default": "NUEVA COLECCIÓN" },
+        { "type": "textarea", "id": "subtext", "label": "Subtexto", "default": "Estilo que define tu cultura" },
+        { "type": "text", "id": "btn_label", "label": "Botón", "default": "DESCUBRE LA EDICIÓN" },
+        { "type": "url", "id": "btn_link", "label": "Enlace" },
+        { "type": "range", "id": "overlay_opacity", "label": "Opacidad Oscurecido (%)", "min": 0, "max": 90, "default": 50 }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Aylesva Premium Hero",
+      "blocks": [
+        { "type": "image_slide" },
+        { "type": "mobile_slide" }
+      ]
+    }
+  ]
+}
+{% endschema %}

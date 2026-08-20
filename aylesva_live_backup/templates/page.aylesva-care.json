@@ -1,0 +1,105 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "aylesva-care",
+      "settings": {
+        "color_red": "#7C1922",
+        "color_blue": "#1C4170",
+        "color_light": "#F8FAFC",
+        "color_white": "#FFFFFF",
+        "color_accent": "#4E8424",
+        "hero_eyebrow": "AYLESVA CARE",
+        "hero_title": "Protección y Bienestar Integral para ti y tu Familia",
+        "hero_subtitle": "Accede a los mejores paquetes de beneficios de salud, hogar y seguros complementarios de la mano de New Benefits desde solo $20 USD.",
+        "hero_btn1_text": "Solicitar Información",
+        "hero_btn2_text": "Conocer Beneficios",
+        "hero_image_url": "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1800&q=80",
+        "props_title": "Planes de Beneficios de Salud y Hogar",
+        "props_subtitle": "Encuentra opciones diseñadas para cuidar tu salud diaria, protegerte ante accidentes y dar soporte a tu hogar.",
+        "info_eyebrow": "RESPALDO INTEGRAL",
+        "info_title": "Un Ecosistema de Salud y Descuentos",
+        "info_description": "New Benefits es el principal proveedor de planes de descuento en salud en los Estados Unidos. A través de Aylesva Care, te conectamos directamente con servicios de consultas y telemedicina, descuentos farmacéuticos y seguros suplementarios de líderes de la industria.",
+        "info_image_url": "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=1000&q=80",
+        "timeline_title": "Pasos para Registrarte",
+        "timeline_subtitle": "Un proceso de activación simple para comenzar a disfrutar de tus beneficios.",
+        "form_title": "Solicita tu Asesoría Personalizada",
+        "form_subtitle": "Compártenos tus datos para presentarte los planes de descuentos médicos y seguros suplementarios.",
+        "form_btn_text": "Solicitar Información",
+        "form_success": "¡Gracias! Tu solicitud ha sido recibida con éxito. Un agente especializado de Aylesva Care se pondrá en contacto contigo muy pronto."
+      },
+      "blocks": {
+        "pack_1": {
+          "type": "package_card",
+          "settings": {
+            "title": "Health & Household",
+            "description": "Beneficios de salud diaria, telemedicina 24/7, consultas médicas preferenciales y productos Briotech de grado médico para el cuidado diario.",
+            "price": "$20",
+            "featured_badge": true,
+            "image_url": "https://images.unsplash.com/photo-1471864190281-a93a3070b6de?auto=format&fit=crop&w=800&q=80"
+          }
+        },
+        "pack_2": {
+          "type": "package_card",
+          "settings": {
+            "title": "Supplemental Insurance",
+            "description": "Planes complementarios con el respaldo de Aflac y UHOne diseñados para cubrir accidentes, hospitalización y gastos de visión/dentales.",
+            "price": "$35",
+            "featured_badge": true,
+            "image_url": "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=800&q=80"
+          }
+        },
+        "pack_3": {
+          "type": "package_card",
+          "settings": {
+            "title": "Homezie",
+            "description": "Descuentos y beneficios integrales para el cuidado, soporte y economía de tu hogar, facilitando el acceso a técnicos y reparaciones.",
+            "price": "$15",
+            "featured_badge": false,
+            "image_url": "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80"
+          }
+        },
+        "step_1": {
+          "type": "timeline_step",
+          "settings": {
+            "title": "1. Elección de Plan",
+            "description": "Selecciona entre nuestros paquetes de beneficios médicos y de protección complementaria."
+          }
+        },
+        "step_2": {
+          "type": "timeline_step",
+          "settings": {
+            "title": "2. Formulario de Inscripción",
+            "description": "Proporciona tus datos básicos y los de tus dependientes familiares para abrir tu perfil."
+          }
+        },
+        "step_3": {
+          "type": "timeline_step",
+          "settings": {
+            "title": "3. Activación de Beneficios",
+            "description": "Recibe tu tarjeta digital de Aylesva Care y empieza a ahorrar en consultas y medicamentos."
+          }
+        }
+      },
+      "block_order": [
+        "pack_1",
+        "pack_2",
+        "pack_3",
+        "step_1",
+        "step_2",
+        "step_3"
+      ]
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

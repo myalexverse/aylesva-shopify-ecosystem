@@ -1,0 +1,658 @@
+{% comment %}
+  ============================================================
+  All Cities Global — Premium Real Estate Landing Section
+  Fully custom, responsive, beautiful CSS & hover animations.
+  Translate & Adapt compatible, editable via Shopify Customizer.
+  Repeatable content uses blocks (trust badge, property, timeline).
+  ============================================================
+{% endcomment %}
+
+{%- liquid
+  assign brand_navy = section.settings.color_navy
+  assign accent_gold = section.settings.color_gold
+  assign light_bg = section.settings.color_light
+  assign white_bg = section.settings.color_white
+  assign contact_anchor = '#allcities-contact-' | append: section.id
+-%}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  #allcities-{{ section.id }} {
+    --acg-navy: {{ brand_navy }};
+    --acg-gold: {{ accent_gold }};
+    --acg-light: {{ light_bg }};
+    --acg-white: {{ white_bg }};
+    --acg-ink: #1E293B;
+    --acg-muted: #64748B;
+    --acg-line: rgba(14,49,83,.08);
+    --acg-radius: 24px;
+    --acg-radius-sm: 16px;
+    --acg-shadow: 0 4px 20px rgba(14,49,83,.04), 0 10px 30px rgba(14,49,83,.05);
+    --acg-shadow-hover: 0 24px 50px -12px rgba(14,49,83,.18);
+    --acg-maxw: 1240px;
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: var(--acg-ink);
+    background: var(--acg-white);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  #allcities-{{ section.id }} * { box-sizing: border-box; }
+  #allcities-{{ section.id }} .acg-wrap { max-width: var(--acg-maxw); margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- TYPOGRAPHY & BUTTONS ---------- */
+  #allcities-{{ section.id }} h1, 
+  #allcities-{{ section.id }} h2, 
+  #allcities-{{ section.id }} h3, 
+  #allcities-{{ section.id }} h4 { margin: 0; line-height: 1.25; font-weight: 800; color: var(--acg-navy); letter-spacing: -0.5px; }
+  #allcities-{{ section.id }} p { margin: 0; line-height: 1.65; }
+  #allcities-{{ section.id }} .acg-eyebrow { display: inline-block; font-size: 13px; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase; color: var(--acg-gold); margin-bottom: 12px; }
+  
+  #allcities-{{ section.id }} .acg-btn { display: inline-flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 700; padding: 14px 30px; border-radius: 30px; text-decoration: none; transition: all .3s cubic-bezier(0.16, 1, 0.3, 1); cursor: pointer; border: none; font-family: inherit; }
+  #allcities-{{ section.id }} .acg-btn--primary { background: var(--acg-navy); color: #fff; box-shadow: 0 4px 14px rgba(14,49,83,.25); }
+  #allcities-{{ section.id }} .acg-btn--primary:hover { background: var(--acg-gold); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(197,164,126,.4); }
+  #allcities-{{ section.id }} .acg-btn--outline { background: transparent; color: var(--acg-navy); border: 2px solid var(--acg-navy); }
+  #allcities-{{ section.id }} .acg-btn--outline:hover { background: var(--acg-navy); color: #fff; transform: translateY(-2px); }
+
+  /* ---------- LAYOUT BANDS ---------- */
+  #allcities-{{ section.id }} .acg-band { padding: clamp(60px,8vw,100px) 0; }
+  #allcities-{{ section.id }} .acg-band--gray { background: var(--acg-light); }
+  #allcities-{{ section.id }} .acg-section-head { text-align: center; max-width: 720px; margin: 0 auto clamp(40px,6vw,68px); }
+  #allcities-{{ section.id }} .acg-section-head h2 { font-size: clamp(28px,3.5vw,40px); }
+  #allcities-{{ section.id }} .acg-section-head p { font-size: 16px; color: var(--acg-muted); margin-top: 14px; }
+
+  /* ---------- REVEAL ANIMATIONS ---------- */
+  #allcities-{{ section.id }} .acg-reveal { opacity: 0; transform: translateY(28px); transition: opacity .75s cubic-bezier(0.16, 1, 0.3, 1), transform .75s cubic-bezier(0.16, 1, 0.3, 1); }
+  #allcities-{{ section.id }} .acg-reveal.acg-in { opacity: 1; transform: translateY(0); }
+
+  /* ---------- HERO SECTION ---------- */
+  #allcities-{{ section.id }} .acg-hero { position: relative; padding: clamp(50px,7vw,90px) 0; overflow: hidden; background-size: cover; background-position: center; display: flex; align-items: center; min-height: clamp(580px, 82vh, 840px); }
+  #allcities-{{ section.id }} .acg-hero::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(14,49,83,0.45) 0%, rgba(14,49,83,0.18) 50%, rgba(14,49,83,0.6) 100%); z-index: 1; }
+  #allcities-{{ section.id }} .acg-hero-layout { display: flex; flex-direction: column; justify-content: space-between; min-height: clamp(520px, 78vh, 800px); width: 100%; position: relative; z-index: 2; }
+  #allcities-{{ section.id }} .acg-hero-content { max-width: 760px; color: #fff; margin-top: auto; margin-bottom: auto; }
+  #allcities-{{ section.id }} .acg-hero-content h1 { font-size: clamp(34px,4.5vw,56px); color: #fff; font-weight: 800; letter-spacing: -1px; margin-bottom: 16px; }
+  #allcities-{{ section.id }} .acg-hero-content p { font-size: clamp(16px,2vw,19px); line-height: 1.6; color: rgba(255,255,255,0.9); margin: 0 0 32px 0; font-weight: 400; }
+  #allcities-{{ section.id }} .acg-hero-cta { display: flex; flex-wrap: wrap; gap: 16px; }
+  
+  #allcities-{{ section.id }} .acg-hero-cta .acg-btn {
+    padding: 16px 36px;
+    font-size: 15px;
+    font-weight: 700;
+    border-radius: 8px;
+    transition: all .25s ease;
+  }
+  
+  #allcities-{{ section.id }} .acg-hero-cta .acg-btn--primary {
+    background-color: var(--acg-gold);
+    color: var(--acg-navy);
+    box-shadow: 0 4px 14px rgba(197, 164, 126, 0.25);
+  }
+  
+  #allcities-{{ section.id }} .acg-hero-cta .acg-btn--primary:hover {
+    background-color: #ffffff;
+    color: var(--acg-navy);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.15);
+  }
+
+  #allcities-{{ section.id }} .acg-hero-cta .acg-btn--outline {
+    border: 2px solid var(--acg-gold);
+    color: var(--acg-gold);
+    background: transparent;
+  }
+
+  #allcities-{{ section.id }} .acg-hero-cta .acg-btn--outline:hover {
+    background-color: var(--acg-gold);
+    color: var(--acg-navy);
+    transform: translateY(-2px);
+  }
+
+  /* BENEFITS BAR */
+  #allcities-{{ section.id }} .acg-hero-benefits {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    padding-top: 32px;
+    margin-top: auto;
+    width: 100%;
+  }
+
+  #allcities-{{ section.id }} .acg-benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  #allcities-{{ section.id }} .acg-benefit-icon {
+    width: 24px;
+    height: 24px;
+    color: var(--acg-gold);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #allcities-{{ section.id }} .acg-benefit-icon svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  #allcities-{{ section.id }} .acg-benefit-text h3 {
+    font-size: 14.5px;
+    font-weight: 700;
+    color: #ffffff !important;
+    margin: 0 0 2px 0;
+  }
+
+  #allcities-{{ section.id }} .acg-benefit-text p {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+  }
+
+  @media (max-width: 990px) {
+    #allcities-{{ section.id }} .acg-hero-benefits {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+  }
+
+  @media (max-width: 580px) {
+    #allcities-{{ section.id }} .acg-hero-benefits {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+  }
+
+  /* ---------- PROPERTIES GRID (VILLAS) ---------- */
+  #allcities-{{ section.id }} .acg-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  #allcities-{{ section.id }} .acg-card { background: var(--acg-white); border-radius: var(--acg-radius); overflow: hidden; box-shadow: var(--acg-shadow); border: 1px solid var(--acg-line); display: flex; flex-direction: column; height: 100%; transition: all .4s cubic-bezier(0.16, 1, 0.3, 1); position: relative; }
+  
+  /* HOVER ANIMATION FOR CARDS */
+  #allcities-{{ section.id }} .acg-card:hover { transform: translateY(-10px); box-shadow: var(--acg-shadow-hover); border-color: var(--acg-gold); }
+  
+  #allcities-{{ section.id }} .acg-card-media { height: clamp(200px, 15vw, 240px); overflow: hidden; position: relative; background: var(--acg-light); }
+  #allcities-{{ section.id }} .acg-card-media img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(0.16, 1, 0.3, 1); }
+  
+  /* Zoom image on hover */
+  #allcities-{{ section.id }} .acg-card:hover .acg-card-media img { transform: scale(1.08); }
+  
+  #allcities-{{ section.id }} .acg-badge { position: absolute; top: 16px; left: 16px; padding: 6px 12px; border-radius: 30px; font-size: 11px; font-weight: 800; text-transform: uppercase; background: var(--acg-gold); color: #fff; z-index: 2; box-shadow: 0 4px 8px rgba(0,0,0,0.1); letter-spacing: 0.5px; }
+  #allcities-{{ section.id }} .acg-card-body { padding: 28px; display: flex; flex-direction: column; flex-grow: 1; }
+  #allcities-{{ section.id }} .acg-card-body h3 { font-size: 22px; margin-bottom: 8px; font-weight: 700; transition: color .3s; }
+  
+  #allcities-{{ section.id }} .acg-card:hover .acg-card-body h3 { color: var(--acg-gold); }
+  
+  #allcities-{{ section.id }} .acg-loc { font-size: 14px; color: var(--acg-muted); margin-bottom: 20px; display: flex; align-items: center; gap: 6px; }
+  #allcities-{{ section.id }} .acg-loc svg { width: 15px; height: 15px; color: var(--acg-gold); flex-shrink: 0; }
+  
+  /* Specs block */
+  #allcities-{{ section.id }} .acg-specs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; padding: 16px 0; border-top: 1px solid var(--acg-line); border-bottom: 1px solid var(--acg-line); margin-bottom: 20px; background: var(--acg-light); border-radius: var(--acg-radius-sm); padding-left: 12px; padding-right: 12px; transition: background .3s; }
+  #allcities-{{ section.id }} .acg-card:hover .acg-specs { background: rgba(14,49,83,0.03); }
+  
+  #allcities-{{ section.id }} .acg-spec { display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: 13px; font-weight: 700; text-align: center; }
+  #allcities-{{ section.id }} .acg-spec-label { font-size: 10px; text-transform: uppercase; color: var(--acg-muted); font-weight: 600; letter-spacing: 0.5px; }
+  #allcities-{{ section.id }} .acg-spec svg { width: 18px; height: 18px; color: var(--acg-navy); transition: transform .3s; }
+  
+  /* Bounce icons on hover */
+  #allcities-{{ section.id }} .acg-card:hover .acg-spec svg { transform: translateY(-2px); }
+
+  #allcities-{{ section.id }} .acg-price-label { font-size: 12px; text-transform: uppercase; color: var(--acg-muted); font-weight: 700; letter-spacing: 0.5px; }
+  #allcities-{{ section.id }} .acg-price { font-size: clamp(20px, 2.5vw, 24px); font-weight: 800; color: var(--acg-navy); margin-top: 4px; display: flex; align-items: baseline; gap: 4px; }
+  #allcities-{{ section.id }} .acg-price span { font-size: 14px; font-weight: 600; color: var(--acg-gold); }
+  
+  #allcities-{{ section.id }} .acg-card-footer { display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 20px; }
+  #allcities-{{ section.id }} .acg-card-link { font-size: 14.5px; font-weight: 800; color: var(--acg-navy); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: color .2s; }
+  #allcities-{{ section.id }} .acg-card-link svg { width: 16px; height: 16px; transition: transform .3s cubic-bezier(0.16, 1, 0.3, 1); }
+  
+  #allcities-{{ section.id }} .acg-card:hover .acg-card-link { color: var(--acg-gold); }
+  #allcities-{{ section.id }} .acg-card:hover .acg-card-link svg { transform: translateX(5px); color: var(--acg-gold); }
+
+  /* ---------- INFO / EXPERIENCE SECTION ---------- */
+  #allcities-{{ section.id }} .acg-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px,6vw,80px); align-items: center; }
+  #allcities-{{ section.id }} .acg-info-media { position: relative; border-radius: var(--acg-radius); overflow: hidden; box-shadow: var(--acg-shadow-hover); aspect-ratio: 4/3; }
+  #allcities-{{ section.id }} .acg-info-media img { width: 100%; height: 100%; object-fit: cover; }
+  #allcities-{{ section.id }} .acg-info-body h2 { font-size: clamp(26px,3vw,38px); margin-bottom: 24px; }
+  #allcities-{{ section.id }} .acg-info-body p { color: var(--acg-muted); margin-bottom: 20px; }
+  
+  /* Expat features list */
+  #allcities-{{ section.id }} .acg-features { display: flex; flex-direction: column; gap: 16px; margin-top: 28px; }
+  #allcities-{{ section.id }} .acg-feature { display: flex; gap: 14px; }
+  #allcities-{{ section.id }} .acg-feat-icon { width: 38px; height: 38px; border-radius: 10px; background: rgba(14,49,83,0.06); color: var(--acg-navy); display: grid; place-items: center; flex-shrink: 0; }
+  #allcities-{{ section.id }} .acg-feat-icon svg { width: 20px; height: 20px; }
+  #allcities-{{ section.id }} .acg-feat-text h4 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+  #allcities-{{ section.id }} .acg-feat-text p { font-size: 14px; color: var(--acg-muted); margin: 0; }
+
+  /* ---------- TIMELINE PROCESS ---------- */
+  #allcities-{{ section.id }} .acg-process { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; position: relative; }
+  #allcities-{{ section.id }} .acg-process-card { background: var(--acg-white); padding: 32px; border-radius: var(--acg-radius); border: 1px solid var(--acg-line); box-shadow: var(--acg-shadow); transition: all .3s; }
+  #allcities-{{ section.id }} .acg-process-card:hover { transform: translateY(-4px); border-color: var(--acg-gold); }
+  #allcities-{{ section.id }} .acg-proc-num { font-size: 38px; font-weight: 800; color: rgba(197,164,126,0.35); margin-bottom: 16px; line-height: 1; }
+  #allcities-{{ section.id }} .acg-process-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+  #allcities-{{ section.id }} .acg-process-card p { font-size: 14px; color: var(--acg-muted); }
+
+  /* ---------- REGISTRATION FORM ---------- */
+  #allcities-{{ section.id }} .acg-form-box { max-width: 820px; margin: 0 auto; background: var(--acg-white); border: 1px solid var(--acg-line); border-radius: 26px; box-shadow: var(--acg-shadow-hover); padding: clamp(28px,4vw,56px); }
+  #allcities-{{ section.id }} .acg-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  #allcities-{{ section.id }} .acg-field { display: flex; flex-direction: column; gap: 6px; }
+  #allcities-{{ section.id }} .acg-field.acg-span2 { grid-column: 1 / -1; }
+  #allcities-{{ section.id }} .acg-field label { font-size: 13.5px; font-weight: 700; color: var(--acg-navy); }
+  #allcities-{{ section.id }} .acg-field input, 
+  #allcities-{{ section.id }} .acg-field select, 
+  #allcities-{{ section.id }} .acg-field textarea { font-family: inherit; font-size: 15px; color: var(--acg-ink); background: var(--acg-light); border: 1px solid var(--acg-line); border-radius: 12px; padding: 13px 15px; transition: all .25s ease; width: 100%; }
+  #allcities-{{ section.id }} .acg-field input:focus, 
+  #allcities-{{ section.id }} .acg-field select:focus, 
+  #allcities-{{ section.id }} .acg-field textarea:focus { outline: none; border-color: var(--acg-gold); background: #fff; box-shadow: 0 0 0 4px rgba(197,164,126,.15); }
+  #allcities-{{ section.id }} .acg-field textarea { resize: vertical; min-height: 120px; }
+  #allcities-{{ section.id }} .acg-form-actions { margin-top: 32px; text-align: center; }
+  #allcities-{{ section.id }} .acg-form-success { background: rgba(16,185,129,.10); border: 1px solid rgba(16,185,129,.2); color: #059669; border-radius: 12px; padding: 16px 18px; font-weight: 600; margin-bottom: 24px; text-align: center; }
+
+  /* ---------- RESPONSIVE DESIGN ---------- */
+  @media (max-width: 990px) {
+    #allcities-{{ section.id }} .acg-grid { grid-template-columns: 1fr; gap: 24px; max-width: 420px; margin: 0 auto; }
+    #allcities-{{ section.id }} .acg-info-grid { grid-template-columns: 1fr; }
+    #allcities-{{ section.id }} .acg-process { grid-template-columns: 1fr; gap: 20px; }
+  }
+  @media (max-width: 580px) {
+    #allcities-{{ section.id }} .acg-form-grid { grid-template-columns: 1fr; }
+    #allcities-{{ section.id }} .acg-form-grid .acg-field { grid-column: auto !important; }
+    #allcities-{{ section.id }} .acg-hero-cta { flex-direction: column; }
+    #allcities-{{ section.id }} .acg-hero-cta .acg-btn { width: 100%; }
+  }
+</style>
+
+<div id="allcities-{{ section.id }}">
+
+  {%- comment -%}============ HERO SECTION ============{%- endcomment -%}
+  {%- liquid
+    assign hero_bg = ''
+    if section.settings.hero_image != blank
+      assign hero_bg = section.settings.hero_image | image_url: width: 1800
+    else
+      assign hero_bg = section.settings.hero_image_url
+    endif
+  -%}
+  <section class="acg-hero" style="background-image: url('{{ hero_bg }}');">
+    <div class="acg-wrap acg-hero-layout">
+      <div class="acg-hero-content acg-reveal">
+        {%- if section.settings.hero_eyebrow != blank -%}<span class="acg-eyebrow">{{ section.settings.hero_eyebrow }}</span>{%- endif -%}
+        <h1>{{ section.settings.hero_title }}</h1>
+        <p>{{ section.settings.hero_subtitle }}</p>
+        <div class="acg-hero-cta">
+          {%- if section.settings.hero_btn1_text != blank -%}
+            <a href="{{ section.settings.hero_btn1_link | default: contact_anchor }}" class="acg-btn acg-btn--primary">{{ section.settings.hero_btn1_text }}</a>
+          {%- endif -%}
+          {%- if section.settings.hero_btn2_text != blank -%}
+            <a href="{{ section.settings.hero_btn2_link | default: '#villas-featured' }}" class="acg-btn acg-btn--outline" data-acg-scroll>{{ section.settings.hero_btn2_text }}</a>
+          {%- endif -%}
+        </div>
+      </div>
+
+      <!-- BENEFITS BAR -->
+      <div class="acg-hero-benefits acg-reveal">
+        <div class="acg-benefit-item">
+          <div class="acg-benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div class="acg-benefit-text">
+            <h3>Inversión Segura</h3>
+            <p>Propiedades verificadas</p>
+          </div>
+        </div>
+        <div class="acg-benefit-item">
+          <div class="acg-benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+          </div>
+          <div class="acg-benefit-text">
+            <h3>Alta Plusvalía</h3>
+            <p>Crece tu patrimonio</p>
+          </div>
+        </div>
+        <div class="acg-benefit-item">
+          <div class="acg-benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          </div>
+          <div class="acg-benefit-text">
+            <h3>Acompañamiento Legal</h3>
+            <p>Proceso 100% seguro</p>
+          </div>
+        </div>
+        <div class="acg-benefit-item">
+          <div class="acg-benefit-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          </div>
+          <div class="acg-benefit-text">
+            <h3>Asesoría Personalizada</h3>
+            <p>Te guiamos en cada paso</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%}============ PROPERTIES (VILLAS) ============{%- endcomment -%}
+  {%- assign property_blocks = section.blocks | where: 'type', 'property_card' -%}
+  {%- if property_blocks.size > 0 -%}
+    <section class="acg-band acg-band--gray" id="villas-featured">
+      <div class="acg-wrap">
+        <div class="acg-section-head acg-reveal">
+          <h2>{{ section.settings.props_title }}</h2>
+          {%- if section.settings.props_subtitle != blank -%}<p>{{ section.settings.props_subtitle }}</p>{%- endif -%}
+        </div>
+        
+        <div class="acg-grid">
+          {%- for block in property_blocks -%}
+            {%- liquid
+              assign card_img = ''
+              if block.settings.image != blank
+                assign card_img = block.settings.image | image_url: width: 600
+              else
+                assign card_img = block.settings.image_url
+              endif
+            -%}
+            <div class="acg-card acg-reveal" {{ block.shopify_attributes }}>
+              <div class="acg-card-media">
+                {%- if card_img != blank -%}<img src="{{ card_img }}" alt="{{ block.settings.title | escape }}" loading="lazy">{%- endif -%}
+                {%- if block.settings.featured_badge -%}<span class="acg-badge">Destacada</span>{%- endif -%}
+              </div>
+              <div class="acg-card-body">
+                <h3>{{ block.settings.title }}</h3>
+                <div class="acg-loc">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  <span>{{ block.settings.location }}</span>
+                </div>
+                
+                <div class="acg-specs">
+                  <div class="acg-spec">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 4v16M22 4v16M2 8h20M2 14h20M6 8v6M18 8v6"/></svg>
+                    <span>{{ block.settings.beds }}</span>
+                    <span class="acg-spec-label">Hab</span>
+                  </div>
+                  <div class="acg-spec">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4zM4 10h16M10 4v16"/></svg>
+                    <span>{{ block.settings.baths }}</span>
+                    <span class="acg-spec-label">Baños</span>
+                  </div>
+                  <div class="acg-spec">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 3H3v18h18V3zM9 3v18M3 9h18"/></svg>
+                    <span>{{ block.settings.area }}</span>
+                    <span class="acg-spec-label">Sq Ft</span>
+                  </div>
+                </div>
+                
+                <div class="acg-card-footer">
+                  <div>
+                    <span class="acg-price-label">Precio Inicial</span>
+                    <div class="acg-price">{{ block.settings.price }} <span>USD</span></div>
+                  </div>
+                  <a href="{{ contact_anchor }}" class="acg-card-link" data-acg-scroll>
+                    <span>Saber más</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+    </section>
+  {%- endif -%}
+
+  {%- comment -%}============ INFO & BENEFITS ============{%- endcomment -%}
+  <section class="acg-band">
+    <div class="acg-wrap">
+      <div class="acg-info-grid">
+        {%- liquid
+          assign info_img = ''
+          if section.settings.info_image != blank
+            assign info_img = section.settings.info_image | image_url: width: 1000
+          else
+            assign info_img = section.settings.info_image_url
+          endif
+        -%}
+        <div class="acg-info-media acg-reveal">
+          {%- if info_img != blank -%}<img src="{{ info_img }}" alt="Inversión inmobiliaria segura" loading="lazy">{%- endif -%}
+        </div>
+        <div class="acg-info-body acg-reveal">
+          <span class="acg-eyebrow">{{ section.settings.info_eyebrow }}</span>
+          <h2>{{ section.settings.info_title }}</h2>
+          <p>{{ section.settings.info_description }}</p>
+          
+          <div class="acg-features">
+            <div class="acg-feature">
+              <div class="acg-feat-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <div class="acg-feat-text">
+                <h4>Fideicomiso & Estructura Legal</h4>
+                <p>Te guiamos de forma segura en la adquisición de inmuebles bajo Fideicomiso o Corporación Mexicana.</p>
+              </div>
+            </div>
+            <div class="acg-feature">
+              <div class="acg-feat-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+              </div>
+              <div class="acg-feat-text">
+                <h4>Altos Niveles de Plusvalía</h4>
+                <p>Inversiones estratégicas en ubicaciones de gran potencial e infraestructura de crecimiento para 2026 en adelante.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%}============ PROCESO DE COMPRA ============{%- endcomment -%}
+  {%- assign timeline_blocks = section.blocks | where: 'type', 'timeline_step' -%}
+  {%- if timeline_blocks.size > 0 -%}
+    <section class="acg-band acg-band--gray">
+      <div class="acg-wrap">
+        <div class="acg-section-head acg-reveal">
+          <h2>{{ section.settings.timeline_title }}</h2>
+          {%- if section.settings.timeline_subtitle != blank -%}<p>{{ section.settings.timeline_subtitle }}</p>{%- endif -%}
+        </div>
+        
+        <div class="acg-process">
+          {%- for block in timeline_blocks -%}
+            <div class="acg-process-card acg-reveal" {{ block.shopify_attributes }}>
+              <div class="acg-proc-num">0{{ forloop.index }}</div>
+              <h3>{{ block.settings.title }}</h3>
+              <p>{{ block.settings.description }}</p>
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+    </section>
+  {%- endif -%}
+
+  {%- comment -%}============ CONTACT / REGISTRATION FORM ============{%- endcomment -%}
+  <section class="acg-band" id="{{ contact_anchor | remove: '#' }}">
+    <div class="acg-wrap">
+      <div class="acg-section-head acg-reveal">
+        <h2>{{ section.settings.form_title }}</h2>
+        {%- if section.settings.form_subtitle != blank -%}<p>{{ section.settings.form_subtitle }}</p>{%- endif -%}
+      </div>
+      
+      {%- if section.settings.embed_form_code != blank -%}
+        <div class="acg-form-box acg-reveal" style="min-height:400px;">
+          {{ section.settings.embed_form_code }}
+          <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+        </div>
+      {%- else -%}
+        <div class="acg-form-box acg-reveal">
+          {%- form 'contact', id: 'allcities-contact-form' -%}
+            {%- if form.posted_successfully? -%}
+              <div class="acg-form-success">{{ section.settings.form_success }}</div>
+            {%- endif -%}
+            
+            <div class="acg-form-grid">
+              <div class="acg-field">
+                <label>Nombre Completo</label>
+                <input type="text" name="contact[name]" required placeholder="Ej. Carlos Mendoza">
+              </div>
+              <div class="acg-field">
+                <label>Correo Electrónico</label>
+                <input type="email" name="contact[email]" required placeholder="Ej. carlos@dominio.com">
+              </div>
+              <div class="acg-field">
+                <label>Teléfono / WhatsApp</label>
+                <input type="tel" name="contact[phone]" placeholder="Ej. 998 123 4567">
+              </div>
+              <div class="acg-field">
+                <label>Ubicación de Interés</label>
+                <select name="contact[destination]">
+                  <option value="Altarena - Sea of Cortez">Altarena - Sea of Cortez (Villas)</option>
+                  <option value="Riviera Maya">Riviera Maya / Cancún</option>
+                  <option value="Puerto Vallarta">Puerto Vallarta</option>
+                  <option value="Los Cabos">Los Cabos</option>
+                  <option value="Otro">Otro Destino</option>
+                </select>
+              </div>
+              <div class="acg-field">
+                <label>Presupuesto Estimado</label>
+                <select name="contact[budget]">
+                  <option value="Under $300k">Menos de $300,000 USD</option>
+                  <option value="$300k - $500k">$300,000 - $500,000 USD</option>
+                  <option value="$500k - $800k">$500,000 - $800,000 USD</option>
+                  <option value="Over $800k">Más de $800,000 USD</option>
+                </select>
+              </div>
+              <div class="acg-field">
+                <label>Plazo de Inversión</label>
+                <select name="contact[timeline]">
+                  <option value="Inmediato">Inmediato (menos de 3 meses)</option>
+                  <option value="3 a 6 meses">De 3 a 6 meses</option>
+                  <option value="6 a 12 meses">De 6 a 12 meses</option>
+                  <option value="Explorando">Solo explorando opciones</option>
+                </select>
+              </div>
+              <div class="acg-field acg-span2">
+                <label>Detalles / Comentarios adicionales</label>
+                <textarea name="contact[body]" placeholder="Escribe tus preguntas o las características específicas que buscas en tu propiedad..."></textarea>
+              </div>
+            </div>
+            
+            <div class="acg-form-actions">
+              <button type="submit" class="acg-btn acg-btn--primary">{{ section.settings.form_btn_text }}</button>
+            </div>
+          {%- endform -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </section>
+
+</div>
+
+<script>
+  (function(){
+    var root = document.getElementById('allcities-{{ section.id }}');
+    if(!root) return;
+    
+    // Reveal animations
+    var els = root.querySelectorAll('.acg-reveal');
+    if(!('IntersectionObserver' in window)){ 
+      els.forEach(function(e){ e.classList.add('acg-in'); }); 
+      return; 
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ 
+          en.target.classList.add('acg-in'); 
+          io.unobserve(en.target); 
+        }
+      });
+    }, { threshold: 0.08 });
+    els.forEach(function(e){ io.observe(e); });
+
+    // Smooth scroll for anchors
+    root.querySelectorAll('a[data-acg-scroll]').forEach(function(a){
+      a.addEventListener('click', function(ev){
+        var href = a.getAttribute('href') || '';
+        if(href.charAt(0) !== '#') return;
+        var target = document.getElementById(href.slice(1));
+        if(!target) return;
+        ev.preventDefault();
+        var y = target.getBoundingClientRect().top + window.pageYOffset - 24;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "All Cities Global",
+  "tag": "section",
+  "class": "allcities-global-section",
+  "settings": [
+    { "type": "header", "content": "Diseño y Colores" },
+    { "type": "color", "id": "color_navy", "label": "Azul Marino (Principal)", "default": "#0E3153" },
+    { "type": "color", "id": "color_gold", "label": "Dorado (Acento)", "default": "#C5A47E" },
+    { "type": "color", "id": "color_light", "label": "Gris Claro", "default": "#F8FAFC" },
+    { "type": "color", "id": "color_white", "label": "Blanco / Fondo", "default": "#FFFFFF" },
+
+    { "type": "header", "content": "1 · Hero" },
+    { "type": "text", "id": "hero_eyebrow", "label": "Subtítulo Hero", "default": "BIENES RAÍCES EXCLUSIVOS" },
+    { "type": "text", "id": "hero_title", "label": "Título Principal", "default": "Tu Santuario de Estilo de Vida en México y el Caribe" },
+    { "type": "textarea", "id": "hero_subtitle", "label": "Descripción Hero", "default": "Encuentra la casa de tus sueños o tu próxima gran oportunidad de inversión. Te guiamos de forma segura en todo el proceso legal de compra." },
+    { "type": "text", "id": "hero_btn1_text", "label": "Botón Principal", "default": "Iniciar Inversión" },
+    { "type": "url", "id": "hero_btn1_link", "label": "Enlace Botón Principal" },
+    { "type": "text", "id": "hero_btn2_text", "label": "Botón Secundario", "default": "Ver Propiedades" },
+    { "type": "url", "id": "hero_btn2_link", "label": "Enlace Botón Secundario" },
+    { "type": "image_picker", "id": "hero_image", "label": "Imagen de Fondo Hero" },
+    { "type": "text", "id": "hero_image_url", "label": "URL Alternativa Fondo Hero" },
+
+    { "type": "header", "content": "2 · Propiedades Destacadas" },
+    { "type": "text", "id": "props_title", "label": "Título Sección", "default": "Propiedades para Cada Estilo de Vida" },
+    { "type": "text", "id": "props_subtitle", "label": "Subtítulo Sección", "default": "Conoce los desarrollos residenciales más exclusivos y con mejor plusvalía del Mar de Cortés y el Caribe." },
+
+    { "type": "header", "content": "3 · Información de Inversión y Fideicomiso" },
+    { "type": "text", "id": "info_eyebrow", "label": "Subtítulo Sección Info", "default": "GUÍA Y SEGURIDAD" },
+    { "type": "text", "id": "info_title", "label": "Título Sección Info", "default": "Inversión Inmobiliaria Transparente y Simplificada" },
+    { "type": "textarea", "id": "info_description", "label": "Descripción Info", "default": "Adquirir una propiedad en el extranjero no tiene por qué ser complicado. En All Cities Global te brindamos el acompañamiento legal necesario para realizar adquisiciones transparentes mediante fideicomisos bancarios o estructuración corporativa, garantizando la seguridad de tu patrimonio." },
+    { "type": "image_picker", "id": "info_image", "label": "Imagen de Sección Info" },
+    { "type": "text", "id": "info_image_url", "label": "URL Alternativa Imagen Info" },
+
+    { "type": "header", "content": "4 · Proceso de Compra" },
+    { "type": "text", "id": "timeline_title", "label": "Título Proceso", "default": "Adquisición Segura en 3 Pasos" },
+    { "type": "text", "id": "timeline_subtitle", "label": "Subtítulo Proceso", "default": "Un acompañamiento integral de principio a fin." },
+
+    { "type": "header", "content": "5 · Formulario de Registro" },
+    { "type": "textarea", "id": "embed_form_code", "label": "Código Embed del CRM (LeadConnector / GHL)", "info": "Pega aquí el código iframe de LeadConnector. Si está vacío se mostrará el formulario nativo de Shopify." },
+    { "type": "text", "id": "form_title", "label": "Encuentra tu Propiedad Ideal" },
+    { "type": "text", "id": "form_subtitle", "label": "Subtítulo del Formulario" },
+    { "type": "text", "id": "form_btn_text", "label": "Texto del Botón Enviar", "default": "Solicitar Asesoría" },
+    { "type": "text", "id": "form_success", "label": "Mensaje de Éxito", "default": "¡Gracias! Tu solicitud ha sido recibida con éxito. Un agente especializado de All Cities Global se pondrá en contacto contigo muy pronto." }
+  ],
+  "blocks": [
+    {
+      "type": "property_card",
+      "name": "Propiedad",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Nombre de la Propiedad", "default": "Villa Hai" },
+        { "type": "text", "id": "location", "label": "Ubicación", "default": "Altarena, Sea of Cortez" },
+        { "type": "text", "id": "beds", "label": "Recámaras (Hab)", "default": "3" },
+        { "type": "text", "id": "baths", "label": "Baños", "default": "3.5" },
+        { "type": "text", "id": "area", "label": "Área (Sq Ft)", "default": "2,615.43" },
+        { "type": "text", "id": "price", "label": "Precio Inicial (USD)", "default": "$465,512" },
+        { "type": "checkbox", "id": "featured_badge", "label": "Marcar como Destacada", "default": true },
+        { "type": "image_picker", "id": "image", "label": "Imagen de la Propiedad" },
+        { "type": "text", "id": "image_url", "label": "URL Alternativa de Imagen" }
+      ]
+    },
+    {
+      "type": "timeline_step",
+      "name": "Paso de Proceso",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Título", "default": "1. Selección y Perfil" },
+        { "type": "textarea", "id": "description", "label": "Descripción", "default": "Definimos tus preferencias de estilo de vida, ubicación y presupuesto para filtrar las opciones ideales." }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,284 @@
+{% comment %}
+  custom-duo-cooler-banner.liquid
+  Banner dual (Imagen/Video) con estética de alta gama
+{% endcomment %}
+
+<div class="duo-cooler-banner" id="banner-{{ section.id }}" style="margin-top: {{ section.settings.margin_top }}px; margin-bottom: {{ section.settings.margin_bottom }}px;">
+  <div class="duo-cooler-container">
+    {% if section.settings.section_title != blank %}
+      <h2 class="duo-cooler-section-title">{{ section.settings.section_title }}</h2>
+    {% endif %}
+
+    <div class="duo-cooler-grid">
+      
+      <!-- Bloque Izquierdo: Imagen -->
+      <div class="duo-cooler-block duo-cooler-block--left">
+        <a href="{{ section.settings.link_1 }}" class="duo-cooler-link">
+          <div class="duo-cooler-media-wrapper">
+            {% if section.settings.image_1 != blank %}
+              <img loading="lazy" 
+                   src="{{ section.settings.image_1 | img_url: 'master' }}" 
+                   alt="{{ section.settings.image_1.alt | escape }}"
+                   class="duo-cooler-media">
+            {% else %}
+              <div class="duo-cooler-placeholder">{{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}</div>
+            {% endif %}
+            
+            <div class="duo-cooler-overlay">
+              {% if section.settings.logo_1 != blank %}
+                <img src="{{ section.settings.logo_1 | img_url: '200x' }}" alt="Logo 1" class="duo-cooler-logo">
+              {% endif %}
+              
+              {% if section.settings.button_text_1 != blank %}
+                <span class="duo-cooler-button">{{ section.settings.button_text_1 }}</span>
+              {% endif %}
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Bloque Derecho: Video -->
+      <div class="duo-cooler-block duo-cooler-block--right">
+        <a href="{{ section.settings.link_2 }}" class="duo-cooler-link">
+          <div class="duo-cooler-media-wrapper">
+            {% if section.settings.video_2 != blank %}
+              {{ section.settings.video_2 | video_tag: autoplay: true, loop: true, muted: true, playsinline: true, class: 'duo-cooler-media duo-cooler-video', preload: 'auto' }}
+            {% else %}
+               <div class="duo-cooler-placeholder">{{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}</div>
+            {% endif %}
+            
+            <div class="duo-cooler-overlay">
+              {% if section.settings.logo_2 != blank %}
+                <img src="{{ section.settings.logo_2 | img_url: '200x' }}" alt="Logo 2" class="duo-cooler-logo">
+              {% endif %}
+              
+              {% if section.settings.button_text_2 != blank %}
+                <span class="duo-cooler-button">{{ section.settings.button_text_2 }}</span>
+              {% endif %}
+            </div>
+          </div>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<style>
+.duo-cooler-banner {
+  padding: 40px 0;
+  background: #fff;
+}
+
+.duo-cooler-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.duo-cooler-section-title {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #1a1a1a;
+  margin-bottom: 30px;
+  /* Harmony font */
+  font-family: inherit; 
+}
+
+.duo-cooler-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.duo-cooler-block {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.duo-cooler-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+}
+
+.duo-cooler-media-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.duo-cooler-media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.duo-cooler-video {
+  pointer-events: none;
+}
+
+.duo-cooler-block:hover .duo-cooler-media {
+  transform: scale(1.05);
+}
+
+.duo-cooler-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding-bottom: 40px;
+  background: linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.3));
+}
+
+.duo-cooler-logo {
+  max-width: 120px;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+.duo-cooler-button {
+  padding: 10px 40px;
+  border: 1px solid #C5A47E;
+  border-radius: 50px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: rgba(197, 164, 126, 0.15);
+  backdrop-filter: blur(4px);
+  transition: all 0.3s ease;
+}
+
+.duo-cooler-block:hover .duo-cooler-button {
+  background: #C5A47E;
+  color: #1a1a1a;
+  box-shadow: 0 0 15px rgba(197, 164, 126, 0.6);
+  transform: translateY(-5px);
+}
+
+.duo-cooler-placeholder {
+  width: 100%;
+  height: 100%;
+  background: #eee;
+}
+
+@media screen and (max-width: 767px) {
+  .duo-cooler-grid {
+    grid-template-columns: 1fr;
+  }
+  .duo-cooler-block {
+    aspect-ratio: 1 / 1;
+  }
+  .duo-cooler-section-title {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Duo Cooler Banner",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Título de la Sección",
+      "default": "Marcas Destacadas"
+    },
+    {
+      "type": "header",
+      "content": "Bloque Izquierdo (Imagen)"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Imagen de Fondo"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_1",
+      "label": "Logo de Marca"
+    },
+    {
+      "type": "text",
+      "id": "button_text_1",
+      "label": "Texto del Botón",
+      "default": "Envíos Gratis"
+    },
+    {
+      "type": "url",
+      "id": "link_1",
+      "label": "Enlace del Bloque"
+    },
+    {
+      "type": "header",
+      "content": "Bloque Derecho (Video)"
+    },
+    {
+      "type": "video",
+      "id": "video_2",
+      "label": "Video (Sube un MP4)"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_2",
+      "label": "Logo de Marca"
+    },
+    {
+      "type": "text",
+      "id": "button_text_2",
+      "label": "Texto del Botón"
+,
+      "default": "Envíos Gratis"
+    },
+    {
+      "type": "url",
+      "id": "link_2",
+      "label": "Enlace del Bloque"
+    },
+    {
+      "type": "header",
+      "content": "Diseño"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "label": "Margen Superior",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "label": "Margen Inferior",
+      "default": 30
+    }
+  ],
+  "presets": [
+    {
+      "name": "Duo Cooler Banner",
+      "category": "Banners"
+    }
+  ]
+}
+{% endschema %}

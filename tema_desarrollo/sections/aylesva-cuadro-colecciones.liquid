@@ -1,0 +1,275 @@
+{% comment %}
+  aylesva-cuadro-colecciones.liquid
+  Grilla de categorías premium estilo Mercado Libre (5 columnas)
+{% endcomment %}
+
+<div class="aylesva-cuadro-section" id="section-{{ section.id }}" style="margin-top: {{ section.settings.margin_top }}px; margin-bottom: {{ section.settings.margin_bottom }}px;">
+  <div class="aylesva-container">
+    
+    <div class="aylesva-cuadro-header">
+      {% if section.settings.title != blank %}
+        <h2 class="aylesva-cuadro-title">{{ section.settings.title }}</h2>
+      {% endif %}
+      {% if section.settings.view_all_link != blank %}
+        <a href="{{ section.settings.view_all_link }}" class="aylesva-cuadro-view-all">{{ section.settings.view_all_text }}</a>
+      {% endif %}
+    </div>
+
+    <div class="aylesva-cuadro-grid">
+      {% for block in section.blocks %}
+        {%- assign collection = collections[block.settings.collection] -%}
+        
+        <div class="aylesva-cuadro-item" {{ block.shopify_attributes }}>
+          <a href="{{ collection.url | default: '#' }}" class="aylesva-cuadro-link">
+            <div class="aylesva-cuadro-card">
+              <div class="aylesva-cuadro-image-wrapper">
+                {% if block.settings.image != blank %}
+                  <img loading="lazy" src="{{ block.settings.image | img_url: '200x200', crop: 'center' }}" alt="{{ collection.title }}" class="aylesva-cuadro-img">
+                {% elsif collection.image != blank %}
+                  <img loading="lazy" src="{{ collection.image | img_url: '200x200', crop: 'center' }}" alt="{{ collection.title }}" class="aylesva-cuadro-img">
+                {% else %}
+                  {{ 'image' | placeholder_svg_tag: 'placeholder-svg aylesva-cuadro-img' }}
+                {% endif %}
+              </div>
+              <div class="aylesva-cuadro-content">
+                <span class="aylesva-cuadro-name">
+                  {% if block.settings.title != blank %}
+                    {{ block.settings.title }}
+                  {% else %}
+                    {{ collection.title | default: 'Colección' }}
+                  {% endif %}
+                </span>
+              </div>
+            </div>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<style>
+.aylesva-cuadro-section {
+  padding: 40px 0;
+  background-color: transparent;
+}
+
+.aylesva-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.aylesva-cuadro-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 24px;
+}
+
+.aylesva-cuadro-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+.aylesva-cuadro-view-all {
+  font-size: 14px;
+  color: #3483fa;
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.2s;
+}
+
+.aylesva-cuadro-view-all:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+.aylesva-cuadro-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+@media screen and (min-width: 768px) {
+  .aylesva-cuadro-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .aylesva-cuadro-grid {
+    grid-template-columns: repeat(5, 1fr); /* 5 columnas solicitadas */
+    gap: 16px;
+  }
+}
+
+.aylesva-cuadro-item {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: aylesvaFadeUp 0.6s forwards cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+{% for i in (1..12) %}
+.aylesva-cuadro-item:nth-child({{ i }}) {
+  animation-delay: {{ i | times: 0.05 }}s;
+}
+{% endfor %}
+
+@keyframes aylesvaFadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.aylesva-cuadro-link {
+  text-decoration: none;
+  display: block;
+  height: 100%;
+}
+
+.aylesva-cuadro-card {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 12px;
+  border: 1px solid #f0f0f0;
+  height: 100%;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.aylesva-cuadro-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+  border-color: #e0e0e0;
+}
+
+.aylesva-cuadro-image-wrapper {
+  flex: 0 0 60px;
+  height: 60px;
+  margin-right: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.aylesva-cuadro-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 0.5s ease;
+}
+
+.aylesva-cuadro-card:hover .aylesva-cuadro-img {
+  transform: scale(1.1);
+}
+
+.aylesva-cuadro-content {
+  flex: 1;
+}
+
+.aylesva-cuadro-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  transition: color 0.3s ease;
+}
+
+.aylesva-cuadro-card:hover .aylesva-cuadro-name {
+  color: #000;
+}
+</style>
+
+{% schema %}
+{
+  "name": "Cuadro Colecciones LOL",
+  "max_blocks": 15,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título de la Sección",
+      "default": "Categorías"
+    },
+    {
+      "type": "text",
+      "id": "view_all_text",
+      "label": "Texto Ver Todas",
+      "default": "Mostrar todas las categorías"
+    },
+    {
+      "type": "url",
+      "id": "view_all_link",
+      "label": "Enlace Ver Todas"
+    },
+    {
+      "type": "header",
+      "content": "Diseño"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "label": "Margen Superior",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "label": "Margen Inferior",
+      "default": 30
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection_item",
+      "name": "Colección",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Seleccionar Colección"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Icono Personalizado (Opcional)"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Título Alternativo (Opcional)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Cuadro Colecciones LOL",
+      "blocks": [
+        { "type": "collection_item" },
+        { "type": "collection_item" },
+        { "type": "collection_item" },
+        { "type": "collection_item" },
+        { "type": "collection_item" }
+      ]
+    }
+  ]
+}
+{% endschema %}

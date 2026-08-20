@@ -1,0 +1,814 @@
+<!-- Google Fonts Import for modern, professional aesthetics -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+  /* ============================================================
+     Aylesva — Landing Page Styles (Embedded & Optimized)
+     ============================================================ */
+  
+  :root {
+    /* Brand colors from Shopify Theme Settings */
+    --orange:   {{ settings.color_accent | default: '#C5A47E' }};
+    --orange-2: {{ settings.color_btn_secondary | default: '#C5A47E' }};
+    --orange-d: {{ settings.color_btn_primary | default: '#1a1a1a' }};
+    --blue:     #1F74EB;
+    --blue-d:   #155FC9;
+    --green:    #29B24A;
+    --green-d:  #1E9A3C;
+    --pink:     #EC1E79;
+    --pink-d:   #C9156A;
+    --purple:   #7C3AED;
+    --yellow:   #FBB315;
+
+    --ink:      #16203B;
+    --ink-2:    #2A3450;
+    --text:     #1C2542;
+    --muted:    #5A6479;
+    --muted-2:  #8A93A6;
+    --bg:       #FFFFFF;
+    --bg-soft:  #F6F7FA;
+    --bg-soft2: #F0F2F7;
+    --line:     #E7EAF1;
+    --line-2:   #EFF1F6;
+
+    --display: "Plus Jakarta Sans", system-ui, sans-serif;
+    --sans: "Hanken Grotesk", system-ui, -apple-system, sans-serif;
+
+    --container: 1180px;
+    --radius: 16px;
+    --radius-lg: 24px;
+    --radius-xl: 30px;
+    --shadow-sm: 0 1px 2px rgba(22,32,59,.05), 0 4px 14px rgba(22,32,59,.05);
+    --shadow-md: 0 8px 28px rgba(22,32,59,.09);
+    --shadow-lg: 0 24px 60px rgba(22,32,59,.16);
+    --shadow-orange: 0 10px 26px rgba(244,105,31,.34);
+
+    --grad-cta: linear-gradient(108deg, {{ settings.color_accent | default: '#C5A47E' }} 0%, #EC1E79 34%, #7C3AED 60%, #1F74EB 80%, #29B24A 100%);
+    --grad-text: linear-gradient(92deg, {{ settings.color_accent | default: '#C5A47E' }}, #EC1E79 55%, #7C3AED);
+  }
+
+  .crecer-lp {
+    font-family: var(--sans);
+    color: var(--text);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-size: 17px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  .crecer-lp * { box-sizing: border-box; }
+  .crecer-lp h1, .crecer-lp h2, .crecer-lp h3, .crecer-lp h4, .crecer-lp h5 { margin: 0; font-family: var(--display); font-weight: 700; color: var(--ink); }
+  .crecer-lp p { margin: 0; }
+  .crecer-lp a { color: inherit; text-decoration: none; }
+  .crecer-lp img { max-width: 100%; display: block; }
+  .crecer-lp ul { margin: 0; padding: 0; list-style: none; }
+
+  .crecer-lp .container { width: 100%; max-width: var(--container); margin: 0 auto; padding: 0 28px; }
+
+  /* ---------- Type helpers ---------- */
+  .crecer-lp .display { font-family: var(--display); font-weight: 800; line-height: 1.08; letter-spacing: -0.02em; }
+  .crecer-lp .grad-text {
+    background: var(--grad-text);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+  }
+  .crecer-lp .lead { font-size: 19px; line-height: 1.6; color: var(--muted); }
+
+  .crecer-lp .eyebrow {
+    font-family: var(--sans);
+    font-size: 13px; font-weight: 700; letter-spacing: .04em;
+    text-transform: uppercase;
+    color: var(--orange-d);
+  }
+  .crecer-lp .section-head { max-width: 680px; }
+  .crecer-lp .section-head.center { margin: 0 auto; text-align: center; }
+  .crecer-lp .section-head h2 { font-size: clamp(30px, 4vw, 46px); }
+  .crecer-lp .section-head .lead { margin-top: 18px; }
+  .crecer-lp .section-head .eyebrow { margin-bottom: 14px; display: block; }
+  
+  .crecer-lp .head-accent {
+    width: 46px; height: 4px; border-radius: 4px;
+    background: var(--grad-cta);
+    margin: 0 0 22px;
+  }
+  .crecer-lp .section-head.center .head-accent { margin: 0 auto 22px; }
+
+  /* ---------- Buttons ---------- */
+  .crecer-lp .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+    font-family: var(--sans); font-size: 16px; font-weight: 700;
+    padding: 14px 26px; border-radius: 100px;
+    border: 2px solid transparent; cursor: pointer;
+    transition: transform .18s ease, box-shadow .25s ease, background .2s ease, color .2s ease, border-color .2s ease;
+    white-space: nowrap; position: relative; overflow: hidden;
+  }
+  .crecer-lp .btn svg { width: 18px; height: 18px; }
+  .crecer-lp .btn-primary { background: var(--orange); color: {{ settings.color_btn_text | default: '#fff' }}; box-shadow: var(--shadow-orange); }
+  .crecer-lp .btn-primary:hover { background: var(--orange-d); transform: translateY(-2px); }
+  .crecer-lp .btn-primary::after {
+    content: ""; position: absolute; top: 0; left: -130%;
+    width: 55%; height: 100%;
+    background: linear-gradient(100deg, transparent, rgba(255,255,255,.45), transparent);
+    transform: skewX(-18deg);
+  }
+  .crecer-lp .btn-primary:hover::after { animation: shimmer .9s ease; }
+  @keyframes shimmer { to { left: 150%; } }
+  .crecer-lp .btn-ghost { background: #fff; color: var(--ink); border-color: var(--line); }
+  .crecer-lp .btn-ghost:hover { border-color: var(--ink); transform: translateY(-2px); }
+  .crecer-lp .btn-lg { padding: 17px 34px; font-size: 17px; }
+  .crecer-lp .btn-block { width: 100%; }
+
+  /* ---------- Nav ---------- */
+  .crecer-lp .nav { position: sticky; top: 0; z-index: 60; background: rgba(255,255,255,.86); backdrop-filter: saturate(1.3) blur(12px); border-bottom: 1px solid transparent; transition: border-color .3s ease, box-shadow .3s ease; }
+  .crecer-lp .nav.scrolled { border-bottom: 1px solid var(--line); box-shadow: 0 4px 20px rgba(22,32,59,.05); }
+  .crecer-lp .nav-inner { height: 74px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+  .crecer-lp .brand { display: flex; align-items: center; gap: 11px; font-family: var(--display); font-size: 23px; font-weight: 800; color: var(--ink); letter-spacing: -0.02em; }
+  .crecer-lp .brand .mark { width: 38px; height: 38px; flex: none; }
+  .crecer-lp .nav-links { display: flex; align-items: center; gap: 30px; }
+  .crecer-lp .nav-links a { font-size: 15px; font-weight: 600; color: var(--muted); transition: color .2s ease; }
+  .crecer-lp .nav-links a:hover { color: var(--ink); }
+  .crecer-lp .nav-cta { display: flex; align-items: center; gap: 12px; }
+
+  /* ---------- Sections ---------- */
+  .crecer-lp .section { padding: 92px 0; }
+  .crecer-lp .section.soft { background: var(--bg-soft); }
+
+  /* ---------- Hero ---------- */
+  .crecer-lp .hero { position: relative; overflow: hidden; padding: 46px 0 64px; }
+  .crecer-lp .hero-grid { display: grid; grid-template-columns: 1.06fr .94fr; gap: 52px; align-items: center; }
+  .crecer-lp .badge {
+    display: inline-flex; align-items: center; gap: 9px;
+    background: #fff; border: 1px solid var(--line);
+    border-radius: 100px; padding: 7px 16px 7px 8px;
+    font-size: 13.5px; font-weight: 700; color: var(--ink);
+    box-shadow: var(--shadow-sm);
+  }
+  .crecer-lp .badge .dot { width: 22px; height: 22px; border-radius: 50%; background: var(--grad-cta); display: grid; place-items: center; color: #fff; font-size: 12px; }
+  .crecer-lp .hero h1 { font-size: clamp(38px, 4.8vw, 58px); margin-top: 20px; }
+  .crecer-lp .hero .lead { margin-top: 18px; max-width: 460px; font-size: 18px; }
+
+  .crecer-lp .blob { position: absolute; border-radius: 50%; z-index: 0; filter: blur(2px); }
+  .crecer-lp .blob-yellow { width: 280px; height: 280px; background: var(--yellow); top: -28px; left: 40px; opacity: .9; }
+  .crecer-lp .blob-blue { width: 200px; height: 200px; background: var(--blue); bottom: -30px; left: -34px; opacity: .85; }
+
+  /* Ecosystem chips in hero */
+  .crecer-lp .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; max-width: 480px; }
+  .crecer-lp .chip { display: inline-flex; align-items: center; gap: 9px; padding: 9px 16px; border-radius: 100px; font-family: var(--display); font-weight: 700; font-size: 14px; color: var(--ink); background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow-sm); transition: transform .2s ease, box-shadow .2s ease; }
+  .crecer-lp .chip:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+  .crecer-lp .chip .cdot { width: 11px; height: 11px; border-radius: 50%; flex: none; }
+
+  /* Hero trust mini (real owners) */
+  .crecer-lp .trust-mini { display: flex; align-items: center; gap: 13px; margin-top: 28px; }
+  .crecer-lp .avatars { display: flex; }
+  .crecer-lp .avatars img, .crecer-lp .avatars .avatar-img { width: 40px; height: 40px; border-radius: 50%; margin-left: -11px; box-shadow: 0 0 0 2.5px #fff, var(--shadow-sm); object-fit: cover; }
+  .crecer-lp .avatars img:first-child, .crecer-lp .avatars .avatar-img:first-child { margin-left: 0; }
+  .crecer-lp .trust-mini .tm-txt { font-size: 14px; color: var(--muted); }
+  .crecer-lp .trust-mini .tm-txt strong { color: var(--ink); font-family: var(--display); }
+
+  /* Form card refinements in hero */
+  .crecer-lp .hero .form-card { position: relative; z-index: 3; }
+  .crecer-lp .form-tag { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--grad-cta); color: #fff; font-size: 12px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; padding: 6px 16px; border-radius: 100px; box-shadow: var(--shadow-md); white-space: nowrap; }
+
+  /* ---------- Ecosystem HUB ---------- */
+  .crecer-lp .hub-wrap { position: relative; max-width: 940px; margin: 56px auto 0; height: 540px; }
+  .crecer-lp .hub-links { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
+  .crecer-lp .hub-links line { stroke-width: 2.5; vector-effect: non-scaling-stroke; stroke-linecap: round; opacity: .9; }
+  .crecer-lp .hub-links .flow { stroke-dasharray: 7 11; animation: flow 1.1s linear infinite; }
+  @keyframes flow { to { stroke-dashoffset: -18; } }
+  @media (prefers-reduced-motion: reduce) { .crecer-lp .hub-links .flow { animation: none; } }
+
+  .crecer-lp .hub-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 4; width: 188px; height: 188px; border-radius: 50%; background: var(--grad-cta); color: #fff; display: grid; place-content: center; text-align: center; box-shadow: 0 18px 50px rgba(124,58,237,.35); }
+  .crecer-lp .hub-center::before, .crecer-lp .hub-center::after { content: ""; position: absolute; inset: 0; border-radius: 50%; border: 2px solid rgba(124,58,237,.35); animation: ring 2.8s ease-out infinite; }
+  .crecer-lp .hub-center::after { animation-delay: 1.4s; }
+  @keyframes ring { 0% { transform: scale(1); opacity: .6; } 100% { transform: scale(1.55); opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) { .crecer-lp .hub-center::before, .crecer-lp .hub-center::after { display: none; } }
+  .crecer-lp .hub-center .hub-mark { width: 40px; height: 40px; margin: 0 auto 8px; }
+  .crecer-lp .hub-center strong { font-family: var(--display); font-size: 22px; font-weight: 800; display: block; line-height: 1.05; }
+  .crecer-lp .hub-center span { font-size: 12.5px; opacity: .92; margin-top: 3px; display: block; }
+
+  .crecer-lp .node { position: absolute; z-index: 3; width: 246px; background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 18px 20px; box-shadow: var(--shadow-md); display: flex; align-items: center; gap: 14px; transition: transform .25s ease, box-shadow .25s ease; }
+  .crecer-lp .node:hover { transform: translateY(-4px) scale(1.02); box-shadow: var(--shadow-lg); }
+  .crecer-lp .node .n-ico { width: 46px; height: 46px; flex: none; border-radius: 13px; display: grid; place-items: center; color: #fff; }
+  .crecer-lp .node .n-ico svg { width: 23px; height: 23px; }
+  .crecer-lp .node h4 { font-size: 16px; }
+  .crecer-lp .node p { margin-top: 2px; font-size: 13px; color: var(--muted); line-height: 1.35; }
+  .crecer-lp .node-tl { top: 24px; left: 0; }
+  .crecer-lp .node-tr { top: 24px; right: 0; }
+  .crecer-lp .node-bl { bottom: 24px; left: 0; }
+  .crecer-lp .node-br { bottom: 24px; right: 0; }
+
+  .crecer-lp .bg-green { background: var(--green); } .crecer-lp .bg-orange { background: var(--orange); }
+  .crecer-lp .bg-blue { background: var(--blue); } .crecer-lp .bg-pink { background: var(--pink); }
+
+  /* ---------- Testimonials ---------- */
+  .crecer-lp .proof-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 44px; }
+  .crecer-lp .quote { background: #fff; border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 26px 24px; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; transition: transform .25s ease, box-shadow .25s ease; }
+  .crecer-lp .quote:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
+  .crecer-lp .quote .stars { color: var(--yellow); font-size: 15px; letter-spacing: 1px; margin-bottom: 13px; }
+  .crecer-lp .quote p { font-size: 15.5px; line-height: 1.5; color: var(--ink); font-weight: 500; }
+  .crecer-lp .quote .who { margin-top: auto; padding-top: 20px; display: flex; align-items: center; gap: 12px; }
+  .crecer-lp .quote .who img, .crecer-lp .quote .who .avatar-img { width: 46px; height: 46px; flex: none; border-radius: 50%; object-fit: cover; box-shadow: var(--shadow-sm); }
+  .crecer-lp .quote .who strong { display: block; font-family: var(--display); font-size: 15px; font-weight: 700; color: var(--ink); }
+  .crecer-lp .quote .who span { font-size: 13px; color: var(--muted); }
+
+  /* ---------- Form card ---------- */
+  .crecer-lp .form-card { background: #fff; border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); padding: 34px 34px 30px; }
+  .crecer-lp .form-card h3 { font-size: 24px; text-align: center; }
+  .crecer-lp .form-card .form-sub { text-align: center; margin-top: 6px; font-size: 14.5px; color: var(--muted); }
+  .crecer-lp .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 22px; }
+  .crecer-lp .field { display: flex; flex-direction: column; gap: 6px; }
+  .crecer-lp .field.full { grid-column: 1 / -1; }
+  .crecer-lp .field label { font-size: 13px; font-weight: 700; color: var(--ink); }
+  .crecer-lp .field .input-wrap { position: relative; display: flex; align-items: center; }
+  .crecer-lp .field .input-wrap svg { position: absolute; left: 14px; width: 17px; height: 17px; color: var(--muted-2); pointer-events: none; }
+  .crecer-lp .field input, .crecer-lp .field textarea, .crecer-lp .field select {
+    width: 100%; font-family: var(--sans); font-size: 15px; color: var(--ink);
+    padding: 13px 14px 13px 40px; border: 1.5px solid var(--line); border-radius: 12px;
+    background: var(--bg-soft); transition: border-color .2s ease, background .2s ease, box-shadow .2s ease;
+  }
+  .crecer-lp .field select { -webkit-appearance: none; -moz-appearance: none; appearance: none; }
+  .crecer-lp .field textarea { padding-left: 14px; resize: vertical; min-height: 84px; }
+  .crecer-lp .field input:focus, .crecer-lp .field textarea:focus, .crecer-lp .field select:focus { outline: none; border-color: var(--orange); background: #fff; box-shadow: 0 0 0 4px rgba(244,105,31,.12); }
+  .crecer-lp .form-card .btn { margin-top: 18px; }
+  .crecer-lp .form-secure { margin-top: 14px; text-align: center; font-size: 13px; color: var(--muted-2); display: flex; align-items: center; justify-content: center; gap: 7px; }
+  .crecer-lp .form-secure svg { width: 15px; height: 15px; color: var(--green); }
+  
+  .crecer-lp .form-success { text-align: center; padding: 30px 10px; }
+  .crecer-lp .form-success .ok { width: 62px; height: 62px; border-radius: 50%; background: var(--green); color: #fff; display: grid; place-items: center; margin: 0 auto 18px; }
+  .crecer-lp .form-success .ok svg { width: 30px; height: 30px; }
+  .crecer-lp .form-success h3 { font-size: 24px; color: var(--ink); }
+  .crecer-lp .form-success p { margin-top: 8px; color: var(--muted); font-size: 15px; }
+
+  /* ---------- Final CTA ---------- */
+  .crecer-lp .final { background: var(--grad-cta); padding: 64px 0; position: relative; overflow: hidden; }
+  .crecer-lp .final .container { position: relative; z-index: 1; }
+  .crecer-lp .final-slim { padding: 64px 0; }
+  .crecer-lp .final-slim .final-grid { grid-template-columns: 1fr; text-align: center; gap: 0; }
+  .crecer-lp .final-slim .final-copy { max-width: 640px; margin: 0 auto; }
+  .crecer-lp .final-copy h2 { color: #fff; font-size: clamp(32px, 4.2vw, 50px); }
+  .crecer-lp .final-copy .lead { color: rgba(255,255,255,.92); margin-top: 18px; }
+  .crecer-lp .final-slim .final-cta { display: flex; gap: 13px; justify-content: center; margin-top: 28px; flex-wrap: wrap; }
+  .crecer-lp .btn-white { background: #fff; color: var(--orange-d); }
+  .crecer-lp .btn-white:hover { background: #fff; color: var(--orange-d); transform: translateY(-2px); }
+
+  /* ---------- Footer ---------- */
+  .crecer-lp .footer { background: var(--ink); color: rgba(255,255,255,.66); padding: 60px 0 34px; border-top: 1px solid rgba(255,255,255,.05); }
+  .crecer-lp .footer .brand { color: #fff; }
+  .crecer-lp .footer-grid { display: grid; grid-template-columns: 1.7fr 1fr 1fr; gap: 36px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,.12); }
+  .crecer-lp .footer-grid p { margin-top: 16px; font-size: 14.5px; max-width: 300px; line-height: 1.6; }
+  .crecer-lp .footer h5 { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.5); margin-bottom: 14px; }
+  .crecer-lp .footer ul { display: grid; gap: 10px; }
+  .crecer-lp .footer ul a { font-size: 14.5px; color: rgba(255,255,255,.72); transition: color .2s ease; }
+  .crecer-lp .footer ul a:hover { color: var(--orange-2); }
+  .crecer-lp .footer-bottom { padding-top: 24px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; font-size: 13.5px; color: rgba(255,255,255,.45); }
+
+  /* ---------- Reveal ---------- */
+  .crecer-lp .reveal { opacity: 0; transform: translateY(20px); transition: opacity .65s ease, transform .65s ease; }
+  .crecer-lp .reveal.in { opacity: 1; transform: none; }
+  .crecer-lp .reveal.d1 { transition-delay: .07s; } .crecer-lp .reveal.d2 { transition-delay: .14s; } .crecer-lp .reveal.d3 { transition-delay: .21s; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 980px) {
+    .crecer-lp .hero-grid { grid-template-columns: 1fr; gap: 46px; }
+    .crecer-lp .hub-wrap { height: auto; max-width: 560px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .crecer-lp .hub-links { display: none; }
+    .crecer-lp .hub-center { position: relative; top: auto; left: auto; transform: none; grid-column: 1 / -1; justify-self: center; margin-bottom: 6px; }
+    .crecer-lp .hub-center::before, .crecer-lp .hub-center::after { display: none; }
+    .crecer-lp .node { position: relative; top: auto; bottom: auto; left: auto; right: auto; width: auto; }
+    .crecer-lp .proof-grid { grid-template-columns: 1fr; }
+    .crecer-lp .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 620px) {
+    .crecer-lp .container { padding: 0 20px; }
+    .crecer-lp .section { padding: 70px 0; }
+    .crecer-lp .nav-links { display: none; }
+    .crecer-lp .hero h1 { font-size: clamp(34px, 10vw, 46px); }
+    .crecer-lp .hub-wrap { grid-template-columns: 1fr; }
+    .crecer-lp .form-grid { grid-template-columns: 1fr; }
+    .crecer-lp .footer-grid { grid-template-columns: 1fr; }
+  }
+
+  /* Hide the global floating sticky bar exclusively on this landing page */
+  .glass-footer-premium {
+    display: none !important;
+  }
+</style>
+
+<div class="crecer-lp">
+
+  <!-- ============ NAV ============ -->
+  <header class="nav" id="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="{{ routes.root_url }}">
+        {% if section.settings.logo_image != blank %}
+          <img src="{{ section.settings.logo_image | image_url: width: 200 }}" alt="Aylesva" style="max-height: 38px; width: auto; object-fit: contain;">
+        {% else %}
+          <img src="{{ 'aylesva-logo-mx-v1.png' | asset_url }}" alt="Aylesva" style="max-height: 38px; width: auto; object-fit: contain; filter: none !important;">
+        {% endif %}
+      </a>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ============ HERO + FORM ============ -->
+    <section class="hero">
+      <div class="blob blob-yellow" style="top:-60px;left:30%;opacity:.5;"></div>
+      <div class="blob blob-blue" style="bottom:-40px;right:38%;opacity:.4;"></div>
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="badge">
+            <span class="dot">✦</span> 
+            {{ section.settings.hero_badge }}
+          </span>
+          <h1 class="display">
+            {{ section.settings.hero_title | replace: 'tu negocio.', '<span class="grad-text">tu negocio.</span>' }}
+          </h1>
+          <p class="lead">{{ section.settings.hero_subtitle }}</p>
+
+          <div class="chips">
+            <span class="chip"><span class="cdot bg-green"></span> AylesVoy Directorio</span>
+            <span class="chip"><span class="cdot bg-orange"></span> Publicidad</span>
+            <span class="chip"><span class="cdot bg-blue"></span> Alianzas</span>
+            <span class="chip"><span class="cdot bg-pink"></span> Referidos</span>
+          </div>
+
+          <div class="trust-mini">
+            <div class="avatars">
+              {% if section.settings.avatar_1 != blank %}
+                <img src="{{ section.settings.avatar_1 | image_url: width: 120 }}" alt="Dueño de negocio 1" loading="lazy">
+              {% else %}
+                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=120&auto=format&fit=crop" alt="Dueño de negocio 1" loading="lazy">
+              {% endif %}
+              
+              {% if section.settings.avatar_2 != blank %}
+                <img src="{{ section.settings.avatar_2 | image_url: width: 120 }}" alt="Dueño de negocio 2" loading="lazy">
+              {% else %}
+                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=120&auto=format&fit=crop" alt="Dueño de negocio 2" loading="lazy">
+              {% endif %}
+
+              {% if section.settings.avatar_3 != blank %}
+                <img src="{{ section.settings.avatar_3 | image_url: width: 120 }}" alt="Dueño de negocio 3" loading="lazy">
+              {% else %}
+                <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=120&auto=format&fit=crop" alt="Dueño de negocio 3" loading="lazy">
+              {% endif %}
+
+              {% if section.settings.avatar_4 != blank %}
+                <img src="{{ section.settings.avatar_4 | image_url: width: 120 }}" alt="Dueño de negocio 4" loading="lazy">
+              {% else %}
+                <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=120&auto=format&fit=crop" alt="Dueño de negocio 4" loading="lazy">
+              {% endif %}
+            </div>
+            <span class="tm-txt">{{ section.settings.trust_text }}</span>
+          </div>
+        </div>
+
+        <!-- FORM CARD — major conversion element -->
+        <div class="form-card" id="solicitar">
+          <span class="form-tag">Empieza gratis · Sin compromiso</span>
+          
+          {% if section.settings.form_custom_embed != blank %}
+            {{ section.settings.form_custom_embed }}
+          {% else %}
+            {% form 'contact', id: 'lead-form' %}
+              {% if form.posted_successfully? %}
+                <div class="form-success" id="form-success">
+                  <div class="ok">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M20 6L9 17l-5-5"/>
+                    </svg>
+                  </div>
+                  <h3>¡Gracias! Recibimos tu solicitud.</h3>
+                  <p>Un miembro de nuestro equipo te contactará muy pronto.</p>
+                </div>
+              {% else %}
+                <h3>{{ section.settings.form_title }}</h3>
+                <p class="form-sub">{{ section.settings.form_sub_title }}</p>
+                
+                {{ form.errors | default_errors }}
+                
+                <div class="form-grid">
+                  <div class="field full">
+                    <label for="f-nombre">Nombre completo</label>
+                    <div class="input-wrap">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                      <input id="f-nombre" name="contact[Nombre]" type="text" placeholder="Tu nombre" required />
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label for="f-email">Correo</label>
+                    <div class="input-wrap">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></svg>
+                      <input id="f-email" name="contact[email]" type="email" placeholder="tucorreo@ejemplo.com" required />
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label for="f-tel">Teléfono</label>
+                    <div class="input-wrap">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014 2h3a2 2 0 012 1.7c.1.9.4 1.8.7 2.7a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.4-1.1a2 2 0 012.1-.5c.9.3 1.8.6 2.7.7A2 2 0 0122 16.9z"/></svg>
+                      <input id="f-tel" name="contact[Telefono]" type="tel" placeholder="(000) 000-0000" />
+                    </div>
+                  </div>
+                  <div class="field full">
+                    <label for="f-tipo">¿Qué te interesa?</label>
+                    <div class="input-wrap">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l1.5-5h15L21 9M4 9h16v10a1 1 0 01-1 1H5a1 1 0 01-1-1V9zM9 13h6"/></svg>
+                      <select id="f-tipo" name="contact[Interes]" style="padding-left:40px;">
+                        <option>Aparecer en el Directorio AylesVoy</option>
+                        <option>Publicidad</option>
+                        <option>Alianzas estratégicas</option>
+                        <option>Programa de referidos</option>
+                        <option>Aún no estoy seguro / quiero asesoría</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Quiero crecer con Aylesva
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14M13 6l6 6-6 6"/>
+                  </svg>
+                </button>
+                <p class="form-secure">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                  Tu información está 100% segura. No compartimos tus datos.
+                </p>
+              {% endif %}
+            {% endform %}
+          {% endif %}
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ECOSISTEMA (centerpiece) ============ -->
+    <section class="section soft" id="ecosistema">
+      <div class="container">
+        <div class="section-head center">
+          <span class="eyebrow">{{ section.settings.hub_eyebrow }}</span>
+          <div class="head-accent"></div>
+          <h2 class="display">{{ section.settings.hub_title }}</h2>
+          <p class="lead">{{ section.settings.hub_subtitle }}</p>
+        </div>
+
+        <div class="hub-wrap">
+          <svg class="hub-links" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <line x1="50" y1="50" x2="13" y2="13" stroke="#E7EAF1"/>
+            <line x1="50" y1="50" x2="87" y2="13" stroke="#E7EAF1"/>
+            <line x1="50" y1="50" x2="13" y2="87" stroke="#E7EAF1"/>
+            <line x1="50" y1="50" x2="87" y2="87" stroke="#E7EAF1"/>
+            <line class="flow" x1="13" y1="13" x2="50" y2="50" stroke="#29B24A"/>
+            <line class="flow" x1="87" y1="13" x2="50" y2="50" stroke="#F4691F"/>
+            <line class="flow" x1="13" y1="87" x2="50" y2="50" stroke="#1F74EB"/>
+            <line class="flow" x1="87" y1="87" x2="50" y2="50" stroke="#EC1E79"/>
+          </svg>
+
+          <div class="hub-center">
+            <svg class="hub-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+              <path d="M9 31L20 9l11 22h-5.6l-5.4-11.4L14.6 31H9z" fill="#fff"/>
+            </svg>
+            <strong>Aylesva</strong>
+            <span>Tu negocio, conectado</span>
+          </div>
+
+          <div class="node node-tl">
+            <span class="n-ico bg-green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l1.5-5h15L21 9M4 9h16v10a1 1 0 01-1 1H5a1 1 0 01-1-1V9zM9 13h6"/></svg></span>
+            <div><h4>AylesVoy Directorio</h4><p>Te encuentran clientes que ya te buscan.</p></div>
+          </div>
+          <div class="node node-tr">
+            <span class="n-ico bg-orange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 11-5.8-1.6"/></svg></span>
+            <div><h4>Publicidad</h4><p>Llega a tu cliente ideal con impacto.</p></div>
+          </div>
+          <div class="node node-bl">
+            <span class="n-ico bg-blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></span>
+            <div><h4>Alianzas</h4><p>Crece con socios estratégicos.</p></div>
+          </div>
+          <div class="node node-br">
+            <span class="n-ico bg-pink"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 4.9 5.4.8-3.9 3.8.9 5.4L12 17.8 6.2 17l.9-5.4-3.9-3.8 5.4-.8z"/></svg></span>
+            <div><h4>Referidos</h4><p>Gana con el poder de tu red.</p></div>
+          </div>
+        </div>
+
+        <div style="text-align:center;margin-top:48px;">
+          <a href="#solicitar" class="btn btn-primary btn-lg">
+            {{ section.settings.hub_cta_text }}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M13 6l6 6-6 6"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ HISTORIAS (compact proof) ============ -->
+    <section class="section" id="historias">
+      <div class="container">
+        <div class="section-head center">
+          <span class="eyebrow">{{ section.settings.stories_eyebrow }}</span>
+          <div class="head-accent"></div>
+          <h2 class="display">{{ section.settings.stories_title }}</h2>
+        </div>
+
+        <div class="proof-grid">
+          {% for block in section.blocks %}
+            {% if block.type == 'testimonial' %}
+              <div class="quote reveal" {{ block.shopify_attributes }}>
+                <div class="stars">{{ block.settings.stars }}</div>
+                <p>“{{ block.settings.quote }}”</p>
+                <div class="who">
+                  {% if block.settings.avatar != blank %}
+                    <img src="{{ block.settings.avatar | image_url: width: 120 }}" alt="{{ block.settings.author }}" loading="lazy">
+                  {% else %}
+                    <img src="https://images.unsplash.com/photo-1605379399642-870262d3d051?q=80&w=200&auto=format&fit=crop" alt="{{ block.settings.author }}" loading="lazy">
+                  {% endif %}
+                  <div>
+                    <strong>{{ block.settings.author }}</strong>
+                    <span>{{ block.settings.info }}</span>
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FINAL CTA (slim) ============ -->
+    <section class="final final-slim">
+      <div class="container">
+        <div class="final-grid">
+          <div class="final-copy">
+            <h2 class="display">{{ section.settings.cta_title }}</h2>
+            <p class="lead">{{ section.settings.cta_subtitle }}</p>
+            <div class="final-cta">
+              <a href="#solicitar" class="btn btn-white btn-lg">
+                {{ section.settings.cta_btn_text }}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14M13 6l6 6-6 6"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const nav = document.getElementById('nav');
+    if (nav) {
+      const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 20);
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+    }
+
+    document.querySelectorAll('.proof-grid').forEach((group) => {
+      [...group.children].forEach((child, i) => child.classList.add('reveal', 'd' + Math.min(i % 3, 3)));
+    });
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    
+    document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Aylesva Crecer",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Marca y Branding"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_image",
+      "label": "Logotipo personalizado"
+    },
+    {
+      "type": "header",
+      "content": "Sección Hero"
+    },
+    {
+      "type": "text",
+      "id": "hero_badge",
+      "label": "Badge superior Hero",
+      "default": "✦ El ecosistema de crecimiento para tu negocio"
+    },
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Título Hero",
+      "default": "Haz que más personas conozcan tu negocio."
+    },
+    {
+      "type": "text",
+      "id": "hero_subtitle",
+      "label": "Subtítulo Hero",
+      "default": "Un solo ecosistema para crecer: directorio, publicidad, alianzas y referidos."
+    },
+    {
+      "type": "text",
+      "id": "trust_text",
+      "label": "Texto de Confianza Mini",
+      "default": "+2,000 negocios creciendo con Aylesva"
+    },
+    {
+      "type": "image_picker",
+      "id": "avatar_1",
+      "label": "Avatar de Confianza 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "avatar_2",
+      "label": "Avatar de Confianza 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "avatar_3",
+      "label": "Avatar de Confianza 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "avatar_4",
+      "label": "Avatar de Confianza 4"
+    },
+    {
+      "type": "header",
+      "content": "Formulario de Captura"
+    },
+    {
+      "type": "text",
+      "id": "form_title",
+      "label": "Título del Formulario",
+      "default": "Solicita más información"
+    },
+    {
+      "type": "text",
+      "id": "form_sub_title",
+      "label": "Subtítulo del Formulario",
+      "default": "Déjanos tus datos y un miembro de nuestro equipo te contactará."
+    },
+    {
+      "type": "html",
+      "id": "form_custom_embed",
+      "label": "Código de integración personalizado (Hubspot / Typeform / etc.)",
+      "info": "Si se deja en blanco, se renderizará el formulario de contacto nativo de Shopify."
+    },
+    {
+      "type": "header",
+      "content": "Hub Ecosistema"
+    },
+    {
+      "type": "text",
+      "id": "hub_eyebrow",
+      "label": "Eyebrow Hub",
+      "default": "El Ecosistema Aylesva"
+    },
+    {
+      "type": "text",
+      "id": "hub_title",
+      "label": "Título Hub",
+      "default": "Cuatro formas de crecer. Un solo ecosistema."
+    },
+    {
+      "type": "text",
+      "id": "hub_subtitle",
+      "label": "Subtítulo Hub",
+      "default": "Cada canal suma. Juntos, multiplican el crecimiento de tu negocio."
+    },
+    {
+      "type": "text",
+      "id": "hub_cta_text",
+      "label": "Texto Botón Hub",
+      "default": "Quiero formar parte del ecosistema"
+    },
+    {
+      "type": "header",
+      "content": "Testimonios (Historias)"
+    },
+    {
+      "type": "text",
+      "id": "stories_eyebrow",
+      "label": "Eyebrow Historias",
+      "default": "Negocios Reales"
+    },
+    {
+      "type": "text",
+      "id": "stories_title",
+      "label": "Título Historias",
+      "default": "Negocios latinos creciendo juntos."
+    },
+    {
+      "type": "header",
+      "content": "CTA Final"
+    },
+    {
+      "type": "text",
+      "id": "cta_title",
+      "label": "Título CTA",
+      "default": "¿Listo para hacer crecer tu negocio?"
+    },
+    {
+      "type": "text",
+      "id": "cta_subtitle",
+      "label": "Subtítulo CTA",
+      "default": "Empieza la conversación hoy. Sin compromiso."
+    },
+    {
+      "type": "text",
+      "id": "cta_btn_text",
+      "label": "Texto Botón CTA",
+      "default": "Solicitar Información"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonio",
+      "settings": [
+        {
+          "type": "text",
+          "id": "stars",
+          "label": "Calificación estrellas",
+          "default": "★★★★★"
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Testimonio",
+          "default": "Gracias a Aylesva tenemos más clientes cada semana."
+        },
+        {
+          "type": "image_picker",
+          "id": "avatar",
+          "label": "Avatar de Testimonio"
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Autor",
+          "default": "Carlos M."
+        },
+        {
+          "type": "text",
+          "id": "info",
+          "label": "Info adicional",
+          "default": "Tienda Latina · Houston, TX"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Aylesva Crecer",
+      "blocks": [
+        {
+          "type": "testimonial",
+          "settings": {
+            "stars": "★★★★★",
+            "quote": "Gracias a Aylesva tenemos más clientes cada semana.",
+            "author": "Carlos M.",
+            "info": "Tienda Latina · Houston, TX"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "stars": "★★★★★",
+            "quote": "La publicidad nos ha dado resultados increíbles.",
+            "author": "María G.",
+            "info": "Salón de Belleza · Dallas, TX"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "stars": "★★★★★",
+            "quote": "Las alianzas y referidos nos ayudaron a crecer más rápido.",
+            "author": "Juan P.",
+            "info": "Servicios Contables · Miami, FL"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

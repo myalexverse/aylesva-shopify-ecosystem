@@ -1,0 +1,68 @@
+<div class="ayl-bb-product-info-inner">
+  
+  {% comment %} 1. MARCA (VENDOR) {% endcomment %}
+  {% if section.settings.product_vendor_enable %}
+    <a href="{{ product.vendor | url_for_vendor }}" class="ayl-bb-brand">{{ product.vendor }}</a>
+  {% endif %}
+
+  {% comment %} 2. TÍTULO {% endcomment %}
+  <h1 class="product-single__title">{{ product.title }}</h1>
+
+  {% comment %} 3. MODELO / SKU {% endcomment %}
+  <div class="ayl-bb-meta-row">
+    {% assign current_variant = product.selected_or_first_available_variant %}
+    <div class="ayl-bb-meta-item">Modelo: <span>{{ product.handle | truncate: 12, '' | uppercase }}</span></div>
+    <div class="ayl-bb-meta-item">SKU: <span id="product-sku">{{ current_variant.sku | default: '6615858' }}</span></div>
+  </div>
+
+  {% comment %} 4. CALIFICACIONES {% endcomment %}
+  <div class="ayl-bb-ratings-top">
+    <div class="ayl-bb-stars">
+      <i class="mdi mdi-star"></i><i class="mdi mdi-star"></i><i class="mdi mdi-star"></i><i class="mdi mdi-star"></i><i class="mdi mdi-star"></i>
+    </div>
+    <a href="#judgeme_product_reviews" class="ayl-bb-rating-count">5.0 (3 reseñas)</a>
+  </div>
+
+  {% comment %} 5. PRECIO {% endcomment %}
+  <div class="ayl-bb-price-container">
+    <div class="ayl-bb-current-price">{{ product.price | money }}</div>
+    {% if product.compare_at_price > product.price %}
+      <span class="ayl-bb-savings">Ahorras {{ product.compare_at_price | minus: product.price | money }}</span>
+      <span class="ayl-bb-was-price">Precio regular: {{ product.compare_at_price | money }}</span>
+    {% endif %}
+  </div>
+
+
+
+  {% comment %} 6. FORMULARIO DE COMPRA {% endcomment %}
+  <div class="product-form-container">
+    {%- form 'product', product, id: "AddToCartForm", class: "product-form" -%}
+      <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+      
+      {% unless product.has_only_default_variant %}
+        <div class="product-variants-bb">
+          {% for option in product.options_with_values %}
+            <div class="bb-option-row">
+              <label>{{ option.name }}: <strong>{{ option.selected_value }}</strong></label>
+              <select class="bb-select-variant">
+                {% for value in option.values %}<option value="{{ value }}">{{ value }}</option>{% endfor %}
+              </select>
+            </div>
+          {% endfor %}
+        </div>
+      {% endunless %}
+
+      <button type="submit" name="add" id="AddToCart" class="btn product-form__submit" {% if sold_out %}disabled{% endif %}>
+        <i class="mdi mdi-cart-outline"></i>
+        <span>{% if sold_out %}{{ 'products.product.sold_out' | t }}{% else %}{{ 'products.product.add_to_cart' | t }}{% endif %}</span>
+      </button>
+    {%- endform -%}
+  </div>
+
+  {% comment %} 7. BARRA FIJA MÓVIL (STICKY) {% endcomment %}
+  <div class="ayl-bb-mobile-sticky visible-xs">
+    <div class="ayl-bb-sticky-price">{{ product.price | money }}</div>
+    <button class="ayl-bb-add-btn" onclick="document.getElementById('AddToCart').click();">Añadir</button>
+  </div>
+
+</div>

@@ -1,0 +1,56 @@
+<div class="page-content-wrapper">
+  <div class="container">
+    <div class="faq col-xs-12"> 
+      {% comment %}Regular page content goes here. {% endcomment %}
+      <div class="rte">
+        {{ page.content }}
+        <div class="page-width" data-section-id="{{ section.id }}" data-section-type="faq-section">
+          <div class="grid">
+            <div class="grid__item shortcodes-section">
+              <!--dt-sc-toggle-frame-set starts-->
+              <div class="tt-toggle-frame-set">
+                {% for block in section.blocks %}          
+                <h5 class="tt-toggle-accordion  {% if forloop.first == true %}active{% endif %}"><a href="#">{{ block.settings.title }}</a></h5>
+                <div class="tt-toggle-content" {% if forloop.first == true %}style="display:block;"{% endif %}>
+                  <div class="tt-block">
+                    {{ block.settings.description }}
+                  </div>
+                </div>        
+                {% endfor %}           
+              </div>     
+              <!--dt-sc-toggle-frame-set ends-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+"name": "FAQs",
+"class": "shopify-section-faq",
+"max_blocks": 50,
+"settings": [],
+"blocks" : [
+{
+"type": "text",
+"name": "FAQ",
+"settings": [
+{
+"type": "text",
+"id": "title",
+"default": "Question",
+"label": "Question"
+},
+{
+"type": "textarea",
+"id": "description",
+"default": "Answer goes here...",
+"label": "Text"
+}
+]
+}
+]	
+}
+{% endschema %}

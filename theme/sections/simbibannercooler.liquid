@@ -1,0 +1,197 @@
+{% comment %}
+  Section: simbibannercooler
+  Description: A premium banner with a side-by-side video and text layout, featuring a vibrant background and modern typography.
+{% endcomment %}
+
+{% style %}
+  #shopify-section-{{ section.id }} .simbi-banner-container {
+    background-color: {{ section.settings.bg_color }};
+  }
+  
+  #shopify-section-{{ section.id }} .text-box-custom {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 30px;
+    padding: 3rem;
+  }
+  
+  @media (max-width: 767px) {
+    #shopify-section-{{ section.id }} .text-box-custom {
+      padding: 1.5rem;
+      border-radius: 20px;
+    }
+  }
+
+  .simbi-video-wrapper {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    border-radius: 24px;
+    overflow: hidden;
+  }
+
+  .simbi-btn {
+    border-radius: 50px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    color: #1b1c1c;
+    padding: 1rem 2.5rem;
+    font-size: 1.125rem;
+  }
+
+  .simbi-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  }
+{% endstyle %}
+
+<div class="simbi-banner-container w-full overflow-hidden font-sans">
+  <div class="container mx-auto px-6 py-12 md:py-24">
+    <!-- Top Row: Video + Text Box -->
+    <div class="flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
+      
+      <!-- Video Element -->
+      <div class="w-full lg:w-1/2" data-aos="fade-right">
+        <div class="simbi-video-wrapper relative bg-gray-100 aspect-video lg:aspect-[4/3]">
+          {% if section.settings.video_file != blank %}
+            {{ section.settings.video_file | video_tag: autoplay: true, loop: true, muted: true, controls: false, class: 'w-full h-full object-cover' }}
+          {% elsif section.settings.video_url != blank %}
+             {% if section.settings.video_url.type == 'youtube' %}
+              <iframe src="https://www.youtube.com/embed/{{ section.settings.video_url.id }}?autoplay=1&mute=1&loop=1&playlist={{ section.settings.video_url.id }}&controls=0" 
+                      class="absolute top-0 left-0 w-full h-full" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            {% else %}
+              <iframe src="https://player.vimeo.com/video/{{ section.settings.video_url.id }}?autoplay=1&muted=1&loop=1&background=1" 
+                      class="absolute top-0 left-0 w-full h-full" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+            {% endif %}
+          {% else %}
+            {% if section.settings.image_fallback != blank %}
+              <img src="{{ section.settings.image_fallback | img_url: '1000x' }}" class="w-full h-full object-cover">
+            {% else %}
+              <div class="w-full h-full flex items-center justify-center bg-gray-200 text-gray-400">
+                {{ 'lifestyle-1' | placeholder_svg_tag: 'w-full h-full' }}
+              </div>
+            {% endif %}
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- Text Box Element -->
+      <div class="w-full lg:w-1/2" data-aos="fade-left">
+        <div class="text-box-custom h-full flex flex-col justify-center">
+          <h2 class="text-3xl md:text-5xl lg:text-[44px] font-bold text-[#1b1c1c] leading-[1.1] mb-6">
+            {{ section.settings.title }}
+          </h2>
+          <div class="text-lg md:text-xl text-[#1b1c1c]/80 font-medium">
+            {{ section.settings.text }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Row: Logo + Button -->
+    <div class="mt-12 md:mt-20 flex flex-col md:flex-row justify-between items-center gap-8" data-aos="fade-up">
+      <!-- Branding -->
+      <div class="flex items-center gap-6">
+        {% if section.settings.logo != blank %}
+          <img src="{{ section.settings.logo | img_url: '180x' }}" class="h-10 md:h-12 w-auto object-contain" alt="{{ section.settings.logo_text }}">
+        {% endif %}
+        <div class="h-8 w-[2px] bg-black/20 hidden md:block"></div>
+        <span class="text-lg md:text-xl font-bold uppercase tracking-[0.2em] text-[#1b1c1c]">
+          {{ section.settings.logo_text }}
+        </span>
+      </div>
+
+      <!-- CTA Button -->
+      <a href="{{ section.settings.button_link }}" class="simbi-btn w-full md:w-auto shadow-sm">
+        {{ section.settings.button_label }}
+      </a>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Simbi Banner Cooler",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#FFD200"
+    },
+    {
+      "type": "header",
+      "content": "Video Media"
+    },
+    {
+      "type": "video",
+      "id": "video_file",
+      "label": "Shopify Video (Native)"
+    },
+    {
+      "type": "video_url",
+      "id": "video_url",
+      "label": "Video URL (YouTube/Vimeo)",
+      "accept": ["youtube", "vimeo"]
+    },
+    {
+      "type": "image_picker",
+      "id": "image_fallback",
+      "label": "Image Fallback",
+      "info": "Display if no video is provided"
+    },
+    {
+      "type": "header",
+      "content": "Main Content"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Headline",
+      "default": "Centraliza tus compras mayoristas en un solo lugar"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Description",
+      "default": "<p>Con el respaldo del e-commerce #1 de Latinoamérica</p>"
+    },
+    {
+      "type": "header",
+      "content": "Footer Branding"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Bottom Logo"
+    },
+    {
+      "type": "text",
+      "id": "logo_text",
+      "label": "Logo Title",
+      "default": "NEGOCIOS"
+    },
+    {
+      "type": "header",
+      "content": "Call to Action"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Text",
+      "default": "Regístrate como empresa"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Simbi Banner Cooler"
+    }
+  ]
+}
+{% endschema %}

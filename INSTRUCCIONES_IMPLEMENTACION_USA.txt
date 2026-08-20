@@ -1,0 +1,102 @@
+================================================================================
+  🇺🇸 GUIA OFICIAL DE IMPLEMENTACION - TEMA AYLESVA (USA & MEXICO)
+  Sistema Visual Gold & Ink + Home v3 Cinematica + Ecosistema Corporativo
+================================================================================
+
+Este paquete (.ZIP) contiene el tema completo y 100% autonomo de Grupo Aylesva,
+listo para subirse e instalarse en la tienda Shopify de Estados Unidos.
+
+--------------------------------------------------------------------------------
+1. CONTENIDO DEL PAQUETE (.ZIP)
+--------------------------------------------------------------------------------
+- /assets: Todas las fotografias editoriales en alta resolucion
+  (Hero rotativo, Moda country, Desarrollos Torre 40/Altarena/Paradise Bay,
+   Retratos de perfiles empresariales, Logistica de importacion).
+- /layout: Plantillas maestras (theme.liquid, gift_card.liquid).
+- /sections: Todas las secciones interactivas Gold & Ink y de e-commerce.
+- /snippets: Tokens de diseno, tipografias (Sora, Manrope, Mono) y utilidades.
+- /templates: Plantillas JSON de la Portada (Home v3), Marketplace y 6 Landings.
+- /locales: Idiomas y traducciones en espanol e ingles.
+- /config: Esquemas y configuracion de tema.
+
+--------------------------------------------------------------------------------
+2. PASO A PASO PARA INSTALAR EN SHOPIFY USA
+--------------------------------------------------------------------------------
+
+PASO 1: Subir el Archivo ZIP a Shopify
+1. Inicia sesion en el panel de administracion de Shopify USA (admin.shopify.com).
+2. En el menu lateral izquierdo, ve a: Tienda online (Online Store) > Temas (Themes).
+3. En la seccion 'Biblioteca de temas' (Theme library), haz clic en 'Agregar tema' (Add theme)
+   y selecciona 'Subir archivo zip' (Upload zip file).
+4. Selecciona este archivo: Aylesva_Tema_Completo_USA.zip
+5. Espera a que Shopify cargue y procese todos los archivos e imagenes.
+
+PASO 2: Crear las 7 Paginas Oficiales y Asignar sus Plantillas
+Para que todos los botones, tarjetas y menus enlacen a las paginas correspondientes:
+1. Ve a Tienda online (Online Store) > Paginas (Pages).
+2. Haz clic en 'Agregar pagina' (Add page) para cada una de las 7 paginas:
+
+  * PAGINA 1:
+    - Titulo: Global Estates
+    - Handle/URL: globalestates
+    - Plantilla de tema (Theme template): page.globalestates
+
+  * PAGINA 2:
+    - Titulo: Aylesva Recursos
+    - Handle/URL: aylesva-recursos
+    - Plantilla de tema (Theme template): page.aylesva-recursos
+
+  * PAGINA 3:
+    - Titulo: Aylesva Direct
+    - Handle/URL: aylesva-direct
+    - Plantilla de tema (Theme template): page.aylesva-direct
+
+  * PAGINA 4:
+    - Titulo: Aylesva Care
+    - Handle/URL: aylesva-care
+    - Plantilla de tema (Theme template): page.aylesva-care
+
+  * PAGINA 5:
+    - Titulo: Lanza tu Propia Marca
+    - Handle/URL: lanza-tu-propia-marca
+    - Plantilla de tema (Theme template): page.lanza-tu-propia-marca
+
+  * PAGINA 6:
+    - Titulo: Mi Ultima Voluntad
+    - Handle/URL: mi-ultima-voluntad
+    - Plantilla de tema (Theme template): page.mi-ultima-voluntad
+
+  * PAGINA 7:
+    - Titulo: Marketplace
+    - Handle/URL: marketplace
+    - Plantilla de tema (Theme template): page.marketplace
+
+  [IMPORTANTE]: En la barra lateral derecha de cada pagina en Shopify Admin,
+  asegurate de cambiar la opcion 'Plantilla de tema' de 'Default page' a la
+  plantilla correspondiente que empieza con 'page.'.
+
+PASO 3: Configurar Menu de Navegacion (Header)
+1. Ve a Tienda online > Navegacion > Menu principal.
+2. Configura los enlaces del menu:
+   - Servicios: #ecosistema (o enlace a catalogo)
+   - Emprende: /pages/lanza-tu-propia-marca
+   - Financiamiento: /pages/aylesva-recursos
+   - Importaciones: /pages/aylesva-direct
+   - Inversion: /pages/globalestates
+   - Marketplace: /pages/marketplace
+   - Nosotros: /pages/aboutus
+   - Contacto: #contacto
+
+PASO 4: Vista Previa y Publicacion
+1. En Tienda online > Temas, haz clic en 'Acciones' > 'Vista previa' en el tema cargado.
+2. Comprueba la portada con la gran vitrina interactiva y la navegacion.
+3. Cuando estes listo, haz clic en 'Publicar' (Publish).
+
+PASO 5: Personalizacion Opcional de Formularios / WhatsApp
+- Desde el editor visual 'Personalizar' (Customize):
+  - Puedes modificar el numero de WhatsApp oficial en los ajustes del formulario.
+  - Puedes conectar los formularios de GoHighLevel pegando el Form ID de EE. UU.
+
+================================================================================
+Aylesva Development Team - 2026
+================================================================================

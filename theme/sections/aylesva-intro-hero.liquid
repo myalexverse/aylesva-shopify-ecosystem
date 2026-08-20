@@ -1,0 +1,499 @@
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    overflow: hidden !important;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  
+  .aylesva-hero-slider-wrap {
+    width: 100%;
+    position: relative;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    border-bottom: none !important;
+  }
+
+  .aylesva-hero-slider {
+    width: 100%;
+    margin-bottom: 0;
+  }
+
+  .aylesva-hero-item {
+    position: relative;
+    width: 100%;
+    height: {{ section.settings.desktop_height }}vh;
+    min-height: 400px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    background-color: #000; /* Darker clean background */
+  }
+
+  /* FORCED FULL-SCREEN SEAL FOR DESKTOP ONLY */
+  @media screen and (min-width: 768px) {
+    .aylesva-hero-item {
+      height: {{ section.settings.desktop_height }}vh !important;
+      min-height: 100vh !important;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .aylesva-hero-slider-wrap {
+      width: 100%;
+      left: 0;
+      right: 0;
+      margin-left: 0;
+      margin-right: 0;
+    }
+    .aylesva-hero-item {
+      height: {{ section.settings.mobile_height }}vh;
+      min-height: auto;
+    }
+  }
+
+  .aylesva-hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  .aylesva-hero-bg picture,
+  .aylesva-hero-bg img {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+  .aylesva-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+  }
+
+  .aylesva-hero-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    color: #ffffff; /* Default, overridden by block settings */
+    max-width: 800px;
+    padding: 0 20px;
+  }
+
+  .aylesva-hero-subtitle {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-bottom: 10px;
+    display: block;
+    animation: fadeInUp 0.8s ease backwards;
+    color: inherit !important;
+  }
+
+  .aylesva-hero-title {
+    font-family: 'Impact', 'Arial Black', sans-serif !important;
+    font-size: calc(24px + 3vw);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    animation: fadeInUp 0.8s ease 0.2s backwards;
+    color: inherit !important;
+  }
+
+  .aylesva-hero-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: fadeInUp 0.8s ease 0.4s backwards;
+  }
+
+  .aylesva-hero-btn {
+    padding: 15px 35px;
+    border-radius: 50px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .btn-primary-hero {
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  }
+
+  .btn-primary-hero:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+  }
+
+  .btn-secondary-hero {
+    background: #fff;
+    color: #000;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  }
+
+  .btn-secondary-hero:hover {
+    transform: translateY(-2px);
+    background: #f8f8f8;
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Slick Arrow Styles - Minimalist */
+  .aylesva-hero-slider .slick-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background: transparent;
+    border: none;
+    width: 60px;
+    height: 60px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: opacity 0.3s;
+    opacity: 0.5;
+  }
+
+  .aylesva-hero-slider:hover .slick-arrow {
+    opacity: 1;
+  }
+
+  .aylesva-hero-slider .slick-prev { left: 20px; }
+  .aylesva-hero-slider .slick-next { right: 20px; }
+
+  .aylesva-hero-slider .slick-arrow svg {
+    width: 30px;
+    height: 30px;
+    stroke: #fff;
+  }
+
+  /* Dots */
+  .aylesva-hero-slider .slick-dots {
+    bottom: 20px !important;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    position: absolute;
+  }
+
+  .aylesva-hero-slider .slick-dots li {
+    margin: 0 5px;
+  }
+
+  .aylesva-hero-slider .slick-dots li button {
+    font-size: 0;
+    line-height: 0;
+    display: block;
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+    cursor: pointer;
+    color: transparent;
+    border: 0;
+    outline: none;
+    background: transparent;
+  }
+
+  .aylesva-hero-slider .slick-dots li button:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    content: '•';
+    text-align: center;
+    color: #fff;
+    font-size: 15px;
+    opacity: 0.3;
+    line-height: 20px;
+  }
+
+  .aylesva-hero-slider .slick-dots li.slick-active button:before {
+    opacity: 1;
+  }
+
+  @media (max-width: 480px) {
+    .aylesva-hero-title { font-size: 26px; margin-bottom: 20px; }
+    .aylesva-hero-buttons { flex-direction: column; gap: 10px; width: 100%; }
+    .aylesva-hero-btn { padding: 14px 25px; width: 100%; text-align: center; }
+    .aylesva-hero-slider .slick-arrow { display: none !important; }
+  }
+{%- endstyle -%}
+
+<section class="aylesva-hero-slider-wrap">
+  <div class="aylesva-hero-slider" id="Hero-{{ section.id }}" 
+       data-autoplay="{{ section.settings.autoplay }}" 
+       data-speed="{{ section.settings.autoplay_speed | times: 1000 }}"
+       data-arrows="{{ section.settings.show_arrows }}">
+    
+    {%- for block in section.blocks -%}
+      <div class="aylesva-hero-item" {{ block.shopify_attributes }}>
+        <!-- Background -->
+        <div class="aylesva-hero-bg">
+          {%- if block.settings.image != blank -%}
+            <picture>
+              {%- if block.settings.image_mobile != blank -%}
+                <source media="(max-width: 767px)" srcset="{{ block.settings.image_mobile | img_url: '800x' }}">
+              {%- endif -%}
+              <img src="{{ block.settings.image | img_url: '1920x' }}" 
+                   alt="{{ block.settings.title | escape }}" 
+                   style="object-position: {{ block.settings.image_alignment }};">
+            </picture>
+          {%- else -%}
+            {%- capture current -%}{% cycle 1, 2 %}{%- endcapture -%}
+            {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+          {%- endif -%}
+        </div>
+
+        <!-- Overlay -->
+        <div class="aylesva-hero-overlay" 
+             style="background: {{ block.settings.overlay_color }}; opacity: {{ block.settings.overlay_opacity | divided_by: 100.0 }};">
+        </div>
+
+        <!-- Content -->
+        <div class="aylesva-hero-content" style="color: {{ block.settings.text_color }};">
+          {%- if block.settings.sub_title != blank -%}
+            <span class="aylesva-hero-subtitle">{{ block.settings.sub_title }}</span>
+          {%- endif -%}
+          
+          {%- if block.settings.title != blank -%}
+            <h1 class="aylesva-hero-title">{{ block.settings.title | newline_to_br }}</h1>
+          {%- endif -%}
+
+          <div class="aylesva-hero-buttons">
+            {%- if block.settings.btn1_txt != blank -%}
+              <a href="{{ block.settings.btn1_link }}" 
+                 class="aylesva-hero-btn btn-primary-hero" 
+                 style="background: {{ block.settings.btn_bg_color }}; color: {{ block.settings.btn_txt_color }};">
+                {{ block.settings.btn1_txt }}
+              </a>
+            {%- endif -%}
+            {%- if block.settings.btn2_txt != blank -%}
+              <a href="{{ block.settings.btn2_link }}" 
+                 class="aylesva-hero-btn btn-secondary-hero">
+                {{ block.settings.btn2_txt }}
+              </a>
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+</section>
+
+<script>
+  $(document).ready(function() {
+    var $heroSlider = $('#Hero-{{ section.id }}');
+    if ($heroSlider.length) {
+      $heroSlider.slick({
+        infinite: true,
+        autoplay: $heroSlider.data('autoplay'),
+        autoplaySpeed: $heroSlider.data('speed'),
+        arrows: $heroSlider.data('arrows'),
+        dots: true,
+        fade: true,
+        cssEase: 'linear',
+        prevArrow: '<button type="button" class="slick-prev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button>',
+        nextArrow: '<button type="button" class="slick-next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></button>'
+      });
+
+      // Trigger animation on slide change
+      $heroSlider.on('beforeChange', function(event, slick, currentSlide, nextSlide) {
+         $(slick.$slides[nextSlide]).find('.aylesva-hero-content').css('animation', 'none');
+         setTimeout(function() {
+            $(slick.$slides[nextSlide]).find('.aylesva-hero-content').css('animation', '');
+         }, 10);
+      });
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Aylesva Intro Hero Slider",
+  "settings": [
+    {
+      "type": "range",
+      "id": "desktop_height",
+      "label": "Altura Escritorio (vh)",
+      "min": 40,
+      "max": 100,
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "mobile_height",
+      "label": "Altura Móvil (vh)",
+      "min": 30,
+      "max": 120,
+      "default": 80
+    },
+    {
+      "type": "header",
+      "content": "Slider Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Autoplay",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "autoplay_speed",
+      "label": "Tiempo por Diapositiva (segundos)",
+      "min": 3,
+      "max": 10,
+      "default": 5
+    },
+    {
+      "type": "checkbox",
+      "id": "show_arrows",
+      "label": "Mostrar Flechas",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Diapositiva",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Imagen de fondo (Escritorio)"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "Imagen de fondo (Móvil) [OPCIONAL]"
+        },
+        {
+          "type": "select",
+          "id": "image_alignment",
+          "label": "Alineación de imagen",
+          "options": [
+            { "value": "top", "label": "Arriba" },
+            { "value": "center", "label": "Centro" },
+            { "value": "bottom", "label": "Abajo" }
+          ],
+          "default": "center"
+        },
+        {
+          "type": "header",
+          "content": "Contenido"
+        },
+        {
+          "type": "text",
+          "id": "sub_title",
+          "label": "Subtítulo",
+          "default": "NUEVA COLECCIÓN"
+        },
+        {
+          "type": "textarea",
+          "id": "title",
+          "label": "Título Principal",
+          "default": "ESTILO LIMITADO"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Color de Texto",
+          "default": "#ffffff"
+        },
+        {
+          "type": "header",
+          "content": "Overlay Personalizado"
+        },
+        {
+          "type": "color",
+          "id": "overlay_color",
+          "label": "Color del filtro",
+          "default": "#000000"
+        },
+        {
+          "type": "range",
+          "id": "overlay_opacity",
+          "label": "Opacidad del filtro",
+          "min": 0,
+          "max": 90,
+          "default": 30
+        },
+        {
+          "type": "header",
+          "content": "Botón Principal"
+        },
+        {
+          "type": "text",
+          "id": "btn1_txt",
+          "label": "Texto Botón 1",
+          "default": "Ver Ahora"
+        },
+        {
+          "type": "url",
+          "id": "btn1_link",
+          "label": "Enlace Botón 1"
+        },
+        {
+          "type": "color",
+          "id": "btn_bg_color",
+          "label": "Fondo Botón 1",
+          "default": "#FFB300"
+        },
+        {
+          "type": "color",
+          "id": "btn_txt_color",
+          "label": "Texto Botón 1",
+          "default": "#000000"
+        },
+        {
+          "type": "header",
+          "content": "Botón Secundario"
+        },
+        {
+          "type": "text",
+          "id": "btn2_txt",
+          "label": "Texto Botón 2",
+          "default": "Explorar"
+        },
+        {
+          "type": "url",
+          "id": "btn2_link",
+          "label": "Enlace Botón 2"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Aylesva Intro Hero Slider",
+      "blocks": [
+        { "type": "slide" },
+        { "type": "slide" }
+      ]
+    }
+  ]
+}
+{% endschema %}

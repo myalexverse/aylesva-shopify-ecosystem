@@ -1,0 +1,283 @@
+{%- style -%}
+  .aylesva-bubbles-{{ section.id }} {
+    padding: 60px 0;
+    margin-top: 20px;
+    background: {{ section.settings.bg_color }};
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .bubbles-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  /* Header with Title and Arrows */
+  .bubbles-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+
+  .bubbles-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    color: #111;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+  }
+
+  .bubbles-nav {
+    display: flex;
+    gap: 15px;
+  }
+
+  .bubbles-arrow {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: #fff;
+  }
+
+  .bubbles-arrow:hover {
+    border-color: #111;
+    background: #111;
+    color: #fff;
+  }
+
+  .bubbles-arrow svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* Grid / Slider Content */
+  .bubbles-viewport {
+    overflow: hidden;
+    position: relative;
+  }
+
+  .bubbles-grid {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    padding-bottom: 20px;
+  }
+
+  .bubble-item {
+    min-width: calc(20% - 16px);
+    text-decoration: none;
+    background: #f7f7f7; /* Slightly cleaner background */
+    border-radius: 24px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(0,0,0,0.05);
+  }
+
+  .bubble-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    border-color: #C5A47E;
+  }
+
+  .bubble-image-wrap {
+    position: relative;
+    width: 100%;
+    padding-top: 125%; /* Slightly taller for a more elegant vertical look */
+    overflow: hidden;
+    background: #fff;
+  }
+
+  .bubble-image-wrap img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* This is the 'intelligent' part, it fills correctly */
+    transition: transform 0.8s ease;
+  }
+
+  .bubble-image-wrap .placeholder-svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    height: 60%;
+    opacity: 0.4;
+  }
+
+  .bubble-item:hover .bubble-image-wrap img {
+    transform: scale(1.05);
+  }
+
+  .bubble-footer {
+    padding: 20px 10px;
+    text-align: center;
+    background: transparent;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .bubble-label {
+    color: #111;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-family: 'Inter', sans-serif;
+  }
+
+  @media (max-width: 1024px) {
+    .bubble-item { min-width: calc(33.333% - 14px); }
+    .bubbles-title { font-size: 24px; }
+  }
+
+  @media (max-width: 767px) {
+    .aylesva-bubbles-{{ section.id }} { padding: 30px 0; }
+    .bubbles-container { padding: 0 20px; }
+    .bubbles-header { margin-bottom: 20px; }
+    .bubbles-nav { display: none; }
+    .bubbles-title { font-size: 18px; letter-spacing: 0; }
+    
+    .bubbles-grid {
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 15px;
+      padding-bottom: 10px;
+    }
+    
+    .bubbles-grid::-webkit-scrollbar { display: none; }
+
+    .bubble-item {
+      min-width: 160px;
+      scroll-snap-align: start;
+      border-radius: 12px;
+    }
+    
+    .bubble-footer { padding: 10px 5px; }
+    .bubble-label { font-size: 11px; }
+  }
+{%- endstyle -%}
+
+<section class="aylesva-bubbles-{{ section.id }}">
+  <div class="bubbles-container">
+    <div class="bubbles-header">
+      {% if section.settings.title != blank %}
+        <h2 class="bubbles-title">{{ section.settings.title }}</h2>
+      {% endif %}
+      
+      <div class="bubbles-nav">
+        <div class="bubbles-arrow arrow-prev" onclick="moveSlider_{{ section.id | replace: '-', '_' }}(-1)">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+        </div>
+        <div class="bubbles-arrow arrow-next" onclick="moveSlider_{{ section.id | replace: '-', '_' }}(1)">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+        </div>
+      </div>
+    </div>
+
+    <div class="bubbles-viewport">
+      <div class="bubbles-grid" id="Slider-{{ section.id }}">
+        {% for block in section.blocks %}
+          <a href="{{ block.settings.link }}" class="bubble-item" {{ block.shopify_attributes }}>
+            <div class="bubble-image-wrap">
+              {% if block.settings.image != blank %}
+                <img src="{{ block.settings.image | img_url: '600x750', crop: 'center' }}" alt="{{ block.settings.label }}" loading="lazy">
+              {% else %}
+                {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg' }}
+              {% endif %}
+            </div>
+            
+            <div class="bubble-footer">
+              {% if block.settings.label != blank %}
+                <span class="bubble-label">{{ block.settings.label }}</span>
+              {% endif %}
+            </div>
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function moveSlider_{{ section.id | replace: '-', '_' }}(direction) {
+    const grid = document.getElementById('Slider-{{ section.id }}');
+    const scrollAmount = grid.offsetWidth * 0.8;
+    grid.scrollBy({
+      left: direction * scrollAmount,
+      behavior: 'smooth'
+    });
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Aylesva Category Bubbles",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título de la sección",
+      "default": "COMPRA POR CATEGORÍA"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Color de Fondo",
+      "default": "#ffffff"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Categoría",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Imagen (Icono)"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Etiqueta",
+          "default": "Calzado"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Enlace"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Aylesva Category Bubbles",
+      "category": "Navigation",
+      "blocks": [
+        { "type": "category" },
+        { "type": "category" },
+        { "type": "category" },
+        { "type": "category" }
+      ]
+    }
+  ]
+}
+{% endschema %}

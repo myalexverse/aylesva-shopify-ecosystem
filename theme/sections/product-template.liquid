@@ -1,0 +1,340 @@
+{% if template.name == 'product' %}
+  <script src="{{ 'threesixty.min.js' | asset_url}}" defer="defer"></script>
+  <script src="{{ 'jquery.zoom.min.js' | asset_url}}" defer="defer"></script>
+{% endif %}
+
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+{%- assign sold_out = true -%}
+{% if product.available %}{%- assign sold_out = false -%}{% endif %}
+
+<style>
+  /* ── DUAL VIEWER TOGGLE ── */
+  @media (max-width: 767px) {
+    .ayl-desktop-viewer-wrapper { display: none !important; }
+    .ayl-mobile-viewer-wrapper { display: block !important; }
+  }
+  @media (min-width: 768px) {
+    .ayl-mobile-viewer-wrapper { display: none !important; }
+    .ayl-desktop-viewer-wrapper { display: block !important; }
+  }
+</style>
+
+<div class="product-page">
+  <div class="container">
+    <div class="row">
+      <div itemscope itemtype="http://schema.org/Product" class="product-template__container page-width" id="ProductSection-{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="product-template" data-enable-history-state="true" data-zoom-enable="{{ section.settings.product_image_zoom_enable }}" data-ajax-enabled="{{ settings.use_ajax_cart }}">
+        <div class="product-single{% if section.settings.product_layout == 'design_1' or section.settings.product_layout == 'design_4' %} {{ section.settings.thumb_position }}{% endif %} {{ section.settings.product_layout }} demo"> 
+          <div class="product-single-wrap" style="width: 100% !important; max-width: 100% !important; padding: 0 !important;">
+            
+            <!-- 1. VISOR MÓVIL (AMAZON STYLE - INTACTO) -->
+            <div class="ayl-mobile-viewer-wrapper">
+              {% render 'ayl-amazon-product-viewer', 
+                product: product, 
+                section: section 
+              %}
+            </div>
+
+            <!-- 2. VISOR DESKTOP (PREMIUM LUXURY - NUEVO) -->
+            <div class="ayl-desktop-viewer-wrapper">
+              {% render 'ayl-premium-desktop-viewer', 
+                product: product, 
+                section: section 
+              %}
+            </div>
+            
+          </div>
+
+          <!-- PESTAÑAS CENTRALIZADAS (SOLO UNA VEZ EN TODA LA PÁGINA) -->
+          <div class="ayl-central-tabs hidden-xs" style="margin-top: 30px;">
+             {% render 'product-tabs', product: product, section: section %}
+          </div>
+
+          {% if section.settings.related_products_enable %}     
+            <div class="ayl-related-section" style="margin-top: 40px; border-top: 8px solid #F0F2F2; padding-top: 30px; margin-left: -15px; margin-right: -15px;">
+               {% render 'related-products', product: product %}
+            </div>
+          {% endif %}
+          
+          {% comment %} Old Recently Viewed Removed for Premium Version {% endcomment %}
+        </div>
+
+        {% comment %} Sticky Add to Cart Bar (DESACTIVADO POR PETICIÓN: DEMASIADO INVASIVO)
+        {% render 'product-sticky-cart', product: product, section: section, current_variant: current_variant %}
+        {% endcomment %}
+        
+        {% comment %} Modals (Size Chart, Notify Me) {% endcomment %}
+        {% render 'product-modals', section: section, product: product %}
+        
+      </div>    
+    </div>
+  </div>
+</div>
+
+{% comment %} Product Page Scripts and JSON Data {% endcomment %}
+{% render 'product-scripts', product: product, section: section %}
+
+{% schema %}
+{
+"name": "Product page",
+"settings": [
+{
+"type":"header",
+"content":"Product Page design"
+},
+{
+"type":"select",
+"id":"product_layout",
+"label":"Select Product Layout",
+"default":"design_1",
+"options":[
+{
+"value":"design_1",
+"label":"Left Image With Carousel"
+},
+{
+"value":"design_2",
+"label":"Product With Sticky Details"
+},
+{
+"value":"design_3",
+"label":"Product Gallery Layout"
+},
+{
+"value":"design_4",
+"label":"Product Compact Layout"
+},
+{
+"value":"design_5",
+"label":"Product Gallery Slider"
+}
+],
+"default":"design_1"
+},
+{
+"type": "checkbox",
+"id": "addtocart_sticky_bar",
+"label": "Show product Add-to-cart-sticky"
+},
+{
+"type": "checkbox",
+"id": "reviews",
+"label": "Enable reviews"
+},
+{
+"type": "checkbox",
+"id": "description",
+"label": "Show product description"
+},
+{
+"type": "checkbox",
+"id": "product_vendor_enable",
+"label": "Show product vendor"
+},
+{
+"type": "checkbox",
+"id": "show_product_type",
+"label": "Show product type"
+},
+{
+"type": "checkbox",
+"id": "show_availability",
+"label": "Show Availability"
+},
+{
+"type": "checkbox",
+"id": "show_wishlist",
+"label": "Enable Wishlist-icon"
+},
+{
+"type": "checkbox",
+"id": "show_print",
+"label": "Enable show_print"
+},
+{
+"type": "checkbox",
+"id": "product_image_zoom_enable",
+"label": "Enable image zoom"
+},
+{
+"type": "checkbox",
+"id": "related_products_enable",
+"label": "Show related products"
+},    
+{
+"type": "checkbox",
+"id": "product_qty_enable",
+"label": "Show quantity selector"
+},
+{
+"type": "checkbox",
+"id": "share_enable",
+"label": "Enable product sharing"
+},
+{
+"type": "checkbox",
+"id": "enable_payment_button",
+"label": "Show dynamic checkout button",
+"default": true
+},
+{
+"type":"header",
+"content":"Product Page share button"
+},
+{
+"type":"checkbox",
+"id":"pro_facebook",
+"label":"Enable Facebook"
+},
+{
+"type":"checkbox",
+"id":"pro_twitter",
+"label":"Enable Twitter"
+},
+{
+"type":"checkbox",
+"id":"pro_linkedin",
+"label":"Enable Linkedin"
+},
+{
+"type":"checkbox",
+"id":"pro_pinterest",
+"label":"Enable pinterest"
+},
+{
+"type":"checkbox",
+"id":"pro_tumblr",
+"label":"Enable Tumblr"
+},
+{
+"type":"checkbox",
+"id":"pro_email",
+"label":"Enable Email"
+},
+{
+"type":"checkbox",
+"id":"pro_whatsapp",
+"label":"Enable Whatsapp"
+},
+{
+"type": "text",
+"id": "pro_img_widthheight",
+"default": "600x600",
+"label": "image width and height (widthxheight) format"
+},
+{
+"type": "text",
+"id": "pro_thumb_img_widthheight",
+"default": "100x100",
+"label": "thumb image width and height (widthxheight) format"
+},
+{
+"type": "select",
+"id": "thumb_position",
+"label": "Select Product Thumb Position",
+"default": "horizontal_bottom",
+"options": [
+{
+"value": "horizontal_bottom",
+"label": "Horizontal Bottom"
+},
+{
+"value": "vertical_left",
+"label": "Vertcal Left"
+},
+{
+"value": "vertical_right",
+"label": "Vertcal Right"
+}
+]
+},
+{
+"type": "select",
+"id": "number_of_thumb",
+"label": "Select Number of Product Thumb",
+"default": "3",
+"options": [
+{
+"value": "3",
+"label": "3 Thumbs"
+},
+{
+"value": "4",
+"label": "4 Thumbs"
+},
+{
+"value": "5",
+"label": "5 Thumbs"
+}
+]
+},
+{
+"type": "header",
+"content": "size chart"
+},
+{
+"type": "checkbox",
+"id": "sizechart_enable",
+"label": "Show Size chart"
+},
+{
+"type": "text",
+"id": "sizechart_lable",
+"default": "size chart",
+"label": "size chart"
+},
+{
+"type": "richtext",
+"id": "Shipping_deatils",
+"label": "Shipping deatils"
+}
+],
+"blocks": [
+{
+"type": "variant_picker",
+"name": "variant_picker",
+"limit": 1,
+"settings": [
+{
+"type": "select",
+"id": "picker_type",
+"options": [
+{
+"value": "dropdown",
+"label": "Dropdown"
+},
+{
+"value": "button",
+"label": "Button"
+}
+],
+"default": "button",
+"label": "Button"
+}
+]
+},
+{
+"type": "complementary",
+"name": "Complementary products",
+"limit": 1,
+"settings": [
+{
+"type": "paragraph",
+"content": "To select complementary products, add the Search & Discovery app."
+},
+{
+"type": "text",
+"id": "block_heading",
+"default": "Pairs well with",
+"label": "Heading"
+},
+{
+"type": "checkbox",
+"id": "make_collapsible_row",
+"default": false,
+"label": "Show as collapsible row"
+}
+]
+}
+]
+}
+{% endschema %}

@@ -1,0 +1,183 @@
+<div id="shopify-section-{{ section.id }}" class="ayl-trust-badges-section">
+  <div class="container-fluid" style="padding: 0 5px;">
+    <div class="ayl-trust-row">
+      {% for block in section.blocks %}
+        <div class="ayl-trust-item">
+          <div class="ayl-trust-icon">
+            {% if block.settings.title contains 'Calidad' %}
+              <svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='8' r='7'></circle><polyline points='8.21 13.89 7 23 12 20 17 23 15.79 13.88'></polyline></svg>
+            {% else %}
+              {{ block.settings.icon_svg }}
+            {% endif %}
+          </div>
+          <div class="ayl-trust-content">
+            <span class="ayl-trust-text">{{ block.settings.title }}</span>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<style>
+  .ayl-trust-badges-section {
+    padding: 10px 0 18px;
+    background: #ffffff;
+    display: block;
+  }
+
+  .ayl-trust-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  .ayl-trust-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+  }
+  .ayl-trust-icon {
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+  }
+  .ayl-trust-icon svg {
+    width: 28px;
+    height: 28px;
+    color: #111111;
+    stroke-width: 2.2;
+  }
+  .ayl-trust-text {
+    font-size: 10px;
+    font-weight: 700;
+    color: #000000;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    line-height: 1.2;
+    white-space: pre-line;
+    font-family: 'Inter', sans-serif;
+  }
+
+  @media (min-width: 768px) {
+    .ayl-trust-badges-section {
+      padding: 20px 0 45px;
+      border-bottom: 1px solid #f8f8f8;
+    }
+    .ayl-trust-icon {
+      height: 40px;
+      margin-bottom: 12px;
+    }
+    .ayl-trust-icon svg {
+      width: 36px;
+      height: 36px;
+      stroke-width: 1.1;
+    }
+    .ayl-trust-text {
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      font-weight: 600;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .ayl-trust-badges-section {
+      padding: 15px 0 20px;
+    }
+    .ayl-trust-row {
+      padding: 0 10px;
+    }
+    .ayl-trust-icon {
+      height: 30px;
+      margin-bottom: 8px;
+    }
+    .ayl-trust-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke-width: 2.2;
+    }
+    .ayl-trust-text {
+      font-size: 9px;
+      letter-spacing: 0;
+      max-width: 90px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Aylesva Trust Badges",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "badge",
+      "name": "Badge",
+      "settings": [
+        {
+          "type": "html",
+          "id": "icon_svg",
+          "label": "Icon SVG"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "desc",
+          "label": "Description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Aylesva Trust Badges",
+      "blocks": [
+        {
+          "type": "badge",
+          "settings": {
+            "title": "Envíos a\nUSA y México",
+            "icon_svg": "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='1' y='3' width='15' height='13'></rect><polygon points='16 8 20 8 23 11 23 16 16 16 16 8'></polygon><circle cx='5.5' cy='18.5' r='2.5'></circle><circle cx='18.5' cy='18.5' r='2.5'></circle></svg>"
+          }
+        },
+        {
+          "type": "badge",
+          "settings": {
+            "title": "Productos de Calidad",
+            "icon_svg": "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='8' r='7'></circle><polyline points='8.21 13.89 7 23 12 20 17 23 15.79 13.88'></polyline></svg>"
+          }
+        },
+        {
+          "type": "badge",
+          "settings": {
+            "title": "Pagos 100%\nSeguros",
+            "icon_svg": "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect x='3' y='11' width='18' height='11' rx='2' ry='2'></rect><path d='M7 11V7a5 5 0 0 1 10 0v4'></path></svg>"
+          }
+        },
+        {
+          "type": "badge",
+          "settings": {
+            "title": "Atención al\nCliente",
+            "icon_svg": "<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M3 18v-6a9 9 0 0 1 18 0v6'></path><path d='M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z'></path></svg>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

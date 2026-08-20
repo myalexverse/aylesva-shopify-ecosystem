@@ -1,0 +1,107 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "wrapper": "div#main",
+  "sections": {
+    "main": {
+      "type": "page",
+      "disabled": true,
+      "settings": {}
+    },
+    "hero": {
+      "type": "aylesva-intro-hero",
+      "settings": {
+        "desktop_height": 80
+      }
+    },
+    "bubbles": {
+      "type": "aylesva-category-bubbles",
+      "blocks": {
+        "b1": {
+          "type": "category",
+          "settings": {
+            "label": "TENIS"
+          }
+        },
+        "b2": {
+          "type": "category",
+          "settings": {
+            "label": "CALZADO"
+          }
+        },
+        "b3": {
+          "type": "category",
+          "settings": {
+            "label": "ACCESORIOS"
+          }
+        },
+        "b4": {
+          "type": "category",
+          "settings": {
+            "label": "ROPA"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ],
+      "settings": {
+        "title": "EXPLORA POR CATEGORÍA"
+      }
+    },
+    "gender_cards": {
+      "type": "aylesva-gender-cards",
+      "blocks": {
+        "c1": {
+          "type": "card",
+          "settings": {
+            "label": "MUJER"
+          }
+        },
+        "c2": {
+          "type": "card",
+          "settings": {
+            "label": "HOMBRE"
+          }
+        },
+        "c3": {
+          "type": "card",
+          "settings": {
+            "label": "NIÑOS"
+          }
+        },
+        "c4": {
+          "type": "card",
+          "settings": {
+            "label": "BEBÉS"
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4"
+      ],
+      "settings": {
+        "title": "BUSCA POR GÉNERO"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "bubbles",
+    "gender_cards",
+    "main"
+  ]
+}

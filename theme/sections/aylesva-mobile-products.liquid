@@ -1,0 +1,164 @@
+<style>
+  .mobile-products-section {
+    padding: 5px 0;
+    background: #fff;
+    display: block;
+    margin: 0;
+  }
+  @media (min-width: 768px) {
+    .mobile-products-section {
+      display: none !important;
+    }
+  }
+  .mobile-products-header {
+    padding: 0 15px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .mobile-products-header h2 {
+    font-size: 0.85rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin: 0;
+    color: #000;
+    letter-spacing: 0.3px;
+  }
+  .mobile-view-all {
+    font-size: 0.6rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #888;
+    text-decoration: underline;
+    letter-spacing: 0.3px;
+  }
+  .mobile-products-scroll {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 8px;
+    padding: 0 15px 5px;
+    scrollbar-width: none;
+  }
+  .mobile-products-scroll::-webkit-scrollbar {
+    display: none;
+  }
+  .mobile-product-card {
+    flex: 0 0 90px;
+    scroll-snap-align: start;
+    text-decoration: none;
+    display: block;
+  }
+  .mobile-product-image {
+    width: 90px;
+    height: 110px;
+    background: #f4f4f4;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 5px;
+  }
+  .mobile-product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .mobile-product-info {
+    padding: 0 2px;
+  }
+  .mobile-product-price {
+    font-size: 0.75rem;
+    font-weight: 900;
+    color: #000;
+    margin-bottom: 0px;
+  }
+  .mobile-product-title {
+    font-size: 0.55rem;
+    font-weight: 500;
+    color: #555;
+    line-height: 1.1;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-transform: capitalize;
+  }
+</style>
+
+<div class="mobile-products-section">
+  <div class="mobile-products-header">
+    <h2>{{ section.settings.title }}</h2>
+    {% if section.settings.view_all_link != blank %}
+      <a href="{{ section.settings.view_all_link }}" class="mobile-view-all">Ver Todo</a>
+    {% endif %}
+  </div>
+  <div class="mobile-products-scroll">
+    {%- assign collection = collections[section.settings.collection] -%}
+    {%- assign product_limit = section.settings.limit | default: 4 -%}
+    {% for product in collection.products limit: product_limit %}
+      <a href="{{ product.url }}" class="mobile-product-card">
+        <div class="mobile-product-image">
+          <img src="{{ product.featured_image | img_url: '400x500', crop: 'center' }}" alt="{{ product.title }}" loading="lazy">
+        </div>
+        <div class="mobile-product-info">
+          <div class="mobile-product-price">
+            {{ product.price | money }}
+          </div>
+          <div class="mobile-product-title">
+            {{ product.title }}
+          </div>
+        </div>
+      </a>
+    {% else %}
+      {% for i in (1..4) %}
+        <div class="mobile-product-card">
+          <div class="mobile-product-image">
+            {{ 'product-' | append: i | placeholder_svg_tag: 'placeholder-svg' }}
+          </div>
+          <div class="mobile-product-info">
+            <div class="mobile-product-price">$99.00</div>
+            <div class="mobile-product-title">Producto de Ejemplo</div>
+          </div>
+        </div>
+      {% endfor %}
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Móvil: Productos Scroll",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título de la Sección",
+      "default": "PRODUCTOS DESTACADOS"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Seleccionar Colección"
+    },
+    {
+      "type": "url",
+      "id": "view_all_link",
+      "label": "Enlace 'Ver Todo'"
+    },
+    {
+      "type": "range",
+      "id": "limit",
+      "label": "Límite de Productos",
+      "min": 4,
+      "max": 12,
+      "step": 1,
+      "default": 8
+    }
+  ],
+  "presets": [
+    {
+      "name": "Móvil: Productos Scroll"
+    }
+  ]
+}
+{% endschema %}

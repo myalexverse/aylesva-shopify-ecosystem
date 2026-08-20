@@ -1,0 +1,194 @@
+{% comment %}
+  Aylesva Premium Tabs (Mercury Storefront)
+  A high-performance, monochromatic product tab section with native scroll-snap slider.
+{% endcomment %}
+
+{{ 'aylesva-premium-product-card.css' | asset_url | stylesheet_tag }}
+
+<style>
+  .ayl-premium-tabs { padding: 60px 0; background: {{ section.settings.bg_color }}; overflow: hidden; }
+  .ayl-tabs-header { text-align: center; margin-bottom: 40px; }
+  .ayl-tabs-title { font-size: 28px; font-weight: 800; text-transform: uppercase; letter-spacing: -0.02em; margin-bottom: 30px; }
+  
+  /* Navigation */
+  .ayl-tabs-nav { display: flex; justify-content: center; gap: 30px; margin-bottom: 40px; border-bottom: 1px solid #eee; padding-bottom: 15px; }
+  .ayl-tab-trigger { 
+    background: none; border: none; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #999; 
+    cursor: pointer; position: relative; padding: 10px 0; transition: all 0.3s ease;
+  }
+  .ayl-tab-trigger.active { color: #000; }
+  .ayl-tab-trigger::after { 
+    content: ''; position: absolute; bottom: -16px; left: 0; width: 0; height: 3px; background: #000; transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1); 
+  }
+  .ayl-tab-trigger.active::after { width: 100%; }
+
+  /* Content & Slider */
+  .ayl-tab-content { display: none; opacity: 0; transform: translateY(20px); transition: all 0.5s ease; }
+  .ayl-tab-content.active { display: block; opacity: 1; transform: translateY(0); }
+  
+  .ayl-premium-slider-wrap { position: relative; width: 100%; }
+  .ayl-premium-track { 
+    display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 20px 0;
+    scrollbar-width: none; -ms-overflow-style: none; /* Hide scrollbar */
+  }
+  .ayl-premium-track::-webkit-scrollbar { display: none; }
+  
+  .ayl-premium-track .ayl-premium-product-card { 
+    flex: 0 0 calc(25% - 15px); scroll-snap-align: start; 
+  }
+
+  /* Arrows */
+  .ayl-slider-nav { position: absolute; top: 50%; width: 100%; display: flex; justify-content: space-between; transform: translateY(-50%); pointer-events: none; z-index: 15; }
+  .ayl-slider-arrow { 
+    width: 40px; height: 40px; background: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); cursor: pointer; pointer-events: auto; transition: all 0.3s ease; border: none;
+  }
+  .ayl-slider-arrow:hover { background: #000; color: #fff; transform: scale(1.1); }
+  .ayl-slider-arrow svg { width: 20px; height: 20px; }
+
+  @media (max-width: 1024px) {
+    .ayl-premium-track .ayl-premium-product-card { flex: 0 0 calc(33.33% - 14px); }
+  }
+  @media (max-width: 767px) {
+    .ayl-premium-track .ayl-premium-product-card { flex: 0 0 calc(50% - 10px); }
+    .ayl-tabs-nav { gap: 15px; overflow-x: auto; justify-content: flex-start; padding: 0 20px 15px; }
+    .ayl-tab-trigger { white-space: nowrap; }
+    .ayl-slider-nav { display: none; }
+  }
+</style>
+
+<section class="ayl-premium-tabs" id="PremiumTabs-{{ section.id }}">
+  <div class="container">
+    <div class="ayl-tabs-header">
+      {% if section.settings.title != blank %}
+        <h2 class="ayl-tabs-title">{{ section.settings.title }}</h2>
+      {% endif %}
+      
+      <div class="ayl-tabs-nav">
+        {% for block in section.blocks %}
+          <button class="ayl-tab-trigger {% if forloop.first %}active{% endif %}" data-tab="tab-{{ block.id }}">
+            {{ block.settings.title }}
+          </button>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="ayl-tabs-content-area">
+      {% for block in section.blocks %}
+        {%- assign collection = collections[block.settings.collection] -%}
+        <div class="ayl-tab-content {% if forloop.first %}active{% endif %}" id="tab-{{ block.id }}">
+          <div class="ayl-premium-slider-wrap">
+            <div class="ayl-premium-track" id="track-{{ block.id }}">
+              {% for product in collection.products limit: section.settings.limit %}
+                {% render 'ayl-product-card-grid', product: product, grid_item_width: '' %}
+              {% endfor %}
+            </div>
+            
+            <div class="ayl-slider-nav">
+              <button class="ayl-slider-arrow prev" data-target="track-{{ block.id }}">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+              </button>
+              <button class="ayl-slider-arrow next" data-target="track-{{ block.id }}">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const section = document.querySelector('#PremiumTabs-{{ section.id }}');
+    
+    // TAB SWITCHING
+    const triggers = section.querySelectorAll('.ayl-tab-trigger');
+    const contents = section.querySelectorAll('.ayl-tab-content');
+    
+    triggers.forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const target = trigger.getAttribute('data-tab');
+        
+        triggers.forEach(t => t.classList.remove('active'));
+        contents.forEach(c => c.classList.remove('active'));
+        
+        trigger.classList.add('active');
+        section.querySelector('#' + target).classList.add('active');
+      });
+    });
+
+    // SLIDER NAVIGATION
+    const arrows = section.querySelectorAll('.ayl-slider-arrow');
+    arrows.forEach(arrow => {
+      arrow.addEventListener('click', () => {
+        const track = document.getElementById(arrow.getAttribute('data-target'));
+        const scrollAmount = track.offsetWidth * 0.8;
+        if (arrow.classList.contains('next')) {
+          track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        } else {
+          track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        }
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Aylesva Premium Tabs",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título de la Sección",
+      "default": "FAVORITOS DE TEMPORADA"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Color de Fondo",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "limit",
+      "min": 4,
+      "max": 20,
+      "step": 1,
+      "label": "Límite de Productos",
+      "default": 10
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "Pestaña de Colección",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Nombre de la Pestaña",
+          "default": "Nueva Colección"
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Colección"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Aylesva Premium Tabs",
+      "category": "Collection",
+      "blocks": [
+        { "type": "tab", "settings": { "title": "Dama" } },
+        { "type": "tab", "settings": { "title": "Caballero" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

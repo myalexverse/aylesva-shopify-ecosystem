@@ -1,0 +1,48 @@
+{% comment %} Aylesva · Home v3 · Banda de cierre (ink) con 3 argumentos y CTA {% endcomment %}
+<section class="ay" style="background:var(--ay-ink-900);color:#fff">
+  <div class="ay-wrap ay-close" style="padding-top:72px;padding-bottom:72px">
+    <h2 class="ay-h2" style="color:#fff;font-weight:300;font-size:clamp(26px,2.6vw,34px);line-height:1.2">
+      {{ section.settings.title_a }} <span style="color:var(--ay-gold-light)">{{ section.settings.title_gold }}</span>{{ section.settings.title_b }}
+    </h2>
+    <div class="ay-close-points">
+      {% for block in section.blocks %}
+        <div class="ay-close-point" {{ block.shopify_attributes }}>
+          {% if block.settings.icon != blank %}<svg class="ay-icon ay-icon--md" style="stroke:var(--ay-gold)" viewBox="0 0 24 24" stroke-linecap="square" aria-hidden="true">{{ block.settings.icon }}</svg>{% endif %}
+          <div class="ay-close-t">{{ block.settings.title }}</div>
+          <div class="ay-close-d">{{ block.settings.text }}</div>
+        </div>
+      {% endfor %}
+    </div>
+    <a class="ay-btn ay-btn--gold" href="{{ section.settings.cta_link }}">{{ section.settings.cta_label }} &rarr;</a>
+  </div>
+</section>
+
+<style>
+  .ay-close{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr) auto;gap:60px;align-items:center}
+  .ay-close-points{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:32px;border-left:1px solid rgba(255,255,255,.16);padding-left:52px}
+  .ay-close-point{display:flex;flex-direction:column;gap:12px}
+  .ay-close-t{font-family:var(--ay-font-display);font-size:15px;font-weight:600;letter-spacing:-.008em}
+  .ay-close-d{font-size:13px;line-height:1.6;color:rgba(255,255,255,.62)}
+  @media (max-width:1024px){ .ay-close{grid-template-columns:1fr;gap:36px} .ay-close-points{border-left:none;padding-left:0} }
+</style>
+
+{% schema %}
+{
+  "name": "Aylesva · Banda de cierre",
+  "settings": [
+    { "type": "text", "id": "title_a", "label": "Titular · parte 1", "default": "Impulsa tu negocio y tu patrimonio con el respaldo de" },
+    { "type": "text", "id": "title_gold", "label": "Titular · en dorado", "default": "un socio estratégico" },
+    { "type": "text", "id": "title_b", "label": "Titular · cierre", "default": "." },
+    { "type": "text", "id": "cta_label", "label": "Texto del botón", "default": "Agenda una asesoría" },
+    { "type": "url", "id": "cta_link", "label": "Enlace del botón" }
+  ],
+  "blocks": [
+    { "type": "point", "name": "Argumento", "limit": 3, "settings": [
+      { "type": "textarea", "id": "icon", "label": "Trazado SVG del ícono" },
+      { "type": "text", "id": "title", "label": "Título" },
+      { "type": "textarea", "id": "text", "label": "Descripción" }
+    ]}
+  ],
+  "presets": [{ "name": "Aylesva · Banda de cierre" }]
+}
+{% endschema %}

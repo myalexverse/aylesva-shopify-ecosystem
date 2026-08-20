@@ -1,0 +1,187 @@
+<div data-section-id="{{ section.id }}"   data-section-type="aboutus-wrap" class="aboutus-wrap ourteam_wrap {{section.settings.ourteam_style }}">{% if section.settings.title != blank  %}
+      <div class="section-header">         
+        {% if section.settings.title != blank %}
+        <h2 class="tt-title">{{ section.settings.title }}</h2>  
+        {% endif %}
+        {% if section.settings.sub_title != blank %}
+          <div class="short-desc"> <p>{{ section.settings.sub_title }}</p>  </div>
+        {% endif %}      
+        </div>
+        {% endif %}
+   <div class="row">
+      <div class="our_team col-xs-12 padding_0">
+        {% if section.blocks.size > 0 %} 
+        <ul class="ourteam_slider owl-carousel" data-column="{{ section.settings.ourteam_column }}"> 
+        {% for block in section.blocks %}
+        <li class="teammember-item">
+          <div class="teammember-content">
+            <div class="ourteam-image-wrap">
+              <div class="ourteam-image">
+               <img loading="lazy" src="{{  block.settings.image_1 | img_url: "master" }}" alt="{{  block.settings.author_name }}" />
+              </div>
+            </div>
+            <div class="teammember-meta">
+              <div class="teammember-inner">
+                <div class="teammember-meta-inner">
+                   {% if block.settings.author_name != blank %}
+                  <div class="teammember-title">{{ block.settings.author_name }}</div>
+                  {% endif %}
+                   {% if block.settings.author_designation != blank %}
+                  <p class="teammember-position">{{ block.settings.author_designation }}</p>
+                    {% endif %}
+                  <ul class="teammember-social-profile"> 
+                    <li class="facebook">
+                      <a target="_blank" href="{% if block.settings.facebook != blank %} {{ block.settings.facebook }} {% else %}#{% endif %}"> 
+                        <i class="mdi mdi-facebook"></i> 
+                      </a> 
+                    </li>
+                    <li class="twitter">
+                      <a target="_blank" href="{% if block.settings.twitter != blank %} {{ block.settings.twitter }} {% else %}#{% endif %}">
+                        <i class="mdi mdi-twitter"><svg class="icon icon-twitter" viewBox="0 0 20 20" style="width: 16px;height: 30px;align-items: center;justify-content: center;display: inline-block;margin: 0;">
+  <path fill="currentColor" fill-rule="evenodd" d="M7.273 2.8 10.8 7.822 15.218 2.8h1.768l-5.4 6.139 5.799 8.254h-4.658l-3.73-5.31-4.671 5.31H2.558l5.654-6.427L2.615 2.8zm6.242 13.125L5.07 4.109h1.405l8.446 11.816z" clip-rule="evenodd"></path>
+</svg></i>
+                      </a> 
+                    </li>
+                    <li class="pinterest"> 
+                      <a target="_blank" href="{% if block.settings.pinterest != blank %} {{ block.settings.pinterest }} {% else %}#{% endif %}"> 
+                        <i class="mdi mdi-pinterest"></i> 
+                      </a> 
+                    </li>
+                    <li class="instagram"> 
+                      <a target="_blank" href="{% if block.settings.instagram != blank %} {{ block.settings.instagram }} {% else %}#{% endif %}"> 
+                        <i class="mdi mdi-instagram"></i> 
+                      </a> 
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          </li>
+        {% endfor %}
+           </ul>
+        <div class="customNavigation"><div class="navigation_wrap"><a class="mdi mdi-chevron-left prev ourteam_prev">{{ 'general.slider.prev' | t }}</a><a class="mdi mdi-chevron-right next ourteam_next">{{ 'general.slider.next' | t }}</a></div></div>
+        {% endif %}
+      </div>
+  </div>
+</div>
+{% schema %}
+{
+"name": "Our Team",
+"settings": [
+
+          {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "About Us"
+          },
+          {
+          "type": "text",
+          "id": "sub_title",
+          "label": "Sub Heading"
+          },
+          {
+            "type": "select",
+            "id": "ourteam_style",
+            "label": "Select Our Team design",
+            "default": "style_1",
+            "options": [
+              {
+                "value": "style_1",
+                "label": "Design 1"
+              },
+              {
+                "value": "style_2",
+                "label": "Design 2"
+              }
+            ]
+          },
+			{
+            "type": "select",
+            "id": "ourteam_column",
+            "label": "Select Our Team Column",
+            "default": "4",
+            "options": [
+				{
+                "value": "3",
+                "label": "3 Column"
+              },
+              {
+                "value": "4",
+                "label": "4 Column"
+              },
+              {
+                "value": "5",
+                "label": "5 Column"
+              },
+			{
+                "value": "6",
+                "label": "6 Column"
+              }
+            ]
+          }
+
+          ],
+          "blocks": [
+          {
+          "type": "text",
+          "name": "Our Team",
+          "settings": [
+          {
+          "type": "image_picker",
+          "id": "image_1",
+          "label": "Image",
+          "info": "Size: 140x140"
+          },
+          {
+          "type": "text",
+          "id": "author_name",
+          "label": "author name"
+          },
+          {
+          "type": "text",
+          "id": "author_designation",
+          "label": "Designation"
+          },
+			{
+          "type": "text",
+          "id": "facebook",
+          "label": "Facebook Link"
+          },
+		 {
+          "type": "text",
+          "id": "twitter",
+          "label": "Twitter Link"
+          },
+		  {
+          "type": "text",
+          "id": "pinterest",
+          "label": "pinterest Link"
+          },
+		  {
+          "type": "text",
+          "id": "instagram",
+          "label": "Instagram Link"
+          }
+          ]
+          }
+          ],
+ "presets": [
+    {
+     "name": "Our Team",
+      "category": "TemplateTrip",
+      "blocks": [
+        {
+          "type": "text"
+        },
+        {
+          "type": "text"
+        }       
+ 		
+      ]
+    }
+  ]
+}
+{% endschema %}
+<script>$(document).ready(function(){var col_n=$('.ourteam_slider').data('column');if($(".ourteam_slider .owl-nav").hasClass('disabled')){jQuery(".our_team .customNavigation").hide()}else{jQuery(".our_team .customNavigation").show()}$('body:not(.rtl) .ourteam_wrap .ourteam_slider').owlCarousel({items:{{section.settings.ourteam_column}},nav:!0,dots:!1,loop:!0,responsive:{100:{items:1},543:{items:2},768:{items:3},992:{items:3},1200:{items:{{section.settings.ourteam_column}}}}});$('body.rtl .ourteam_wrap .ourteam_slider').owlCarousel({items:{{section.settings.ourteam_column}},nav:!0,rtl:!0,loop:!0,dots:!1,responsive:{100:{items:1},543:{items:2},768:{items:3},992:{items:3},1200:{items:{{section.settings.ourteam_column}}}}});jQuery(".our_team .customNavigation .next").click(function(){jQuery('.our_team .ourteam_slider').trigger('next.owl')});jQuery(".our_team .customNavigation .prev").click(function(){jQuery('.our_team .ourteam_slider').trigger('prev.owl')})})</script>

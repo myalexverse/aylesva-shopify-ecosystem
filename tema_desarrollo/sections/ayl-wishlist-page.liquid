@@ -1,0 +1,186 @@
+{{ 'base.css' | asset_url | stylesheet_tag }}
+
+<style>
+  .ayl-page-hero {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  
+  .ayl-page-hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(45, 12, 18, 0.65); /* Burgundy themed overlay */
+    z-index: 1;
+  }
+
+  .ayl-page-hero .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 0 20px;
+  }
+
+  .ayl-page-hero h1 {
+    color: #ffffff !important;
+    font-family: 'Outfit', 'Inter', sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  }
+
+  .ayl-page-hero p {
+    color: #C5A47E !important;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 500;
+    max-width: 600px;
+    margin: 0 auto;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  }
+
+  /* Wishlist Body Content */
+  .ayl-wishlist-container {
+    max-width: 1100px;
+    margin: 0 auto 80px;
+    padding: 0 24px;
+    text-align: center;
+  }
+
+  .wishlist-empty-card {
+    background: #ffffff;
+    border: 1px dashed #efe5db;
+    border-radius: 12px;
+    padding: 80px 40px;
+    max-width: 650px;
+    margin: 0 auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.01);
+  }
+
+  .wishlist-heart-wrap {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #fffdfd;
+    border: 1px solid #f2e9df;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 30px;
+    color: #4A0E17;
+    animation: heartPulse 2.5s infinite ease-in-out;
+  }
+
+  .wishlist-heart-wrap svg {
+    width: 36px;
+    height: 36px;
+    fill: currentColor;
+  }
+
+  .wishlist-empty-title {
+    color: #4A0E17;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+  }
+
+  .wishlist-empty-text {
+    color: #666666;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 480px;
+    margin: 0 auto 35px;
+  }
+
+  .wishlist-cta-btn {
+    display: inline-block;
+    padding: 16px 40px;
+    background: #4A0E17;
+    border: 1px solid #4A0E17;
+    border-radius: 6px;
+    color: #ffffff !important;
+    text-decoration: none !important;
+    font-family: 'Outfit', 'Inter', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(74, 14, 23, 0.2);
+  }
+
+  .wishlist-cta-btn:hover {
+    background: #C5A47E;
+    border-color: #C5A47E;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(197, 164, 126, 0.35);
+  }
+
+  @keyframes heartPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.08); border-color: #C5A47E; color: #C5A47E; }
+    100% { transform: scale(1); }
+  }
+</style>
+
+<div class="ayl-page-hero" style="background-image: linear-gradient(rgba(45, 12, 18, 0.65), rgba(45, 12, 18, 0.65)), url({{ section.settings.image | default: 'mayoreo-faq-banner.png' | asset_url }});">
+  <div class="hero-content">
+    <h1>{{ section.settings.heading | default: "Mis Favoritos" }}</h1>
+    <p>{{ section.settings.subheading | default: "Guarda y organiza los artículos de mayoreo que planeas comprar" }}</p>
+  </div>
+</div>
+
+<div class="ayl-wishlist-container">
+  <div class="wishlist-empty-card">
+    <div class="wishlist-heart-wrap">
+      <svg viewBox="0 0 24 24">
+        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+      </svg>
+    </div>
+    <h2 class="wishlist-empty-title">Tu lista está vacía</h2>
+    <p class="wishlist-empty-text">Explora nuestro catálogo de mayoreo y haz clic en el icono de corazón en las tarjetas de producto para guardarlos aquí.</p>
+    
+    <a href="/collections/all" class="wishlist-cta-btn">Explorar Catálogo</a>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Wishlist",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Mis Favoritos"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Guarda y organiza los artículos de mayoreo que planeas comprar"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Hero Image Banner"
+    }
+  ]
+}
+{% endschema %}

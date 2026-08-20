@@ -1,0 +1,330 @@
+{% comment %}
+This is used to create CSS custom variables with Liquid references
+The file variables.scss is referring these CSS custom variables as Sass variables
+to use throughout the stylesheet
+{% endcomment %}
+{% style %}
+{%- assign header_font = settings.type_header_font -%}
+{%- assign base_font = settings.type_base_font -%}
+{%- assign base_font_bolder = base_font | font_modify: 'weight', 'bolder' -%}
+{%- assign base_font_bold = base_font | font_modify: 'weight', 'bold' -%}
+{%- assign base_font_italic = base_font | font_modify: 'style', 'italic' -%}
+{%- assign base_font_bold_italic = base_font_bold | font_modify: 'style', 'italic' -%}
+
+:root {
+--color-text: {{ settings.title_color }};
+--color-sub-text: {{ settings.subtitle_color }};
+--color-body-text: {{ settings.color_body_text }};
+--color-body: {{ settings.color_body_bg }};
+--color-border: {{ settings.color_borders }};
+--color-header-text: {{ settings.color_body_text | color_darken: 20}};
+--color-sale-text: {{ settings.price_color }};
+--color-meta: {{ settings.meta_color }};
+--color-text-field: {{ settings.color_accent }};
+--color-text-hover-field: {{ settings.link_hover_color }};
+--color-text-breadcrumb: {{ settings.breadcrumb_text_color }};
+--color-text-hover-breadcrumb: {{ settings.breadcrumb_hover_text_color }};
+--color-bg-breadcrumb: {{ settings.breadcrumb_bg_color }};
+--color-menu-bg:{{ settings.color_menu_bg }};
+--color-menu-text: {{ settings.color_menu_text }};
+
+        ::selection {
+  color: {{ settings.color_select }};
+  background:{{ settings.color_selectbg }};
+ }
+
+--errorRed: #dc0000;
+--successGreen: #0a942a;
+
+--color-btn-primary: {{ settings.color_btn_primary }};
+--color-btn-primary-text: {{ settings.color_btn_text }};
+--color-btn-secondary: {{ settings.color_btn_secondary }};
+--color-btn-secondary-text: {{ settings.color_btn_hover_text }};
+--color-product-primary: {{ settings.icon_background_color }};
+--color-product-primary-text: {{ settings.icon_color }};
+--color-product-secondary: {{ settings.icon_background_hovercolor }};
+--color-product-secondary-text: {{ settings.icon_hovercolor }};
+
+--passwordPageUseBgImage: {{ settings.password_bg_img }};
+
+--font-stack-header: 'Inter', sans-serif;
+--font-stack-body: 'Inter', sans-serif;
+--font-stack-subheading: 'Inter', sans-serif;
+--font-size-base: {{ settings.type_base_size }};
+--font-line-height: {{ settings.line_height }};
+
+--ColorTopHeaderBg: {{ settings.topheader_bgcolor }};
+--ColorHeaderBg: {{ settings.header_bgcolor }};
+--ColorTopHeaderText: {{ settings.topheader_text_color }};
+--ColorHeaderText: {{ settings.header_text_color }};
+--ColorHeaderIconHover: {{settings.header_iconhover_color}};
+--ColorHeaderBorder: {{ settings.header_border_color }};
+
+--colorFooterContent: {{ settings.footer_color_content }};
+--colorFooterSocial: {{ settings.color_footer_social_link }};
+--colorFooterSocialHover: {{ settings.color_footer_social_link_hover }};
+--colorFooterbg: {{ settings.color_footer_bg }};
+--colorFooterTitle: {{ settings.footer_title_color }};
+--colorFooterBottombg: {{ settings.color_copyright_bg }};
+--colorFooterBorder: {{ settings.footer_border_color }};
+--color_footer_bottom:  {{ settings.footer_bottom_color }};
+--color_footer_hover_bottom: {{ settings.footer_bottom_hover_color }};
+--FooterBottomLink: {{ settings.bgcolor_footer_social_link_hover }};
+--FooterBottomText: {{ settings.bottom_text_color }};
+--colorFooterSocial: {{ settings.color_footer_social_link }};
+--colorFooterSocialBgHover: {{ settings.bgcolor_footer_social_link_hover }};
+
+--slideButtonbgColor: {{ settings.slide_button_bg_color }};
+--slideButtonbgHoverColor: {{ settings.slide_button_bg_hover_color }};
+--slideButtonTextColor: {{ settings.slide_button_txt_color }};
+--slideButtonTextHoverColor: {{ settings.slide_button_txt_hover_color }};
+
+--selectIcon: url('{{ "ico-select.svg" | asset_url }}');
+
+--gutter: 30px;
+--sectionSpacing: 55px;
+--sectionSpacingSmall: 35px;
+
+--colorBlankstate: {{ settings.color_body_text | color_to_rgb | remove: 'rgb(' | remove: 'rgba(' | remove: ')' | remove: ', 0.35' }};
+--colorBlankstateBorder: {{ settings.color_body_text | color_to_rgb | remove: 'rgb(' | remove: 'rgba(' | remove: ')' | remove: ', 0.15' }};
+--colorBlankstateBackground: {{ settings.color_body_text | color_to_rgb | remove: 'rgb(' | remove: 'rgba(' | remove: ')' | remove: ', 0.05' }};
+
+--slick-font-family: "slick-icons, sans-serif";
+--slick-arrow-color:  #111;
+--slick-dot-color: #111;
+--slick-dot-color-active: #111;
+--slick-prev-character: '\2190';
+--slick-next-character: '\2192';
+--slick-dot-character:'\2022';
+--slick-dot-size: 6px;
+--slick-opacity-default: 0.75;
+--slick-opacity-on-hover: 1;
+--slick-opacity-not-active: 0.25;
+}
+{% if settings.display_body_bg_img %}
+body .page-wrapper {
+background-color: var(--color-body);
+}
+{% endif %}
+
+.password-page__signup-form .input-group-field {
+background-color: transparent;
+}
+.password-page__wrapper {
+display: table;
+height: 100%;
+width: 100%;
+background-color: var(--color-body);
+padding-top: 15%;
+}
+.password-page__wrapper.bg-img {
+background-image: url('{{ "password-page-background.jpg" | asset_url }}');
+background-size: cover;
+background-repeat: no-repeat;
+color: #ffffff;
+}
+.tt-serviceslider{
+float:left;
+width:100%;
+background: url('{{ "slider-bg.jpg" | asset_url }}') repeat fixed;
+background-color:#572a68;
+background-size: cover;
+}
+.site-header .full-header .menu-bar .topmenu::before {
+position: absolute;
+content: "";
+left: 0;
+right: auto;
+width: 400px;
+height: 65px;
+bottom: -65px;
+top: auto;
+background:transparent url({{"link-left.png" | asset_url}}) no-repeat scroll 0 0;
+z-index:1;
+}
+.site-header .full-header .menu-bar .topmenu::after {
+position: absolute;
+content: "";
+left: auto;
+right: 0;
+width: 400px;
+height: 65px;
+bottom: -65px;
+top: auto;
+background:transparent url({{"link-left.png" | asset_url}}) no-repeat scroll 0 0;
+z-index:1;
+}
+.loading-modal {
+background: #fff url("loader.gif") center 14px no-repeat;
+border: 1px solid rgba(0,0,0,0.15);
+position: fixed;
+top: 50%!important;
+bottom: auto;
+left: 50% !important;
+right: auto !important;
+width: 56px;
+height: 56px;
+margin-left: -28px;
+margin-top: -28px;
+overflow: hidden;
+padding: 0;
+text-align: center;
+text-indent: -999em;
+-webkit-box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+-moz-box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+-ms-box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+-o-box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+border-radius: 3px;	
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+-khtml-border-radius: 3px;
+display: block;
+}
+.password-page__wrapper a {
+color: inherit;
+}
+.password-page__wrapper a:hover {
+color: inherit;
+}
+.password-page__wrapper.bg-img .social-sharing a {
+color: #ffffff;
+}
+.password-page__wrapper.bg-img .social-sharing a:hover {
+color: #ffffff;
+}
+.password-page__wrapper .social-sharing a {
+color: var(--color-text-field);
+}
+.password-page__wrapper .social-sharing a:hover {
+color: var(--color-meta);
+}
+.password-page__wrapper.bg-img h1, .password-page__wrapper.bg-img h2, .password-page__wrapper.bg-img h3, .password-page__wrapper.bg-img h4, .password-page__wrapper.bg-img h5, .password-page__wrapper.bg-img h6, .password-page__wrapper.bg-img .h1, .password-page__wrapper.bg-img .h2, .password-page__wrapper.bg-img .h3, .password-page__wrapper.bg-img .h4, .password-page__wrapper.bg-img .h5, .password-page__wrapper.bg-img .h6 {
+color: #fff;
+}
+.password-page__wrapper.bg-img .input-group-btn .icon {
+color: inherit;
+}
+.site-header .service-search .site-header__search.icon-btn .search_wrapper .input-group input[type="search"].input-group-field.s-loading{
+background:url("serach-loader.gif") no-repeat scroll right 10px center;
+transition: none;
+-webkit-transition: none;
+-moz-transition: none;
+-o-transition: none;
+-ms-transition: none;
+@media(max-width: 480px){
+background-position:right 5px center;
+}
+}
+#header-search .input-group.search-bar .input-group-field.s-loading {
+background: url("serach-loader.gif") no-repeat scroll right 38px center;
+transition: none;
+-webkit-transition: none;
+-moz-transition: none;
+-o-transition: none;
+-ms-transition: none;
+background-color: #fff;
+}
+#fancybox-close, .search-close, #popupBoxClose {
+background: url({{ 'hover.png' | asset_url }}) no-repeat;
+border: none;
+cursor: pointer;
+width: 32px;
+height: 32px;
+text-indent: -9999px;
+position: absolute;
+top: 0px;
+right: 0px;
+}
+
+
+
+        
+            .main-content .shopify-section.index-section {
+  margin-bottom: {{settings.section_margin-space}}px ;
+  float: left;
+  width: 100%;
+}
+
+  @media  (max-width: 991px) {
+    .main-content .shopify-section.index-section {
+      margin-bottom: {{settings.section_margin-space_2}}px ;
+  }
+}   
+
+  @media  (max-width: 480px) {
+    .main-content .shopify-section.index-section {
+        margin-bottom: {{settings.section_margin-space_3}}px ;
+  }
+}   
+
+
+
+
+  @media (min-width: 1200px) and (max-width: 1300px) {
+  .container {
+    width: 1170px;
+  }
+}
+@media (max-width: 1199px) {
+  .container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+@media (min-width: 768px) {
+  .container {
+    max-width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    max-width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1170px;
+  }
+}
+@media (min-width: 1260px) {
+  .container {
+    max-width: 1230px;
+  }
+}
+@media (min-width: 1460px) {
+  .container {
+    max-width: 1430px;
+  }
+}
+@media (min-width: 1660px) {
+  .container {
+     max-width: {{ settings.page_width }}px ;
+  }
+}
+  
+    
+  
+
+  
+.flag-usd { background-image: url(//cdn.shopify.com/s/files/1/1454/2846/t/5/assets/currency_1.png?5796274980970116025);background-repeat:no-repeat; display: inline-block; height: 11px; width: 16px;}
+.flag-eur { background-image: url(//cdn.shopify.com/s/files/1/1454/2846/t/5/assets/currency_2.png?5796274980970116025);background-repeat:no-repeat; display: inline-block; height: 11px; width: 16px;}
+.flag-gbp { background-image: url(//cdn.shopify.com/s/files/1/1454/2846/t/5/assets/currency_3.png?5796274980970116025);background-repeat:no-repeat;display: inline-block; height: 11px; width: 16px;}
+.flag-aud { background-image: url(//cdn.shopify.com/s/files/1/1454/2846/t/5/assets/currency_4.png?5796274980970116025);background-repeat:no-repeat; display: inline-block; height: 11px;width: 16px;}
+.flag-inr { background-image: url(//cdn.shopify.com/s/files/1/2392/4435/t/2/assets/currency_5.png?13466799072974063191);background-repeat:no-repeat; display: inline-block; height: 11px; width: 16px;}
+.flag- { background-image: url(//cdn.shopify.com/s/files/1/2392/4435/t/2/assets/currency_6.png?13466799072974063191);background-repeat:no-repeat; display: inline-block; height: 11px; width: 16px;}
+.flag- { background-image: url(//cdn.shopify.com/s/files/1/2392/4435/t/2/assets/currency_7.png?13466799072974063191);background-repeat:no-repeat;display: inline-block; height: 11px; width: 16px;}
+.flag- { background-image: url(//cdn.shopify.com/s/files/1/2392/4435/t/2/assets/currency_8.png?13466799072974063191);background-repeat:no-repeat; display: inline-block; height: 11px;width: 16px;}
+.flag- { background-image: url(//cdn.shopify.com/s/files/1/2392/4435/t/2/assets/currency_9.png?13466799072974063191); background-repeat:no-repeat; display: inline-block; height: 11px; width: 16px;}
+  .flag- { background-image: url(//cdn.shopify.com/s/files/1/2392/4435/t/2/assets/currency_10.png?13466799072974063191); background-repeat:no-repeat; display: inline-block; height: 11px; width: 16px;}
+.flag-1 { background-image: url({{ 'currency_1.png' | asset_url }});background-repeat:no-repeat; display: inline-block; height: 11px; width: 16px;}
+.flag-2 { background-image: url({{ 'currency_2.png' | asset_url }});background-repeat:no-repeat; display: inline-block; height: 11px; width: 16px;}
+.flag-3 { background-image: url({{ 'currency_3.png' | asset_url }});background-repeat:no-repeat;display: inline-block; height: 11px; width: 16px;}
+.flag-4 { background-image: url({{ 'currency_4.png' | asset_url }});background-repeat:no-repeat; display: inline-block; height: 11px;width: 16px;}
+.flag-5 { background-image: url({{ 'currency_5.png' | asset_url }}); background-repeat:no-repeat; display: inline-block; height: 11px; width: 16px;}
+.flag-6 { background-image: url({{ 'currency_6.png' | asset_url }});background-repeat:no-repeat; display: inline-block; height: 11px; width: 16px;}
+.flag-7 { background-image: url({{ 'currency_7.png' | asset_url }});background-repeat:no-repeat; display: inline-block; height: 11px; width: 16px;}
+.flag-8 { background-image: url({{ 'currency_8.png' | asset_url }});background-repeat:no-repeat;display: inline-block; height: 11px; width: 16px;}
+.flag-9 { background-image: url({{ 'currency_9.png' | asset_url }});background-repeat:no-repeat; display: inline-block; height: 11px;width: 16px;}
+.flag-10 { background-image: url({{ 'currency_10.png' | asset_url }}); background-repeat:no-repeat; display: inline-block; height: 11px; width: 16px;}
+{% endstyle %}

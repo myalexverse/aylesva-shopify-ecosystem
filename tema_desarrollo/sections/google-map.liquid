@@ -1,0 +1,80 @@
+<div id="google_map" data-section-id="{{ section.id }}" data-section-type="map-section">
+<div id="map"></div>
+</div>
+{% schema %}
+  {
+    "name": "Google Map",
+    "presets": [
+      {
+        "name": "Google Map Block",
+        "category": "TemplateTrip"
+      }
+    ],
+    "settings": [
+		{
+        "type": "text",
+        "id": "map_height",
+        "default": "400px",
+        "label": "Enter Map Height in (px)"
+      },
+		{
+        "type": "text",
+        "id": "map_api_key",
+        "label": "Enter Your Map API KEY"
+      },
+        {
+        "type": "select",
+        "id": "map_type",
+        "label": "Select Map Type",
+        "default": "ROADMAP",
+        "options": [
+          {
+            "value": "ROADMAP",
+            "label": "ROADMAP"
+          },
+          {
+            "value": "TERRAIN",
+            "label": "TERRAIN "
+          },
+          {
+            "value": "SATELLITE",
+            "label": "SATELLITE"
+          },
+          {
+            "value": "HYBRID",
+            "label": "HYBRID"
+          }
+        ]
+      },
+          {
+            "type": "image_picker",
+            "id": "map_icon",
+            "label": " Map Marker Icon"
+          },
+		{
+        "type": "textarea",
+        "id": "map_address",
+        "label": "Enter Adress",
+        "default": "india"
+      },
+		{
+        "type": "textarea",
+        "id": "map_custom_style",
+        "label": "Enter Map Custom Style JavaScript Code"
+      }
+]
+  }
+{% endschema %}
+
+
+<style>#map{height:{{section.settings.map_height}};width:100%}</style>
+<script>function DisplayMapAddress(address){var geocoder=new google.maps.Geocoder();geocoder.geocode({address:address},function(results,status){if(status==google.maps.GeocoderStatus.OK){var location=results[0].geometry.location;var options={zoom:10,center:location,streetViewControl:!0,mapTypeId:google.maps.MapTypeId.{{section.settings.map_type}},scrollwheel:!1,draggable:!0,panControl:!0,zoomControl:!0,{%if section.settings.map_custom_style!=""%}
+styles:{{section.settings.map_custom_style}},{%endif%}
+zoomControlOptions:{style:google.maps.ZoomControlStyle.SMALL}};var mymap=new google.maps.Map(document.getElementById('map'),options);var marker=new google.maps.Marker({map:mymap,flat:!0,icon:'{{ section.settings.map_icon }}',position:results[0].geometry.location});var infowindow=new google.maps.InfoWindow({content:'india'});google.maps.event.addListener(marker,'click',function(){infowindow.open(mymap,marker)})}})}
+jQuery(document).ready(function(){DisplayMapAddress('{{ section.settings.map_address }}')})
+ </script>
+{% if section.settings.map_api_key != nil %}
+<script src="https://maps.googleapis.com/maps/api/js?key={{ section.settings.map_api_key }}"></script>
+{% else %}
+<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+{% endif %}

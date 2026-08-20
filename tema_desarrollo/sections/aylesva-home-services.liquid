@@ -1,0 +1,81 @@
+{% comment %}
+  Aylesva · Home · Qué hace cada servicio.
+  Tarjeta: banda de foto + ícono en cuadro ink traslapado, nombre, claim,
+  descripción, 3 puntos y público.
+{% endcomment %}
+<section class="ay" id="{{ section.settings.anchor }}" style="background:var(--ay-stone);border-top:var(--ay-hairline);border-bottom:var(--ay-hairline)">
+  <div class="ay-wrap">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:76px;align-items:end;margin-bottom:52px" class="ay-head">
+      <div>
+        {% if section.settings.eyebrow != blank %}<p class="ay-eyebrow">{{ section.settings.eyebrow }}</p>{% endif %}
+        <h2 class="ay-h2">{{ section.settings.title }}</h2>
+      </div>
+      {% if section.settings.intro != blank %}<p class="ay-lead" style="font-size:16px">{{ section.settings.intro }}</p>{% endif %}
+    </div>
+
+    <div class="ay-grid ay-grid--3">
+      {% for block in section.blocks %}
+        <a class="ay-card" href="{{ block.settings.link }}" style="display:flex;flex-direction:column;padding:0;text-decoration:none;color:inherit" {{ block.shopify_attributes }}>
+          <div class="ay-media" style="position:relative;height:170px;{% if block.settings.image %}background-image:url({{ block.settings.image | image_url: width: 900 }}){% else %}background:repeating-linear-gradient(135deg,#efece6 0 8px,#e7e3db 8px 16px){% endif %}">
+            {% if block.settings.icon != blank %}
+              <span style="position:absolute;right:22px;bottom:-22px;width:64px;height:64px;background:var(--ay-ink-800);display:flex;align-items:center;justify-content:center">
+                <svg class="ay-icon" style="width:30px;height:30px" viewBox="0 0 24 24" stroke-linecap="square" aria-hidden="true">{{ block.settings.icon }}</svg>
+              </span>
+            {% endif %}
+          </div>
+
+          <div style="padding:40px 34px 42px;display:flex;flex-direction:column;gap:16px;flex:1">
+            <div>
+              <h3 class="ay-h3" style="font-size:23px">{{ block.settings.title }}</h3>
+              <p style="font-family:var(--ay-font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ay-gold-text);margin:8px 0 0">{{ block.settings.claim }}</p>
+            </div>
+            <p class="ay-body">{{ block.settings.text }}</p>
+
+            {% if block.settings.bullets != blank %}
+              <ul style="list-style:none;margin:0;padding:20px 0 0;border-top:var(--ay-hairline);display:grid;gap:10px">
+                {% assign items = block.settings.bullets | newline_to_br | split: '<br />' %}
+                {% for item in items %}
+                  {% if item != blank %}
+                    <li style="display:flex;gap:12px;align-items:flex-start;font-size:14px;line-height:1.5;color:rgba(15,23,42,.72)">
+                      <span style="color:var(--ay-gold);flex:0 0 auto">&#9672;</span><span>{{ item | strip }}</span>
+                    </li>
+                  {% endif %}
+                {% endfor %}
+              </ul>
+            {% endif %}
+
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-top:auto;padding-top:22px">
+              <span style="font-family:var(--ay-font-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(15,23,42,.45)">{{ block.settings.audience }}</span>
+              <span style="font-family:var(--ay-font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ay-gold-text)">Conocer &rarr;</span>
+            </div>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Aylesva · Servicios",
+  "settings": [
+    { "type": "text", "id": "anchor", "label": "Ancla (id)", "default": "servicios" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Nuestro ecosistema de soluciones" },
+    { "type": "textarea", "id": "title", "label": "Titular", "default": "Qué hace cada servicio" },
+    { "type": "textarea", "id": "intro", "label": "Texto de entrada" }
+  ],
+  "blocks": [
+    { "type": "service", "name": "Servicio", "limit": 6, "settings": [
+      { "type": "image_picker", "id": "image", "label": "Fotografía (900×500)" },
+      { "type": "textarea", "id": "icon", "label": "Trazado SVG del ícono" },
+      { "type": "text", "id": "title", "label": "Nombre de la rama" },
+      { "type": "text", "id": "claim", "label": "Claim corto" },
+      { "type": "textarea", "id": "text", "label": "Qué hace (2 líneas)" },
+      { "type": "textarea", "id": "bullets", "label": "Tres puntos (uno por línea)" },
+      { "type": "text", "id": "audience", "label": "Para quién es" },
+      { "type": "url", "id": "link", "label": "Enlace a la landing" }
+    ]}
+  ],
+  "presets": [{ "name": "Aylesva · Servicios" }]
+}
+{% endschema %}

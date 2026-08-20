@@ -1,0 +1,84 @@
+<div id="ayl-cart-drawer-overlay" class="ayl-cart-drawer-overlay"></div>
+<div id="ayl-cart-drawer" class="ayl-cart-drawer" aria-hidden="true">
+  <div class="ayl-cart-drawer__inner">
+    <div class="ayl-cart-drawer__header">
+      <h2 class="ayl-cart-drawer__title">TU BOLSA <span class="ayl-cart-item-count">{{ cart.item_count }}</span></h2>
+      <button type="button" class="ayl-cart-drawer__close" aria-label="Cerrar carrito">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M15 5L5 15M5 5L15 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="ayl-cart-drawer__body">
+      <div id="ayl-cart-drawer-items" class="ayl-cart-drawer__items">
+        {%- if cart.item_count > 0 -%}
+          {%- for item in cart.items -%}
+            <div class="ayl-cart-item" data-id="{{ item.key }}">
+              <div class="ayl-cart-item__image">
+                <a href="{{ item.url }}">
+                  <img src="{{ item.image | img_url: '200x' }}" alt="{{ item.title | escape }}" loading="lazy">
+                </a>
+              </div>
+              <div class="ayl-cart-item__content">
+                <div class="ayl-cart-item__header">
+                  <div class="ayl-cart-item__tags">NUEVA COLECCIÓN</div>
+                  <a href="{{ item.url }}" class="ayl-cart-item__title">{{ item.product.title }}</a>
+                  <button type="button" class="ayl-cart-item__remove" data-id="{{ item.key }}">Eliminar</button>
+                </div>
+                <div class="ayl-cart-item__details">
+                  {%- if item.product.has_only_default_variant == false -%}
+                    {%- for option in item.options_with_values -%}
+                      <div class="ayl-cart-item__option">
+                        <span class="ayl-cart-item__option-label">{{ option.name }}:</span>
+                        <span class="ayl-cart-item__option-value">{{ option.value }}</span>
+                      </div>
+                    {%- endfor -%}
+                  {%- endif -%}
+                </div>
+                <div class="ayl-cart-item__footer">
+                  <div class="ayl-cart-item__qty">
+                    <button type="button" class="ayl-qty-btn minus" data-id="{{ item.key }}">-</button>
+                    <input type="number" class="ayl-qty-input" value="{{ item.quantity }}" min="0" data-id="{{ item.key }}" readonly>
+                    <button type="button" class="ayl-qty-btn plus" data-id="{{ item.key }}">+</button>
+                  </div>
+                  <div class="ayl-cart-item__price">
+                    {{ item.final_line_price | money }}
+                    <span class="ayl-price-currency" style="font-size: 0.7em; font-weight: 700; color: #C5A47E; margin-left: 4px; vertical-align: baseline;">{{ cart.currency.iso_code }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {%- endfor -%}
+        {%- else -%}
+          <div class="ayl-cart-drawer__empty">
+            <p>Tu bolsa está vacía.</p>
+            <a href="{{ routes.all_products_collection_url }}" class="btn">Continuar comprando</a>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+
+    {%- if cart.item_count > 0 -%}
+      <div class="ayl-cart-drawer__footer">
+        <div class="ayl-cart-drawer__subtotal">
+          <span class="ayl-label">SUBTOTAL</span>
+          <span class="ayl-value ayl-cart-total-price">{{ cart.total_price | money_with_currency }}</span>
+        </div>
+        
+        <div class="ayl-cart-drawer__checkout">
+          <div class="ayl-cart-drawer__dynamic-buttons">
+            {%- if additional_checkout_buttons -%}
+              <div class="additional-checkout-buttons">
+                {{ content_for_additional_checkout_buttons }}
+              </div>
+            {%- endif -%}
+          </div>
+          <button type="button" class="ayl-btn-primary ayl-checkout-btn" onclick="window.location='/checkout'">
+            PROCEDER AL PAGO
+          </button>
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+</div>

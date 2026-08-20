@@ -1,0 +1,376 @@
+{
+  "sections": {
+    "hero": {
+      "type": "aylesva-corp-hero",
+      "settings": {
+        "eyebrow": "Aylesva Recursos · Intermediación Financiera Inteligente",
+        "overlay": 84,
+        "focal": "center",
+        "image": "ay-recursos-hero-finance.jpg",
+        "title": "El camino más inteligente para financiar tu negocio",
+        "subtitle": "Tomamos tus datos, analizamos tu perfil socioeconómico y de mercado, y te conectamos de forma directa con la prestadora de servicios ideal (como Finqui y aliados estratégicos) para asegurar las mejores condiciones posibles para ti.",
+        "cta1_label": "Hacer Estudio Financiero",
+        "cta1_link": "#contacto",
+        "cta2_label": "Ver Tipos de Préstamos",
+        "cta2_link": "#opciones"
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ],
+      "blocks": {
+        "s1": {
+          "type": "stat",
+          "settings": {
+            "value": "Gratis",
+            "label": "Estudio socioeconómico"
+          }
+        },
+        "s2": {
+          "type": "stat",
+          "settings": {
+            "value": "24-48 hrs",
+            "label": "Opciones más rápidas"
+          }
+        },
+        "s3": {
+          "type": "stat",
+          "settings": {
+            "value": "2",
+            "label": "Mercados: MX y USA"
+          }
+        },
+        "s4": {
+          "type": "stat",
+          "settings": {
+            "value": "$5M USD",
+            "label": "Monto máximo (SBA)"
+          }
+        }
+      }
+    },
+    "opciones": {
+      "type": "aylesva-corp-cards",
+      "settings": {
+        "anchor": "opciones",
+        "bg": "#FAFAF8",
+        "columns": 3,
+        "eyebrow": "Intermediación didáctica",
+        "title": "Tipos de financiamiento que gestionamos",
+        "intro": "Conoce los tipos de financiamiento más populares y dinámicos del mercado para PYMEs y el mercado estadounidense."
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3"
+      ],
+      "blocks": {
+        "c1": {
+          "type": "card",
+          "settings": {
+            "image": "ay-recursos-credit-line.jpg",
+            "tag": "Liquidez Inmediata",
+            "eyebrow": "Líneas de Crédito Comerciales",
+            "title": "Business Lines of Credit",
+            "text": "Una de las opciones más populares en EE. UU. Obtienes acceso a un fondo de capital del cual solo pagas intereses por el monto que decidas retirar, ideal para solventar flujos de caja variables.",
+            "bullets": "Disponibilidad de fondos inmediata\nSolo pagas intereses por lo que usas\nRevolving credit para emergencias y compras",
+            "cta_label": "Simular esta opción",
+            "cta_link": "#contacto",
+            "whatsapp_label": "WhatsApp",
+            "whatsapp_url": "https:\/\/api.whatsapp.com\/send\/?phone=524774136612&text=Hola%2C+me+interesa+informaci%C3%B3n+sobre+L%C3%ADneas+de+Cr%C3%A9dito+Comerciales+con+Aylesva+Recursos&type=phone_number&app_absent=0",
+            "price": ""
+          }
+        },
+        "c2": {
+          "type": "card",
+          "settings": {
+            "image": "ay-recursos-working-capital.jpg",
+            "tag": "Operación Diaria",
+            "eyebrow": "Capital de Trabajo",
+            "title": "Working Capital Loans",
+            "text": "Diseñado para cubrir las necesidades operativas de corto plazo: pago de nóminas, adquisición inmediata de inventarios o pago a proveedores críticos de tu negocio.",
+            "bullets": "Aprobación ágil en 24 a 72 horas\nInyección directa a tu cuenta bancaria\nSin garantías hipotecarias pesadas",
+            "cta_label": "Simular esta opción",
+            "cta_link": "#contacto",
+            "whatsapp_label": "WhatsApp",
+            "whatsapp_url": "https:\/\/api.whatsapp.com\/send\/?phone=524774136612&text=Hola%2C+me+interesa+informaci%C3%B3n+sobre+Capital+de+Trabajo+con+Aylesva+Recursos&type=phone_number&app_absent=0",
+            "price": ""
+          }
+        },
+        "c3": {
+          "type": "card",
+          "settings": {
+            "image": "ay-recursos-equipment.jpg",
+            "tag": "Activos Fijos",
+            "eyebrow": "Financiamiento de Equipo",
+            "title": "Equipment & Fleet Financing",
+            "text": "Adquiere maquinaria, tecnología o vehículos comerciales. El mismo equipamiento sirve como garantía del crédito, reduciendo los requisitos colaterales y agilizando la aprobación.",
+            "bullets": "Financiamiento de hasta el 100% del activo\nPlazos cómodos de 12 a 60 meses\nBeneficios fiscales por depreciación y leasing",
+            "cta_label": "Simular esta opción",
+            "cta_link": "#contacto",
+            "whatsapp_label": "WhatsApp",
+            "whatsapp_url": "https:\/\/api.whatsapp.com\/send\/?phone=524774136612&text=Hola%2C+me+interesa+informaci%C3%B3n+sobre+Financiamiento+de+Equipo+con+Aylesva+Recursos&type=phone_number&app_absent=0",
+            "price": ""
+          }
+        }
+      }
+    },
+    "comparativa": {
+      "type": "aylesva-corp-table",
+      "settings": {
+        "bg": "#FFFFFF",
+        "eyebrow": "Estudio comparativo",
+        "title": "Qué opción conviene según tu necesidad",
+        "h1": "Tipo de Préstamo",
+        "h2": "Propósito Principal",
+        "h3": "Velocidad",
+        "h4": "Requisitos",
+        "h5": "Rango de Montos",
+        "note": "Montos y tiempos son referenciales del mercado y dependen del perfil de cada solicitante. Aylesva Recursos actúa como intermediario financiero: no otorga créditos directamente."
+      },
+      "block_order": [
+        "r1",
+        "r2",
+        "r3",
+        "r4"
+      ],
+      "blocks": {
+        "r1": {
+          "type": "row",
+          "settings": {
+            "c1": "Business Lines of Credit",
+            "c2": "Flujo de caja y emergencias inmediatas",
+            "c3": "Rápido (24-48 hrs)",
+            "c4": "Bajos (Estados de cuenta bancarios)",
+            "c5": "Hasta $150,000 USD"
+          }
+        },
+        "r2": {
+          "type": "row",
+          "settings": {
+            "c1": "Working Capital Loans",
+            "c2": "Operación diaria, inventario y nóminas",
+            "c3": "Ágil (2-3 días)",
+            "c4": "Medios (Estados de cuenta + SAT/IRS)",
+            "c5": "Hasta $500,000 USD"
+          }
+        },
+        "r3": {
+          "type": "row",
+          "settings": {
+            "c1": "Equipment Financing",
+            "c2": "Compra de maquinaria, tecnología o autos",
+            "c3": "Moderado (3-5 días)",
+            "c4": "Medios (Cotización de los activos)",
+            "c5": "Hasta $1,000,000 USD"
+          }
+        },
+        "r4": {
+          "type": "row",
+          "settings": {
+            "c1": "SBA Loans (USA)",
+            "c2": "Crecimiento a largo plazo y consolidación",
+            "c3": "Lento (2-4 semanas)",
+            "c4": "Altos (Garantías + Historial de crédito)",
+            "c5": "Hasta $5,000,000 USD"
+          }
+        }
+      }
+    },
+    "valores": {
+      "type": "aylesva-corp-features",
+      "settings": {
+        "bg": "#FAFAF8",
+        "eyebrow": "Cómo trabajamos",
+        "title": "Intermediación con criterio, no solicitudes a ciegas"
+      },
+      "block_order": [
+        "f1",
+        "f2",
+        "f3"
+      ],
+      "blocks": {
+        "f1": {
+          "type": "feature",
+          "settings": {
+            "icon": "<path d=\"M4 6h16v11H4z\"/><path d=\"M9 21h6\"/><path d=\"M12 17v4\"/>",
+            "title": "Transparencia didáctica",
+            "text": "Te explicamos con total claridad cómo funciona cada opción del mercado para que tomes la mejor decisión de capital."
+          }
+        },
+        "f2": {
+          "type": "feature",
+          "settings": {
+            "icon": "<circle cx=\"8\" cy=\"12\" r=\"4\"/><circle cx=\"16\" cy=\"12\" r=\"4\"/>",
+            "title": "Match inteligente",
+            "text": "Evitamos que envíes solicitudes a ciegas. Buscamos la prestadora donde tu perfil encaja con mayor probabilidad."
+          }
+        },
+        "f3": {
+          "type": "feature",
+          "settings": {
+            "icon": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M8 12h8\"/>",
+            "title": "Estudio sin compromiso",
+            "text": "Realizamos tu estudio socioeconómico y de mercado gratis para evaluar tus posibilidades reales sin dañar tu historial."
+          }
+        }
+      }
+    },
+    "proceso": {
+      "type": "aylesva-corp-process",
+      "settings": {
+        "dark": true,
+        "eyebrow": "Cómo funciona",
+        "title": "Proceso didáctico en 4 pasos"
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ],
+      "blocks": {
+        "s1": {
+          "type": "step",
+          "settings": {
+            "title": "Completa tus datos",
+            "text": "Ingresa tu información básica y necesidades financieras en nuestro formulario de estudio."
+          }
+        },
+        "s2": {
+          "type": "step",
+          "settings": {
+            "title": "Análisis socioeconómico",
+            "text": "Nuestros analistas evalúan tu perfil de negocio, flujos y capacidad financiera real."
+          }
+        },
+        "s3": {
+          "type": "step",
+          "settings": {
+            "title": "Estudio del mercado",
+            "text": "Comparamos ofertas de instituciones y aliados estratégicos del mercado de México y EE. UU."
+          }
+        },
+        "s4": {
+          "type": "step",
+          "settings": {
+            "title": "Match y acomodo directo",
+            "text": "Te canalizamos con la prestadora con mayor probabilidad de aprobación y mejores condiciones para ti."
+          }
+        }
+      }
+    },
+    "contacto": {
+      "type": "aylesva-corp-form",
+      "settings": {
+        "anchor": "contacto",
+        "bg": "#FFFFFF",
+        "eyebrow": "Sin compromiso",
+        "title": "Estudio Socioeconómico y Financiero",
+        "text": "Completa tus datos básicos para analizar tu perfil y conectarte con la mejor oferta de financiamiento disponible.",
+        "form_id": "8biW0OIL5lKLx23bNZFO",
+        "form_height": 720,
+        "whatsapp_url": "https:\/\/api.whatsapp.com\/send\/?phone=524774136612&text=Hola%2C+me+gustar%C3%ADa+solicitar+un+estudio+socioecon%C3%B3mico+y+financiero+con+Aylesva+Recursos&type=phone_number&app_absent=0",
+        "whatsapp_label": "Hablar con un asesor financiero por WhatsApp"
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3"
+      ],
+      "blocks": {
+        "p1": {
+          "type": "point",
+          "settings": {
+            "text": "Estudio socioeconómico y de mercado 100% gratuito"
+          }
+        },
+        "p2": {
+          "type": "point",
+          "settings": {
+            "text": "Match directo con prestadoras donde tu perfil encaja"
+          }
+        },
+        "p3": {
+          "type": "point",
+          "settings": {
+            "text": "Asesoría y acompañamiento por WhatsApp durante todo el proceso"
+          }
+        }
+      }
+    },
+    "legal_disclaimer": {
+      "type": "aylesva-corp-legal",
+      "settings": {
+        "bg": "#FAFAF8",
+        "alignment": "left",
+        "title": "Divulgación Regulatoria, Estado de la Plataforma y Aviso Legal",
+        "text": "1. No somos un prestamista, corredor o asesor financiero:\nAylesva Recursos opera estrictamente como un medio de marketing digital independiente, plataforma publicitaria y servicio de referencia tecnológica. Aylesva Recursos no es un banco, prestamista, unión de crédito, corredor de hipotecas, corredor de préstamos de consumo, corredor de préstamos comerciales o entidad de servicios de crédito en EE. UU., México o ninguna otra jurisdicción. Aylesva Recursos no solicita, origina, suscribe, negocia, aprueba ni financia préstamos ni ningún producto de financiamiento comercial. No actuamos como agentes, fiduciarios o corredores para posibles prestatarios, propietarios de negocios o prestamistas externos.\n\n2. Servicios de referencia de doble propósito (consumo y comercial):\nCompletar una solicitud o estudio socioeconómico en esta plataforma te conecta con socios prestamistas externos independientes. Enviar tu información no constituye una solicitud de préstamo formal ante ninguna institución financiera. Aylesva Recursos no garantiza la aprobación, ofertas de tasas ni condiciones de financiamiento particulares.\n\n3. Precalificación no vinculante y estimaciones de mercado:\nCualquier cifra, tasa o cálculo mostrado en esta plataforma es únicamente de carácter informativo y didáctico. Los términos finales de cualquier financiamiento son determinados exclusivamente por la entidad crediticia seleccionada tras su propio análisis de riesgo y capacidad de pago.\n\n4. Privacidad y consentimiento de contacto:\nAl enviar tu formulario, autorizas a Aylesva Recursos y a sus aliados financieros a contactarte por correo electrónico, llamada telefónica o WhatsApp para dar seguimiento a tu estudio socioeconómico."
+      }
+    },
+    "ramas": {
+      "type": "aylesva-corp-branches",
+      "settings": {
+        "bg": "#FFFFFF",
+        "eyebrow": "Ecosistema Aylesva",
+        "title": "El mismo respaldo, en cada una de nuestras ramas"
+      },
+      "block_order": [
+        "br1",
+        "br2",
+        "br3",
+        "br4"
+      ],
+      "blocks": {
+        "br1": {
+          "type": "branch",
+          "settings": {
+            "title": "Global Estates",
+            "text": "Bienes raíces y desarrollos de lujo.",
+            "icon": "<path d=\"M3 21V9l6-4 6 4v12\"/><path d=\"M15 21V13h6v8\"/><path d=\"M7 13h2M7 17h2\"/>",
+            "link": "/pages/globalestates"
+          }
+        },
+        "br2": {
+          "type": "branch",
+          "settings": {
+            "title": "Aylesva Direct",
+            "text": "Importación y logística desde China.",
+            "icon": "<rect x=\"2\" y=\"8\" width=\"13\" height=\"9\"/><path d=\"M15 11h4l3 3v3h-7z\"/><circle cx=\"6\" cy=\"19\" r=\"2\"/><circle cx=\"18\" cy=\"19\" r=\"2\"/>",
+            "link": "/pages/aylesva-direct"
+          }
+        },
+        "br3": {
+          "type": "branch",
+          "settings": {
+            "title": "Aylesva Care",
+            "text": "Beneficios de salud, seguros y telemedicina.",
+            "icon": "<path d=\"M12 20 4 12.5A4.6 4.6 0 0 1 12 7a4.6 4.6 0 0 1 8 5.5z\"/><path d=\"M8 13h2l1.5-3 2 5 1.5-2h2\"/>",
+            "link": "/pages/aylesva-care"
+          }
+        },
+        "br4": {
+          "type": "branch",
+          "settings": {
+            "title": "Lanza tu tienda en línea",
+            "text": "Tienda propia con nuestro catálogo y envíos.",
+            "icon": "<rect x=\"3\" y=\"4\" width=\"18\" height=\"5\"/><path d=\"M5 9v12h14V9\"/><path d=\"M9 13h6\"/>",
+            "link": "/pages/lanza-tu-propia-marca"
+          }
+        }
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "opciones",
+    "comparativa",
+    "valores",
+    "proceso",
+    "contacto",
+    "legal_disclaimer",
+    "ramas"
+  ]
+}

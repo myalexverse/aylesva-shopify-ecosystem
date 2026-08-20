@@ -1,0 +1,66 @@
+# Environment variables and private credentials
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.cert
+*.pfx
+
+# Python & Virtual Environments
+.venv/
+venv/
+ENV/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+
+# Node & Package Managers
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# Shopify CLI & Local Cache
+.shopify/
+.shopify-cli/
+.theme-check.cache/
+
+# OS Specific
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# Archives & Temporary Backups
+*.zip
+*.tar.gz
+*.tgz
+*.rar
+*.7z
+_live_backup/
+_theme_backup/
+backup_*/
+temp_*/
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# IDE & Editor Settings
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Log files
+*.log
+logs/

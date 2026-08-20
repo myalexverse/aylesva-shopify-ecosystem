@@ -1,0 +1,147 @@
+{% comment %}
+  Aylesva Premium Pagination v3.0
+  ─────────────────────────────────────────────────────────
+  • Numeración progresiva con indicador de barra de progreso
+  • Estado activo con animación de escala + glow effect
+  • Botones Prev / Next con ripple effect
+  • Counter "Página X de Y"
+  • Totalmente responsivo (desktop + mobile)
+  • Sin dependencias JS externas — vanilla JS inline
+  ─────────────────────────────────────────────────────────
+{% endcomment %}
+
+{{ 'aylesva-pagination-v3.css' | asset_url | stylesheet_tag }}
+
+{% if paginate.pages > 1 %}
+
+<div class="ayl-pg-root" id="ayl-pg-root" data-current="{{ paginate.current_page }}" data-total="{{ paginate.pages }}">
+
+  {%- comment -%} ── Barra de Progreso ──────────────────── {%- endcomment -%}
+  <div class="ayl-pg-track">
+    <div class="ayl-pg-bar" id="ayl-pg-bar" style="width:{{ paginate.current_page | times: 100.0 | divided_by: paginate.pages | round }}%"></div>
+  </div>
+
+  {%- comment -%} ── Meta: Página X de Y ─────────────────── {%- endcomment -%}
+  <div class="ayl-pg-meta">
+    <span class="ayl-pg-meta__label">Página</span>
+    <span class="ayl-pg-meta__current">{{ paginate.current_page }}</span>
+    <span class="ayl-pg-meta__sep">de</span>
+    <span class="ayl-pg-meta__total">{{ paginate.pages }}</span>
+  </div>
+
+  {%- comment -%} ── Navegación Principal ────────────────── {%- endcomment -%}
+  <nav class="ayl-pg-nav" aria-label="Navegación de páginas">
+
+    {%- comment -%} ── Botón Anterior ──────────────────────── {%- endcomment -%}
+    {% if paginate.previous %}
+      <a href="{{ paginate.previous.url }}"
+         class="ayl-pg-arrow ayl-pg-prev"
+         aria-label="Página anterior"
+         id="ayl-pg-prev">
+        <span class="ayl-pg-arrow__ripple"></span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+        <span class="ayl-pg-arrow__label">Anterior</span>
+      </a>
+    {% else %}
+      <span class="ayl-pg-arrow ayl-pg-prev ayl-pg-arrow--disabled" aria-disabled="true">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+        <span class="ayl-pg-arrow__label">Anterior</span>
+      </span>
+    {% endif %}
+
+    {%- comment -%} ── Números de Página ───────────────────── {%- endcomment -%}
+    <div class="ayl-pg-numbers" role="list">
+      {% for part in paginate.parts %}
+        {% if part.is_link %}
+          <a href="{{ part.url }}"
+             class="ayl-pg-num"
+             role="listitem"
+             aria-label="Ir a página {{ part.title }}"
+             data-pg="{{ part.title }}">
+            <span class="ayl-pg-num__inner">{{ part.title }}</span>
+          </a>
+        {% else %}
+          {% if part.title == '&hellip;' or part.title == '...' %}
+            <span class="ayl-pg-ellipsis" role="listitem" aria-hidden="true">
+              <span>···</span>
+            </span>
+          {% else %}
+            <span class="ayl-pg-num ayl-pg-num--active"
+                  role="listitem"
+                  aria-current="page"
+                  data-pg="{{ part.title }}">
+              <span class="ayl-pg-num__ring"></span>
+              <span class="ayl-pg-num__inner">{{ part.title }}</span>
+            </span>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    {%- comment -%} ── Botón Siguiente ─────────────────────── {%- endcomment -%}
+    {% if paginate.next %}
+      <a href="{{ paginate.next.url }}"
+         class="ayl-pg-arrow ayl-pg-next"
+         aria-label="Página siguiente"
+         id="ayl-pg-next">
+        <span class="ayl-pg-arrow__ripple"></span>
+        <span class="ayl-pg-arrow__label">Siguiente</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </a>
+    {% else %}
+      <span class="ayl-pg-arrow ayl-pg-next ayl-pg-arrow--disabled" aria-disabled="true">
+        <span class="ayl-pg-arrow__label">Siguiente</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </span>
+    {% endif %}
+
+  </nav>
+
+  {%- comment -%} ── Puntos de Página (mobile mini-nav) ─── {%- endcomment -%}
+  <div class="ayl-pg-dots" aria-hidden="true">
+    {% for i in (1..paginate.pages) %}
+      {% if i == paginate.current_page %}
+        <span class="ayl-pg-dot ayl-pg-dot--active"></span>
+      {% else %}
+        <a href="{{ paginate.page_param }}={{ i }}" class="ayl-pg-dot"></a>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+</div>
+
+{%- comment -%} ── Animaciones Entry ──────────────────────── {%- endcomment -%}
+<script>
+(function(){
+  var root = document.getElementById('ayl-pg-root');
+  if (!root) return;
+
+  /* Entrada escalonada de los números */
+  var nums = root.querySelectorAll('.ayl-pg-num');
+  nums.forEach(function(el, i){
+    el.style.animationDelay = (i * 55) + 'ms';
+    el.classList.add('ayl-pg-num--enter');
+  });
+
+  /* Ripple effect en los botones de flecha */
+  root.querySelectorAll('.ayl-pg-arrow:not(.ayl-pg-arrow--disabled)').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      var ripple = btn.querySelector('.ayl-pg-arrow__ripple');
+      if (!ripple) return;
+      ripple.classList.remove('ayl-ripple--go');
+      void ripple.offsetWidth; /* reflow */
+      ripple.classList.add('ayl-ripple--go');
+    });
+  });
+})();
+</script>
+
+{% endif %}

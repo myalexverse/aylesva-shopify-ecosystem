@@ -1,0 +1,49 @@
+{% comment %}
+  Refactored Product Modals Snippet
+  Handles Size Chart and Notify Me modals.
+{% endcomment %}
+
+<!-- Size Chart Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span class="mdi mdi-close"></span></button>
+        <h4 class="modal-title">{{ section.settings.sizechart_lable }}</h4>
+      </div>
+      <div class="modal-body">
+        {% assign sizeChartPageHandle = 'size-chart' %}
+        {% assign sizeChartPage = pages[sizeChartPageHandle] %}
+        {% if sizeChartPage %}
+          <div class="size-chart-section">
+            {{ sizeChartPage.content }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Notify Me Modal -->
+<div id="notify-content" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title tt-title">Notified by Email When This Product Becomes Available.</h4>
+      </div>
+      {% form 'contact' %}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <input id="product_notify_input" type="hidden" name="contact[product]" value="{{ shop.url }}{{ product.url }}">
+        <div class="input-group newsletter-input">
+          <input type="email" value="{% if contact %}{{ customer.email }}{% endif %}" placeholder="{{ 'general.newsletter_form.newsletter_email' | t }}" name="contact[email]" id="Email" class="input-group-field" aria-label="{{ 'general.newsletter_form.newsletter_email' | t }}" autocorrect="off" autocapitalize="off">
+          <span class="input-group-btn">
+            <button type="submit" class="btn icon-fallback-text" name="commit" id="subscribe" aria-label="Name">
+              <span class="subscribe">{{ 'general.newsletter_form.submit' | t }}</span>
+            </button>
+          </span>
+        </div>
+      {% endform %}
+    </div>
+  </div>
+</div>

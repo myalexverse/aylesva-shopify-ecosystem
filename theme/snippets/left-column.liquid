@@ -1,0 +1,39 @@
+<div class="left_column-wrap">
+  {% if template.name == 'collection'%}
+  <div class="collection_sidebar">
+    <div class="sidebar-block">
+    {% if current_tags == blank %}
+    {% assign has_refined = false %} 
+    {% else %}
+    {% assign has_refined = true %} 
+    {% endif %}
+      <div class="shopify-section refined-widgets-wrap">
+        <div class="refined-widgets widget">
+          <a href="javascript:void(0)" class="clear-all" {% if has_refined == false %}style="display:none"{% endif %}>
+            {{ 'products.product.clear_all' | t }}
+            <i class="mdi mdi-close-circle"></i>
+          </a>
+        </div>
+      </div>
+       
+       {% section 'sidebar-tag-filters' %}
+      {% section 'sidebar-color' %}
+    </div>
+    {% comment %}
+    	{% section 'sidebar-blog-listing' %}
+    {% endcomment %}
+  </div>
+  {% endif %}
+  
+  {% if settings.display_testimonial %}
+  	{% section 'left-col-testimonial' %}
+  {% endif %}
+  
+  {% if settings.display_banner %}
+  	{% section 'left-col-banner' %}
+  {% endif %} 
+ 
+  {% if settings.display_collection_product %}
+  	{% section 'left-col-product' %}
+  {% endif %}
+</div>

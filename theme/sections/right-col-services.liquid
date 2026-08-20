@@ -1,0 +1,128 @@
+ {% if section.blocks.size > 0 %} 
+    <div id="ttcmsrightservices">
+      <div class="block_content">
+         {% for block in section.blocks %}      
+            <div class="ttservice-wrap">
+              <div class="ttcontent">
+                <div class="service">
+                  <div class="ttshipping_img service-icon col-sm-3">
+                    <img loading="lazy" src="{{  block.settings.service_icon | img_url: "master" }}" alt="services" />
+                  </div>
+                  <div class="content col-sm-9">
+                    <div class="service-title">{{  block.settings.title }}</div>
+                    <div class="service-desc">{{  block.settings.subtitle }}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        {% endfor %}
+      </div>
+    </div>
+{% endif %}
+<style>#ttcmsrightservices .ttservice-wrap .service-title{color: {{ section.settings.title_color }};}#ttcmsrightservices .ttservice-wrap .service-desc{color: {{ section.settings.subtitle_descolor }};}#ttcmsrightservices .ttservice-wrap:hover .content .service-title {color: {{ section.settings.title_hover_color }};}</style>
+{% schema %}
+  {
+    "name": "Right sidebar services",
+	"class":"right-services col-xs-12",
+    "settings": [
+ 	{
+        "type": "header",
+        "content": "Services"
+      },
+		{
+          "type": "color",
+          "id": "title_color",
+          "label": "Title Color",
+          "default":"#000"
+          },
+		{
+          "type": "color",
+          "id": "title_hover_color",
+          "label": "Title Hover Color",
+          "default":"#000"
+          },
+          {
+          "type": "color",
+          "id": "subtitle_descolor",
+          "label": "Subtitle Color",
+          "default":"#000"
+          }
+	],
+          "blocks": [
+          {
+          "type": "s_text",
+          "name": "services",
+          "settings": [
+          {
+          "type": "image_picker",
+          "id": "service_icon",
+          "label": "Service Icon",
+          "info": "Size: 62x52"
+          },
+          {
+          "type": "textarea",
+          "id": "title",
+          "label": "Title"
+          },
+		{
+          "type": "textarea",
+          "id": "subtitle",
+          "label": "Sub Title"
+          }
+          
+          ]
+          }
+          ],
+ "presets": [
+    {
+     "name": "Right sidebar Services",
+      "category": "Service",
+      "blocks": [
+        {
+          "type": "s_text",
+			"settings": {
+              "title": "Free Shipping",
+              "subtitle": "Deliver to door"
+            }
+        },
+		{
+          "type": "s_text",
+			"settings": {
+              "title": "24x7 Support",
+              "subtitle": "in safe hands"
+            }
+        },
+		{
+          "type": "s_text",
+			"settings": {
+              "title": "Big Saving",
+              "subtitle": "at lowest price"
+            }
+        },
+		{
+          "type": "s_text",
+			"settings": {
+              "title": "Money Back",
+              "subtitle": "Easy to return"
+            }
+        },
+		{
+          "type": "s_text",
+			"settings": {
+              "title": "online store",
+              "subtitle": "a huge branding"
+            }
+        },
+        {
+          "type": "s_text",
+			"settings": {
+              "title": "Award Winner",
+              "subtitle": "for best services"
+            }
+        }       
+ 		
+      ]
+    }
+  ]
+  }
+{% endschema %}

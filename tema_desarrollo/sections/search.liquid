@@ -1,0 +1,112 @@
+{% if search.performed %}
+{% comment %} Redundant search bar removed per user request {% endcomment %}
+  {% if settings.collection_sidebar_use == "left_sidebar" %}
+  <div class="content_wrap left-sidebar">
+    <div class="container">
+      <div class="row">
+        <div id="left-column" class="col-xs-12 col-sm-2 left-sidebar sidebar">
+          {% render 'collection-sidebar', results: search, enable_sidecategory: section.settings.enable_sidecategory, linkedlist: section.settings.linkedlist, linkedlist_title: section.settings.linkedlist_title, show_filter: section.settings.show_filter, collapse_on_larger_devices: section.settings.collapse_on_larger_devices %}
+        </div>
+        <div class="col-xs-12 col-sm-10 collection_wrapper collection_right">
+          {% paginate search.results by 16 %}
+            {% render 'ayl-definitive-mobile-grid', results: search, paginate: paginate %}
+            <div class="hidden-xs">
+              {% render 'collection-template', results: search, enable_sorting: section.settings.enable_sorting %}
+            </div>
+          {% endpaginate %}
+        </div>
+      </div>
+    </div>
+  </div>
+  {% elsif settings.collection_sidebar_use == "right_sidebar" %}
+  <div class="content_wrap right-sidebar">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-9 collection_wrapper collection_left">
+          {% paginate search.results by 16 %}
+            {% render 'ayl-definitive-mobile-grid', results: search, paginate: paginate %}
+            <div class="hidden-xs">
+              {% render 'collection-template', results: search, enable_sorting: section.settings.enable_sorting %}
+            </div>
+          {% endpaginate %}
+        </div>
+        <div id="right-column" class="col-xs-12 col-sm-3 right-sidebar sidebar">
+          {% render 'collection-sidebar', results: search, enable_sidecategory: section.settings.enable_sidecategory, linkedlist: section.settings.linkedlist, linkedlist_title: section.settings.linkedlist_title, show_filter: section.settings.show_filter, collapse_on_larger_devices: section.settings.collapse_on_larger_devices %}
+        </div>
+      </div>
+    </div>
+  </div>
+  {% else %}
+  <div class="container">
+    <div class="full-width col-sm-12">
+      {% paginate search.results by 16 %}
+        {% render 'ayl-definitive-mobile-grid', results: search, paginate: paginate %}
+        <div class="hidden-xs">
+          {% render 'collection-template', results: search, enable_sorting: section.settings.enable_sorting %}
+        </div>
+      {% endpaginate %}
+    </div>
+  </div>
+  {% endif %}
+{% endif %}
+
+<style>
+  /* Force layout to the left and expand width */
+  #shopify-section-search .container {
+    width: 100% !important;
+    max-width: 95% !important;
+    padding-left: 15px !important;
+    margin-left: 0 !important;
+  }
+  .left-sidebar .collection_right {
+    padding-left: 10px !important;
+  }
+  .ayl-col-title-wrap {
+    margin-left: -5px !important;
+  }
+</style>
+
+{% schema %}
+{
+"name": "Search Results",
+"settings": [
+{
+"type": "checkbox",
+"id": "enable_sidecategory",
+"label": "Enable category",
+"default": true
+},
+{
+"type": "link_list",
+"id": "linkedlist",
+"label": "Linklist",
+"default": "main-menu"
+},
+{
+"type": "text",
+"id": "linkedlist_title",
+"label": "Heading",
+"default": "Categorías"
+},
+{
+"type":"checkbox",
+"id":"show_filter",
+"label":"Enable Filter",
+"default":true
+},
+{
+"type": "checkbox",
+"id": "collapse_on_larger_devices",
+"default": false,
+"label": "Collapse On Larger Devices"
+},
+{
+"type":"checkbox",
+"id":"enable_sorting",
+"label":"Enable Sorting",
+"default":true
+}
+]
+}
+{% endschema %}
+

@@ -1,0 +1,227 @@
+<div  {% if settings.enable_animation != blank %} data-aos="fade-up" {% endif %} data-section-id="{{ section.id }}" class="best-collection-product">
+  <div class="page-width slider-bestproduct-wrap">
+    <div class="container">
+      <div class="slider-bestproduct-wrap {% if section.settings.type_bg != "rgba(0,0,0,0)" %} has_bg{% endif %}" style="float:left;width:100%;background-color:{{ section.settings.type_bg }};">
+        <div class="section-header">
+          {% if section.settings.title != blank %}
+          <h2 class="tt-title">{{ section.settings.title | escape }}</h2>
+          {% endif %}
+        </div>
+        {%- assign collection = collections[section.settings.collection] -%}
+        {%- assign grid_item_width = 'product-li' -%}
+        {%- assign image_size = '270x270' -%}
+        {%- assign product_limit =  5 -%}
+        <div class="row">
+          <div class="best-product-div{{ section.settings.class }}"> 
+            <div id="{{ section.settings.class }}_products_slider" class="slider-bestproduct grid grid--view-items owl-carousel owl-theme product_col_desktop_pro{{ section.settings.product_col_desktop_pro }} product_col_mobile_pro{{ section.settings.product_col_mobile_pro }}" >
+              {% for product in collection.products limit: product_limit %}
+              <div class="{{ grid_item_width }}">
+                {% render 'ayl-product-card-grid', collection: collection, product: product, grid_item_width: grid_item_width %}
+              </div>
+              {% else %}
+              {% for i in (1..product_limit) %}
+              <div class="{{ grid_item_width }}">
+                <div class="grid-view-item">
+                  <a href="#" class="grid-view-item__link">
+                    <div class="grid-view-item__image">
+                      {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                      {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                    </div>
+                    {% render 'wishlist-icon', product: product %}
+                    <div class="h4 grid-view-item__title">{{ 'home_page.onboarding.product_title' | t }}</div>
+                    <div class="grid-view-item__meta">
+                      {% render 'product-price', product: product %}
+                    </div>
+                  </a>
+                </div>
+              </div>
+              {% endfor %} 
+              {% endfor %}
+            </div>
+
+
+                                 {% if section.settings.btn_title1  != blank %}
+                  <a href="{{ section.settings.category_btn_urls }}" class="ttcategory-btn btn-border">
+                      {{ section.settings.btn_title1 }}
+                  </a>
+          {% endif %}
+            
+            
+            <div class="customNavigation">
+              <div class="navigation_wrap">
+                <a class="mdi {{ section.settings.class }}_prev prev">{{ 'general.slider.prev' | t }}</a>
+                <a class="mdi {{ section.settings.class }}_next next">{{ 'general.slider.next' | t }}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+
+jQuery(document).ready(function() {
+
+    var p_col = jQuery('.slider-bestproduct').data('col');
+  $('body:not(.rtl) .slider-bestproduct').owlCarousel({
+             items: {{section.settings.product_col_desktop_pro}},
+    nav: !0,
+    autoplay: !0,
+    autoplaySpeed: 1500,
+    autoplayHoverPause: true,
+    dots: !1,
+         responsive: {
+            100: {
+               items: 2
+            },
+            320: {
+               items: 2
+            },
+            481: {
+               items: 2
+            },
+            768: {
+               items: 2
+            },
+            992: {
+               items: 3
+            },
+            1200: {
+               items: 4
+            },
+            1460: {
+               items: 5
+            },
+            1700: {
+               items: {{section.settings.product_col_desktop_pro}}
+            }
+         },
+  });
+  $('body.rtl .slider-bestproduct').owlCarousel({
+             items: {{section.settings.product_col_desktop_pro}},
+
+    nav: !0,
+    dots: !1,
+    autoplay: !0,
+    autoplaySpeed: 1500,
+    autoplayHoverPause: true,
+         responsive: {
+            100: {
+               items: 2
+            },
+            320: {
+               items: 2
+            },
+            481: {
+               items: 2
+            },
+            768: {
+               items: 2
+            },
+            992: {
+               items: 3
+            },
+            1200: {
+               items: 4
+            },
+            1460: {
+               items: 5
+            },
+            1700: {
+               items: {{section.settings.product_col_desktop_pro}}
+            }
+         },
+  });
+  $('.slider-bestproduct-wrap').each(function() {
+    if ($(this).find('.owl-nav').hasClass('disabled')) {
+      $(this).find('.customNavigation').hide()
+    } else {
+      $(this).find('.customNavigation').show()
+    }
+  });
+  $(".slider-bestproduct-wrap .customNavigation .next").click(function() {
+    var wrap = $(this).closest('.slider-bestproduct-wrap');
+    $(wrap).find('.slider-bestproduct').trigger('next.owl')
+  });
+  $(".slider-bestproduct-wrap .customNavigation .prev").click(function() {
+    var wrap = $(this).closest('.slider-bestproduct-wrap');
+    $(wrap).find('.slider-bestproduct').trigger('prev.owl')
+  });
+  });
+  
+  
+  
+  
+</script>
+
+{% schema %}
+{
+"name": "bestseller collection",
+"class": "index-section bestseller-collection",
+"settings": [
+{
+"type": "text",
+"id": "class",
+"label": "Add Class",
+"default": "bestproduct"
+},
+{
+"type": "color",
+"id": "type_bg",
+"label": "background color",
+"default": "#fff"
+},
+{
+"type": "text",
+"id": "title",
+"label": "Heading",
+"default": "bestseller collection"
+},	
+{
+"id": "collection",
+"type": "collection",
+"label": "Collection"
+},
+        {
+"type": "range",
+"id": "product_col_desktop_pro",
+"min": 2,
+"max": 20,
+"step": 1,
+"label": "Number of columns on Desktop",
+"default": 5
+},
+
+
+{
+"type": "range",
+"id": "product_col_mobile_pro",
+"min": 1,
+"max": 3,
+"step": 1,
+"label": "Number of columns on Mobile",
+"default": 2
+},
+                            {
+"type": "text",
+"id": "btn_title1",
+"label": "Product button Title",
+  "info":"Leave it blank if you don't want to use button",
+ "default": "Sell All Product"                          
+},
+     {
+"type": "url",
+"id": "category_btn_urls",
+"label": "Product button link"
+}
+],
+"presets": [
+{
+"name": "bestseller collection",
+"category": "Collection"
+}
+]
+}
+{% endschema %}
+

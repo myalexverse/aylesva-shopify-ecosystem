@@ -1,0 +1,395 @@
+
+{% comment %}
+  Custom Modern Footer - AYLESVA MX
+  Premium design with Tailwind CSS, Inter Font, and Material Symbols.
+{% endcomment %}
+
+<style>
+  .silk-finish-gold {
+    background: linear-gradient(135deg, #000000 0%, #C5A47E 100%);
+  }
+  .glass-footer-premium {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(197, 164, 126, 0.3);
+  }
+  .custom-footer-container {
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+</style>
+
+<footer class="bg-white font-body text-on-surface antialiased pt-4 pb-12 border-t border-gray-100">
+
+  {% if section.settings.show_newsletter %}
+  <!-- SECTION 1: Newsletter Signup (GOLD & BLACK REDESIGN) -->
+  <section class="relative overflow-hidden silk-finish-gold mb-16 py-16 px-6 md:px-12 w-full">
+    <div class="custom-footer-container flex flex-col lg:flex-row items-center justify-between gap-8">
+        <div class="max-w-xl text-center lg:text-left">
+          <h2 class="text-white font-headline text-3xl md:text-5xl font-extrabold tracking-tighter mb-4">
+            {{ section.settings.newsletter_title }}
+          </h2>
+          <p class="text-white/80 text-lg font-medium opacity-90">
+            {{ section.settings.newsletter_sub }}
+          </p>
+        </div>
+        
+        {% form 'customer', class: 'w-full lg:w-auto' %}
+          {% if form.posted_successfully? %}
+            <p class="text-white font-bold bg-white/10 px-6 py-3 rounded-full animate-bounce">¡Gracias por suscribirte!</p>
+          {% else %}
+            <div class="flex flex-col sm:flex-row gap-4 w-full">
+              <input type="hidden" name="contact[tags]" value="newsletter">
+              <div class="relative flex-grow lg:min-w-[400px]">
+                <input 
+                  type="email"
+                  name="contact[email]"
+                  id="Email-{{ section.id }}"
+                  class="w-full h-14 px-8 rounded-none bg-white/10 border border-white/30 text-white placeholder:text-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all font-medium"
+                  placeholder="Tu correo electrónico"
+                  aria-label="Tu correo electrónico"
+                  required
+                >
+              </div>
+              <button 
+                type="submit" 
+                class="h-14 px-12 rounded-none bg-white text-[#000000] font-bold hover:bg-gray-100 transition-all duration-300 whitespace-nowrap"
+              >
+                SUSCRIBIR
+              </button>
+            </div>
+            {% if form.errors %}
+              <p class="text-red-300 mt-2 ml-4 text-sm font-bold">{{ form.errors.messages['email'] }}</p>
+            {% endif %}
+          {% endif %}
+        {% endform %}
+    </div>
+  </section>
+  {% endif %}
+
+  <!-- SECTION 2: Value Propositions -->
+  <section class="bg-gray-50 py-16 mb-20 border-y border-gray-100">
+    <div class="custom-footer-container px-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+      {% for block in section.blocks %}
+        {% if block.type == 'usp' %}
+        <div class="flex items-center gap-6 group cursor-default" {{ block.shopify_attributes }}>
+          <div class="w-14 h-14 flex items-center justify-center rounded-none bg-white shadow-sm text-[#C5A47E] group-hover:bg-[#000000] group-hover:text-white transition-all duration-500 ease-out border border-gray-100">
+            <span class="material-symbols-outlined text-3xl">{{ block.settings.icon }}</span>
+          </div>
+          <div>
+            <h4 class="font-bold text-[#000000] text-lg mb-0.5">{{ block.settings.title }}</h4>
+            <p class="text-sm text-secondary font-medium">{{ block.settings.subtitle }}</p>
+          </div>
+        </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- SECTION 3: Main Footer Grid -->
+  <div class="custom-footer-container px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-16 lg:gap-12">
+    <!-- Column 1: About -->
+    <div class="lg:col-span-2">
+      <div class="mb-10 select-none">
+        <img src="{{ 'aylesva-logo-mx-v1.png' | asset_url }}" alt="{{ shop.name }}" class="h-10 w-auto">
+      </div>
+      <p class="text-lg text-secondary leading-relaxed mb-10 max-w-sm font-medium">
+        {{ section.settings.about_description }}
+      </p>
+      <div class="space-y-6">
+        <div class="flex items-start gap-4">
+          <span class="material-symbols-outlined text-[#C5A47E] text-2xl">location_on</span>
+          <span class="text-on-surface font-semibold mt-0.5">{{ section.settings.address }}</span>
+        </div>
+        <div class="flex items-start gap-4 group">
+          <span class="material-symbols-outlined text-[#C5A47E] text-2xl">mail</span>
+          <a href="mailto:{{ section.settings.email }}" class="text-on-surface font-semibold mt-0.5 hover:text-[#C5A47E] transition-colors underline-offset-4 hover:underline">
+            {{ section.settings.email }}
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Column 2: Categorías -->
+    <div>
+      <h5 class="text-[#000000] font-extrabold tracking-widest mb-10 uppercase text-xs">Categorías</h5>
+      <ul class="space-y-5">
+        {%- assign footer_categories = "Mujer,Hombre,Niño,Niña,Bebé,Artesanal,Hogar,Alimentos,Electrónicos,Vehículos" | split: ',' -%}
+        {% for cat_name in footer_categories %}
+          <li>
+            <a href="/collections/{{ cat_name | handleize }}" class="text-secondary hover:text-[#C5A47E] transition-all duration-300 font-semibold text-base flex items-center gap-2 group">
+              <span class="w-1.5 h-1.5 rounded-full bg-gray-200 group-hover:bg-[#C5A47E] transition-colors"></span>
+              {{ cat_name }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <!-- Column 3: Nuestra Empresa -->
+    <div>
+      <h5 class="text-[#000000] font-extrabold tracking-widest mb-10 uppercase text-xs">Nuestra Empresa</h5>
+      <ul class="space-y-5">
+        {% if linklists[section.settings.menu_company].links != blank %}
+          {% for link in linklists[section.settings.menu_company].links %}
+            <li>
+              <a href="{{ link.url }}" class="text-secondary hover:text-[#C5A47E] transition-all duration-300 font-semibold text-base flex items-center gap-2 group">
+                 <span class="w-1.5 h-1.5 rounded-full bg-gray-200 group-hover:bg-[#C5A47E] transition-colors"></span>
+                {{ link.title }}
+              </a>
+            </li>
+          {% endfor %}
+        {% else %}
+          <li>
+            <a href="/pages/contacto" class="text-secondary hover:text-[#C5A47E] transition-all duration-300 font-semibold text-base flex items-center gap-2 group">
+               <span class="w-1.5 h-1.5 rounded-full bg-gray-200 group-hover:bg-[#C5A47E] transition-colors"></span>
+              Ayuda / Contacto
+            </a>
+          </li>
+          <li>
+            <a href="/pages/rastreo" class="text-secondary hover:text-[#C5A47E] transition-all duration-300 font-semibold text-base flex items-center gap-2 group">
+               <span class="w-1.5 h-1.5 rounded-full bg-gray-200 group-hover:bg-[#C5A47E] transition-colors"></span>
+              Rastrea tu pedido
+            </a>
+          </li>
+          <li>
+            <a href="/pages/acerca-de-nosotros" class="text-secondary hover:text-[#C5A47E] transition-all duration-300 font-semibold text-base flex items-center gap-2 group">
+               <span class="w-1.5 h-1.5 rounded-full bg-gray-200 group-hover:bg-[#C5A47E] transition-colors"></span>
+              Nuestra Historia
+            </a>
+          </li>
+          <li>
+            <a href="/policies/terms-of-service" class="text-secondary hover:text-[#C5A47E] transition-all duration-300 font-semibold text-base flex items-center gap-2 group">
+               <span class="w-1.5 h-1.5 rounded-full bg-gray-200 group-hover:bg-[#C5A47E] transition-colors"></span>
+              Términos de Servicio
+            </a>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+
+    <!-- Column 4: Mi Cuenta -->
+    <div>
+      <h5 class="text-[#000000] font-extrabold tracking-widest mb-10 uppercase text-xs">Mi Cuenta</h5>
+      <ul class="space-y-5">
+        <li>
+          <a href="{% if customer %}/account{% else %}/account/login{% endif %}" class="text-secondary hover:text-[#C5A47E] transition-all duration-300 font-semibold text-base flex items-center gap-2 group">
+             <span class="w-1.5 h-1.5 rounded-full bg-gray-200 group-hover:bg-[#C5A47E] transition-colors"></span>
+             {% if customer %}Mi Perfil{% else %}Iniciar Sesión{% endif %}
+          </a>
+        </li>
+        <li>
+          <a href="/account#orders" class="text-secondary hover:text-[#C5A47E] transition-all duration-300 font-semibold text-base flex items-center gap-2 group">
+             <span class="w-1.5 h-1.5 rounded-full bg-gray-200 group-hover:bg-[#C5A47E] transition-colors"></span>
+             Mis Pedidos
+          </a>
+        </li>
+        <li>
+          <a href="/pages/wishlist" class="text-secondary hover:text-[#C5A47E] transition-all duration-300 font-semibold text-base flex items-center gap-2 group">
+             <span class="w-1.5 h-1.5 rounded-full bg-gray-200 group-hover:bg-[#C5A47E] transition-colors"></span>
+             Wishlist
+          </a>
+        </li>
+        <li>
+          <a href="{{ section.settings.returns_url | default: '#' }}" class="text-secondary hover:text-[#C5A47E] transition-all duration-300 font-semibold text-base flex items-center gap-2 group">
+             <span class="w-1.5 h-1.5 rounded-full bg-gray-200 group-hover:bg-[#C5A47E] transition-colors"></span>
+             Shipping & Returns
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SECTION 4: Bottom Bar -->
+  <div class="mt-24 pt-10 border-t border-gray-100 custom-footer-container px-8">
+    <div class="flex flex-col lg:flex-row justify-between items-center gap-10">
+      <div class="text-sm text-secondary font-bold tracking-wide opacity-80 text-center lg:text-left uppercase">
+        © {{ 'now' | date: "%Y" }} {{ shop.name }} | Tecnología de Shopify
+      </div>
+
+      <!-- Dynamic Payment Icons -->
+      <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4">
+        {%- for type in shop.enabled_payment_types -%}
+          <div class="w-12 h-8 flex items-center justify-center bg-white/5 rounded-none px-2 py-1 border border-gray-100 hover:border-[#C5A47E] transition-all grayscale hover:grayscale-0 opacity-60 hover:opacity-100">
+            {{ type | payment_type_svg_tag: class: 'w-full h-full object-contain' }}
+          </div>
+        {%- endfor -%}
+      </div>
+
+      <!-- Social Links -->
+      <div class="flex items-center gap-6">
+        {% if settings.social_instagram_link != blank %}
+          <a href="{{ settings.social_instagram_link }}" class="w-10 h-10 rounded-none border border-gray-200 flex items-center justify-center text-secondary hover:text-[#C5A47E] hover:border-[#C5A47E] transition-all" target="_blank">
+            <span class="material-symbols-outlined text-xl">share</span>
+          </a>
+        {% endif %}
+        <a href="#" class="w-10 h-10 rounded-none border border-gray-200 flex items-center justify-center text-secondary hover:text-[#C5A47E] hover:border-[#C5A47E] transition-all">
+          <span class="material-symbols-outlined text-xl">public</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  {% if section.settings.show_sticky_bar %}
+  <!-- SECTION 5: Signature Sticky Curator Bar -->
+  <div class="fixed bottom-6 left-1/2 -translate-x-1/2 glass-footer-premium border border-[#C5A47E]/20 shadow-2xl rounded-none px-10 py-4 flex items-center gap-12 z-[1000] md:flex hidden pointer-events-auto">
+    <div class="flex items-center gap-3">
+      <span class="w-2 h-2 rounded-full bg-[#C5A47E] animate-pulse"></span>
+      <span class="text-[10px] font-black tracking-[0.3em] text-[#000000] uppercase">{{ section.settings.sticky_text }}</span>
+    </div>
+    <div class="h-6 w-px bg-gray-200"></div>
+    <a href="{{ section.settings.sticky_url }}" class="text-[10px] font-black text-secondary hover:text-[#C5A47E] transition-colors uppercase tracking-[0.3em]">
+      {{ section.settings.sticky_btn_text }}
+    </a>
+  </div>
+  {% endif %}
+
+</footer>
+
+{% schema %}
+{
+  "name": "Custom Modern Footer",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Colors & Style"
+    },
+    {
+      "type": "color",
+      "id": "primary_color",
+      "label": "Primary Color (Gradient Start)",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "secondary_color",
+      "label": "Secondary Color (Gradient End)",
+      "default": "#C5A47E"
+    },
+    {
+      "type": "header",
+      "content": "Newsletter Banner"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_newsletter",
+      "label": "Show Newsletter Banner",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "newsletter_title",
+      "label": "Title",
+      "default": "Recibe Nuestras Ofertas y Noticias"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_sub",
+      "label": "Subtitle",
+      "default": "Únete a nuestra colección curada y sé el primero en conocer lanzamientos exclusivos."
+    },
+    {
+      "type": "header",
+      "content": "About Section"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Footer Logo"
+    },
+    {
+      "type": "textarea",
+      "id": "about_description",
+      "label": "Description",
+      "default": "Una plataforma dedicada a la curaduría editorial de productos premium, conectando artesanos y marcas de lujo con el estilo de vida contemporáneo."
+    },
+    {
+      "type": "text",
+      "id": "address",
+      "label": "Address",
+      "default": "Calle Benito Juarez 116, 4291139447"
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Email",
+      "default": "sales@aylesva.com"
+    },
+    {
+      "type": "header",
+      "content": "Menus"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_categories",
+      "label": "Categories Menu"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_company",
+      "label": "Company Menu"
+    },
+    {
+      "type": "url",
+      "id": "returns_url",
+      "label": "Returns Page URL"
+    },
+    {
+      "type": "header",
+      "content": "Sticky Bar"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_sticky_bar",
+      "label": "Show Sticky Bar",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "sticky_text",
+      "label": "Sticky Bar Text",
+      "default": "Nueva Colección Disponible"
+    },
+    {
+      "type": "text",
+      "id": "sticky_btn_text",
+      "label": "Sticky Bar Button",
+      "default": "Explorar Catálogo"
+    },
+    {
+      "type": "url",
+      "id": "sticky_url",
+      "label": "Sticky Bar URL"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "usp",
+      "name": "Value Proposition",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Material Symbol Icon Name",
+          "default": "local_shipping",
+          "info": "Selection from: https://fonts.google.com/icons"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Envío Gratis"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle",
+          "default": "En pedidos superiores a $999"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

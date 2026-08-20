@@ -1,0 +1,31 @@
+{% assign title = '' %}
+{% assign images_js_string = '' %}
+{% assign frames_count =  product.images.size %}
+{% if product.images.size > 1 %}
+<div class="product-360-button">
+  <a href="#product-360-view"><i class="mdi mdi-refresh"></i> <span>{{ 'products.product.360_veiw' | t }}</span></a>
+</div>
+<div id="product-360-view" class="product-360-view-wrapper mfp-hide">
+  <div class="tt-360-veiw threed-id">
+    {%  assign cnt = 0 %}  
+    <ul class="threed-view-images">
+      {% for image in product.images %}                      
+      {% assign arrayTwo = image.src | img_url: 'master' %}                     
+      {% capture arrayTwo %}
+      '{{ arrayTwo }}'
+      {% endcapture %}
+      {% assign images_js_string = images_js_string | append:arrayTwo %}
+      {% if cnt < frames_count %}
+      {% assign images_js_string = images_js_string | append:',' %}
+      {% endif %}
+      {% assign cnt = cnt | plus: 1 %}
+
+      {% endfor %}  
+    </ul>
+    <div class="spinner">
+      <span>0%</span>
+    </div>
+  </div>
+  <script type="text/javascript">jQuery(document).ready(function($){$('.threed-id').ThreeSixty({totalFrames:{{frames_count}},endFrame:{{frames_count}},currentFrame:1,imgList:'.threed-view-images',progress:'.spinner',imgArray:[{{images_js_string}}],height:700,width:900,responsive:true,navigation:true})});</script>
+</div>
+{% endif %}

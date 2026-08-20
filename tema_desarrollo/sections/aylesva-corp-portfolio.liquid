@@ -1,0 +1,436 @@
+{% comment %} Aylesva · Portafolio de Marcas Lanzadas (Gold & Ink) {% endcomment %}
+<section class="ay ay-portfolio" id="marcas-{{ section.id }}" style="background:{{ section.settings.bg | default: '#FAFAF8' }};border-top:var(--ay-hairline);border-bottom:var(--ay-hairline)">
+  <div class="ay-wrap">
+    
+    <div style="text-align:center;max-width:760px;margin:0 auto 56px">
+      {% if section.settings.eyebrow != blank %}
+        <p class="ay-eyebrow">{{ section.settings.eyebrow }}</p>
+      {% endif %}
+      <h2 class="ay-h2" style="font-size:clamp(32px,4.5vw,52px);margin-bottom:18px">
+        {{ section.settings.title | default: 'Marcas lanzadas con Aylesva.' }}<br>
+        <span style="color:var(--ay-gold-text)">{{ section.settings.subtitle | default: 'Sitios reales, activos hoy.' }}</span>
+      </h2>
+      {% if section.settings.desc != blank %}
+        <p class="ay-lead" style="font-size:16px;color:rgba(15,23,42,0.7)">{{ section.settings.desc }}</p>
+      {% endif %}
+    </div>
+
+    <!-- Grid de tarjetas de sitios web en mockup de navegador -->
+    <div class="ay-portfolio-grid" id="ay-portfolio-grid-{{ section.id }}"></div>
+
+    <!-- Botón de expandir / colapsar -->
+    <div style="text-align:center;margin-top:44px">
+      <button class="ay-btn ay-btn--outline" id="ay-portfolio-toggle-{{ section.id }}" type="button">
+        Ver las 23 marcas →
+      </button>
+    </div>
+
+  </div>
+
+  <!-- Modal de detalle de tienda -->
+  <div class="ay-port-modal" id="ay-port-modal-{{ section.id }}" aria-hidden="true" role="dialog">
+    <div class="ay-port-modal__backdrop" id="ay-port-backdrop-{{ section.id }}"></div>
+    <div class="ay-port-modal__dialog">
+      <button class="ay-port-modal__close" id="ay-port-close-{{ section.id }}" aria-label="Cerrar modal">&times;</button>
+      <div class="ay-port-modal__preview">
+        <img id="ay-port-modal-img-{{ section.id }}" src="" alt="Vista previa de la tienda">
+      </div>
+      <div class="ay-port-modal__body">
+        <span class="ay-port-modal__tag">TIENDA EN LÍNEA SHOPIFY</span>
+        <h3 class="ay-port-modal__title" id="ay-port-modal-name-{{ section.id }}"></h3>
+        <p class="ay-port-modal__desc">Comercio electrónico completo desarrollado y gestionado con catálogo y logística automatizada por el equipo de Aylesva.</p>
+        <a class="ay-btn ay-btn--gold" id="ay-port-modal-link-{{ section.id }}" href="#" target="_blank" rel="noopener noreferrer">
+          Visitar sitio oficial ↗
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .ay-portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+  @media (max-width: 1024px) {
+    .ay-portfolio-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+  }
+  @media (max-width: 640px) {
+    .ay-portfolio-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+  }
+
+  /* Mockup de Navegador */
+  .ay-browser-card {
+    background: #FFFFFF;
+    border: var(--ay-hairline);
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+  }
+  .ay-browser-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px -15px rgba(2,6,23,0.18);
+    border-color: var(--ay-gold);
+  }
+  .ay-browser-card--hidden {
+    display: none !important;
+  }
+
+  /* Barra de Navegador */
+  .ay-browser-bar {
+    background: #F4F2EE;
+    border-bottom: var(--ay-hairline);
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .ay-browser-dots {
+    display: flex;
+    gap: 5px;
+    flex-shrink: 0;
+  }
+  .ay-browser-dots span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #D1CFC7;
+  }
+  .ay-browser-url {
+    background: #FFFFFF;
+    border: 1px solid #E5E2DA;
+    border-radius: 6px;
+    font-family: var(--ay-font-mono);
+    font-size: 11px;
+    color: rgba(15,23,42,0.6);
+    padding: 3px 12px;
+    flex-grow: 1;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Pantalla / Screenshot */
+  .ay-browser-screen {
+    position: relative;
+    height: 220px;
+    background: #EBE8E1;
+    overflow: hidden;
+  }
+  .ay-browser-screen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+    transition: transform 0.6s ease;
+  }
+  .ay-browser-card:hover .ay-browser-screen img {
+    transform: scale(1.03);
+  }
+
+  /* Pie de tarjeta */
+  .ay-browser-footer {
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: var(--ay-hairline);
+    background: #FFFFFF;
+  }
+  .ay-browser-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ay-ink-900);
+    margin-bottom: 2px;
+  }
+  .ay-browser-domain {
+    font-family: var(--ay-font-mono);
+    font-size: 11px;
+    color: rgba(15,23,42,0.5);
+  }
+  .ay-browser-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #F4F2EE;
+    color: var(--ay-ink-900);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.25s ease;
+  }
+  .ay-browser-card:hover .ay-browser-icon {
+    background: var(--ay-gold);
+    color: #FFFFFF;
+  }
+
+  /* Modal de portafolio */
+  .ay-port-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    padding: 24px;
+  }
+  .ay-port-modal.is-open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .ay-port-modal__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(2,6,23,0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  .ay-port-modal__dialog {
+    position: relative;
+    background: #FFFFFF;
+    border: var(--ay-hairline);
+    border-radius: 16px;
+    max-width: 680px;
+    width: 100%;
+    overflow: hidden;
+    box-shadow: 0 35px 70px -15px rgba(0,0,0,0.5);
+    transform: scale(0.95);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 2;
+  }
+  .ay-port-modal.is-open .ay-port-modal__dialog {
+    transform: scale(1);
+  }
+  .ay-port-modal__close {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(2,6,23,0.6);
+    color: #FFFFFF;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: background 0.2s;
+  }
+  .ay-port-modal__close:hover {
+    background: rgba(2,6,23,0.9);
+  }
+  .ay-port-modal__preview {
+    height: 320px;
+    background: #111;
+    overflow: hidden;
+  }
+  .ay-port-modal__preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+  }
+  .ay-port-modal__body {
+    padding: 32px 36px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  .ay-port-modal__tag {
+    font-family: var(--ay-font-mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--ay-gold-text);
+  }
+  .ay-port-modal__title {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--ay-ink-900);
+    margin: 0;
+  }
+  .ay-port-modal__desc {
+    font-size: 15px;
+    color: rgba(15,23,42,0.7);
+    max-width: 48ch;
+    margin: 0 0 12px;
+    line-height: 1.5;
+  }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var SID = '{{ section.id }}';
+  var FEATURED = 6;
+  var showAll = false;
+
+  var staticScreenshots = {
+    "vaquerodenapa.com": "https://www.aylesva.com/cdn/shop/files/vaquerodenapa.jpg?v=1784242130&width=1200",
+    "wearmex.com": "https://www.aylesva.com/cdn/shop/files/wearmex.jpg?v=1784237767&width=1200",
+    "hectorboots.com": "https://www.aylesva.com/cdn/shop/files/hectorboots.jpg?v=1784240267&width=1200",
+    "cowboyempireboots.com": "https://www.aylesva.com/cdn/shop/files/cowboyempire.jpg?v=1784240347&width=1200",
+    "lajoyawesternwear.com": "https://www.aylesva.com/cdn/shop/files/lajolla.jpg?v=1784240422&width=1200",
+    "miranchoboots.com": "https://www.aylesva.com/cdn/shop/files/miranchoboots.jpg?v=1784240487&width=1200",
+    "botaselvilla.com": "https://www.aylesva.com/cdn/shop/files/botaselvilla.jpg?v=1784242342&width=1200",
+    "tutiendavaquera.com": "https://www.aylesva.com/cdn/shop/files/tutiendavaquera.jpg?v=1784240573&width=1200",
+    "valadezmens.com": "https://www.aylesva.com/cdn/shop/files/valadez.jpg?v=1784242451&width=1200",
+    "ohcattle.com": "https://www.aylesva.com/cdn/shop/files/ohcatle.jpg?v=1784240651&width=1200",
+    "torresfashionboutique.com": "https://www.aylesva.com/cdn/shop/files/torresv.jpg?v=1784242553&width=1200",
+    "ayalastodoenpielymas.com": "https://www.aylesva.com/cdn/shop/files/ayalastodopiel.jpg?v=1784241046&width=1200",
+    "elnortenofamilystore.com": "https://www.aylesva.com/cdn/shop/files/elnorteno.jpg?v=1784242700&width=1200",
+    "mgwestern.com": "https://www.aylesva.com/cdn/shop/files/mgwestern.jpg?v=1784242809&width=1200",
+    "jessicaswesternwear.com": "https://www.aylesva.com/cdn/shop/files/jessicawestern.jpg?v=1784241516&width=1200",
+    "torreswesternwear.com": "https://www.aylesva.com/cdn/shop/files/torreswestern.jpg?v=1784242930&width=1200",
+    "familywesternwear.com": "https://www.aylesva.com/cdn/shop/files/familywestern.jpg?v=1784241126&width=1200",
+    "elvaqueroco.com": "https://www.aylesva.com/cdn/shop/files/elvaqueroco.jpg?v=1784241457&width=1200",
+    "covarruviaswesternwear.com": "https://www.aylesva.com/cdn/shop/files/covarruvias.jpg?v=1784241205&width=1200",
+    "twinsharborsupply.com": "https://www.aylesva.com/cdn/shop/files/twinsharbor.jpg?v=1784241262&width=1200",
+    "dosamigoswesternwear.com": "https://www.aylesva.com/cdn/shop/files/dosamigos.jpg?v=1784241320&width=1200",
+    "astilleroboots.com": "https://www.aylesva.com/cdn/shop/files/astilleroboots.jpg?v=1784241947&width=1200",
+    "2marias.com": "https://www.aylesva.com/cdn/shop/files/2marias.jpg?v=1784241392&width=1200"
+  };
+
+  var sites = [
+    { name: 'Vaquero de Napa', url: 'https://vaquerodenapa.com' },
+    { name: 'WearMex', url: 'https://wearmex.com' },
+    { name: 'Hector Boots', url: 'https://hectorboots.com' },
+    { name: 'Cowboy Empire Boots', url: 'https://cowboyempireboots.com' },
+    { name: 'La Joya Western Wear', url: 'https://lajoyawesternwear.com' },
+    { name: 'Mi Rancho Boots', url: 'https://miranchoboots.com' },
+    { name: 'Botas El Villa', url: 'https://botaselvilla.com' },
+    { name: 'Tu Tienda Vaquera', url: 'https://tutiendavaquera.com' },
+    { name: "Valadez Men's Wear", url: 'https://valadezmens.com' },
+    { name: 'OH Cattle', url: 'https://ohcattle.com' },
+    { name: 'Torres Fashion Boutique', url: 'https://www.torresfashionboutique.com' },
+    { name: "Ayala's Todo en Piel y Más", url: 'https://www.ayalastodoenpielymas.com' },
+    { name: 'El Norteño Family Store', url: 'https://elnortenofamilystore.com' },
+    { name: 'MG Western', url: 'https://mgwestern.com' },
+    { name: "Jessica's Western Wear", url: 'https://jessicaswesternwear.com' },
+    { name: 'Torres Western Wear', url: 'https://torreswesternwear.com' },
+    { name: 'Family Western Wear', url: 'https://familywesternwear.com' },
+    { name: 'El Vaquero Co.', url: 'https://elvaqueroco.com' },
+    { name: 'Covarruvias Western Wear', url: 'https://covarruviaswesternwear.com' },
+    { name: 'Twins Harbor Supply', url: 'https://twinsharborsupply.com' },
+    { name: 'Dos Amigos Western Wear', url: 'https://dosamigoswesternwear.com' },
+    { name: 'Astillero Boots', url: 'https://astilleroboots.com' },
+    { name: '2 Marías', url: 'https://www.2marias.com' }
+  ];
+
+  function domainOf(url) {
+    return url.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '');
+  }
+
+  var grid = document.getElementById('ay-portfolio-grid-' + SID);
+  var toggleBtn = document.getElementById('ay-portfolio-toggle-' + SID);
+  var modal = document.getElementById('ay-port-modal-' + SID);
+  var backdrop = document.getElementById('ay-port-backdrop-' + SID);
+  var closeBtn = document.getElementById('ay-port-close-' + SID);
+  var modalImg = document.getElementById('ay-port-modal-img-' + SID);
+  var modalName = document.getElementById('ay-port-modal-name-' + SID);
+  var modalLink = document.getElementById('ay-port-modal-link-' + SID);
+
+  if (!grid) return;
+
+  var cardEls = [];
+
+  sites.forEach(function(site, idx) {
+    var domain = domainOf(site.url);
+    var imgSrc = staticScreenshots[domain] || ('https://image.thum.io/get/width/1200/crop/800/' + site.url + '/');
+
+    var card = document.createElement('div');
+    card.className = 'ay-browser-card' + (idx >= FEATURED ? ' ay-browser-card--hidden' : '');
+    card.innerHTML = 
+      '<div class="ay-browser-bar">' +
+        '<div class="ay-browser-dots"><span></span><span></span><span></span></div>' +
+        '<div class="ay-browser-url">' + domain + '</div>' +
+      '</div>' +
+      '<div class="ay-browser-screen">' +
+        '<img src="' + imgSrc + '" alt="' + site.name + '" loading="lazy">' +
+      '</div>' +
+      '<div class="ay-browser-footer">' +
+        '<div>' +
+          '<div class="ay-browser-name">' + site.name + '</div>' +
+          '<div class="ay-browser-domain">' + domain + '</div>' +
+        '</div>' +
+        '<div class="ay-browser-icon">' +
+          '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3.6 9h16.8M3.6 15h16.8"/></svg>' +
+        '</div>' +
+      '</div>';
+
+    card.addEventListener('click', function() {
+      if (modal && modalImg && modalName && modalLink) {
+        modalImg.src = imgSrc;
+        modalName.textContent = site.name;
+        modalLink.href = site.url;
+        modal.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+      }
+    });
+
+    grid.appendChild(card);
+    cardEls.push(card);
+  });
+
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', function() {
+      showAll = !showAll;
+      cardEls.forEach(function(card, idx) {
+        if (idx >= FEATURED) {
+          card.classList.toggle('ay-browser-card--hidden', !showAll);
+        }
+      });
+      toggleBtn.textContent = showAll ? 'Mostrar menos' : 'Ver las ' + sites.length + ' marcas →';
+    });
+  }
+
+  function closeModal() {
+    if (modal) {
+      modal.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+  }
+
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  if (backdrop) backdrop.addEventListener('click', closeModal);
+  window.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeModal();
+  });
+});
+</script>
+
+{% schema %}
+{
+  "name": "Aylesva · Portafolio",
+  "settings": [
+    { "type": "color", "id": "bg", "label": "Fondo de la sección", "default": "#FAFAF8" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Resultados Reales" },
+    { "type": "text", "id": "title", "label": "Titular", "default": "Marcas lanzadas con Aylesva." },
+    { "type": "text", "id": "subtitle", "label": "Subtítulo destacado", "default": "Sitios reales, activos hoy." },
+    { "type": "textarea", "id": "desc", "label": "Descripción", "default": "Cada tarjeta es una tienda real construida y lanzada por nuestro equipo. Haz clic en cualquiera para conocer el proyecto." }
+  ],
+  "presets": [
+    { "name": "Aylesva · Portafolio" }
+  ]
+}
+{% endschema %}

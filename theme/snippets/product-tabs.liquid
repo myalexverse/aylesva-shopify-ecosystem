@@ -1,0 +1,101 @@
+{% comment %}
+  Refactored Product Tabs Snippet: PREMIUM DYNAMIC VERSION
+  Handles dynamic content for Materials, Comfort, and Returns.
+{% endcomment %}
+
+<style>
+  /* MOBILE TABS OPTIMIZATION */
+  @media (max-width: 767px) {
+    .product_tab_wrapper .nav-tabs {
+      display: flex !important;
+      flex-wrap: nowrap !important;
+      overflow-x: auto !important;
+      -webkit-overflow-scrolling: touch !important;
+      border-bottom: 2px solid #eee !important;
+      margin-left: -20px !important;
+      margin-right: -20px !important;
+      padding-left: 20px !important;
+      scrollbar-width: none; /* Firefox */
+    }
+    .product_tab_wrapper .nav-tabs::-webkit-scrollbar {
+      display: none; /* Chrome/Safari */
+    }
+    .product_tab_wrapper .nav-tabs li {
+      flex: 0 0 auto !important;
+      margin-bottom: 0 !important;
+    }
+    .product_tab_wrapper .nav-tabs li a {
+      border: none !important;
+      padding: 10px 15px !important;
+      white-space: nowrap !important;
+      background: transparent !important;
+      color: #888 !important;
+      font-size: 11px !important;
+      letter-spacing: 0.5px !important;
+    }
+    .product_tab_wrapper .nav-tabs li.active a {
+      color: #000 !important;
+      border-bottom: 2px solid #000 !important;
+    }
+    .product-single__description {
+       padding: 15px !important;
+       border-radius: 0 !important;
+       border: none !important;
+       background: transparent !important;
+    }
+  }
+</style>
+
+<div class="demo product-single__description rte col-xs-12" style="margin-top: 20px; border: 1px solid #eee; border-radius: 8px; padding: 20px; background: #fafafa;">
+  <div class="product_tab_wrapper">
+    <ul class="tabs nav nav-tabs" style="border-bottom: 2px solid #000; margin-bottom: 20px;">
+      <li class="active"><a data-toggle="tab" href="#tab-1" style="font-weight: 800; text-transform: uppercase; font-size: 13px;">{{ 'products.product.description' | t }}</a></li>                  	
+      <li><a href="#tab-2" data-toggle="tab" style="font-weight: 800; text-transform: uppercase; font-size: 13px;">Detalles</a></li>
+      <li><a data-toggle="tab" href="#tab-3" style="font-weight: 800; text-transform: uppercase; font-size: 13px;">Devolución</a></li>
+    </ul>
+    
+    <div class="tab-container" style="padding: 10px 0;">
+      <!-- TAB 1: DESCRIPCIÓN NATIVA -->
+      <div id="tab-1" class="tab-pane fade in active">
+        <div style="font-size: 15px; line-height: 1.6; color: #333;">
+          {{ product.description }}
+        </div>
+      </div>                  	
+      
+      <!-- TAB 2: DETALLES POR COLECCIÓN (MOTORES DINÁMICOS) -->
+      <div id="tab-2" class="tab-pane fade">
+        <div style="font-size: 14px; color: #444;">
+          {%- assign collection_found = false -%}
+          
+          {%- for collection in product.collections -%}
+            {%- if collection.title contains 'Hombre' or collection.title contains 'Mujer' -%}
+              <p><b>Materiales de Fabricación:</b> Seleccionamos las mejores pieles y materiales textiles de alta durabilidad para garantizar una pieza única que resiste el paso del tiempo.</p>
+              <p><b>Nivel de Comodidad:</b> Diseño ergonómico pensado para el uso diario, proporcionando un soporte excepcional en cada paso.</p>
+              {%- assign collection_found = true -%}
+              {%- break -%}
+            {%- endif -%}
+          {%- endfor -%}
+
+          {%- if collection_found == false -%}
+            <p><b>Calidad Artesanal:</b> Este producto ha sido fabricado siguiendo los más altos estándares de calidad, utilizando procesos que aseguran la excelencia en cada detalle.</p>
+            <p><b>Confort Garantizado:</b> Materiales seleccionados para ofrecerte una experiencia de uso superior y estilizada.</p>
+          {%- endif -%}
+          
+          <p style="margin-top: 15px; font-style: italic; font-size: 12px; color: #888;">* Los detalles pueden variar ligeramente según el lote de fabricación artesanal.</p>
+        </div>
+      </div>
+
+      <!-- TAB 3: POLÍTICA DE DEVOLUCIÓN PROFESIONAL -->
+      <div id="tab-3" class="tab-pane fade">
+        <div style="font-size: 14px; line-height: 1.5; color: #444;">
+          <h4 style="font-weight: 800; text-transform: uppercase; font-size: 12px; margin-bottom: 10px;">Envíos a todo México</h4>
+          <p>Tu pedido será procesado en 24-48 horas hábiles. El tiempo estimado de entrega es de 3 a 5 días hábiles mediante las mejores paqueterías del país.</p>
+          
+          <h4 style="font-weight: 800; text-transform: uppercase; font-size: 12px; margin: 15px 0 10px 0;">Política de Devoluciones</h4>
+          <p>En <b>Aylesva</b>, tu satisfacción es nuestra prioridad. Cuentas con <b>30 días naturales</b> tras recibir tu producto para realizar cambios o devoluciones sin costo adicional, siempre que el producto esté en su estado original y empaque de fábrica.</p>
+          <p style="font-size: 13px; margin-top: 10px;">Para iniciar un proceso de devolución, por favor contáctanos vía WhatsApp o correo electrónico.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+{
+  "sections": {
+    "main": {
+      "type": "blogleft_inner_content",
+      "settings": {
+        "show_blog_4_content": true,
+        "show_blog_4_img": true,
+        "show_blog_4_btn": true,
+        "show_blog_4_date": true,
+        "show_blog_4_tag": true,
+        "show_blog_masonry": true,
+        "show_facebook_share": true,
+        "show_twitter_share": true,
+        "show_pinterest_share": true,
+        "show_linkedin_share": true,
+        "blog_column": "col_2",
+        "blogpage_article_limit": 6
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

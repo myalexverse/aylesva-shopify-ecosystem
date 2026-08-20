@@ -1,0 +1,1485 @@
+<div id="aylesva-header-ecosystem" class="ayl-header-wrapper" data-sticky="{{ section.settings.sticky_header }}">
+  <!-- Top Bar -->
+  <div class="ayl-top-bar desktop-only">
+    <div class="ayl-container ayl-top-bar-inner">
+      <div class="ayl-top-bar-left">
+        <span class="ayl-diamond-icon">◆</span>
+        <span>{{ section.settings.topbar_text | default: "Soluciones integrales para emprendedores, empresas e inversionistas" }}</span>
+      </div>
+      <div class="ayl-top-bar-right">
+        <a href="#" class="ayl-lang-link active">
+          <img src="https://flagcdn.com/w40/mx.png" width="18" height="12" alt="México" style="border-radius:2px;">
+          México
+        </a>
+        <a href="{{ section.settings.usa_link | default: '#' }}" class="ayl-lang-link">
+          <img src="https://flagcdn.com/w40/us.png" width="18" height="12" alt="USA" style="border-radius:2px;">
+          USA
+        </a>
+        <span class="ayl-separator">|</span>
+        <a href="/pages/nosotros" class="ayl-top-link">Nosotros</a>
+        <a href="/pages/aylesva-recursos" class="ayl-top-link">Recursos</a>
+        <a href="/pages/contacto" class="ayl-top-link">Contacto</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Header -->
+  <header class="ayl-main-header">
+    <div class="ayl-container ayl-main-header-inner">
+      
+      <!-- Mobile: Hamburger -->
+      <button class="ayl-mobile-menu-toggle mobile-only" aria-label="Open menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+
+      <!-- Logo -->
+      <div class="ayl-logo-container">
+        <a href="{{ routes.root_url }}">
+          <img src="{{ 'aylesva-logo-mx-v1.png' | asset_url }}" 
+               alt="{{ shop.name }}" 
+               width="{{ section.settings.logo_width }}" 
+               height="32" 
+               class="ayl-logo-img">
+        </a>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <nav class="ayl-desktop-nav desktop-only">
+        <ul class="ayl-nav-list">
+          <li class="ayl-nav-item has-mega-menu">
+            <a href="#" class="ayl-nav-link ayl-services-trigger">
+              Servicios 
+              <svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M1 1L5 5L9 1" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            
+            <!-- Mega Menu -->
+            <div class="ayl-mega-menu">
+              <div class="ayl-container">
+                <div class="ayl-mega-menu-grid">
+                  <a href="/pages/lanza-tu-propia-marca" class="ayl-mega-item">
+                    <div class="ayl-mega-icon"><img src="{{ 'icon-emprende.jpg' | asset_url }}" alt="Emprende" width="40" height="40"></div>
+                    <div class="ayl-mega-content">
+                      <div class="ayl-mega-title">Emprende</div>
+                      <div class="ayl-mega-desc">Inicia y escala tu propio negocio.</div>
+                    </div>
+                  </a>
+                  <a href="/pages/aylesva-recursos" class="ayl-mega-item">
+                    <div class="ayl-mega-icon"><img src="{{ 'icon-financiamiento.jpg' | asset_url }}" alt="Financiamiento" width="40" height="40"></div>
+                    <div class="ayl-mega-content">
+                      <div class="ayl-mega-title">Financiamiento</div>
+                      <div class="ayl-mega-desc">Opciones de crédito y capital.</div>
+                    </div>
+                  </a>
+                  <a href="/pages/aylesva-direct" class="ayl-mega-item">
+                    <div class="ayl-mega-icon"><img src="{{ 'icon-importaciones.jpg' | asset_url }}" alt="Aylesva Direct" width="40" height="40"></div>
+                    <div class="ayl-mega-content">
+                      <div class="ayl-mega-title">Aylesva Direct</div>
+                      <div class="ayl-mega-desc">Importaciones y logística internacional desde China.</div>
+                    </div>
+                  </a>
+                  <a href="/pages/globalestates" class="ayl-mega-item">
+                    <div class="ayl-mega-icon"><img src="{{ 'icon-inversion.jpg' | asset_url }}" alt="Inversión" width="40" height="40"></div>
+                    <div class="ayl-mega-content">
+                      <div class="ayl-mega-title">Inversión</div>
+                      <div class="ayl-mega-desc">Bienes raíces y portafolios diversificados.</div>
+                    </div>
+                  </a>
+                  <a href="/pages/marketplace" class="ayl-mega-item">
+                    <div class="ayl-mega-icon"><img src="{{ 'icon-marketplace.jpg' | asset_url }}" alt="Marketplace" width="40" height="40"></div>
+                    <div class="ayl-mega-content">
+                      <div class="ayl-mega-title">Marketplace</div>
+                      <div class="ayl-mega-desc">Plataforma y catálogo B2B/B2C con miles de productos.</div>
+                    </div>
+                  </a>
+                  <a href="/pages/aylesva-care" class="ayl-mega-item">
+                    <div class="ayl-mega-icon"><img src="{{ 'eco-icon-care.jpg' | asset_url }}" alt="Aylesva Care" width="40" height="40"></div>
+                    <div class="ayl-mega-content">
+                      <div class="ayl-mega-title">Aylesva Care</div>
+                      <div class="ayl-mega-desc">Telemedicina y beneficios en EE. UU.</div>
+                    </div>
+                  </a>
+                  <a href="/pages/mi-ultima-voluntad" class="ayl-mega-item">
+                    <div class="ayl-mega-icon"><img src="{{ 'icon-voluntad.jpg' | asset_url }}" alt="Mi Última Voluntad" width="40" height="40"></div>
+                    <div class="ayl-mega-content">
+                      <div class="ayl-mega-title">Mi Última Voluntad</div>
+                      <div class="ayl-mega-desc">Protección y respaldo para tu familia.</div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="ayl-nav-item"><a href="/pages/lanza-tu-propia-marca" class="ayl-nav-link {% if request.path == '/pages/lanza-tu-propia-marca' %}active{% endif %}">Emprende</a></li>
+          <li class="ayl-nav-item"><a href="/pages/aylesva-recursos" class="ayl-nav-link {% if request.path == '/pages/aylesva-recursos' %}active{% endif %}">Financiamiento</a></li>
+          <li class="ayl-nav-item"><a href="/pages/aylesva-direct" class="ayl-nav-link {% if request.path contains 'aylesva-direct' or request.path contains 'aylesva-china' %}active{% endif %}">Importaciones</a></li>
+          <li class="ayl-nav-item"><a href="/pages/globalestates" class="ayl-nav-link {% if request.path == '/pages/globalestates' %}active{% endif %}">Inversión</a></li>
+          <li class="ayl-nav-item has-mega-menu">
+            <a href="/pages/marketplace" class="ayl-nav-link ayl-marketplace-trigger {% if request.path contains 'marketplace' or request.path contains 'mujer' or request.path contains 'hombre' or request.path contains 'ninos' or request.path contains 'nino' or request.path contains 'nina' or request.path contains 'bebe' or request.path contains 'hogar' or request.path contains 'artesanal' or request.path contains 'alimentos' or request.path contains 'electronicos' or request.path contains 'vehiculos' or request.path contains 'ofertas' or request.path contains 'saldos' %}active{% endif %}">
+              Marketplace
+              <svg width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M1 1L5 5L9 1" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <!-- Marketplace Mega Menu -->
+            <div class="ayl-mega-menu ayl-mega-marketplace">
+              <div class="ayl-container">
+                <div class="ayl-mp-grid">
+
+                  <!-- Col 1: Mujer -->
+                  <div class="ayl-mp-col">
+                    <a href="/pages/mujer" class="ayl-mp-heading-link">
+                      <img src="{{ 'mp-icon-mujer.jpg' | asset_url }}" alt="Mujer" width="22" height="22" class="ayl-mp-heading-icon">
+                      Mujer
+                    </a>
+                    <a href="/collections/ropa-mujer" class="ayl-mp-link">Ropa</a>
+                    <a href="/collections/calzado-mujer" class="ayl-mp-link">Calzado</a>
+                    <a href="/collections/bolsas-y-carteras" class="ayl-mp-link">Bolsas & Joyería</a>
+                    <a href="/pages/mujer" class="ayl-mp-link ayl-mp-see-all">Ver Landing Mujer →</a>
+                  </div>
+
+                  <!-- Col 2: Hombre -->
+                  <div class="ayl-mp-col">
+                    <a href="/pages/hombre" class="ayl-mp-heading-link">
+                      <img src="{{ 'mp-icon-hombre.jpg' | asset_url }}" alt="Hombre" width="22" height="22" class="ayl-mp-heading-icon">
+                      Hombre
+                    </a>
+                    <a href="/collections/ropa-hombre" class="ayl-mp-link">Ropa</a>
+                    <a href="/collections/calzado-hombre" class="ayl-mp-link">Calzado</a>
+                    <a href="/collections/accesorios-hombre" class="ayl-mp-link">Accesorios</a>
+                    <a href="/pages/hombre" class="ayl-mp-link ayl-mp-see-all">Ver Landing Hombre →</a>
+                  </div>
+
+                  <!-- Col 3: Niños y Familia -->
+                  <div class="ayl-mp-col">
+                    <a href="/pages/ninos" class="ayl-mp-heading-link">
+                      <img src="{{ 'mp-icon-ninos.jpg' | asset_url }}" alt="Niños" width="22" height="22" class="ayl-mp-heading-icon">
+                      Niños
+                    </a>
+                    <a href="/pages/nino" class="ayl-mp-link">Niño</a>
+                    <a href="/pages/nina" class="ayl-mp-link">Niña</a>
+                    <a href="/pages/bebe" class="ayl-mp-link">Bebé</a>
+                    <a href="/pages/ninos" class="ayl-mp-link ayl-mp-see-all">Ver Landing Niños →</a>
+                  </div>
+
+                  <!-- Col 4: Hogar y Lifestyle -->
+                  <div class="ayl-mp-col">
+                    <a href="/pages/hogar" class="ayl-mp-heading-link">
+                      <img src="{{ 'mp-icon-hogar.jpg' | asset_url }}" alt="Hogar" width="22" height="22" class="ayl-mp-heading-icon">
+                      Hogar & Lifestyle
+                    </a>
+                    <a href="/pages/hogar" class="ayl-mp-link">Hogar & Decoración</a>
+                    <a href="/pages/artesanal" class="ayl-mp-link">Artesanal</a>
+                    <a href="/pages/alimentos" class="ayl-mp-link">Alimentos Gourmet</a>
+                    <a href="/pages/ofertas" class="ayl-mp-link"><span style="color:#2F7A4F;font-weight:600">🏷 Ofertas Flash</span></a>
+                  </div>
+
+                  <!-- Col 5: Tecnología y Motor -->
+                  <div class="ayl-mp-col">
+                    <a href="/pages/electronicos" class="ayl-mp-heading-link">
+                      <img src="{{ 'mp-icon-tech.jpg' | asset_url }}" alt="Tech" width="22" height="22" class="ayl-mp-heading-icon">
+                      Tech & Motor
+                    </a>
+                    <a href="/pages/electronicos" class="ayl-mp-link">Electrónicos</a>
+                    <a href="/pages/vehiculos" class="ayl-mp-link">Vehículos</a>
+                    <a href="/pages/saldos" class="ayl-mp-link"><span style="color:#C5A47E;font-weight:600">⚡ Saldos & Liquidaciones</span></a>
+                  </div>
+
+                </div>
+                <!-- Bottom CTA -->
+                <div class="ayl-mp-footer">
+                  <a href="/pages/marketplace" class="ayl-mp-footer-link">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    Explorar todo el Marketplace
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Header Actions -->
+      <div class="ayl-header-actions">
+        <!-- Search -->
+        <button class="ayl-action-btn ayl-search-trigger" aria-label="Search">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+
+        {% if section.settings.display_myaccount %}
+          <!-- Account -->
+          <a href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}" class="ayl-action-btn desktop-only" aria-label="Account">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+          </a>
+        {% endif %}
+
+        {% if section.settings.display_wishlist %}
+          <!-- Wishlist -->
+          <a href="{% if customer %}/pages/wishlist{% else %}{{ routes.account_login_url }}{% endif %}" class="ayl-action-btn desktop-only" aria-label="Wishlist" title="{{ 'general.wishlist.title' | t }}">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+            </svg>
+          </a>
+        {% endif %}
+
+        {% if section.settings.display_cart %}
+          <!-- Cart -->
+          <a href="{{ routes.cart_url }}" id="cart-products-count" class="ayl-action-btn ayl-cart-btn site-header_cart_link" aria-label="Cart" onclick="if(window.innerWidth >= 992 && window.aylCartDrawer) { event.preventDefault(); event.stopImmediatePropagation(); window.aylCartDrawer.toggle(); }">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"></path>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <path d="M16 10a4 4 0 01-8 0"></path>
+            </svg>
+            <span id="cart-products-count-text" class="ayl-cart-badge site-header__cart-count {% if cart.item_count == 0 %}ayl-hidden{% endif %}">{{ cart.item_count }}</span>
+          </a>
+        {% endif %}
+
+        <!-- Client Portal Button -->
+        <a href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}" class="ayl-btn-primary desktop-only">
+          Acceso Clientes
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Category Quick Pills (Swipeable Bar) -->
+  <div class="ayl-mobile-pill-bar mobile-only">
+    <div class="ayl-pill-track">
+      <a href="/pages/marketplace" class="ayl-pill {% if request.path contains 'marketplace' %}active{% endif %}">🛍️ Marketplace</a>
+      <a href="/pages/lanza-tu-propia-marca" class="ayl-pill {% if request.path contains 'lanza' %}active{% endif %}">🚀 Emprende</a>
+      <a href="/pages/aylesva-recursos" class="ayl-pill {% if request.path contains 'recursos' %}active{% endif %}">💳 Financiamiento</a>
+      <a href="/pages/aylesva-direct" class="ayl-pill {% if request.path contains 'direct' or request.path contains 'china' %}active{% endif %}">🚢 Importaciones</a>
+      <a href="/pages/globalestates" class="ayl-pill {% if request.path contains 'global' %}active{% endif %}">🏢 Inversión</a>
+      <a href="/pages/aylesva-care" class="ayl-pill {% if request.path contains 'care' %}active{% endif %}">🩺 Care (USA)</a>
+      <a href="/pages/mi-ultima-voluntad" class="ayl-pill {% if request.path contains 'voluntad' %}active{% endif %}">🛡️ Voluntad</a>
+      <a href="/pages/saldos" class="ayl-pill {% if request.path contains 'saldos' %}active{% endif %}">⚡ Saldos</a>
+    </div>
+  </div>
+
+  <!-- Mobile Drawer -->
+  <div class="ayl-mobile-drawer">
+    <div class="ayl-drawer-overlay"></div>
+    <div class="ayl-drawer-content">
+      
+      <!-- Drawer Header -->
+      <div class="ayl-drawer-header">
+        <a href="{{ routes.root_url }}" class="ayl-drawer-logo">
+          <img src="{{ 'logo-lockup-cream.png' | asset_url }}" alt="{{ shop.name }}" height="30" style="height: 30px; width: auto; max-width: 130px; object-fit: contain;">
+        </a>
+        <button class="ayl-drawer-close" aria-label="Cerrar menú">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Drawer Search -->
+      <div class="ayl-drawer-search-wrap">
+        <form action="/search" method="get" class="ayl-drawer-search-form">
+          <input type="hidden" name="type" value="product">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C5A47E" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="search" name="q" placeholder="Buscar en catálogo o servicios..." aria-label="Buscar">
+          <button type="submit" aria-label="Buscar">&rarr;</button>
+        </form>
+      </div>
+
+      <!-- Drawer Body -->
+      <div class="ayl-drawer-body">
+        
+        <!-- SECTION 1: SERVICIOS CORPORATIVOS -->
+        <div class="ayl-drawer-group">
+          <div class="ayl-drawer-eyebrow">
+            <span>◆ Ecosistema Corporativo</span>
+          </div>
+          
+          <div class="ayl-drawer-services-grid">
+            <a href="/pages/lanza-tu-propia-marca" class="ayl-drawer-srv-card">
+              <div class="ayl-srv-icon">🚀</div>
+              <div class="ayl-srv-text">
+                <span class="ayl-srv-name">Emprende</span>
+                <span class="ayl-srv-desc">Lanza tu tienda en línea</span>
+              </div>
+            </a>
+            
+            <a href="/pages/aylesva-recursos" class="ayl-drawer-srv-card">
+              <div class="ayl-srv-icon">💳</div>
+              <div class="ayl-srv-text">
+                <span class="ayl-srv-name">Aylesva Recursos</span>
+                <span class="ayl-srv-desc">Financiamiento y capital PYME</span>
+              </div>
+            </a>
+
+            <a href="/pages/aylesva-direct" class="ayl-drawer-srv-card">
+              <div class="ayl-srv-icon">🚢</div>
+              <div class="ayl-srv-text">
+                <span class="ayl-srv-name">Aylesva Direct</span>
+                <span class="ayl-srv-desc">Importaciones desde China</span>
+              </div>
+            </a>
+
+            <a href="/pages/globalestates" class="ayl-drawer-srv-card">
+              <div class="ayl-srv-icon">🏢</div>
+              <div class="ayl-srv-text">
+                <span class="ayl-srv-name">Global Estates</span>
+                <span class="ayl-srv-desc">Bienes raíces de lujo</span>
+              </div>
+            </a>
+
+            <a href="/pages/aylesva-care" class="ayl-drawer-srv-card">
+              <div class="ayl-srv-icon">🩺</div>
+              <div class="ayl-srv-text">
+                <span class="ayl-srv-name">Aylesva Care</span>
+                <span class="ayl-srv-desc">Salud y telemedicina EE. UU.</span>
+              </div>
+            </a>
+
+            <a href="/pages/mi-ultima-voluntad" class="ayl-drawer-srv-card">
+              <div class="ayl-srv-icon">🛡️</div>
+              <div class="ayl-srv-text">
+                <span class="ayl-srv-name">Mi Última Voluntad</span>
+                <span class="ayl-srv-desc">Previsión y protección patrimonial</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- SECTION 2: MARKETPLACE & CATÁLOGO -->
+        <div class="ayl-drawer-group">
+          <div class="ayl-drawer-eyebrow">
+            <span>◆ Marketplace & Catálogo</span>
+          </div>
+
+          <a href="/pages/marketplace" class="ayl-drawer-mp-lead">
+            <span>🛍️ Explorar Catálogo Completo</span>
+            <span class="ayl-mp-arrow">&rarr;</span>
+          </a>
+
+          <div class="ayl-drawer-chips-grid">
+            <a href="/pages/mujer" class="ayl-drawer-chip">👗 Dama & Moda</a>
+            <a href="/pages/hombre" class="ayl-drawer-chip">👔 Caballero</a>
+            <a href="/pages/ninos" class="ayl-drawer-chip">🧸 Niños & Bebés</a>
+            <a href="/pages/hogar" class="ayl-drawer-chip">🏡 Hogar & Deco</a>
+            <a href="/pages/artesanal" class="ayl-drawer-chip">🎨 Artesanal</a>
+            <a href="/pages/alimentos" class="ayl-drawer-chip">☕ Gourmet</a>
+            <a href="/pages/electronicos" class="ayl-drawer-chip">📱 Tech</a>
+            <a href="/pages/saldos" class="ayl-drawer-chip ayl-chip-gold">⚡ Saldos</a>
+          </div>
+        </div>
+
+        <!-- SECTION 3: ATENCIÓN & WHATSAPP -->
+        <div class="ayl-drawer-group">
+          <a href="https://api.whatsapp.com/send/?phone=524774136612&text=Hola%2C+me+gustar%C3%ADa+recibir+asesor%C3%ADa+personalizada+sobre+los+servicios+del+Grupo+Aylesva" target="_blank" rel="noopener" class="ayl-drawer-wa-card">
+            <div class="ayl-wa-icon-box">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              </svg>
+            </div>
+            <div class="ayl-wa-details">
+              <span class="ayl-wa-title">WhatsApp Asesoría Directa</span>
+              <span class="ayl-wa-status"><span class="ayl-wa-dot"></span> +52 477 413 6612 · En línea</span>
+            </div>
+            <span class="ayl-wa-arrow">&rarr;</span>
+          </a>
+
+          <div class="ayl-drawer-secondary-links">
+            <a href="/pages/nosotros">Nosotros</a>
+            <span>•</span>
+            <a href="/pages/aylesva-recursos">Recursos</a>
+            <span>•</span>
+            <a href="/pages/contacto">Contacto</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Drawer Footer -->
+      <div class="ayl-drawer-footer">
+        <div class="ayl-drawer-country-row">
+          <span class="ayl-country-pill active">🇲🇽 México</span>
+          <a href="{{ section.settings.usa_link | default: '#' }}" class="ayl-country-pill">🇺🇸 USA</a>
+        </div>
+        
+        <div class="ayl-drawer-auth">
+          {% if customer %}
+            <a href="{{ routes.account_url }}" class="ayl-btn-drawer">Mi Cuenta Corporativa</a>
+            <a href="{{ routes.account_logout_url }}" class="ayl-btn-drawer ayl-btn-outline">Cerrar Sesión</a>
+          {% else %}
+            <a href="{{ routes.account_login_url }}" class="ayl-btn-drawer">Acceso a Clientes</a>
+            <a href="{{ routes.account_register_url }}" class="ayl-btn-drawer ayl-btn-outline">Crear Cuenta</a>
+          {% endif %}
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Search Overlay -->
+  <div class="ayl-search-overlay">
+    <div class="ayl-search-overlay-bg"></div>
+    <div class="ayl-search-overlay-content">
+      <button class="ayl-search-close">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <div class="ayl-search-wrapper">
+        {% render 'search-bar' %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+/* CSS Variables & Reset */
+#{{ section.id }} {
+  --ayl-bg: #FAFAF8;
+  --ayl-ink: #1A1A1A;
+  --ayl-stone: #6B6B6B;
+  --ayl-gold: #C5A47E;
+  --ayl-gold-sat: #D4AF37;
+  --ayl-dark: #0C0C0F;
+  --ayl-border: rgba(0,0,0,0.06);
+  --ayl-glass: rgba(255,255,255,0.06);
+  --header-font: 'Inter', sans-serif;
+  --transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.ayl-header-wrapper {
+  font-family: var(--header-font);
+  position: relative;
+  width: 100%;
+  z-index: 1000;
+}
+
+.ayl-header-wrapper.is-sticky .ayl-main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  animation: aylSlideDown 0.4s var(--transition) forwards;
+}
+
+@keyframes aylSlideDown {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(0); }
+}
+
+.ayl-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+  width: 100%;
+}
+
+.desktop-only { display: none !important; }
+.mobile-only { display: block !important; }
+@media (min-width: 1024px) {
+  .desktop-only { display: block !important; }
+  .mobile-only { display: none !important; }
+  .ayl-desktop-nav.desktop-only { display: flex !important; }
+}
+
+@media (max-width: 1023px) {
+  .ayl-desktop-nav { display: none !important; }
+  .ayl-top-bar { display: none !important; }
+  .ayl-container { padding: 0 14px !important; }
+  .ayl-main-header { height: 56px !important; }
+  .ayl-logo-img { height: 26px !important; width: auto !important; }
+  .ayl-header-actions { gap: 6px !important; }
+  .ayl-action-btn { padding: 6px !important; }
+}
+
+/* Mobile Category Pills Bar */
+.ayl-mobile-pill-bar {
+  background: #FFFFFF;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+  padding: 8px 12px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.ayl-mobile-pill-bar::-webkit-scrollbar {
+  display: none;
+}
+.ayl-pill-track {
+  display: flex;
+  gap: 8px;
+  width: max-content;
+}
+.ayl-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #334155;
+  background: #F1F5F9;
+  padding: 5px 11px;
+  border-radius: 20px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+.ayl-pill.active,
+.ayl-pill:hover {
+  background: #020617;
+  color: #FFFFFF;
+}
+
+/* WhatsApp in Drawer */
+.ayl-drawer-whatsapp {
+  padding: 16px 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 12px;
+}
+.ayl-drawer-btn-wa {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #25D366;
+  color: #FFFFFF;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 12px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
+}
+
+/* Top Bar */
+.ayl-top-bar {
+  background: var(--ayl-ink);
+  height: 36px;
+  color: #999;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+}
+
+.ayl-top-bar-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.ayl-top-bar-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ayl-diamond-icon {
+  color: var(--ayl-gold);
+  font-size: 9px;
+  margin-right: 2px;
+}
+
+.ayl-top-bar-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.ayl-lang-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #aaa;
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.ayl-lang-link:hover, .ayl-lang-link.active {
+  color: #fff;
+}
+
+.ayl-separator {
+  color: #444;
+}
+
+.ayl-top-link {
+  color: #aaa;
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.ayl-top-link:hover {
+  color: #fff;
+}
+
+/* Main Header */
+.ayl-main-header {
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  height: 70px;
+  position: relative;
+  z-index: 50;
+  transition: background-color var(--transition);
+}
+
+.ayl-main-header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.ayl-mobile-menu-toggle {
+  background: none;
+  border: none;
+  color: var(--ayl-ink);
+  cursor: pointer;
+  padding: 8px;
+  margin-left: -8px;
+}
+
+.ayl-logo-container img {
+  display: block;
+  object-fit: contain;
+}
+
+/* Desktop Nav */
+.ayl-desktop-nav {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.ayl-nav-list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 32px;
+}
+
+.ayl-nav-item {
+  position: static; /* For mega menu */
+}
+
+.ayl-nav-link {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ayl-ink);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  padding: 24px 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color var(--transition);
+  position: relative;
+}
+
+.ayl-nav-link:hover {
+  color: var(--ayl-gold);
+}
+
+.ayl-nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--ayl-gold);
+}
+
+/* Mega Menu */
+.ayl-mega-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border-top: 1px solid var(--ayl-border);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all var(--transition);
+  padding: 30px 0;
+  pointer-events: none;
+}
+
+.ayl-nav-item.has-mega-menu:hover .ayl-mega-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.ayl-mega-menu-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+
+/* Marketplace Mega Menu — Premium 5-col */
+.ayl-mp-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+  padding: 8px 0 0;
+}
+
+.ayl-mp-col {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 0 24px;
+  border-right: 1px solid var(--ayl-border);
+}
+
+.ayl-mp-col:first-child { padding-left: 0; }
+.ayl-mp-col:last-child { border-right: none; padding-right: 0; }
+
+.ayl-mp-heading-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ayl-ink);
+  text-decoration: none;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--ayl-gold);
+  transition: color var(--transition);
+}
+
+.ayl-mp-heading-link svg {
+  color: var(--ayl-gold);
+  flex-shrink: 0;
+}
+
+.ayl-mp-heading-icon {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  flex-shrink: 0;
+  border-radius: 4px;
+}
+
+.ayl-mp-heading-link:hover {
+  color: var(--ayl-gold);
+}
+
+.ayl-mp-link {
+  font-size: 14px;
+  color: var(--ayl-stone);
+  text-decoration: none;
+  padding: 7px 0 7px 0;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.ayl-mp-link:hover {
+  color: var(--ayl-ink);
+  padding-left: 8px;
+  background: rgba(197,164,126,0.06);
+}
+
+.ayl-mp-see-all {
+  color: var(--ayl-gold);
+  font-weight: 600;
+  font-size: 13px;
+  margin-top: 6px;
+  padding-top: 8px;
+  border-top: 1px solid var(--ayl-border);
+}
+
+.ayl-mp-see-all:hover {
+  color: var(--ayl-ink);
+}
+
+.ayl-mp-footer {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--ayl-border);
+  text-align: center;
+}
+
+.ayl-mp-footer-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ayl-gold);
+  text-decoration: none;
+  padding: 10px 24px;
+  border-radius: 8px;
+  background: rgba(197,164,126,0.08);
+  transition: all var(--transition);
+}
+
+.ayl-mp-footer-link:hover {
+  background: var(--ayl-gold);
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(197,164,126,0.3);
+}
+
+.ayl-mega-item {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-decoration: none;
+  padding: 16px;
+  border-radius: 8px;
+  transition: background var(--transition);
+}
+
+.ayl-mega-item:hover {
+  background: var(--ayl-bg);
+}
+
+.ayl-mega-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.ayl-mega-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.ayl-mega-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ayl-ink);
+  margin-bottom: 4px;
+}
+
+.ayl-mega-desc {
+  font-size: 12px;
+  color: var(--ayl-stone);
+  line-height: 1.4;
+}
+
+/* Actions */
+.ayl-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+  padding-left: 24px;
+}
+
+.ayl-action-btn {
+  background: none;
+  border: none;
+  color: var(--ayl-ink);
+  cursor: pointer;
+  padding: 8px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: color var(--transition);
+}
+
+.ayl-action-btn:hover {
+  color: var(--ayl-gold);
+}
+
+.ayl-cart-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: var(--ayl-gold);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 600;
+  min-width: 16px;
+  height: 16px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+}
+.ayl-cart-badge.ayl-hidden { display: none; }
+
+.ayl-btn-primary {
+  background: var(--ayl-gold);
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all var(--transition);
+  white-space: nowrap;
+}
+
+.ayl-btn-primary:hover {
+  background: #b8956e;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(197,164,126,0.3);
+}
+
+/* Mobile Drawer */
+/* ==================== LUXURY MOBILE DRAWER ==================== */
+.ayl-mobile-drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 99999;
+  pointer-events: none;
+  visibility: hidden;
+  transition: visibility 0.35s ease;
+}
+
+.ayl-mobile-drawer.is-open {
+  pointer-events: auto;
+  visibility: visible;
+}
+
+.ayl-drawer-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.75);
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+.ayl-mobile-drawer.is-open .ayl-drawer-overlay { opacity: 1; }
+
+.ayl-drawer-content {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 88%;
+  max-width: 360px;
+  height: 100%;
+  background: #020617;
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  transition: left 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 12px 0 40px rgba(0, 0, 0, 0.6);
+  border-right: 1px solid rgba(197, 164, 126, 0.25);
+  z-index: 2;
+}
+.ayl-mobile-drawer.is-open .ayl-drawer-content { left: 0; }
+
+.ayl-drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: #020617;
+}
+
+.ayl-drawer-close {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(197, 164, 126, 0.3);
+  color: #C5A47E;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+.ayl-drawer-close:hover {
+  background: #C5A47E;
+  color: #020617;
+}
+
+/* Inline Search inside Drawer */
+.ayl-drawer-search-wrap {
+  padding: 12px 18px;
+  background: rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.ayl-drawer-search-form {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(197, 164, 126, 0.25);
+  border-radius: 24px;
+  padding: 0 12px 0 14px;
+  height: 38px;
+}
+.ayl-drawer-search-form input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #FFFFFF;
+  font-size: 13px;
+  outline: none;
+  padding: 0 8px;
+  font-family: inherit;
+}
+.ayl-drawer-search-form input::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+.ayl-drawer-search-form button {
+  background: transparent;
+  border: none;
+  color: #C5A47E;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* Body & Groups */
+.ayl-drawer-body {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 18px 18px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.ayl-drawer-eyebrow {
+  font-family: var(--ay-font-mono, monospace);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #C5A47E;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Service Cards */
+.ayl-drawer-services-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.ayl-drawer-srv-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 10px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+.ayl-drawer-srv-card:hover {
+  background: rgba(197, 164, 126, 0.12);
+  border-color: rgba(197, 164, 126, 0.4);
+  transform: translateX(3px);
+}
+.ayl-srv-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.ayl-srv-text {
+  display: flex;
+  flex-direction: column;
+}
+.ayl-srv-name {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #FFFFFF;
+}
+.ayl-srv-desc {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* Marketplace Section */
+.ayl-drawer-mp-lead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(90deg, #C5A47E 0%, #E3CCAE 100%);
+  color: #020617;
+  padding: 10px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 12.5px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 12px rgba(197, 164, 126, 0.25);
+}
+.ayl-drawer-chips-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+.ayl-drawer-chip {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 7px 10px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 11.5px;
+  font-weight: 500;
+  text-align: left;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ayl-drawer-chip:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
+}
+.ayl-drawer-chip.ayl-chip-gold {
+  border-color: rgba(197, 164, 126, 0.4);
+  color: #E3CCAE;
+}
+
+/* WhatsApp Card */
+.ayl-drawer-wa-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(37, 211, 102, 0.12);
+  border: 1px solid rgba(37, 211, 102, 0.35);
+  border-radius: 8px;
+  padding: 10px 14px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+.ayl-drawer-wa-card:hover {
+  background: rgba(37, 211, 102, 0.2);
+}
+.ayl-wa-icon-box {
+  color: #25D366;
+  display: flex;
+  align-items: center;
+}
+.ayl-wa-details {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.ayl-wa-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+.ayl-wa-status {
+  font-size: 10.5px;
+  color: #25D366;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.ayl-wa-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #25D366;
+  display: inline-block;
+}
+.ayl-wa-arrow {
+  color: #25D366;
+  font-weight: 700;
+}
+
+.ayl-drawer-secondary-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 14px;
+  font-size: 12px;
+}
+.ayl-drawer-secondary-links a {
+  color: rgba(255, 255, 255, 0.55);
+  text-decoration: none;
+}
+.ayl-drawer-secondary-links a:hover { color: #FFFFFF; }
+.ayl-drawer-secondary-links span { color: rgba(255, 255, 255, 0.2); }
+
+/* Drawer Footer */
+.ayl-drawer-footer {
+  padding: 16px 20px 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: #01040f;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.ayl-drawer-country-row {
+  display: flex;
+  gap: 8px;
+}
+.ayl-country-pill {
+  flex: 1;
+  padding: 6px;
+  text-align: center;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.6);
+  border: 1px solid transparent;
+}
+.ayl-country-pill.active {
+  background: rgba(197, 164, 126, 0.15);
+  color: #E3CCAE;
+  border-color: rgba(197, 164, 126, 0.4);
+}
+.ayl-btn-drawer {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 11px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 13px;
+  background: #FFFFFF;
+  color: #020617;
+  transition: all 0.2s ease;
+}
+.ayl-btn-drawer:hover {
+  background: #E3CCAE;
+}
+.ayl-btn-drawer.ayl-btn-outline {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 9px;
+}
+
+/* Search Overlay */
+.ayl-search-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 3000;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.ayl-search-overlay.is-active {
+  pointer-events: auto;
+  opacity: 1;
+}
+
+.ayl-search-overlay-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(8px);
+}
+
+.ayl-search-overlay-content {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 100px auto 0;
+  padding: 0 20px;
+  transform: translateY(20px);
+  transition: transform var(--transition);
+}
+
+.ayl-search-overlay.is-active .ayl-search-overlay-content {
+  transform: translateY(0);
+}
+
+.ayl-search-close {
+  position: absolute;
+  top: -50px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: var(--ayl-ink);
+  cursor: pointer;
+  padding: 10px;
+}
+</style>
+
+<script>
+(function() {
+  function setupHeader() {
+    var headerWrapper = document.querySelector('.ayl-header-wrapper');
+    if (!headerWrapper) return;
+    
+    var drawer = headerWrapper.querySelector('.ayl-mobile-drawer') || document.querySelector('.ayl-mobile-drawer');
+    var searchOverlay = headerWrapper.querySelector('.ayl-search-overlay') || document.querySelector('.ayl-search-overlay');
+    
+    // Toggle Mobile Drawer
+    document.querySelectorAll('.ayl-mobile-menu-toggle').forEach(function(btn) {
+      btn.onclick = function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (drawer) {
+          drawer.classList.add('is-open');
+          document.body.style.overflow = 'hidden';
+        }
+      };
+    });
+    
+    // Close Drawer
+    document.querySelectorAll('.ayl-drawer-close, .ayl-drawer-overlay').forEach(function(btn) {
+      btn.onclick = function(e) {
+        e.preventDefault();
+        if (drawer) {
+          drawer.classList.remove('is-open');
+          document.body.style.overflow = '';
+        }
+      };
+    });
+    
+    // Accordion in Drawer
+    document.querySelectorAll('.ayl-accordion-trigger').forEach(function(btn) {
+      btn.onclick = function(e) {
+        e.preventDefault();
+        var item = btn.closest('.ayl-accordion');
+        if (item) item.classList.toggle('is-open');
+      };
+    });
+    
+    // Search Open
+    document.querySelectorAll('.ayl-search-trigger').forEach(function(btn) {
+      btn.onclick = function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (searchOverlay) {
+          searchOverlay.classList.add('is-active');
+          document.body.style.overflow = 'hidden';
+          setTimeout(function() {
+            var inp = searchOverlay.querySelector('input[type="search"], input[type="text"]');
+            if (inp) inp.focus();
+          }, 100);
+        }
+      };
+    });
+    
+    // Search Close
+    document.querySelectorAll('.ayl-search-close, .ayl-search-overlay-bg').forEach(function(btn) {
+      btn.onclick = function(e) {
+        e.preventDefault();
+        if (searchOverlay) {
+          searchOverlay.classList.remove('is-active');
+          document.body.style.overflow = '';
+        }
+      };
+    });
+    
+    // Close with Escape
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        if (drawer) drawer.classList.remove('is-open');
+        if (searchOverlay) searchOverlay.classList.remove('is-active');
+        document.body.style.overflow = '';
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupHeader);
+  } else {
+    setupHeader();
+  }
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Header Ecosystem",
+  "settings": [
+    {
+      "type": "text",
+      "id": "topbar_text",
+      "label": "Top Bar Text",
+      "default": "Soluciones integrales para emprendedores, empresas e inversionistas"
+    },
+    {
+      "type": "url",
+      "id": "usa_link",
+      "label": "USA Site Link"
+    },
+    {
+      "type": "link_list",
+      "id": "nav_menu",
+      "label": "Navigation Menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "min": 50,
+      "max": 250,
+      "step": 5,
+      "unit": "px",
+      "label": "Logo Width",
+      "default": 140
+    },
+    {
+      "type": "checkbox",
+      "id": "sticky_header",
+      "label": "Enable Sticky Header",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "display_wishlist",
+      "label": "Display Wishlist Icon",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "display_cart",
+      "label": "Display Cart Icon",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "display_myaccount",
+      "label": "Display My Account Icon",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Header Ecosystem"
+    }
+  ]
+}
+{% endschema %}

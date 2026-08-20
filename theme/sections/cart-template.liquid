@@ -1,0 +1,328 @@
+{% comment %}
+  Aylesva Premium Cart Page Template
+  High-performance, monochromatic, and fluid design.
+{% endcomment %}
+
+<script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
+
+<style>
+  :root {
+    --ayl-cart-bg: #ffffff;
+    --ayl-cart-text: #1a1a1a;
+    --ayl-cart-accent: #000000;
+    --ayl-cart-border: #f0f0f0;
+  }
+
+  .ayl-cart-page {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 20px;
+    font-family: 'Inter', sans-serif;
+    color: var(--ayl-cart-text);
+  }
+
+  .ayl-cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 40px;
+    border-bottom: 2px solid var(--ayl-cart-accent);
+    padding-bottom: 15px;
+  }
+
+  .ayl-cart-header h1 {
+    font-size: 32px;
+    font-weight: 800;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+  }
+
+  .ayl-cart-count {
+    font-size: 16px;
+    font-weight: 500;
+    color: #888;
+  }
+
+  .ayl-cart-layout {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 60px;
+  }
+
+  @media (max-width: 991px) {
+    .ayl-cart-layout {
+      grid-template-columns: 1fr;
+      gap: 0px; } .ayl-cart-summary { display: none !important;
+    }
+  }
+
+  /* ── Items ── */
+  .ayl-cart-items {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ayl-cart-item {
+    display: grid;
+    grid-template-columns: 120px 1fr 150px;
+    gap: 25px;
+    padding: 25px 0;
+    border-bottom: 1px solid var(--ayl-cart-border);
+    transition: opacity 0.3s ease;
+  }
+
+  .ayl-cart-item.is-loading { opacity: 0.5; pointer-events: none; }
+
+  .ayl-cart-item__image {
+    width: 120px;
+    height: 150px;
+    background: #f9f9f9;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .ayl-cart-item__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .ayl-cart-item__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .ayl-cart-item__title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--ayl-cart-text);
+    text-decoration: none;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .ayl-cart-item__meta {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 15px;
+  }
+
+  .ayl-cart-item__remove {
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    cursor: pointer;
+    color: #999;
+    width: fit-content;
+  }
+
+  .ayl-cart-item__remove:hover { color: #000; }
+
+  .ayl-cart-item__pricing {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+
+  .ayl-cart-item__total {
+    font-size: 18px;
+    font-weight: 800;
+  }
+
+  /* Qty Box */
+  .ayl-qty-box {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .ayl-qty-btn {
+    width: 36px;
+    height: 36px;
+    background: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ayl-qty-btn:hover { background: #f5f5f5; }
+
+  .ayl-qty-input {
+    width: 40px;
+    height: 36px;
+    text-align: center;
+    border: none;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    font-weight: 700;
+  }
+
+  /* Summary */
+  .ayl-cart-summary {
+    position: sticky;
+    top: 100px;
+    background: #f9f9f9;
+    padding: 30px;
+    border-radius: 8px;
+    height: fit-content;
+  }
+
+  .ayl-summary-title {
+    font-size: 20px;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+  }
+
+  .ayl-summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    font-size: 16px;
+  }
+
+  .ayl-summary-row.total {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 2px solid #ddd;
+    font-weight: 800;
+    font-size: 22px;
+  }
+
+  .ayl-checkout-btn {
+    width: 100%;
+    background: #000;
+    color: #fff;
+    padding: 18px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    margin-top: 30px;
+    transition: transform 0.2s ease;
+  }
+
+  .ayl-checkout-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+
+  .ayl-empty-cart {
+    text-align: center;
+    padding: 100px 0;
+  }
+  .ayl-empty-cart h2 { font-size: 24px; font-weight: 800; margin-bottom: 20px; }
+  .ayl-empty-cart a { color: #000; font-weight: 700; text-decoration: underline; }
+
+</style>
+
+<div class="ayl-cart-page" id="CartContainer">
+  {%- if cart.item_count > 0 -%}
+    <div class="ayl-cart-header">
+      <h1>Tu Bolsa</h1>
+      <span class="ayl-cart-count">{{ cart.item_count }} artículos</span>
+    </div>
+
+    <form action="{{ routes.cart_url }}" method="post" class="ayl-cart-layout">
+      
+      <div class="ayl-cart-items">
+        {%- for item in cart.items -%}
+          <div class="ayl-cart-item" data-key="{{ item.key }}">
+            <div class="ayl-cart-item__image">
+              <a href="{{ item.url }}">
+                <img src="{{ item | img_url: '300x' }}" alt="{{ item.title }}" loading="lazy">
+              </a>
+            </div>
+            
+            <div class="ayl-cart-item__info">
+              <div>
+                <a href="{{ item.url }}" class="ayl-cart-item__title">{{ item.product.title }}</a>
+                <div class="ayl-cart-item__meta">
+                  {%- for option in item.options_with_values -%}
+                    <span>{{ option.name }}: {{ option.value }}</span>{% unless forloop.last %} | {% endunless %}
+                  {%- endfor -%}
+                </div>
+              </div>
+              <a href="{{ item.url_to_remove }}" class="ayl-cart-item__remove">Eliminar</a>
+            </div>
+
+            <div class="ayl-cart-item__pricing">
+              <div class="ayl-cart-item__total">{{ item.final_line_price | money }}</div>
+              <div class="ayl-qty-box">
+                <button type="button" class="ayl-qty-btn" onclick="updateQty('{{ item.key }}', {{ item.quantity | minus: 1 }})">-</button>
+                <input type="number" class="ayl-qty-input" value="{{ item.quantity }}" readonly>
+                <button type="button" class="ayl-qty-btn" onclick="updateQty('{{ item.key }}', {{ item.quantity | plus: 1 }})">+</button>
+              </div>
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+
+      <div class="ayl-cart-summary">
+        <h2 class="ayl-summary-title">Resumen</h2>
+        <div class="ayl-summary-row">
+          <span>Subtotal</span>
+          <span>{{ cart.total_price | money }}</span>
+        </div>
+        <div class="ayl-summary-row">
+          <span>Envío</span>
+          <span>Gratis</span>
+        </div>
+        <div class="ayl-summary-row total">
+          <span>Total</span>
+          <span>{{ cart.total_price | money }}</span>
+        </div>
+        
+        <button type="submit" name="checkout" class="ayl-checkout-btn">
+          Finalizar Compra
+        </button>
+        
+        <div style="margin-top: 20px; text-align: center;">
+          <a href="/collections/all" style="color: #666; font-size: 13px; text-decoration: none;">Continuar Comprando</a>
+        </div>
+      </div>
+
+    </form>
+  {%- else -%}
+    <div class="ayl-empty-cart">
+      <h2>Tu bolsa está vacía</h2>
+      <p>Parece que aún no has añadido nada a tu bolsa.</p>
+      <a href="/collections/all">Empezar a comprar</a>
+    </div>
+  {%- endif -%}
+</div>
+
+<script>
+  function updateQty(key, qty) {
+    if (qty < 0) return;
+    const container = document.getElementById('CartContainer');
+    container.style.opacity = '0.5';
+    container.style.pointerEvents = 'none';
+
+    fetch('/cart/change.js', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id: key, quantity: qty })
+    })
+    .then(() => window.location.reload());
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Cart Page Premium",
+  "settings": []
+}
+{% endschema %}

@@ -1,0 +1,470 @@
+{% comment %}
+  Aylesva · Mapa interactivo de desarrollos (Gold & Ink)
+  Fusiona la ingeniería de geoposicionamiento del mapa original (object-fit: contain + auto-scaling JS)
+  con la dirección de arte y tipografía Gold & Ink.
+{% endcomment %}
+
+{%- assign sid = section.id -%}
+
+<section class="ay ay-map-section" id="ay-map-sec-{{ sid }}" style="background:{{ section.settings.bg }};border-top:var(--ay-hairline);border-bottom:var(--ay-hairline)">
+  <div class="ay-wrap">
+    <div class="ay-map-grid">
+      
+      <!-- Panel de información institucional -->
+      <div class="ay-map-panel">
+        {% if section.settings.eyebrow != blank %}
+          <p class="ay-eyebrow">{{ section.settings.eyebrow }}</p>
+        {% endif %}
+        <h2 class="ay-h2" style="margin-bottom:20px">{{ section.settings.title }}</h2>
+        {% if section.settings.text != blank %}
+          <p class="ay-lead" style="margin-bottom:36px">{{ section.settings.text }}</p>
+        {% endif %}
+
+        {% if section.settings.stat1_val != blank or section.settings.stat2_val != blank %}
+          <div class="ay-map-stats">
+            {% if section.settings.stat1_val != blank %}
+              <div class="ay-map-stat">
+                <div class="ay-map-stat__num">{{ section.settings.stat1_val }}</div>
+                <div class="ay-map-stat__lbl">{{ section.settings.stat1_lbl }}</div>
+              </div>
+            {% endif %}
+            {% if section.settings.stat2_val != blank %}
+              <div class="ay-map-stat">
+                <div class="ay-map-stat__num">{{ section.settings.stat2_val }}</div>
+                <div class="ay-map-stat__lbl">{{ section.settings.stat2_lbl }}</div>
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+
+        {% if section.settings.cta_label != blank %}
+          <div style="margin-top:40px">
+            <a href="{{ section.settings.cta_link | default: '#contacto' }}" class="ay-btn ay-btn--primary">
+              {{ section.settings.cta_label }}
+            </a>
+          </div>
+        {% endif %}
+      </div>
+
+      <!-- Lienzo del mapa con motor de pines escalados -->
+      <div class="ay-map-canvas-wrap">
+        <div class="ay-map-canvas" data-ay-map id="ay-canvas-{{ sid }}">
+          
+          <div class="ay-map-canvas__img">
+            {%- assign raw_map = section.settings.map_image -%}
+            {%- capture map_img_src -%}
+              {%- if raw_map.src -%}{{ raw_map | image_url: width: 1800 }}
+              {%- elsif raw_map contains 'http' -%}{{ raw_map }}
+              {%- elsif raw_map contains 'shopify://shop_images/' -%}{%- assign ch = raw_map | remove: 'shopify://shop_images/' -%}{{ ch | file_img_url: '1800x' }}
+              {%- elsif raw_map contains '.jpg' or raw_map contains '.png' or raw_map contains '.webp' -%}{{ raw_map | asset_url }}
+              {%- else -%}{{ 'mapofmexico.jpg' | file_img_url: '1800x' }}
+              {%- endif -%}
+            {%- endcapture -%}
+            {%- assign map_img_src = map_img_src | strip -%}
+            <img 
+              src="{{ map_img_src }}" 
+              alt="Mapa de ubicaciones Aylesva Global Estates"
+              loading="lazy"
+            >
+          </div>
+
+          <!-- Capa Geo sincronizada con el mapa real -->
+          <div class="ay-map-geo" data-ay-geo>
+            
+            <!-- Etiquetas de Región -->
+            {% if section.settings.map_region_1 != blank %}
+              <span class="ay-map-region-label" style="left: {{ section.settings.region_1_x }}%; top: {{ section.settings.region_1_y }}%;">
+                {{ section.settings.map_region_1 }}
+              </span>
+            {% endif %}
+            {% if section.settings.map_region_2 != blank %}
+              <span class="ay-map-region-label" style="left: {{ section.settings.region_2_x }}%; top: {{ section.settings.region_2_y }}%;">
+                {{ section.settings.map_region_2 }}
+              </span>
+            {% endif %}
+
+            <!-- Pines interactivos -->
+            {% for block in section.blocks %}
+              {% if block.type == 'pin' %}
+                {% assign target_handle = block.settings.name | handle %}
+                <div 
+                  class="ay-map-pin {% if block.settings.flip %}ay-map-pin--flip{% endif %}" 
+                  style="left: {{ block.settings.pos_x }}%; top: {{ block.settings.pos_y }}%;"
+                  tabindex="0"
+                  role="button"
+                  data-target-handle="{{ target_handle }}"
+                  aria-label="{{ block.settings.name }}"
+                  {{ block.shopify_attributes }}
+                >
+                  <div class="ay-map-pin__beacon"></div>
+                  <div class="ay-map-pin__dot"></div>
+                  
+                  <div class="ay-map-pin__card">
+                    <div class="ay-map-pin__status">{{ block.settings.status }}</div>
+                    <strong class="ay-map-pin__title">{{ block.settings.name }}</strong>
+                    {% if block.settings.location != blank %}
+                      <span class="ay-map-pin__loc">{{ block.settings.location }}</span>
+                    {% endif %}
+                    <a href="#card-{{ target_handle }}" class="ay-map-pin__btn" data-scroll-card="{{ target_handle }}">Ver desarrollo →</a>
+                  </div>
+                </div>
+              {% endif %}
+            {% endfor %}
+
+          </div>
+
+          <!-- Brújula / Badge Gold & Ink -->
+          <div class="ay-map-badge">
+            <span style="color:var(--ay-gold);font-size:13px">✦</span>
+            <span>{{ section.settings.map_hint | default: 'Ubicaciones Estratégicas Verificadas' }}</span>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  #ay-map-sec-{{ sid }} .ay-map-grid {
+    display: grid;
+    grid-template-columns: minmax(320px, 420px) 1fr;
+    gap: 56px;
+    align-items: center;
+  }
+  #ay-map-sec-{{ sid }} .ay-map-stats {
+    display: flex;
+    gap: 32px;
+    padding-top: 24px;
+    border-top: var(--ay-hairline);
+  }
+  #ay-map-sec-{{ sid }} .ay-map-stat__num {
+    font-family: var(--ay-font-display);
+    font-size: 34px;
+    font-weight: 300;
+    color: var(--ay-ink-900);
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  #ay-map-sec-{{ sid }} .ay-map-stat__lbl {
+    font-family: var(--ay-font-mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(15,23,42,0.55);
+    margin-top: 6px;
+  }
+
+  /* Contenedor del Canvas */
+  #ay-map-sec-{{ sid }} .ay-map-canvas-wrap {
+    position: relative;
+    border: var(--ay-hairline);
+    background: #E8E2D7;
+    box-shadow: 0 20px 48px -20px rgba(2,6,23,0.12);
+  }
+  #ay-map-sec-{{ sid }} .ay-map-canvas {
+    position: relative;
+    width: 100%;
+    min-height: 520px;
+    background: #EAE4D9;
+    overflow: hidden;
+  }
+  #ay-map-sec-{{ sid }} .ay-map-canvas__img {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  #ay-map-sec-{{ sid }} .ay-map-canvas__img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    opacity: 0.95;
+    display: block;
+  }
+
+  /* Capa Geo: sincronizada con el mapa */
+  #ay-map-sec-{{ sid }} .ay-map-geo {
+    position: absolute;
+    z-index: 2;
+    inset: 0;
+  }
+
+  /* Etiquetas de Región */
+  #ay-map-sec-{{ sid }} .ay-map-region-label {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    font-family: var(--ay-font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(15,23,42,0.45);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Pines */
+  #ay-map-sec-{{ sid }} .ay-map-pin {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    z-index: 5;
+    outline: none;
+  }
+  #ay-map-sec-{{ sid }} .ay-map-pin__dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--ay-gold);
+    border: 3px solid #fff;
+    box-shadow: 0 2px 10px rgba(15,23,42,0.35);
+    position: relative;
+    z-index: 2;
+    transition: transform 0.25s ease, background 0.25s ease;
+  }
+  #ay-map-sec-{{ sid }} .ay-map-pin__beacon {
+    position: absolute;
+    inset: -7px;
+    border-radius: 50%;
+    background: rgba(197,164,126,0.45);
+    animation: ay-beacon-{{ sid }} 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+    pointer-events: none;
+  }
+  @keyframes ay-beacon-{{ sid }} {
+    0% { transform: scale(0.6); opacity: 1; }
+    100% { transform: scale(2.6); opacity: 0; }
+  }
+
+  /* Tooltip del Pin */
+  #ay-map-sec-{{ sid }} .ay-map-pin__card {
+    position: absolute;
+    bottom: calc(100% + 12px);
+    left: 50%;
+    transform: translateX(-50%) translateY(8px);
+    width: 200px;
+    background: var(--ay-ink-900);
+    color: #fff;
+    padding: 14px 16px;
+    border-radius: var(--ay-radius);
+    box-shadow: 0 16px 36px -10px rgba(2,6,23,0.55);
+    border: 1px solid rgba(197,164,126,0.4);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 10;
+  }
+  #ay-map-sec-{{ sid }} .ay-map-pin__card::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: var(--ay-ink-900);
+  }
+  #ay-map-sec-{{ sid }} .ay-map-pin--flip .ay-map-pin__card {
+    bottom: auto;
+    top: calc(100% + 12px);
+    transform: translateX(-50%) translateY(-8px);
+  }
+  #ay-map-sec-{{ sid }} .ay-map-pin--flip .ay-map-pin__card::after {
+    top: auto;
+    bottom: 100%;
+    border-top-color: transparent;
+    border-bottom-color: var(--ay-ink-900);
+  }
+
+  #ay-map-sec-{{ sid }} .ay-map-pin:hover .ay-map-pin__card,
+  #ay-map-sec-{{ sid }} .ay-map-pin:focus .ay-map-pin__card {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+  }
+  #ay-map-sec-{{ sid }} .ay-map-pin:hover .ay-map-pin__dot,
+  #ay-map-sec-{{ sid }} .ay-map-pin:focus .ay-map-pin__dot {
+    transform: scale(1.25);
+    background: #fff;
+  }
+
+  #ay-map-sec-{{ sid }} .ay-map-pin__status {
+    font-family: var(--ay-font-mono);
+    font-size: 9px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ay-gold-light);
+    margin-bottom: 4px;
+  }
+  #ay-map-sec-{{ sid }} .ay-map-pin__title {
+    display: block;
+    font-family: var(--ay-font-display);
+    font-size: 15px;
+    font-weight: 500;
+    color: #fff;
+    line-height: 1.2;
+  }
+  #ay-map-sec-{{ sid }} .ay-map-pin__loc {
+    display: block;
+    font-size: 12px;
+    color: rgba(255,255,255,0.65);
+    margin-top: 4px;
+  }
+  #ay-map-sec-{{ sid }} .ay-map-pin__btn {
+    display: inline-block;
+    font-family: var(--ay-font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--ay-gold);
+    text-decoration: none;
+    margin-top: 8px;
+    border-bottom: 1px solid rgba(197,164,126,0.4);
+    padding-bottom: 2px;
+  }
+
+  #ay-map-sec-{{ sid }} .ay-map-badge {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    background: rgba(2,6,23,0.85);
+    backdrop-filter: blur(8px);
+    color: #fff;
+    font-family: var(--ay-font-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 8px 14px;
+    border-radius: var(--ay-radius);
+    border: 1px solid rgba(255,255,255,0.15);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 3;
+  }
+
+  @media (max-width: 960px) {
+    #ay-map-sec-{{ sid }} .ay-map-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    #ay-map-sec-{{ sid }} .ay-map-canvas {
+      min-height: 400px;
+    }
+  }
+</style>
+
+<script>
+  (function() {
+    var root = document.getElementById('ay-map-sec-{{ sid }}');
+    if (!root) return;
+
+    var mapCanvas = root.querySelector('[data-ay-map]');
+    var geoLayer = root.querySelector('[data-ay-geo]');
+    var geoImg = mapCanvas ? mapCanvas.querySelector('.ay-map-canvas__img img') : null;
+
+    function layoutMapGeo() {
+      if (!mapCanvas || !geoLayer || !geoImg || !geoImg.naturalWidth) return;
+      var cw = mapCanvas.clientWidth, ch = mapCanvas.clientHeight;
+      var iw = geoImg.naturalWidth, ih = geoImg.naturalHeight;
+      var scale = Math.min(cw / iw, ch / ih);
+      var w = iw * scale, h = ih * scale;
+      geoLayer.style.position = 'absolute';
+      geoLayer.style.width = w + 'px';
+      geoLayer.style.height = h + 'px';
+      geoLayer.style.left = (cw - w) / 2 + 'px';
+      geoLayer.style.top = (ch - h) / 2 + 'px';
+    }
+
+    if (geoImg) {
+      if (geoImg.complete) layoutMapGeo();
+      geoImg.addEventListener('load', layoutMapGeo);
+      window.addEventListener('resize', layoutMapGeo);
+      if (window.ResizeObserver && mapCanvas) new ResizeObserver(layoutMapGeo).observe(mapCanvas);
+    }
+
+    /* ---------- Interacción Pin -> Tarjeta de Desarrollo ---------- */
+    function scrollToCard(handle) {
+      if (!handle) return;
+      var card = document.getElementById('card-' + handle) || document.querySelector('[id*="' + handle + '"]');
+      if (card) {
+        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        document.querySelectorAll('.ay-card-highlight').forEach(function(el) {
+          el.classList.remove('ay-card-highlight');
+        });
+        setTimeout(function() {
+          card.classList.add('ay-card-highlight');
+        }, 400);
+      }
+    }
+
+    var pins = root.querySelectorAll('.ay-map-pin');
+    pins.forEach(function(pin) {
+      var handle = pin.getAttribute('data-target-handle');
+      var btn = pin.querySelector('.ay-map-pin__btn');
+      if (btn) {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          scrollToCard(handle);
+        });
+      }
+      pin.addEventListener('click', function(e) {
+        if (e.target.closest('.ay-map-pin__dot') || e.target.closest('.ay-map-pin__beacon')) {
+          scrollToCard(handle);
+        }
+      });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Aylesva · Mapa",
+  "settings": [
+    { "type": "color", "id": "bg", "label": "Fondo de la sección", "default": "#FAFAF8" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Nuestros Desarrollos" },
+    { "type": "textarea", "id": "title", "label": "Titular", "default": "Ubicaciones Verificadas, Inversiones Seguras" },
+    { "type": "textarea", "id": "text", "label": "Descripción", "default": "Cada proyecto que presentamos ha sido verificado por nuestro equipo. Conocemos personalmente a los desarrolladores y supervisamos el avance de cada obra." },
+    { "type": "text", "id": "stat1_val", "label": "Cifra 1", "default": "3" },
+    { "type": "text", "id": "stat1_lbl", "label": "Etiqueta 1", "default": "Proyectos Verificados" },
+    { "type": "text", "id": "stat2_val", "label": "Cifra 2", "default": "2" },
+    { "type": "text", "id": "stat2_lbl", "label": "Etiqueta 2", "default": "Países: MX y SV" },
+    { "type": "text", "id": "cta_label", "label": "Texto del botón", "default": "Agenda tu consulta gratuita" },
+    { "type": "url", "id": "cta_link", "label": "Enlace del botón" },
+    { "type": "image_picker", "id": "map_image", "label": "Imagen del mapa (fondo)" },
+    { "type": "text", "id": "map_region_1", "label": "Etiqueta región 1", "default": "México" },
+    { "type": "range", "id": "region_1_x", "label": "Región 1 X (%)", "min": 5, "max": 95, "step": 1, "default": 24 },
+    { "type": "range", "id": "region_1_y", "label": "Región 1 Y (%)", "min": 5, "max": 95, "step": 1, "default": 26 },
+    { "type": "text", "id": "map_region_2", "label": "Etiqueta región 2", "default": "El Salvador" },
+    { "type": "range", "id": "region_2_x", "label": "Región 2 X (%)", "min": 5, "max": 95, "step": 1, "default": 66 },
+    { "type": "range", "id": "region_2_y", "label": "Región 2 Y (%)", "min": 5, "max": 95, "step": 1, "default": 74 },
+    { "type": "text", "id": "map_hint", "label": "Leyenda inferior", "default": "Explora nuestros desarrollos — interactúa con cada ubicación" }
+  ],
+  "blocks": [
+    {
+      "type": "pin",
+      "name": "Ubicación (Pin)",
+      "settings": [
+        { "type": "text", "id": "name", "label": "Nombre del desarrollo", "default": "Torre 40" },
+        { "type": "text", "id": "status", "label": "Estado", "default": "En Construcción" },
+        { "type": "text", "id": "location", "label": "Ciudad / Región", "default": "Puerto Vallarta, México" },
+        { "type": "range", "id": "pos_x", "label": "Posición horizontal (%)", "min": 5, "max": 95, "step": 1, "default": 24 },
+        { "type": "range", "id": "pos_y", "label": "Posición vertical (%)", "min": 5, "max": 95, "step": 1, "default": 54 },
+        { "type": "checkbox", "id": "flip", "label": "Mostrar tooltip hacia abajo", "default": false },
+        { "type": "url", "id": "link", "label": "Enlace a proyecto" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Aylesva · Mapa",
+      "blocks": [
+        { "type": "pin", "settings": { "name": "Torre 40", "status": "En Construcción", "location": "Puerto Vallarta, México", "pos_x": 24, "pos_y": 54, "flip": false } },
+        { "type": "pin", "settings": { "name": "Altarena", "status": "Preventa", "location": "Costa de Sonora, México", "pos_x": 14, "pos_y": 27, "flip": false } },
+        { "type": "pin", "settings": { "name": "Paradise Bay", "status": "Preventa", "location": "La Unión, El Salvador", "pos_x": 66, "pos_y": 82, "flip": true } }
+      ]
+    }
+  ]
+}
+{% endschema %}

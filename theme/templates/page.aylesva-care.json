@@ -1,0 +1,310 @@
+{
+  "sections": {
+    "hero": {
+      "type": "aylesva-corp-hero",
+      "settings": {
+        "eyebrow": "Aylesva Care · Exclusivo para Estados Unidos",
+        "overlay": 84,
+        "focal": "center",
+        "image": "ay-care-hero-latino.jpg",
+        "title": "Protección y Bienestar Integral para ti y tu Familia en EE. UU.",
+        "subtitle": "Servicio exclusivo para la comunidad en Estados Unidos. Accede a los mejores paquetes de beneficios de salud, telemedicina bilingüe 24/7, descuentos farmacéuticos y seguros complementarios de la mano de New Benefits desde solo $20 USD al mes.",
+        "cta1_label": "Solicitar Información",
+        "cta1_link": "#contacto",
+        "cta2_label": "Conocer Planes y Beneficios",
+        "cta2_link": "#planes"
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ],
+      "blocks": {
+        "s1": {
+          "type": "stat",
+          "settings": {
+            "value": "$20 USD",
+            "label": "Desde, al mes"
+          }
+        },
+        "s2": {
+          "type": "stat",
+          "settings": {
+            "value": "24/7",
+            "label": "Telemedicina bilingüe"
+          }
+        },
+        "s3": {
+          "type": "stat",
+          "settings": {
+            "value": "Solo EE. UU.",
+            "label": "Cobertura territorial"
+          }
+        },
+        "s4": {
+          "type": "stat",
+          "settings": {
+            "value": "New Benefits",
+            "label": "Red de proveedores"
+          }
+        }
+      }
+    },
+    "planes": {
+      "type": "aylesva-corp-cards",
+      "settings": {
+        "anchor": "planes",
+        "bg": "#FAFAF8",
+        "columns": 3,
+        "eyebrow": "Exclusivo para Estados Unidos",
+        "title": "Planes de Beneficios de Salud y Hogar",
+        "intro": "Encuentra opciones diseñadas para cuidar tu salud diaria en EE. UU., proteger a tu familia ante accidentes y dar soporte integral a tu hogar."
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3"
+      ],
+      "blocks": {
+        "c1": {
+          "type": "card",
+          "settings": {
+            "image": "ay-care-telemedicine.jpg",
+            "tag": "Más Popular",
+            "eyebrow": "Salud & Telemedicina",
+            "title": "Health & Household",
+            "text": "Beneficios de salud diaria, telemedicina 24/7 en español e inglés sin costo por llamada, descuentos en farmacias de todo EE. UU. y productos Briotech de grado médico.",
+            "bullets": "Telemedicina 24/7 ilimitada sin copagos\nDescuentos en más de 60,000 farmacias en EE. UU.\nConsultas médicas con tarifas preferenciales\nExtensión automática a dependientes familiares",
+            "price": "$20 USD",
+            "price_suffix": "/mes",
+            "cta_label": "Solicitar este plan",
+            "cta_link": "#contacto",
+            "whatsapp_label": "WhatsApp",
+            "whatsapp_url": "https:\/\/api.whatsapp.com\/send\/?phone=524774136612&text=Hola%2C+me+interesa+el+plan+Health+%26+Household+de+Aylesva+Care+para+Estados+Unidos&type=phone_number&app_absent=0"
+          }
+        },
+        "c2": {
+          "type": "card",
+          "settings": {
+            "image": "ay-care-supplemental.jpg",
+            "tag": "Protección Integral",
+            "eyebrow": "Seguros Complementarios",
+            "title": "Supplemental Insurance",
+            "text": "Planes complementarios con el respaldo de líderes de la industria (Aflac y UHOne) diseñados para cubrir accidentes, hospitalización y gastos de visión y dentales en EE. UU.",
+            "bullets": "Respaldo directo de Aflac y UHOne\nCobertura ante accidentes imprevistos\nBeneficios dentales y de visión\nPago directo en efectivo por hospitalización",
+            "price": "$35 USD",
+            "price_suffix": "/mes",
+            "cta_label": "Solicitar este plan",
+            "cta_link": "#contacto",
+            "whatsapp_label": "WhatsApp",
+            "whatsapp_url": "https:\/\/api.whatsapp.com\/send\/?phone=524774136612&text=Hola%2C+me+interesa+el+plan+Supplemental+Insurance+de+Aylesva+Care+para+Estados+Unidos&type=phone_number&app_absent=0"
+          }
+        },
+        "c3": {
+          "type": "card",
+          "settings": {
+            "image": "ay-care-homezie.jpg",
+            "tag": "Hogar & Familia",
+            "eyebrow": "Soporte para el Hogar",
+            "title": "Homezie & Bienestar Familiar",
+            "text": "Descuentos y beneficios integrales para el cuidado, soporte y economía de tu hogar en EE. UU., facilitando el acceso a técnicos certificados y reparaciones.",
+            "bullets": "Red de técnicos certificados en todo EE. UU.\nDescuentos en servicios esenciales del hogar\nAsistencia telefónica y asesoría patrimonial\nProtección económica para toda la familia",
+            "price": "$15 USD",
+            "price_suffix": "/mes",
+            "cta_label": "Solicitar este plan",
+            "cta_link": "#contacto",
+            "whatsapp_label": "WhatsApp",
+            "whatsapp_url": "https:\/\/api.whatsapp.com\/send\/?phone=524774136612&text=Hola%2C+me+interesa+el+plan+Homezie+de+Aylesva+Care+para+Estados+Unidos&type=phone_number&app_absent=0"
+          }
+        }
+      }
+    },
+    "respaldo": {
+      "type": "aylesva-corp-features",
+      "settings": {
+        "bg": "#FFFFFF",
+        "eyebrow": "Respaldo en EE. UU.",
+        "title": "Un Ecosistema de Salud y Descuentos Líder en la Industria",
+        "intro": "New Benefits es el principal proveedor de planes de descuento en salud en los Estados Unidos. A través de Aylesva Care, te conectamos con telemedicina bilingüe 24/7, descuentos farmacéuticos y seguros suplementarios de líderes como Aflac, UHOne y Briotech."
+      },
+      "block_order": [
+        "f1",
+        "f2",
+        "f3"
+      ],
+      "blocks": {
+        "f1": {
+          "type": "feature",
+          "settings": {
+            "icon": "<rect x=\"3\" y=\"5\" width=\"18\" height=\"14\"/><path d=\"M3 10h18M9 10v9\"/>",
+            "title": "Beneficios Flexibles",
+            "text": "Planes diseñados a la medida para cubrir desde necesidades médicas diarias hasta servicios complementarios para el hogar en todo Estados Unidos."
+          }
+        },
+        "f2": {
+          "type": "feature",
+          "settings": {
+            "icon": "<circle cx=\"8\" cy=\"8\" r=\"3\"/><circle cx=\"17\" cy=\"9\" r=\"2.5\"/><path d=\"M2 20c0-3.3 2.7-5.5 6-5.5s6 2.2 6 5.5\"/><path d=\"M15 20c0-2.5 1.5-4 3.5-4S22 17.5 22 20\"/>",
+            "title": "Cobertura de Dependientes",
+            "text": "Agrega fácilmente a miembros de tu familia para extender los descuentos de salud, farmacia y bienestar a todos tus seres queridos."
+          }
+        },
+        "f3": {
+          "type": "feature",
+          "settings": {
+            "icon": "<path d=\"M12 3l8 3v6c0 5-4 8-8 9-4-1-8-4-8-9V6z\"/><path d=\"M8.5 12l2.5 2.5 4.5-5\"/>",
+            "title": "Aliados de la Industria en EE. UU.",
+            "text": "New Benefits, Aflac, UHOne y Briotech respaldan la red de más de 60,000 proveedores y farmacias en todo el país."
+          }
+        }
+      }
+    },
+    "proceso": {
+      "type": "aylesva-corp-process",
+      "settings": {
+        "dark": true,
+        "eyebrow": "Activación",
+        "title": "Pasos para Registrarte",
+        "intro": "Un proceso de activación simple para comenzar a disfrutar de tus beneficios en Estados Unidos."
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3"
+      ],
+      "blocks": {
+        "s1": {
+          "type": "step",
+          "settings": {
+            "title": "Elección de Plan",
+            "text": "Selecciona entre nuestros paquetes de beneficios médicos, telemedicina y protección complementaria."
+          }
+        },
+        "s2": {
+          "type": "step",
+          "settings": {
+            "title": "Formulario de Inscripción",
+            "text": "Proporciona tus datos básicos y los de tus dependientes familiares para abrir tu membresía."
+          }
+        },
+        "s3": {
+          "type": "step",
+          "settings": {
+            "title": "Activación de Beneficios",
+            "text": "Recibe tu tarjeta digital de Aylesva Care y empieza a ahorrar de inmediato en consultas y medicamentos."
+          }
+        }
+      }
+    },
+    "contacto": {
+      "type": "aylesva-corp-form",
+      "settings": {
+        "anchor": "contacto",
+        "bg": "#FFFFFF",
+        "eyebrow": "Asesoría Bilingüe",
+        "title": "Solicita tu Asesoría Personalizada",
+        "text": "Compártenos tus datos para presentarte los planes de descuentos médicos y seguros suplementarios en Estados Unidos.",
+        "form_id": "vDnep2WEYdM0V7jw95KX",
+        "form_height": 720,
+        "whatsapp_url": "https:\/\/api.whatsapp.com\/send\/?phone=524774136612&text=Hola%2C+me+gustar%C3%ADa+informaci%C3%B3n+sobre+los+planes+de+Aylesva+Care+en+Estados+Unidos&type=phone_number&app_absent=0",
+        "whatsapp_label": "Hablar con un asesor por WhatsApp"
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3"
+      ],
+      "blocks": {
+        "p1": {
+          "type": "point",
+          "settings": {
+            "text": "Telemedicina bilingüe 24/7 sin costo por consulta"
+          }
+        },
+        "p2": {
+          "type": "point",
+          "settings": {
+            "text": "Cobertura extensible a dependientes en EE. UU."
+          }
+        },
+        "p3": {
+          "type": "point",
+          "settings": {
+            "text": "Tarjeta digital Aylesva Care con activación inmediata"
+          }
+        }
+      }
+    },
+    "legal_disclaimer": {
+      "type": "aylesva-corp-legal",
+      "settings": {
+        "bg": "#FAFAF8",
+        "alignment": "left",
+        "title": "Términos de la Plataforma Aylesva Care, Divulgaciones No Médicas y Regulatorias",
+        "text": "1. Ámbito Geográfico Exclusivo y Conserjería Administrativa:\nAylesva Care, operando a través de aylesva.com, funciona estrictamente como una plataforma de tecnología y facilitación administrativa cuyos servicios de membresía y beneficios aplican única y exclusivamente dentro del territorio de los Estados Unidos de América. Aylesva Care no es un proveedor médico con licencia, hospital, clínica, farmacia ni compañía de seguros bajo la ley federal o estatal de EE. UU. No empleamos médicos ni enfermeras, ni emitimos diagnósticos clínicos ni recetamos medicamentos directamente.\n\n2. Aviso de Plan de Descuento en Salud (No es un Seguro Médico Tradicional):\nEste programa NO es una póliza de seguro médico de gastos mayores ni un plan HMO. No está diseñado para reemplazar un seguro integral ni califica como cobertura esencial mínima bajo la Ley de Cuidado de Salud Asequible (Affordable Care Act / ACA). Proporciona descuentos exclusivos y tarifas preferenciales negociadas dentro de la red de proveedores contratados por New Benefits, Ltd. Cada miembro es responsable de pagar el costo total de los servicios médicos con descuento al momento de recibirlos.\n\n3. Proveedores Externos Independientes:\nToda la atención de telemedicina, consultas y seguros complementarios son provistos de manera autónoma por New Benefits, Ltd., Aflac, UHOne, Teladoc y sus respectivas redes médicas certificadas. Organización del Plan de Descuento: New Benefits, Ltd., Attn: Compliance Department, PO Box 803475, Dallas, TX 75380-3475.\n\n4. Emergencias Médicas:\nAYLESVA CARE NO ES UN SERVICIO DE EMERGENCIAS 911. En caso de una urgencia médica con riesgo vital, llame inmediatamente al 911 o acuda a la sala de urgencias más cercana.\n\n5. Privacidad y Consentimiento:\nAl solicitar información, usted acepta ser contactado por asesores bilingües autorizados mediante correo, llamada o WhatsApp para informarle sobre las coberturas y opciones de membresía en Estados Unidos."
+      }
+    },
+    "ramas": {
+      "type": "aylesva-corp-branches",
+      "settings": {
+        "bg": "#FFFFFF",
+        "eyebrow": "Ecosistema Aylesva",
+        "title": "El mismo respaldo, en cada una de nuestras ramas"
+      },
+      "block_order": [
+        "br1",
+        "br2",
+        "br3",
+        "br4"
+      ],
+      "blocks": {
+        "br1": {
+          "type": "branch",
+          "settings": {
+            "title": "Aylesva Recursos",
+            "text": "Intermediación financiera para tu negocio.",
+            "icon": "<rect x=\"3\" y=\"10\" width=\"18\" height=\"11\"/><path d=\"M3 10 12 4l9 6\"/><path d=\"M9 21v-6h6v6\"/>",
+            "link": "/pages/aylesva-recursos"
+          }
+        },
+        "br2": {
+          "type": "branch",
+          "settings": {
+            "title": "Aylesva Direct",
+            "text": "Importación y logística desde China.",
+            "icon": "<rect x=\"2\" y=\"8\" width=\"13\" height=\"9\"/><path d=\"M15 11h4l3 3v3h-7z\"/><circle cx=\"6\" cy=\"19\" r=\"2\"/><circle cx=\"18\" cy=\"19\" r=\"2\"/>",
+            "link": "/pages/aylesva-direct"
+          }
+        },
+        "br3": {
+          "type": "branch",
+          "settings": {
+            "title": "Global Estates",
+            "text": "Bienes raíces y desarrollos de lujo.",
+            "icon": "<path d=\"M3 21V9l6-4 6 4v12\"/><path d=\"M15 21V13h6v8\"/><path d=\"M7 13h2M7 17h2\"/>",
+            "link": "/pages/globalestates"
+          }
+        },
+        "br4": {
+          "type": "branch",
+          "settings": {
+            "title": "Lanza tu tienda en línea",
+            "text": "Tienda propia con nuestro catálogo y envíos.",
+            "icon": "<rect x=\"3\" y=\"4\" width=\"18\" height=\"5\"/><path d=\"M5 9v12h14V9\"/><path d=\"M9 13h6\"/>",
+            "link": "/pages/lanza-tu-propia-marca"
+          }
+        }
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "planes",
+    "respaldo",
+    "proceso",
+    "contacto",
+    "legal_disclaimer",
+    "ramas"
+  ]
+}

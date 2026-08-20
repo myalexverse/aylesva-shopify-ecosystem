@@ -1,0 +1,43 @@
+<style>
+  .loading-modal.modal,
+  .ajax-error-modal.modal,
+  .ajax-success-modal.modal,
+  .loading-modal,
+  .ajax-error-modal,
+  .ajax-success-modal {
+    display: none !important;
+  }
+  .loading-modal.modal.open,
+  .ajax-error-modal.modal.open,
+  .ajax-success-modal.modal.open {
+    display: block !important;
+  }
+</style>
+
+<div class="loading-modal modal">{{ 'general.search.loading' | t }}</div>
+<div class="ajax-error-modal modal">
+  <div class="modal-inner">
+    <div class="ajax-error-title">{{ 'general.search.error' | t }}</div>
+    <div class="ajax-error-message"></div>
+  </div>
+</div>
+<div class="ajax-success-modal modal">
+  	<div class="overlay"></div>
+  <div class="content">
+    <p class="added-to-cart info"><i class="mdi mdi-check"></i>{{ 'cart.general.added_to_cart' | t }}</p>
+	<div class="content-wrap">       
+      <p class="added-to-wishlist info">{{ 'products.wishlist.added_to_wishlist' | t }}</p>
+      <div class="ajax-left">        
+      <img loading="lazy" class="ajax-product-image" alt="modal window" src="/" />
+      </div>
+      <div class="ajax-right"> 
+        <div class="total_itmes">{{ 'cart.general.total_items_before' | t }} <span class="ajax_item_total"> </span> {{ 'cart.general.total_items_after' | t }}</div>
+        
+        <h3 class="ajax-product-title">Product name</h3>
+        <span class="ajax_price"></span>
+        <div class="success-message added-to-cart"><a href="{{ routes.cart_url }}" class="btn"><i class="mdi mdi-cart-outline"></i>{{ 'cart.general.view_cart' | t }}</a> </div>  
+      </div>
+    <a href="javascript:void(0)" class="close-modal"><i class="mdi mdi-close-circle"></i></a>
+ 	</div> 
+  </div>
+</div>

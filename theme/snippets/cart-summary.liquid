@@ -1,0 +1,1044 @@
+{%- doc -%}
+  Renders the cart summary totals.
+
+  @param {string} [accelerated_checkout_buttons_layout] - { 'vertical' } Forced layout of the additional checkout buttons, instead of relying on platform's layout.
+  @param {string} [section_id] - The section ID for cart discount component.
+{%- enddoc -%}
+
+<div class="cart-totals">
+  {% # We need to keep this node in place to allow morphing to work properly # %}
+  {%- liquid
+    # ═══════════════════════════════════════════════════════════════════
+    # PASO 1: Clasificar productos y contar cantidades por categoría
+    # ═══════════════════════════════════════════════════════════════════
+    assign qty_botas = 0
+    assign qty_camisas = 0
+    assign qty_sombreros = 0
+    assign qty_chalecos = 0
+    assign qty_otros = 0
+
+    assign base_botas = 0
+    assign base_camisas = 0
+    assign base_sombreros = 0
+    assign base_chalecos = 0
+    assign base_otros = 0
+
+    for it in cart.items
+      assign product_class = 'otros'
+      assign tags_string = it.product.tags | join: ',' | downcase
+      assign type_lower = it.product.type | downcase
+      assign title_lower = it.product.title | downcase
+
+      if tags_string contains 'mayoreo-botas' or type_lower contains 'bota' or type_lower contains 'botin' or type_lower contains 'botín' or type_lower contains 'calzado' or title_lower contains 'bota' or title_lower contains 'botin' or title_lower contains 'botín'
+        assign product_class = 'botas'
+      elsif tags_string contains 'mayoreo-camisas' or type_lower contains 'camisa' or type_lower contains 'blusa' or title_lower contains 'camisa' or title_lower contains 'blusa'
+        assign product_class = 'camisas'
+      elsif tags_string contains 'mayoreo-sombreros-y-accesorios' or type_lower contains 'sombrero' or type_lower contains 'texana' or type_lower contains 'cinto' or type_lower contains 'cinturon' or type_lower contains 'cinturón' or type_lower contains 'gorra' or type_lower contains 'cartera' or type_lower contains 'bolsa' or type_lower contains 'accesorio' or title_lower contains 'sombrero' or title_lower contains 'texana' or title_lower contains 'cinturon' or title_lower contains 'gorra'
+        assign product_class = 'sombreros'
+      elsif tags_string contains 'mayoreo-chalecos-y-chamarras' or type_lower contains 'chaleco' or type_lower contains 'chamarra' or type_lower contains 'chaqueta' or title_lower contains 'chaleco' or title_lower contains 'chamarra'
+        assign product_class = 'chalecos'
+      endif
+
+      assign line_base = it.original_price | times: it.quantity
+
+      if product_class == 'botas'
+        assign qty_botas = qty_botas | plus: it.quantity
+        assign base_botas = base_botas | plus: line_base
+      elsif product_class == 'camisas'
+        assign qty_camisas = qty_camisas | plus: it.quantity
+        assign base_camisas = base_camisas | plus: line_base
+      elsif product_class == 'sombreros'
+        assign qty_sombreros = qty_sombreros | plus: it.quantity
+        assign base_sombreros = base_sombreros | plus: line_base
+      elsif product_class == 'chalecos'
+        assign qty_chalecos = qty_chalecos | plus: it.quantity
+        assign base_chalecos = base_chalecos | plus: line_base
+      else
+        assign qty_otros = qty_otros | plus: it.quantity
+        assign base_otros = base_otros | plus: line_base
+      endif
+    endfor
+
+    assign total_wholesale_qty = qty_botas | plus: qty_camisas | plus: qty_sombreros | plus: qty_chalecos | plus: qty_otros
+
+    # ═══════════════════════════════════════════════════════════════════
+    # PASO 2: Calcular markup INDEPENDIENTE por categoría
+    # Tiers: 12 pzas = +20%, 24 pzas = +15%, 36 pzas = +10%, 48+ pzas = +5%
+    # ═══════════════════════════════════════════════════════════════════
+
+    # --- BOTAS ---
+    assign markup_pct_botas = 0
+    assign markup_label_botas = ''
+    assign markup_amt_botas = 0
+    if qty_botas >= 48
+      assign markup_pct_botas = 5
+      assign markup_label_botas = '+5%'
+    elsif qty_botas >= 36
+      assign markup_pct_botas = 10
+      assign markup_label_botas = '+10%'
+    elsif qty_botas >= 24
+      assign markup_pct_botas = 15
+      assign markup_label_botas = '+15%'
+    elsif qty_botas >= 12
+      assign markup_pct_botas = 20
+      assign markup_label_botas = '+20%'
+    endif
+    if markup_pct_botas > 0
+      assign markup_amt_botas = base_botas | times: markup_pct_botas | divided_by: 100
+    endif
+
+    # --- CAMISAS ---
+    assign markup_pct_camisas = 0
+    assign markup_label_camisas = ''
+    assign markup_amt_camisas = 0
+    if qty_camisas >= 48
+      assign markup_pct_camisas = 5
+      assign markup_label_camisas = '+5%'
+    elsif qty_camisas >= 36
+      assign markup_pct_camisas = 10
+      assign markup_label_camisas = '+10%'
+    elsif qty_camisas >= 24
+      assign markup_pct_camisas = 15
+      assign markup_label_camisas = '+15%'
+    elsif qty_camisas >= 12
+      assign markup_pct_camisas = 20
+      assign markup_label_camisas = '+20%'
+    endif
+    if markup_pct_camisas > 0
+      assign markup_amt_camisas = base_camisas | times: markup_pct_camisas | divided_by: 100
+    endif
+
+    # --- SOMBREROS ---
+    assign markup_pct_sombreros = 0
+    assign markup_label_sombreros = ''
+    assign markup_amt_sombreros = 0
+    if qty_sombreros >= 48
+      assign markup_pct_sombreros = 5
+      assign markup_label_sombreros = '+5%'
+    elsif qty_sombreros >= 36
+      assign markup_pct_sombreros = 10
+      assign markup_label_sombreros = '+10%'
+    elsif qty_sombreros >= 24
+      assign markup_pct_sombreros = 15
+      assign markup_label_sombreros = '+15%'
+    elsif qty_sombreros >= 12
+      assign markup_pct_sombreros = 20
+      assign markup_label_sombreros = '+20%'
+    endif
+    if markup_pct_sombreros > 0
+      assign markup_amt_sombreros = base_sombreros | times: markup_pct_sombreros | divided_by: 100
+    endif
+
+    # --- CHALECOS ---
+    assign markup_pct_chalecos = 0
+    assign markup_label_chalecos = ''
+    assign markup_amt_chalecos = 0
+    if qty_chalecos >= 48
+      assign markup_pct_chalecos = 5
+      assign markup_label_chalecos = '+5%'
+    elsif qty_chalecos >= 36
+      assign markup_pct_chalecos = 10
+      assign markup_label_chalecos = '+10%'
+    elsif qty_chalecos >= 24
+      assign markup_pct_chalecos = 15
+      assign markup_label_chalecos = '+15%'
+    elsif qty_chalecos >= 12
+      assign markup_pct_chalecos = 20
+      assign markup_label_chalecos = '+20%'
+    endif
+    if markup_pct_chalecos > 0
+      assign markup_amt_chalecos = base_chalecos | times: markup_pct_chalecos | divided_by: 100
+    endif
+
+    # --- OTROS ---
+    assign markup_pct_otros = 0
+    assign markup_label_otros = ''
+    assign markup_amt_otros = 0
+    if qty_otros >= 48
+      assign markup_pct_otros = 5
+      assign markup_label_otros = '+5%'
+    elsif qty_otros >= 36
+      assign markup_pct_otros = 10
+      assign markup_label_otros = '+10%'
+    elsif qty_otros >= 24
+      assign markup_pct_otros = 15
+      assign markup_label_otros = '+15%'
+    elsif qty_otros >= 12
+      assign markup_pct_otros = 20
+      assign markup_label_otros = '+20%'
+    endif
+    if markup_pct_otros > 0
+      assign markup_amt_otros = base_otros | times: markup_pct_otros | divided_by: 100
+    endif
+
+    # ═══════════════════════════════════════════════════════════════════
+    # PASO 3: Totales globales
+    # ═══════════════════════════════════════════════════════════════════
+    assign base_subtotal = base_botas | plus: base_camisas | plus: base_sombreros | plus: base_chalecos | plus: base_otros
+    assign total_markup_amount = markup_amt_botas | plus: markup_amt_camisas | plus: markup_amt_sombreros | plus: markup_amt_chalecos | plus: markup_amt_otros
+    assign calculated_total = base_subtotal | plus: total_markup_amount
+
+    # Count how many categories have markup applied
+    assign active_categories = 0
+    if markup_pct_botas > 0
+      assign active_categories = active_categories | plus: 1
+    endif
+    if markup_pct_camisas > 0
+      assign active_categories = active_categories | plus: 1
+    endif
+    if markup_pct_sombreros > 0
+      assign active_categories = active_categories | plus: 1
+    endif
+    if markup_pct_chalecos > 0
+      assign active_categories = active_categories | plus: 1
+    endif
+    if markup_pct_otros > 0
+      assign active_categories = active_categories | plus: 1
+    endif
+
+    # ═══════════════════════════════════════════════════════════════════
+    # PASO 4: Validación POR CATEGORÍA — cada categoría con items
+    #         debe tener >= 12 unidades (o 0, que es válido)
+    # ═══════════════════════════════════════════════════════════════════
+    assign has_validation_error = false
+    assign error_messages = ''
+
+    if qty_botas > 0 and qty_botas < 12
+      assign has_validation_error = true
+      assign missing_qty = 12 | minus: qty_botas
+      assign error_messages = error_messages | append: '<p style="margin: 5px 0;">👢 <strong>Botas:</strong> Tienes <strong>' | append: qty_botas | append: '</strong> pares. Agrega <strong>' | append: missing_qty | append: '</strong> más para alcanzar el mínimo de 12.</p>'
+    endif
+
+    if qty_camisas > 0 and qty_camisas < 12
+      assign has_validation_error = true
+      assign missing_qty = 12 | minus: qty_camisas
+      assign error_messages = error_messages | append: '<p style="margin: 5px 0;">👔 <strong>Camisas:</strong> Tienes <strong>' | append: qty_camisas | append: '</strong> piezas. Agrega <strong>' | append: missing_qty | append: '</strong> más para alcanzar el mínimo de 12.</p>'
+    endif
+
+    if qty_sombreros > 0 and qty_sombreros < 12
+      assign has_validation_error = true
+      assign missing_qty = 12 | minus: qty_sombreros
+      assign error_messages = error_messages | append: '<p style="margin: 5px 0;">🤠 <strong>Sombreros y Accesorios:</strong> Tienes <strong>' | append: qty_sombreros | append: '</strong> piezas. Agrega <strong>' | append: missing_qty | append: '</strong> más para alcanzar el mínimo de 12.</p>'
+    endif
+
+    if qty_chalecos > 0 and qty_chalecos < 12
+      assign has_validation_error = true
+      assign missing_qty = 12 | minus: qty_chalecos
+      assign error_messages = error_messages | append: '<p style="margin: 5px 0;">🧥 <strong>Chalecos y Chamarras:</strong> Tienes <strong>' | append: qty_chalecos | append: '</strong> piezas. Agrega <strong>' | append: missing_qty | append: '</strong> más para alcanzar el mínimo de 12.</p>'
+    endif
+
+    if qty_otros > 0 and qty_otros < 12
+      assign has_validation_error = true
+      assign missing_qty = 12 | minus: qty_otros
+      assign error_messages = error_messages | append: '<p style="margin: 5px 0;">📦 <strong>Otros:</strong> Tienes <strong>' | append: qty_otros | append: '</strong> piezas. Agrega <strong>' | append: missing_qty | append: '</strong> más para alcanzar el mínimo de 12.</p>'
+    endif
+  -%}
+
+  <div class="cart-totals__original-container cart-primary-typography">
+    {%- if cart.cart_level_discount_applications.size > 0 or total_markup_amount > 0 -%}
+      <span class="cart-totals__item cart-totals__original">
+        <span class="cart-totals__original-label">Precio Base Mayoreo</span>
+        <span
+          class="cart-totals__original-value cart-secondary-typography"
+          data-testid="cart-subtotal-value"
+        >
+          {{- base_subtotal | money -}}
+        </span>
+      </span>
+      <ul
+        class="cart-discounts"
+        role="list"
+        aria-label="Desglose de markup por categoría"
+      >
+        {%- if markup_amt_botas > 0 -%}
+          <li class="cart-discounts__item" style="color: #8B6914; font-weight: bold; display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 3px 0;">
+            <span class="cart-discounts__label" style="color: #8B6914; display: flex; align-items: center; gap: 4px; font-size: 0.85em;">
+              👢 Botas ({{ markup_label_botas }})
+            </span>
+            <span class="cart-discounts__value cart-secondary-typography" style="color: #8B6914;">
+              +{{ markup_amt_botas | money }}
+            </span>
+          </li>
+        {%- endif -%}
+        {%- if markup_amt_camisas > 0 -%}
+          <li class="cart-discounts__item" style="color: #8B6914; font-weight: bold; display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 3px 0;">
+            <span class="cart-discounts__label" style="color: #8B6914; display: flex; align-items: center; gap: 4px; font-size: 0.85em;">
+              👔 Camisas ({{ markup_label_camisas }})
+            </span>
+            <span class="cart-discounts__value cart-secondary-typography" style="color: #8B6914;">
+              +{{ markup_amt_camisas | money }}
+            </span>
+          </li>
+        {%- endif -%}
+        {%- if markup_amt_sombreros > 0 -%}
+          <li class="cart-discounts__item" style="color: #8B6914; font-weight: bold; display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 3px 0;">
+            <span class="cart-discounts__label" style="color: #8B6914; display: flex; align-items: center; gap: 4px; font-size: 0.85em;">
+              🤠 Sombreros ({{ markup_label_sombreros }})
+            </span>
+            <span class="cart-discounts__value cart-secondary-typography" style="color: #8B6914;">
+              +{{ markup_amt_sombreros | money }}
+            </span>
+          </li>
+        {%- endif -%}
+        {%- if markup_amt_chalecos > 0 -%}
+          <li class="cart-discounts__item" style="color: #8B6914; font-weight: bold; display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 3px 0;">
+            <span class="cart-discounts__label" style="color: #8B6914; display: flex; align-items: center; gap: 4px; font-size: 0.85em;">
+              🧥 Chalecos ({{ markup_label_chalecos }})
+            </span>
+            <span class="cart-discounts__value cart-secondary-typography" style="color: #8B6914;">
+              +{{ markup_amt_chalecos | money }}
+            </span>
+          </li>
+        {%- endif -%}
+        {%- if markup_amt_otros > 0 -%}
+          <li class="cart-discounts__item" style="color: #8B6914; font-weight: bold; display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 3px 0;">
+            <span class="cart-discounts__label" style="color: #8B6914; display: flex; align-items: center; gap: 4px; font-size: 0.85em;">
+              📦 Otros ({{ markup_label_otros }})
+            </span>
+            <span class="cart-discounts__value cart-secondary-typography" style="color: #8B6914;">
+              +{{ markup_amt_otros | money }}
+            </span>
+          </li>
+        {%- endif -%}
+        {%- if total_markup_amount > 0 and active_categories > 1 -%}
+          <li class="cart-discounts__item" style="color: #4A0E17; font-weight: bold; display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 5px 0; border-top: 1px solid #eee; margin-top: 4px;">
+            <span class="cart-discounts__label" style="color: #4A0E17; display: flex; align-items: center; gap: 4px; font-size: 0.85em;">
+              Markup Total
+            </span>
+            <span class="cart-discounts__value cart-secondary-typography" style="color: #4A0E17;">
+              +{{ total_markup_amount | money }}
+            </span>
+          </li>
+        {%- endif -%}
+        {%- for discount in cart.cart_level_discount_applications -%}
+          <li class="cart-discounts__item">
+            <span class="cart-discounts__label">
+              {{- 'icon-discount.svg' | inline_asset_content -}}
+              {{ discount.title | escape }}
+            </span>
+            <span class="cart-discounts__value cart-secondary-typography"
+              >-{{ discount.total_allocated_amount | money -}}
+            </span>
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+  </div>
+
+  {% if settings.show_cart_note or settings.show_add_discount_code %}
+    <div class="cart-actions">
+      {% if settings.show_cart_note %}
+        <script
+          type="module"
+          src="{{ 'cart-note.js' | asset_url }}"
+        ></script>
+
+        <cart-note style="display: flex;">
+          {% capture cart_note_accordion_children %}
+            <details
+              {% if settings.cart_note_open_by_default %}
+                open
+              {% endif %}
+            >
+              <summary class="cart-note__summary">
+                <span class="cart-note__label cart-primary-typography">
+                  {{ 'content.seller_note' | t }}
+                </span>
+
+                <span class="cart-totals__icon">
+                  {{- 'icon-plus.svg' | inline_asset_content -}}
+                </span>
+              </summary>
+
+              <div class="details-content cart-note__inner">
+                <label
+                  for="cart-note"
+                  class="visually-hidden"
+                >
+                  {{- 'content.seller_note' | t -}}
+                </label>
+                <textarea
+                  form="cart-form"
+                  on:input="/updateCartNote"
+                  id="cart-note"
+                  class="cart-note__instructions"
+                  name="note"
+                  data-skip-node-update
+                >{{ cart.note }}</textarea>
+              </div>
+            </details>
+          {% endcapture %}
+          {% render 'accordion-custom-component',
+            children: cart_note_accordion_children,
+            class: 'cart-note',
+            open_by_default_on_desktop: settings.cart_note_open_by_default,
+            open_by_default_on_mobile: settings.cart_note_open_by_default
+          %}
+        </cart-note>
+      {% endif %}
+      {% if settings.show_cart_note and settings.show_add_discount_code %}
+        <div class="cart-actions__divider"></div>
+      {% endif %}
+      {% if settings.show_add_discount_code %}
+        {% liquid
+          assign discount_codes = cart.cart_level_discount_applications | where: 'type', 'discount_code' | map: 'title'
+          for item in cart.items
+            for allocation in item.line_level_discount_allocations
+              if allocation.discount_application.type == 'discount_code'
+                assign discount_codes = item.line_level_discount_allocations | slice: forloop.index0 | map: 'discount_application' | map: 'title' | concat: discount_codes
+              endif
+            endfor
+          endfor
+
+          assign discount_codes = discount_codes | uniq
+
+          # Evaluate the boolean expression for the disclosure state
+          if discount_codes.size == 0
+            assign disclosure_expanded = false
+          else
+            assign disclosure_expanded = true
+          endif
+        %}
+
+        {% capture cart_discount_accordion_children %}
+          <details
+            {% if disclosure_expanded %}
+              open
+            {% endif %}
+          >
+            <summary class="cart-discount__summary">
+              <span class="cart-discount__label cart-primary-typography">{{ 'content.discount' | t }}</span>
+
+              <span class="cart-totals__icon">
+                {{- 'icon-plus.svg' | inline_asset_content -}}
+              </span>
+            </summary>
+
+            <div class="details-content">
+              <div id="cart-discount-disclosure">
+                <cart-discount-component
+                  {% if section_id != blank %}
+                    data-section-id="{{ section_id }}"
+                  {% endif %}
+                >
+                  <div class="cart-discount__content">
+                    <form
+                      on:submit="/applyDiscount"
+                      onsubmit="return false;"
+                      class="cart-discount__form"
+                    >
+                      <label
+                        for="cart-discount"
+                        class="visually-hidden"
+                      >
+                        {{- 'accessibility.discount' | t -}}
+                      </label>
+                      <input
+                        id="cart-discount"
+                        class="cart-discount__input"
+                        type="text"
+                        name="discount"
+                        size="8"
+                        placeholder="{{ 'content.discount_code' | t }}"
+                        required
+                        data-skip-node-update
+                      >
+                      <button
+                        type="submit"
+                        class="button cart-discount__button"
+                      >
+                        {{ 'actions.apply' | t }}
+                      </button>
+                    </form>
+                  </div>
+                  <div
+                    class="cart-discount__error hidden"
+                    role="alert"
+                    ref="cartDiscountError"
+                  >
+                    <span class="svg-wrapper">
+                      {{- 'icon-error.svg' | inline_asset_content -}}
+                    </span>
+                    <small
+                      class="cart-discount__error-text cart-primary-typography hidden"
+                      ref="cartDiscountErrorDiscountCode"
+                    >
+                      {{ 'content.discount_code_error' | t: code: 'test' }}
+                    </small>
+                    <small
+                      class="cart-discount__error-text cart-primary-typography hidden"
+                      ref="cartDiscountErrorShipping"
+                    >
+                      {{ 'content.shipping_discount_error' | t }}
+                    </small>
+                  </div>
+                  <ul class="cart-discount__codes">
+                    {% for discount_code in discount_codes %}
+                      <li
+                        class="cart-discount__pill"
+                        data-discount-code="{{ discount_code }}"
+                        aria-label="{{ 'accessibility.discount_applied' | t: code: discount_code }}"
+                      >
+                        <p class="cart-discount__pill-code">
+                          {{ discount_code }}
+                        </p>
+                        <button
+                          type="button"
+                          on:click="/removeDiscount"
+                          class="cart-discount__pill-remove svg-wrapper svg-wrapper--smaller button-unstyled"
+                          aria-label="{{ 'actions.remove_discount' | t: code: discount_code }}"
+                        >
+                          {{- 'icon-filters-close.svg' | inline_asset_content -}}
+                        </button>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                </cart-discount-component>
+              </div>
+            </div>
+          </details>
+        {% endcapture %}
+        {% render 'accordion-custom-component', children: cart_discount_accordion_children, class: 'cart-discount' %}
+      {% endif %}
+    </div>
+  {% endif %}
+
+  {%- liquid
+    assign display_total_price = calculated_total
+    if cart.cart_level_discount_applications.size > 0
+      for discount in cart.cart_level_discount_applications
+        assign display_total_price = display_total_price | minus: discount.total_allocated_amount
+      endfor
+    endif
+
+    if settings.currency_code_enabled_cart_total
+      assign total_price = display_total_price | money_with_currency
+    else
+      assign total_price = display_total_price | money
+    endif
+  -%}
+
+  <div class="cart-totals__container{% if settings.show_installments %} cart-totals__container--has-installments{% endif %}">
+    <span
+      class="cart-totals__item cart-totals__total"
+      role="status"
+    >
+      <span class="cart-totals__total-label cart-primary-typography">{{ 'content.cart_estimated_total' | t }}</span>
+      <text-component
+        ref="cartTotal"
+        value="{{ total_price | strip_html }}"
+        class="cart-totals__total-value cart-secondary-typography"
+        {% comment %} Used by payment_terms web component {% endcomment %}
+        data-testid="cart-total-value"
+        data-cart-subtotal
+      >
+        {{ total_price }}
+      </text-component>
+    </span>
+    {% if settings.show_installments %}
+      <span class="cart-totals__item cart-totals__installments">
+        {% form 'cart', cart %}
+          {{ form | payment_terms }}
+        {% endform %}
+      </span>
+    {% endif %}
+    <div class="cart-totals__item cart-totals__tax-note cart-primary-typography">
+      {% render 'tax-info', has_discounts_enabled: settings.show_add_discount_code %}
+    </div>
+  </div>
+</div>
+
+<div class="cart__ctas">
+  {%- if cart != empty -%}
+    <div class="cart-volume-progress" style="margin: 0 0 15px 0;">
+      {%- comment -%} Per-category progress bars {%- endcomment -%}
+      {%- if qty_botas > 0 -%}
+        {% render 'ayl-cart-progress-row', cat_name: 'Botas', qty: qty_botas, key: 'botas' %}
+      {%- endif -%}
+      {%- if qty_camisas > 0 -%}
+        {% render 'ayl-cart-progress-row', cat_name: 'Camisas', qty: qty_camisas, key: 'camisas' %}
+      {%- endif -%}
+      {%- if qty_sombreros > 0 -%}
+        {% render 'ayl-cart-progress-row', cat_name: 'Sombreros y Accesorios', qty: qty_sombreros, key: 'sombreros' %}
+      {%- endif -%}
+      {%- if qty_chalecos > 0 -%}
+        {% render 'ayl-cart-progress-row', cat_name: 'Chalecos y Chamarras', qty: qty_chalecos, key: 'chalecos' %}
+      {%- endif -%}
+      {%- if qty_otros > 0 -%}
+        {% render 'ayl-cart-progress-row', cat_name: 'Otros Productos', qty: qty_otros, key: 'otros' %}
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+
+  {%- if has_validation_error -%}
+    <div class="cart-validation-error" style="background-color: #FDF2F2; border: 1px solid #F8B4B4; border-radius: 8px; padding: 15px; margin: 0 0 15px 0; color: #9B1C1C; text-align: left;">
+      <h5 style="margin: 0 0 8px 0; font-weight: bold; font-size: 0.95rem; display: flex; align-items: center; gap: 6px;">
+        ⚠️ Requisito de Mayoreo no cumplido
+      </h5>
+      <div style="line-height: 1.4; font-size: 0.85rem;">
+        {{ error_messages }}
+      </div>
+      <p style="margin: 8px 0 0 0; font-size: 0.75rem; color: #7F1D1D; font-weight: 500;">
+        * El mínimo de compra es de 12 piezas por categoría. Puedes combinar modelos, colores y tallas dentro de la misma categoría.
+      </p>
+    </div>
+  {%- endif -%}
+
+  {%- comment -%}
+    Wholesale checkout button — calls the middleware to create a Draft Order
+    with per-category markup applied. Falls back to native checkout if middleware
+    is unavailable.
+  {%- endcomment -%}
+  <button
+    type="button"
+    id="ayl-wholesale-checkout-btn"
+    class="cart__checkout-button button"
+    {% if cart == empty or has_validation_error %}
+      disabled
+    {% endif %}
+    onclick="wholesaleCheckout()"
+    style="position: relative;"
+  >
+    <span class="button-text" id="ayl-checkout-text">
+      Proceder al Pago
+    </span>
+    <span id="ayl-checkout-spinner" style="display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+      <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+        <circle cx="4" cy="12" r="3"><animate attributeName="opacity" dur="1s" values="1;0.3;1" repeatCount="indefinite" begin="0"/></circle>
+        <circle cx="12" cy="12" r="3"><animate attributeName="opacity" dur="1s" values="0.3;1;0.3" repeatCount="indefinite" begin="0"/></circle>
+        <circle cx="20" cy="12" r="3"><animate attributeName="opacity" dur="1s" values="0.3;0.3;1" repeatCount="indefinite" begin="0"/></circle>
+      </svg>
+    </span>
+  </button>
+  <p id="ayl-checkout-msg" style="display: none; text-align: center; font-size: 0.8rem; margin-top: 8px;"></p>
+
+  <script type="text/javascript">
+    var WHOLESALE_MIDDLEWARE_URL = 'https://middleware-ten-omega.vercel.app/api/wholesale-checkout';
+
+    function wholesaleCheckout() {
+      var btn = document.getElementById('ayl-wholesale-checkout-btn');
+      var btnText = document.getElementById('ayl-checkout-text');
+      var spinner = document.getElementById('ayl-checkout-spinner');
+      var msg = document.getElementById('ayl-checkout-msg');
+
+      btn.disabled = true;
+      btnText.style.opacity = '0';
+      spinner.style.display = '';
+      msg.style.display = 'none';
+
+      // 1. Fetch current cart contents
+      fetch('/cart.js')
+        .then(function(r) { return r.json(); })
+        .then(function(cartData) {
+          if (!cartData.items || cartData.items.length === 0) {
+            throw new Error('El carrito está vacío.');
+          }
+
+          // 2. Build items payload
+          var items = cartData.items.map(function(item) {
+            return {
+              variant_id: item.variant_id,
+              quantity: item.quantity
+            };
+          });
+
+          var payload = {
+            items: items,
+            note: cartData.note || ''
+          };
+
+          // 3. Send to middleware
+          return fetch(WHOLESALE_MIDDLEWARE_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+        })
+        .then(function(response) {
+          return response.json().then(function(data) {
+            if (!response.ok || !data.success) {
+              throw new Error(data.error || 'Error al procesar el pedido de mayoreo.');
+            }
+            return data;
+          });
+        })
+        .then(function(data) {
+          // 4. Redirect to Draft Order checkout
+          msg.style.display = 'block';
+          msg.style.color = '#03543F';
+          msg.textContent = '✅ Pedido creado. Redirigiendo al pago...';
+          window.location.href = data.checkout_url;
+        })
+        .catch(function(err) {
+          console.error('Wholesale checkout error:', err);
+          btn.disabled = false;
+          btnText.style.opacity = '1';
+          spinner.style.display = 'none';
+          msg.style.display = 'block';
+          msg.style.color = '#9B1C1C';
+          msg.textContent = '❌ ' + (err.message || 'Ocurrió un error. Intenta de nuevo.');
+
+          // If middleware is down, offer native checkout fallback
+          if (err.message && err.message.indexOf('fetch') !== -1) {
+            msg.innerHTML = '❌ Servicio temporalmente no disponible. <a href="javascript:void(0)" onclick="nativeFallback()" style="color: #4A0E17; text-decoration: underline;">Usar checkout estándar</a>';
+          }
+        });
+    }
+
+    function nativeFallback() {
+      // Submit the native cart form as fallback
+      var form = document.getElementById('cart-form');
+      if (form) {
+        var input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = 'checkout';
+        input.value = '';
+        form.appendChild(input);
+        form.submit();
+      }
+    }
+  </script>
+
+  {% if additional_checkout_buttons and settings.show_accelerated_checkout_buttons %}
+    <div
+      class="
+        additional-checkout-buttons
+        {% if accelerated_checkout_buttons_layout == 'vertical' %}additional-checkout-buttons--vertical{% endif %}
+      "
+    >
+      {{ content_for_additional_checkout_buttons }}
+    </div>
+  {% endif %}
+</div>
+
+{% stylesheet %}
+  .cart-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-block: 1px solid rgb(var(--color-foreground-rgb) / var(--opacity-10-25));
+    padding-block: 0;
+    margin-block-start: var(--margin-3xs);
+  }
+
+  .cart-actions__divider {
+    border-block-start: 1px solid rgb(var(--color-foreground-rgb) / var(--opacity-10-25));
+  }
+
+  .cart-totals:not(:has(.cart-actions)) {
+    margin-block-start: var(--margin-3xs);
+    border-block-start: 1px solid rgb(var(--color-foreground-rgb) / var(--opacity-10-25));
+    padding-block-start: var(--margin-xl);
+  }
+
+  .cart-totals__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .cart-totals__tax-note {
+    color: var(--color-foreground-subdued);
+  }
+
+  .cart-totals__tax-note a {
+    color: var(--color-foreground-subdued);
+    text-decoration-line: underline;
+    text-decoration-color: currentColor;
+
+    &:hover {
+      text-decoration-color: transparent;
+    }
+  }
+
+  .cart-totals__tax-note small {
+    font-size: var(--font-size--2xs);
+  }
+
+  .cart-discounts {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .cart-discounts__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .cart-discounts__label {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-2xs);
+  }
+
+  .cart-discounts__label svg {
+    width: var(--icon-size-sm);
+    height: var(--icon-size-sm);
+    display: inline-block;
+  }
+
+  .cart-totals__original-container,
+  .cart-totals__container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cart-totals__container {
+    row-gap: var(--gap-2xs);
+
+    &.cart-totals__container--has-installments {
+      row-gap: var(--gap-xs);
+    }
+  }
+
+  .cart-totals__original-container:empty {
+    display: none;
+  }
+
+  .cart-totals {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-xl);
+    width: 100%;
+    border-block-start: none;
+
+    &:has(> :first-child:not(.cart-totals__original-container, .cart-totals__container)) {
+      padding-block-start: 0;
+      border-block-start: none;
+    }
+
+    @media screen and (min-width: 750px) {
+      padding-block-start: 0;
+    }
+  }
+
+  .cart-totals__original-container,
+  .cart-totals__original-container * {
+    font-size: var(--cart-font-size--sm);
+  }
+
+  .cart-totals__total {
+    align-items: baseline;
+    font-weight: var(--font-weight-bold);
+  }
+
+  .cart-totals__total-label {
+    font-size: var(--cart-font-size--sm);
+  }
+
+  .cart-totals__total-value {
+    font-size: var(--cart-font-size--xl);
+
+    @media screen and (max-width: 749px) {
+      font-size: var(--font-size--lg);
+    }
+  }
+
+  .cart-totals__installments {
+    color: var(--color-foreground);
+    font-size: var(--font-size--2xs);
+  }
+
+  .cart-note {
+    width: 100%;
+  }
+
+  @starting-style {
+    .cart-note[open-by-default-on-desktop][open-by-default-on-mobile] .details-content {
+      block-size: auto;
+      opacity: 1;
+      overflow-y: visible;
+    }
+  }
+
+  .cart-note__inner {
+    padding-block: var(--padding-2xs) var(--padding-sm);
+  }
+
+  .cart-note__summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .cart-note__summary:hover {
+    color: rgb(var(--color-rgb, var(--color-foreground-rgb)) / var(--opacity-subdued-text));
+  }
+
+  .cart-note__label {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--gap-2xs);
+    font-size: var(--font-size--2xs);
+    font-weight: 500;
+  }
+
+  .cart-note__instructions {
+    color: var(--color-input-text);
+    background-color: var(--color-input-background);
+    border-width: var(--style-border-width-inputs);
+    border-color: var(--color-input-border);
+    transition: box-shadow var(--animation-speed) ease;
+    box-shadow: var(--input-box-shadow);
+    min-height: 5.5rem;
+    min-width: 100%;
+    max-width: 100%;
+    font-size: var(--font-size--sm);
+    padding: max(4px, calc(var(--style-border-radius-inputs) * (1 - cos(45deg))));
+  }
+
+  .cart-totals__icon {
+    height: var(--icon-size-xs);
+    width: var(--icon-size-xs);
+    margin: 0;
+  }
+
+  .cart__ctas {
+    width: 100%;
+    display: grid;
+    gap: var(--checkout-button-gap);
+    grid-auto-flow: row;
+    grid-template-columns: 1fr;
+  }
+
+  .cart__ctas .cart__checkout-button {
+    width: 100%;
+    height: clamp(25px, var(--height-buy-buttons), 55px);
+    padding-inline: var(--padding-4xl);
+  }
+
+  .cart-drawer__summary .cart-totals:not(:has(.cart-totals__original-container:empty)) {
+    border-block-start: var(--style-border-width) solid rgb(var(--color-foreground-rgb) / var(--opacity-10-25));
+    padding-block-start: var(--padding-2xl);
+  }
+
+  .cart-drawer__summary .cart-note {
+    @media screen and (min-width: 750px) {
+      margin-block-start: var(--margin-3xs);
+    }
+  }
+
+  .cart-discount__input {
+    background-color: var(--color-input-background);
+    color: var(--color-input-text);
+    border-width: var(--style-border-width-inputs);
+    border-color: var(--color-input-border);
+    border-style: solid;
+    border-radius: var(--style-border-radius-inputs);
+    padding: var(--padding-sm) var(--padding-md);
+    height: 100%;
+    flex-grow: 1;
+    min-width: 0;
+    font-size: var(--font-size--sm);
+  }
+
+  .cart-discount__input::placeholder {
+    color: rgb(var(--color-input-text-rgb) / var(--opacity-subdued-text));
+  }
+
+  .cart-discount__pill-code {
+    overflow: hidden;
+    max-width: 100px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin: 0;
+  }
+
+  .cart-discount {
+    width: 100%;
+  }
+
+  .cart-discount__codes {
+    display: none;
+    gap: var(--padding-xs);
+    flex-wrap: wrap;
+    list-style: none;
+    padding-inline: 0;
+    margin: 0;
+  }
+
+  .cart-discount__codes:has(.cart-discount__pill) {
+    display: flex;
+  }
+
+  .cart-discount__button {
+    height: 100%;
+  }
+
+  .cart-discount__content {
+    height: calc(var(--button-size) + var(--padding-2xs) + var(--padding-sm));
+  }
+
+  .cart-discount__pill {
+    display: flex;
+    color: var(--color-foreground);
+    gap: var(--padding-xs);
+    align-items: center;
+    padding: var(--padding-xs) var(--padding-sm);
+    border-radius: var(--style-border-radius-pills);
+    background-color: var(--color-input-background);
+    text-transform: uppercase;
+  }
+
+  .cart-discount__form {
+    display: flex;
+    gap: var(--padding-md);
+    align-items: center;
+    height: 100%;
+    padding-block: var(--padding-2xs) var(--padding-sm);
+  }
+
+  :is(.cart-discount__pill-remove, .cart-discount__pill-remove:hover) {
+    --close-icon-opacity: 0.4;
+
+    color: var(--color-foreground);
+    background-color: transparent;
+    pointer-events: all;
+    cursor: pointer;
+    height: 100%;
+  }
+
+  .cart-discount__error {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding-block: var(--padding-2xs) var(--padding-sm);
+  }
+
+  .cart-discount__error .svg-wrapper {
+    flex-shrink: 0;
+    width: var(--icon-size-xs);
+    height: var(--icon-size-xs);
+    margin-inline: var(--margin-3xs) var(--margin-xs);
+  }
+
+  .cart-discount__error-text {
+    margin-block-start: var(--margin-3xs);
+  }
+
+  .cart-discount__summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .cart-discount__summary:hover {
+    color: rgb(var(--color-rgb, var(--color-foreground-rgb)) / var(--opacity-subdued-text));
+  }
+
+  .cart-discount__label {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--gap-2xs);
+    font-size: var(--font-size--2xs);
+    font-weight: 500;
+  }
+
+  @media screen and (min-width: 750px) {
+    .cart-summary--extend {
+      height: 100%;
+    }
+  }
+{% endstylesheet %}

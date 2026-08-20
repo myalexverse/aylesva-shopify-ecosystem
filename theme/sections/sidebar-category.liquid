@@ -1,0 +1,60 @@
+<div data-section-id="{{ section.id }}"  data-section-type="Sidebar-category">  
+  {%- assign sidebar_linklist = section.settings.linkedlist  -%}
+  {% if section.settings.enable_sidecategory %} 
+  <div class="widget widget_product_categories">
+    {% if section.settings.linkedlist_title != blank %}
+    <h4 class="widget-title">{{ section.settings.linkedlist_title }} </h4>  
+    {% endif %}
+    {% if linklists[sidebar_linklist].links.size > 0 %}
+    <ul class="product-categories dt-sc-toggle-frame-set">
+      {% for link in linklists[sidebar_linklist].links %}
+      {% assign child_list_handle = link.title | split: '[' | first | handleize %}            
+      {% if link and link.links != blank  %}
+      <li class="cat-item cat-item-39 cat-parent first">
+        <i></i>
+        <a href="{{ link.url }}" class="dt-sc-toggle {% if link.active %}active{% endif %}">{{ link.title   | split: '[' | first | escape }} </a> 
+        {% assign inner_link = link.title | split: '[' | first | handleize %}
+        <ul class="children dt-sc-toggle-content">
+          {% for child_link in link.links %}
+          <li><a href="{{ child_link.url }}">{{ child_link.title  | split: '[' | first | escape }} </a></li>
+          {% endfor %}
+        </ul>
+        <span class="dt-menu-expand">+</span>              
+      </li>
+      {% else %}
+      <li class="cat-item cat-item-39 cat-parent">
+        <i></i><a href="{{ link.url }}">{{ link.title | split: '[' | first | escape }}  </a> 
+      </li>
+      {% endif %}
+      {% endfor %}
+    </ul>
+    {% endif  %}
+  </div>
+  {% endif %}
+</div>
+
+
+{% schema %}
+{
+"name": "Collection",   
+"settings": [
+{
+"type": "checkbox",
+"id": "enable_sidecategory",
+"label": "Enable category",
+"default":false
+},
+{
+"type": "link_list",
+"id": "linkedlist",
+"label": "Linklist"
+},
+{
+"type": "text",
+"id": "linkedlist_title",
+"label": "Heading"
+}     
+]
+
+}
+{% endschema %}

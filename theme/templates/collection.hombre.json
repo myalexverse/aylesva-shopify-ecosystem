@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "main": {
+      "type": "custom-collection-hub",
+      "settings": {
+        "icons_title": "Explora por Categoría",
+        "cta_text": "Ver Colección"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

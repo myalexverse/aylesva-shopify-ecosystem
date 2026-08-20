@@ -1,0 +1,77 @@
+{% comment %}
+  Aylesva Premium Product Card (Desktop & Mobile)
+  Monochromatic, Fluid, and High-Performance
+  Usage: {% render 'ayl-product-card-grid', product: product, grid_item_width: grid_item_width %}
+{% endcomment %}
+
+{{ 'aylesva-premium-product-card.css' | asset_url | stylesheet_tag }}
+
+{%- assign on_sale = false -%}
+{%- if product.compare_at_price > product.price -%}
+  {%- assign on_sale = true -%}
+{%- endif -%}
+
+<div class="ayl-premium-product-card">
+
+  <!-- IMAGE WRAP -->
+  <div class="ayl-image-wrap">
+    <a href="{{ product.url | within: collection }}" class="ayl-main-link" aria-label="Ver {{ product.title }}">
+      {% if on_sale %}
+        <span class="ayl-badge">-{{ product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | round }}%</span>
+      {% endif %}
+      
+      <img 
+        loading="lazy" 
+        src="{{ product.featured_image | img_url: '600x' }}" 
+        alt="{{ product.title | escape }}"
+      >
+    </a>
+
+    <!-- PREMIUM ACTION BAR (Relocated to Top-Right) -->
+    <div class="ayl-action-bar">
+      <!-- WISHLIST -->
+      {% if settings.enable_wishlist %}
+      <div class="ayl-action-btn ayl-wishlist-trigger" data-tooltip="Favoritos">
+        <div class="default-wishbutton-{{ product.handle }} loading">
+          <a title="Wishlist" class="add-in-wishlist-js" href="{{ product.handle | handleize }}">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+          </a>
+        </div>
+      </div>
+      {% endif %}
+
+      <!-- ADD TO CART -->
+      <form action="/cart/add" method="post" enctype="multipart/form-data" class="ayl-cart-form">
+        <input type="hidden" name="id" value="{{ product.variants[0].id }}">
+        <button type="submit" name="add" class="ayl-main-add-btn" data-tooltip="Comprar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- INFO AREA -->
+  <div class="ayl-info-wrap">
+    {% if settings.show_vendor %}
+      <span class="ayl-vendor">{{ product.vendor }}</span>
+    {% endif %}
+    
+    <a href="{{ product.url | within: collection }}" class="ayl-title">{{ product.title }}</a>
+    
+    <div class="ayl-price-wrap">
+      <span class="ayl-price">{{ product.price | money }}</span>
+      <span class="ayl-price-currency" style="font-size: 0.7em; font-weight: 700; color: #C5A47E; margin-left: 4px; vertical-align: baseline;">{{ cart.currency.iso_code }}</span>
+      {% if on_sale %}
+        <span class="ayl-compare-price">{{ product.compare_at_price | money }}</span>
+      {% endif %}
+    </div>
+
+    <!-- Color Swatches (Optional) -->
+    {% if settings.display_color_variant %}
+      <div class="ayl-swatches">
+        {% render 'item-swatch', product: product %}
+      </div>
+    {% endif %}
+  </div>
+</div>
+

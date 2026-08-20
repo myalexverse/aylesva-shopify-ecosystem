@@ -1,0 +1,3283 @@
+<!-- Aylesva Deals Hub - Premium Interactive Sales Hub -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+
+{%- assign sale_col = collections[section.settings.collection] -%}
+{%- if sale_col == blank or sale_col.all_products_count == 0 -%}
+  {%- assign sale_col = collections['on-sale'] -%}
+{%- endif -%}
+{%- if sale_col == blank or sale_col.all_products_count == 0 -%}
+  {%- assign sale_col = collections['all'] -%}
+{%- endif -%}
+
+{%- assign hero_col = collections[section.settings.hero_collection] | default: sale_col -%}
+{%- if hero_col == blank or hero_col.all_products_count == 0 -%}
+  {%- assign hero_col = collections['on-sale'] -%}
+{%- endif -%}
+{%- if hero_col == blank or hero_col.all_products_count == 0 -%}
+  {%- assign hero_col = collections['all'] -%}
+{%- endif -%}
+
+<div class="aos-page" data-section-id="{{ section.id }}">
+
+  <!-- Flash Deal Bar -->
+  <div class="aos-flash" id="aos-flash-{{ section.id }}" style="display:none">
+    <div class="aos-container">
+      <div class="aos-flash-inner">
+        <div class="aos-flash-bolt">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"/></svg>
+        </div>
+        <div class="aos-flash-copy">
+          <div class="aos-flash-label">OFERTA DEL DÍA · TERMINA HOY</div>
+          <h3 class="aos-flash-title" id="aos-flash-title-{{ section.id }}">Buscando la mejor oferta de hoy…</h3>
+        </div>
+        <div class="aos-countdown" id="aos-countdown-{{ section.id }}">
+          <div class="aos-cd-cell"><div class="aos-cd-n" id="aos-cd-h">00</div><div class="aos-cd-u">Hrs</div></div>
+          <div class="aos-cd-cell"><div class="aos-cd-n" id="aos-cd-m">00</div><div class="aos-cd-u">Min</div></div>
+          <div class="aos-cd-cell"><div class="aos-cd-n" id="aos-cd-s">00</div><div class="aos-cd-u">Sec</div></div>
+        </div>
+        <a class="aos-flash-cta" href="#" id="aos-flash-link-{{ section.id }}">Obtener Oferta →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero Header -->
+  <div class="aos-hero" id="aos-hero-{{ section.id }}">
+    <!-- Dynamic diagonal watermarks -->
+    <div class="aos-hero-watermark watermark-1">SALE</div>
+    <div class="aos-hero-watermark watermark-2">SALE</div>
+    
+    <div class="aos-container">
+      <div class="aos-hero-inner">
+
+        <div class="aos-hero-left">
+          <span class="aos-hero-kicker">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="margin-right:6.5px;vertical-align:-1px"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"/></svg>Ofertas de Tiempo Limitado
+          </span>
+          
+          <h1 class="aos-hero-title">
+            <span class="aos-title-light">HASTA</span>
+            <span class="aos-title-row">
+              <span class="aos-title-bold-gradient" id="aos-hero-max-pct-title-{{ section.id }}">70%</span>
+              <span class="aos-title-off">OFF</span>
+            </span>
+          </h1>
+          
+          <p class="aos-hero-sub">Miles de productos con descuentos <span class="aos-highlight">exclusivos</span> en todas las colecciones.</p>
+          
+          <!-- Countdown Timer Widget -->
+          <div class="aos-timer-widget">
+            <div class="aos-tw-label">TERMINA EN:</div>
+            <div class="aos-tw-grid">
+              <div class="aos-tw-cell">
+                <div class="aos-tw-n" id="aos-ht-d">12</div>
+                <div class="aos-tw-u">Días</div>
+              </div>
+              <span class="aos-tw-sep">:</span>
+              <div class="aos-tw-cell">
+                <div class="aos-tw-n" id="aos-ht-h">04</div>
+                <div class="aos-tw-u">Horas</div>
+              </div>
+              <span class="aos-tw-sep">:</span>
+              <div class="aos-tw-cell">
+                <div class="aos-tw-n" id="aos-ht-m">21</div>
+                <div class="aos-tw-u">Min</div>
+              </div>
+              <span class="aos-tw-sep">:</span>
+              <div class="aos-tw-cell">
+                <div class="aos-tw-n" id="aos-ht-s">43</div>
+                <div class="aos-tw-u">Seg</div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Hero Actions -->
+          <div class="aos-hero-actions">
+            <a href="#aos-tabs-{{ section.id }}" class="aos-btn-primary scroll-to-offers">
+              <span>VER OFERTAS</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+            <button class="aos-btn-secondary scroll-to-offers" data-target="saldos">
+              <span>EXPLORAR SALDOS</span>
+            </button>
+          </div>
+          
+          <!-- Metrics Display horizontal/grid pane inside hero left bottom -->
+          <div class="aos-hero-metrics-pane">
+            <div class="aos-metric-cell">
+              <div class="aos-mc-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+              </div>
+              <div class="aos-mc-info">
+                <div class="aos-mc-val">{{ sale_col.all_products_count }}+</div>
+                <div class="aos-mc-lbl">Productos en oferta</div>
+              </div>
+            </div>
+            <div class="aos-metric-sep"></div>
+            <div class="aos-metric-cell">
+              <div class="aos-mc-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/></svg>
+              </div>
+              <div class="aos-mc-info">
+                <div class="aos-mc-val" id="aos-hero-metric-pct-{{ section.id }}">70%</div>
+                <div class="aos-mc-lbl">De descuento</div>
+              </div>
+            </div>
+            <div class="aos-metric-sep"></div>
+            <div class="aos-metric-cell">
+              <div class="aos-mc-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"/></svg>
+              </div>
+              <div class="aos-mc-info">
+                <div class="aos-mc-val">48 hrs</div>
+                <div class="aos-mc-lbl">Ofertas flash</div>
+              </div>
+            </div>
+            <div class="aos-metric-sep"></div>
+            <div class="aos-metric-cell">
+              <div class="aos-mc-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              </div>
+              <div class="aos-mc-info">
+                <div class="aos-mc-val">Compra segura</div>
+                <div class="aos-mc-lbl">Garantía y devoluciones</div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+
+        <div class="aos-hero-center">
+          <img src="{{ 'aylesva-deals-hero-bg.png' | asset_url }}" class="aos-hero-model-img" alt="Campaña Aylesva">
+          <!-- Floating Gold Circular Badge inside the center block -->
+          <div class="aos-floating-badge">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-bottom: 4px;"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            <span class="aos-fb-title">ÚLTIMAS</span>
+            <span class="aos-fb-title">PIEZAS</span>
+          </div>
+        </div>
+
+        <div class="aos-hero-right">
+          <div class="aos-hero-minigrid" id="aos-hero-minigrid-{{ section.id }}" style="display:none"></div>
+          <div class="aos-hero-carousel" id="aos-hero-carousel-{{ section.id }}" style="display:none">
+            <div class="aos-hero-track-wrapper">
+              <div class="aos-hero-track" id="aos-hero-track-{{ section.id }}"></div>
+            </div>
+            <div class="aos-hero-dots" id="aos-hero-dots-{{ section.id }}"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Value Propositions ribbon directly beneath .aos-hero -->
+  <div class="aos-value-props-bar">
+    <div class="aos-container">
+      <div class="aos-vp-inner">
+        <div class="aos-vp-cell">
+          <svg class="aos-vp-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="3" width="15" height="13" rx="2" ry="2"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          <div class="aos-vp-text">
+            <span class="aos-vp-title">ENVÍO GRATIS</span>
+            <span class="aos-vp-sub">En compras +$899</span>
+          </div>
+        </div>
+        <div class="aos-vp-divider"></div>
+        <div class="aos-vp-cell">
+          <svg class="aos-vp-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+          <div class="aos-vp-text">
+            <span class="aos-vp-title">DEVOLUCIONES FÁCILES</span>
+            <span class="aos-vp-sub">Hasta 30 días</span>
+          </div>
+        </div>
+        <div class="aos-vp-divider"></div>
+        <div class="aos-vp-cell">
+          <svg class="aos-vp-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <div class="aos-vp-text">
+            <span class="aos-vp-title">PAGOS SEGUROS</span>
+            <span class="aos-vp-sub">Compra con confianza</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Category tabs sticky bar -->
+  <div class="aos-tabs-bar">
+    <div class="aos-tabs-carousel" id="aos-carousel-{{ section.id }}">
+      <button class="aos-carousel-arrow aos-carousel-prev" id="aos-prev-{{ section.id }}" aria-label="Scroll left" disabled>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="aos-tabs-track">
+        <div class="aos-tabs" id="aos-tabs-{{ section.id }}">
+          <button class="aos-tab active" data-cat="all">
+            <span class="aos-tab-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></span>
+            <span>Todas las Ofertas</span>
+            <span class="aos-tab-ct" id="aos-tab-ct-all">{{ sale_col.all_products_count }}</span>
+          </button>
+        </div>
+      </div>
+      <button class="aos-carousel-arrow aos-carousel-next" id="aos-next-{{ section.id }}" aria-label="Scroll right" disabled>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="aos-container">
+
+    <!-- Filters and sorting Toolbar -->
+    <div class="aos-toolbar">
+      <div class="aos-toolbar-left">
+        <span class="aos-results-txt"><b id="aos-count-{{ section.id }}">—</b> ofertas encontradas</span>
+      </div>
+      <div class="aos-toolbar-right">
+        <button class="aos-filter-btn-mobile" id="aos-filter-open-{{ section.id }}">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
+          Filtros
+        </button>
+        <div class="aos-tiers" id="aos-tiers-{{ section.id }}">
+          <button class="aos-tier active" data-tier="all">Todos</button>
+          <button class="aos-tier" data-tier="50plus">50%+ de Desc.</button>
+          <button class="aos-tier" data-tier="30to49">30% a 49%</button>
+          <button class="aos-tier" data-tier="under30">Menos del 30%</button>
+        </div>
+        <select class="aos-sort" id="aos-sort-{{ section.id }}" aria-label="Ordenar ofertas">
+          <option value="pct-desc">Mayor Descuento</option>
+          <option value="price-asc">Precio: Bajo a Alto</option>
+          <option value="price-desc">Precio: Alto a Bajo</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Mobile filter drawer overlay & drawer -->
+    <div class="aos-filter-overlay" id="aos-overlay-{{ section.id }}"></div>
+    <div class="aos-filter-drawer" id="aos-drawer-{{ section.id }}">
+      <div class="aos-drawer-header">
+        <span class="aos-drawer-title">Filtros</span>
+        <button class="aos-drawer-close" id="aos-filter-close-{{ section.id }}" aria-label="Cerrar filtros">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="aos-filter-group">
+        <h4 class="aos-filter-h">Descuento Mínimo</h4>
+        <div class="aos-disc-chips" id="aos-drawer-disc-{{ section.id }}">
+          <button class="aos-disc-chip active" data-min="0">Todos</button>
+          <button class="aos-disc-chip" data-min="70">70%+</button>
+          <button class="aos-disc-chip" data-min="50">50%+</button>
+          <button class="aos-disc-chip" data-min="30">30%+</button>
+          <button class="aos-disc-chip" data-min="10">10%+</button>
+        </div>
+      </div>
+      <div class="aos-filter-group">
+        <h4 class="aos-filter-h">Precio (Rango en MXN)</h4>
+        <div class="aos-price-range">
+          <input class="aos-price-input" type="number" id="aos-pmin2-{{ section.id }}" placeholder="Mín">
+          <span class="aos-price-sep">—</span>
+          <input class="aos-price-input" type="number" id="aos-pmax2-{{ section.id }}" placeholder="Máx">
+        </div>
+      </div>
+      <div class="aos-filter-group">
+        <h4 class="aos-filter-h">Filtrar por Categoría</h4>
+        <div id="aos-drawer-cats-{{ section.id }}"></div>
+      </div>
+    </div>
+
+    <!-- Main Sidebar + Grid Layout -->
+    <div class="aos-main" id="aos-main-{{ section.id }}">
+
+      <!-- Sidebar filters (Desktop only) -->
+      <aside class="aos-sidebar">
+        <div class="aos-filter-group">
+          <h4 class="aos-filter-h">Descuento Mínimo</h4>
+          <div class="aos-disc-chips">
+            <button class="aos-disc-chip active" data-min="0">Todos</button>
+            <button class="aos-disc-chip" data-min="70">70%+</button>
+            <button class="aos-disc-chip" data-min="50">50%+</button>
+            <button class="aos-disc-chip" data-min="30">30%+</button>
+            <button class="aos-disc-chip" data-min="10">10%+</button>
+          </div>
+        </div>
+        <div class="aos-filter-group">
+          <h4 class="aos-filter-h">Precio (MXN)</h4>
+          <div class="aos-price-range">
+            <input class="aos-price-input" type="number" id="aos-pmin-{{ section.id }}" placeholder="Mín">
+            <span class="aos-price-sep">—</span>
+            <input class="aos-price-input" type="number" id="aos-pmax-{{ section.id }}" placeholder="Máx">
+          </div>
+        </div>
+        <div class="aos-filter-group">
+          <h4 class="aos-filter-h">Categorías</h4>
+          <div id="aos-side-cats-{{ section.id }}"></div>
+        </div>
+      </aside>
+
+      <!-- Main Products Display Area -->
+      <div class="aos-grid-wrap">
+        <!-- Interactive loader state -->
+        <div class="aos-loading" id="aos-loading-{{ section.id }}">
+          <div class="aos-spinner"></div>
+          <p>Buscando ofertas extraordinarias...</p>
+        </div>
+        <!-- Grid layout container -->
+        <div class="aos-grid" id="aos-grid-{{ section.id }}" style="display:none"></div>
+        <!-- Empty results placeholder -->
+        <div class="aos-empty" id="aos-empty-{{ section.id }}" style="display:none">
+          <div class="aos-empty-icon">🔍</div>
+          <p>No se encontraron ofertas que coincidan con estos filtros</p>
+          <button class="aos-reset-btn" id="aos-reset-{{ section.id }}">Limpiar Filtros</button>
+        </div>
+        <!-- Modern numbered paginator -->
+        <div class="aos-pagination" id="aos-pag-{{ section.id }}" style="display:none"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Carrusel Elegante "Productos Más Vendidos" -->
+  {%- assign carousel_col = collections[section.settings.carousel_collection] -%}
+  {%- if carousel_col == blank or carousel_col.all_products_count == 0 -%}
+    {%- assign carousel_col = collections['on-sale'] -%}
+  {%- endif -%}
+  {%- if carousel_col == blank or carousel_col.all_products_count == 0 -%}
+    {%- assign carousel_col = collections['all'] -%}
+  {%- endif -%}
+
+  <div class="aos-carousel-section" id="aos-carousel-section-{{ section.id }}">
+    <div class="aos-container">
+      <div class="aos-carousel-header">
+        <h2 class="aos-carousel-heading">PRODUCTOS MÁS VENDIDOS</h2>
+        <a href="{{ carousel_col.url | default: '#' }}" class="aos-carousel-view-all">Ver más productos &rarr;</a>
+      </div>
+      
+      <div class="aos-carousel-wrapper">
+        <!-- Floating Navigation Arrows -->
+        <button class="aos-carousel-nav aos-nav-prev" id="aos-nav-prev-{{ section.id }}" aria-label="Anterior">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        </button>
+        <button class="aos-carousel-nav aos-nav-next" id="aos-nav-next-{{ section.id }}" aria-label="Siguiente">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+        
+        <div class="aos-carousel-track" id="aos-track-{{ section.id }}">
+          {%- for product in carousel_col.products limit: 12 -%}
+            {%- assign current_variant = product.selected_or_first_available_variant -%}
+            
+            <!-- Dynamic discount percentage calculation -->
+            {%- assign best_discount = 0 -%}
+            {%- for variant in product.variants -%}
+              {%- if variant.compare_at_price > variant.price -%}
+                {%- assign diff = variant.compare_at_price | minus: variant.price -%}
+                {%- assign pct = diff | times: 100 | divided_by: variant.compare_at_price -%}
+                {%- if pct > best_discount -%}
+                  {%- assign best_discount = pct -%}
+                {%- endif -%}
+              {%- endif -%}
+            {%- endfor -%}
+            
+            <div class="aos-carousel-card{% if product.images[1] %} has-hover-image{% endif %}" data-product-id="{{ product.id }}">
+              <div class="aos-card-header">
+                <button class="aos-card-wishlist" aria-label="Agregar a favoritos" data-id="{{ product.id }}">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="heart-outline"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="heart-filled"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                </button>
+              </div>
+              
+              <a href="{{ product.url }}" class="aos-card-media">
+                {%- if product.featured_image -%}
+                  <img src="{{ product.featured_image | img_url: '400x400' }}" alt="{{ product.title | escape }}" loading="lazy" class="aos-card-img aos-card-img-primary">
+                  {%- if product.images[1] -%}
+                    <img src="{{ product.images[1] | img_url: '400x400' }}" alt="{{ product.title | escape }}" loading="lazy" class="aos-card-img-hover">
+                  {%- endif -%}
+                {%- else -%}
+                  <div class="aos-card-placeholder">Aylesva</div>
+                {%- endif -%}
+              </a>
+              
+              <div class="aos-card-details">
+                <a href="{{ product.url }}" class="aos-card-title-link">
+                  <h3 class="aos-card-name">{{ product.title }}</h3>
+                </a>
+                
+                <div class="aos-card-price-row">
+                  {%- assign sale_price_clean = product.price | money_without_trailing_zeros | replace: '$ ', '$' | replace: '$', '' -%}
+                  <span class="aos-card-sale-price"><span class="aos-currency">$</span>{{ sale_price_clean }}</span>
+                  {%- if product.compare_at_price > product.price -%}
+                    {%- assign compare_price_clean = product.compare_at_price | money_without_trailing_zeros | replace: '$ ', '$' | replace: '$', '' -%}
+                    <span class="aos-card-compare-price"><span class="aos-currency">$</span>{{ compare_price_clean }}</span>
+                    {%- if best_discount > 0 -%}
+                      <span class="aos-card-discount-inline">-{{ best_discount }}% OFF</span>
+                    {%- endif -%}
+                  {%- endif -%}
+                </div>
+                
+                <!-- Variants Swatches panel -->
+                <div class="aos-card-swatches">
+                  {%- for option in product.options_with_values -%}
+                    {%- assign option_name_lower = option.name | downcase -%}
+                    
+                    {%- if option_name_lower contains 'talla' or option_name_lower contains 'talle' or option_name_lower contains 'size' or option_name_lower contains 'medida' -%}
+                      <div class="aos-swatches-group group-size">
+                        {%- for val in option.values limit: 5 -%}
+                          <span class="aos-swatch swatch-size" title="{{ val | escape }}">{{ val }}</span>
+                        {%- endfor -%}
+                      </div>
+                    {%- elsif option_name_lower contains 'color' or option_name_lower contains 'tono' or option_name_lower contains 'colour' or option_name_lower contains 'tonalidad' -%}
+                      <div class="aos-swatches-group group-color">
+                        {%- for val in option.values limit: 5 -%}
+                          {%- assign color_hex = '#eee' -%}
+                          {%- assign val_lower = val | downcase -%}
+                          {%- if val_lower contains 'negro' or val_lower contains 'black' -%}
+                            {%- assign color_hex = '#111' -%}
+                          {%- elsif val_lower contains 'blanco' or val_lower contains 'white' -%}
+                            {%- assign color_hex = '#fff; border: 1px solid #ccc' -%}
+                          {%- elsif val_lower contains 'gris' or val_lower contains 'gray' or val_lower contains 'grey' -%}
+                            {%- assign color_hex = '#888' -%}
+                          {%- elsif val_lower contains 'marron' or val_lower contains 'marrón' or val_lower contains 'cafe' or val_lower contains 'café' or val_lower contains 'brown' -%}
+                            {%- assign color_hex = '#7c5230' -%}
+                          {%- elsif val_lower contains 'beige' or val_lower contains 'crema' or val_lower contains 'cream' -%}
+                            {%- assign color_hex = '#e1d9ca' -%}
+                          {%- elsif val_lower contains 'azul' or val_lower contains 'blue' -%}
+                            {%- assign color_hex = '#1f3b68' -%}
+                          {%- elsif val_lower contains 'rojo' or val_lower contains 'red' -%}
+                            {%- assign color_hex = '#9e1c1c' -%}
+                          {%- elsif val_lower contains 'verde' or val_lower contains 'green' -%}
+                            {%- assign color_hex = '#1b6b45' -%}
+                          {%- elsif val_lower contains 'rosa' or val_lower contains 'pink' -%}
+                            {%- assign color_hex = '#ffc0cb' -%}
+                          {%- elsif val_lower contains 'oro' or val_lower contains 'dorado' or val_lower contains 'gold' -%}
+                            {%- assign color_hex = '#d4af37' -%}
+                          {%- else -%}
+                            {%- assign color_hex = val_lower -%}
+                          {%- endif -%}
+                          <span class="aos-swatch swatch-color" style="background-color: {{ color_hex }}" title="{{ val | escape }}"></span>
+                        {%- endfor -%}
+                      </div>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </div>
+                
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Barra Negra Promocional -->
+  {%- if section.settings.show_promo_bar -%}
+    <div class="aos-promo-bar" id="aos-promo-bar-{{ section.id }}">
+      <div class="aos-container">
+        <div class="aos-pb-grid">
+          
+          <!-- Column 1: Descuento -->
+          <div class="aos-pb-col">
+            <div class="aos-pb-icon">
+              <!-- Tag Icon SVG -->
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+                <line x1="7" y1="7" x2="7.01" y2="7"></line>
+              </svg>
+            </div>
+            <div class="aos-pb-text">
+              <span class="aos-pb-title">{{ section.settings.pb_title_1 | default: 'Hasta 70% de descuento' }}</span>
+              <span class="aos-pb-subtitle">{{ section.settings.pb_sub_1 | default: 'en productos seleccionados' }}</span>
+            </div>
+          </div>
+          
+          <!-- Column 2: Envío Gratis -->
+          <div class="aos-pb-col">
+            <div class="aos-pb-icon">
+              <!-- Truck Icon SVG -->
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="1" y="3" width="15" height="13" rx="2" ry="2"></rect>
+                <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                <circle cx="18.5" cy="18.5" r="2.5"></circle>
+              </svg>
+            </div>
+            <div class="aos-pb-text">
+              <span class="aos-pb-title">{{ section.settings.pb_title_2 | default: 'Envío gratis' }}</span>
+              <span class="aos-pb-subtitle">{{ section.settings.pb_sub_2 | default: 'en compras +$899' }}</span>
+            </div>
+          </div>
+          
+          <!-- Column 3: Pagos Seguros -->
+          <div class="aos-pb-col">
+            <div class="aos-pb-icon">
+              <!-- Shield/Security Icon SVG -->
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+            </div>
+            <div class="aos-pb-text">
+              <span class="aos-pb-title">{{ section.settings.pb_title_3 | default: 'Pagos seguros' }}</span>
+              <span class="aos-pb-subtitle">{{ section.settings.pb_sub_3 | default: 'Compra con confianza' }}</span>
+            </div>
+          </div>
+          
+          <!-- Column 4: Devoluciones -->
+          <div class="aos-pb-col">
+            <div class="aos-pb-icon">
+              <!-- Clock and Return Arrow Icon SVG -->
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21.5 2v6h-6"></path>
+                <path d="M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path>
+              </svg>
+            </div>
+            <div class="aos-pb-text">
+              <span class="aos-pb-title">{{ section.settings.pb_title_4 | default: 'Devoluciones fáciles' }}</span>
+              <span class="aos-pb-subtitle">{{ section.settings.pb_sub_4 | default: 'Hasta 30 días' }}</span>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  {%- endif -%}
+
+</div>
+
+<style>
+:root {
+  --aos-ink: #111111;         /* Deep high-fashion black */
+  --aos-ink2: #4a4a4a;        /* Elegant gray subheadings */
+  --aos-ink3: #8e8e8e;        /* Clean light gray metadata */
+  --aos-line: #e2dfda;        /* Subtle warm line separator */
+  --aos-paper: #faf8f6;       /* Warm luxurious sand paper background */
+  --aos-paper2: #f3f0ea;      /* Darker luxurious accent paper */
+  --aos-card: #ffffff;        /* Crisp high-fashion white background */
+  --aos-green: #C5A47E;       /* Signature luxury gold / ochre */
+  --aos-green2: #B2916C;      /* Supporting warm sand gradient accent */
+  --aos-accent: #C5A47E;      /* Bright gold branding elements */
+  --aos-red: #9e1c1c;         /* Luxury ruby-red for tags and high discounts */
+  --aos-r: 4px;               /* Minimal high-fashion sharp roundings */
+  --aos-r-lg: 8px;            /* Sleek elegant rounded corners */
+  --aos-r-xl: 12px;           /* Smooth modern border radius for cards */
+}
+
+.aos-page * { box-sizing: border-box; }
+.aos-page { font-family: 'DM Sans', system-ui, sans-serif; color: var(--aos-ink); background: var(--aos-paper); }
+.aos-container { max-width: 1440px; margin: 0 auto; padding: 0 32px; }
+
+/* Flash Deal Bar */
+.aos-flash {
+  background: var(--aos-ink);
+  color: #fff;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.aos-flash-inner {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.aos-flash-bolt {
+  width: 44px; height: 44px;
+  background: var(--aos-accent);
+  border-radius: var(--aos-r-lg);
+  display: grid; place-items: center;
+  color: #111;
+  flex-shrink: 0;
+  transform: rotate(-4deg);
+}
+.aos-flash-copy { flex: 1; min-width: 240px; }
+.aos-flash-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--aos-accent);
+  margin-bottom: 2px;
+}
+.aos-flash-title {
+  margin: 0;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 19px; font-weight: 700;
+  line-height: 1.25; letter-spacing: -0.01em;
+}
+.aos-flash-title span { color: var(--aos-accent); }
+.aos-countdown { display: flex; gap: 8px; }
+.aos-cd-cell {
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: var(--aos-r);
+  padding: 6px 10px;
+  min-width: 54px;
+  text-align: center;
+}
+.aos-cd-n {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 20px; font-weight: 700; line-height: 1;
+  font-variant-numeric: tabular-nums;
+  color: #ffffff;
+}
+.aos-cd-u { font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.6; margin-top: 3px; }
+.aos-flash-cta {
+  background: #ffffff; color: var(--aos-ink);
+  padding: 12px 24px;
+  border-radius: var(--aos-r);
+  font-weight: 700; font-size: 13.5px;
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+  border: 1px solid #ffffff;
+}
+.aos-flash-cta:hover { background: transparent; color: #ffffff; border-color: rgba(255,255,255,0.4); }
+
+/* Hero Banner */
+.aos-hero {
+  background-color: #090909;
+  background-image: radial-gradient(circle at 50% 30%, rgba(197, 164, 126, 0.12) 0%, transparent 55%),
+                    radial-gradient(circle at 25% 75%, rgba(197, 164, 126, 0.05) 0%, transparent 45%);
+  padding: 24px 0 20px;
+  color: #fff;
+  overflow: hidden;
+  position: relative;
+  border-bottom: none;
+}
+.aos-hero-watermark {
+  position: absolute;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 15vw;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.015);
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.025);
+  pointer-events: none;
+  z-index: 1;
+  user-select: none;
+}
+.aos-hero-watermark.watermark-1 {
+  top: 5%;
+  left: 45%;
+  transform: rotate(-12deg);
+}
+.aos-hero-watermark.watermark-2 {
+  bottom: 5%;
+  left: 35%;
+  transform: rotate(-12deg);
+}
+.aos-hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 0.8fr 1.4fr;
+  gap: 32px;
+  align-items: center;
+}
+.aos-hero-left {
+  flex: 1.2;
+  min-width: 0;
+  position: relative;
+  z-index: 10;
+}
+.aos-hero-kicker {
+  display: inline-flex;
+  align-items: center;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  background: rgba(197, 164, 126, 0.08);
+  border: 1px solid rgba(197, 164, 126, 0.35);
+  color: #C5A47E;
+  padding: 6px 14px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+@keyframes pulseGlow {
+  0%, 100% { border-color: rgba(197, 164, 126, 0.35); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25); }
+  50% { border-color: rgba(197, 164, 126, 0.7); box-shadow: 0 4px 20px rgba(197, 164, 126, 0.2); }
+}
+.aos-hero-title {
+  margin: 0 0 8px;
+  line-height: 1.0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.aos-title-light {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(13px, 1.8vw, 18px);
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  color: #ffffff;
+  line-height: 1;
+}
+.aos-title-row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+.aos-title-bold-gradient {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(40px, 6vw, 68px);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 0.85;
+  background: linear-gradient(135deg, #FAF8F6 0%, #C5A47E 40%, #B2916C 70%, #FAF8F6 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  animation: goldShimmer 6s linear infinite;
+}
+.aos-title-off {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(18px, 3vw, 36px);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+  line-height: 1;
+}
+@keyframes goldShimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.aos-hero-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 0 16px;
+  font-weight: 400;
+  max-width: 400px;
+  line-height: 1.4;
+}
+.aos-hero-sub .aos-highlight {
+  color: #C5A47E;
+  font-weight: 600;
+}
+
+/* Countdown Timer */
+.aos-timer-widget {
+  margin-bottom: 16px;
+}
+.aos-tw-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 8px;
+}
+.aos-tw-grid {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.aos-tw-cell {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  padding: 5px 10px;
+  min-width: 48px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  transition: border-color 0.3s;
+}
+.aos-tw-cell:hover {
+  border-color: rgba(197, 164, 126, 0.4);
+}
+.aos-tw-n {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+  color: #ffffff;
+  font-variant-numeric: tabular-nums;
+}
+.aos-tw-u {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 7px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.4);
+  margin-top: 1px;
+}
+.aos-tw-sep {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.25);
+  line-height: 1;
+  animation: blinkDots 1s infinite;
+}
+@keyframes blinkDots {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* Dual Buttons */
+.aos-hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.aos-btn-primary {
+  background: linear-gradient(135deg, #C5A47E 0%, #B2916C 100%);
+  color: #090909;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 10px 18px;
+  border-radius: 4px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 15px rgba(197, 164, 126, 0.25);
+  border: none;
+  cursor: pointer;
+}
+.aos-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(197, 164, 126, 0.4);
+  background: linear-gradient(135deg, #FAF8F6 0%, #C5A47E 100%);
+}
+.aos-btn-primary svg {
+  transition: transform 0.3s ease;
+}
+.aos-btn-primary:hover svg {
+  transform: translateX(4px);
+}
+.aos-btn-secondary {
+  background: transparent;
+  color: #ffffff;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 9px 18px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.aos-btn-secondary:hover {
+  border-color: #C5A47E;
+  color: #C5A47E;
+  background: rgba(197, 164, 126, 0.05);
+  transform: translateY(-2px);
+}
+
+/* Metrics Display Horizonal Pane */
+.aos-hero-metrics-pane {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 8px 12px;
+  backdrop-filter: blur(12px);
+  max-width: 560px;
+  position: relative;
+  z-index: 10;
+}
+.aos-metric-cell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.aos-mc-icon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(197, 164, 126, 0.1);
+  color: #C5A47E;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.aos-mc-icon svg {
+  width: 12px;
+  height: 12px;
+}
+.aos-mc-info {
+  display: flex;
+  flex-direction: column;
+}
+.aos-mc-val {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: #C5A47E;
+  line-height: 1.2;
+}
+.aos-mc-lbl {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 8px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.55);
+  margin-top: 1px;
+  line-height: 1.2;
+}
+.aos-metric-sep {
+  width: 1px;
+  height: 16px;
+  background: rgba(255, 255, 255, 0.08);
+  align-self: center;
+  margin: 0 auto;
+}
+
+/* Columns and Carousel styling */
+.aos-hero-center {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 330px;
+  overflow: visible;
+  z-index: 5;
+}
+.aos-hero-model-img {
+  max-height: 100%;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  z-index: 2;
+  filter: drop-shadow(0 10px 30px rgba(0,0,0,0.6));
+}
+.aos-hero-center .aos-floating-badge {
+  position: absolute;
+  top: 15%;
+  right: 5%;
+  z-index: 15;
+}
+.aos-hero-right {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+}
+/* Hero Mini-Grid */
+.aos-hero-minigrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  flex: 1.2;
+  width: 100%;
+  max-width: 280px;
+}
+.aos-hero-mini {
+  position: relative;
+  display: block;
+  aspect-ratio: 1 / 1;
+  border-radius: 12px;
+  border: 1px solid rgba(197, 164, 126, 0.12);
+  background: #ffffff;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.aos-hero-mini:hover {
+  transform: translateY(-4px);
+  border-color: rgba(197, 164, 126, 0.4);
+  box-shadow: 0 12px 32px rgba(197, 164, 126, 0.25);
+}
+.aos-hero-mini img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 8px;
+  display: block;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.aos-hero-mini:hover img {
+  transform: scale(1.08);
+}
+.aos-hero-mini-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(9, 9, 9, 0.05), transparent);
+  pointer-events: none;
+  z-index: 2;
+}
+.aos-hero-mini-badge {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  background: var(--aos-accent);
+  color: #090909;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 10px;
+  padding: 3px 7px;
+  border-radius: 4px;
+  z-index: 5;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  letter-spacing: 0.02em;
+}
+.aos-hero-carousel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  flex: 1;
+  max-width: 240px;
+}
+.aos-hero-track-wrapper {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
+}
+.aos-hero-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.aos-hero-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(15px) scale(0.95);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(197, 164, 126, 0.12);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 12px;
+  overflow: hidden;
+  text-decoration: none;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+.aos-hero-card.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+  z-index: 5;
+}
+.aos-hero-card.aos-hc-hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-15px) scale(0.95);
+}
+.aos-hero-card.aos-hc-prev-hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(15px) scale(0.95);
+}
+.aos-hero-card-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: var(--aos-red, #9e1c1c);
+  color: #ffffff;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  letter-spacing: 0.05em;
+}
+.aos-hero-card-img {
+  width: 100%;
+  height: 160px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+.aos-hero-card-img img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.aos-hero-card:hover .aos-hero-card-img img {
+  transform: scale(1.05);
+}
+.aos-hero-card-body {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+  background: rgba(9, 9, 9, 0.4);
+}
+.aos-hero-card-brand {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 8px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.aos-hero-card-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  color: #FAF8F6;
+  margin: 0;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 2.6em;
+}
+.aos-hero-card-prices {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-top: auto;
+}
+.aos-hero-card-price {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #C5A47E;
+}
+.aos-hero-card-was {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.4);
+  text-decoration: line-through;
+}
+.aos-hero-dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 12px;
+}
+.aos-hero-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.aos-hero-dot.active {
+  background: #C5A47E;
+  transform: scale(1.3);
+  box-shadow: 0 0 8px rgba(197, 164, 126, 0.6);
+}
+.aos-floating-badge {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background: rgba(9, 9, 9, 0.85);
+  border: 2px solid #C5A47E;
+  box-shadow: 0 8px 32px rgba(197, 164, 126, 0.3), inset 0 0 16px rgba(197, 164, 126, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #C5A47E;
+  backdrop-filter: blur(8px);
+  animation: elegantFloat 4s ease-in-out infinite;
+  z-index: 15;
+  user-select: none;
+  cursor: default;
+}
+.aos-floating-badge svg {
+  width: 14px;
+  height: 14px;
+}
+.aos-fb-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 1.2;
+  text-align: center;
+}
+@keyframes elegantFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(2deg); }
+}
+
+/* Value Propositions Ribbon */
+.aos-value-props-bar {
+  background: #090909;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 10px 0;
+  color: #fff;
+  position: relative;
+  z-index: 5;
+}
+.aos-vp-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.aos-vp-cell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  justify-content: center;
+}
+.aos-vp-icon {
+  color: #C5A47E;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+}
+.aos-vp-text {
+  display: flex;
+  flex-direction: column;
+}
+.aos-vp-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #FAF8F6;
+  line-height: 1.2;
+}
+.aos-vp-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 2px;
+  line-height: 1.2;
+}
+.aos-vp-divider {
+  width: 1px;
+  height: 16px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive media overrides */
+@media (max-width: 1160px) {
+  .aos-hero-inner {
+    grid-template-columns: 1.3fr 1fr 1fr;
+    gap: 20px;
+  }
+  .aos-hero-center {
+    height: 300px;
+  }
+  .aos-hero-track-wrapper {
+    height: 260px;
+  }
+  .aos-hero-card-img {
+    height: 140px;
+  }
+}
+@media (max-width: 860px) {
+  .aos-hero {
+    background-image: radial-gradient(circle at 50% 30%, rgba(197, 164, 126, 0.12) 0%, transparent 60%),
+                      linear-gradient(rgba(9, 9, 9, 0.72), rgba(9, 9, 9, 0.9)),
+                      url("{{ 'aylesva-deals-hero-bg.png' | asset_url }}");
+    background-position: center center;
+    background-size: cover;
+    padding: 24px 0 18px;
+  }
+  .aos-hero-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 24px;
+  }
+  .aos-hero-center {
+    display: none !important;
+  }
+  .aos-hero-right {
+    display: none !important;
+  }
+  .aos-hero-metrics-pane {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 16px;
+  }
+  .aos-metric-sep {
+    display: none;
+  }
+  .aos-vp-inner {
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  .aos-vp-cell {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  .aos-vp-divider {
+    display: none;
+  }
+}
+@media (max-width: 580px) {
+  .aos-hero-metrics-pane {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+/* Category sticky tabs bar */
+.aos-tabs-bar {
+  background: var(--aos-card);
+  border-bottom: 1px solid var(--aos-line);
+  position: sticky; top: 0; z-index: 20;
+}
+.aos-tabs-carousel {
+  display: flex;
+  align-items: center;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 16px;
+  position: relative;
+}
+.aos-tabs-track {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+.aos-tabs-track::before,
+.aos-tabs-track::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 48px;
+  z-index: 2;
+  pointer-events: none;
+  transition: opacity .2s;
+}
+.aos-tabs-track::before {
+  left: 0;
+  background: linear-gradient(to right, var(--aos-card), transparent);
+}
+.aos-tabs-track::after {
+  right: 0;
+  background: linear-gradient(to left, var(--aos-card), transparent);
+}
+.aos-carousel-arrow {
+  flex: 0 0 auto;
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--aos-line);
+  background: var(--aos-card);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--aos-ink);
+  transition: all .2s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 3;
+  margin: 12px 4px;
+}
+.aos-carousel-arrow:hover:not(:disabled) { border-color: var(--aos-ink); background: var(--aos-paper); }
+.aos-carousel-arrow:disabled { opacity: 0.15; cursor: default; }
+.aos-tabs {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding: 12px 4px;
+  scroll-behavior: smooth;
+}
+.aos-tabs::-webkit-scrollbar { display: none; }
+.aos-tab {
+  flex: 0 0 auto;
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 20px;
+  border: 1px solid var(--aos-line);
+  border-radius: var(--aos-r);
+  background: var(--aos-card);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px; font-weight: 500;
+  color: var(--aos-ink2);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all .2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.aos-tab:hover { background: var(--aos-paper); border-color: var(--aos-ink3); color: var(--aos-ink); }
+.aos-tab.active { background: var(--aos-ink); color: #fff; border-color: var(--aos-ink); }
+.aos-tab-ico { display: inline-flex; align-items: center; opacity: 0.65; }
+.aos-tab.active .aos-tab-ico { opacity: 1; }
+.aos-tab-ct {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px; font-weight: 600;
+  color: var(--aos-ink3);
+  margin-left: 2px;
+}
+.aos-tab.active .aos-tab-ct { color: rgba(255,255,255,0.6); }
+
+/* Toolbar */
+.aos-toolbar {
+  display: flex; align-items: center;
+  justify-content: space-between;
+  gap: 16px; padding: 24px 0 16px;
+  flex-wrap: wrap;
+}
+.aos-results-txt { font-size: 14px; color: var(--aos-ink2); }
+.aos-results-txt b { color: var(--aos-ink); font-weight: 700; font-family: 'Space Grotesk', sans-serif; }
+.aos-toolbar-right { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.aos-tiers { display: flex; gap: 6px; flex-wrap: wrap; }
+.aos-tier {
+  padding: 8px 16px;
+  border: 1px solid var(--aos-line);
+  border-radius: var(--aos-r);
+  background: var(--aos-card);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px; font-weight: 500;
+  color: var(--aos-ink2);
+  cursor: pointer; transition: all .2s;
+}
+.aos-tier:hover { border-color: var(--aos-ink3); color: var(--aos-ink); }
+.aos-tier.active { background: var(--aos-green); color: #fff; border-color: var(--aos-green); }
+.aos-sort {
+  height: 38px;
+  border: 1px solid var(--aos-line);
+  background: var(--aos-card);
+  border-radius: var(--aos-r);
+  padding: 0 16px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px; color: var(--aos-ink);
+  cursor: pointer; outline: none;
+  transition: border-color 0.2s;
+}
+.aos-sort:focus { border-color: var(--aos-ink3); }
+
+/* Main layout grid */
+.aos-main {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 32px;
+  margin-bottom: 80px;
+  align-items: start;
+}
+
+/* Sidebar filtering widget */
+.aos-sidebar {
+  position: sticky;
+  top: 78px;
+  background: var(--aos-card);
+  border: 1px solid var(--aos-line);
+  border-radius: var(--aos-r-lg);
+  padding: 24px;
+}
+.aos-filter-group { padding: 18px 0; border-bottom: 1px solid var(--aos-line); }
+.aos-filter-group:first-child { padding-top: 0; }
+.aos-filter-group:last-child { border-bottom: none; padding-bottom: 0; }
+.aos-filter-h {
+  margin: 0 0 12px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--aos-ink);
+}
+.aos-disc-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.aos-disc-chip {
+  border: 1px solid var(--aos-line);
+  background: var(--aos-card);
+  border-radius: var(--aos-r);
+  padding: 6px 14px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12.5px; font-weight: 500;
+  color: var(--aos-ink2);
+  cursor: pointer; transition: all 0.2s;
+}
+.aos-disc-chip:hover { border-color: var(--aos-ink3); color: var(--aos-ink); }
+.aos-disc-chip.active { background: var(--aos-ink); color: #fff; border-color: var(--aos-ink); }
+.aos-price-range { display: flex; gap: 8px; align-items: center; }
+.aos-price-input {
+  width: 100%; height: 34px;
+  border: 1px solid var(--aos-line);
+  border-radius: var(--aos-r);
+  padding: 0 12px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px; background: var(--aos-paper);
+  color: var(--aos-ink); outline: none;
+  transition: all 0.2s;
+}
+.aos-price-input:focus { border-color: var(--aos-ink); background: #ffffff; }
+.aos-price-sep { color: var(--aos-ink3); font-size: 13px; flex-shrink: 0; }
+.aos-side-cat {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 8px 0; font-size: 13.5px; cursor: pointer;
+  color: var(--aos-ink2); border: none; background: none;
+  width: 100%; text-align: left;
+  font-family: 'DM Sans', sans-serif;
+  transition: color 0.2s;
+}
+.aos-side-cat:hover { color: var(--aos-green); }
+.aos-side-cat.active { color: var(--aos-green); font-weight: 600; }
+.aos-side-cat-inner { display: inline-flex; align-items: center; gap: 8px; }
+.aos-side-cat-inner svg { opacity: 0.55; flex-shrink: 0; transition: opacity 0.2s; }
+.aos-side-cat.active .aos-side-cat-inner svg,
+.aos-side-cat:hover .aos-side-cat-inner svg { opacity: 1; }
+.aos-side-ct { font-family: 'Space Grotesk', sans-serif; font-size: 11.5px; color: var(--aos-ink3); }
+
+/* Loader spinner state */
+.aos-loading { text-align: center; padding: 80px 24px; font-family: 'DM Sans', sans-serif; color: var(--aos-ink3); font-size: 14.5px; }
+.aos-spinner { width: 38px; height: 38px; border: 2.5px solid var(--aos-line); border-top-color: var(--aos-green); border-radius: 50%; animation: aos-spin .6s linear infinite; margin: 0 auto 16px; }
+@keyframes aos-spin { to { transform: rotate(360deg); } }
+
+/* Grid display */
+.aos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* Beautiful Premium Card styling */
+.aos-card {
+  background: var(--aos-card);
+  border-radius: var(--aos-r-lg);
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--aos-ink);
+  border: 1px solid var(--aos-line);
+  display: flex; flex-direction: column;
+  transition: all .3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.01);
+}
+.aos-card:hover {
+  border-color: var(--aos-ink3);
+  box-shadow: 0 10px 30px rgba(17,17,17,.06);
+  transform: translateY(-4px);
+}
+.aos-card-img {
+  position: relative;
+  aspect-ratio: 4/5;
+  background: #ffffff;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid var(--aos-line);
+}
+.aos-card-img img { width: 100%; height: 100%; object-fit: contain; object-position: center; display: block; transition: transform .4s cubic-bezier(0.16, 1, 0.3, 1); }
+.aos-card:hover .aos-card-img img { transform: scale(1.03); }
+.aos-initials {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 36px; font-weight: 700;
+  color: rgba(255,255,255,0.95);
+}
+.aos-pct-tag {
+  position: absolute; top: 12px; right: 12px;
+  background: var(--aos-accent); color: #111111;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700; font-size: 12px;
+  padding: 4px 9px; border-radius: var(--aos-r); z-index: 2;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.aos-pct-tag.red { background: var(--aos-red); color: #fff; }
+.aos-quick {
+  position: absolute; left: 12px; right: 12px; bottom: 12px;
+  background: var(--aos-ink); color: #ffffff;
+  border-radius: var(--aos-r); padding: 11px 16px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px; font-weight: 600;
+  text-align: center;
+  opacity: 0; transform: translateY(8px);
+  transition: all .25s cubic-bezier(0.16, 1, 0.3, 1); z-index: 2;
+}
+.aos-card:hover .aos-quick { opacity: 1; transform: translateY(0); }
+.aos-card-body { padding: 16px; flex: 1; display: flex; flex-direction: column; gap: 4px; }
+.aos-card-brand { font-family: 'Space Grotesk', sans-serif; font-size: 10px; font-weight: 700; color: var(--aos-ink3); text-transform: uppercase; letter-spacing: 0.1em; }
+.aos-card-title {
+  font-size: 13.5px; font-weight: 500; color: var(--aos-ink);
+  margin: 0; line-height: 1.4;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+  min-height: 2.8em;
+}
+.aos-card-prices { display: flex; align-items: baseline; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+.aos-sale-price {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700; font-size: 19px;
+  color: var(--aos-red); line-height: 1;
+}
+.aos-orig-price { font-size: 12.5px; color: var(--aos-ink3); text-decoration: line-through; }
+.aos-save-txt { font-size: 11px; font-weight: 600; color: var(--aos-green); flex-basis: 100%; margin-top: 2px; }
+
+/* Empty state design */
+.aos-empty { text-align: center; padding: 80px 24px; }
+.aos-empty-icon { font-size: 54px; margin-bottom: 16px; }
+.aos-empty p { font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 600; color: var(--aos-ink2); margin: 0 0 20px; }
+.aos-reset-btn {
+  padding: 12px 28px; border-radius: var(--aos-r);
+  background: var(--aos-ink); color: #fff;
+  border: none; font-family: 'DM Sans', sans-serif;
+  font-size: 13.5px; font-weight: 600; cursor: pointer;
+  transition: opacity 0.2s;
+}
+.aos-reset-btn:hover { opacity: 0.9; }
+
+/* Numbered modern pagination */
+.aos-pagination { display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 48px; padding-bottom: 24px; }
+.aos-pag-btn {
+  min-width: 38px; height: 38px; padding: 0 12px;
+  border: 1px solid var(--aos-line);
+  background: var(--aos-card);
+  border-radius: var(--aos-r);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13.5px; color: var(--aos-ink);
+  cursor: pointer; transition: all .2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.aos-pag-btn:hover:not(:disabled) { border-color: var(--aos-ink); color: var(--aos-ink); }
+.aos-pag-btn.active { background: var(--aos-ink); color: #fff; border-color: var(--aos-ink); }
+.aos-pag-btn:disabled { opacity: 0.2; cursor: not-allowed; }
+
+/* Editorial Newsletter Styling */
+.aos-newsletter { background: var(--aos-ink); color: #fff; padding: 64px 0; border-top: 1px solid rgba(255,255,255,0.08); }
+.aos-nl-inner {
+  display: grid; grid-template-columns: 1fr auto;
+  gap: 40px; align-items: center;
+}
+.aos-nl-inner h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 32px; font-weight: 700;
+  letter-spacing: -0.02em; margin: 0 0 8px;
+  color: #ffffff;
+}
+.aos-nl-inner p { margin: 0; color: rgba(255,255,255,.65); font-size: 14.5px; line-height: 1.5; }
+.aos-nl-form { display: flex; gap: 10px; }
+.aos-nl-input {
+  width: 320px; height: 50px;
+  border: 1px solid rgba(255,255,255,0.15); border-radius: var(--aos-r);
+  padding: 0 20px;
+  background: rgba(255,255,255,.05);
+  color: #fff; font-family: 'DM Sans', sans-serif; font-size: 14px;
+  outline: none;
+  transition: all 0.2s;
+}
+.aos-nl-input:focus { border-color: var(--aos-accent); background: rgba(255,255,255,0.08); }
+.aos-nl-input::placeholder { color: rgba(255,255,255,.4); }
+.aos-nl-btn {
+  height: 50px; border: 0; border-radius: var(--aos-r);
+  padding: 0 32px;
+  background: var(--aos-accent); color: #111111;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700; font-size: 14px; cursor: pointer;
+  transition: opacity 0.2s;
+}
+.aos-nl-btn:hover { opacity: 0.95; }
+
+/* Mobile filter drawer styling */
+.aos-filter-overlay {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 200;
+  backdrop-filter: blur(4px);
+}
+.aos-filter-overlay.open { display: block; }
+.aos-filter-drawer {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  background: var(--aos-card);
+  border-radius: 20px 20px 0 0;
+  padding: 8px 24px 40px;
+  max-height: 85vh;
+  overflow-y: auto;
+  transform: translateY(100%);
+  transition: transform .35s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 201;
+  box-shadow: 0 -10px 40px rgba(0,0,0,0.25);
+}
+.aos-filter-drawer.open { transform: translateY(0); }
+.aos-drawer-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--aos-line);
+  margin-bottom: 8px;
+  position: sticky; top: 0;
+  background: var(--aos-card);
+  z-index: 3;
+}
+.aos-drawer-title { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 17px; }
+.aos-drawer-close {
+  width: 32px; height: 32px; border-radius: 50%;
+  border: 1px solid var(--aos-line); background: none;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  color: var(--aos-ink);
+}
+.aos-filter-btn-mobile {
+  display: none;
+  align-items: center; gap: 8px;
+  padding: 8px 18px;
+  border: 1px solid var(--aos-line);
+  border-radius: var(--aos-r);
+  background: var(--aos-card);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px; font-weight: 600;
+  cursor: pointer; color: var(--aos-ink);
+}
+.aos-filter-btn-mobile svg { opacity: 0.75; }
+
+/* Responsive adjustments */
+@media (max-width: 1160px) {
+  .aos-main { grid-template-columns: 210px 1fr; gap: 24px; }
+  .aos-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .aos-hero-minigrid { display: none !important; }
+  .aos-hero-carousel { flex: 0 0 210px; }
+}
+@media (max-width: 860px) {
+  .aos-container { padding: 0 24px; }
+  .aos-main { grid-template-columns: 1fr; }
+  .aos-sidebar { display: none; }
+  .aos-filter-btn-mobile { display: inline-flex; }
+  .aos-grid { grid-template-columns: repeat(2, 1fr); }
+  .aos-hero-inner { display: flex; gap: 24px; flex-direction: column; align-items: flex-start; }
+  .aos-hero-carousel { display: none !important; }
+  .aos-hero-minigrid { display: none !important; }
+  .aos-hero-stats { display: inline-flex; width: 100%; justify-content: space-between; }
+  .aos-nl-inner { grid-template-columns: 1fr; gap: 24px; }
+  .aos-nl-form { flex-direction: column; }
+  .aos-nl-input { width: 100%; }
+  /* Compressed Flash Deal bar for mobile */
+  .aos-flash { padding: 12px 0; }
+  .aos-flash-inner { flex-wrap: nowrap; gap: 12px; align-items: center; }
+  .aos-flash-bolt { width: 36px; height: 36px; border-radius: var(--aos-r); flex-shrink: 0; }
+  .aos-flash-bolt svg { width: 18px; height: 18px; }
+  .aos-flash-copy { flex: 1; min-width: 0; }
+  .aos-flash-label { display: none; }
+  .aos-flash-title { font-size: 13.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .aos-countdown { gap: 4px; flex-shrink: 0; }
+  .aos-cd-cell { min-width: 40px; padding: 4px 6px; }
+  .aos-cd-n { font-size: 15px; }
+  .aos-cd-u { font-size: 8px; margin-top: 1px; }
+  .aos-flash-cta { padding: 8px 14px; font-size: 12px; flex-shrink: 0; }
+}
+@media (max-width: 580px) {
+  .aos-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .aos-toolbar { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .aos-toolbar-right { width: 100%; justify-content: space-between; }
+  .aos-tiers { display: none; } /* Hide secondary tiers filter to make room for mobile drawer button & sort */
+  /* Compact Hero for small viewports */
+  .aos-hero { padding: 20px 0 16px; }
+  .aos-card-body { padding: 12px; }
+  .aos-sale-price { font-size: 16.5px; }
+}
+
+/* Carrusel Elegante "Productos Más Vendidos" */
+.aos-carousel-section {
+  padding: 60px 0;
+  background: var(--aos-paper);
+}
+.aos-carousel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--aos-line);
+  padding-bottom: 16px;
+}
+.aos-carousel-heading {
+  margin: 0;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 21px; /* Slightly more refined scale */
+  font-weight: 500; /* Sleek, elegant weight matching luxury design studios */
+  letter-spacing: 0.08em; /* Generous letter spacing for editorial feel */
+  color: var(--aos-ink);
+  text-transform: uppercase;
+}
+.aos-carousel-view-all {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px; /* Sophisticated smaller uppercase size */
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: var(--aos-ink2); /* Elegant charcoal link */
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.25s ease;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+}
+.aos-carousel-view-all:hover {
+  color: var(--aos-green); /* Shimmering gold on hover */
+  border-bottom-color: var(--aos-green);
+}
+.aos-carousel-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+/* Floating Navigation Arrows - Extremely Minimalist matching Image 2 */
+.aos-carousel-nav {
+  position: absolute;
+  top: 38%; /* Vertically centered relative to the product image container rather than the whole card */
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--aos-ink);
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.aos-carousel-nav svg {
+  width: 28px;
+  height: 28px;
+  stroke-width: 1.5; /* Sleek and thin stroke matching Image 2 */
+}
+.aos-carousel-nav:hover {
+  color: var(--aos-green);
+  transform: translateY(-50%) scale(1.15);
+}
+.aos-carousel-nav:disabled {
+  opacity: 0.12;
+  cursor: default;
+  pointer-events: none;
+}
+.aos-nav-prev {
+  left: -32px;
+}
+.aos-nav-next {
+  right: -32px;
+}
+
+/* Carousel Track - Professional side-fading linear gradients */
+.aos-carousel-track {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none; /* Firefox */
+  padding: 8px 4px 16px; /* Added bottom padding for shadow breathability */
+  mask-image: linear-gradient(to right, transparent 0%, #000 3%, #000 97%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 3%, #000 97%, transparent 100%);
+}
+.aos-carousel-track::-webkit-scrollbar {
+  display: none; /* Safari/Chrome */
+}
+
+/* Carousel Card Styling - Elegant Transparent Columns matching Image 2 */
+.aos-carousel-card {
+  flex: 0 0 calc(16.666% - 16.666px); /* Shows exactly 6 cards on desktop screen */
+  min-width: 160px;
+  background: transparent;
+  border: none;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.aos-carousel-card:hover {
+  /* No box shadow or translation on card container itself to preserve Image 2 alignment */
+}
+
+/* Float header elements perfectly over media rounded container */
+.aos-card-header {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 5;
+}
+
+/* Crisp red solid rectangle badge for discount matching Image 2 */
+.aos-card-discount {
+  background: var(--aos-red);
+  color: #ffffff;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  padding: 4px 6px;
+  border-radius: 2px;
+  letter-spacing: 0.02em;
+}
+
+/* Sleek transparent heart button floating directly on image with no round white block background */
+.aos-card-wishlist {
+  background: transparent;
+  border: none;
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--aos-ink);
+  cursor: pointer;
+  box-shadow: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  margin-left: auto;
+  padding: 4px;
+  opacity: 0; /* Dynamic fade-in on card hover */
+}
+.aos-card-wishlist svg.heart-outline {
+  stroke-width: 1.2px !important;
+}
+.aos-card-wishlist:hover {
+  transform: scale(1.15);
+  color: var(--aos-red);
+}
+.aos-card-wishlist .heart-filled {
+  display: none;
+  color: var(--aos-red);
+}
+.aos-card-wishlist.active .heart-outline {
+  display: none;
+}
+.aos-card-wishlist.active .heart-filled {
+  display: block;
+}
+.aos-carousel-card:hover .aos-card-wishlist,
+.aos-card-wishlist.active {
+  opacity: 1;
+}
+
+/* Media Image Container - White soft-rounded box blending white product backgrounds perfectly */
+.aos-card-media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 4/5;
+  background: #ffffff;
+  border: none;
+  border-radius: var(--aos-r-lg);
+  overflow: hidden;
+  width: 100%;
+  padding: 14px; /* Generous elite breathing padding */
+  position: relative;
+  transition: box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.aos-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.aos-card-img-primary {
+  position: relative;
+  z-index: 1;
+  opacity: 1;
+}
+.aos-card-img-hover {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  width: calc(100% - 28px);
+  height: calc(100% - 28px);
+  object-fit: contain;
+  z-index: 2;
+  opacity: 0;
+  pointer-events: none;
+}
+.aos-carousel-card:hover .aos-card-media {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.05); /* Soft premium float shadow */
+}
+.aos-carousel-card:hover .aos-card-img-primary {
+  transform: scale(1.03);
+}
+.aos-carousel-card.has-hover-image:hover .aos-card-img-primary {
+  opacity: 0;
+}
+.aos-carousel-card:hover .aos-card-img-hover {
+  opacity: 1;
+  transform: scale(1.03);
+}
+.aos-card-placeholder {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  color: var(--aos-line);
+  font-size: 24px;
+}
+
+/* Card details positioned flat below the image container, perfectly aligned to its edges (0 padding on sides) */
+.aos-card-details {
+  padding: 16px 0 0 0; /* Expanded upper breathing padding for visual elegance */
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex-grow: 1;
+}
+.aos-card-title-link {
+  text-decoration: none;
+}
+.aos-card-name {
+  margin: 0;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px; /* Clean, compact, ultra-sophisticated size */
+  font-weight: 400; /* Sleek, non-bold matching Image 2 */
+  color: #222222; /* Polished deep charcoal */
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 2.7em;
+  transition: color 0.2s;
+}
+.aos-card-name:hover {
+  color: var(--aos-green);
+}
+.aos-card-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-top: 2px;
+  width: 100%;
+}
+.aos-currency {
+  font-size: 0.8em;
+  font-weight: 500;
+  color: inherit;
+  margin-right: 1px;
+}
+.aos-card-sale-price {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--aos-red);
+}
+.aos-card-compare-price {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 11px;
+  color: var(--aos-ink3);
+  text-decoration: line-through;
+  opacity: 0.65;
+}
+.aos-card-discount-inline {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--aos-red);
+  margin-left: auto; /* Push elegant red discount inline tag to the far right */
+  letter-spacing: 0.02em;
+}
+
+/* Variant Swatches - Extremely Clean Plain Text sizes and color circles matching Image 2 */
+.aos-card-swatches {
+  margin-top: auto;
+  padding-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-height: 20px;
+  width: 100%;
+}
+.aos-swatches-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.group-size {
+  display: flex;
+  flex-wrap: nowrap; /* Single-line prevention to avoid height desequilibrio */
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  gap: 10px;
+  width: 100%;
+  padding-bottom: 2px;
+  mask-image: linear-gradient(to right, #000 80%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, #000 80%, transparent 100%);
+}
+.group-size::-webkit-scrollbar {
+  display: none;
+}
+.aos-swatch {
+  transition: all 0.2s ease;
+}
+.swatch-size {
+  display: inline-block;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 10px; /* Perfect compact font sizing */
+  font-weight: 500;
+  color: var(--aos-ink2);
+  cursor: pointer;
+  text-transform: uppercase;
+  user-select: none;
+  flex-shrink: 0; /* Bulletproof non-shrink sizing swatches */
+}
+.swatch-size:hover {
+  color: var(--aos-ink);
+}
+.swatch-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.08);
+  margin-right: 8px;
+  margin-bottom: 4px;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+}
+.swatch-color:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 0 1px var(--aos-ink3);
+}
+
+/* Barra Negra Promocional */
+.aos-promo-bar {
+  background: #0a0a0a;
+  border-top: 1px solid #C5A47E; /* Accent Gold Border at top */
+  padding: 24px 0;
+  color: #ffffff;
+}
+.aos-pb-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.aos-pb-col {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.aos-pb-icon {
+  color: #C5A47E;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+.aos-pb-col:hover .aos-pb-icon {
+  transform: translateY(-2px) scale(1.05);
+}
+.aos-pb-icon svg {
+  width: 32px;
+  height: 32px;
+}
+.aos-pb-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.aos-pb-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+}
+.aos-pb-subtitle {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 0.02em;
+}
+
+/* Responsiveness for new components */
+@media (max-width: 1160px) {
+  .aos-carousel-card {
+    flex: 0 0 calc(25% - 15px); /* 4 cards on desktop narrow / tablet */
+    min-width: 150px;
+  }
+  .aos-pb-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+@media (max-width: 860px) {
+  .aos-carousel-section {
+    padding: 40px 0;
+  }
+  .aos-carousel-heading {
+    font-size: 20px;
+  }
+  .aos-carousel-card {
+    flex: 0 0 calc(33.333% - 13.333px); /* 3 cards on smaller viewports */
+    min-width: 130px;
+  }
+  .aos-card-wishlist {
+    opacity: 1 !important; /* Always visible on touch-screens */
+  }
+  .aos-carousel-nav {
+    display: none !important; /* Hide arrows on touch devices */
+  }
+  .aos-pb-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+@media (max-width: 580px) {
+  .aos-carousel-card {
+    flex: 0 0 calc(50% - 10px); /* Exactly 2 cards side-by-side on mobile portrait */
+    min-width: 120px;
+  }
+  .aos-pb-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .aos-pb-col {
+    justify-content: flex-start;
+  }
+}
+</style>
+
+<script>
+(function() {
+  var sid  = '{{ section.id }}';
+  var page = document.querySelector('[data-section-id="' + sid + '"]');
+  if (!page) return;
+
+  var gridEl    = page.querySelector('#aos-grid-' + sid);
+  var loadEl    = page.querySelector('#aos-loading-' + sid);
+  var countEl   = page.querySelector('#aos-count-' + sid);
+  var emptyEl   = page.querySelector('#aos-empty-' + sid);
+  var pagEl     = page.querySelector('#aos-pag-' + sid);
+  var tabsEl    = page.querySelector('#aos-tabs-' + sid);
+  var prevBtn   = page.querySelector('#aos-prev-' + sid);
+  var nextBtn   = page.querySelector('#aos-next-' + sid);
+  var sideCatsEl= page.querySelector('#aos-side-cats-' + sid);
+  var maxPctEl  = page.querySelector('#aos-max-pct-' + sid);
+  var heroMaxEl = page.querySelector('#aos-hero-maxpct-' + sid);
+  var heroMaxPctTitle = page.querySelector('#aos-hero-max-pct-title-' + sid);
+  var heroMetricPct = page.querySelector('#aos-hero-metric-pct-' + sid);
+  var flashEl   = page.querySelector('#aos-flash-' + sid);
+  var flashTitle= page.querySelector('#aos-flash-title-' + sid);
+  var flashLink = page.querySelector('#aos-flash-link-' + sid);
+  var heroMiniGrid  = page.querySelector('#aos-hero-minigrid-' + sid);
+  var heroCarousel  = page.querySelector('#aos-hero-carousel-' + sid);
+  var heroTrack     = page.querySelector('#aos-hero-track-' + sid);
+  var heroDotsEl    = page.querySelector('#aos-hero-dots-' + sid);
+  var heroPrevBtn   = page.querySelector('#aos-hero-prev-' + sid);
+  var heroNextBtn   = page.querySelector('#aos-hero-next-' + sid);
+  var heroCurrent   = 0;
+  var heroCards     = [];
+
+  function heroGoTo(idx) {
+    if (!heroCards.length) return;
+    var dir = idx > heroCurrent ? 1 : -1;
+    heroCards[heroCurrent].classList.add(dir > 0 ? 'aos-hc-prev-hidden' : 'aos-hc-hidden');
+    heroCards[heroCurrent].classList.remove('active');
+    heroCurrent = (idx + heroCards.length) % heroCards.length;
+    heroCards[heroCurrent].classList.remove('aos-hc-hidden','aos-hc-prev-hidden');
+    heroCards[heroCurrent].classList.add('active');
+    var dots = heroDotsEl.querySelectorAll('.aos-hero-dot');
+    if (dots.length) {
+      dots.forEach(function(d,i){ d.classList.toggle('active', i===heroCurrent); });
+    }
+  }
+  if (heroPrevBtn) heroPrevBtn.addEventListener('click', function(){ heroGoTo(heroCurrent-1); });
+  if (heroNextBtn) heroNextBtn.addEventListener('click', function(){ heroGoTo(heroCurrent+1); });
+
+  var pminEl    = page.querySelector('#aos-pmin-' + sid);
+  var pmaxEl    = page.querySelector('#aos-pmax-' + sid);
+  var resetBtn  = page.querySelector('#aos-reset-' + sid);
+
+  // Mobile filter drawer toggles
+  var filterOpenBtn  = page.querySelector('#aos-filter-open-' + sid);
+  var filterCloseBtn = page.querySelector('#aos-filter-close-' + sid);
+  var filterOverlay  = page.querySelector('#aos-overlay-' + sid);
+  var filterDrawer   = page.querySelector('#aos-drawer-' + sid);
+  var drawerDiscEl   = page.querySelector('#aos-drawer-disc-' + sid);
+  var drawerCatsEl   = page.querySelector('#aos-drawer-cats-' + sid);
+  var pmin2El        = page.querySelector('#aos-pmin2-' + sid);
+  var pmax2El        = page.querySelector('#aos-pmax2-' + sid);
+
+  function openDrawer() {
+    if (filterOverlay) filterOverlay.classList.add('open');
+    if (filterDrawer)  filterDrawer.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeDrawer() {
+    if (filterOverlay) filterOverlay.classList.remove('open');
+    if (filterDrawer)  filterDrawer.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  if (filterOpenBtn)  filterOpenBtn.addEventListener('click', openDrawer);
+  if (filterCloseBtn) filterCloseBtn.addEventListener('click', closeDrawer);
+  if (filterOverlay)  filterOverlay.addEventListener('click', closeDrawer);
+
+  if (drawerDiscEl) {
+    drawerDiscEl.querySelectorAll('.aos-disc-chip').forEach(function(chip) {
+      chip.addEventListener('click', function() {
+        drawerDiscEl.querySelectorAll('.aos-disc-chip').forEach(function(c){ c.classList.remove('active'); });
+        chip.classList.add('active');
+        activeDisc = parseInt(chip.dataset.min, 10) || 0;
+        page.querySelectorAll('.aos-sidebar .aos-disc-chip').forEach(function(c){ c.classList.remove('active'); });
+        var match = page.querySelector('.aos-sidebar .aos-disc-chip[data-min="'+chip.dataset.min+'"]');
+        if (match) match.classList.add('active');
+        currentPage = 1; render(); closeDrawer();
+      });
+    });
+  }
+  if (pmin2El) pmin2El.addEventListener('input', function(){ priceMin = parseFloat(pmin2El.value)||0; if(pminEl) pminEl.value=pmin2El.value; currentPage=1; render(); });
+  if (pmax2El) pmax2El.addEventListener('input', function(){ priceMax = parseFloat(pmax2El.value)||Infinity; if(pmaxEl) pmaxEl.value=pmax2El.value; currentPage=1; render(); });
+
+  var activeCat   = 'all';
+  var activeTier  = 'all';
+  var activeSort  = 'pct-desc';
+  var activeDisc  = 0;
+  var priceMin    = 0;
+  var priceMax    = Infinity;
+  var allProducts = [];
+  var heroProducts = [];
+  var currentPage = 1;
+  var PAGE_SIZE   = 24;
+
+  // Render collections products as dynamic Javascript JSON data
+  allProducts = [
+    {%- for product in sale_col.products -%}
+      {
+        id: {{ product.id }},
+        title: {{ product.title | json }},
+        handle: {{ product.handle | json }},
+        vendor: {{ product.vendor | json }},
+        type: {{ product.type | json }},
+        tags: {{ product.tags | json }},
+        price: {{ product.price | json }},
+        compare_at_price: {{ product.compare_at_price | json }},
+        price_min: {{ product.price_min | json }},
+        price_max: {{ product.price_max | json }},
+        available: {{ product.available | json }},
+        featured_image: {{ product.featured_image | json }},
+        images: {{ product.images | json }},
+        variants: [
+          {%- for variant in product.variants -%}
+            {
+              id: {{ variant.id }},
+              title: {{ variant.title | json }},
+              price: {{ variant.price | json }},
+              compare_at_price: {{ variant.compare_at_price | json }},
+              available: {{ variant.available | json }}
+            }{%- unless forloop.last -%},{%- endunless -%}
+          {%- endfor -%}
+        ]
+      }{%- unless forloop.last -%},{%- endunless -%}
+    {%- endfor -%}
+  ];
+
+  heroProducts = [
+    {%- for product in hero_col.products -%}
+      {
+        id: {{ product.id }},
+        title: {{ product.title | json }},
+        handle: {{ product.handle | json }},
+        vendor: {{ product.vendor | json }},
+        type: {{ product.type | json }},
+        tags: {{ product.tags | json }},
+        price: {{ product.price | json }},
+        compare_at_price: {{ product.compare_at_price | json }},
+        price_min: {{ product.price_min | json }},
+        price_max: {{ product.price_max | json }},
+        available: {{ product.available | json }},
+        featured_image: {{ product.featured_image | json }},
+        images: {{ product.images | json }},
+        variants: [
+          {%- for variant in product.variants -%}
+            {
+              id: {{ variant.id }},
+              title: {{ variant.title | json }},
+              price: {{ variant.price | json }},
+              compare_at_price: {{ variant.compare_at_price | json }},
+              available: {{ variant.available | json }}
+            }{%- unless forloop.last -%},{%- endunless -%}
+          {%- endfor -%}
+        ]
+      }{%- unless forloop.last -%},{%- endunless -%}
+    {%- endfor -%}
+  ];
+
+  // Carousel scroll arrows behavior
+  function updateArrows() {
+    if (!prevBtn || !nextBtn || !tabsEl) return;
+    prevBtn.disabled = tabsEl.scrollLeft <= 4;
+    nextBtn.disabled = tabsEl.scrollLeft >= tabsEl.scrollWidth - tabsEl.clientWidth - 4;
+  }
+  if (prevBtn && nextBtn && tabsEl) {
+    prevBtn.addEventListener('click', function() {
+      tabsEl.scrollBy({ left: -240, behavior: 'smooth' });
+    });
+    nextBtn.addEventListener('click', function() {
+      tabsEl.scrollBy({ left: 240, behavior: 'smooth' });
+    });
+    tabsEl.addEventListener('scroll', updateArrows);
+    updateArrows();
+    // Watch resize to update buttons correctly
+    window.addEventListener('resize', updateArrows);
+  }
+
+  var COLORS = ['#7C5230','#4A5568','#1B6B45','#C0392B','#2C5F8A','#8B6914','#6B2D8B','#1B4F72'];
+  var CAT_ICONS = {
+    "Men's Fashion":  '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.38 3.46L16 2a4 4 0 01-8 0L3.62 3.46a2 2 0 00-1.34 2.23l.58 3.57a1 1 0 00.99.84H6v10c0 .55.45 1 1 1h10c.55 0 1-.45 1-1V10h2.15a1 1 0 00.99-.84l.58-3.57a2 2 0 00-1.34-2.23z"/></svg>',
+    "Women's Fashion":'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l4 6H8l4-6z"/><path d="M8 8l-4 13h16L16 8"/></svg>',
+    "Activewear & Fitness":'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>',
+    "Kids":           '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12m0 0C12 7 7 5 7 5s1 5 5 7zm0 0c0-5 5-7 5-7s-1 5-5 7"/><circle cx="12" cy="4" r="2"/></svg>',
+    "Footwear":       '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14l2-8 5 5 4-7 4 10H3z"/><path d="M3 14v4a1 1 0 001 1h16a1 1 0 001-1v-1"/></svg>',
+    "Accessories":    '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>',
+    "Home & Kitchen": '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>',
+    "Tech & Gadgets": '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>',
+    "Beauty & Wellness":'<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>',
+    "Mexican Decor":  '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>',
+    "Automotive":     '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="2"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>',
+    "Food & Drinks":  '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>'
+  };
+  var CATEGORY_ORDER = ["Men's Fashion","Women's Fashion","Activewear & Fitness","Kids","Footwear","Accessories","Home & Kitchen","Tech & Gadgets","Beauty & Wellness","Mexican Decor","Automotive","Food & Drinks"];
+  var CATEGORY_MAP = {
+    'CABALLERO':"Men's Fashion",'Men':"Men's Fashion",'MEN':"Men's Fashion",
+    'casualwear':"Men's Fashion",'StreetWear':"Men's Fashion",'variable':"Men's Fashion",
+    'long sleeves':"Men's Fashion",'Short Sleeves':"Men's Fashion",'Shorts':"Men's Fashion",
+    'Polos':"Men's Fashion",'Jackets':"Men's Fashion",'Hoodies':"Men's Fashion",
+    'Pants':"Men's Fashion",'Cardigans':"Men's Fashion",'Quarter Zips':"Men's Fashion",
+    'simple':"Men's Fashion",'shirts':"Men's Fashion",
+    'DAMA':"Women's Fashion",'womens clothing':"Women's Fashion",'Dresses':"Women's Fashion",
+    'Jumpsuits & Rompers':"Women's Fashion",'Bottoms':"Women's Fashion",
+    'Leggings':"Women's Fashion",'leggings':"Women's Fashion",
+    'ActiveWear':'Activewear & Fitness','Activewear':'Activewear & Fitness',
+    'Waist Trainer':'Activewear & Fitness','Men Waist Trainers':'Activewear & Fitness',
+    'Back Braces':'Activewear & Fitness','Posture Correctors':'Activewear & Fitness','Styler':'Activewear & Fitness',
+    'NIÑO':'Kids','NIÑO/A':'Kids','baby walker':'Kids','wooden toys':'Kids',
+    'Montessori Toy Set':'Kids','Toys & Games':'Kids','Toy':'Kids','plush Doll':'Kids',
+    'Play Tents & Tunnels':'Kids','Dollhouse':'Kids','Toy Drawing Tablets':'Kids',
+    'Plush Toys':'Kids','Sound Machine for Babies':'Kids',
+    'FootWear':'Footwear','Footwear':'Footwear','Sneaker':'Footwear',
+    'Accessories':'Accessories','BAGS':'Accessories','Hats & Caps':'Accessories',
+    'RFID Wallet Unisex':'Accessories','Card Wallet':'Accessories','TRAVEL ACCESSORIES':'Accessories',
+    'Pillows':'Home & Kitchen','Bamboo Sheets':'Home & Kitchen','Bamboo Pillowcases':'Home & Kitchen',
+    'Kitchen Utensils':'Home & Kitchen','Kitchen Scale':'Home & Kitchen','Food Storage':'Home & Kitchen',
+    'Toaster':'Home & Kitchen','Grain Dispenser':'Home & Kitchen','Mattress':'Home & Kitchen',
+    'Comforters':'Home & Kitchen','Spice Grinders':'Home & Kitchen','spice organizer':'Home & Kitchen',
+    'Can Opener':'Home & Kitchen','Mini Bag Sealer':'Home & Kitchen','Food Dispensers':'Home & Kitchen',
+    'Food Cookers':'Home & Kitchen','Electric Kettle':'Home & Kitchen','portable blender':'Home & Kitchen',
+    'Kitchen Slicers':'Home & Kitchen','Electric Vacuum Sealing Machine Kit':'Home & Kitchen',
+    'Spoon Scale':'Home & Kitchen','beeswax food wraps':'Home & Kitchen','Drinkware':'Home & Kitchen',
+    'Cordless Vacuum':'Home & Kitchen','Window cleaner robot':'Home & Kitchen',
+    'Cloth Dryer':'Home & Kitchen','Home Tools':'Home & Kitchen','Storage rack':'Home & Kitchen',
+    'Sealing Machines':'Home & Kitchen','Jewelry Ultrasonic Cleaner':'Home & Kitchen',
+    'toothpaste squeezer':'Home & Kitchen',
+    'Mini Camera':'Tech & Gadgets','A9 Mini Camera':'Tech & Gadgets','Smart bracelet':'Tech & Gadgets',
+    'Powerbank':'Tech & Gadgets','wireless power bank':'Tech & Gadgets','Video Projector':'Tech & Gadgets',
+    'Walkie Talkie':'Tech & Gadgets','Wireless Charger':'Tech & Gadgets','AI Robots':'Tech & Gadgets',
+    'Sleep Aid Device':'Tech & Gadgets','Alarm Clocks':'Tech & Gadgets','Monocular Telescope':'Tech & Gadgets',
+    'Mini Binoculars':'Tech & Gadgets','Travel Gadgets':'Tech & Gadgets','Blowers':'Tech & Gadgets',
+    'Portable Fan':'Tech & Gadgets',
+    'Pro Series Curling Iron':'Beauty & Wellness','Dryer':'Beauty & Wellness','Hair Care':'Beauty & Wellness',
+    'Shampoo and Conditioner':'Beauty & Wellness','Body Care':'Beauty & Wellness',
+    'Goat Milk Soap':'Beauty & Wellness','Massagers':'Beauty & Wellness',
+    'Electric massagers':'Beauty & Wellness','Electric massager':'Beauty & Wellness',
+    'Neck Pillows':'Beauty & Wellness','Travel Pillows':'Beauty & Wellness',
+    'Wearable Heated Blanket':'Beauty & Wellness','sleep headphone':'Beauty & Wellness',
+    'Hydrogen Water Bottle':'Beauty & Wellness','1#Bundle_Haircare':'Beauty & Wellness',
+    'Mexican Shot Glass':'Mexican Decor','Mexican Drinking Glass':'Mexican Decor',
+    'Mexican Wine Glass':'Mexican Decor','Mexican Margarita Glass':'Mexican Decor',
+    'Margarita Glasses':'Mexican Decor','Talavera Mug':'Mexican Decor','Talavera Plate':'Mexican Decor',
+    'Talavera Bowl':'Mexican Decor','Talavera Salsa Bowl':'Mexican Decor',
+    'Talavera Dinnerware Set':'Mexican Decor','Talavera Tumbler':'Mexican Decor','Aztec Decor':'Mexican Decor',
+    'Car Shampoo':'Automotive','Car Air Freshener':'Automotive','car accessories':'Automotive',
+    'Foam Cannon':'Automotive','Iron Remover':'Automotive','Wash Mitt':'Automotive',
+    'Glass Cleaner':'Automotive','Edgeless Microfiber':'Automotive','Wheel Mitt':'Automotive',
+    'Drying Towel':'Automotive','Applicator Pad':'Automotive','Trim & Tire Dressing':'Automotive',
+    'Boars Hair Detailing Brushes':'Automotive','Quick Detailer Gloss':'Automotive',
+    'Microfiber Detergent':'Automotive','Ultra Soft Brushes':'Automotive',
+    'Stiff Tire Brush':'Automotive','Leather Conditioner':'Automotive',
+    'Cleaner':'Automotive','All Purpose Cleaner':'Automotive',
+    'Dulces Enchilados':'Food & Drinks','Sauce':'Food & Drinks'
+  };
+
+  function mapCat(raw) { return CATEGORY_MAP[raw] || raw || 'Otros'; }
+  function makeCatKey(c) { return (c||'').toLowerCase().replace(/\s+/g,'-').replace(/[&']/g,'').trim(); }
+  function fmtMoney(n) { return '$' + n.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,',') + ' MXN'; }
+  function thumbUrl(src) {
+    if (!src) return '';
+    return src.replace(/\.(jpg|jpeg|png|gif|webp)(\?.*)?$/i,'_400x400.$1$2');
+  }
+  function pad2(n) { return String(n).padStart(2,'0'); }
+
+  function buildCard(product, index) {
+    var pMin = product.computedPrice;
+    var capMax = product.computedCompare;
+    var discount = product.computedDiscount;
+    
+    var imgUrl = product.featured_image ? thumbUrl(product.featured_image) : '';
+    var initials = '';
+    if (!imgUrl) {
+      initials = (product.title || '').split(' ').slice(0,2).map(function(w){return w[0];}).join('').toUpperCase();
+    }
+    
+    var cardHtml = '<a href="/products/' + product.handle + '" class="aos-card">';
+    cardHtml += '<div class="aos-card-img">';
+    if (discount > 0) {
+      var extraClass = discount >= 50 ? ' red' : '';
+      cardHtml += '<span class="aos-pct-tag' + extraClass + '">-' + discount + '%</span>';
+    }
+    if (imgUrl) {
+      cardHtml += '<img src="' + imgUrl + '" alt="' + product.title + '" loading="lazy">';
+    } else {
+      var colorIdx = index % COLORS.length;
+      cardHtml += '<div class="aos-initials" style="background:' + COLORS[colorIdx] + '">' + initials + '</div>';
+    }
+    cardHtml += '<div class="aos-quick">Ver Oferta →</div>';
+    cardHtml += '</div>';
+    
+    cardHtml += '<div class="aos-card-body">';
+    cardHtml += '<div class="aos-card-brand">' + (product.vendor || '') + '</div>';
+    cardHtml += '<h3 class="aos-card-title">' + product.title + '</h3>';
+    cardHtml += '<div class="aos-card-prices">';
+    cardHtml += '<span class="aos-sale-price">' + fmtMoney(pMin / 100.0) + '</span>';
+    if (discount > 0 && capMax > 0) {
+      cardHtml += '<span class="aos-orig-price">' + fmtMoney(capMax / 100.0) + '</span>';
+      cardHtml += '<span class="aos-save-txt">Ahorras ' + fmtMoney((capMax - pMin) / 100.0) + '</span>';
+    }
+    cardHtml += '</div>';
+    cardHtml += '</div></a>';
+    return cardHtml;
+  }
+
+  // Precompute pricing, discounts, and categories client-side once
+  var processedProducts = allProducts.map(function(p) {
+    var pMin = Infinity, capMax = 0, bestPct = 0;
+    (p.variants || []).forEach(function(v) {
+      var price = parseFloat(v.price) || 0;
+      var cap = parseFloat(v.compare_at_price) || 0;
+      if (price > 0 && cap > price) {
+        var pct = Math.round((cap - price) / cap * 100);
+        if (pct > bestPct) {
+          bestPct = pct;
+          capMax = cap;
+          pMin = price;
+        }
+      }
+    });
+    // Fallback: use cheapest price if no active discount variants are set up
+    if (!isFinite(pMin) || pMin === Infinity) {
+      pMin = 0;
+      (p.variants || []).forEach(function(v) {
+        var price = parseFloat(v.price) || 0;
+        if (price > 0 && (price < pMin || pMin === 0)) pMin = price;
+      });
+    }
+    var discount = 0;
+    if (capMax > pMin && capMax > 0) {
+      discount = Math.round((capMax - pMin) / capMax * 100);
+    }
+    p.computedPrice = pMin;
+    p.computedCompare = capMax;
+    p.computedDiscount = discount;
+    p.computedCategory = mapCat(p.type);
+    return p;
+  });
+
+  // Precompute pricing, discounts, and categories client-side once for the hero
+  var processedHeroProducts = heroProducts.map(function(p) {
+    var pMin = Infinity, capMax = 0, bestPct = 0;
+    (p.variants || []).forEach(function(v) {
+      var price = parseFloat(v.price) || 0;
+      var cap = parseFloat(v.compare_at_price) || 0;
+      if (price > 0 && cap > price) {
+        var pct = Math.round((cap - price) / cap * 100);
+        if (pct > bestPct) {
+          bestPct = pct;
+          capMax = cap;
+          pMin = price;
+        }
+      }
+    });
+    // Fallback: use cheapest price if no active discount variants are set up
+    if (!isFinite(pMin) || pMin === Infinity) {
+      pMin = 0;
+      (p.variants || []).forEach(function(v) {
+        var price = parseFloat(v.price) || 0;
+        if (price > 0 && (price < pMin || pMin === 0)) pMin = price;
+      });
+    }
+    var discount = 0;
+    if (capMax > pMin && capMax > 0) {
+      discount = Math.round((capMax - pMin) / capMax * 100);
+    }
+    p.computedPrice = pMin;
+    p.computedCompare = capMax;
+    p.computedDiscount = discount;
+    p.computedCategory = mapCat(p.type);
+    return p;
+  });
+
+  // Calculate high-fidelity stats
+  var totalDeals = processedProducts.length;
+  var maxDiscount = 0;
+  var categoryCounts = { all: totalDeals };
+  
+  processedProducts.forEach(function(p) {
+    if (p.computedDiscount > maxDiscount) maxDiscount = p.computedDiscount;
+    var cat = p.computedCategory;
+    categoryCounts[cat] = (categoryCounts[cat] || 0) + 1;
+  });
+
+  // Fallback if max discount is 0
+  if (maxDiscount === 0) maxDiscount = 70; // Fallback display placeholder
+
+  if (maxPctEl) maxPctEl.textContent = maxDiscount;
+  if (heroMaxEl) heroMaxEl.textContent = maxDiscount + '%';
+  if (heroMaxPctTitle) heroMaxPctTitle.textContent = maxDiscount + '%';
+  if (heroMetricPct) heroMetricPct.textContent = 'Hasta ' + maxDiscount + '%';
+
+  // Build category tabs carousel dynamically
+  var categoryOrderFiltered = CATEGORY_ORDER.filter(function(c) {
+    return (categoryCounts[c] || 0) > 0;
+  });
+
+  if (tabsEl) {
+    var tabsHtml = '<button class="aos-tab active" data-cat="all">';
+    tabsHtml += '<span class="aos-tab-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></span>';
+    tabsHtml += '<span>Todas las Ofertas</span>';
+    tabsHtml += '<span class="aos-tab-ct">' + totalDeals + '</span></button>';
+
+    categoryOrderFiltered.forEach(function(cat) {
+      var icon = CAT_ICONS[cat] || '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>';
+      tabsHtml += '<button class="aos-tab" data-cat="' + cat + '">';
+      tabsHtml += '<span class="aos-tab-ico">' + icon + '</span>';
+      tabsHtml += '<span>' + cat + '</span>';
+      tabsHtml += '<span class="aos-tab-ct">' + categoryCounts[cat] + '</span></button>';
+    });
+    tabsEl.innerHTML = tabsHtml;
+
+    // Set tab click listeners
+    tabsEl.querySelectorAll('.aos-tab').forEach(function(tab) {
+      tab.addEventListener('click', function() {
+        tabsEl.querySelectorAll('.aos-tab').forEach(function(t){ t.classList.remove('active'); });
+        tab.classList.add('active');
+        activeCat = tab.dataset.cat;
+        currentPage = 1;
+        syncCategoryUI();
+        render();
+      });
+    });
+    updateArrows();
+  }
+
+  // Populate sidebar category triggers
+  function buildSidebarCats() {
+    if (sideCatsEl) {
+      var sideCatsHtml = '<button class="aos-side-cat active" data-cat="all">';
+      sideCatsHtml += '<span class="aos-side-cat-inner">';
+      sideCatsHtml += '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/></svg>';
+      sideCatsHtml += 'Todas</span>';
+      sideCatsHtml += '<span class="aos-side-ct">' + totalDeals + '</span></button>';
+
+      categoryOrderFiltered.forEach(function(cat) {
+        var icon = CAT_ICONS[cat] || '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>';
+        sideCatsHtml += '<button class="aos-side-cat" data-cat="' + cat + '">';
+        sideCatsHtml += '<span class="aos-side-cat-inner">' + icon + cat + '</span>';
+        sideCatsHtml += '<span class="aos-side-ct">' + categoryCounts[cat] + '</span></button>';
+      });
+      sideCatsEl.innerHTML = sideCatsHtml;
+
+      sideCatsEl.querySelectorAll('.aos-side-cat').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          sideCatsEl.querySelectorAll('.aos-side-cat').forEach(function(b){ b.classList.remove('active'); });
+          btn.classList.add('active');
+          activeCat = btn.dataset.cat;
+          currentPage = 1;
+          syncCategoryUI();
+          render();
+        });
+      });
+    }
+
+    if (drawerCatsEl) {
+      var drawerCatsHtml = '<div class="aos-drawer-cats-list" style="display:flex; flex-direction:column; gap:8px;">';
+      drawerCatsHtml += '<button class="aos-side-cat active" data-cat="all" style="padding: 10px 0; border-bottom:1px solid var(--aos-line);">';
+      drawerCatsHtml += '<span class="aos-side-cat-inner"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/></svg>Todas</span>';
+      drawerCatsHtml += '<span class="aos-side-ct">' + totalDeals + '</span></button>';
+
+      categoryOrderFiltered.forEach(function(cat) {
+        var icon = CAT_ICONS[cat] || '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>';
+        drawerCatsHtml += '<button class="aos-side-cat" data-cat="' + cat + '" style="padding: 10px 0; border-bottom:1px solid var(--aos-line);">';
+        drawerCatsHtml += '<span class="aos-side-cat-inner">' + icon + cat + '</span>';
+        drawerCatsHtml += '<span class="aos-side-ct">' + categoryCounts[cat] + '</span></button>';
+      });
+      drawerCatsHtml += '</div>';
+      drawerCatsEl.innerHTML = drawerCatsHtml;
+
+      drawerCatsEl.querySelectorAll('.aos-side-cat').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          drawerCatsEl.querySelectorAll('.aos-side-cat').forEach(function(b){ b.classList.remove('active'); });
+          btn.classList.add('active');
+          activeCat = btn.dataset.cat;
+          currentPage = 1;
+          syncCategoryUI();
+          render();
+          closeDrawer();
+        });
+      });
+    }
+  }
+
+  function syncCategoryUI() {
+    if (tabsEl) {
+      tabsEl.querySelectorAll('.aos-tab').forEach(function(t) {
+        t.classList.toggle('active', t.dataset.cat === activeCat);
+      });
+    }
+    if (sideCatsEl) {
+      sideCatsEl.querySelectorAll('.aos-side-cat').forEach(function(t) {
+        t.classList.toggle('active', t.dataset.cat === activeCat);
+      });
+    }
+    if (drawerCatsEl) {
+      drawerCatsEl.querySelectorAll('.aos-side-cat').forEach(function(t) {
+        t.classList.toggle('active', t.dataset.cat === activeCat);
+      });
+    }
+  }
+
+  buildSidebarCats();
+
+  // Price inputs sync behavior
+  if (pminEl) pminEl.addEventListener('input', function(){ priceMin = parseFloat(pminEl.value) || 0; if (pmin2El) pmin2El.value = pminEl.value; currentPage = 1; render(); });
+  if (pmaxEl) pmaxEl.addEventListener('input', function(){ priceMax = parseFloat(pmaxEl.value) || Infinity; if (pmax2El) pmax2El.value = pmaxEl.value; currentPage = 1; render(); });
+
+  // Sidebar discount filter chips
+  page.querySelectorAll('.aos-sidebar .aos-disc-chip').forEach(function(chip) {
+    chip.addEventListener('click', function() {
+      page.querySelectorAll('.aos-sidebar .aos-disc-chip').forEach(function(c){ c.classList.remove('active'); });
+      chip.classList.add('active');
+      activeDisc = parseInt(chip.dataset.min, 10) || 0;
+      if (drawerDiscEl) {
+        drawerDiscEl.querySelectorAll('.aos-disc-chip').forEach(function(c){ c.classList.remove('active'); });
+        var mMatch = drawerDiscEl.querySelector('.aos-disc-chip[data-min="' + chip.dataset.min + '"]');
+        if (mMatch) mMatch.classList.add('active');
+      }
+      currentPage = 1;
+      render();
+    });
+  });
+
+  // Toolbar secondary filter buttons
+  var tierButtons = page.querySelectorAll('[data-tier]');
+  if (tierButtons.length) {
+    tierButtons.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        tierButtons.forEach(function(b){ b.classList.remove('active'); });
+        btn.classList.add('active');
+        activeTier = btn.dataset.tier;
+        currentPage = 1;
+        render();
+      });
+    });
+  }
+
+  // Sort dropdown changes
+  var sortSelect = page.querySelector('.aos-sort');
+  if (sortSelect) {
+    sortSelect.addEventListener('change', function() {
+      activeSort = sortSelect.value;
+      currentPage = 1;
+      render();
+    });
+  }
+
+  // Reset filters
+  if (resetBtn) {
+    resetBtn.addEventListener('click', function() {
+      activeCat = 'all';
+      activeTier = 'all';
+      activeDisc = 0;
+      priceMin = 0;
+      priceMax = Infinity;
+      if (pminEl) pminEl.value = '';
+      if (pmaxEl) pmaxEl.value = '';
+      if (pmin2El) pmin2El.value = '';
+      if (pmax2El) pmax2El.value = '';
+      
+      page.querySelectorAll('.aos-disc-chip').forEach(function(c){ c.classList.toggle('active', c.dataset.min === '0'); });
+      if (tierButtons.length) {
+        tierButtons.forEach(function(b){ b.classList.toggle('active', b.dataset.tier === 'all'); });
+      }
+      syncCategoryUI();
+      currentPage = 1;
+      render();
+    });
+  }
+
+  // Main client-side filtering + pagination render core
+  function render() {
+    if (loadEl) loadEl.style.display = 'block';
+    if (gridEl) gridEl.style.display = 'none';
+    if (emptyEl) emptyEl.style.display = 'none';
+    if (pagEl) pagEl.style.display = 'none';
+
+    // 1. Filter products list
+    var filtered = processedProducts.filter(function(p) {
+      if (activeCat !== 'all' && p.computedCategory !== activeCat) return false;
+
+      if (activeTier === '50plus' && p.computedDiscount < 50) return false;
+      if (activeTier === '30to49' && (p.computedDiscount < 30 || p.computedDiscount > 49)) return false;
+      if (activeTier === 'under30' && p.computedDiscount >= 30) return false;
+
+      if (activeDisc > 0 && p.computedDiscount < activeDisc) return false;
+
+      var priceMXN = p.computedPrice / 100.0;
+      if (priceMXN < priceMin) return false;
+      if (priceMXN > priceMax) return false;
+
+      return true;
+    });
+
+    // 2. Sort products list
+    filtered.sort(function(a, b) {
+      if (activeSort === 'pct-desc') {
+        return b.computedDiscount - a.computedDiscount;
+      } else if (activeSort === 'price-asc') {
+        return a.computedPrice - b.computedPrice;
+      } else if (activeSort === 'price-desc') {
+        return b.computedPrice - a.computedPrice;
+      }
+      return 0;
+    });
+
+    // 3. Update result counter UI
+    if (countEl) countEl.textContent = filtered.length;
+
+    if (loadEl) loadEl.style.display = 'none';
+
+    if (filtered.length === 0) {
+      if (emptyEl) emptyEl.style.display = 'block';
+      if (gridEl) gridEl.innerHTML = '';
+      return;
+    }
+
+    // 4. Paginate products
+    var totalPages = Math.ceil(filtered.length / PAGE_SIZE);
+    if (currentPage > totalPages) currentPage = totalPages || 1;
+
+    var startIdx = (currentPage - 1) * PAGE_SIZE;
+    var endIdx = startIdx + PAGE_SIZE;
+    var pageProducts = filtered.slice(startIdx, endIdx);
+
+    // Build grid DOM
+    if (gridEl) {
+      var gridHtml = '';
+      pageProducts.forEach(function(p, i) {
+        gridHtml += buildCard(p, startIdx + i);
+      });
+      gridEl.innerHTML = gridHtml;
+      gridEl.style.display = 'grid';
+    }
+
+    // Paginate UI controls
+    if (pagEl && totalPages > 1) {
+      var pagHtml = '';
+      
+      pagHtml += '<button class="aos-pag-btn" ' + (currentPage === 1 ? 'disabled' : '') + ' data-page="' + (currentPage - 1) + '">←</button>';
+      
+      for (var pageNum = 1; pageNum <= totalPages; pageNum++) {
+        var isActive = pageNum === currentPage;
+        pagHtml += '<button class="aos-pag-btn' + (isActive ? ' active' : '') + '" data-page="' + pageNum + '">' + pageNum + '</button>';
+      }
+
+      pagHtml += '<button class="aos-pag-btn" ' + (currentPage === totalPages ? 'disabled' : '') + ' data-page="' + (currentPage + 1) + '">→</button>';
+      
+      pagEl.innerHTML = pagHtml;
+      pagEl.style.display = 'flex';
+
+      pagEl.querySelectorAll('.aos-pag-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          if (btn.disabled) return;
+          currentPage = parseInt(btn.dataset.page, 10);
+          render();
+          var barY = page.querySelector('.aos-tabs-bar').getBoundingClientRect().top + window.scrollY;
+          window.scrollTo({ top: barY - 10, behavior: 'smooth' });
+        });
+      });
+    }
+  }
+
+  // Flash Deal bar display logic
+  var bestFlashDeal = null;
+  processedProducts.forEach(function(p) {
+    if (p.computedDiscount > 0) {
+      if (!bestFlashDeal || p.computedDiscount > bestFlashDeal.computedDiscount) {
+        bestFlashDeal = p;
+      }
+    }
+  });
+
+  if (bestFlashDeal && flashEl) {
+    if (flashTitle) {
+      flashTitle.innerHTML = '¡Hasta <span>' + bestFlashDeal.computedDiscount + '% de descuento</span> en ' + bestFlashDeal.title + '!';
+    }
+    if (flashLink) {
+      flashLink.href = '/products/' + bestFlashDeal.handle;
+      flashLink.textContent = '¡Comprar ya! →';
+    }
+    flashEl.style.display = 'block';
+
+    var countdownDuration = 12 * 60 * 60 * 1000;
+    var endTime = Date.now() + countdownDuration;
+    
+    var hEl = flashEl.querySelector('#aos-cd-h');
+    var mEl = flashEl.querySelector('#aos-cd-m');
+    var sEl = flashEl.querySelector('#aos-cd-s');
+
+    function updateCountdown() {
+      var diff = endTime - Date.now();
+      if (diff <= 0) {
+        endTime = Date.now() + countdownDuration;
+        diff = countdownDuration;
+      }
+      var hrs = Math.floor(diff / (60 * 60 * 1000));
+      var mins = Math.floor((diff % (60 * 60 * 1000)) / (60 * 1000));
+      var secs = Math.floor((diff % (60 * 1000)) / 1000);
+      
+      if (hEl) hEl.textContent = pad2(hrs);
+      if (mEl) mEl.textContent = pad2(mins);
+      if (sEl) sEl.textContent = pad2(secs);
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  }
+
+  // Hero section mini-grid and carousel dynamic builder
+  var topDeals = processedHeroProducts.filter(function(p){ return p.computedDiscount > 0; })
+    .sort(function(a,b){ return b.computedDiscount - a.computedDiscount; })
+    .slice(0, 4);
+
+  // Robust Fallback: if we have fewer than 4 discounted products, fill the rest with products from the collection to avoid blank space
+  if (topDeals.length < 4 && processedHeroProducts.length > 0) {
+    var usedIds = {};
+    topDeals.forEach(function(d){ usedIds[d.id] = true; });
+    for (var i = 0; i < processedHeroProducts.length; i++) {
+      if (topDeals.length >= 4) break;
+      var p = processedHeroProducts[i];
+      if (!usedIds[p.id]) {
+        topDeals.push(p);
+        usedIds[p.id] = true;
+      }
+    }
+  }
+
+  if (topDeals.length > 0) {
+    if (heroMiniGrid) {
+      var mgHtml = '';
+      topDeals.forEach(function(p) {
+        var imgUrl = p.featured_image ? thumbUrl(p.featured_image) : '';
+        mgHtml += '<a href="/products/' + p.handle + '" class="aos-hero-mini">';
+        if (imgUrl) {
+          mgHtml += '<img src="' + imgUrl + '" alt="' + p.title + '" loading="lazy">';
+        }
+        mgHtml += '<div class="aos-hero-mini-overlay"></div>';
+        if (p.computedDiscount > 0) {
+          mgHtml += '<span class="aos-hero-mini-badge">-' + p.computedDiscount + '%</span>';
+        }
+        mgHtml += '</a>';
+      });
+      heroMiniGrid.innerHTML = mgHtml;
+      heroMiniGrid.style.display = 'grid';
+    }
+
+    if (heroCarousel && heroTrack && heroDotsEl) {
+      var trackHtml = '';
+      var dotsHtml = '';
+      topDeals.forEach(function(p, i) {
+        var imgUrl = p.featured_image ? thumbUrl(p.featured_image) : '';
+        var activeClass = i === 0 ? '' : ' aos-hc-hidden';
+        
+        trackHtml += '<a href="/products/' + p.handle + '" class="aos-hero-card' + activeClass + (i === 0 ? ' active' : '') + '">';
+        if (p.computedDiscount > 0) {
+          trackHtml += '<span class="aos-hero-card-badge">-' + p.computedDiscount + '%</span>';
+        }
+        trackHtml += '<div class="aos-hero-card-img">';
+        if (imgUrl) {
+          trackHtml += '<img src="' + imgUrl + '" alt="' + p.title + '" loading="lazy">';
+        }
+        trackHtml += '</div>';
+        trackHtml += '<div class="aos-hero-card-body">';
+        trackHtml += '<div class="aos-hero-card-brand">' + (p.vendor || '') + '</div>';
+        trackHtml += '<h4 class="aos-hero-card-title">' + p.title + '</h4>';
+        trackHtml += '<div class="aos-hero-card-prices">';
+        trackHtml += '<span class="aos-hero-card-price">' + fmtMoney(p.computedPrice / 100.0) + '</span>';
+        if (p.computedCompare > 0 && p.computedDiscount > 0) {
+          trackHtml += '<span class="aos-hero-card-was">' + fmtMoney(p.computedCompare / 100.0) + '</span>';
+        }
+        trackHtml += '</div></div></a>';
+
+        dotsHtml += '<div class="aos-hero-dot' + (i === 0 ? ' active' : '') + '" data-idx="' + i + '"></div>';
+      });
+      heroTrack.innerHTML = trackHtml;
+      heroDotsEl.innerHTML = dotsHtml;
+      heroCarousel.style.display = 'flex';
+      
+      heroCards = heroTrack.querySelectorAll('.aos-hero-card');
+      
+      heroDotsEl.querySelectorAll('.aos-hero-dot').forEach(function(dot) {
+        dot.addEventListener('click', function() {
+          heroGoTo(parseInt(dot.dataset.idx, 10));
+        });
+      });
+
+      // Smooth auto play interval
+      setInterval(function() {
+        heroGoTo(heroCurrent + 1);
+      }, 4500);
+    }
+  }
+
+  // Persistent Countdown Timer logic
+  var countdownDuration = 12 * 24 * 60 * 60 * 1000; // 12 days
+  var endtimeKey = 'aylesva_deals_hero_endtime';
+  var endTime = localStorage.getItem(endtimeKey);
+  
+  if (!endTime) {
+    endTime = Date.now() + countdownDuration;
+    localStorage.setItem(endtimeKey, endTime);
+  } else {
+    endTime = parseInt(endTime, 10);
+    // If timer expired, reset to a new 12-day block
+    if (endTime < Date.now()) {
+      endTime = Date.now() + countdownDuration;
+      localStorage.setItem(endtimeKey, endTime);
+    }
+  }
+
+  var htD = page.querySelector('#aos-ht-d');
+  var htH = page.querySelector('#aos-ht-h');
+  var htM = page.querySelector('#aos-ht-m');
+  var htS = page.querySelector('#aos-ht-s');
+
+  function updateHeroCountdown() {
+    var diff = endTime - Date.now();
+    if (diff <= 0) {
+      endTime = Date.now() + countdownDuration;
+      localStorage.setItem(endtimeKey, endTime);
+      diff = countdownDuration;
+    }
+    
+    var days = Math.floor(diff / (24 * 60 * 60 * 1000));
+    var hrs  = Math.floor((diff % (24 * 60 * 60 * 1000)) / (60 * 60 * 1000));
+    var mins = Math.floor((diff % (60 * 60 * 1000)) / (60 * 1000));
+    var secs = Math.floor((diff % (60 * 1000)) / 1000);
+
+    if (htD) htD.textContent = pad2(days);
+    if (htH) htH.textContent = pad2(hrs);
+    if (htM) htM.textContent = pad2(mins);
+    if (htS) htS.textContent = pad2(secs);
+  }
+  
+  updateHeroCountdown();
+  setInterval(updateHeroCountdown, 1000);
+
+  // Smooth scroll to offers section
+  page.querySelectorAll('.scroll-to-offers').forEach(function(el) {
+    el.addEventListener('click', function(e) {
+      e.preventDefault();
+      var targetTab = page.querySelector('.aos-tabs-bar');
+      
+      // If we clicked "EXPLORAR SALDOS", we also want to simulate clicking the 50%+ tier or similar
+      if (el.getAttribute('data-target') === 'saldos') {
+        var saldosTier = page.querySelector('[data-tier="50plus"]');
+        if (saldosTier) {
+          saldosTier.click();
+        }
+      } else {
+        // Standard view offers: reset tier back to 'all' for best onboarding
+        var allTier = page.querySelector('[data-tier="all"]');
+        if (allTier && !allTier.classList.contains('active')) {
+          allTier.click();
+        }
+      }
+
+      if (targetTab) {
+        var barY = targetTab.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({ top: barY - 10, behavior: 'smooth' });
+      }
+    });
+  });
+
+  // Initialize display
+  render();
+
+  // --- New Carousel Navigation & Swipe Support ---
+  var track = page.querySelector('#aos-track-' + sid);
+  var arrowPrev = page.querySelector('#aos-nav-prev-' + sid);
+  var arrowNext = page.querySelector('#aos-nav-next-' + sid);
+
+  function updateCarouselArrows() {
+    if (!track || !arrowPrev || !arrowNext) return;
+    arrowPrev.disabled = track.scrollLeft <= 5;
+    // Check if scrolled to the end (allowing 5px buffer)
+    arrowNext.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 5;
+  }
+
+  if (track && arrowPrev && arrowNext) {
+    arrowPrev.addEventListener('click', function() {
+      var cardWidth = track.querySelector('.aos-carousel-card').clientWidth + 20; // card + gap
+      track.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+    });
+
+    arrowNext.addEventListener('click', function() {
+      var cardWidth = track.querySelector('.aos-carousel-card').clientWidth + 20; // card + gap
+      track.scrollBy({ left: cardWidth, behavior: 'smooth' });
+    });
+
+    track.addEventListener('scroll', updateCarouselArrows);
+    window.addEventListener('resize', updateCarouselArrows);
+    setTimeout(updateCarouselArrows, 100);
+  }
+
+  // --- New Wishlist Persistence via localStorage ---
+  var wishlistKey = 'aylesva_deals_hub_wishlist';
+  var likedIds = [];
+  try {
+    var stored = localStorage.getItem(wishlistKey);
+    if (stored) likedIds = JSON.parse(stored);
+  } catch(e) { console.error('Wishlist storage access error', e); }
+
+  // Set active states on load
+  function restoreWishlistUI() {
+    likedIds.forEach(function(id) {
+      var hearts = page.querySelectorAll('.aos-card-wishlist[data-id="' + id + '"]');
+      hearts.forEach(function(h) { h.classList.add('active'); });
+    });
+  }
+
+  // Add click listeners to heart buttons
+  page.querySelectorAll('.aos-card-wishlist').forEach(function(heartBtn) {
+    heartBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var id = heartBtn.getAttribute('data-id');
+      if (!id) return;
+      
+      var idx = likedIds.indexOf(id);
+      if (idx > -1) {
+        likedIds.splice(idx, 1);
+        heartBtn.classList.remove('active');
+      } else {
+        likedIds.push(id);
+        heartBtn.classList.add('active');
+        
+        // Add a premium pop animation on click
+        heartBtn.style.transform = 'scale(1.3)';
+        setTimeout(function() {
+          heartBtn.style.transform = '';
+        }, 200);
+      }
+      
+      // Update other hearts for the same product in this section (if any)
+      page.querySelectorAll('.aos-card-wishlist[data-id="' + id + '"]').forEach(function(otherHeart) {
+        otherHeart.classList.toggle('active', idx === -1);
+      });
+      
+      try {
+        localStorage.setItem(wishlistKey, JSON.stringify(likedIds));
+      } catch(err) { console.error('Could not save wishlist', err); }
+    });
+  });
+
+  restoreWishlistUI();
+
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Aylesva Deals Hub",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Colección de Ofertas de la Cuadrícula",
+      "info": "Selecciona la colección que contiene los productos de la cuadrícula interactiva. Por defecto usa 'on-sale'."
+    },
+    {
+      "type": "collection",
+      "id": "hero_collection",
+      "label": "Colección del Banner (Hero)",
+      "info": "Selecciona la colección para los productos que aparecen arriba en el Banner. Si se deja vacía, se usará la misma colección de la cuadrícula."
+    },
+    {
+      "type": "collection",
+      "id": "carousel_collection",
+      "label": "Colección del Carrusel (Productos Más Vendidos)",
+      "info": "Selecciona la colección que se mostrará en el carrusel elegante de abajo. Si se deja vacía, se usará 'on-sale'."
+    },
+    {
+      "type": "header",
+      "content": "Barra Negra Promocional (Beneficios)"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_promo_bar",
+      "label": "Mostrar Barra Promocional",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "pb_title_1",
+      "label": "Título Beneficio 1",
+      "default": "Hasta 70% de descuento"
+    },
+    {
+      "type": "text",
+      "id": "pb_sub_1",
+      "label": "Subtítulo Beneficio 1",
+      "default": "en productos seleccionados"
+    },
+    {
+      "type": "text",
+      "id": "pb_title_2",
+      "label": "Título Beneficio 2",
+      "default": "Envío gratis"
+    },
+    {
+      "type": "text",
+      "id": "pb_sub_2",
+      "label": "Subtítulo Beneficio 2",
+      "default": "en compras +$899"
+    },
+    {
+      "type": "text",
+      "id": "pb_title_3",
+      "label": "Título Beneficio 3",
+      "default": "Pagos seguros"
+    },
+    {
+      "type": "text",
+      "id": "pb_sub_3",
+      "label": "Subtítulo Beneficio 3",
+      "default": "Compra con confianza"
+    },
+    {
+      "type": "text",
+      "id": "pb_title_4",
+      "label": "Título Beneficio 4",
+      "default": "Devoluciones fáciles"
+    },
+    {
+      "type": "text",
+      "id": "pb_sub_4",
+      "label": "Subtítulo Beneficio 4",
+      "default": "Hasta 30 días"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Aylesva Deals Hub",
+      "settings": {}
+    }
+  ]
+}
+{% endschema %}

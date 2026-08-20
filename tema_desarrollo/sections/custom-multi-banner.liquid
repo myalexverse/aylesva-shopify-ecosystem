@@ -1,0 +1,477 @@
+{%- assign first_image = section.blocks.first.settings.image -%}
+{%- if first_image != blank -%}
+  {%- assign aspect_ratio = first_image.aspect_ratio -%}
+{%- else -%}
+  {%- assign aspect_ratio = 2.4 -%}
+{%- endif -%}
+{%- assign aspect_ratio_css = aspect_ratio | replace: ',', '.' -%}
+{%- style -%}
+  #MultiBanner-{{ section.id }} {
+    position: relative;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    height: {{ section.settings.desktop_height }}vh;
+    overflow: hidden;
+    background: #000;
+  }
+
+  @media (max-width: 767px) {
+    #MultiBanner-{{ section.id }} {
+      width: 100% !important;
+      margin-left: 0 !important;
+    }
+  }
+
+  .mb-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mb-slide.is-active {
+    opacity: 1;
+    z-index: 2;
+  }
+
+  .mb-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .mb-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .mb-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, {{ section.settings.overlay_opacity | divided_by: 100.0 }});
+    z-index: 3;
+  }
+
+  .mb-content {
+    position: relative;
+    z-index: 4;
+    text-align: center;
+    color: #fff;
+    width: 90%;
+    max-width: 1000px;
+    padding: 20px;
+  }
+
+  @keyframes mbFadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .mb-content > * {
+    opacity: 0;
+  }
+
+  .mb-slide.is-active .mb-title {
+    animation: mbFadeUp 0.8s cubic-bezier(0.2, 0.6, 0.3, 1) forwards 0.3s;
+  }
+
+  .mb-slide.is-active .mb-subtitle {
+    animation: mbFadeUp 0.8s cubic-bezier(0.2, 0.6, 0.3, 1) forwards 0.5s;
+  }
+
+  .mb-slide.is-active .mb-btn {
+    animation: mbFadeUp 0.8s cubic-bezier(0.2, 0.6, 0.3, 1) forwards 0.7s;
+  }
+
+  .mb-title {
+    font-size: 60px;
+    font-weight: 800;
+    line-height: 1.1;
+    text-transform: capitalize;
+    margin: 0 0 20px 0;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+  }
+
+  .mb-subtitle {
+    font-size: 22px;
+    font-weight: 500;
+    margin: 0 0 35px 0;
+    line-height: 1.4;
+    text-transform: capitalize;
+    opacity: 0.95;
+    letter-spacing: 0.01em;
+  }
+
+  @media (max-width: 767px) {
+    .mb-content {
+      padding: 10px;
+      width: 90% !important;
+      max-width: 260px !important;
+      margin: 0 auto;
+    }
+    .mb-title {
+      font-size: 5.5vw !important;
+      line-height: 1.2 !important;
+      margin-bottom: 5px !important;
+      font-weight: 700 !important;
+      letter-spacing: -0.01em !important;
+    }
+    .mb-subtitle {
+      font-size: 2.8vw !important;
+      margin-bottom: 10px !important;
+      line-height: 1.4 !important;
+    }
+    .mb-btn {
+      padding: 8px 18px !important;
+      font-size: 10px !important;
+      letter-spacing: 0.05em !important;
+    }
+  }
+
+  .mb-btn {
+    display: inline-block;
+    padding: 16px 45px;
+    background: #C5A47E;
+    color: #ffffff;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    box-sizing: border-box;
+    box-shadow: 0 4px 15px rgba(197, 164, 126, 0.3);
+    will-change: transform;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .mb-btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+    transform: skewX(-25deg);
+    z-index: 1;
+  }
+
+  .mb-btn:hover {
+    transform: translateY(-4px) scale(1.04) !important;
+    background: #b3926a !important; /* Oro ligeramente más oscuro */
+    box-shadow: 0 12px 25px rgba(197, 164, 126, 0.5) !important;
+    color: #ffffff !important;
+  }
+  
+  .mb-btn:hover::after {
+    animation: shineSweep 1.5s ease-in-out infinite;
+  }
+  
+  @keyframes shineSweep {
+    0%   { left: -100%; }
+    100% { left: 200%; }
+  }
+
+  .mb-dots {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .mb-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .mb-dot.is-active {
+    width: 30px;
+    height: 6px;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  }
+{%- endstyle -%}
+
+<div id="MultiBanner-{{ section.id }}" 
+     data-autoplay="{{ section.settings.autoplay }}" 
+     data-speed="{{ section.settings.autoplay_speed | times: 1000 }}">
+  <style>
+    @media (max-width: 767px) {
+      #MultiBanner-{{ section.id }} {
+        height: 0 !important;
+        padding-bottom: calc(100% / {{ aspect_ratio_css }}) !important;
+        min-height: 0 !important;
+        position: relative !important;
+        overflow: hidden !important;
+        width: 100% !important;
+        margin-left: 0 !important;
+      }
+      #MultiBanner-{{ section.id }} .mb-slide {
+        height: 100% !important;
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+      }
+      #MultiBanner-{{ section.id }} .mb-image img {
+        object-fit: cover !important; 
+        width: 100% !important;
+        height: 100% !important;
+      }
+      .mb-content {
+        padding: 8px 5px !important; 
+        width: 95% !important;
+        max-width: 310px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        box-sizing: border-box !important;
+      }
+      .mb-title {
+        font-size: 3.8vw !important; /* Reducción máxima para evitar cortes */
+        line-height: 1.0 !important;
+        margin: 0 0 2px 0 !important;
+        padding: 0 !important;
+        font-weight: 700 !important;
+      }
+      .mb-subtitle {
+        font-size: 2.2vw !important;
+        margin: 0 0 4px 0 !important;
+        padding: 0 !important;
+        line-height: 1.1 !important;
+      }
+      .mb-btn {
+        padding: 3px 10px !important;
+        font-size: 8px !important;
+        margin: 2px 0 0 0 !important;
+        line-height: 1.2 !important;
+      }
+      .mb-dots {
+        display: none !important;
+      }
+    }
+  </style>
+  <!-- AR: {{ aspect_ratio_css }} -->
+  {%- for block in section.blocks -%}
+    <div class="mb-slide {% if forloop.first %}is-active{% endif %}" data-index="{{ forloop.index0 }}" {{ block.shopify_attributes }}>
+      <div class="mb-image">
+        {%- if block.settings.image != blank -%}
+          <img src="{{ block.settings.image | img_url: '1920x' }}" alt="{{ block.settings.title | escape }}" loading="lazy">
+        {%- else -%}
+          {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+        {%- endif -%}
+      </div>
+      <div class="mb-overlay"></div>
+      <div class="mb-content">
+        {%- if block.settings.title != blank -%}
+          <h2 class="mb-title">{{ block.settings.title }}</h2>
+        {%- endif -%}
+        {%- if block.settings.sub_title != blank -%}
+          <p class="mb-subtitle">{{ block.settings.sub_title }}</p>
+        {%- endif -%}
+        {%- if block.settings.btn_txt != blank -%}
+          <a href="{{ block.settings.btn_link }}" class="mb-btn">{{ block.settings.btn_txt }}</a>
+        {%- endif -%}
+      </div>
+    </div>
+  {%- endfor -%}
+
+  {%- if section.blocks.size > 1 -%}
+    <div class="mb-dots">
+      {%- for block in section.blocks -%}
+        <div class="mb-dot {% if forloop.first %}is-active{% endif %}" data-idx="{{ forloop.index0 }}"></div>
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+</div>
+
+<script>
+  (function() {
+    const sid = "{{ section.id }}";
+    const wrap = document.getElementById('MultiBanner-' + sid);
+    if (!wrap) return;
+
+    const slides = wrap.querySelectorAll('.mb-slide');
+    const dots = wrap.querySelectorAll('.mb-dot');
+    const auto = wrap.dataset.autoplay === 'true';
+    const speed = parseInt(wrap.dataset.speed) || 5000;
+    let curr = 0;
+    let timer = null;
+
+    function show(idx) {
+      slides.forEach(s => s.classList.remove('is-active'));
+      dots.forEach(d => d.classList.remove('is-active'));
+      slides[idx].classList.add('is-active');
+      if (dots[idx]) dots[idx].classList.add('is-active');
+      curr = idx;
+    }
+
+    function start() {
+      if (!auto || slides.length <= 1) return;
+      timer = setInterval(() => {
+        let next = (curr + 1) % slides.length;
+        show(next);
+      }, speed);
+    }
+
+    dots.forEach(dot => {
+      dot.onclick = () => {
+        clearInterval(timer);
+        show(parseInt(dot.dataset.idx));
+        start();
+      };
+    });
+
+    // Touch Support
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    wrap.addEventListener('touchstart', e => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    wrap.addEventListener('touchend', e => {
+      touchEndX = e.changedTouches[0].screenX;
+      const diff = touchStartX - touchEndX;
+      if (Math.abs(diff) > 50) {
+        clearInterval(timer);
+        if (diff > 0) {
+          show((curr + 1) % slides.length);
+        } else {
+          show((curr - 1 + slides.length) % slides.length);
+        }
+        start();
+      }
+    }, { passive: true });
+
+    start();
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Custom Multi Banner",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "range",
+      "id": "desktop_height",
+      "label": "Altura Escritorio (vh)",
+      "min": 40,
+      "max": 100,
+      "step": 5,
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "mobile_height",
+      "label": "Altura Móvil (vh)",
+      "min": 30,
+      "max": 100,
+      "step": 5,
+      "default": 60
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Autoplay",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "autoplay_speed",
+      "label": "Velocidad (segundos)",
+      "min": 3,
+      "max": 15,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Opacidad Overlay",
+      "min": 0,
+      "max": 90,
+      "step": 10,
+      "default": 30
+    }
+  ],
+  "blocks": [
+    {
+      "type": "banner",
+      "name": "Banner",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Imagen"
+        },
+        {
+          "type": "textarea",
+          "id": "title",
+          "label": "Título",
+          "default": "Título del Banner"
+        },
+        {
+          "type": "textarea",
+          "id": "sub_title",
+          "label": "Subtítulo",
+          "default": "Descripción corta del banner"
+        },
+        {
+          "type": "text",
+          "id": "btn_txt",
+          "label": "Texto Botón",
+          "default": "Comprar Ahora"
+        },
+        {
+          "type": "url",
+          "id": "btn_link",
+          "label": "Enlace Botón"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Multi Banner",
+      "category": "Image"
+    }
+  ]
+}
+{% endschema %}

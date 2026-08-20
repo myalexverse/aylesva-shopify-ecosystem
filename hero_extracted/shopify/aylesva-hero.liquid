@@ -1,0 +1,421 @@
+{% comment %}
+  Aylesva Mx — Hero animado (sección Shopify)
+  Guardar como: sections/aylesva-hero.liquid
+  Insertar en una plantilla:  {% section 'aylesva-hero' %}
+  Todo el CSS y JS va contenido aquí (prefijo .ay- para no chocar con el tema).
+{% endcomment %}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..600&family=Manrope:wght@300..800&display=swap" rel="stylesheet">
+
+<style>
+  .ay-hero *, .ay-hero *::before, .ay-hero *::after { box-sizing: border-box; }
+  .ay-hero {
+    font-family: Manrope, system-ui, sans-serif;
+    color: #0E0D0B;
+    background: #FFFDFA;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  .ay-hero a { text-decoration: none; }
+
+  .ay-wrap {
+    position: relative;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 64px 34px 34px;
+    display: grid;
+    grid-template-columns: minmax(360px, 44%) 1fr;
+    gap: 26px;
+    align-items: center;
+  }
+  .ay-copy { position: relative; z-index: 2; }
+
+  .ay-h1 {
+    font-family: Lora, serif;
+    font-size: clamp(40px, 4.5vw, 66px);
+    line-height: 1.05;
+    letter-spacing: -.028em;
+    margin: 0;
+    font-weight: 500;
+    animation: ay-rise 1s cubic-bezier(.22,1,.36,1) both;
+  }
+  .ay-h1 span { color: #B08D57; }
+  .ay-sub {
+    margin: 26px 0 0;
+    font-size: 17.5px;
+    line-height: 1.62;
+    color: #4A453E;
+    max-width: 460px;
+    text-wrap: pretty;
+    animation: ay-rise 1s cubic-bezier(.22,1,.36,1) .12s both;
+  }
+  .ay-ctas {
+    display: flex;
+    gap: 14px;
+    margin-top: 36px;
+    flex-wrap: wrap;
+    animation: ay-rise 1s cubic-bezier(.22,1,.36,1) .24s both;
+  }
+  .ay-btn-dark {
+    position: relative; overflow: hidden;
+    display: flex; align-items: center; gap: 14px;
+    background: #0E0D0B; color: #fff;
+    padding: 16px 26px; border-radius: 10px;
+    font-size: 15px; font-weight: 600;
+    box-shadow: 0 14px 30px rgba(14,13,11,.22);
+    transition: transform .3s, box-shadow .3s, background .3s;
+  }
+  .ay-btn-dark:hover {
+    background: #26221D; color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 20px 40px rgba(14,13,11,.28);
+  }
+  .ay-sheen-btn {
+    position: absolute; top: 0; left: 0; width: 40%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,.20), transparent);
+    animation: ay-sheen 5s ease-in-out 1.6s infinite;
+  }
+  .ay-btn-light {
+    display: flex; align-items: center; gap: 16px;
+    background: #fff; color: #0E0D0B;
+    padding: 16px 24px; border-radius: 10px;
+    font-size: 15px; font-weight: 600;
+    border: 1px solid rgba(14,13,11,.14);
+    transition: border-color .3s, transform .3s;
+  }
+  .ay-btn-light:hover { border-color: #B08D57; color: #0E0D0B; transform: translateY(-2px); }
+
+  /* ---- escena ---- */
+  .ay-frame { position: relative; min-height: 520px; overflow: visible; }
+  .ay-scene {
+    position: absolute; left: 0; top: 50%;
+    width: 800px; height: 540px;
+    transform: translateY(-50%);
+    transform-origin: left center;
+  }
+  .ay-glow {
+    position: absolute; left: 60px; top: 40px; width: 720px; height: 420px;
+    background: radial-gradient(48% 54% at 52% 46%, rgba(176,141,87,.22), rgba(176,141,87,0) 72%);
+    filter: blur(6px);
+    animation: ay-fade 1.8s ease both;
+  }
+  .ay-floor {
+    position: absolute; left: 70px; bottom: 6px; width: 660px; height: 44px;
+    background: radial-gradient(50% 50% at 50% 50%, rgba(14,13,11,.20), rgba(14,13,11,0) 72%);
+    filter: blur(10px);
+    animation: ay-fade-soft 1.6s ease 1s both;
+  }
+
+  /* edificio */
+  .ay-building { position: absolute; left: 150px; top: 14px; width: 212px; height: 330px; animation: ay-rise 1.2s cubic-bezier(.22,1,.36,1) .18s both; }
+  .ay-building-body { position: absolute; inset: 0; border-radius: 4px 4px 0 0; background: linear-gradient(120deg,#F1EAE0 0%,#E2D8C9 55%,#CFC2AE 100%); box-shadow: 0 40px 70px rgba(14,13,11,.10); }
+  .ay-building-side { position: absolute; left: 0; top: 0; width: 42px; height: 100%; background: linear-gradient(180deg, rgba(14,13,11,.10), rgba(14,13,11,.03)); }
+  .ay-building-grid { position: absolute; left: 52px; right: 14px; top: 26px; bottom: 22px; display: grid; grid-template-columns: repeat(4,1fr); grid-auto-rows: 1fr; gap: 9px 8px; }
+  .ay-building-grid div { border-radius: 1.5px; box-shadow: inset 0 -3px 0 rgba(14,13,11,.06); }
+  .ay-w0 { background: rgba(255,255,255,.85); }
+  .ay-w1 { background: rgba(255,255,255,.55); }
+  .ay-w2 { background: rgba(140,126,105,.28); }
+  .ay-w3 { background: rgba(255,255,255,.72); }
+  .ay-cornice { position: absolute; left: -8px; right: -8px; top: -9px; height: 11px; border-radius: 3px; background: linear-gradient(180deg,#F4EEE5,#DED2C0); }
+
+  /* grúa + barco */
+  .ay-port { position: absolute; right: 0; top: 96px; width: 230px; height: 300px; animation: ay-rise 1.2s cubic-bezier(.22,1,.36,1) .3s both; }
+  .ay-port-inner { --r: 0deg; position: absolute; inset: 0; animation: ay-float 10s ease-in-out .8s infinite; }
+  .ay-mast { position: absolute; left: 16px; top: 0; width: 9px; height: 190px; background: linear-gradient(90deg,#4A443C,#726A5E); }
+  .ay-boom { position: absolute; left: 16px; top: 6px; width: 186px; height: 8px; background: linear-gradient(90deg,#8A8072,#5A5349); border-radius: 2px; }
+  .ay-cable { position: absolute; left: 150px; top: 14px; width: 3px; height: 52px; background: #6E665B; }
+  .ay-hook { position: absolute; left: 132px; top: 64px; width: 38px; height: 26px; border-radius: 3px; background: linear-gradient(180deg,#C29A5E,#8A6A3B); }
+  .ay-stack { position: absolute; left: 0; bottom: 52px; right: 0; height: 96px; }
+  .ay-ctr { position: absolute; height: 19px; border-radius: 2px; box-shadow: inset -3px 0 0 rgba(14,13,11,.14); transform-origin: bottom; animation: ay-grow .6s cubic-bezier(.22,1,.36,1) both; }
+  .ay-hull { position: absolute; left: -6px; right: -14px; bottom: 16px; height: 44px; border-radius: 6px 30px 4px 4px; background: linear-gradient(180deg,#25221E,#100F0D); }
+  .ay-waterline { position: absolute; left: -6px; right: -14px; bottom: 12px; height: 7px; border-radius: 3px; background: #B08D57; opacity: .75; }
+
+  /* laptop */
+  .ay-laptop { position: absolute; left: 96px; top: 44px; width: 560px; animation: ay-fade .6s ease .3s both; }
+  .ay-laptop-float { --r: 0deg; animation: ay-float 12s ease-in-out infinite; }
+  .ay-lid { transform-origin: bottom center; animation: ay-lid 1.4s cubic-bezier(.22,1,.36,1) .35s both; }
+  .ay-bezel { background: linear-gradient(160deg,#3A3835,#232120); border-radius: 16px 16px 6px 6px; padding: 12px 12px 14px; box-shadow: 0 50px 90px rgba(14,13,11,.30), 0 4px 10px rgba(14,13,11,.18); }
+  .ay-cam { height: 8px; display: flex; align-items: center; justify-content: center; }
+  .ay-cam span { width: 4px; height: 4px; border-radius: 50%; background: #5C5A56; }
+  .ay-screen { background: #FCFAF7; border-radius: 6px; overflow: hidden; box-shadow: inset 0 0 0 1px rgba(255,255,255,.08); }
+  .ay-base { position: relative; height: 15px; margin: 0 -22px; border-radius: 0 0 14px 14px; background: linear-gradient(180deg,#CFCCC7 0%,#A9A6A1 45%,#7E7B77 100%); box-shadow: 0 22px 34px rgba(14,13,11,.22); }
+  .ay-notch { position: absolute; left: 50%; top: 0; transform: translateX(-50%); width: 86px; height: 4px; border-radius: 0 0 5px 5px; background: #6E6B67; }
+
+  .ay-topbar { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-bottom: 1px solid rgba(14,13,11,.07); background: linear-gradient(180deg,#fff,#FCFAF7); }
+  .ay-brand-img { height: 15px; width: auto; display: block; }
+  .ay-cc-brand-img { height: 15px; width: auto; display: block; }
+  .ay-icons { display: flex; gap: 13px; opacity: .45; }
+  .ay-dash { padding: 16px; display: grid; grid-template-columns: 1.35fr 1fr; gap: 16px; background: #FBF9F6; }
+  .ay-card { border: 1px solid rgba(14,13,11,.08); border-radius: 9px; padding: 13px; background: #fff; margin-top: 11px; box-shadow: 0 2px 6px rgba(14,13,11,.03); }
+  .ay-kpi { font-family: Lora, serif; font-size: 26px; font-weight: 600; margin-top: 3px; letter-spacing: -.01em; }
+  .ay-badge { font-size: 9.5px; color: #2F7A4F; font-weight: 700; background: #EAF3EC; padding: 2px 6px; border-radius: 20px; }
+  .ay-label { font-size: 9.5px; color: #8A857D; letter-spacing: .05em; text-transform: uppercase; }
+  .ay-axis { display: flex; justify-content: space-between; font-size: 8px; color: #A9A399; letter-spacing: .04em; margin-top: 2px; }
+  .ay-mini { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; margin-top: 9px; }
+  .ay-mini > div { border: 1px solid rgba(14,13,11,.08); border-radius: 8px; padding: 9px 11px; background: #fff; }
+  .ay-mini-l { font-size: 8.5px; color: #8A857D; letter-spacing: .05em; text-transform: uppercase; }
+  .ay-mini-v { font-size: 15px; font-weight: 700; margin-top: 1px; }
+  .ay-rows { display: flex; flex-direction: column; gap: 6px; }
+  .ay-row { display: flex; align-items: center; gap: 9px; background: #fff; border: 1px solid rgba(14,13,11,.07); border-radius: 7px; padding: 7px 9px; animation: ay-rise .6s ease both; }
+  .ay-row i { width: 18px; height: 18px; border-radius: 5px; flex-shrink: 0; }
+  .ay-row b { font-size: 10.5px; font-weight: 700; flex: 1; }
+  .ay-row em { font-size: 8.5px; color: #B08D57; font-style: normal; white-space: nowrap; }
+  .ay-credit { margin-top: 10px; border-radius: 8px; padding: 10px; background: linear-gradient(140deg,#1B1917,#0E0D0B); color: #E8DFD1; }
+  .ay-credit-l { font-size: 8.5px; letter-spacing: .06em; color: #9C9284; text-transform: uppercase; }
+  .ay-credit-v { font-family: Lora, serif; font-size: 17px; font-weight: 600; margin-top: 2px; }
+  .ay-track { height: 4px; border-radius: 3px; background: rgba(255,255,255,.14); margin-top: 7px; overflow: hidden; }
+  .ay-fill { height: 100%; width: 62%; background: linear-gradient(90deg,#8A6A3B,#DFC189); transform-origin: left; animation: ay-grow .9s cubic-bezier(.22,1,.36,1) 1.6s both; }
+
+  /* tarjeta */
+  .ay-cardwrap { position: absolute; left: 6px; top: 296px; width: 236px; animation: ay-rise 1.1s cubic-bezier(.22,1,.36,1) .55s both; }
+  .ay-cardfloat { --r: -9deg; animation: ay-float 8s ease-in-out .4s infinite; }
+  .ay-credicard { position: relative; overflow: hidden; aspect-ratio: 1.585; border-radius: 13px; background: linear-gradient(128deg,#2B2723 0%,#131110 42%,#242019 78%,#0C0B0A 100%); box-shadow: 0 34px 60px rgba(14,13,11,.45); padding: 15px 16px; border: 1px solid rgba(224,196,141,.16); }
+
+  .ay-chip { width: 29px; height: 21px; border-radius: 4px; margin-top: 13px; background: linear-gradient(135deg,#EBD3A2,#A9853F); position: relative; overflow: hidden; }
+  .ay-chip::after { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(90deg, transparent 0 8px, rgba(74,52,24,.35) 8px 9px), repeating-linear-gradient(0deg, transparent 0 6px, rgba(74,52,24,.35) 6px 7px); }
+  .ay-cc-num { display: flex; gap: 9px; margin-top: 14px; font-size: 9.5px; letter-spacing: .16em; color: rgba(232,223,209,.55); }
+  .ay-cc-mark { position: absolute; right: 12px; bottom: 9px; width: 66px; height: auto; opacity: .92; display: block; }
+  .ay-sheen-card { position: absolute; top: 0; left: 0; width: 45%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,.16), transparent); animation: ay-sheen 7s ease-in-out 2.2s infinite; }
+
+  /* caja */
+  .ay-box { position: absolute; left: 560px; top: 342px; width: 158px; animation: ay-rise 1.1s cubic-bezier(.22,1,.36,1) .68s both; }
+  .ay-boxfloat { --r: 3deg; animation: ay-float 9s ease-in-out 1.1s infinite; }
+  .ay-box-lid { position: relative; height: 34px; background: linear-gradient(180deg,#E0B87E,#CBA269); border-radius: 4px 4px 0 0; box-shadow: inset 0 -4px 8px rgba(74,52,24,.14); }
+  .ay-box-lid span { position: absolute; left: 50%; top: 0; bottom: 0; width: 15px; transform: translateX(-50%); background: linear-gradient(180deg, rgba(255,255,255,.55), rgba(255,255,255,.30)); }
+  .ay-box-body { position: relative; height: 104px; background: linear-gradient(170deg,#D3A76B,#B9884F); border-radius: 0 0 5px 5px; box-shadow: 0 26px 44px rgba(14,13,11,.26); }
+  .ay-box-body .ay-tape { position: absolute; left: 50%; top: 0; bottom: 0; width: 15px; transform: translateX(-50%); background: rgba(255,255,255,.16); }
+  .ay-box-mark { position: absolute; left: 50%; top: 52%; transform: translate(-50%,-50%); width: 52px; height: auto; opacity: .85; display: block; }
+  .ay-bar-a { position: absolute; left: 14px; bottom: 12px; width: 34px; height: 4px; background: rgba(90,64,32,.28); border-radius: 2px; }
+  .ay-bar-b { position: absolute; left: 14px; bottom: 21px; width: 52px; height: 4px; background: rgba(90,64,32,.20); border-radius: 2px; }
+
+  @keyframes ay-rise { from { opacity: 0; transform: translateY(34px) scale(.985); filter: blur(12px); } to { opacity: 1; transform: none; filter: blur(0); } }
+  @keyframes ay-fade { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes ay-fade-soft { from { opacity: 0; } to { opacity: .55; } }
+  @keyframes ay-float { 0%,100% { transform: translateY(0) rotate(var(--r,0deg)); } 50% { transform: translateY(-11px) rotate(var(--r,0deg)); } }
+  @keyframes ay-draw { to { stroke-dashoffset: 0; } }
+  @keyframes ay-sheen { 0% { transform: translateX(-150%) skewX(-16deg); } 55%,100% { transform: translateX(340%) skewX(-16deg); } }
+  @keyframes ay-grow { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+  @keyframes ay-lid { from { transform: perspective(1400px) rotateX(-72deg); opacity: 0; } to { transform: perspective(1400px) rotateX(0deg); opacity: 1; } }
+  @keyframes ay-pulse { 0%,100% { opacity: .35; transform: scale(1); } 50% { opacity: .9; transform: scale(1.35); } }
+
+  /* responsive */
+  @media (max-width: 1100px) {
+    .ay-wrap { grid-template-columns: 1fr; padding: 48px 24px 24px; }
+    .ay-frame { min-height: 420px; }
+  }
+  @media (max-width: 640px) {
+    .ay-wrap { padding: 36px 20px 16px; }
+    .ay-btn-dark, .ay-btn-light { flex: 1 1 100%; justify-content: center; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ay-hero * { animation: none !important; opacity: 1 !important; transform: none !important; filter: none !important; }
+    .ay-scene { transform: translateY(-50%) !important; }
+  }
+</style>
+
+<section class="ay-hero">
+  <div class="ay-wrap">
+    <div class="ay-copy">
+      <h1 class="ay-h1">
+        {{ section.settings.title_1 | default: 'Impulsamos tu negocio.' }}<br>
+        <span>{{ section.settings.title_2 | default: 'Potenciamos tu futuro.' }}</span>
+      </h1>
+      <p class="ay-sub">{{ section.settings.subtitle | default: 'Un ecosistema de soluciones diseñadas para acompañarte en cada etapa de crecimiento de tu empresa y tu patrimonio.' }}</p>
+      <div class="ay-ctas">
+        <a class="ay-btn-dark" href="{{ section.settings.cta1_url | default: '#ecosistema' }}">
+          {{ section.settings.cta1_text | default: 'Conoce nuestros servicios' }}
+          <svg width="17" height="12" viewBox="0 0 18 12" fill="none" stroke="#fff" stroke-width="1.7"><path d="M1 6h15M11 1l5 5-5 5"/></svg>
+          <span class="ay-sheen-btn"></span>
+        </a>
+        <a class="ay-btn-light" href="{{ section.settings.cta2_url | default: '#contacto' }}">
+          {{ section.settings.cta2_text | default: 'Habla con un asesor' }}
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0E0D0B" stroke-width="1.7"><path d="M4 13v-1a8 8 0 0 1 16 0v1"/><rect x="2.5" y="13" width="4" height="6" rx="2"/><rect x="17.5" y="13" width="4" height="6" rx="2"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="ay-frame" id="ayFrame">
+      <div class="ay-scene" id="ayScene">
+        <div class="ay-glow"></div>
+
+        <!-- edificio -->
+        <div class="ay-building" data-layer="0.14">
+          <div class="ay-building-body"></div>
+          <div class="ay-building-side"></div>
+          <div class="ay-building-grid">
+            <div class="ay-w0"></div><div class="ay-w2"></div><div class="ay-w0"></div><div class="ay-w3"></div>
+            <div class="ay-w1"></div><div class="ay-w3"></div><div class="ay-w2"></div><div class="ay-w0"></div>
+            <div class="ay-w2"></div><div class="ay-w1"></div><div class="ay-w3"></div><div class="ay-w1"></div>
+            <div class="ay-w0"></div><div class="ay-w2"></div><div class="ay-w0"></div><div class="ay-w3"></div>
+            <div class="ay-w1"></div><div class="ay-w3"></div><div class="ay-w2"></div><div class="ay-w0"></div>
+            <div class="ay-w2"></div><div class="ay-w1"></div><div class="ay-w3"></div><div class="ay-w1"></div>
+            <div class="ay-w0"></div><div class="ay-w2"></div><div class="ay-w0"></div><div class="ay-w3"></div>
+          </div>
+          <div class="ay-cornice"></div>
+        </div>
+
+        <!-- grúa portuaria + barco -->
+        <div class="ay-port" data-layer="0.2">
+          <div class="ay-port-inner">
+            <div class="ay-mast"></div>
+            <div class="ay-boom"></div>
+            <div class="ay-cable"></div>
+            <div class="ay-hook"></div>
+            <div class="ay-stack">
+              <div class="ay-ctr" style="left:4px;bottom:0;width:58px;background:linear-gradient(180deg,#C9A876,#A5824C);animation-delay:.9s"></div>
+              <div class="ay-ctr" style="left:66px;bottom:0;width:58px;background:linear-gradient(180deg,#8E8578,#6B6357);animation-delay:.98s"></div>
+              <div class="ay-ctr" style="left:128px;bottom:0;width:58px;background:linear-gradient(180deg,#C9A876,#A5824C);animation-delay:1.06s"></div>
+              <div class="ay-ctr" style="left:4px;bottom:21px;width:58px;background:linear-gradient(180deg,#DCCBAF,#B49C74);animation-delay:1.14s"></div>
+              <div class="ay-ctr" style="left:66px;bottom:21px;width:58px;background:linear-gradient(180deg,#C9A876,#A5824C);animation-delay:1.22s"></div>
+              <div class="ay-ctr" style="left:128px;bottom:21px;width:58px;background:linear-gradient(180deg,#8E8578,#6B6357);animation-delay:1.3s"></div>
+              <div class="ay-ctr" style="left:4px;bottom:42px;width:58px;background:linear-gradient(180deg,#8E8578,#6B6357);animation-delay:1.38s"></div>
+              <div class="ay-ctr" style="left:66px;bottom:42px;width:58px;background:linear-gradient(180deg,#DCCBAF,#B49C74);animation-delay:1.46s"></div>
+              <div class="ay-ctr" style="left:66px;bottom:63px;width:58px;background:linear-gradient(180deg,#C9A876,#A5824C);animation-delay:1.54s"></div>
+            </div>
+            <div class="ay-hull"></div>
+            <div class="ay-waterline"></div>
+          </div>
+        </div>
+
+        <!-- laptop + dashboard -->
+        <div class="ay-laptop" data-layer="0.06">
+          <div class="ay-laptop-float">
+            <div class="ay-lid">
+              <div class="ay-bezel">
+                <div class="ay-cam"><span></span></div>
+                <div class="ay-screen">
+                  <div class="ay-topbar">
+                    <img class="ay-brand-img" src="{{ 'logo-lockup.png' | asset_url }}" alt="Aylesva Mx">
+                    <span class="ay-icons">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0E0D0B" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5L21 21"/></svg>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0E0D0B" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0E0D0B" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+                    </span>
+                  </div>
+                  <div class="ay-dash">
+                    <div>
+                      <div style="display:flex;align-items:center;justify-content:space-between">
+                        <span style="font-size:13px;font-weight:700">Hola, Emprendedor</span>
+                        <span style="font-size:9px;color:#8A857D">Últimos 30 días</span>
+                      </div>
+                      <div class="ay-card">
+                        <div style="display:flex;align-items:baseline;justify-content:space-between">
+                          <span class="ay-label">Ventas del mes</span>
+                          <span class="ay-badge">+24%</span>
+                        </div>
+                        <div class="ay-kpi">$128,540 <span style="font-size:10px;color:#8A857D;font-family:Manrope,sans-serif;font-weight:600">MXN</span></div>
+                        <div style="position:relative;margin-top:8px">
+                          <svg viewBox="0 0 300 88" style="width:100%;height:88px;display:block" fill="none">
+                            <path d="M0 22h300M0 44h300M0 66h300" stroke="rgba(14,13,11,.06)" stroke-width="1"/>
+                            <path d="M2 76 L32 68 L62 72 L92 52 L122 58 L152 34 L182 44 L212 24 L242 30 L272 12 L298 6 L298 88 L2 88 Z" fill="url(#ayg)" opacity="0" style="animation:ay-fade 1.4s ease 1.9s forwards"/>
+                            <path d="M2 76 L32 68 L62 72 L92 52 L122 58 L152 34 L182 44 L212 24 L242 30 L272 12 L298 6" stroke="#B08D57" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="480" stroke-dashoffset="480" style="animation:ay-draw 2.3s cubic-bezier(.4,0,.2,1) .8s forwards"/>
+                            <circle cx="272" cy="12" r="3.4" fill="#B08D57" opacity="0" style="animation:ay-fade .5s ease 2.5s forwards"/>
+                            <circle cx="272" cy="12" r="7" fill="#B08D57" style="animation:ay-pulse 2.6s ease-in-out 2.7s infinite"/>
+                            <defs><linearGradient id="ayg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#B08D57" stop-opacity=".24"/><stop offset="100%" stop-color="#B08D57" stop-opacity="0"/></linearGradient></defs>
+                          </svg>
+                          <div class="ay-axis"><span>ENE</span><span>MAR</span><span>MAY</span><span>JUL</span><span>SEP</span><span>NOV</span></div>
+                        </div>
+                      </div>
+                      <div class="ay-mini">
+                        <div><div class="ay-mini-l">Pedidos</div><div class="ay-mini-v">1,284</div></div>
+                        <div><div class="ay-mini-l">Ticket prom.</div><div class="ay-mini-v">$1,004</div></div>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="ay-label" style="margin-bottom:9px">Resumen de servicios</div>
+                      <div class="ay-rows">
+                        <div class="ay-row" style="animation-delay:1.05s"><i style="background:#F0E4D2"></i><b>Commerce</b><em>Ver detalles</em></div>
+                        <div class="ay-row" style="animation-delay:1.17s"><i style="background:#E2EADF"></i><b>Capital</b><em>Ver detalles</em></div>
+                        <div class="ay-row" style="animation-delay:1.29s"><i style="background:#DFE6EE"></i><b>Direct</b><em>Ver detalles</em></div>
+                        <div class="ay-row" style="animation-delay:1.41s"><i style="background:#EFE7DA"></i><b>Estates</b><em>Ver detalles</em></div>
+                        <div class="ay-row" style="animation-delay:1.53s"><i style="background:#E7E2EF"></i><b>Care</b><em>Ver detalles</em></div>
+                      </div>
+                      <div class="ay-credit">
+                        <div class="ay-credit-l">Línea disponible</div>
+                        <div class="ay-credit-v">$450,000</div>
+                        <div class="ay-track"><div class="ay-fill"></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="ay-base"><div class="ay-notch"></div></div>
+          </div>
+        </div>
+
+        <!-- tarjeta -->
+        <div class="ay-cardwrap" data-layer="0.3">
+          <div class="ay-cardfloat">
+            <div class="ay-credicard">
+              <img class="ay-cc-brand-img" src="{{ 'logo-lockup-cream.png' | asset_url }}" alt="Aylesva Mx">
+              <div class="ay-chip"></div>
+              <div class="ay-cc-num"><span>••••</span><span>••••</span><span>••••</span><span>4218</span></div>
+              <img class="ay-cc-mark" src="{{ 'mark-gold.png' | asset_url }}" alt="">
+              <span class="ay-sheen-card"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- caja -->
+        <div class="ay-box" data-layer="0.26">
+          <div class="ay-boxfloat">
+            <div class="ay-box-lid"><span></span></div>
+            <div class="ay-box-body">
+              <div class="ay-tape"></div>
+              <img class="ay-box-mark" src="{{ 'mark-brown.png' | asset_url }}" alt="">
+              <div class="ay-bar-a"></div>
+              <div class="ay-bar-b"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ay-floor"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function () {
+  var frame = document.getElementById('ayFrame');
+  var scene = document.getElementById('ayScene');
+  if (!frame || !scene) return;
+  var layers = scene.querySelectorAll('[data-layer]');
+  var scale = 1;
+
+  function fit() {
+    scale = Math.min(1, frame.clientWidth / 800);
+    scene.style.transform = 'translateY(-50%) scale(' + scale + ')';
+    frame.style.minHeight = (540 * scale) + 'px';
+  }
+  function parallax() {
+    var r = scene.getBoundingClientRect();
+    var p = (window.innerHeight / 2 - (r.top + r.height / 2)) / window.innerHeight;
+    for (var i = 0; i < layers.length; i++) {
+      layers[i].style.translate = '0 ' + (p * parseFloat(layers[i].dataset.layer) * 80).toFixed(1) + 'px';
+    }
+  }
+  window.addEventListener('resize', fit);
+  window.addEventListener('scroll', parallax, { passive: true });
+  fit(); parallax();
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Hero Aylesva",
+  "settings": [
+    { "type": "text", "id": "title_1", "label": "Título línea 1", "default": "Impulsamos tu negocio." },
+    { "type": "text", "id": "title_2", "label": "Título línea 2 (dorado)", "default": "Potenciamos tu futuro." },
+    { "type": "textarea", "id": "subtitle", "label": "Subtítulo", "default": "Un ecosistema de soluciones diseñadas para acompañarte en cada etapa de crecimiento de tu empresa y tu patrimonio." },
+    { "type": "text", "id": "cta1_text", "label": "Botón principal", "default": "Conoce nuestros servicios" },
+    { "type": "url", "id": "cta1_url", "label": "Enlace botón principal" },
+    { "type": "text", "id": "cta2_text", "label": "Botón secundario", "default": "Habla con un asesor" },
+    { "type": "url", "id": "cta2_url", "label": "Enlace botón secundario" }
+  ],
+  "presets": [{ "name": "Hero Aylesva" }]
+}
+{% endschema %}

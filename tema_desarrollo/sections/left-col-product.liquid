@@ -1,0 +1,151 @@
+{% for block in section.blocks %} 
+<div id="leftpro-{{ block.id }}" class="widget widget_top_rated_products" data-section-id="{{ section.id }}" >
+  {% if block.settings.title != blank %}
+  <h4 class="widget-title">{{ block.settings.title }}</h4>  
+  {% endif %}
+  {% if block.settings.pro_img_width_height != blank %}
+  {% assign pro_size =  block.settings.pro_img_width_height %}
+  {% else %}
+  {% assign pro_size= 'small' %}
+  {% endif %}
+
+  {%  assign block_size = 1 %}  
+
+  {%- assign collection = collections[block.settings.bestseller] -%}  
+  {%  assign cnt = 1 %}  
+  {%-  assign foundpro = collection.products.count -%} 
+
+  <div id="prdct-{{ block.id }}" class="no-bullets top-products owl-carousel">
+    {% for block in section.blocks %}
+    {% for product in collection.products limit: block.settings.limit %}
+    {%- assign mod_3 = cnt | modulo:3 -%}
+    {% if block.settings.product_rows %}
+    {% if foundpro >= 9 %}
+
+    {%  if mod_3 == 1  %}
+    <ul class="sidebar-products">
+      {% endif    %}
+      {% endif  %}
+      {% endif %}
+       <div id="product-{{ product.id }}" data-id="product-{{ product.id }}" class="item-row product-layouts">
+      <li class="col-xs-12 product-wrapper sidebar-product{% if product.images.size > 1 %} product_container{% endif %}"> 
+        {% if product.images.size > 0 %}  
+        <div class="image product-thumb col-xs-5 col-sm-5 col-md-4">
+          <div class="product-img {{ settings.product_img_hover }}">
+           <a class="thumb product-t" href="{{ product.url | within: collection }}">                                          
+              <img loading="lazy" height="auto" width="85" class="featured-image image_thumb" alt="featured product" src="{{ product.featured_image | product_img_url: pro_size }}">
+              <div class="second-productimg">
+                <img loading="lazy" height="auto" width="85" class="image_thumb_swap" alt="featured product" src="{{ product.images.last | product_img_url: pro_size }}">   
+              </div>
+            </a>
+            {% if product.images.size > 1 %}
+              {% if product.images.last %}
+              <div class="loader">
+                <div class="preloader-wrapper active">
+                  <div class="spinner-layer"></div>
+                </div>
+              </div>
+              {% endif %} 
+              {% endif %} 
+            {% if product.compare_at_price > product.price %}
+            <span class="sale on-sale-tag">{{ 'products.product.on_sale' | t }}</span>    
+            {% endif %}
+          </div>
+        </div>
+        {% endif %} 
+        <div class="top-products-detail thumb-description col-xs-7 col-sm-7 col-md-8">
+          <h5><a href="{{ product.url | within: collection }}"> {{ product.title }} </a></h5>
+          {% for tag in product.tags %}
+
+          {% endfor %}
+          <div class="top-product-prices">
+            {% include 'product-price' %}
+          </div>
+        </div>
+
+      </li>
+      </div>
+      {% if block.settings.product_rows %}
+      {% if foundpro >= 9 %}
+      {%  if mod_3 == 0  %}
+    </ul>
+
+    {% endif    %}
+    {% endif  %}
+
+    {% assign cnt = cnt | plus: 1 %}
+    {% endif %}
+
+    {% assign block_size = block_size | plus: 1 %}
+    {% endfor %}
+
+    {% endfor %}
+
+    {% if block.settings.product_rows %}
+    {% if foundpro >= 9 %}
+
+    {%  if mod_3 == 0  %}
+
+  </ul> 
+  {% endif    %}
+  {% endif    %}
+  {% endif    %} 
+  </div>
+  <script type="text/javascript">$("body:not(.rtl) #leftpro-{{ block.id }} #prdct-{{ block.id }}").owlCarousel({items:1,nav:!0,dots:!0,loop:!1,autoplay:!0,rtl:!1,responsive:{1279:{items:1},1250:{items:1},600:{items:1}}}),$("body.rtl #leftpro-{{ block.id }} #prdct-{{ block.id }}").owlCarousel({items:1,nav:!0,dots:!0,loop:!1,autoplay:!0,rtl:!0,responsive:{1279:{items:1},1250:{items:1},600:{items:1}}});</script>
+
+</div>
+{% endfor %}
+{% schema %}
+  {
+    "name": "Left Sidebar Products",
+	"max_blocks":2,
+    "settings": [
+	 {
+        "type": "header",
+        "content": "Left Column Products"
+      }
+	],
+          "blocks": [ 		
+              {
+          "type": "s_text",
+          "name": "Left Column Products",
+          "settings": [
+			{
+            "type": "text",
+            "id": "title",
+            "label": "Heading"
+          },
+          {
+              "type": "collection",
+              "id": "bestseller",
+              "label": "Collection"
+            },
+          {
+              "type": "text",
+              "id": "pro_img_width_height",
+              "default": "80x104",
+              "label": "Product image width and height (widthxheight)"
+            },
+            {
+              "type": "text",
+              "id": "limit",
+              "label": "Product Limit",
+              "default": "5"
+            },
+			{
+              "type": "checkbox",
+              "id": "product_rows",
+              "label": "3 Rows Product"
+        	}
+			
+          ]
+          }
+          ],      
+    "presets": [
+      {
+        "name": "Left Sidebar Menu",
+        "category": "Left Sidebar"
+      }
+    ]
+  }
+{% endschema %}

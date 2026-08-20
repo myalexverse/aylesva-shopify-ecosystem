@@ -1,0 +1,285 @@
+{
+  "sections": {
+    "hero": {
+      "type": "aylesva-corp-hero",
+      "settings": {
+        "eyebrow": "Global Estates",
+        "overlay": 92,
+        "focal": "center",
+        "title": "Inversiones Inmobiliarias que Trascienden Fronteras",
+        "subtitle": "Desarrollos verificados en México y El Salvador, con acompañamiento desde la primera consulta hasta la entrega de llaves.",
+        "cta1_label": "Agenda tu consulta gratuita",
+        "cta1_link": "#contacto",
+        "cta2_label": "Ver desarrollos",
+        "cta2_link": "#desarrollos"
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ],
+      "blocks": {
+        "s1": {
+          "type": "stat",
+          "settings": {
+            "value": "3",
+            "label": "Desarrollos exclusivos"
+          }
+        },
+        "s2": {
+          "type": "stat",
+          "settings": {
+            "value": "72",
+            "label": "Unidades de lujo"
+          }
+        },
+        "s3": {
+          "type": "stat",
+          "settings": {
+            "value": "2",
+            "label": "Países"
+          }
+        },
+        "s4": {
+          "type": "stat",
+          "settings": {
+            "value": "2027",
+            "label": "Entrega proyectada"
+          }
+        }
+      }
+    },
+    "respaldo": {
+      "type": "aylesva-corp-features",
+      "settings": {
+        "bg": "#FFFFFF",
+        "eyebrow": "Por qué confiar en Aylesva",
+        "title": "Compra con confianza, a miles de kilómetros"
+      },
+      "block_order": [
+        "f1",
+        "f2",
+        "f3"
+      ],
+      "blocks": {
+        "f1": {
+          "type": "feature",
+          "settings": {
+            "icon": "<path d=\"M12 3l8 3v6c0 5-4 8-8 9-4-1-8-4-8-9V6z\"/><path d=\"M8.5 12l2.5 2.5 4.5-5\"/>",
+            "eyebrow": "Compra con confianza",
+            "title": "Guía de Inicio a Fin",
+            "text": "Comprar una propiedad en otro país no tiene que ser abrumador. Te guiamos en cada paso del camino para que puedas invertir con confianza, evitar errores costosos y tomar decisiones informadas."
+          }
+        },
+        "f2": {
+          "type": "feature",
+          "settings": {
+            "icon": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M3 12h18\"/><path d=\"M12 3c3 3 3 15 0 18-3-3-3-15 0-18z\"/>",
+            "eyebrow": "Protege tu inversión",
+            "title": "Experiencia Local de Confianza",
+            "text": "Te ayudamos a evitar estafas, costos ocultos y errores costosos proporcionándote orientación confiable y experiencia local durante todo el proceso de compra."
+          }
+        },
+        "f3": {
+          "type": "feature",
+          "settings": {
+            "icon": "<circle cx=\"12\" cy=\"8\" r=\"3.5\"/><path d=\"M5 21c0-4 3.2-6.5 7-6.5s7 2.5 7 6.5\"/>",
+            "eyebrow": "Estamos contigo en cada paso",
+            "title": "Acompañamiento de Inicio a Fin",
+            "text": "Desde tu primera consulta hasta el día que recibes tus llaves, Aylesva permanece a tu lado. Nuestro equipo te brinda orientación continua y se asegura de que cada etapa de tu inversión sea clara, segura y sin estrés."
+          }
+        }
+      }
+    },
+    "desarrollos": {
+      "type": "aylesva-corp-cards",
+      "settings": {
+        "bg": "#FAFAF8",
+        "columns": 3,
+        "eyebrow": "Nuestros desarrollos",
+        "title": "Tres oportunidades verificadas por nuestro equipo"
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3"
+      ],
+      "blocks": {
+        "c1": {
+          "type": "card",
+          "settings": {
+            "tag": "En Construcción",
+            "eyebrow": "Puerto Vallarta, México",
+            "title": "Torre 40",
+            "text": "Una torre residencial moderna que redefine la vida de lujo en el corazón de Puerto Vallarta.",
+            "bullets": "24 pisos · 72 unidades exclusivas\nEntrega estimada 2027\nAlberca infinity en rooftop\nVistas panorámicas al océano y la ciudad\nSeguridad 24/7 y concierge",
+            "cta_label": "Solicitar información",
+            "cta_link": "#contacto",
+            "price": ""
+          }
+        },
+        "c2": {
+          "type": "card",
+          "settings": {
+            "tag": "Preventa",
+            "eyebrow": "La Unión, El Salvador",
+            "title": "Paradise Bay",
+            "text": "Adquiere tu lugar en el destino costero más prometedor de El Salvador. Descubre oportunidades exclusivas de bienes raíces rodeadas de playas vírgenes, turismo en crecimiento y un valor excepcional a largo plazo.",
+            "bullets": "Cerca del nuevo aeropuerto internacional\nCerca de la futura Bitcoin City\nAdyacente al nuevo Puerto de La Unión\nInversión Segura",
+            "cta_label": "Solicitar información",
+            "cta_link": "#contacto",
+            "price": ""
+          }
+        },
+        "c3": {
+          "type": "card",
+          "settings": {
+            "tag": "Nuevo Desarrollo",
+            "eyebrow": "Sonora, México",
+            "title": "Altarena",
+            "text": "Ubicado a lo largo de la costa prístina de Sonora, Altarena es una comunidad exclusiva con plan maestro rodeada de uno de los paisajes naturales más extraordinarios de México.",
+            "bullets": "Espectaculares dunas y paisajes desérticos\nEstilo de vida tranquilo rodeado de naturaleza\nHerencia cultural auténtica\nPotencial de inversión excepcional",
+            "cta_label": "Solicitar información",
+            "cta_link": "#contacto",
+            "price": ""
+          }
+        }
+      }
+    },
+    "proceso": {
+      "type": "aylesva-corp-process",
+      "settings": {
+        "dark": true,
+        "eyebrow": "Cómo trabajamos",
+        "title": "Tres pasos hasta tus llaves",
+        "intro": "Un proceso claro, sin sorpresas y con un asesor asignado de principio a fin."
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3"
+      ],
+      "blocks": {
+        "s1": {
+          "type": "step",
+          "settings": {
+            "title": "Consulta gratuita",
+            "text": "Agendas una llamada sin compromiso. Escuchamos qué buscas, en qué plazo y con qué presupuesto, y te explicamos cómo funciona comprar en México o El Salvador."
+          }
+        },
+        "s2": {
+          "type": "step",
+          "settings": {
+            "title": "Selección verificada",
+            "text": "Te presentamos únicamente desarrollos que nuestro equipo ya visitó y validó: desarrollador, avance de obra, permisos y condiciones comerciales."
+          }
+        },
+        "s3": {
+          "type": "step",
+          "settings": {
+            "title": "Acompañamiento hasta las llaves",
+            "text": "Coordinamos contratos, pagos y seguimiento de obra contigo. Un asesor responde tus preguntas hasta el día de la entrega."
+          }
+        }
+      }
+    },
+    "contacto": {
+      "type": "aylesva-corp-form",
+      "settings": {
+        "anchor": "contacto",
+        "bg": "#FFFFFF",
+        "eyebrow": "Asesoría",
+        "title": "Agenda tu consulta gratuita",
+        "text": "Cuéntanos qué buscas y un asesor te contacta en menos de 24 horas hábiles.",
+        "form_id": "8tPsdSSw70XYgG77oYYW",
+        "form_height": 640
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3"
+      ],
+      "blocks": {
+        "p1": {
+          "type": "point",
+          "settings": {
+            "text": "Consulta inicial sin costo ni compromiso"
+          }
+        },
+        "p2": {
+          "type": "point",
+          "settings": {
+            "text": "Desarrollos visitados y validados por nuestro equipo"
+          }
+        },
+        "p3": {
+          "type": "point",
+          "settings": {
+            "text": "Acompañamiento hasta la entrega de llaves"
+          }
+        }
+      }
+    },
+    "ramas": {
+      "type": "aylesva-corp-branches",
+      "settings": {
+        "bg": "#FFFFFF",
+        "eyebrow": "Ecosistema Aylesva",
+        "title": "El mismo respaldo, en cada una de nuestras ramas"
+      },
+      "block_order": [
+        "br1",
+        "br2",
+        "br3",
+        "br4"
+      ],
+      "blocks": {
+        "br1": {
+          "type": "branch",
+          "settings": {
+            "title": "Aylesva Recursos",
+            "text": "Intermediación financiera para tu negocio.",
+            "icon": "<rect x=\"3\" y=\"10\" width=\"18\" height=\"11\"/><path d=\"M3 10 12 4l9 6\"/><path d=\"M9 21v-6h6v6\"/>",
+            "link": "/pages/aylesva-recursos"
+          }
+        },
+        "br2": {
+          "type": "branch",
+          "settings": {
+            "title": "Aylesva Direct",
+            "text": "Importación y logística desde China.",
+            "icon": "<rect x=\"2\" y=\"8\" width=\"13\" height=\"9\"/><path d=\"M15 11h4l3 3v3h-7z\"/><circle cx=\"6\" cy=\"19\" r=\"2\"/><circle cx=\"18\" cy=\"19\" r=\"2\"/>",
+            "link": "/pages/aylesva-direct"
+          }
+        },
+        "br3": {
+          "type": "branch",
+          "settings": {
+            "title": "Aylesva Care",
+            "text": "Beneficios de salud, seguros y telemedicina.",
+            "icon": "<path d=\"M12 20 4 12.5A4.6 4.6 0 0 1 12 7a4.6 4.6 0 0 1 8 5.5z\"/><path d=\"M8 13h2l1.5-3 2 5 1.5-2h2\"/>",
+            "link": "/pages/aylesva-care"
+          }
+        },
+        "br4": {
+          "type": "branch",
+          "settings": {
+            "title": "Lanza tu marca",
+            "text": "Tienda propia con nuestro catálogo y envíos.",
+            "icon": "<rect x=\"3\" y=\"4\" width=\"18\" height=\"5\"/><path d=\"M5 9v12h14V9\"/><path d=\"M9 13h6\"/>",
+            "link": "/pages/lanza-tu-propia-marca"
+          }
+        }
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "respaldo",
+    "desarrollos",
+    "proceso",
+    "contacto",
+    "ramas"
+  ]
+}

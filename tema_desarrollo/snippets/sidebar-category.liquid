@@ -1,0 +1,88 @@
+{%- assign sidebar_linklist = linkedlist  -%}
+{%- assign link = linkedlist  -%}
+{% if enable_sidecategory %} 
+<div id="shopify-section-sidebar-category" class="shopify-section">
+  <div class="widget widget_product_categories">
+    {% if linkedlist_title %}
+    <h4 class="widget-title">{{ linkedlist_title }} </h4>  
+    {% endif %}
+    {% if linklists[sidebar_linklist].links.size > 0 %}
+    <ul class="product-categories dt-sc-toggle-frame-set">
+      {% for link in linklists[sidebar_linklist].links %}
+      {% assign child_list_handle = link.title | split: '[' | first | handleize %}      
+      {% if link and link.links != blank  %}
+      <li class="cat-item cat-item-39 cat-parent first">
+        <a href="{{ link.url }}" class="dt-sc-toggle {% if link.active %}active{% endif %}">{{ link.title   | split: '[' | first | escape }} </a> 
+        {% assign inner_link = link.title | split: '[' | first | handleize %}
+        <ul class="children dt-sc-toggle-content">
+          {% for child_link in link.links %}
+          {% assign child_list_handle = child_link.title | split: '[' | first1 | handleize %}
+          {% if child_link and child_link.links != blank  %}
+          <li class="cat-item cat-item-39 cat-parent first1">
+            <a href="{{ child_link.url }}" class="dt-sc-toggle {% if link.active %}active{% endif %}">{{ child_link.title  | split: '[' | first | escape }} </a>
+            {% assign inner_link = link.title | split: '[' | first | handleize %}
+            <ul class="children dt-sc-toggle-content">
+              {% for child_link in child_link.links %}
+              <li><a href="{{ child_link.url }}">{{ child_link.title  | split: '[' | first | escape }} </a></li>
+              {% endfor %}
+            </ul>
+            <span class="dt-menu-expand">+</span>   
+          </li>
+          {% else %}
+          <li class="cat-item cat-item-39 cat-parent"><a href="{{ child_link.url }}">{{ child_link.title  | split: '[' | first | escape }} </a></li>
+          {% endif %}
+          {% endfor %}
+        </ul>
+        <span class="dt-menu-expand">+</span>              
+      </li>
+      {% else %}
+      <li class="cat-item cat-item-39 cat-parent">
+        <i></i><a href="{{ link.url }}">{{ link.title | split: '[' | first | escape }} </a> 
+      </li>
+      {% endif %}
+      {% endfor %}
+    </ul>
+    {% endif  %}
+  </div>
+</div>
+{% endif %}
+<script>
+  $(document).ready(function() {
+    $(".dt-menu-expand").click(function(event){
+
+
+       
+     
+    
+      
+
+      
+      event.preventDefault();
+      if( $(this).hasClass("dt-mean-clicked") ){
+        $(this).text("+");
+        if( $(this).prev('ul').length ) {
+            $(this).parent('.cat-item').children('.dt-sc-toggle').toggleClass("open");
+          $(this).prev('ul').slideUp(400);
+        } else {
+          $(this).prev('.megamenu-child-container').find('ul:first').slideUp(600);
+          $(this).parent('.cat-item').siblings('.cat-item').children('.dt-sc-toggle').removeClass("open");
+           
+        }
+      } else {
+        $(this).text("-");
+        if( $(this).prev('ul').length ) {
+          $(this).parent('.cat-item').children('.dt-sc-toggle').toggleClass("open");
+          $(this).prev('ul').slideDown(400);
+        } else{
+          $(this).prev('.megamenu-child-container').find('ul:first').slideDown(2000);
+           $(this).parent('.cat-item').siblings('.cat-item').children('.dt-sc-toggle').removeClass("open");
+        }
+      }
+
+      $(this).toggleClass("dt-mean-clicked");
+      return false;
+
+
+    });
+  });
+</script>

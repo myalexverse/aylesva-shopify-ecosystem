@@ -1,0 +1,270 @@
+{% comment %}
+  Aylesva Distribuidores Business Pillars Grid
+  Displays key characteristics of the business in a responsive block-based grid.
+{% endcomment %}
+
+<div class="ayl-features-section" id="ayl-features-{{ section.id }}">
+  <div class="ayl-features-container">
+    
+    {% if section.settings.title != blank or section.settings.pre_title != blank %}
+      <div class="ayl-features-header">
+        {% if section.settings.pre_title != blank %}
+          <span class="ayl-features-pretitle">{{ section.settings.pre_title }}</span>
+        {% endif %}
+        {% if section.settings.title != blank %}
+          <h2 class="ayl-features-title">{{ section.settings.title }}</h2>
+        {% endif %}
+        <div class="ayl-divider"><span class="ayl-divider-diamond">♦</span></div>
+      </div>
+    {% endif %}
+    
+    <div class="ayl-features-grid">
+      {% for block in section.blocks %}
+        <div class="ayl-feature-col" {{ block.shopify_attributes }}>
+          <div class="ayl-feature-img-wrap">
+            {% if block.settings.image != blank %}
+              {{ block.settings.image | image_url: width: 300 | image_tag: class: 'ayl-feature-img', loading: 'lazy' }}
+            {% else %}
+              <!-- Dynamic placeholders based on block index -->
+              {% case forloop.index %}
+                {% when 1 %}
+                  <img src="{{ 'mayoreo-lifestyle-cowgirl.png' | asset_url }}" class="ayl-feature-img" alt="Inventario Exclusivo" loading="lazy">
+                {% when 2 %}
+                  <img src="{{ 'mayoreo-pilar-boots.png' | asset_url }}" class="ayl-feature-img" alt="Tendencias Country" loading="lazy">
+                {% when 3 %}
+                  <img src="{{ 'mayoreo-pilar-vests.png' | asset_url }}" class="ayl-feature-img" alt="Negocio Rentable" loading="lazy">
+                {% else %}
+                  <img src="{{ 'mayoreo-pilar-support.png' | asset_url }}" class="ayl-feature-img" alt="Soporte Personalizado" loading="lazy">
+              {% endcase %}
+            {% endif %}
+          </div>
+          <div class="ayl-feature-text-wrap">
+            <h3 class="ayl-feature-col-title">{{ block.settings.title }}</h3>
+            <p class="ayl-feature-col-desc">{{ block.settings.desc }}</p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    
+  </div>
+</div>
+
+{% style %}
+  .ayl-features-section {
+    width: 100%;
+    background-color: #FAF7F2;
+    padding: 80px 0;
+    box-sizing: border-box;
+  }
+
+  .ayl-features-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
+
+  .ayl-features-header {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .ayl-features-pretitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: #C5A47E;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  .ayl-features-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(26px, 3.5vw, 36px);
+    font-weight: 700;
+    color: #1a1a1a;
+    letter-spacing: 0.05em;
+    margin: 0;
+    text-transform: uppercase;
+  }
+
+  .ayl-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+  }
+
+  .ayl-divider::before,
+  .ayl-divider::after {
+    content: "";
+    flex: 1;
+    max-width: 60px;
+    height: 1px;
+    background-color: #E2D6C5;
+  }
+
+  .ayl-divider-diamond {
+    color: #C5A47E;
+    font-size: 8px;
+    margin: 0 10px;
+    position: relative;
+    top: -1px;
+  }
+
+  .ayl-features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+  }
+
+  @media (max-width: 991px) {
+    .ayl-features-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px 24px;
+    }
+  }
+
+  @media (max-width: 575px) {
+    .ayl-features-grid {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+  }
+
+  .ayl-feature-col {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    box-sizing: border-box;
+  }
+
+  .ayl-feature-img-wrap {
+    width: 120px;
+    height: 120px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-right: 20px;
+    margin-bottom: 0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+  }
+
+  .ayl-feature-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+
+  .ayl-feature-col:hover .ayl-feature-img {
+    transform: scale(1.05);
+  }
+
+  .ayl-feature-text-wrap {
+    flex: 1;
+  }
+
+  .ayl-feature-col-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    color: #1a1a1a;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 0 0 6px 0;
+  }
+
+  .ayl-feature-col-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: #706861;
+    line-height: 1.4;
+    margin: 0;
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Ayl Business Pillars",
+  "settings": [
+    {
+      "type": "text",
+      "id": "pre_title",
+      "label": "Etiqueta Superior",
+      "default": "Por qué Aylesva"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título de la Sección",
+      "default": "Nuestros Pilares"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "pillar",
+      "name": "Pilar de Negocio",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Imagen del Pilar"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Título",
+          "default": "Inventario Exclusivo"
+        },
+        {
+          "type": "textarea",
+          "id": "desc",
+          "label": "Descripción",
+          "default": "Productos seleccionados que tus clientes buscan."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ayl Business Pillars",
+      "blocks": [
+        {
+          "type": "pillar",
+          "settings": {
+            "title": "Inventario Exclusivo",
+            "desc": "Productos seleccionados que tus clientes buscan."
+          }
+        },
+        {
+          "type": "pillar",
+          "settings": {
+            "title": "Tendencias Country",
+            "desc": "Colecciones modernas con estilo auténtico."
+          }
+        },
+        {
+          "type": "pillar",
+          "settings": {
+            "title": "Negocio Rentable",
+            "desc": "Márgenes atractivos para tu crecimiento."
+          }
+        },
+        {
+          "type": "pillar",
+          "settings": {
+            "title": "Soporte Personalizado",
+            "desc": "Te asesoramos en cada paso de tu negocio."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

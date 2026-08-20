@@ -1,0 +1,136 @@
+{%- comment -%}
+  B2B Quick Order Grid for wholesale store
+  Renders a matrix of all variants with quantity selectors for bulk ordering.
+{%- endcomment -%}
+
+{%- liquid
+  assign is_wholesale = false
+  if shop.permanent_domain contains 'mayoreo' or shop.domain contains 'mayoreo' or shop.name contains 'Mayoreo' or shop.name contains 'mayoreo'
+    assign is_wholesale = true
+  elsif shop.permanent_domain contains 'aylesva-mayoreo'
+    assign is_wholesale = true
+  elsif shop.permanent_domain != 'aylesvamx.myshopify.com'
+    assign is_wholesale = true
+  endif
+-%}
+
+{%- if is_wholesale and product.variants.size > 1 -%}
+  <div class="ayl-b2b-order-grid" style="margin: 25px 0; padding: 20px; border: 2px solid #C5A47E; border-radius: 8px; background-color: #fafafa; font-family: 'Inter', sans-serif;">
+    <h3 style="margin-top: 0; color: #4A0E17; font-weight: 700; font-size: 1.15rem; border-bottom: 2px solid #C5A47E; padding-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;">
+      ⚡ Pedido Rápido de Distribuidores
+    </h3>
+    <p style="font-size: 0.85rem; color: #666; margin: 8px 0 15px 0; line-height: 1.4;">
+      Selecciona las cantidades que deseas de cada talla/variante y agrégalas todas juntas al carrito con un solo clic.
+    </p>
+
+    <div style="overflow-x: auto; -webkit-overflow-scrolling: touch;">
+      <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem; min-width: 400px;">
+        <thead>
+          <tr style="border-bottom: 2px solid #ddd; color: #444; font-weight: 600;">
+            <th style="padding: 10px 8px;">Variante</th>
+            <th style="padding: 10px 8px;">Precio</th>
+            <th style="padding: 10px 8px; text-align: center;">Disponibilidad</th>
+            <th style="padding: 10px 8px; text-align: right; width: 140px;">Cantidad</th>
+          </tr>
+        </thead>
+        <tbody>
+          {%- for v in product.variants -%}
+            <tr style="border-bottom: 1px solid #eee; transition: background 0.2s;" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='transparent'">
+              <td style="padding: 12px 8px; font-weight: 500; color: #333;">
+                {{ v.title }}
+              </td>
+              <td style="padding: 12px 8px; color: #4A0E17; font-weight: 600;">
+                {{ v.price | money }}
+              </td>
+              <td style="padding: 12px 8px; text-align: center;">
+                {%- if v.available -%}
+                  <span style="display: inline-block; padding: 3px 8px; background-color: #DEF7EC; color: #03543F; font-size: 0.75rem; font-weight: 600; border-radius: 12px;">
+                    Disponible
+                  </span>
+                {%- else -%}
+                  <span style="display: inline-block; padding: 3px 8px; background-color: #FDE2E2; color: #9B1C1C; font-size: 0.75rem; font-weight: 600; border-radius: 12px;">
+                    Agotado
+                  </span>
+                {%- endif -%}
+              </td>
+              <td style="padding: 12px 8px; text-align: right;">
+                {%- if v.available -%}
+                  <div style="display: inline-flex; align-items: center; border: 1px solid #ccc; border-radius: 4px; overflow: hidden; background: #fff;">
+                    <button type="button" onclick="var el = this.nextElementSibling; if(el.value > 0) el.value--;" style="border: none; background: #eee; width: 30px; height: 30px; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-weight: bold;">-</button>
+                    <input type="number" name="qty-{{ v.id }}" data-variant-id="{{ v.id }}" value="0" min="0" max="999" style="width: 45px; height: 30px; text-align: center; border: none; font-size: 0.9rem; -moz-appearance: textfield; font-weight: 600;" onchange="if(this.value < 0) this.value = 0;">
+                    <button type="button" onclick="var el = this.previousElementSibling; el.value++;" style="border: none; background: #eee; width: 30px; height: 30px; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-weight: bold;">+</button>
+                  </div>
+                {%- else -%}
+                  <span style="color: #999; font-size: 0.8rem;">No disponible</span>
+                {%- endif -%}
+              </td>
+            </tr>
+          {%- endfor -%}
+        </tbody>
+      </table>
+    </div>
+
+    <div style="margin-top: 20px; text-align: right; display: flex; flex-direction: column; align-items: flex-end; gap: 8px;">
+      <button type="button" id="ayl-bulk-add-btn" onclick="addBulkToCart()" style="background-color: #C5A47E; color: white; border: none; padding: 12px 24px; font-size: 1rem; font-weight: 700; border-radius: 4px; cursor: pointer; transition: background 0.3s; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); width: auto !important; height: auto !important;">
+        Agregar Selección al Carrito
+      </button>
+      <span id="ayl-bulk-msg" style="font-size: 0.85rem; font-weight: 500;"></span>
+    </div>
+
+    <script type="text/javascript">
+      function addBulkToCart() {
+        var btn = document.getElementById('ayl-bulk-add-btn');
+        var msg = document.getElementById('ayl-bulk-msg');
+        var inputs = document.querySelectorAll('.ayl-b2b-order-grid input[type="number"]');
+        var items = [];
+
+        inputs.forEach(function(input) {
+          var qty = parseInt(input.value, 10);
+          if (qty > 0) {
+            items.push({
+              id: parseInt(input.dataset.variantId, 10),
+              quantity: qty
+            });
+          }
+        });
+
+        if (items.length === 0) {
+          msg.style.color = '#9B1C1C';
+          msg.textContent = '❌ Por favor selecciona al menos 1 unidad de cualquier variante.';
+          return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = 'Agregando...';
+        msg.style.color = '#555';
+        msg.textContent = 'Procesando tu pedido en masa...';
+
+        fetch('/cart/add.js', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ items: items })
+        })
+        .then(function(res) {
+          if (!res.ok) throw new Error('Error al agregar');
+          return res.json();
+        })
+        .then(function(data) {
+          msg.style.color = '#03543F';
+          msg.textContent = '✅ ¡Productos agregados con éxito!';
+          setTimeout(function() {
+            window.location.href = '/cart';
+          }, 800);
+        })
+        .catch(function(err) {
+          btn.disabled = false;
+          btn.textContent = 'Agregar Selección al Carrito';
+          msg.style.color = '#9B1C1C';
+          msg.textContent = '❌ Ocurrió un error. Intenta de nuevo.';
+          console.error(err);
+        });
+      }
+    </script>
+  </div>
+{%- endif -%}

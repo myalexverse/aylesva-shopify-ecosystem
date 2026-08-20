@@ -1,0 +1,296 @@
+{{ 'base.css' | asset_url | stylesheet_tag }}
+
+<style>
+  .ayl-page-hero {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 0px; /* Zero margins as the card will overlap */
+  }
+  
+  .ayl-page-hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(45, 12, 18, 0.65); /* Burgundy themed overlay */
+    z-index: 1;
+  }
+
+  .ayl-page-hero .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 0 20px;
+  }
+
+  .ayl-page-hero h1 {
+    color: #ffffff !important;
+    font-family: 'Outfit', 'Inter', sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  }
+
+  .ayl-page-hero p {
+    color: #C5A47E !important;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 500;
+    max-width: 600px;
+    margin: 0 auto;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  }
+
+  /* Glassmorphism Card Container */
+  .ayl-tracking-section {
+    padding: 80px 24px;
+    background: #fafafa;
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+
+  .tracking-card-wrap {
+    margin-top: -120px; /* Negative margin pulls card over hero */
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    max-width: 580px;
+  }
+
+  .tracking-glass-card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 12px;
+    padding: 50px 40px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    text-align: center;
+  }
+
+  @media screen and (max-width: 600px) {
+    .tracking-glass-card {
+      padding: 35px 20px;
+    }
+    .ayl-page-hero h1 {
+      font-size: 2.2rem;
+    }
+    .tracking-card-wrap {
+      margin-top: -60px;
+    }
+    .ayl-tracking-section {
+      padding: 40px 20px;
+    }
+  }
+
+  .tracking-card-title {
+    color: #4A0E17;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+  }
+
+  .tracking-card-subtitle {
+    color: #666666;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 35px;
+  }
+
+  /* Form Elements */
+  .tracking-input-group {
+    margin-bottom: 24px;
+    text-align: left;
+  }
+
+  .tracking-label {
+    display: block;
+    color: #4A0E17;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+
+  .tracking-input {
+    width: 100%;
+    padding: 16px;
+    border: 1.5px solid #e0e0e0;
+    border-radius: 6px;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.05rem;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+    color: #333333;
+    background: #ffffff;
+  }
+
+  .tracking-input:focus {
+    outline: none;
+    border-color: #4A0E17;
+    box-shadow: 0 0 0 3px rgba(74, 14, 23, 0.1);
+  }
+
+  .tracking-btn {
+    width: 100%;
+    padding: 16px 30px;
+    background: #4A0E17;
+    border: 1px solid #4A0E17;
+    border-radius: 6px;
+    color: #ffffff;
+    font-family: 'Outfit', 'Inter', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(74, 14, 23, 0.2);
+  }
+
+  .tracking-btn:hover {
+    background: #C5A47E;
+    border-color: #C5A47E;
+    color: #ffffff;
+    box-shadow: 0 6px 15px rgba(197, 164, 126, 0.3);
+  }
+
+  /* Info notes */
+  .tracking-footer-notes {
+    margin-top: 40px;
+    border-top: 1px solid #eaeaea;
+    padding-top: 24px;
+    text-align: left;
+  }
+
+  .tracking-notes-title {
+    color: #4A0E17;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .tracking-notes-text {
+    color: #777777;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .tracking-notes-text strong {
+    color: #555;
+  }
+</style>
+
+<div class="ayl-page-hero" style="background-image: linear-gradient(rgba(45, 12, 18, 0.65), rgba(45, 12, 18, 0.65)), url({{ section.settings.image | default: 'mayoreo-tracking-banner.png' | asset_url }});">
+  <div class="hero-content">
+    <h1>{{ section.settings.heading | default: "Rastrea tu pedido" }}</h1>
+    <p>{{ section.settings.subheading | default: "Consulta el trayecto de tu mercancía de mayoreo desde nuestro almacén a tu negocio" }}</p>
+  </div>
+</div>
+
+<div class="ayl-tracking-section">
+  <div class="tracking-card-wrap">
+    <div class="tracking-glass-card">
+      <h2 class="tracking-card-title">Seguimiento de Envío</h2>
+      <p class="tracking-card-subtitle">Ingresa tu número de guía terrestre asignado por nuestro equipo de atención a distribuidores.</p>
+      
+      <div class="tracking-form">
+        <div class="tracking-input-group">
+          <label class="tracking-label" for="tracking_num">Número de Rastreo / Guía</label>
+          <input type="text" id="tracking_num" class="tracking-input" placeholder="Ej: DHL987654321, FEDEX82749..." autocomplete="off">
+        </div>
+        
+        <button type="button" id="btn_track" class="tracking-btn">Consultar Envío</button>
+      </div>
+
+      <div class="tracking-footer-notes">
+        <h4 class="tracking-notes-title">
+          <svg style="width: 16px; height: 16px; fill: #4A0E17;" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+          </svg>
+          Información Importante
+        </h4>
+        <p class="tracking-notes-text">
+          Los números de rastreo pueden tardar hasta <strong>24 horas hábiles</strong> en activarse en los portales de las paqueterías después de recibir tu correo de confirmación. Si experimentas problemas, por favor contacta a tu asesor de cuenta.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const trackBtn = document.getElementById('btn_track');
+    const trackInput = document.getElementById('tracking_num');
+    
+    if (trackBtn && trackInput) {
+      trackBtn.addEventListener('click', function() {
+        const value = trackInput.value.trim();
+        if (!value) {
+          alert('Por favor, ingresa un número de rastreo válido.');
+          return;
+        }
+        
+        // Open 17track universal tracking in new window
+        const url = 'https://www.17track.net/txtr?nums=' + encodeURIComponent(value);
+        window.open(url, '_blank');
+      });
+      
+      // Allow pressing Enter key to submit
+      trackInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          trackBtn.click();
+        }
+      });
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Rastrea tu pedido",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Rastrea tu pedido"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Consulta el trayecto de tu mercancía de mayoreo desde nuestro almacén a tu negocio"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Hero Image Banner"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,44 @@
+{% comment %} Aylesva · Preguntas frecuentes (acordeón nativo, sin JS) {% endcomment %}
+<section class="ay" style="background:{{ section.settings.bg }};border-top:var(--ay-hairline)">
+  <div class="ay-wrap" style="display:grid;grid-template-columns:.8fr 1.2fr;gap:80px;align-items:start">
+    <div>
+      {% if section.settings.eyebrow != blank %}<p class="ay-eyebrow">{{ section.settings.eyebrow }}</p>{% endif %}
+      <h2 class="ay-h2" style="font-size:38px">{{ section.settings.title }}</h2>
+    </div>
+    <div style="border-top:1px solid rgba(15,23,42,.14)">
+      {% for block in section.blocks %}
+        <details style="border-bottom:1px solid rgba(15,23,42,.14)" {% if forloop.first %}open{% endif %} {{ block.shopify_attributes }}>
+          <summary style="display:flex;justify-content:space-between;align-items:center;gap:24px;padding:26px 0;cursor:pointer;list-style:none;font-family:var(--ay-font-display);font-size:20px;font-weight:500;letter-spacing:-.012em">
+            {{ block.settings.q }}<span style="color:var(--ay-gold);font-size:20px;flex:0 0 auto">+</span>
+          </summary>
+          <p class="ay-lead" style="font-size:16px;max-width:68ch;padding:0 0 30px">{{ block.settings.a }}</p>
+        </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .ay details summary::-webkit-details-marker{display:none}
+  .ay details[open] summary span{transform:rotate(45deg)}
+  .ay details summary span{transition:transform .2s ease}
+  @media (max-width:1024px){ .ay .ay-wrap[style*="grid-template-columns:.8fr"]{grid-template-columns:1fr !important;gap:32px !important} }
+</style>
+
+{% schema %}
+{
+  "name": "Aylesva · FAQ",
+  "settings": [
+    { "type": "color", "id": "bg", "label": "Fondo", "default": "#FAFAF8" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Preguntas frecuentes" },
+    { "type": "textarea", "id": "title", "label": "Titular", "default": "Preguntas Frecuentes" }
+  ],
+  "blocks": [
+    { "type": "faq", "name": "Pregunta", "limit": 10, "settings": [
+      { "type": "text", "id": "q", "label": "Pregunta" },
+      { "type": "textarea", "id": "a", "label": "Respuesta" }
+    ]}
+  ],
+  "presets": [{ "name": "Aylesva · FAQ" }]
+}
+{% endschema %}

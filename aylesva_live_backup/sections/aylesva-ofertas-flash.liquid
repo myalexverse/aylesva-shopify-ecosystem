@@ -1,0 +1,454 @@
+{%- style -%}
+  .ayl-flash-{{ section.id }} {
+    padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px 0;
+    background: {{ section.settings.section_bg }};
+    font-family: 'Inter', sans-serif;
+  }
+
+  .ayl-flash-container {
+    max-width: 1520px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  .ayl-flash-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+  }
+
+  .ayl-flash-title-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .ayl-flash-title {
+    font-size: 24px;
+    font-weight: 800;
+    color: #111111;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .ayl-flash-icon {
+    color: #C5A47E;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .ayl-flash-link {
+    font-size: 13px;
+    font-weight: 700;
+    color: #C5A47E;
+    text-decoration: none;
+    text-transform: lowercase;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+
+  .ayl-flash-link:hover {
+    color: #a88862;
+    transform: translateX(3px);
+  }
+
+  .ayl-flash-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  .ayl-flash-card {
+    position: relative;
+    border-radius: 16px;
+    height: 240px;
+    overflow: hidden;
+    display: flex;
+    text-decoration: none;
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+  }
+
+  .ayl-flash-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+  }
+
+  .ayl-flash-card-content {
+    width: 55%;
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    z-index: 2;
+    box-sizing: border-box;
+  }
+
+  .ayl-flash-card-text-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .ayl-flash-card-pretitle {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    opacity: 0.9;
+  }
+
+  .ayl-flash-card-title {
+    font-size: 32px;
+    font-weight: 900;
+    line-height: 1.1;
+    margin: 0;
+  }
+
+  .ayl-flash-card-desc {
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.4;
+    opacity: 0.85;
+    margin: 4px 0 0 0;
+  }
+
+  .ayl-flash-card-btn {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: auto;
+    transition: transform 0.3s ease;
+  }
+
+  .ayl-flash-card:hover .ayl-flash-card-btn {
+    transform: translateX(4px);
+  }
+
+  .ayl-flash-card-img-wrap {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 48%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  .ayl-flash-card-img-wrap::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 50%;
+    background: linear-gradient(to right, var(--bg-color) 0%, transparent 100%);
+    pointer-events: none;
+  }
+
+  .ayl-flash-card-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+
+  .ayl-flash-card:hover .ayl-flash-card-img-wrap img {
+    transform: scale(1.06);
+  }
+
+  @media (max-width: 1200px) {
+    .ayl-flash-container {
+      padding: 0 24px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .ayl-flash-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .ayl-flash-container {
+      padding: 0 15px;
+    }
+    .ayl-flash-header {
+      margin-bottom: 18px;
+    }
+    .ayl-flash-title {
+      font-size: 20px;
+    }
+    .ayl-flash-grid {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    .ayl-flash-card {
+      height: 180px;
+      border-radius: 14px;
+    }
+    .ayl-flash-card-content {
+      width: 60%;
+      padding: 20px 16px;
+    }
+    .ayl-flash-card-title {
+      font-size: 26px;
+    }
+    .ayl-flash-card-desc {
+      font-size: 11px;
+    }
+    .ayl-flash-card-img-wrap {
+      width: 43%;
+    }
+  }
+{%- endstyle -%}
+
+<section class="ayl-flash-{{ section.id }}">
+  <div class="ayl-flash-container">
+    <div class="ayl-flash-header">
+      <div class="ayl-flash-title-wrap">
+        <h2 class="ayl-flash-title">
+          {{ section.settings.heading }}
+          {% if section.settings.show_lightning %}
+            <span class="ayl-flash-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z"/>
+              </svg>
+            </span>
+          {% endif %}
+        </h2>
+      </div>
+      {% if section.settings.link_text != blank %}
+        <a href="{{ section.settings.link_url | default: '#' }}" class="ayl-flash-link">
+          {{ section.settings.link_text }} →
+        </a>
+      {% endif %}
+    </div>
+
+    <div class="ayl-flash-grid">
+      {% for block in section.blocks %}
+        {%- assign bg_color = block.settings.bg_color | default: '#9e1c1c' -%}
+        {%- assign text_color = block.settings.text_color | default: '#ffffff' -%}
+        
+        <a href="{{ block.settings.btn_link | default: '#' }}" class="ayl-flash-card" style="background-color: {{ bg_color }}; --bg-color: {{ bg_color }}; color: {{ text_color }};" {{ block.shopify_attributes }}>
+          <div class="ayl-flash-card-content">
+            <div class="ayl-flash-card-text-group">
+              {% if block.settings.pretitle != blank %}
+                <span class="ayl-flash-card-pretitle">{{ block.settings.pretitle }}</span>
+              {% endif %}
+              <h3 class="ayl-flash-card-title">{{ block.settings.title }}</h3>
+              {% if block.settings.description != blank %}
+                <p class="ayl-flash-card-desc">{{ block.settings.description }}</p>
+              {% endif %}
+            </div>
+            {% if block.settings.btn_label != blank %}
+              <span class="ayl-flash-card-btn" style="color: {{ text_color }};">
+                {{ block.settings.btn_label }}
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </span>
+            {% endif %}
+          </div>
+          
+          <div class="ayl-flash-card-img-wrap">
+            {% if block.settings.image != blank %}
+              <img src="{{ block.settings.image | img_url: '400x500', crop: 'center' }}" alt="{{ block.settings.title | escape }}" loading="lazy">
+            {% else %}
+              {%- assign asset_name = block.settings.fallback_image_name | default: 'flash-mujer-rojo.png' -%}
+              <img src="{{ asset_name | asset_url }}" alt="{{ block.settings.title | escape }}" loading="lazy">
+            {% endif %}
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Aylesva Ofertas Flash",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Título de la Sección",
+      "default": "Ofertas Flash"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_lightning",
+      "label": "Mostrar Icono de Rayo",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "Texto del Enlace Superior",
+      "default": "Ver todas las ofertas flash"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Enlace Superior"
+    },
+    {
+      "type": "color",
+      "id": "section_bg",
+      "label": "Color de Fondo de la Sección",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Superior",
+      "default": 35
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding Inferior",
+      "default": 35
+    }
+  ],
+  "blocks": [
+    {
+      "type": "flash_banner",
+      "name": "Banner de Oferta",
+      "settings": [
+        {
+          "type": "color",
+          "id": "bg_color",
+          "label": "Color de Fondo del Banner",
+          "default": "#9e1c1c"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Color de Texto",
+          "default": "#ffffff"
+        },
+        {
+          "type": "text",
+          "id": "pretitle",
+          "label": "Pretítulo",
+          "default": "HASTA"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Título / Descuento",
+          "default": "70% OFF"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Descripción",
+          "default": "En selección de productos"
+        },
+        {
+          "type": "text",
+          "id": "btn_label",
+          "label": "Texto del Botón",
+          "default": "COMPRAR"
+        },
+        {
+          "type": "url",
+          "id": "btn_link",
+          "label": "Enlace del Botón"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Imagen del Banner"
+        },
+        {
+          "type": "text",
+          "id": "fallback_image_name",
+          "label": "Nombre del Archivo en Assets (Fallback)",
+          "default": "flash-mujer-rojo.png"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Aylesva Ofertas Flash",
+      "blocks": [
+        {
+          "type": "flash_banner",
+          "settings": {
+            "bg_color": "#9e1c1c",
+            "text_color": "#ffffff",
+            "pretitle": "HASTA",
+            "title": "70% OFF",
+            "description": "En selección de productos",
+            "btn_label": "COMPRAR",
+            "fallback_image_name": "flash-mujer-rojo.png"
+          }
+        },
+        {
+          "type": "flash_banner",
+          "settings": {
+            "bg_color": "#1c1d1f",
+            "text_color": "#ffffff",
+            "pretitle": "HASTA",
+            "title": "60% OFF",
+            "description": "En calzado y accesorios",
+            "btn_label": "COMPRAR",
+            "fallback_image_name": "flash-sneakers.png"
+          }
+        },
+        {
+          "type": "flash_banner",
+          "settings": {
+            "bg_color": "#ebd8c3",
+            "text_color": "#111111",
+            "pretitle": "HASTA",
+            "title": "50% OFF",
+            "description": "En bolsas seleccionadas",
+            "btn_label": "COMPRAR",
+            "fallback_image_name": "flash-bolsa.png"
+          }
+        },
+        {
+          "type": "flash_banner",
+          "settings": {
+            "bg_color": "#0d0d0d",
+            "text_color": "#ffffff",
+            "pretitle": "HASTA",
+            "title": "40% OFF",
+            "description": "En nueva temporada",
+            "btn_label": "COMPRAR",
+            "fallback_image_name": "flash-mujer-lentes.png"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

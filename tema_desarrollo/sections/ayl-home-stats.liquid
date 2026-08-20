@@ -1,0 +1,358 @@
+{% comment %}
+  Aylesva Distribuidores Stats & Trust Row
+  Features key achievements with an dark rustic overlay and community CTA.
+{% endcomment %}
+
+<div class="ayl-stats-section" id="ayl-stats-{{ section.id }}">
+  {% if section.settings.bg_image != blank %}
+    {{ section.settings.bg_image | image_url: width: 2000 | image_tag: class: 'ayl-stats-bg', loading: 'lazy' }}
+  {% else %}
+    <!-- Default dark rustic wood texture background -->
+    <img src="https://images.unsplash.com/photo-1541123437800-1bb1317badc2?q=80&w=2000" class="ayl-stats-bg" alt="Madera oscura rústica Aylesva" loading="lazy">
+  {% endif %}
+  <div class="ayl-stats-overlay"></div>
+  
+  <div class="ayl-stats-container">
+    <div class="ayl-stats-grid">
+      
+      <!-- Left Column: CTA Card -->
+      <div class="ayl-stats-cta">
+        <h3 class="ayl-stats-cta-title">{{ section.settings.cta_title }}</h3>
+        <p class="ayl-stats-cta-desc">{{ section.settings.cta_desc }}</p>
+        <a href="{{ section.settings.cta_link | default: '#join' }}" class="ayl-stats-cta-btn">
+          {{ section.settings.cta_btn_text }}
+        </a>
+      </div>
+      
+      <!-- Right Column: Stats Grid -->
+      <div class="ayl-stats-items">
+        
+        <!-- Stat 1: Pedidos Enviados -->
+        <div class="ayl-stat-item">
+          <div class="ayl-stat-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="1" y="3" width="15" height="13"></rect>
+              <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+              <circle cx="5.5" cy="18.5" r="2.5"></circle>
+              <circle cx="18.5" cy="18.5" r="2.5"></circle>
+            </svg>
+          </div>
+          <div class="ayl-stat-numbers">{{ section.settings.stat1_num }}</div>
+          <div class="ayl-stat-label">{{ section.settings.stat1_lbl }}</div>
+        </div>
+
+        <!-- Stat 2: Distribuidores Activos -->
+        <div class="ayl-stat-item">
+          <div class="ayl-stat-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+          </div>
+          <div class="ayl-stat-numbers">{{ section.settings.stat2_num }}</div>
+          <div class="ayl-stat-label">{{ section.settings.stat2_lbl }}</div>
+        </div>
+
+        <!-- Stat 3: Cobertura -->
+        <div class="ayl-stat-item">
+          <div class="ayl-stat-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+          </div>
+          <div class="ayl-stat-numbers">{{ section.settings.stat3_num }}</div>
+          <div class="ayl-stat-label">{{ section.settings.stat3_lbl }}</div>
+        </div>
+
+        <!-- Stat 4: Recompra -->
+        <div class="ayl-stat-item">
+          <div class="ayl-stat-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+          </div>
+          <div class="ayl-stat-numbers">{{ section.settings.stat4_num }}</div>
+          <div class="ayl-stat-label">{{ section.settings.stat4_lbl }}</div>
+        </div>
+
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+{% style %}
+  .ayl-stats-section {
+    position: relative;
+    width: 100%;
+    background-color: #110d0a; /* Fallback dark */
+    padding: 80px 0;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .ayl-stats-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    opacity: 0.65;
+  }
+
+  .ayl-stats-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(17, 13, 10, 0.9) 0%, rgba(17, 13, 10, 0.7) 100%);
+    z-index: 2;
+  }
+
+  @media (max-width: 991px) {
+    .ayl-stats-overlay {
+      background: linear-gradient(180deg, rgba(17, 13, 10, 0.95) 0%, rgba(17, 13, 10, 0.8) 100%);
+    }
+  }
+
+  .ayl-stats-container {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
+
+  .ayl-stats-grid {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  @media (max-width: 991px) {
+    .ayl-stats-grid {
+      grid-template-columns: 1fr;
+      gap: 50px;
+    }
+  }
+
+  /* Left Column CTA Card */
+  .ayl-stats-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  @media (max-width: 991px) {
+    .ayl-stats-cta {
+      align-items: center;
+      text-align: center;
+    }
+  }
+
+  .ayl-stats-cta-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(22px, 3vw, 28px);
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.25;
+    margin: 0 0 16px 0;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .ayl-stats-cta-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.5;
+    margin: 0 0 28px 0;
+  }
+
+  .ayl-stats-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #C5A47E;
+    color: #1a1a1a;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 14px 32px;
+    border-radius: 4px;
+    text-decoration: none !important;
+    transition: all 0.3s ease;
+    border: 2px solid #C5A47E;
+  }
+
+  .ayl-stats-cta-btn:hover {
+    background-color: transparent;
+    color: #C5A47E;
+  }
+
+  /* Right Column Stats Items */
+  .ayl-stats-items {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  @media (max-width: 575px) {
+    .ayl-stats-items {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px 16px;
+    }
+  }
+
+  .ayl-stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .ayl-stat-icon-wrap {
+    color: #C5A47E;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+  }
+
+  .ayl-stat-icon-wrap svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .ayl-stat-numbers {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 4vw, 44px);
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.1;
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+
+  .ayl-stat-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.3;
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Ayl Stats & Trust Row",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Imagen de Fondo (Madera)"
+    },
+    {
+      "type": "text",
+      "id": "cta_title",
+      "label": "Título del Banner",
+      "default": "Más de 250 Emprendedores ya venden con Aylesva"
+    },
+    {
+      "type": "textarea",
+      "id": "cta_desc",
+      "label": "Descripción del Banner",
+      "default": "Únete a nuestra comunidad de distribuidores y lleva tu negocio al siguiente nivel."
+    },
+    {
+      "type": "text",
+      "id": "cta_btn_text",
+      "label": "Texto del Botón",
+      "default": "Únete Ahora"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Enlace del Botón"
+    },
+    {
+      "type": "header",
+      "content": "Estadística 1"
+    },
+    {
+      "type": "text",
+      "id": "stat1_num",
+      "label": "Valor",
+      "default": "+8,000"
+    },
+    {
+      "type": "text",
+      "id": "stat1_lbl",
+      "label": "Etiqueta",
+      "default": "Pedidos enviados"
+    },
+    {
+      "type": "header",
+      "content": "Estadística 2"
+    },
+    {
+      "type": "text",
+      "id": "stat2_num",
+      "label": "Valor",
+      "default": "+250"
+    },
+    {
+      "type": "text",
+      "id": "stat2_lbl",
+      "label": "Etiqueta",
+      "default": "Distribuidores activos"
+    },
+    {
+      "type": "header",
+      "content": "Estadística 3"
+    },
+    {
+      "type": "text",
+      "id": "stat3_num",
+      "label": "Valor",
+      "default": "30"
+    },
+    {
+      "type": "text",
+      "id": "stat3_lbl",
+      "label": "Etiqueta",
+      "default": "Estados con cobertura"
+    },
+    {
+      "type": "header",
+      "content": "Estadística 4"
+    },
+    {
+      "type": "text",
+      "id": "stat4_num",
+      "label": "Valor",
+      "default": "98%"
+    },
+    {
+      "type": "text",
+      "id": "stat4_lbl",
+      "label": "Etiqueta",
+      "default": "Recompra"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ayl Stats & Trust Row"
+    }
+  ]
+}
+{% endschema %}

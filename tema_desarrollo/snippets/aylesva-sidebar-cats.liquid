@@ -1,0 +1,432 @@
+{% comment %} AYLESVA MX - Sidebar dinamico 3 niveles {% endcomment %}
+{% assign col = collection.handle %}
+{% assign sidebar_titulo = '' %}
+{% assign sidebar_cats = '' %}
+{% assign sidebar_back = '' %}
+{% assign sidebar_back_url = '' %}
+{%- if col == 'mujer' -%}
+  {%- assign sidebar_titulo = 'Mujer' -%}
+  {%- assign sidebar_cats = 'Ropa|/collections/ropa-mujer,Calzado|/collections/calzado-mujer,Ropa Interior|/collections/ropa-interior-mujer,Joyeria y Accesorios|/collections/joyeria-y-accesorios,Bolsas y Carteras|/collections/bolsas-y-carteras,Accesorios de Moda|/collections/accesorios-de-moda,Maternidad|/collections/maternidad' -%}
+{%- elsif col == 'hombre' -%}
+  {%- assign sidebar_titulo = 'Hombre' -%}
+  {%- assign sidebar_cats = 'Ropa|/collections/ropa-hombre,Calzado|/collections/calzado-hombre,Ropa Interior|/collections/ropa-interior-hombre,Accesorios|/collections/accesorios-hombre,Joyeria|/collections/joyeria,Cuidado Personal|/collections/cuidado-personal' -%}
+{%- elsif col == 'nino' -%}
+  {%- assign sidebar_titulo = 'Nino' -%}
+  {%- assign sidebar_cats = 'Ropa|/collections/ropa-nino,Calzado|/collections/calzado-nino,Ropa Interior|/collections/ropa-interior-nino,Accesorios|/collections/accesorios-nino' -%}
+{%- elsif col == 'nina' -%}
+  {%- assign sidebar_titulo = 'Nina' -%}
+  {%- assign sidebar_cats = 'Ropa|/collections/ropa-nina,Calzado|/collections/calzado-nina,Ropa Interior|/collections/ropa-interior-nina,Accesorios|/collections/accesorios-nina' -%}
+{%- elsif col == 'bebe' -%}
+  {%- assign sidebar_titulo = 'Bebe' -%}
+  {%- assign sidebar_cats = 'Ropa|/collections/ropa-bebe,Calzado|/collections/calzado-bebe,Ropa Interior y Panaleria|/collections/ropa-interior-y-panaleria,Accesorios|/collections/accesorios-bebe,Higiene y Cuidado|/collections/higiene-y-cuidado' -%}
+{%- elsif col == 'artesanal' -%}
+  {%- assign sidebar_titulo = 'Artesanal' -%}
+  {%- assign sidebar_cats = 'Textiles y Tejidos|/collections/textiles-y-tejidos,Ceramica y Barro|/collections/ceramica-y-barro,Madera|/collections/madera,Joyeria Artesanal|/collections/joyeria-artesanal,Cuero y Piel|/collections/cuero-y-piel,Papel y Carton|/collections/papel-y-carton,Vidrio y Cristal|/collections/vidrio-y-cristal,Metal|/collections/metal,Piedra|/collections/piedra,Arte y Pinturas|/collections/arte-decorativo-y-pinturas,Velas y Aromaterapia|/collections/velas-y-aromaterapia-artesanal,Juguetes Tradicionales|/collections/juguetes-y-muncos-tradicionales,Instrumentos Musicales|/collections/instrumentos-musicales-artesanales' -%}
+{%- elsif col == 'hogar' -%}
+  {%- assign sidebar_titulo = 'Hogar' -%}
+  {%- assign sidebar_cats = 'Muebles|/collections/muebles,Decoracion del Hogar|/collections/decoracion-del-hogar,Iluminacion|/collections/iluminacion,Cocina y Comedor|/collections/cocina-y-comedor,Bano|/collections/bano,Recamara y Ropa de Cama|/collections/recamara-y-ropa-de-cama,Jardin y Exterior|/collections/jardin-y-exterior,Organizacion|/collections/organizacion-y-almacenamiento,Arte y Coleccionables|/collections/arte-y-coleccionables' -%}
+{%- elsif col == 'alimentos' -%}
+  {%- assign sidebar_titulo = 'Alimentos' -%}
+  {%- assign sidebar_cats = 'Alimentos Artesanales|/collections/alimentos-artesanales,Bebidas Artesanales|/collections/bebidas-artesanales,Organicos y Naturales|/collections/productos-organicos-y-naturales,Reposteria y Panaderia|/collections/reposteria-y-panaderia,Regalos Gourmet|/collections/canastas-y-regalos-gourmet' -%}
+{%- elsif col == 'electronicos' -%}
+  {%- assign sidebar_titulo = 'Electronicos' -%}
+  {%- assign sidebar_cats = 'Telefonos|/collections/telefonos-y-comunicacion,Computadoras y Laptops|/collections/computadoras-y-laptops,Audio y Sonido|/collections/audio-y-sonido,TV y Video|/collections/television-y-video,Fotografia y Video|/collections/fotografia-y-video,Videojuegos|/collections/videojuegos,Electrodomesticos|/collections/electrodomesticos,Wearables y Gadgets|/collections/wearables-y-gadgets,Redes e Internet|/collections/redes-e-internet,Energia y Carga|/collections/energia-y-carga,Seguridad Electronica|/collections/seguridad-electronica' -%}
+{%- elsif col == 'vehiculos' -%}
+  {%- assign sidebar_titulo = 'Vehiculos' -%}
+  {%- assign sidebar_cats = 'Automoviles|/collections/automoviles,Motocicletas|/collections/motocicletas,Carga y Trabajo|/collections/vehiculos-de-carga-y-trabajo,Accesorios y Refacciones|/collections/accesorios-y-refacciones,Vehiculos Recreativos|/collections/vehiculos-recreativos,Transporte Publico|/collections/transporte-publico-y-comercial' -%}
+{%- elsif col == 'ropa-mujer' -%}
+  {%- assign sidebar_titulo = 'Ropa Mujer' -%}
+  {%- assign sidebar_back = '<- Mujer' -%}
+  {%- assign sidebar_back_url = '/collections/mujer' -%}
+  {%- assign sidebar_cats = 'Blusas y camisas|/collections/blusas-y-camisas,Vestidos Mujer|/collections/vestidos-mujer,Faldas Mujer|/collections/faldas-mujer,Pantalones y jeans Mujer|/collections/pantalones-y-jeans-mujer,Shorts y bermudas Mujer|/collections/shorts-y-bermudas-mujer,Abrigos y chaquetas Mujer|/collections/abrigos-y-chaquetas-mujer,Sudaderas y hoodies Mujer|/collections/sudaderas-y-hoodies-mujer,Trajes y blazers Mujer|/collections/trajes-y-blazers-mujer,Pijamas y Lenceria|/collections/pijamas-y-lenceria,Ropa Interior Mujer|/collections/ropa-interior-mujer' -%}
+{%- elsif col == 'calzado-mujer' -%}
+  {%- assign sidebar_titulo = 'Calzado Mujer' -%}
+  {%- assign sidebar_back = '<- Mujer' -%}
+  {%- assign sidebar_back_url = '/collections/mujer' -%}
+  {%- assign sidebar_cats = 'Tacones y stilettos|/collections/tacones-y-stilettos,Sandalias Mujer|/collections/sandalias-mujer,Flats y bailarinas|/collections/flats-y-bailarinas,Botas y botines Mujer|/collections/botas-y-botines-mujer,Tenis y sneakers Mujer|/collections/tenis-y-sneakers-mujer,Zapatos de trabajo|/collections/zapatos-de-trabajo' -%}
+{%- elsif col == 'ropa-interior-mujer' -%}
+  {%- assign sidebar_titulo = 'Ropa Interior Mujer' -%}
+  {%- assign sidebar_back = '<- Mujer' -%}
+  {%- assign sidebar_back_url = '/collections/mujer' -%}
+{%- elsif col == 'joyeria-y-accesorios' -%}
+  {%- assign sidebar_titulo = 'Joyeria y Accesorios' -%}
+  {%- assign sidebar_back = '<- Mujer' -%}
+  {%- assign sidebar_back_url = '/collections/mujer' -%}
+  {%- assign sidebar_cats = 'Collares|/collections/collares,Aretes y pendientes|/collections/aretes-y-pendientes,Pulseras y brazaletes|/collections/pulseras-y-brazaletes,Anillos Mujer|/collections/anillos-mujer,Relojes Mujer|/collections/relojes-mujer' -%}
+{%- elsif col == 'bolsas-y-carteras' -%}
+  {%- assign sidebar_titulo = 'Bolsas y Carteras' -%}
+  {%- assign sidebar_back = '<- Mujer' -%}
+  {%- assign sidebar_back_url = '/collections/mujer' -%}
+  {%- assign sidebar_cats = 'Bolsas de mano|/collections/bolsas-de-mano,Mochilas Mujer|/collections/mochilas-mujer,Clutches y sobre|/collections/clutches-y-sobre,Bolsas de playa|/collections/bolsas-de-playa,Carteras y billeteras Mujer|/collections/carteras-y-billeteras-mujer,Tote bags|/collections/tote-bags' -%}
+{%- elsif col == 'accesorios-de-moda' -%}
+  {%- assign sidebar_titulo = 'Accesorios de Moda' -%}
+  {%- assign sidebar_back = '<- Mujer' -%}
+  {%- assign sidebar_back_url = '/collections/mujer' -%}
+  {%- assign sidebar_cats = 'Cinturones Mujer|/collections/cinturones-mujer,Bufandas y chales|/collections/bufandas-y-chales,Gorros y sombreros Mujer|/collections/gorros-y-sombreros-mujer,Lentes de sol Mujer|/collections/lentes-de-sol-mujer,Diademas y accesorios|/collections/diademas-y-accesorios-para-el-cabello-mujer' -%}
+{%- elsif col == 'maternidad' -%}
+  {%- assign sidebar_titulo = 'Maternidad' -%}
+  {%- assign sidebar_back = '<- Mujer' -%}
+  {%- assign sidebar_back_url = '/collections/mujer' -%}
+  {%- assign sidebar_cats = 'Ropa de embarazo|/collections/ropa-de-embarazo,Ropa de lactancia|/collections/ropa-de-lactancia,Fajas postparto|/collections/fajas-postparto' -%}
+{%- elsif col == 'ropa-hombre' -%}
+  {%- assign sidebar_titulo = 'Ropa Hombre' -%}
+  {%- assign sidebar_back = '<- Hombre' -%}
+  {%- assign sidebar_back_url = '/collections/hombre' -%}
+  {%- assign sidebar_cats = 'Camisas formales y casuales|/collections/camisas-formales-y-casuales,Camisetas y polos Hombre|/collections/camisetas-y-polos-hombre,Pantalones y jeans Hombre|/collections/pantalones-y-jeans-hombre,Shorts y bermudas Hombre|/collections/shorts-y-bermudas-hombre,Trajes y blazers Hombre|/collections/trajes-y-blazers-hombre,Abrigos y chaquetas Hombre|/collections/abrigos-y-chaquetas-hombre,Sudaderas y hoodies Hombre|/collections/sudaderas-y-hoodies-hombre,Ropa deportiva Hombre|/collections/ropa-deportiva-hombre,Pijamas Hombre|/collections/pijamas-y-ropa-de-dormir-hombre' -%}
+{%- elsif col == 'calzado-hombre' -%}
+  {%- assign sidebar_titulo = 'Calzado Hombre' -%}
+  {%- assign sidebar_back = '<- Hombre' -%}
+  {%- assign sidebar_back_url = '/collections/hombre' -%}
+  {%- assign sidebar_cats = 'Zapatos formales|/collections/zapatos-formales,Botas y botines Hombre|/collections/botas-y-botines-hombre,Tenis y sneakers Hombre|/collections/tenis-y-sneakers-hombre,Sandalias y chanclas|/collections/sandalias-y-chanclas,Mocasines y loafers|/collections/mocasines-y-loafers,Pantuflas Hombre|/collections/pantuflas-hombre' -%}
+{%- elsif col == 'ropa-interior-hombre' -%}
+  {%- assign sidebar_titulo = 'Ropa Interior Hombre' -%}
+  {%- assign sidebar_back = '<- Hombre' -%}
+  {%- assign sidebar_back_url = '/collections/hombre' -%}
+  {%- assign sidebar_cats = 'Calzoncillos y boxers|/collections/calzoncillos-y-boxers,Camisetas interiores Hombre|/collections/camisetas-interiores-hombre,Medias y calcetines Hombre|/collections/medias-y-calcetines-hombre,Pijamas Hombre|/collections/pijamas-hombre' -%}
+{%- elsif col == 'accesorios-hombre' -%}
+  {%- assign sidebar_titulo = 'Accesorios Hombre' -%}
+  {%- assign sidebar_back = '<- Hombre' -%}
+  {%- assign sidebar_back_url = '/collections/hombre' -%}
+  {%- assign sidebar_cats = 'Cinturones Hombre|/collections/cinturones-hombre,Corbatas y panuelos|/collections/corbatas-y-panuelos,Relojes Hombre|/collections/relojes-hombre,Lentes de sol Hombre|/collections/lentes-de-sol-hombre,Gorras y sombreros Hombre|/collections/gorras-y-sombreros-hombre,Maletines y mochilas|/collections/maletines-y-mochilas' -%}
+{%- elsif col == 'joyeria' -%}
+  {%- assign sidebar_titulo = 'Joyeria Hombre' -%}
+  {%- assign sidebar_back = '<- Hombre' -%}
+  {%- assign sidebar_back_url = '/collections/hombre' -%}
+  {%- assign sidebar_cats = 'Anillos Hombre|/collections/anillos-hombre,Pulseras|/collections/pulseras,Cadenas y collares|/collections/cadenas-y-collares,Aretes|/collections/aretes' -%}
+{%- elsif col == 'cuidado-personal' -%}
+  {%- assign sidebar_titulo = 'Cuidado Personal' -%}
+  {%- assign sidebar_back = '<- Hombre' -%}
+  {%- assign sidebar_back_url = '/collections/hombre' -%}
+  {%- assign sidebar_cats = 'Perfumes y colonias|/collections/perfumes-y-colonias,Cuidado de la barba|/collections/cuidado-de-la-barba,Skincare masculino|/collections/skincare-masculino,Cuidado del cabello Hombre|/collections/cuidado-del-cabello-hombre' -%}
+{%- elsif col == 'ropa-nino' -%}
+  {%- assign sidebar_titulo = 'Ropa Nino' -%}
+  {%- assign sidebar_back = '<- Nino' -%}
+  {%- assign sidebar_back_url = '/collections/nino' -%}
+  {%- assign sidebar_cats = 'Camisetas y polos Nino|/collections/camisetas-y-polos-nino,Pantalones y jeans Nino|/collections/pantalones-y-jeans-nino,Shorts Nino|/collections/shorts-nino,Sudaderas y hoodies Nino|/collections/sudaderas-y-hoodies-nino,Chaquetas y abrigos Nino|/collections/chaquetas-y-abrigos-nino,Ropa deportiva Nino|/collections/ropa-deportiva-nino,Uniformes escolares Nino|/collections/uniformes-escolares-nino' -%}
+{%- elsif col == 'calzado-nino' -%}
+  {%- assign sidebar_titulo = 'Calzado Nino' -%}
+  {%- assign sidebar_back = '<- Nino' -%}
+  {%- assign sidebar_back_url = '/collections/nino' -%}
+  {%- assign sidebar_cats = 'Tenis y sneakers Nino|/collections/tenis-y-sneakers-nino,Sandalias Nino|/collections/sandalias-nino,Botas Nino|/collections/botas,Zapatos escolares Nino|/collections/zapatos-escolares-nino,Pantuflas Nino|/collections/pantuflas-nino' -%}
+{%- elsif col == 'ropa-interior-nino' -%}
+  {%- assign sidebar_titulo = 'Ropa Interior Nino' -%}
+  {%- assign sidebar_back = '<- Nino' -%}
+  {%- assign sidebar_back_url = '/collections/nino' -%}
+  {%- assign sidebar_cats = 'Calzoncillos|/collections/calzoncillos,Camisetas interiores Nino|/collections/camisetas-interiores-nino,Medias y calcetines Nino|/collections/medias-y-calcetines-nino' -%}
+{%- elsif col == 'accesorios-nino' -%}
+  {%- assign sidebar_titulo = 'Accesorios Nino' -%}
+  {%- assign sidebar_back = '<- Nino' -%}
+  {%- assign sidebar_back_url = '/collections/nino' -%}
+  {%- assign sidebar_cats = 'Gorras y sombreros Nino|/collections/gorras-y-sombreros-nino,Mochilas Nino|/collections/mochilas-nino,Cinturones Nino|/collections/cinturones-nino,Lentes de sol Nino|/collections/lentes-de-sol-nino' -%}
+{%- elsif col == 'ropa-nina' -%}
+  {%- assign sidebar_titulo = 'Ropa Nina' -%}
+  {%- assign sidebar_back = '<- Nina' -%}
+  {%- assign sidebar_back_url = '/collections/nina' -%}
+  {%- assign sidebar_cats = 'Vestidos Nina|/collections/vestidos-nina,Faldas Nina|/collections/faldas-nina,Blusas y camisetas|/collections/blusas-y-camisetas,Pantalones y jeans Nina|/collections/pantalones-y-jeans-nina,Shorts Nina|/collections/shorts-nina,Sudaderas y hoodies Nina|/collections/sudaderas-y-hoodies-nina,Uniformes escolares Nina|/collections/uniformes-escolares-nina' -%}
+{%- elsif col == 'calzado-nina' -%}
+  {%- assign sidebar_titulo = 'Calzado Nina' -%}
+  {%- assign sidebar_back = '<- Nina' -%}
+  {%- assign sidebar_back_url = '/collections/nina' -%}
+  {%- assign sidebar_cats = 'Tenis y sneakers Nina|/collections/tenis-y-sneakers-nina,Sandalias y ballerinas|/collections/sandalias-y-ballerinas,Botas y botines Nina|/collections/botas-y-botines-nina,Zapatos escolares Nina|/collections/zapatos-escolares-nina,Pantuflas Nina|/collections/pantuflas-nina' -%}
+{%- elsif col == 'ropa-interior-nina' -%}
+  {%- assign sidebar_titulo = 'Ropa Interior Nina' -%}
+  {%- assign sidebar_back = '<- Nina' -%}
+  {%- assign sidebar_back_url = '/collections/nina' -%}
+  {%- assign sidebar_cats = 'Calzones y panties|/collections/calzones-y-panties,Camisetas interiores Nina|/collections/camisetas-interiores-nina,Medias calcetines y pantys|/collections/medias-calcetines-y-pantys' -%}
+{%- elsif col == 'accesorios-nina' -%}
+  {%- assign sidebar_titulo = 'Accesorios Nina' -%}
+  {%- assign sidebar_back = '<- Nina' -%}
+  {%- assign sidebar_back_url = '/collections/nina' -%}
+  {%- assign sidebar_cats = 'Diademas y accesorios cabello Nina|/collections/diademas-y-accesorios-para-el-cabello-nina,Mochilas Nina|/collections/mochilas-nina,Bolsas y carteras pequenas|/collections/bolsas-y-carteras-pequenas,Lentes de sol Nina|/collections/lentes-de-sol-nina,Joyeria infantil|/collections/joyeria-infantil' -%}
+{%- elsif col == 'ropa-bebe' -%}
+  {%- assign sidebar_titulo = 'Ropa Bebe' -%}
+  {%- assign sidebar_back = '<- Bebe' -%}
+  {%- assign sidebar_back_url = '/collections/bebe' -%}
+  {%- assign sidebar_cats = 'Bodies y panaleros|/collections/bodies-y-panaleros,Pijamas y sleepers|/collections/pijamas-y-sleepers,Conjuntos y ajuares|/collections/conjuntos-y-ajuares,Camisetas y tops|/collections/camisetas-y-tops,Pantalones y joggers|/collections/pantalones-y-joggers,Sudaderas y hoodies Bebe|/collections/sudaderas-y-hoodies-bebe,Abrigos y chaquetas Bebe|/collections/abrigos-y-chaquetas-bebe' -%}
+{%- elsif col == 'calzado-bebe' -%}
+  {%- assign sidebar_titulo = 'Calzado Bebe' -%}
+  {%- assign sidebar_back = '<- Bebe' -%}
+  {%- assign sidebar_back_url = '/collections/bebe' -%}
+  {%- assign sidebar_cats = 'Zapatitos y botitas|/collections/zapatitos-y-botitas,Sandalias Bebe|/collections/sandalias-bebe,Tenis y sneakers Bebe|/collections/tenis-y-sneakers-bebe,Pantuflas Bebe|/collections/pantuflas-bebe' -%}
+{%- elsif col == 'ropa-interior-y-panaleria' -%}
+  {%- assign sidebar_titulo = 'Ropa Interior y Panaleria' -%}
+  {%- assign sidebar_back = '<- Bebe' -%}
+  {%- assign sidebar_back_url = '/collections/bebe' -%}
+  {%- assign sidebar_cats = 'Panales desechables|/collections/panales-desechables,Panales de tela|/collections/panales-de-tela,Calzones de entrenamiento|/collections/calzones-de-entrenamiento,Camisetas interiores Bebe|/collections/camisetas-interiores-bebe,Medias y calcetines Bebe|/collections/medias-y-calcetines-bebe' -%}
+{%- elsif col == 'accesorios-bebe' -%}
+  {%- assign sidebar_titulo = 'Accesorios Bebe' -%}
+  {%- assign sidebar_back = '<- Bebe' -%}
+  {%- assign sidebar_back_url = '/collections/bebe' -%}
+  {%- assign sidebar_cats = 'Gorros y sombreros Bebe|/collections/gorros-y-sombreros-bebe,Baberos y pecheros|/collections/baberos-y-pecheros,Guantes y manoplas|/collections/guantes-y-manoplas,Cobijas y arrullo|/collections/cobijas-y-arrullo,Portabebes y cargadores|/collections/portabebes-y-cargadores' -%}
+{%- elsif col == 'higiene-y-cuidado' -%}
+  {%- assign sidebar_titulo = 'Higiene y Cuidado' -%}
+  {%- assign sidebar_back = '<- Bebe' -%}
+  {%- assign sidebar_back_url = '/collections/bebe' -%}
+  {%- assign sidebar_cats = 'Cremas y lociones|/collections/cremas-y-lociones,Shampoo y jabon|/collections/shampoo-y-jabon,Toallitas humedas|/collections/toallitas-humedas,Aceites para bebe|/collections/aceites-para-bebe,Pomadas para panal|/collections/pomadas-y-cremas-para-panal' -%}
+{%- elsif col == 'textiles-y-tejidos' -%}
+  {%- assign sidebar_titulo = 'Textiles y Tejidos' -%}
+  {%- assign sidebar_back = '<- Artesanal' -%}
+  {%- assign sidebar_back_url = '/collections/artesanal' -%}
+  {%- assign sidebar_cats = 'Tapetes y alfombras tejidas|/collections/tapetes-y-alfombras-tejidas,Bolsas y mochilas artesanales|/collections/bolsas-y-mochilas-artesanales,Manteles y caminos de mesa|/collections/manteles-y-caminos-de-mesa,Ropa bordada y huipiles|/collections/ropa-bordada-y-huipiles,Hamacas|/collections/hamacas,Cobijas y rebozos|/collections/cobijas-y-rebozos' -%}
+{%- elsif col == 'ceramica-y-barro' -%}
+  {%- assign sidebar_titulo = 'Ceramica y Barro' -%}
+  {%- assign sidebar_back = '<- Artesanal' -%}
+  {%- assign sidebar_back_url = '/collections/artesanal' -%}
+  {%- assign sidebar_cats = 'Vajillas y platos decorativos|/collections/vajillas-y-platos-decorativos,Jarrones y floreros|/collections/jarrones-y-floreros,Figuras y esculturas de barro|/collections/figuras-y-esculturas-de-barro,Macetas artesanales|/collections/macetas-artesanales,Ollas y cazuelas tradicionales|/collections/ollas-y-cazuelas-tradicionales,Talavera|/collections/talavera' -%}
+{%- elsif col == 'madera' -%}
+  {%- assign sidebar_titulo = 'Madera' -%}
+  {%- assign sidebar_back = '<- Artesanal' -%}
+  {%- assign sidebar_back_url = '/collections/artesanal' -%}
+  {%- assign sidebar_cats = 'Figuras y esculturas talladas|/collections/figuras-y-esculturas-talladas,Mascaras de madera|/collections/mascaras-de-madera,Muebles artesanales|/collections/muebles-artesanales,Joyeros y cajas decorativas|/collections/joyeros-y-cajas-decorativas,Utensilios de cocina Artesanal|/collections/utensilios-de-cocina-artesanal,Juguetes de madera|/collections/juguetes-de-madera' -%}
+{%- elsif col == 'joyeria-artesanal' -%}
+  {%- assign sidebar_titulo = 'Joyeria Artesanal' -%}
+  {%- assign sidebar_back = '<- Artesanal' -%}
+  {%- assign sidebar_back_url = '/collections/artesanal' -%}
+  {%- assign sidebar_cats = 'Joyeria de plata|/collections/joyeria-de-plata,Joyeria de cobre y laton|/collections/joyeria-de-cobre-y-laton,Joyeria con piedras naturales|/collections/joyeria-con-piedras-naturales,Joyeria con semillas|/collections/joyeria-con-semillas-y-materiales-naturales,Bisuteria artesanal|/collections/accesorios-con-chaquira-y-bisuteria-artesanal' -%}
+{%- elsif col == 'cuero-y-piel' -%}
+  {%- assign sidebar_titulo = 'Cuero y Piel' -%}
+  {%- assign sidebar_back = '<- Artesanal' -%}
+  {%- assign sidebar_back_url = '/collections/artesanal' -%}
+  {%- assign sidebar_cats = 'Bolsas y carteras de cuero|/collections/bolsas-y-carteras-de-cuero,Cinturones artesanales|/collections/cinturones-artesanales,Huaraches y calzado artesanal|/collections/huaraches-y-calzado-artesanal,Portafolios y agendas|/collections/portafolios-y-agendas,Accesorios de cuero|/collections/accesorios-de-cuero' -%}
+{%- elsif col == 'papel-y-carton' -%}
+  {%- assign sidebar_titulo = 'Papel y Carton' -%}
+  {%- assign sidebar_back = '<- Artesanal' -%}
+  {%- assign sidebar_back_url = '/collections/artesanal' -%}
+  {%- assign sidebar_cats = 'Papel amate pintado|/collections/papel-amate-pintado,Pinatas tradicionales|/collections/pinatas-tradicionales,Alebrijes de papel mache|/collections/alebrijes-de-papel-mache,Figuras de carton|/collections/figuras-de-carton,Arte en papel artesanal|/collections/arte-en-papel-artesanal' -%}
+{%- elsif col == 'vidrio-y-cristal' -%}
+  {%- assign sidebar_titulo = 'Vidrio y Cristal' -%}
+  {%- assign sidebar_back = '<- Artesanal' -%}
+  {%- assign sidebar_back_url = '/collections/artesanal' -%}
+  {%- assign sidebar_cats = 'Vidrio soplado|/collections/vidrio-soplado,Mosaicos de vidrio|/collections/mosaicos-de-vidrio,Figuras decorativas de cristal|/collections/figuras-decorativas-de-cristal,Vitrales artesanales|/collections/vitrales-artesanales' -%}
+{%- elsif col == 'metal' -%}
+  {%- assign sidebar_titulo = 'Metal' -%}
+  {%- assign sidebar_back = '<- Artesanal' -%}
+  {%- assign sidebar_back_url = '/collections/artesanal' -%}
+  {%- assign sidebar_cats = 'Hojalata decorativa|/collections/hojalata-decorativa,Cobre repujado|/collections/cobre-repujado,Herreria artesanal|/collections/herreria-artesanal,Lamparas y faroles de metal|/collections/lamparas-y-faroles-de-metal,Figuras de hierro forjado|/collections/figuras-de-hierro-forjado' -%}
+{%- elsif col == 'piedra' -%}
+  {%- assign sidebar_titulo = 'Piedra' -%}
+  {%- assign sidebar_back = '<- Artesanal' -%}
+  {%- assign sidebar_back_url = '/collections/artesanal' -%}
+  {%- assign sidebar_cats = 'Esculturas en piedra|/collections/esculturas-en-piedra,Joyeria de piedras semipreciosas|/collections/joyeria-de-piedras-semipreciosas,Figuras decorativas|/collections/figuras-decorativas,Utensilios molcajetes metates|/collections/utensilios-molcajetes-metates' -%}
+{%- elsif col == 'arte-decorativo-y-pinturas' -%}
+  {%- assign sidebar_titulo = 'Arte Decorativo y Pinturas' -%}
+  {%- assign sidebar_back = '<- Artesanal' -%}
+  {%- assign sidebar_back_url = '/collections/artesanal' -%}
+  {%- assign sidebar_cats = 'Pinturas en tela y lienzo|/collections/pinturas-en-tela-y-lienzo,Arte huichol nierika|/collections/arte-huichol-nierika,Arte popular y naif|/collections/arte-popular-y-naif,Pinturas en madera|/collections/pinturas-en-madera,Arte en seda|/collections/arte-en-seda' -%}
+{%- elsif col == 'velas-y-aromaterapia-artesanal' -%}
+  {%- assign sidebar_titulo = 'Velas y Aromaterapia' -%}
+  {%- assign sidebar_back = '<- Artesanal' -%}
+  {%- assign sidebar_back_url = '/collections/artesanal' -%}
+  {%- assign sidebar_cats = 'Velas decorativas|/collections/velas-decorativas,Velas perfumadas artesanales|/collections/velas-perfumadas-artesanales,Inciensos y sahumerios|/collections/inciensos-y-sahumerios,Jabones artesanales|/collections/jabones-artesanales' -%}
+{%- elsif col == 'juguetes-y-muncos-tradicionales' -%}
+  {%- assign sidebar_titulo = 'Juguetes Tradicionales' -%}
+  {%- assign sidebar_back = '<- Artesanal' -%}
+  {%- assign sidebar_back_url = '/collections/artesanal' -%}
+  {%- assign sidebar_cats = 'Munecas de tela|/collections/munecas-de-tela,Munecas de trapo regionales|/collections/munecas-de-trapo-regionales,Juguetes tradicionales de madera|/collections/juguetes-tradicionales-de-madera,Alebrijes|/collections/alebrijes' -%}
+{%- elsif col == 'instrumentos-musicales-artesanales' -%}
+  {%- assign sidebar_titulo = 'Instrumentos Musicales' -%}
+  {%- assign sidebar_back = '<- Artesanal' -%}
+  {%- assign sidebar_back_url = '/collections/artesanal' -%}
+  {%- assign sidebar_cats = 'Guitarras y cordobonos|/collections/guitarras-y-cordobonos,Instrumentos de viento artesanales|/collections/instrumentos-de-viento-artesanales,Percusiones tradicionales|/collections/percusiones-tradicionales' -%}
+{%- elsif col == 'muebles' -%}
+  {%- assign sidebar_titulo = 'Muebles' -%}
+  {%- assign sidebar_back = '<- Hogar' -%}
+  {%- assign sidebar_back_url = '/collections/hogar' -%}
+  {%- assign sidebar_cats = 'Salas y sillones|/collections/salas-y-sillones,Comedores y sillas|/collections/comedores-y-sillas,Recamaras y camas|/collections/recamaras-y-camas,Muebles de oficina|/collections/muebles-de-oficina,Estantes y libreros|/collections/estantes-y-libreros,Muebles infantiles|/collections/muebles-infantiles' -%}
+{%- elsif col == 'decoracion-del-hogar' -%}
+  {%- assign sidebar_titulo = 'Decoracion del Hogar' -%}
+  {%- assign sidebar_back = '<- Hogar' -%}
+  {%- assign sidebar_back_url = '/collections/hogar' -%}
+  {%- assign sidebar_cats = 'Cuadros y pinturas|/collections/cuadros-y-pinturas,Esculturas y figuras decorativas|/collections/esculturas-y-figuras-decorativas,Espejos|/collections/espejos,Relojes de pared|/collections/relojes-de-pared,Velas y portavelas|/collections/velas-y-portavelas,Floreros y centros de mesa|/collections/floreros-y-centros-de-mesa,Cojines decorativos|/collections/cojines-y-almohadas-decorativas,Tapetes y alfombras|/collections/tapetes-y-alfombras' -%}
+{%- elsif col == 'iluminacion' -%}
+  {%- assign sidebar_titulo = 'Iluminacion' -%}
+  {%- assign sidebar_back = '<- Hogar' -%}
+  {%- assign sidebar_back_url = '/collections/hogar' -%}
+  {%- assign sidebar_cats = 'Lamparas de techo|/collections/lamparas-de-techo,Lamparas de pie|/collections/lamparas-de-pie,Lamparas de mesa|/collections/lamparas-de-mesa,Focos y accesorios|/collections/focos-y-accesorios,Luces decorativas y LED|/collections/luces-decorativas-y-led,Faroles y linternas|/collections/faroles-y-linternas' -%}
+{%- elsif col == 'cocina-y-comedor' -%}
+  {%- assign sidebar_titulo = 'Cocina y Comedor' -%}
+  {%- assign sidebar_back = '<- Hogar' -%}
+  {%- assign sidebar_back_url = '/collections/hogar' -%}
+  {%- assign sidebar_cats = 'Vajillas y platos|/collections/vajillas-y-platos,Vasos y copas|/collections/vasos-y-copas,Ollas y sartenes|/collections/ollas-y-sartenes,Utensilios de cocina|/collections/utensilios-de-cocina,Organizadores de cocina|/collections/organizadores-de-cocina,Manteles y servilletas|/collections/manteles-y-servilletas' -%}
+{%- elsif col == 'bano' -%}
+  {%- assign sidebar_titulo = 'Bano' -%}
+  {%- assign sidebar_back = '<- Hogar' -%}
+  {%- assign sidebar_back_url = '/collections/hogar' -%}
+  {%- assign sidebar_cats = 'Toallas y juegos de bano|/collections/toallas-y-juegos-de-bano,Accesorios de bano|/collections/accesorios-de-bano,Organizadores y estantes|/collections/organizadores-y-estantes,Cortinas de bano|/collections/cortinas-de-bano,Tapetes de bano|/collections/tapetes-de-bano' -%}
+{%- elsif col == 'recamara-y-ropa-de-cama' -%}
+  {%- assign sidebar_titulo = 'Recamara y Ropa de Cama' -%}
+  {%- assign sidebar_back = '<- Hogar' -%}
+  {%- assign sidebar_back_url = '/collections/hogar' -%}
+  {%- assign sidebar_cats = 'Sabanas y fundas|/collections/sabanas-y-fundas,Cobijas y edredones|/collections/cobijas-y-edredones,Almohadas|/collections/almohadas,Protectores de colchon|/collections/protectores-de-colchon,Domos y cortinas|/collections/domos-y-cortinas' -%}
+{%- elsif col == 'jardin-y-exterior' -%}
+  {%- assign sidebar_titulo = 'Jardin y Exterior' -%}
+  {%- assign sidebar_back = '<- Hogar' -%}
+  {%- assign sidebar_back_url = '/collections/hogar' -%}
+  {%- assign sidebar_cats = 'Macetas y jardineras|/collections/macetas-y-jardineras,Muebles de jardin|/collections/muebles-de-jardin,Herramientas de jardineria|/collections/herramientas-de-jardineria,Fuentes y accesorios|/collections/fuentes-y-accesorios,Iluminacion exterior|/collections/iluminacion-exterior,Semillas y plantas|/collections/semillas-y-plantas' -%}
+{%- elsif col == 'organizacion-y-almacenamiento' -%}
+  {%- assign sidebar_titulo = 'Organizacion y Almacenamiento' -%}
+  {%- assign sidebar_back = '<- Hogar' -%}
+  {%- assign sidebar_back_url = '/collections/hogar' -%}
+  {%- assign sidebar_cats = 'Cajas y cestos organizadores|/collections/cajas-y-cestos-organizadores,Perchas y organizadores de ropa|/collections/perchas-y-organizadores-de-ropa,Estantes y repisas|/collections/estantes-y-repisas,Organizadores de closet|/collections/organizadores-de-closet' -%}
+{%- elsif col == 'arte-y-coleccionables' -%}
+  {%- assign sidebar_titulo = 'Arte y Coleccionables' -%}
+  {%- assign sidebar_back = '<- Hogar' -%}
+  {%- assign sidebar_back_url = '/collections/hogar' -%}
+  {%- assign sidebar_cats = 'Pinturas y lienzos|/collections/pinturas-y-lienzos,Fotografia artistica|/collections/fotografia-artistica,Esculturas|/collections/esculturas,Articulos de coleccion|/collections/articulos-de-coleccion,Arte digital impreso|/collections/arte-digital-impreso' -%}
+{%- elsif col == 'alimentos-artesanales' -%}
+  {%- assign sidebar_titulo = 'Alimentos Artesanales' -%}
+  {%- assign sidebar_back = '<- Alimentos' -%}
+  {%- assign sidebar_back_url = '/collections/alimentos' -%}
+  {%- assign sidebar_cats = 'Mermeladas y conservas|/collections/mermeladas-y-conservas,Salsas y moles|/collections/salsas-y-moles,Quesos artesanales|/collections/quesos-artesanales,Chocolates y dulces|/collections/chocolates-y-dulces,Miel y derivados de abeja|/collections/miel-y-derivados-de-abeja,Especias y condimentos|/collections/especias-y-condimentos,Cafe de especialidad|/collections/cafe-de-especialidad,Te e infusiones|/collections/te-e-infusiones' -%}
+{%- elsif col == 'bebidas-artesanales' -%}
+  {%- assign sidebar_titulo = 'Bebidas Artesanales' -%}
+  {%- assign sidebar_back = '<- Alimentos' -%}
+  {%- assign sidebar_back_url = '/collections/alimentos' -%}
+  {%- assign sidebar_cats = 'Cerveza artesanal|/collections/cerveza-artesanal,Vinos y espumosos|/collections/vinos-y-espumosos,Mezcal y destilados|/collections/mezcal-y-destilados,Kombucha y fermentados|/collections/kombucha-y-fermentados,Jugos y aguas frescas artesanales|/collections/jugos-y-aguas-frescas-artesanales,Licores y cremas artesanales|/collections/licores-y-cremas-artesanales' -%}
+{%- elsif col == 'productos-organicos-y-naturales' -%}
+  {%- assign sidebar_titulo = 'Organicos y Naturales' -%}
+  {%- assign sidebar_back = '<- Alimentos' -%}
+  {%- assign sidebar_back_url = '/collections/alimentos' -%}
+  {%- assign sidebar_cats = 'Frutas y verduras organicas|/collections/frutas-y-verduras-organicas,Aceites y vinagres artesanales|/collections/aceites-y-vinagres-artesanales,Superalimentos|/collections/superalimentos,Productos sin gluten|/collections/productos-sin-gluten,Productos veganos y vegetarianos|/collections/productos-veganos-y-vegetarianos' -%}
+{%- elsif col == 'reposteria-y-panaderia' -%}
+  {%- assign sidebar_titulo = 'Reposteria y Panaderia' -%}
+  {%- assign sidebar_back = '<- Alimentos' -%}
+  {%- assign sidebar_back_url = '/collections/alimentos' -%}
+  {%- assign sidebar_cats = 'Pasteles y tortas personalizadas|/collections/pasteles-y-tortas-personalizadas,Galletas decoradas|/collections/galletas-decoradas,Pan dulce tradicional|/collections/pan-dulce-tradicional,Cupcakes y muffins|/collections/cupcakes-y-muffins,Postres gourmet|/collections/postres-gourmet' -%}
+{%- elsif col == 'canastas-y-regalos-gourmet' -%}
+  {%- assign sidebar_titulo = 'Regalos Gourmet' -%}
+  {%- assign sidebar_back = '<- Alimentos' -%}
+  {%- assign sidebar_back_url = '/collections/alimentos' -%}
+  {%- assign sidebar_cats = 'Canastas de regalo|/collections/canastas-de-regalo,Sets de degustacion|/collections/sets-de-degustacion,Cajas de temporada|/collections/cajas-de-temporada,Regalos corporativos gourmet|/collections/regalos-corporativos-gourmet' -%}
+{%- elsif col == 'telefonos-y-comunicacion' -%}
+  {%- assign sidebar_titulo = 'Telefonos y Comunicacion' -%}
+  {%- assign sidebar_back = '<- Electronicos' -%}
+  {%- assign sidebar_back_url = '/collections/electronicos' -%}
+  {%- assign sidebar_cats = 'Smartphones y celulares|/collections/smartphones-y-celulares,Telefonos basicos|/collections/telefonos-basicos,Accesorios para celular|/collections/accesorios-para-celular-fundas-cargadores-audifonos,Telefonos fijos e inalambricos|/collections/telefonos-fijos-e-inalambricos,Walkie talkies y radios|/collections/walkie-talkies-y-radios' -%}
+{%- elsif col == 'computadoras-y-laptops' -%}
+  {%- assign sidebar_titulo = 'Computadoras y Laptops' -%}
+  {%- assign sidebar_back = '<- Electronicos' -%}
+  {%- assign sidebar_back_url = '/collections/electronicos' -%}
+  {%- assign sidebar_cats = 'Laptops y notebooks|/collections/laptops-y-notebooks,Computadoras de escritorio|/collections/computadoras-de-escritorio,Tablets y iPads|/collections/tablets-y-ipads,Monitores|/collections/monitores,Teclados y mouse|/collections/teclados-y-mouse,Discos duros y almacenamiento|/collections/discos-duros-y-almacenamiento,Memorias USB y tarjetas SD|/collections/memorias-usb-y-tarjetas-sd' -%}
+{%- elsif col == 'audio-y-sonido' -%}
+  {%- assign sidebar_titulo = 'Audio y Sonido' -%}
+  {%- assign sidebar_back = '<- Electronicos' -%}
+  {%- assign sidebar_back_url = '/collections/electronicos' -%}
+  {%- assign sidebar_cats = 'Audifonos y auriculares|/collections/audifonos-y-auriculares,Bocinas y altavoces|/collections/bocinas-y-altavoces,Sistemas de sonido|/collections/sistemas-de-sonido,Barras de sonido|/collections/barras-de-sonido,Microfonos|/collections/microfonos,Amplificadores|/collections/amplificadores' -%}
+{%- elsif col == 'television-y-video' -%}
+  {%- assign sidebar_titulo = 'Television y Video' -%}
+  {%- assign sidebar_back = '<- Electronicos' -%}
+  {%- assign sidebar_back_url = '/collections/electronicos' -%}
+  {%- assign sidebar_cats = 'Televisores|/collections/televisores,Proyectores|/collections/proyectores,Reproductores de streaming|/collections/reproductores-de-streaming-fire-tv-chromecast-etc,Reproductores DVD y Blu-ray|/collections/reproductores-de-dvd-y-blu-ray,Soportes y accesorios para TV|/collections/soportes-y-accesorios-para-tv' -%}
+{%- elsif col == 'fotografia-y-video' -%}
+  {%- assign sidebar_titulo = 'Fotografia y Video' -%}
+  {%- assign sidebar_back = '<- Electronicos' -%}
+  {%- assign sidebar_back_url = '/collections/electronicos' -%}
+  {%- assign sidebar_cats = 'Camaras fotograficas|/collections/camaras-fotograficas,Camaras de video|/collections/camaras-de-video,Drones|/collections/drones,Accesorios para camara|/collections/accesorios-para-camara-lentes-tripies-memorias,Camaras de seguridad|/collections/camaras-de-seguridad' -%}
+{%- elsif col == 'videojuegos' -%}
+  {%- assign sidebar_titulo = 'Videojuegos' -%}
+  {%- assign sidebar_back = '<- Electronicos' -%}
+  {%- assign sidebar_back_url = '/collections/electronicos' -%}
+  {%- assign sidebar_cats = 'Consolas PlayStation Xbox Nintendo|/collections/consolas-playstation-xbox-nintendo,Videojuegos y titulos|/collections/videojuegos-y-titulos,Controles y accesorios|/collections/controles-y-accesorios,Sillas gamer|/collections/sillas-gamer,Headsets gamer|/collections/headsets-gamer' -%}
+{%- elsif col == 'electrodomesticos' -%}
+  {%- assign sidebar_titulo = 'Electrodomesticos' -%}
+  {%- assign sidebar_back = '<- Electronicos' -%}
+  {%- assign sidebar_back_url = '/collections/electronicos' -%}
+  {%- assign sidebar_cats = 'Refrigeradores y congeladores|/collections/refrigeradores-y-congeladores,Lavadoras y secadoras|/collections/lavadoras-y-secadoras,Microondas y hornos|/collections/microondas-y-hornos,Licuadoras y procesadores|/collections/licuadoras-y-procesadores,Cafeteras|/collections/cafeteras-y-maquinas-de-cafe,Aspiradoras y robots de limpieza|/collections/aspiradoras-y-robots-de-limpieza,Aires acondicionados y ventiladores|/collections/aires-acondicionados-y-ventiladores' -%}
+{%- elsif col == 'wearables-y-gadgets' -%}
+  {%- assign sidebar_titulo = 'Wearables y Gadgets' -%}
+  {%- assign sidebar_back = '<- Electronicos' -%}
+  {%- assign sidebar_back_url = '/collections/electronicos' -%}
+  {%- assign sidebar_cats = 'Relojes inteligentes|/collections/relojes-inteligentes-smartwatches,Pulseras de actividad|/collections/pulseras-de-actividad,Audifonos inalambricos|/collections/audifonos-inalambricos,Lentes inteligentes|/collections/lentes-inteligentes,Gadgets y accesorios tecnologicos|/collections/gadgets-y-accesorios-tecnologicos' -%}
+{%- elsif col == 'redes-e-internet' -%}
+  {%- assign sidebar_titulo = 'Redes e Internet' -%}
+  {%- assign sidebar_back = '<- Electronicos' -%}
+  {%- assign sidebar_back_url = '/collections/electronicos' -%}
+  {%- assign sidebar_cats = 'Routers y modems|/collections/routers-y-modems,Repetidores de senal|/collections/repetidores-de-senal,Cables y conectores|/collections/cables-y-conectores,Switches y hubs|/collections/switches-y-hubs' -%}
+{%- elsif col == 'energia-y-carga' -%}
+  {%- assign sidebar_titulo = 'Energia y Carga' -%}
+  {%- assign sidebar_back = '<- Electronicos' -%}
+  {%- assign sidebar_back_url = '/collections/electronicos' -%}
+  {%- assign sidebar_cats = 'Baterias portatiles power banks|/collections/baterias-portatiles-power-banks,Cargadores inalambricos|/collections/cargadores-inalambricos,Paneles solares portatiles|/collections/paneles-solares-portatiles,Extensiones y multicontactos|/collections/extensiones-y-multicontactos,UPS y reguladores|/collections/ups-y-reguladores' -%}
+{%- elsif col == 'seguridad-electronica' -%}
+  {%- assign sidebar_titulo = 'Seguridad Electronica' -%}
+  {%- assign sidebar_back = '<- Electronicos' -%}
+  {%- assign sidebar_back_url = '/collections/electronicos' -%}
+  {%- assign sidebar_cats = 'Camaras de vigilancia|/collections/camaras-de-vigilancia,Alarmas y detectores|/collections/alarmas-y-detectores,Cerraduras inteligentes|/collections/cerraduras-inteligentes,Videoporteros|/collections/videoporteros' -%}
+{%- elsif col == 'automoviles' -%}
+  {%- assign sidebar_titulo = 'Automoviles' -%}
+  {%- assign sidebar_back = '<- Vehiculos' -%}
+  {%- assign sidebar_back_url = '/collections/vehiculos' -%}
+  {%- assign sidebar_cats = 'Sedanes|/collections/sedanes,SUV y camionetas|/collections/suv-y-camionetas,Pickups y trocas|/collections/pickups-y-trocas,Deportivos y cupes|/collections/deportivos-y-cupes,Convertibles|/collections/convertibles,Vanes y minivans|/collections/vanes-y-minivans,Autos electricos e hibridos|/collections/autos-electricos-e-hibridos,Autos clasicos y de coleccion|/collections/autos-clasicos-y-de-coleccion' -%}
+{%- elsif col == 'motocicletas' -%}
+  {%- assign sidebar_titulo = 'Motocicletas' -%}
+  {%- assign sidebar_back = '<- Vehiculos' -%}
+  {%- assign sidebar_back_url = '/collections/vehiculos' -%}
+  {%- assign sidebar_cats = 'Motos deportivas|/collections/motos-deportivas,Motos de trabajo y utilitarias|/collections/motos-de-trabajo-y-utilitarias,Scooters y motonetas|/collections/scooters-y-motonetas,Motos de campo y enduro|/collections/motos-de-campo-y-enduro,Motos electricas|/collections/motos-electricas,Cuatrimotos ATVs|/collections/cuatrimotos-atvs' -%}
+{%- elsif col == 'vehiculos-de-carga-y-trabajo' -%}
+  {%- assign sidebar_titulo = 'Carga y Trabajo' -%}
+  {%- assign sidebar_back = '<- Vehiculos' -%}
+  {%- assign sidebar_back_url = '/collections/vehiculos' -%}
+  {%- assign sidebar_cats = 'Camiones de carga|/collections/camiones-de-carga,Camionetas de trabajo|/collections/camionetas-de-trabajo,Tractores|/collections/tractores,Maquinaria pesada|/collections/maquinaria-pesada,Vehiculos especiales|/collections/vehiculos-especiales' -%}
+{%- elsif col == 'accesorios-y-refacciones' -%}
+  {%- assign sidebar_titulo = 'Accesorios y Refacciones' -%}
+  {%- assign sidebar_back = '<- Vehiculos' -%}
+  {%- assign sidebar_back_url = '/collections/vehiculos' -%}
+  {%- assign sidebar_cats = 'Llantas y rines|/collections/llantas-y-rines,Autopartes y refacciones|/collections/autopartes-y-refacciones,Accesorios de interior|/collections/accesorios-de-interior-tapetes-fundas-etc,Accesorios de exterior|/collections/accesorios-de-exterior,Audio y GPS para vehiculos|/collections/audio-y-gps-para-vehiculos,Herramientas automotrices|/collections/herramientas-automotrices,Aceites y lubricantes|/collections/aceites-y-lubricantes' -%}
+{%- elsif col == 'vehiculos-recreativos' -%}
+  {%- assign sidebar_titulo = 'Vehiculos Recreativos' -%}
+  {%- assign sidebar_back = '<- Vehiculos' -%}
+  {%- assign sidebar_back_url = '/collections/vehiculos' -%}
+  {%- assign sidebar_cats = 'Bicicletas|/collections/bicicletas,Bicicletas electricas|/collections/bicicletas-electricas,Patinetas y scooters electricos|/collections/patinetas-y-scooters-electricos,Go-karts|/collections/go-karts,Botes y lanchas|/collections/botes-y-lanchas,Jet skis y motos acuaticas|/collections/jet-skis-y-motos-acuaticas,Casas rodantes y RVs|/collections/casas-rodantes-y-rvs' -%}
+{%- elsif col == 'transporte-publico-y-comercial' -%}
+  {%- assign sidebar_titulo = 'Transporte Publico y Comercial' -%}
+  {%- assign sidebar_back = '<- Vehiculos' -%}
+  {%- assign sidebar_back_url = '/collections/vehiculos' -%}
+  {%- assign sidebar_cats = 'Autobuses y microbuses|/collections/autobuses-y-microbuses,Taxis y vehiculos de transporte|/collections/taxis-y-vehiculos-de-transporte,Vehiculos de reparto|/collections/vehiculos-de-reparto' -%}
+{%- endif -%}
+
+{%- if sidebar_titulo != '' -%}
+<style>
+  .ayl-sb-back {
+    display: block;
+    font-size: 0.82rem;
+    color: #2e7d32;
+    text-decoration: none;
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+  .ayl-sb-back:hover { color: #1b5e20; }
+</style>
+<div id="shopify-section-sidebar-aylesva" class="shopify-section widget widget_product_categories active">
+  <summary class="facets__summary">
+    <div>
+      <h4 class="widget-title">CATEGORÍAS</h4>
+    </div>
+  </summary>
+  <div class="facets-filter" style="margin-top: 15px;">
+    {%- if sidebar_back != '' -%}
+      <a class="ayl-sb-back" href="{{ sidebar_back_url }}">{{ sidebar_back }}</a>
+    {%- endif -%}
+    <ul class="product-categories dt-sc-toggle-frame-set">
+      {%- assign cat_items = sidebar_cats | split: ',' -%}
+      {%- for item in cat_items -%}
+        {%- assign parts = item | split: '|' -%}
+        {%- assign cat_name = parts[0] -%}
+        {%- assign cat_url  = parts[1] -%}
+        {%- assign cat_handle = cat_url | split: '/collections/' | last | split: '?' | first -%}
+        {%- assign cat_count = collections[cat_handle].all_products_count -%}
+        <li class="cat-item">
+          <a href="{{ cat_url }}" class="{%- if collection.url == cat_url %} active{%- endif -%}">
+            {{ cat_name }} {% if cat_count != blank %}({{ cat_count }}){% endif %}
+          </a>
+        </li>
+      {%- endfor -%}
+    </ul>
+    {%- if sidebar_back_url != '' -%}
+      <a href="{{ sidebar_back_url }}" class="ayl-see-more-link">Ver todas</a>
+    {%- else -%}
+      <a href="/collections/all" class="ayl-see-more-link">Ver todas</a>
+    {%- endif -%}
+  </div>
+</div>
+{%- endif -%}

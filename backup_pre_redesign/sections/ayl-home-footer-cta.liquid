@@ -1,0 +1,147 @@
+{% comment %}
+  Aylesva Distribuidores Footer CTA Bar
+  Closing full-width wine colored banner featuring a final conversion prompt and button link.
+{% endcomment %}
+
+<div class="ayl-footer-cta-section" id="ayl-footer-cta-{{ section.id }}">
+  <div class="ayl-footer-cta-container">
+    <div class="ayl-footer-cta-grid">
+      
+      <!-- Left Side: Texts -->
+      <div class="ayl-footer-cta-left">
+        <h3 class="ayl-footer-cta-title">{{ section.settings.title }}</h3>
+        <p class="ayl-footer-cta-desc">{{ section.settings.desc }}</p>
+      </div>
+      
+      <!-- Right Side: Button -->
+      <div class="ayl-footer-cta-right">
+        <a href="{{ section.settings.link | default: '/collections/all' }}" class="ayl-footer-cta-btn">
+          {{ section.settings.btn_text }}
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+{% style %}
+  .ayl-footer-cta-section {
+    width: 100%;
+    background-color: #5A1818; /* Elegant wine color */
+    padding: 30px 0;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .ayl-footer-cta-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    box-sizing: border-box;
+  }
+
+  .ayl-footer-cta-grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+  }
+
+  @media (max-width: 767px) {
+    .ayl-footer-cta-grid {
+      flex-direction: column;
+      text-align: center;
+      gap: 20px;
+    }
+  }
+
+  .ayl-footer-cta-left {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ayl-footer-cta-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin: 0 0 6px 0;
+  }
+
+  .ayl-footer-cta-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0;
+  }
+
+  .ayl-footer-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #C5A47E;
+    color: #1a1a1a;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 12px 30px;
+    border-radius: 4px;
+    text-decoration: none !important;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+    border: 2px solid #C5A47E;
+  }
+
+  .ayl-footer-cta-btn:hover {
+    background-color: transparent;
+    color: #C5A47E;
+  }
+
+  @media (max-width: 767px) {
+    .ayl-footer-cta-btn {
+      width: 100%;
+      box-sizing: border-box;
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Ayl Footer CTA Bar",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título",
+      "default": "Empieza tu negocio hoy"
+    },
+    {
+      "type": "textarea",
+      "id": "desc",
+      "label": "Descripción",
+      "default": "Compra inventario de calidad y comienza a generar ganancias."
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Texto del Botón",
+      "default": "Ver Catálogo Completo"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Enlace del Botón"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ayl Footer CTA Bar"
+    }
+  ]
+}
+{% endschema %}
