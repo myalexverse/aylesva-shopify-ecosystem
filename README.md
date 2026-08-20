@@ -1,14 +1,25 @@
-# 🌟 Grupo Aylesva — Enterprise E-Commerce & Multi-Vertical Ecosystem
-### Custom Shopify Online Store 2.0 Theme · Gold & Ink Design System · Modern Liquid Architecture
+<div align="center">
 
-[![Shopify OS 2.0](https://img.shields.io/badge/Shopify-Online_Store_2.0-95BF47?style=for-the-badge&logo=shopify&logoColor=white)](https://shopify.dev)
-[![Liquid](https://img.shields.io/badge/Liquid-Template_Engine-004C3F?style=for-the-badge&logo=shopify&logoColor=white)](https://shopify.dev/docs/api/liquid)
-[![CSS3 & Design Tokens](https://img.shields.io/badge/CSS3-Design_Tokens_%26_Custom_Properties-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://www.w3.org/Style/CSS/)
-[![JavaScript ES6+](https://img.shields.io/badge/JavaScript-ES6%2B_Vanilla-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-[![Mobile-First](https://img.shields.io/badge/Mobile--First-Responsive_UX-FF6C37?style=for-the-badge&logo=responsive&logoColor=white)](#-arquitectura-uxui-mobile-first)
-[![Security Audited](https://img.shields.io/badge/Security-Sanitized_%26_Token_Safe-4CAF50?style=for-the-badge&logo=shield&logoColor=white)](#-seguridad-y-mejores-prácticas)
+# 🏛️ Grupo Aylesva
+### Enterprise Shopify OS 2.0 Corporate Ecosystem & B2B/B2C Marketplace
+**Custom Liquid Architecture · Gold & Ink Design System · Multi-Vertical Holding Hub**
+
+<br/>
+
+[![Live Store](https://img.shields.io/badge/Live_Store-me8rzb--g3.myshopify.com-95BF47?style=for-the-badge&logo=shopify&logoColor=white)](https://me8rzb-g3.myshopify.com)
+[![Shopify OS 2.0](https://img.shields.io/badge/Shopify-OS_2.0-004C3F?style=for-the-badge&logo=shopify&logoColor=white)](https://shopify.dev)
+[![Architecture](https://img.shields.io/badge/Architecture-Custom_Liquid-1572B6?style=for-the-badge&logo=code&logoColor=white)](docs/ARCHITECTURE.md)
+[![Design System](https://img.shields.io/badge/Design_System-Gold_%26_Ink_v3-C5A47E?style=for-the-badge&logo=figma&logoColor=white)](docs/ARCHITECTURE.md)
+[![Security](https://img.shields.io/badge/Security-Sanitized_%26_Safe-4CAF50?style=for-the-badge&logo=shield&logoColor=white)](docs/SECURITY.md)
+[![License](https://img.shields.io/badge/License-MIT-gray?style=for-the-badge)](LICENSE)
+
+<br/>
+
+[🌐 Tienda en Vivo](https://me8rzb-g3.myshopify.com) • [📐 Arquitectura Técnica](docs/ARCHITECTURE.md) • [🔒 Política de Seguridad](docs/SECURITY.md) • [📦 Implementación USA](INSTRUCCIONES_IMPLEMENTACION_USA.txt)
 
 ---
+
+</div>
 
 ## 📌 Resumen Ejecutivo del Proyecto (Executive Summary)
 
