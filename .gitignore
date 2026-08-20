@@ -64,3 +64,11 @@ temp_*/
 # Log files
 *.log
 logs/
+
+# Android / Gradle
+apps/artisan-app-android/local.properties
+apps/artisan-app-android/.gradle/
+apps/artisan-app-android/build/
+apps/artisan-app-android/app/build/
+*.apk
+*.aab

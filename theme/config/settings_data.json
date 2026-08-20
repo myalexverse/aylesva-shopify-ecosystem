@@ -1809,7 +1809,7 @@
         "type": "footer-style-1",
         "settings": {
           "footer_insta_title": "Instagram",
-          "accessToken": "5966598033.1677ed0.682dcbd90170425295f4b76178ed81a9",
+          "accessToken": "",
           "footer_col_title_2": "our company",
           "col_2_menu": "footer",
           "footer_col_title_3": "my account",
@@ -2389,7 +2389,7 @@
         "type": "google-map",
         "settings": {
           "map_height": "400px",
-          "map_api_key": "AIzaSyDS1A1NkVZlfNpumO5nQlAPEKFjyxcvuWs",
+          "map_api_key": "",
           "map_type": "ROADMAP",
           "map_icon": "",
           "map_address": "india",
