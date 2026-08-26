@@ -7,21 +7,42 @@
 
   <!-- 1. HERO NOSOTROS -->
   <section class="ay-nosotros-hero">
-    <div class="ay-wrap ay-nosotros-hero-inner">
-      <p class="ay-eyebrow">GRUPO AYLESVA · IDENTIDAD Y VISIÓN</p>
-      <h1 class="ay-h1 ay-nosotros-title">
-        Impulsamos el presente.<br>
-        <span style="color:var(--ay-gold-text);">Construimos el futuro.</span>
-      </h1>
-      <p class="ay-lead ay-nosotros-sub">
-        Somos un ecosistema corporativo y comercial multi-vertical con presencia binacional en México y Estados Unidos. Diseñamos soluciones integrales que potencian a emprendedores, optimizan operaciones empresariales y protegen el patrimonio familiar.
-      </p>
+    <div class="ay-wrap">
+      <div class="ay-nosotros-hero-grid">
+        
+        <!-- Left: Text content -->
+        <div class="ay-nosotros-hero-content">
+          <p class="ay-eyebrow">GRUPO AYLESVA · IDENTIDAD Y VISIÓN</p>
+          <h1 class="ay-h1 ay-nosotros-title">
+            Impulsamos el presente.<br>
+            <span style="color:var(--ay-gold-text);">Construimos el futuro.</span>
+          </h1>
+          <p class="ay-lead ay-nosotros-sub">
+            Somos un ecosistema corporativo y comercial multi-vertical con presencia binacional en México y Estados Unidos. Diseñamos soluciones integrales que potencian a emprendedores, optimizan operaciones empresariales y protegen el patrimonio familiar.
+          </p>
 
-      <div class="ay-nosotros-pills">
-        <span class="ay-pill">🏢 Holding Multi-Vertical</span>
-        <span class="ay-pill">🌐 Conexión México · USA · Asia</span>
-        <span class="ay-pill">⚡ Soluciones 360°</span>
-        <span class="ay-pill">🔒 Seguridad & Respaldo Legal</span>
+          <div class="ay-nosotros-pills">
+            <span class="ay-pill">🏢 Holding Multi-Vertical</span>
+            <span class="ay-pill">🌐 Conexión México · USA · Asia</span>
+            <span class="ay-pill">⚡ Soluciones 360°</span>
+            <span class="ay-pill">🔒 Seguridad & Respaldo Legal</span>
+          </div>
+        </div>
+
+        <!-- Right: Hero Visual -->
+        <div class="ay-nosotros-hero-media">
+          <div class="ay-nosotros-img-frame">
+            <img src="{{ 'corporate_architecture.jpg' | asset_url }}" 
+                 alt="Sede Corporativa Grupo Aylesva" 
+                 class="ay-nosotros-hero-img"
+                 loading="eager">
+            <div class="ay-nosotros-media-badge">
+              <span class="ay-badge-dot"></span>
+              <span>Sede Corporativa & Operaciones Binacionales</span>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -218,13 +239,20 @@
 <style>
   .ay-nosotros-wrapper{background:#FFFFFF;color:var(--ay-ink-800)}
   
-  /* Hero */
-  .ay-nosotros-hero{background:var(--ay-stone);border-bottom:var(--ay-hairline);padding:72px 0 80px}
-  .ay-nosotros-hero-inner{max-width:960px}
-  .ay-nosotros-title{font-size:clamp(36px,4.5vw,56px);font-weight:400;line-height:1.08;letter-spacing:-.03em;margin:0 0 22px;color:var(--ay-ink-900)}
-  .ay-nosotros-sub{font-size:18px;line-height:1.7;color:#334155;margin:0 0 34px;text-wrap:pretty}
-  .ay-nosotros-pills{display:flex;gap:12px;flex-wrap:wrap}
-  .ay-pill{font-family:var(--ay-font-mono);font-size:11px;font-weight:500;letter-spacing:.08em;background:#FFFFFF;border:1px solid rgba(15,23,42,.12);padding:8px 16px;border-radius:100px;color:var(--ay-ink-800);box-shadow:0 2px 8px rgba(0,0,0,.03)}
+  /* Hero 2 Columns */
+  .ay-nosotros-hero{background:var(--ay-stone);border-bottom:var(--ay-hairline);padding:64px 0 72px}
+  .ay-nosotros-hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+  .ay-nosotros-title{font-size:clamp(34px,4vw,52px);font-weight:400;line-height:1.08;letter-spacing:-.03em;margin:0 0 20px;color:var(--ay-ink-900)}
+  .ay-nosotros-sub{font-size:17px;line-height:1.68;color:#334155;margin:0 0 30px;text-wrap:pretty}
+  .ay-nosotros-pills{display:flex;gap:10px;flex-wrap:wrap}
+  .ay-pill{font-family:var(--ay-font-mono);font-size:11px;font-weight:500;letter-spacing:.08em;background:#FFFFFF;border:1px solid rgba(15,23,42,.12);padding:7px 14px;border-radius:100px;color:var(--ay-ink-800);box-shadow:0 2px 6px rgba(0,0,0,.03)}
+
+  .ay-nosotros-hero-media{position:relative}
+  .ay-nosotros-img-frame{position:relative;border-radius:12px;overflow:hidden;border:1px solid rgba(197,164,126,.4);box-shadow:0 24px 48px -16px rgba(2,6,23,.2)}
+  .ay-nosotros-hero-img{width:100%;height:380px;object-fit:cover;display:block;transition:transform .6s ease}
+  .ay-nosotros-hero-media:hover .ay-nosotros-hero-img{transform:scale(1.03)}
+  .ay-nosotros-media-badge{position:absolute;bottom:16px;left:16px;right:16px;background:rgba(2,6,23,0.85);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.15);border-radius:6px;padding:10px 14px;display:flex;align-items:center;gap:10px;color:#fff;font-family:var(--ay-font-mono);font-size:11px;letter-spacing:.06em}
+  .ay-badge-dot{width:8px;height:8px;border-radius:50%;background:var(--ay-gold);flex:0 0 8px;box-shadow:0 0 8px var(--ay-gold)}
 
   /* Manifesto */
   .ay-nosotros-manifesto{padding:88px 0;border-bottom:var(--ay-hairline)}
@@ -268,6 +296,8 @@
 
   /* Responsive */
   @media (max-width:1024px){
+    .ay-nosotros-hero-grid{grid-template-columns:1fr;gap:36px}
+    .ay-nosotros-hero-img{height:300px}
     .ay-manifesto-grid{grid-template-columns:1fr;gap:32px}
     .ay-pillars-grid{grid-template-columns:1fr 1fr}
     .ay-divisions-grid{grid-template-columns:1fr 1fr}
@@ -275,7 +305,8 @@
   }
 
   @media (max-width:640px){
-    .ay-nosotros-hero{padding:48px 0 56px}
+    .ay-nosotros-hero{padding:40px 0 48px}
+    .ay-nosotros-hero-img{height:240px}
     .ay-manifesto-grid,.ay-pillars-grid,.ay-divisions-grid,.ay-stats-grid{grid-template-columns:1fr !important;gap:20px !important}
     .ay-nosotros-pills{flex-direction:column;align-items:flex-start}
     .ay-cta-buttons{flex-direction:column}
