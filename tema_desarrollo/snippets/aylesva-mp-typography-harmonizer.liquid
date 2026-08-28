@@ -1,0 +1,195 @@
+{% comment %}
+  Aylesva · Marketplace Typography Harmonizer
+  Unifica la tipografía de TODAS las secciones del Marketplace bajo el sistema Gold & Ink.
+  Se inyecta desde page.marketplace.json como sección wrapper.
+  
+  Resuelve: 4 sistemas de fuentes compitiendo (Playfair/Inter, Oswald/Montserrat,
+  Poppins/Philosopher, genéricos) → Gold & Ink (Sora / Manrope / IBM Plex Mono)
+{% endcomment %}
+
+<style>
+  /* ═══════════════════════════════════════════════════════
+     MARKETPLACE TYPOGRAPHY HARMONIZER · Gold & Ink System
+     Armoniza todas las secciones sin reescribir HTML existente
+     ═══════════════════════════════════════════════════════ */
+
+  /* ── 1. PREMIUM HERO: Playfair → Sora, Inter → Manrope ──────── */
+  .premium-headline {
+    font-family: var(--ay-font-display) !important;
+    letter-spacing: -0.03em;
+  }
+  .premium-subtext {
+    font-family: var(--ay-font-body) !important;
+  }
+  .premium-counter,
+  .ticker-item {
+    font-family: var(--ay-font-mono) !important;
+  }
+  .premium-btn {
+    font-family: var(--ay-font-body);
+    border-radius: 2px;
+  }
+
+  /* ── 2. TRUST BADGES: Inter → Manrope ────────────────────────── */
+  .ayl-trust-text {
+    font-family: var(--ay-font-body) !important;
+  }
+
+  /* ── 3. MOBILE CATEGORIES & PRODUCTS headers ─────────────────── */
+  .mobile-categories-header h2,
+  .mobile-products-header h2 {
+    font-family: var(--ay-font-display) !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.12em !important;
+    color: var(--ay-ink-900) !important;
+  }
+
+  /* ── 4. PREMIUM CATEGORIES: Playfair → Sora, Inter → Manrope ── */
+  .premium-cats-title {
+    font-family: var(--ay-font-display) !important;
+    font-size: clamp(24px, 2.8vw, 34px) !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.025em !important;
+    text-transform: uppercase;
+  }
+  .premium-cat-label {
+    font-family: var(--ay-font-body) !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.08em !important;
+  }
+
+  /* ── 5. COOLER CAROUSEL: genérico → Sora/Manrope ─────────────── */
+  .aylesva-cooler-title {
+    font-family: var(--ay-font-display) !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.08em !important;
+    color: var(--ay-ink-900) !important;
+  }
+
+  /* ── 6. PREMIUM TABS ─────────────────────────────────────────── */
+  .ayl-tabs-title {
+    font-family: var(--ay-font-display) !important;
+    font-size: clamp(22px, 2.5vw, 30px) !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.02em !important;
+  }
+  .ayl-tabs-bar button {
+    font-family: var(--ay-font-mono) !important;
+    letter-spacing: 0.1em !important;
+  }
+
+  /* ── 7. PREMIUM SLIDER ───────────────────────────────────────── */
+  .ayl-slider-title {
+    font-family: var(--ay-font-display) !important;
+    font-size: clamp(24px, 2.8vw, 32px) !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.025em !important;
+  }
+  .ayl-slider-subtitle {
+    font-family: var(--ay-font-mono) !important;
+    font-size: 12px !important;
+    letter-spacing: 0.12em !important;
+    color: var(--ay-gold-text) !important;
+  }
+
+  /* ── 8. CUADRO COLECCIONES ───────────────────────────────────── */
+  .ayc-section-title {
+    font-family: var(--ay-font-display) !important;
+    font-size: clamp(20px, 2.2vw, 26px) !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.02em !important;
+    color: var(--ay-ink-900) !important;
+  }
+  .ayc-view-all {
+    font-family: var(--ay-font-mono) !important;
+    letter-spacing: 0.08em !important;
+    color: var(--ay-gold-text) !important;
+  }
+
+  /* ── 9. DUO COOLER BANNER ────────────────────────────────────── */
+  .duo-cooler-title {
+    font-family: var(--ay-font-display) !important;
+    letter-spacing: 0.08em !important;
+  }
+
+  /* ── 10. BANNER CROSSCOUNTRY: Oswald/Montserrat/Playfair → Gold & Ink ── */
+  .cc-brand-title {
+    font-family: var(--ay-font-display) !important;
+  }
+  .cc-brand-subtitle,
+  .cc-title {
+    font-family: var(--ay-font-display) !important;
+  }
+  .cc-eyebrow,
+  .cc-btn,
+  .cc-benefit-title,
+  .cc-benefit-desc {
+    font-family: var(--ay-font-body) !important;
+  }
+
+  /* ── 11. BANNER GEMELAS ──────────────────────────────────────── */
+  .gemelas-footer-link {
+    font-family: var(--ay-font-body) !important;
+  }
+
+  /* ── 12. CUSTOM MULTI-BANNER ─────────────────────────────────── */
+  .custom-multi-title {
+    font-family: var(--ay-font-display) !important;
+    letter-spacing: -0.02em !important;
+  }
+  .custom-multi-subtitle {
+    font-family: var(--ay-font-body) !important;
+  }
+  .custom-multi-btn {
+    font-family: var(--ay-font-body) !important;
+    border-radius: 2px !important;
+  }
+
+  /* ── 13. COLLECTION CMS (TemplateTrip legacy) ────────────────── */
+  .section-header .tt-title {
+    font-family: var(--ay-font-display) !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.02em !important;
+  }
+  .collection_title {
+    font-family: var(--ay-font-body) !important;
+  }
+
+  /* ── 14. OUR BRANDS section ──────────────────────────────────── */
+  .our-brand .tt-title,
+  .brands .tt-title {
+    font-family: var(--ay-font-display) !important;
+    font-weight: 700 !important;
+  }
+
+  /* ── GLOBAL: Product card typography override ────────────────── */
+  .aylesva-ml-card .ml-card-title,
+  .product-card__name,
+  .product-card__title,
+  .tt-product-name,
+  .tt-product-title {
+    font-family: var(--ay-font-body) !important;
+  }
+  .aylesva-ml-card .ml-card-price,
+  .product-card__price,
+  .tt-price {
+    font-family: var(--ay-font-display) !important;
+    font-weight: 700 !important;
+  }
+
+  /* ── GLOBAL: Gold accent color unification ───────────────────── */
+  .premium-btn,
+  .premium-dot.is-active {
+    background-color: var(--ay-gold) !important;
+  }
+  .premium-btn:hover {
+    background-color: var(--ay-gold-text) !important;
+  }
+  .premium-ticker {
+    background-color: var(--ay-gold) !important;
+  }
+</style>
+
+{% comment %} No schema needed — this is a snippet, not a section {% endcomment %}

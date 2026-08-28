@@ -258,6 +258,9 @@
   </style>
 
   {% render 'aylesva-corp-tokens' %}
+  {% if template.suffix == 'marketplace' %}
+    {% render 'aylesva-mp-typography-harmonizer' %}
+  {% endif %}
 
 </head>
   <body id="{{ page_title | handle }}" class="{{ settings.toggle_menu_position }} header_{{ settings.header_style_1 }} {% if shop.locale == 'ar' or shop.locale == 'he' or shop.locale == 'ur' %}rtl {% endif %} {{ page_title | handle }}  {{ sticky_class }} {% if customer %}customer-logged-in {% endif %}template-{{ template | handle }} template-{{ template | replace: '.', '-' | handle }}">
