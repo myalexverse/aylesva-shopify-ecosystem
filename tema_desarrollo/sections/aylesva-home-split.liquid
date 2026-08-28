@@ -3,68 +3,117 @@
   Usado para "Qué hacemos" (dos universos) y para el bloque de Marketplace.
 {% endcomment %}
 <section class="ay" id="{{ section.settings.anchor }}" style="background:{{ section.settings.bg }};border-bottom:var(--ay-hairline)">
-  <div class="ay-wrap ay-split" style="display:grid;grid-template-columns:{% if section.settings.media_right %}1fr 1.05fr{% else %}1.05fr 1fr{% endif %};gap:72px;align-items:center;padding-top:80px;padding-bottom:80px">
-    <div style="{% unless section.settings.media_right %}order:2{% endunless %}">
-      {% if section.settings.eyebrow != blank %}<p class="ay-eyebrow">{{ section.settings.eyebrow }}</p>{% endif %}
-      <h2 class="ay-h2" style="font-size:clamp(28px,3vw,40px);margin-bottom:20px">{{ section.settings.title }}</h2>
-      <p class="ay-lead" style="max-width:50ch;margin-bottom:28px;font-size:16px;line-height:1.65;color:rgba(15,23,42,.7)">{{ section.settings.text }}</p>
+  <div class="ay-wrap" style="padding-top:88px;padding-bottom:96px">
 
-      {% if section.settings.chips != blank %}
-        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px">
-          {% assign chips = section.settings.chips | split: ',' %}
-          {% for chip in chips %}
-            <span style="font-size:12px;font-weight:600;color:rgba(15,23,42,.78);border:1px solid rgba(197,164,126,.45);padding:7px 13px;border-radius:var(--ay-radius);background:#fff;display:inline-flex;align-items:center;gap:5px">
-              <span style="color:var(--ay-gold-text);font-size:10px">◈</span> {{ chip | strip }}
-            </span>
-          {% endfor %}
-        </div>
+    <!-- Header centrado — consistente con la sección de servicios -->
+    <div class="ay-split-header">
+      {% if section.settings.eyebrow != blank %}
+        <p class="ay-eyebrow" style="justify-content:center;margin-bottom:12px">{{ section.settings.eyebrow }}</p>
       {% endif %}
-
-      <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center">
-        {% if section.settings.cta_label != blank %}
-          <a class="ay-btn ay-btn--primary" href="{{ section.settings.cta_link | default: '/pages/marketplace' }}">{{ section.settings.cta_label }} &rarr;</a>
-        {% endif %}
-        {% if section.settings.cta2_label != blank %}
-          <a class="ay-btn ay-btn--outline" href="{{ section.settings.cta2_link | default: '/pages/lanza-tu-propia-marca' }}">{{ section.settings.cta2_label }}</a>
-        {% endif %}
-      </div>
+      <h2 class="ay-h2" style="font-size:clamp(30px,3.8vw,46px);font-weight:700;letter-spacing:-0.025em">{{ section.settings.title }}</h2>
+      {% if section.settings.text != blank %}
+        <p class="ay-split-intro">{{ section.settings.text }}</p>
+      {% endif %}
     </div>
 
-    <div class="ay-split-gallery" style="{% unless section.settings.media_right %}order:1{% endunless %};display:grid;grid-template-columns:1fr 1fr;gap:14px">
-      {% for block in section.blocks %}
-        {%- assign raw_img = block.settings.image_url | default: block.settings.image -%}
-        {%- capture split_img_src -%}
-          {%- if raw_img.src -%}{{ raw_img | image_url: width: 900 }}
-          {%- elsif raw_img contains 'http' -%}{{ raw_img }}
-          {%- elsif raw_img contains 'shopify://shop_images/' -%}{%- assign ch = raw_img | remove: 'shopify://shop_images/' -%}{{ ch | file_img_url: '900x' }}
-          {%- elsif raw_img contains '.jpg' or raw_img contains '.png' or raw_img contains '.webp' -%}{{ raw_img | asset_url }}
-          {%- endif -%}
-        {%- endcapture -%}
-        {%- assign split_img_src = split_img_src | strip -%}
-        <a 
-          href="{{ block.settings.link | default: section.settings.cta_link | default: '/pages/marketplace' }}" 
-          class="ay-media ay-mp-card" 
-          style="height:210px;{% cycle '', 'margin-top:24px' %};border:var(--ay-hairline);border-radius:var(--ay-radius);overflow:hidden;background-size:cover;background-position:center;display:block;text-decoration:none;position:relative;transition:all .35s ease;{% if split_img_src != blank %}background-image:url({{ split_img_src }}){% else %}background:repeating-linear-gradient(135deg,#efece6 0 8px,#e7e3db 8px 16px){% endif %}" 
-          {{ block.shopify_attributes }}
-          title="Ver producto en Marketplace"
-        >
-          <span class="ay-mp-card-overlay" style="position:absolute;inset:0;background:rgba(2,6,23,0);transition:background .3s ease;display:flex;align-items:center;justify-content:center">
-            <span class="ay-mp-card-badge" style="opacity:0;transform:translateY(8px);transition:all .3s ease;font-family:var(--ay-font-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:rgba(2,6,23,0.8);padding:6px 12px;border-radius:4px;border:1px solid var(--ay-gold)">Ver en catálogo →</span>
-          </span>
-        </a>
-      {% endfor %}
+    <!-- Contenido: Galería + Chips & CTAs -->
+    <div class="ay-split-body {% if section.settings.media_right %}ay-split--media-right{% else %}ay-split--media-left{% endif %}">
+
+      <!-- Columna de texto -->
+      <div class="ay-split-text">
+        {% if section.settings.chips != blank %}
+          <div class="ay-split-chips">
+            {% assign chips = section.settings.chips | split: ',' %}
+            {% for chip in chips %}
+              <span class="ay-split-chip">
+                <span class="ay-split-chip-dot">◈</span> {{ chip | strip }}
+              </span>
+            {% endfor %}
+          </div>
+        {% endif %}
+
+        <div class="ay-split-ctas">
+          {% if section.settings.cta_label != blank %}
+            <a class="ay-btn ay-btn--primary" href="{{ section.settings.cta_link | default: '/pages/marketplace' }}">{{ section.settings.cta_label }}</a>
+          {% endif %}
+          {% if section.settings.cta2_label != blank %}
+            <a class="ay-btn ay-btn--outline" href="{{ section.settings.cta2_link | default: '/pages/lanza-tu-propia-marca' }}">{{ section.settings.cta2_label }}</a>
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- Columna de galería -->
+      <div class="ay-split-gallery">
+        {% for block in section.blocks %}
+          {%- assign raw_img = block.settings.image_url | default: block.settings.image -%}
+          {%- capture split_img_src -%}
+            {%- if raw_img.src -%}{{ raw_img | image_url: width: 900 }}
+            {%- elsif raw_img contains 'http' -%}{{ raw_img }}
+            {%- elsif raw_img contains 'shopify://shop_images/' -%}{%- assign ch = raw_img | remove: 'shopify://shop_images/' -%}{{ ch | file_img_url: '900x' }}
+            {%- elsif raw_img contains '.jpg' or raw_img contains '.png' or raw_img contains '.webp' -%}{{ raw_img | asset_url }}
+            {%- endif -%}
+          {%- endcapture -%}
+          {%- assign split_img_src = split_img_src | strip -%}
+          <a
+            href="{{ block.settings.link | default: section.settings.cta_link | default: '/pages/marketplace' }}"
+            class="ay-mp-card"
+            {% if split_img_src != blank %}style="background-image:url({{ split_img_src }})"{% endif %}
+            {{ block.shopify_attributes }}
+            title="Ver producto en Marketplace"
+          >
+            <span class="ay-mp-card-overlay">
+              <span class="ay-mp-card-badge">Ver en catálogo →</span>
+            </span>
+          </a>
+        {% endfor %}
+      </div>
+
     </div>
   </div>
 </section>
 
 <style>
-  .ay-mp-card:hover{transform:translateY(-4px);box-shadow:0 12px 24px -8px rgba(0,0,0,0.2)}
-  .ay-mp-card:hover .ay-mp-card-overlay{background:rgba(2,6,23,0.3)}
+  /* Header centrado */
+  .ay-split-header{text-align:center;margin-bottom:48px}
+  .ay-split-intro{font-size:17px;line-height:1.65;color:#475569;margin:16px auto 0;max-width:64ch}
+
+  /* Body grid */
+  .ay-split-body{display:grid;gap:56px;align-items:center}
+  .ay-split--media-right{grid-template-columns:.95fr 1.05fr}
+  .ay-split--media-left{grid-template-columns:1.05fr .95fr}
+  .ay-split--media-left .ay-split-text{order:2}
+  .ay-split--media-left .ay-split-gallery{order:1}
+
+  /* Chips */
+  .ay-split-chips{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px}
+  .ay-split-chip{font-family:var(--ay-font-body);font-size:13px;font-weight:600;color:var(--ay-ink-800);border:1px solid rgba(197,164,126,.45);padding:9px 16px;border-radius:8px;background:#fff;display:inline-flex;align-items:center;gap:7px;box-shadow:0 2px 6px rgba(0,0,0,.03);transition:border-color .25s ease,box-shadow .25s ease}
+  .ay-split-chip:hover{border-color:var(--ay-gold);box-shadow:0 4px 12px rgba(197,164,126,.18)}
+  .ay-split-chip-dot{color:var(--ay-gold-text);font-size:11px}
+
+  /* CTAs */
+  .ay-split-ctas{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+
+  /* Gallery */
+  .ay-split-gallery{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .ay-mp-card{height:220px;border-radius:10px;overflow:hidden;background-color:#111;background-size:cover;background-position:center;display:block;text-decoration:none;position:relative;border:1px solid rgba(15,23,42,.12);box-shadow:0 4px 16px -4px rgba(2,6,23,.06);transition:all .35s cubic-bezier(.2,.8,.2,1)}
+  .ay-mp-card:nth-child(even){margin-top:24px}
+  .ay-mp-card:hover{transform:translateY(-6px);box-shadow:0 24px 48px -12px rgba(2,6,23,.2);border-color:var(--ay-gold)}
+  .ay-mp-card-overlay{position:absolute;inset:0;background:rgba(2,6,23,0);transition:background .3s ease;display:flex;align-items:center;justify-content:center}
+  .ay-mp-card:hover .ay-mp-card-overlay{background:rgba(2,6,23,0.32)}
+  .ay-mp-card-badge{opacity:0;transform:translateY(8px);transition:all .3s ease;font-family:var(--ay-font-mono);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:rgba(2,6,23,0.85);padding:8px 16px;border-radius:6px;border:1px solid var(--ay-gold);backdrop-filter:blur(4px)}
   .ay-mp-card:hover .ay-mp-card-badge{opacity:1;transform:none}
+
   @media (max-width:1024px){
-    .ay-split{grid-template-columns:1fr !important;gap:36px !important}
-    .ay-split > div{order:0 !important}
-    .ay-split-gallery .ay-media{margin-top:0 !important;height:160px !important}
+    .ay-split-body{grid-template-columns:1fr !important;gap:36px}
+    .ay-split-text,.ay-split-gallery{order:0 !important}
+    .ay-mp-card{height:180px}
+    .ay-mp-card:nth-child(even){margin-top:0}
+  }
+  @media (max-width:640px){
+    .ay-split-gallery{grid-template-columns:1fr 1fr;gap:12px}
+    .ay-mp-card{height:160px}
+    .ay-split-ctas{flex-direction:column}
+    .ay-split-ctas .ay-btn{width:100%}
   }
 </style>
 
