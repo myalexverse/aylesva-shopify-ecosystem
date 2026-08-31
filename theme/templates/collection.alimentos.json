@@ -4,7 +4,10 @@
       "type": "custom-collection-hub",
       "settings": {
         "icons_title": "Explora por Categoría",
-        "cta_text": "Ver Colección"
+        "cta_text": "Ver Colección",
+        "show_best_products": false,
+        "bestseller": "",
+        "show_promo_banner": false
       }
     }
   },

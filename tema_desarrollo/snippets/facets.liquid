@@ -8,6 +8,21 @@
     assign results_url = '?q=' | append: terms | append: '&options%5Bprefix%5D=last&sort_by=' | append: sort_by
   endif
 -%}
+<style>
+  @media (min-width: 768px) {
+    .mobile-facets__wrapper,
+    .mobile-facets__disclosure,
+    .mobile-facets,
+    menu-drawer.mobile-facets__wrapper {
+      display: none !important;
+    }
+  }
+  @media (max-width: 767px) {
+    .facets-container facet-filters-form.facets {
+      display: none !important;
+    }
+  }
+</style>
 <div class="facets-container">
   {%- unless collapse_on_larger_devices -%}
   <facet-filters-form class="facets">
@@ -247,7 +262,7 @@
             {%- for filter in results.filters -%}
             {% case filter.type %}
             {% when 'list' %}
-            <details class="mobile-facets__details js-filter" data-index="mobile-{{ forloop.index }}" open>
+            <details class="mobile-facets__details js-filter" data-index="mobile-{{ forloop.index }}">
               <summary class="mobile-facets__summary focus-inset">
                 <div>
                   <h4 class="widget-title">{{ filter.label | escape }}</h4>                        
@@ -290,7 +305,7 @@
               </div>
             </details>
             {% when 'price_range' %}
-            <details class="mobile-facets__details js-filter" data-index="mobile-{{ forloop.index }}" open>
+            <details class="mobile-facets__details js-filter" data-index="mobile-{{ forloop.index }}">
               <summary class="mobile-facets__summary focus-inset">
                 <div>
                   <h4 class="widget-title">{{ filter.label | escape }}</h4>

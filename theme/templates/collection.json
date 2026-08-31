@@ -10,14 +10,15 @@
         "collapse_on_larger_devices": false,
         "enable_sorting": true,
         "enable_sidebar_multiple_choice": true,
-        "show_best_products": true,
+        "show_best_products": false,
         "best_title": "Top Ventas",
-        "bestseller": "electronicss",
+        "bestseller": "",
         "pro_img_width_height": "100x100",
         "limit": "25",
         "product_rows": false,
         "promo_link": "#",
-        "promo_title": ""
+        "promo_title": "",
+        "show_promo_banner": false
       }
     }
   },
