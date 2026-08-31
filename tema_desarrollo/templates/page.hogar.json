@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "wrapper": "div#main",
   "sections": {
@@ -16,7 +7,7 @@
         "slide1": {
           "type": "slide",
           "settings": {
-            "image": "shopify:\/\/shop_images\/luxurious-home-in-the-desert.jpg",
+            "image": "shopify://shop_images/luxurious-home-in-the-desert.jpg",
             "image_alignment": "center",
             "sub_title": "REFUGIO Y CONFORT",
             "title": "TODO PARA TU\nHOGAR",
@@ -24,11 +15,11 @@
             "overlay_color": "#000000",
             "overlay_opacity": 25,
             "btn1_txt": "Cocina",
-            "btn1_link": "shopify:\/\/collections\/cocina-y-comedor",
+            "btn1_link": "shopify://collections/cocina-y-comedor",
             "btn_bg_color": "#ffb300",
             "btn_txt_color": "#000000",
             "btn2_txt": "Recámara",
-            "btn2_link": "shopify:\/\/collections\/recamara"
+            "btn2_link": "/pages/recamara-y-ropa-de-cama-landing"
           }
         }
       },
@@ -49,33 +40,33 @@
         "b1": {
           "type": "category",
           "settings": {
-            "image": "shopify:\/\/shop_images\/making-homemade-soup.jpg",
+            "image": "shopify://shop_images/making-homemade-soup.jpg",
             "label": "Cocina",
-            "link": "shopify:\/\/collections\/cocina-y-comedor"
+            "link": "shopify://collections/cocina-y-comedor"
           }
         },
         "b2": {
           "type": "category",
           "settings": {
-            "image": "shopify:\/\/shop_images\/blush-pink-and-white-workspace.jpg",
+            "image": "shopify://shop_images/blush-pink-and-white-workspace.jpg",
             "label": "Muebles",
-            "link": "shopify:\/\/collections\/muebles"
+            "link": "shopify://collections/muebles"
           }
         },
         "b3": {
           "type": "category",
           "settings": {
-            "image": "shopify:\/\/shop_images\/bright-hotel-room-bed.jpg",
+            "image": "shopify://shop_images/bright-hotel-room-bed.jpg",
             "label": "Recámara",
-            "link": "shopify:\/\/collections\/recamara"
+            "link": "/pages/recamara-y-ropa-de-cama-landing"
           }
         },
         "b4": {
           "type": "category",
           "settings": {
-            "image": "shopify:\/\/shop_images\/small-business-decor.jpg",
+            "image": "shopify://shop_images/small-business-decor.jpg",
             "label": "Decoración",
-            "link": "shopify:\/\/collections\/decoracion-del-hogar"
+            "link": "shopify://collections/decoracion-del-hogar"
           }
         }
       },
@@ -96,33 +87,33 @@
         "c1": {
           "type": "card",
           "settings": {
-            "image": "shopify:\/\/shop_images\/modern-white-bathroom.jpg",
+            "image": "shopify://shop_images/modern-white-bathroom.jpg",
             "label": "Baño",
-            "link": "shopify:\/\/collections\/bano"
+            "link": "shopify://collections/bano"
           }
         },
         "c2": {
           "type": "card",
           "settings": {
-            "image": "shopify:\/\/shop_images\/green-watering-can-pours-water-in-garden.jpg",
+            "image": "shopify://shop_images/green-watering-can-pours-water-in-garden.jpg",
             "label": "Jardín",
-            "link": "shopify:\/\/collections\/jardin"
+            "link": "/pages/jardin-y-exterior-landing"
           }
         },
         "c3": {
           "type": "card",
           "settings": {
-            "image": "shopify:\/\/shop_images\/its-pasta-night.jpg",
+            "image": "shopify://shop_images/its-pasta-night.jpg",
             "label": "Iluminación",
-            "link": "shopify:\/\/collections\/iluminacion"
+            "link": "shopify://collections/iluminacion"
           }
         },
         "c4": {
           "type": "card",
           "settings": {
-            "image": "shopify:\/\/shop_images\/small-business-interior.jpg",
+            "image": "shopify://shop_images/small-business-interior.jpg",
             "label": "Organización",
-            "link": "shopify:\/\/collections\/organizadores"
+            "link": "/pages/organizacion-y-almacenamiento-landing"
           }
         }
       },
@@ -147,10 +138,10 @@
       "name": "Duo Cooler Banner",
       "settings": {
         "section_title": "Marcas Destacadas",
-        "image_1": "shopify:\/\/shop_images\/Cambiar_texto_en_202604101216_46578ad7-19ae-447f-8e90-fba57eb775b6.jpg",
+        "image_1": "shopify://shop_images/Cambiar_texto_en_202604101216_46578ad7-19ae-447f-8e90-fba57eb775b6.jpg",
         "button_text_1": "proximamente",
         "link_1": "",
-        "video_2": "shopify:\/\/files\/videos\/Woman_drinking_coffee_202604101224.mp4",
+        "video_2": "shopify://files/videos/Woman_drinking_coffee_202604101224.mp4",
         "button_text_2": "más productos",
         "link_2": "",
         "margin_top": 30,
@@ -176,7 +167,7 @@
           "type": "collection_item",
           "settings": {
             "collection": "mujer",
-            "image": "shopify:\/\/shop_images\/long-blonde-hair-at-carnival.jpg",
+            "image": "shopify://shop_images/long-blonde-hair-at-carnival.jpg",
             "title": "Mujer"
           }
         },
@@ -184,7 +175,7 @@
           "type": "collection_item",
           "settings": {
             "collection": "hombre",
-            "image": "shopify:\/\/shop_images\/man-puts-his-hand-inside-his-jacket.jpg",
+            "image": "shopify://shop_images/man-puts-his-hand-inside-his-jacket.jpg",
             "title": ""
           }
         },
@@ -192,7 +183,7 @@
           "type": "collection_item",
           "settings": {
             "collection": "nino",
-            "image": "shopify:\/\/shop_images\/little-boy-ready-for-school-looking-up.jpg",
+            "image": "shopify://shop_images/little-boy-ready-for-school-looking-up.jpg",
             "title": ""
           }
         },
@@ -200,7 +191,7 @@
           "type": "collection_item",
           "settings": {
             "collection": "nina",
-            "image": "shopify:\/\/shop_images\/girl-framed-by-heart.jpg",
+            "image": "shopify://shop_images/girl-framed-by-heart.jpg",
             "title": ""
           }
         },
@@ -208,7 +199,7 @@
           "type": "collection_item",
           "settings": {
             "collection": "bebe",
-            "image": "shopify:\/\/shop_images\/cute-baby-girl-with-pink-bow-headband.jpg",
+            "image": "shopify://shop_images/cute-baby-girl-with-pink-bow-headband.jpg",
             "title": ""
           }
         },
@@ -216,7 +207,7 @@
           "type": "collection_item",
           "settings": {
             "collection": "artesanal",
-            "image": "shopify:\/\/shop_images\/pomelli-image_cd766c49-22f0-4171-859e-c22f786b7b86.png",
+            "image": "shopify://shop_images/pomelli-image_cd766c49-22f0-4171-859e-c22f786b7b86.png",
             "title": ""
           }
         },
@@ -224,7 +215,7 @@
           "type": "collection_item",
           "settings": {
             "collection": "hogar",
-            "image": "shopify:\/\/shop_images\/sunlight-creeps-through-a-bright-living-room.jpg",
+            "image": "shopify://shop_images/sunlight-creeps-through-a-bright-living-room.jpg",
             "title": ""
           }
         },
@@ -232,7 +223,7 @@
           "type": "collection_item",
           "settings": {
             "collection": "alimentos",
-            "image": "shopify:\/\/shop_images\/hamburger-and-fries.jpg",
+            "image": "shopify://shop_images/hamburger-and-fries.jpg",
             "title": ""
           }
         },
@@ -240,7 +231,7 @@
           "type": "collection_item",
           "settings": {
             "collection": "electronicos",
-            "image": "shopify:\/\/shop_images\/mobile-phone-and-gimbal-in-hand.jpg",
+            "image": "shopify://shop_images/mobile-phone-and-gimbal-in-hand.jpg",
             "title": ""
           }
         },
@@ -248,7 +239,7 @@
           "type": "collection_item",
           "settings": {
             "collection": "vehiculos",
-            "image": "shopify:\/\/shop_images\/red-sports-car-wheel-close-up.jpg",
+            "image": "shopify://shop_images/red-sports-car-wheel-close-up.jpg",
             "title": ""
           }
         }

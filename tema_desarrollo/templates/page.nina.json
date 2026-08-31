@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "wrapper": "div#main",
   "sections": {
@@ -16,7 +7,7 @@
         "slide1": {
           "type": "slide",
           "settings": {
-            "image": "shopify:\/\/shop_images\/dame_una_fotografia_202604061627.jpg",
+            "image": "shopify://shop_images/dame_una_fotografia_202604061627.jpg",
             "image_alignment": "center",
             "sub_title": "FASHION KIDS",
             "title": "ROPA Y VESTIDOS\nNIÑAS",
@@ -24,17 +15,17 @@
             "overlay_color": "#000000",
             "overlay_opacity": 25,
             "btn1_txt": "Ver Vestidos",
-            "btn1_link": "shopify:\/\/collections\/vestidos-nina",
+            "btn1_link": "shopify://collections/vestidos-nina",
             "btn_bg_color": "#ffb300",
             "btn_txt_color": "#000000",
             "btn2_txt": "Ver Calzado",
-            "btn2_link": "shopify:\/\/collections\/calzado-nina"
+            "btn2_link": "shopify://collections/calzado-nina"
           }
         },
         "slide2": {
           "type": "slide",
           "settings": {
-            "image": "shopify:\/\/shop_images\/dame_una_fotografia_202604061631.jpg",
+            "image": "shopify://shop_images/dame_una_fotografia_202604061631.jpg",
             "image_alignment": "center",
             "sub_title": "IMAGINACIÓN SIN LÍMITES",
             "title": "JUGUETES Y\nREGALOS",
@@ -42,11 +33,11 @@
             "overlay_color": "#000000",
             "overlay_opacity": 30,
             "btn1_txt": "Explorar Ahora",
-            "btn1_link": "shopify:\/\/collections\/juguetes-nina",
+            "btn1_link": "/pages/accesorios-nina-landing",
             "btn_bg_color": "#ffb300",
             "btn_txt_color": "#000000",
             "btn2_txt": "Accesorios",
-            "btn2_link": "shopify:\/\/collections\/accesorios-nina"
+            "btn2_link": "shopify://collections/accesorios-nina"
           }
         }
       },
@@ -68,33 +59,33 @@
         "b1": {
           "type": "category",
           "settings": {
-            "image": "shopify:\/\/shop_images\/pomelli-image_60.png",
+            "image": "shopify://shop_images/pomelli-image_60.png",
             "label": "Ropa y Vestidos",
-            "link": "shopify:\/\/collections\/vestidos-nina"
+            "link": "shopify://collections/vestidos-nina"
           }
         },
         "b2": {
           "type": "category",
           "settings": {
-            "image": "shopify:\/\/shop_images\/dame_una_fotografia_202604061634_1.jpg",
+            "image": "shopify://shop_images/dame_una_fotografia_202604061634_1.jpg",
             "label": "Calzado",
-            "link": "shopify:\/\/collections\/calzado-nina"
+            "link": "shopify://collections/calzado-nina"
           }
         },
         "b3": {
           "type": "category",
           "settings": {
-            "image": "shopify:\/\/shop_images\/dame_una_fotografia_202604061636.jpg",
+            "image": "shopify://shop_images/dame_una_fotografia_202604061636.jpg",
             "label": "Juguetes",
-            "link": "shopify:\/\/collections\/juguetes-nina"
+            "link": "/pages/accesorios-nina-landing"
           }
         },
         "b4": {
           "type": "category",
           "settings": {
-            "image": "shopify:\/\/shop_images\/dame_una_fotografia_202604061636_1.jpg",
+            "image": "shopify://shop_images/dame_una_fotografia_202604061636_1.jpg",
             "label": "Accesorios",
-            "link": "shopify:\/\/collections\/accesorios-nina"
+            "link": "shopify://collections/accesorios-nina"
           }
         }
       },
@@ -115,33 +106,33 @@
         "c1": {
           "type": "card",
           "settings": {
-            "image": "shopify:\/\/shop_images\/dame_una_fotografia_202604061639.jpg",
+            "image": "shopify://shop_images/dame_una_fotografia_202604061639.jpg",
             "label": "Escolar",
-            "link": "shopify:\/\/collections\/escolar-nina"
+            "link": "/collections/uniformes-escolares-nina"
           }
         },
         "c2": {
           "type": "card",
           "settings": {
-            "image": "shopify:\/\/shop_images\/pomelli-image_59.png",
+            "image": "shopify://shop_images/pomelli-image_59.png",
             "label": "Belleza Kids",
-            "link": "shopify:\/\/collections\/belleza-kids"
+            "link": "/collections/diademas-y-accesorios-para-el-cabello-nina"
           }
         },
         "c3": {
           "type": "card",
           "settings": {
-            "image": "shopify:\/\/shop_images\/dame_una_fotografia_202604061642.jpg",
+            "image": "shopify://shop_images/dame_una_fotografia_202604061642.jpg",
             "label": "Joyería",
-            "link": "shopify:\/\/collections\/joyeria-nina"
+            "link": "/pages/accesorios-nina-landing"
           }
         },
         "c4": {
           "type": "card",
           "settings": {
-            "image": "shopify:\/\/shop_images\/dame_una_fotografia_202604061642_1.jpg",
+            "image": "shopify://shop_images/dame_una_fotografia_202604061642_1.jpg",
             "label": "Ofertas",
-            "link": "shopify:\/\/collections\/ofertas-nina"
+            "link": "/pages/ropa-nina-landing"
           }
         }
       },
@@ -191,12 +182,12 @@
       "settings": {
         "bg_color": "#006847",
         "video_url": "",
-        "image_fallback": "shopify:\/\/shop_images\/3dgifmaker09805.gif",
+        "image_fallback": "shopify://shop_images/3dgifmaker09805.gif",
         "title": "LA PÁGINA DE MÉXICO",
-        "text": "<p>Con el respaldo del e-commerce #1 de Latinoamérica<\/p>",
+        "text": "<p>Con el respaldo del e-commerce #1 de Latinoamérica</p>",
         "logo_text": "Queremos hacer historia y crear la pagina de e-comerce numero 1 de mexico.",
         "button_label": "EMPIEZA A COMPRAR",
-        "button_link": "shopify:\/\/collections"
+        "button_link": "shopify://collections"
       }
     },
     "aylesva_cooler_carousel_6NQxxT": {
@@ -230,7 +221,7 @@
           "type": "collection_item",
           "settings": {
             "collection": "mujer",
-            "image": "shopify:\/\/shop_images\/long-blonde-hair-at-carnival.jpg",
+            "image": "shopify://shop_images/long-blonde-hair-at-carnival.jpg",
             "title": "Mujer"
           }
         },
@@ -238,7 +229,7 @@
           "type": "collection_item",
           "settings": {
             "collection": "hombre",
-            "image": "shopify:\/\/shop_images\/man-puts-his-hand-inside-his-jacket.jpg",
+            "image": "shopify://shop_images/man-puts-his-hand-inside-his-jacket.jpg",
             "title": ""
           }
         },
@@ -246,7 +237,7 @@
           "type": "collection_item",
           "settings": {
             "collection": "nino",
-            "image": "shopify:\/\/shop_images\/little-boy-ready-for-school-looking-up.jpg",
+            "image": "shopify://shop_images/little-boy-ready-for-school-looking-up.jpg",
             "title": ""
           }
         },
@@ -254,7 +245,7 @@
           "type": "collection_item",
           "settings": {
             "collection": "nina",
-            "image": "shopify:\/\/shop_images\/girl-framed-by-heart.jpg",
+            "image": "shopify://shop_images/girl-framed-by-heart.jpg",
             "title": ""
           }
         },
@@ -262,7 +253,7 @@
           "type": "collection_item",
           "settings": {
             "collection": "bebe",
-            "image": "shopify:\/\/shop_images\/cute-baby-girl-with-pink-bow-headband.jpg",
+            "image": "shopify://shop_images/cute-baby-girl-with-pink-bow-headband.jpg",
             "title": ""
           }
         },
@@ -270,7 +261,7 @@
           "type": "collection_item",
           "settings": {
             "collection": "artesanal",
-            "image": "shopify:\/\/shop_images\/pomelli-image_cd766c49-22f0-4171-859e-c22f786b7b86.png",
+            "image": "shopify://shop_images/pomelli-image_cd766c49-22f0-4171-859e-c22f786b7b86.png",
             "title": ""
           }
         },
@@ -278,7 +269,7 @@
           "type": "collection_item",
           "settings": {
             "collection": "hogar",
-            "image": "shopify:\/\/shop_images\/sunlight-creeps-through-a-bright-living-room.jpg",
+            "image": "shopify://shop_images/sunlight-creeps-through-a-bright-living-room.jpg",
             "title": ""
           }
         },
@@ -286,7 +277,7 @@
           "type": "collection_item",
           "settings": {
             "collection": "alimentos",
-            "image": "shopify:\/\/shop_images\/hamburger-and-fries.jpg",
+            "image": "shopify://shop_images/hamburger-and-fries.jpg",
             "title": ""
           }
         },
@@ -294,7 +285,7 @@
           "type": "collection_item",
           "settings": {
             "collection": "electronicos",
-            "image": "shopify:\/\/shop_images\/mobile-phone-and-gimbal-in-hand.jpg",
+            "image": "shopify://shop_images/mobile-phone-and-gimbal-in-hand.jpg",
             "title": ""
           }
         },
@@ -302,7 +293,7 @@
           "type": "collection_item",
           "settings": {
             "collection": "vehiculos",
-            "image": "shopify:\/\/shop_images\/red-sports-car-wheel-close-up.jpg",
+            "image": "shopify://shop_images/red-sports-car-wheel-close-up.jpg",
             "title": ""
           }
         }
