@@ -6,66 +6,66 @@
         "image_slide_fcnh4J": {
           "type": "image_slide",
           "settings": {
-            "image": "shopify:\/\/shop_images\/crea_la_imagen_202604231614.jpg",
+            "image": "shopify://shop_images/crea_la_imagen_202604231614.jpg",
             "headline": "Tu estilo, tu cultura, tu tienda",
             "subtext": "MILES DE PRODUCTOS QUE REPRESENTAN QUIEN ERES.",
             "btn_label": "Comprar ahora",
-            "btn_link": "shopify:\/\/collections\/mujer-deporte",
+            "btn_link": "/collections/mujer-deporte",
             "overlay_opacity": 50
           }
         },
         "image_slide_8DdgXe": {
           "type": "image_slide",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Gemini_Generated_Image_qz2316qz2316qz23.png",
+            "image": "shopify://shop_images/Gemini_Generated_Image_qz2316qz2316qz23.png",
             "headline": "AYLESVA DIRECT",
             "subtext": "IMPORTA PRODUCTOS PARA TU EMPRESA CON AYLESVA AL MEJOR PRECIO DESDE CHINA.",
             "btn_label": "CONOCER MÁS",
-            "btn_link": "\/pages\/aylesva-direct",
+            "btn_link": "/pages/aylesva-direct",
             "overlay_opacity": 70
           }
         },
         "video_slide_kLT6Yh": {
           "type": "video_slide",
           "settings": {
-            "video": "shopify:\/\/files\/videos\/334716.mp4",
+            "video": "shopify://files/videos/334716.mp4",
             "headline": "Vive el Salvador",
             "subtext": "ENCUENTRA LA PROPIEDAD DE TUS SUEÑOS.",
             "btn_label": "CONOCE EL SALVADOR.",
-            "btn_link": "\/pages\/globalestates",
+            "btn_link": "/pages/globalestates",
             "overlay_opacity": 60
           }
         },
         "image_slide_7GJyqE": {
           "type": "image_slide",
           "settings": {
-            "image": "shopify:\/\/shop_images\/NECESITO_LA_IMAGEN_202604231750.jpg",
+            "image": "shopify://shop_images/NECESITO_LA_IMAGEN_202604231750.jpg",
             "headline": "NUEVA COLECCIÓN VERANO 2026",
             "subtext": "ENCUENTRA LOS MEJORES PRODUCTOS PARA ESTE VERANO.",
             "btn_label": "COLECCIÓN VERANO",
-            "btn_link": "shopify:\/\/collections",
+            "btn_link": "/collections",
             "overlay_opacity": 50
           }
         },
         "video_slide_FrUDfb": {
           "type": "video_slide",
           "settings": {
-            "video": "shopify:\/\/files\/videos\/DJI_20251121133916_0095_D.MOV",
+            "video": "shopify://files/videos/DJI_20251121133916_0095_D.MOV",
             "headline": "EL GENERAL",
             "subtext": "CONOCE LA COLECCIÓN 2026 DE LA MEJOR TIENDA VAQUERA DE LA REGIÓN.",
             "btn_label": "Conoce Más",
-            "btn_link": "https:\/\/elgeneralwesternwear.com\/?srsltid=AfmBOoq_QOSP9hXAOQ5q6EteRU6hodHhEq1UMVeRI4jz8qwrk9r5CJ1q",
+            "btn_link": "https://elgeneralwesternwear.com/?srsltid=AfmBOoq_QOSP9hXAOQ5q6EteRU6hodHhEq1UMVeRI4jz8qwrk9r5CJ1q",
             "overlay_opacity": 40
           }
         },
         "mobile_slide_HD69e8": {
           "type": "mobile_slide",
           "settings": {
-            "image": "shopify:\/\/shop_images\/necesito_esta_imagen_202604221414.jpg",
+            "image": "shopify://shop_images/necesito_esta_imagen_202604221414.jpg",
             "headline": "TU ESTILO. TU CULTURA. TU TIENDA.",
             "subtext": "Miles de productos que representan quién eres.",
             "btn_label": "Comprar Ahora",
-            "btn_link": "",
+            "btn_link": "/collections",
             "overlay_opacity": 30
           }
         }
@@ -92,7 +92,7 @@
         "badge_1": {
           "type": "badge",
           "settings": {
-            "icon_svg": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><rect x=\"1\" y=\"3\" width=\"15\" height=\"13\"><\/rect><polygon points=\"16 8 20 8 23 11 23 16 16 16 16 8\"><\/polygon><circle cx=\"5.5\" cy=\"18.5\" r=\"2.5\"><\/circle><circle cx=\"18.5\" cy=\"18.5\" r=\"2.5\"><\/circle><\/svg>",
+            "icon_svg": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><rect x=\"1\" y=\"3\" width=\"15\" height=\"13\"></rect><polygon points=\"16 8 20 8 23 11 23 16 16 16 16 8\"></polygon><circle cx=\"5.5\" cy=\"18.5\" r=\"2.5\"></circle><circle cx=\"18.5\" cy=\"18.5\" r=\"2.5\"></circle></svg>",
             "title": "Envíos México y USA",
             "desc": "Entrega rápida y segura"
           }
@@ -100,7 +100,7 @@
         "badge_2": {
           "type": "badge",
           "settings": {
-            "icon_svg": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M12 15l-2 5L9 9l11 4-5 2zm0 0l4 4\"><\/path><\/svg>",
+            "icon_svg": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M12 15l-2 5L9 9l11 4-5 2zm0 0l4 4\"></path></svg>",
             "title": "Productos de Calidad",
             "desc": "Garantía de excelencia"
           }
@@ -108,7 +108,7 @@
         "badge_3": {
           "type": "badge",
           "settings": {
-            "icon_svg": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><rect x=\"3\" y=\"11\" width=\"18\" height=\"11\" rx=\"2\" ry=\"2\"><\/rect><path d=\"M7 11V7a5 5 0 0110 0v4\"><\/path><\/svg>",
+            "icon_svg": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><rect x=\"3\" y=\"11\" width=\"18\" height=\"11\" rx=\"2\" ry=\"2\"></rect><path d=\"M7 11V7a5 5 0 0110 0v4\"></path></svg>",
             "title": "Pagos 100% Seguros",
             "desc": "Tus datos están protegidos"
           }
@@ -116,7 +116,7 @@
         "badge_4": {
           "type": "badge",
           "settings": {
-            "icon_svg": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z\"><\/path><\/svg>",
+            "icon_svg": "<svg viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z\"></path></svg>",
             "title": "Atención Personalizada",
             "desc": "Estamos para ayudarte"
           }
@@ -138,91 +138,91 @@
         "collection_mKWM68": {
           "type": "collection",
           "settings": {
-            "collection": "",
-            "url": "https:\/\/aylesva.mx\/pages\/mujer",
+            "collection": "mujer",
+            "url": "/pages/mujer",
             "title": "mujer",
-            "image": "shopify:\/\/shop_images\/dame_esta_imagen_202604221518.jpg"
+            "image": "shopify://shop_images/dame_esta_imagen_202604221518.jpg"
           }
         },
         "collection_GqcF6r": {
           "type": "collection",
           "settings": {
-            "collection": "",
-            "url": "https:\/\/aylesva.mx\/pages\/hombre",
+            "collection": "hombre",
+            "url": "/pages/hombre",
             "title": "hombre",
-            "image": "shopify:\/\/shop_images\/dame_una_fotografia_202604221654.jpg"
+            "image": "shopify://shop_images/dame_una_fotografia_202604221654.jpg"
           }
         },
         "collection_Dh8cA9": {
           "type": "collection",
           "settings": {
-            "collection": "",
-            "url": "https:\/\/aylesva.mx\/pages\/nino",
+            "collection": "nino",
+            "url": "/pages/nino",
             "title": "niño",
-            "image": "shopify:\/\/shop_images\/dame_una_imagen_202604221702.jpg"
+            "image": "shopify://shop_images/dame_una_imagen_202604221702.jpg"
           }
         },
         "collection_aVBFpn": {
           "type": "collection",
           "settings": {
-            "collection": "",
-            "url": "https:\/\/aylesva.mx\/pages\/nina",
+            "collection": "nina",
+            "url": "/pages/nina",
             "title": "niña",
-            "image": "shopify:\/\/shop_images\/Gemini_Generated_Image_8a2ai38a2ai38a2a.png"
+            "image": "shopify://shop_images/Gemini_Generated_Image_8a2ai38a2ai38a2a.png"
           }
         },
         "collection_jxihkR": {
           "type": "collection",
           "settings": {
-            "collection": "",
-            "url": "https:\/\/aylesva.mx\/pages\/bebe",
+            "collection": "bebe",
+            "url": "/pages/bebe",
             "title": "bebés",
-            "image": "shopify:\/\/shop_images\/Gemini_Generated_Image_a4xk9ca4xk9ca4xk.png"
+            "image": "shopify://shop_images/Gemini_Generated_Image_a4xk9ca4xk9ca4xk.png"
           }
         },
         "collection_a7Giiq": {
           "type": "collection",
           "settings": {
-            "collection": "",
-            "url": "https:\/\/aylesva.mx\/pages\/artesanal",
+            "collection": "artesanal",
+            "url": "/pages/artesanal",
             "title": "Artesanal",
-            "image": "shopify:\/\/shop_images\/un_diseno_mas_202604231018.jpg"
+            "image": "shopify://shop_images/un_diseno_mas_202604231018.jpg"
           }
         },
         "collection_nj7ibt": {
           "type": "collection",
           "settings": {
-            "collection": "",
-            "url": "https:\/\/aylesva.mx\/pages\/hogar",
+            "collection": "hogar",
+            "url": "/pages/hogar",
             "title": "Hogar",
-            "image": "shopify:\/\/shop_images\/con_un_fondo_202604231022.jpg"
+            "image": "shopify://shop_images/con_un_fondo_202604231022.jpg"
           }
         },
         "collection_rTcwbF": {
           "type": "collection",
           "settings": {
-            "collection": "",
-            "url": "https:\/\/aylesva.mx\/pages\/alimentos",
+            "collection": "alimentos",
+            "url": "/pages/alimentos",
             "title": "Alimentos",
-            "image": "shopify:\/\/shop_images\/ahora_elimina_los_202604231027.jpg"
+            "image": "shopify://shop_images/ahora_elimina_los_202604231027.jpg"
           }
         },
         "collection_zn8nHF": {
           "type": "collection",
           "settings": {
-            "collection": "",
-            "url": "https:\/\/aylesva.mx\/pages\/electronicos",
+            "collection": "electronicos",
+            "url": "/pages/electronicos",
             "title": "electrónicos",
-            "image": "shopify:\/\/shop_images\/dame_esta_imagen_202604221510_1.jpg"
+            "image": "shopify://shop_images/dame_esta_imagen_202604221510_1.jpg"
           }
         },
         "collection_7iEn3G": {
           "type": "collection",
           "settings": {
-            "collection": "",
-            "url": "https:\/\/aylesva.mx\/pages\/vehiculos",
+            "collection": "vehiculos",
+            "url": "/pages/vehiculos",
             "title": "vehículos",
-            "image": "shopify:\/\/shop_images\/ahora_elimina_esos_202604231032.jpg"
+            "image": "shopify://shop_images/ahora_elimina_esos_202604231032.jpg"
           }
         }
       },
@@ -247,7 +247,7 @@
       "settings": {
         "title": "PRODUCTOS DESTACADOS",
         "collection": "2x1",
-        "view_all_link": "",
+        "view_all_link": "/collections/2x1",
         "limit": 8
       }
     },
@@ -257,81 +257,81 @@
         "category_nV63xK": {
           "type": "category",
           "settings": {
-            "image": "shopify:\/\/shop_images\/un_diseno_mas_202604231018.jpg",
+            "image": "shopify://shop_images/un_diseno_mas_202604231018.jpg",
             "label": "ARTESANAL",
-            "link": "https:\/\/aylesva.mx\/pages\/artesanal"
+            "link": "/pages/artesanal"
           }
         },
         "category_fprWnP": {
           "type": "category",
           "settings": {
-            "image": "shopify:\/\/shop_images\/dame_esta_imagen_202604221510_1.jpg",
+            "image": "shopify://shop_images/dame_esta_imagen_202604221510_1.jpg",
             "label": "ELECTRÓNICOS",
-            "link": "https:\/\/aylesva.mx\/pages\/electronicos"
+            "link": "/pages/electronicos"
           }
         },
         "category_tCxV6n": {
           "type": "category",
           "settings": {
-            "image": "shopify:\/\/shop_images\/ahora_elimina_los_202604231027.jpg",
+            "image": "shopify://shop_images/ahora_elimina_los_202604231027.jpg",
             "label": "ALIMENTOS",
-            "link": "https:\/\/aylesva.mx\/pages\/alimentos"
+            "link": "/pages/alimentos"
           }
         },
         "category_haxzXL": {
           "type": "category",
           "settings": {
-            "image": "shopify:\/\/shop_images\/con_un_fondo_202604231022.jpg",
+            "image": "shopify://shop_images/con_un_fondo_202604231022.jpg",
             "label": "Hogar",
-            "link": "https:\/\/aylesva.mx\/pages\/hogar"
+            "link": "/pages/hogar"
           }
         },
         "category_Q8qtgd": {
           "type": "category",
           "settings": {
-            "image": "shopify:\/\/shop_images\/ahora_elimina_esos_202604231032.jpg",
+            "image": "shopify://shop_images/ahora_elimina_esos_202604231032.jpg",
             "label": "Vehiculos",
-            "link": "https:\/\/aylesva.mx\/pages\/vehiculos"
+            "link": "/pages/vehiculos"
           }
         },
         "category_mzdpme": {
           "type": "category",
           "settings": {
-            "image": "shopify:\/\/shop_images\/dame_esta_imagen_202604221518.jpg",
+            "image": "shopify://shop_images/dame_esta_imagen_202604221518.jpg",
             "label": "MUJER",
-            "link": "https:\/\/aylesva.mx\/pages\/mujer"
+            "link": "/pages/mujer"
           }
         },
         "category_6DEdQ6": {
           "type": "category",
           "settings": {
-            "image": "shopify:\/\/shop_images\/dame_una_fotografia_202604221654.jpg",
+            "image": "shopify://shop_images/dame_una_fotografia_202604221654.jpg",
             "label": "HOMBRE",
-            "link": "https:\/\/aylesva.mx\/pages\/hombre"
+            "link": "/pages/hombre"
           }
         },
         "category_k8iyre": {
           "type": "category",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Gemini_Generated_Image_8a2ai38a2ai38a2a.png",
+            "image": "shopify://shop_images/Gemini_Generated_Image_8a2ai38a2ai38a2a.png",
             "label": "NIÑA",
-            "link": "https:\/\/aylesva.mx\/pages\/nina"
+            "link": "/pages/nina"
           }
         },
         "category_kNKCnx": {
           "type": "category",
           "settings": {
-            "image": "shopify:\/\/shop_images\/dame_una_imagen_202604221702.jpg",
+            "image": "shopify://shop_images/dame_una_imagen_202604221702.jpg",
             "label": "NIÑO",
-            "link": "https:\/\/aylesva.mx\/pages\/nino"
+            "link": "/pages/nino"
           }
         },
         "category_hiXcGd": {
           "type": "category",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Gemini_Generated_Image_a4xk9ca4xk9ca4xk.png",
+            "image": "shopify://shop_images/Gemini_Generated_Image_a4xk9ca4xk9ca4xk.png",
             "label": "BEBÉ",
-            "link": "https:\/\/aylesva.mx\/pages\/bebe"
+            "link": "/pages/bebe"
           }
         }
       },
@@ -356,7 +356,7 @@
     "mobile_banner_small": {
       "type": "aylesva-mobile-small-banner",
       "settings": {
-        "image": "shopify:\/\/shop_images\/cambia_compania_de_202604221557.jpg",
+        "image": "shopify://shop_images/cambia_compania_de_202604221557.jpg",
         "headline": "",
         "subtext": ""
       }
@@ -366,7 +366,7 @@
       "name": "Cooler Carrusel",
       "settings": {
         "title": "Ofertas Destacadas",
-        "collection": "relojes",
+        "collection": "relojes-hombre",
         "product_limit": 12,
         "animation_speed": 25,
         "margin_top": 30,
@@ -379,7 +379,7 @@
         "text_collection_PmcCQq": {
           "type": "text_collection",
           "settings": {
-            "image_1": "shopify:\/\/shop_images\/pomelli-image_32dce8dc-9994-499a-b516-2abaa6150ff9.png",
+            "image_1": "shopify://shop_images/pomelli-image_32dce8dc-9994-499a-b516-2abaa6150ff9.png",
             "collection_cat_id": "ceramica-y-barro",
             "collection_desc": ""
           }
@@ -387,7 +387,7 @@
         "text_collection_Ncre6k": {
           "type": "text_collection",
           "settings": {
-            "image_1": "shopify:\/\/shop_images\/Copia_de_pomelli-image_4cb2eb5c-c54e-40ec-b418-35a5ad833240.png",
+            "image_1": "shopify://shop_images/Copia_de_pomelli-image_4cb2eb5c-c54e-40ec-b418-35a5ad833240.png",
             "collection_cat_id": "textiles-y-tejidos",
             "collection_desc": ""
           }
@@ -395,7 +395,7 @@
         "text_collection_xbiFTB": {
           "type": "text_collection",
           "settings": {
-            "image_1": "shopify:\/\/shop_images\/pomelli-image_12.png",
+            "image_1": "shopify://shop_images/pomelli-image_12.png",
             "collection_cat_id": "madera",
             "collection_desc": ""
           }
@@ -403,7 +403,7 @@
         "text_collection_9BDwhf": {
           "type": "text_collection",
           "settings": {
-            "image_1": "shopify:\/\/shop_images\/Copia_de_pomelli-image_4_3.png",
+            "image_1": "shopify://shop_images/Copia_de_pomelli-image_4_3.png",
             "collection_cat_id": "joyeria-artesanal",
             "collection_desc": ""
           }
@@ -411,7 +411,7 @@
         "text_collection_iTPJNz": {
           "type": "text_collection",
           "settings": {
-            "image_1": "shopify:\/\/shop_images\/pomelli-image_4_086b6772-f06e-4153-92d1-4623678d46ac.png",
+            "image_1": "shopify://shop_images/pomelli-image_4_086b6772-f06e-4153-92d1-4623678d46ac.png",
             "collection_cat_id": "cuero-y-piel",
             "collection_desc": ""
           }
@@ -419,7 +419,7 @@
         "text_collection_8QT3f6": {
           "type": "text_collection",
           "settings": {
-            "image_1": "shopify:\/\/shop_images\/pomelli-image_11.png",
+            "image_1": "shopify://shop_images/pomelli-image_11.png",
             "collection_cat_id": "vidrio-y-cristal",
             "collection_desc": ""
           }
@@ -427,7 +427,7 @@
         "text_collection_PAtjEC": {
           "type": "text_collection",
           "settings": {
-            "image_1": "shopify:\/\/shop_images\/Copia_de_pomelli-image_1_2_e6246dc8-3954-440f-8398-03596f4d50e7.png",
+            "image_1": "shopify://shop_images/Copia_de_pomelli-image_1_2_e6246dc8-3954-440f-8398-03596f4d50e7.png",
             "collection_cat_id": "juguetes-tradicionales-de-madera",
             "collection_desc": ""
           }
@@ -436,7 +436,7 @@
           "type": "text_collection",
           "disabled": true,
           "settings": {
-            "image_1": "shopify:\/\/shop_images\/pomelli-image_cd766c49-22f0-4171-859e-c22f786b7b86.png",
+            "image_1": "shopify://shop_images/pomelli-image_cd766c49-22f0-4171-859e-c22f786b7b86.png",
             "collection_cat_id": "",
             "collection_desc": ""
           }
@@ -457,7 +457,7 @@
         "product_col_desktop_pro": 7,
         "product_col_mobile_pro": 2,
         "bg_color": "#ffffff",
-        "bg_image": "shopify:\/\/shop_images\/mexicobannervector_800x800_45bd204c-7213-4692-aafa-4eda5decc16c.webp",
+        "bg_image": "shopify://shop_images/mexicobannervector_800x800_45bd204c-7213-4692-aafa-4eda5decc16c.webp",
         "title": "Conoce la riqueza artesanal de nuestro paìs",
         "title_color": "#000000",
         "sub_title": "",
@@ -470,61 +470,61 @@
         "banner_1": {
           "type": "banner",
           "settings": {
-            "image": "shopify:\/\/shop_images\/Now_remove_all_2k_202601301459.jpg",
+            "image": "shopify://shop_images/Now_remove_all_2k_202601301459.jpg",
             "title": "Prueba Nuestro Taller De Personalizado",
             "sub_title": "Ponemos Tu Diseño En Playeras, Gorras, Termos, Sudaderas Y Más",
             "btn_txt": "Envia Tu Diseño",
-            "btn_link": ""
+            "btn_link": "/pages/contact"
           }
         },
         "banner_2": {
           "type": "banner",
           "settings": {
-            "image": "shopify:\/\/shop_images\/dame_la_imagen_202603192048.jpg",
+            "image": "shopify://shop_images/dame_la_imagen_202603192048.jpg",
             "title": "¡Envia un regalo artesanal De México Hasta Estados Unidos!",
             "sub_title": "",
             "btn_txt": "Compra Ahora",
-            "btn_link": "https:\/\/aylesva-2.myshopify.com\/collections"
+            "btn_link": "/collections/artesanal"
           }
         },
         "banner_3": {
           "type": "banner",
           "settings": {
-            "image": "shopify:\/\/shop_images\/muv_1903x_eba03292-a991-45c4-aaa1-c27c2cdf666b.webp",
+            "image": "shopify://shop_images/muv_1903x_eba03292-a991-45c4-aaa1-c27c2cdf666b.webp",
             "title": "COMPROMETIDOS CON LA COMUNIDAD MIGRANTE",
             "sub_title": "Protección completa para ti y tu familia",
             "btn_txt": "Ver Planes",
-            "btn_link": "\/pages\/mi-ultima-voluntad"
+            "btn_link": "/pages/mi-ultima-voluntad"
           }
         },
         "banner_4": {
           "type": "banner",
           "settings": {
-            "image": "shopify:\/\/shop_images\/aylesvacareb_1903x_02dbaf94-8622-43fe-a444-4bafe90d1fd9.webp",
+            "image": "shopify://shop_images/aylesvacareb_1903x_02dbaf94-8622-43fe-a444-4bafe90d1fd9.webp",
             "title": "Cuando la vida te pone a prueba, no estás solo",
             "sub_title": "",
             "btn_txt": "Explora Planes de Salud",
-            "btn_link": "\/pages\/aylesva-care"
+            "btn_link": "/pages/aylesva-care"
           }
         },
         "banner_5": {
           "type": "banner",
           "settings": {
-            "image": "shopify:\/\/shop_images\/elimina_los_detalles_202603201620.jpg",
+            "image": "shopify://shop_images/elimina_los_detalles_202603201620.jpg",
             "title": "Tu artesanía merece llegar lejos",
             "sub_title": "Ayudamos a los artesanos a vender su trabajo auténtico a clientes que realmente lo valoran",
             "btn_txt": "Empieza a Vender",
-            "btn_link": "shopify:\/\/collections\/artesanal"
+            "btn_link": "shopify://collections/artesanal"
           }
         },
         "banner_6": {
           "type": "banner",
           "settings": {
-            "image": "shopify:\/\/shop_images\/bannerfamily_1903x_f95db7e6-92f4-4880-93ce-24c2cfc4d29a.webp",
+            "image": "shopify://shop_images/bannerfamily_1903x_f95db7e6-92f4-4880-93ce-24c2cfc4d29a.webp",
             "title": "Más cerca, sin importar la distancia.",
             "sub_title": "Envía productos auténticos de México a las personas que amas",
             "btn_txt": "Compra Ahora",
-            "btn_link": "shopify:\/\/collections"
+            "btn_link": "/collections"
           }
         }
       },
@@ -560,14 +560,14 @@
       "type": "banner-crosscountry",
       "name": "Banner Crosscountry",
       "settings": {
-        "bg_image": "shopify:\/\/shop_images\/ChatGPT_Image_8_jul_2026__202607081700.jpg",
+        "bg_image": "shopify://shop_images/ChatGPT_Image_8_jul_2026__202607081700.jpg",
         "logo_title": "CROSSCOUNTRY",
         "logo_subtitle": "ADVENTURE",
         "eyebrow": "Nueva Colección",
         "title": "Born For The Wild.",
         "subtitle_bold": "Everyday",
         "btn_text": "Comprar Ahora",
-        "btn_link": "shopify:\/\/collections\/crosscountry",
+        "btn_link": "shopify://collections/crosscountry",
         "b1_title": "Piel Genuina",
         "b1_desc": "Calidad Premium",
         "b2_title": "Diseñadas",
@@ -617,13 +617,13 @@
       "type": "bannerGemelas-cool",
       "name": "Banner Gemelas Cool",
       "settings": {
-        "image_left": "shopify:\/\/shop_images\/pomelli_photoshoot_image_9_16_0416_1.png",
+        "image_left": "shopify://shop_images/pomelli_photoshoot_image_9_16_0416_1.png",
         "title_left": "Blusa Artesanal",
-        "link_left": "https:\/\/aylesva.mx\/products\/artesanal-bordado-blusa-100-algodon-negro-601984?_pos=3&_sid=52f561469&_ss=r",
+        "link_left": "/collections/blusas-y-camisas",
         "price_left": "$399.00",
-        "image_right": "shopify:\/\/shop_images\/pomelli_photoshoot_image_9_16_0416.jpg",
+        "image_right": "shopify://shop_images/pomelli_photoshoot_image_9_16_0416.jpg",
         "title_right": "Vestido Artesanal",
-        "link_right": "https:\/\/aylesva.mx\/products\/artesanal-bordado-vestido-100-algodon-negro-604056?_pos=5&_sid=24a0ab02e&_ss=r",
+        "link_right": "/collections/vestidos-nina",
         "price_right": "$499.00",
         "margin_top": 40,
         "margin_bottom": 40
@@ -653,7 +653,7 @@
         "07122582-ffc1-4b30-a45b-716370cc36b6": {
           "type": "image",
           "settings": {
-            "banner_link1": "shopify:\/\/collections\/gift-1",
+            "banner_link1": "shopify://collections/gift-1",
             "banner1_bg": "#f4f3f0",
             "banner_title1": "Relaxing Massage Center",
             "banner_subtitle1": "Seasonal Sale",
@@ -670,7 +670,7 @@
         "1a869617-ab77-4b34-9f94-29a8cff70b0c": {
           "type": "image",
           "settings": {
-            "banner_link1": "shopify:\/\/products\/corporis-suscipit-libor-6",
+            "banner_link1": "shopify://products/corporis-suscipit-libor-6",
             "banner1_bg": "#f4f3f0",
             "banner_title1": "Luxury  Spa Center",
             "banner_subtitle1": "Save 30% Shop",
@@ -701,7 +701,7 @@
         "text_collection_bPwhan": {
           "type": "text_collection",
           "settings": {
-            "image_1": "shopify:\/\/shop_images\/mensandals_800x800_93401321-4922-40e7-b4bd-440befb3158d.webp",
+            "image_1": "shopify://shop_images/mensandals_800x800_93401321-4922-40e7-b4bd-440befb3158d.webp",
             "collection_cat_id": "",
             "collection_desc": ""
           }
@@ -709,7 +709,7 @@
         "text_collection_wHTyKc": {
           "type": "text_collection",
           "settings": {
-            "image_1": "shopify:\/\/shop_images\/camisavaquera_800x800_3fc19195-f27e-4899-874e-f5a8bd8ded8a.webp",
+            "image_1": "shopify://shop_images/camisavaquera_800x800_3fc19195-f27e-4899-874e-f5a8bd8ded8a.webp",
             "collection_cat_id": "camisa-vaquera-broche-dama",
             "collection_desc": ""
           }
@@ -717,7 +717,7 @@
         "text_collection_xJBNRq": {
           "type": "text_collection",
           "settings": {
-            "image_1": "shopify:\/\/shop_images\/camisadama_800x800_fff5ad31-544b-47ea-bc5d-4ded254bc2ee.webp",
+            "image_1": "shopify://shop_images/camisadama_800x800_fff5ad31-544b-47ea-bc5d-4ded254bc2ee.webp",
             "collection_cat_id": "camisa-vaquera-dama",
             "collection_desc": ""
           }
@@ -725,7 +725,7 @@
         "text_collection_94yWEt": {
           "type": "text_collection",
           "settings": {
-            "image_1": "shopify:\/\/shop_images\/cowboymujer_800x800_1728f46a-500c-4647-8378-991e4c6bb3c5.webp",
+            "image_1": "shopify://shop_images/cowboymujer_800x800_1728f46a-500c-4647-8378-991e4c6bb3c5.webp",
             "collection_cat_id": "camisa-vaquera-dama-bordada",
             "collection_desc": ""
           }
@@ -733,7 +733,7 @@
         "text_collection_hEDbjE": {
           "type": "text_collection",
           "settings": {
-            "image_1": "shopify:\/\/shop_images\/chamarramuje1_800x800_0de4e655-cb3c-4c8d-a2fa-ba919ad1422f.webp",
+            "image_1": "shopify://shop_images/chamarramuje1_800x800_0de4e655-cb3c-4c8d-a2fa-ba919ad1422f.webp",
             "collection_cat_id": "chamara-dama",
             "collection_desc": ""
           }
@@ -779,7 +779,7 @@
         "product_col_desktop_pro": 5,
         "product_col_mobile_pro": 1,
         "bg_color": "#ffffff",
-        "bg_image": "shopify:\/\/shop_images\/mexicobannervector_800x800_45bd204c-7213-4692-aafa-4eda5decc16c.webp",
+        "bg_image": "shopify://shop_images/mexicobannervector_800x800_45bd204c-7213-4692-aafa-4eda5decc16c.webp",
         "title": "Compra miles de productos con envío rápido a todo México",
         "title_color": "#000000",
         "sub_title": "",
@@ -792,7 +792,7 @@
         "text_collection_XdmfmF": {
           "type": "text_collection",
           "settings": {
-            "image_1": "shopify:\/\/shop_images\/mujerbota1_800x800_8c3773aa-1209-46f9-b117-7965ccb8e5c3.webp",
+            "image_1": "shopify://shop_images/mujerbota1_800x800_8c3773aa-1209-46f9-b117-7965ccb8e5c3.webp",
             "collection_cat_id": "bota-vaquera-dama",
             "collection_desc": ""
           }
@@ -800,7 +800,7 @@
         "text_collection_mCArVY": {
           "type": "text_collection",
           "settings": {
-            "image_1": "shopify:\/\/shop_images\/camisavaquera_800x800_3fc19195-f27e-4899-874e-f5a8bd8ded8a.webp",
+            "image_1": "shopify://shop_images/camisavaquera_800x800_3fc19195-f27e-4899-874e-f5a8bd8ded8a.webp",
             "collection_cat_id": "camisa-vaquera-broche-dama",
             "collection_desc": ""
           }
@@ -808,7 +808,7 @@
         "text_collection_4nVM8X": {
           "type": "text_collection",
           "settings": {
-            "image_1": "shopify:\/\/shop_images\/camisadama_800x800_fff5ad31-544b-47ea-bc5d-4ded254bc2ee.webp",
+            "image_1": "shopify://shop_images/camisadama_800x800_fff5ad31-544b-47ea-bc5d-4ded254bc2ee.webp",
             "collection_cat_id": "camisa-vaquera-dama",
             "collection_desc": ""
           }
@@ -816,7 +816,7 @@
         "text_collection_KA3LLJ": {
           "type": "text_collection",
           "settings": {
-            "image_1": "shopify:\/\/shop_images\/cowboymujer_800x800_1728f46a-500c-4647-8378-991e4c6bb3c5.webp",
+            "image_1": "shopify://shop_images/cowboymujer_800x800_1728f46a-500c-4647-8378-991e4c6bb3c5.webp",
             "collection_cat_id": "camisa-vaquera-dama-bordada",
             "collection_desc": ""
           }
@@ -824,7 +824,7 @@
         "text_collection_yRQ4Mg": {
           "type": "text_collection",
           "settings": {
-            "image_1": "shopify:\/\/shop_images\/chamarramuje1_800x800_0de4e655-cb3c-4c8d-a2fa-ba919ad1422f.webp",
+            "image_1": "shopify://shop_images/chamarramuje1_800x800_0de4e655-cb3c-4c8d-a2fa-ba919ad1422f.webp",
             "collection_cat_id": "chamara-dama",
             "collection_desc": ""
           }
@@ -870,7 +870,7 @@
         "product_col_desktop_pro": 5,
         "product_col_mobile_pro": 1,
         "bg_color": "#ffffff",
-        "bg_image": "shopify:\/\/shop_images\/mexicobannervector_800x800_45bd204c-7213-4692-aafa-4eda5decc16c.webp",
+        "bg_image": "shopify://shop_images/mexicobannervector_800x800_45bd204c-7213-4692-aafa-4eda5decc16c.webp",
         "title": "Compra miles de productos con envío rápido a todo México",
         "title_color": "#000000",
         "sub_title": "",
@@ -919,13 +919,13 @@
       "name": "Duo Cooler Banner",
       "settings": {
         "section_title": "Marcas Destacadas",
-        "image_1": "shopify:\/\/shop_images\/pomelli-image_43.png",
-        "logo_1": "shopify:\/\/shop_images\/El_General_NEWLogo_Black.png",
+        "image_1": "shopify://shop_images/pomelli-image_43.png",
+        "logo_1": "shopify://shop_images/El_General_NEWLogo_Black.png",
         "button_text_1": "Envíos Gratis",
-        "link_1": "shopify:\/\/collections\/camisas-formales-y-casuales",
-        "video_2": "shopify:\/\/files\/videos\/DJI_20251121133916_0095_D.MOV",
+        "link_1": "shopify://collections/camisas-formales-y-casuales",
+        "video_2": "shopify://files/videos/DJI_20251121133916_0095_D.MOV",
         "button_text_2": "Envíos Gratis",
-        "link_2": "shopify:\/\/collections\/botas-y-botines-hombre",
+        "link_2": "shopify://collections/botas-y-botines-hombre",
         "margin_top": 30,
         "margin_bottom": 30
       }
@@ -948,7 +948,7 @@
           "type": "collection_item",
           "settings": {
             "collection": "mujer",
-            "image": "shopify:\/\/shop_images\/long-blonde-hair-at-carnival.jpg",
+            "image": "shopify://shop_images/long-blonde-hair-at-carnival.jpg",
             "title": "Mujer"
           }
         },
@@ -956,7 +956,7 @@
           "type": "collection_item",
           "settings": {
             "collection": "hombre",
-            "image": "shopify:\/\/shop_images\/man-puts-his-hand-inside-his-jacket.jpg",
+            "image": "shopify://shop_images/man-puts-his-hand-inside-his-jacket.jpg",
             "title": ""
           }
         },
@@ -964,7 +964,7 @@
           "type": "collection_item",
           "settings": {
             "collection": "nino",
-            "image": "shopify:\/\/shop_images\/little-boy-ready-for-school-looking-up.jpg",
+            "image": "shopify://shop_images/little-boy-ready-for-school-looking-up.jpg",
             "title": ""
           }
         },
@@ -972,7 +972,7 @@
           "type": "collection_item",
           "settings": {
             "collection": "nina",
-            "image": "shopify:\/\/shop_images\/girl-framed-by-heart.jpg",
+            "image": "shopify://shop_images/girl-framed-by-heart.jpg",
             "title": ""
           }
         },
@@ -980,7 +980,7 @@
           "type": "collection_item",
           "settings": {
             "collection": "bebe",
-            "image": "shopify:\/\/shop_images\/cute-baby-girl-with-pink-bow-headband.jpg",
+            "image": "shopify://shop_images/cute-baby-girl-with-pink-bow-headband.jpg",
             "title": ""
           }
         },
@@ -988,7 +988,7 @@
           "type": "collection_item",
           "settings": {
             "collection": "artesanal",
-            "image": "shopify:\/\/shop_images\/pomelli-image_cd766c49-22f0-4171-859e-c22f786b7b86.png",
+            "image": "shopify://shop_images/pomelli-image_cd766c49-22f0-4171-859e-c22f786b7b86.png",
             "title": ""
           }
         },
@@ -996,7 +996,7 @@
           "type": "collection_item",
           "settings": {
             "collection": "hogar",
-            "image": "shopify:\/\/shop_images\/sunlight-creeps-through-a-bright-living-room.jpg",
+            "image": "shopify://shop_images/sunlight-creeps-through-a-bright-living-room.jpg",
             "title": ""
           }
         },
@@ -1004,7 +1004,7 @@
           "type": "collection_item",
           "settings": {
             "collection": "alimentos",
-            "image": "shopify:\/\/shop_images\/hamburger-and-fries.jpg",
+            "image": "shopify://shop_images/hamburger-and-fries.jpg",
             "title": ""
           }
         },
@@ -1012,7 +1012,7 @@
           "type": "collection_item",
           "settings": {
             "collection": "electronicos",
-            "image": "shopify:\/\/shop_images\/mobile-phone-and-gimbal-in-hand.jpg",
+            "image": "shopify://shop_images/mobile-phone-and-gimbal-in-hand.jpg",
             "title": ""
           }
         },
@@ -1020,7 +1020,7 @@
           "type": "collection_item",
           "settings": {
             "collection": "vehiculos",
-            "image": "shopify:\/\/shop_images\/red-sports-car-wheel-close-up.jpg",
+            "image": "shopify://shop_images/red-sports-car-wheel-close-up.jpg",
             "title": ""
           }
         }
@@ -1041,7 +1041,7 @@
       "settings": {
         "title": "Categorías",
         "view_all_text": "Mostrar todas las categorías",
-        "view_all_link": "",
+        "view_all_link": "/collections",
         "margin_top": 30,
         "margin_bottom": 30
       }
@@ -1052,29 +1052,29 @@
         "1513236765628-3": {
           "type": "brand_image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/aylesvacare.avif",
-            "link": "\/pages\/aylesva-care"
+            "image": "shopify://shop_images/aylesvacare.avif",
+            "link": "/pages/aylesva-care"
           }
         },
         "1513238013377": {
           "type": "brand_image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/elgeneral.jpg",
-            "link": "#https:\/\/aylesva-2.myshopify.com\/collections\/mens-leather-boots"
+            "image": "shopify://shop_images/elgeneral.jpg",
+            "link": "/collections/botas-y-botines-hombre"
           }
         },
         "1513238403251": {
           "type": "brand_image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/mundo2.jpg",
-            "link": "#"
+            "image": "shopify://shop_images/mundo2.jpg",
+            "link": "/collections/mayoreo-productos"
           }
         },
         "1513238453700": {
           "type": "brand_image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/ultima-voluntad.jpg",
-            "link": "\/pages\/mi-ultima-voluntad"
+            "image": "shopify://shop_images/ultima-voluntad.jpg",
+            "link": "/pages/mi-ultima-voluntad"
           }
         },
         "1523515532537": {
