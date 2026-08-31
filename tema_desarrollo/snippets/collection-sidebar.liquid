@@ -3,16 +3,8 @@
   <div class="collection_sidebar">
     <div class="sidebar-block">
       {% render 'aylesva-sidebar-cats' %}
-      {% render 'sidebar-category', enable_sidecategory: section.settings.enable_sidecategory, linkedlist: section.settings.linkedlist, linkedlist_title: section.settings.linkedlist_title %}
-      {% if current_tags == blank %}
-      {% assign has_refined = false %} 
-      {% else %}
-      {% assign has_refined = true %} 
-      {% endif %}
       {% assign results_obj = results | default: collection | default: search %}
       {% render 'facets', results: results_obj, collapse_on_larger_devices: section.settings.collapse_on_larger_devices, show_filter: section.settings.show_filter, enable_sorting: section.settings.enable_sorting %}
     </div>
-    {% render 'sidebar-bestsellers', title: section.settings.title,show_best_products: section.settings.show_best_products,  bestseller: section.settings.bestseller, product_rows: section.settings.product_rows, pro_img_width_height: section.settings.pro_img_width_height, limit: section.settings.limit %}  
-    {% render 'promo-banner', show_promo_banner: section.settings.show_promo_banner, promo_img: section.settings.promo_img, promo_link: section.settings.promo_link %}
   </div>
 </div>
