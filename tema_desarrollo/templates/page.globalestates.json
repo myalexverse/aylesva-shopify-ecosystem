@@ -127,7 +127,7 @@
             "cta_label": "Solicitar información",
             "cta_link": "#contacto",
             "whatsapp_label": "WhatsApp",
-            "whatsapp_url": "https:\/\/api.whatsapp.com\/send\/?phone=524774136612&text=Hola%2C+me+interesa+informaci%C3%B3n+sobre+Torre+40&type=phone_number&app_absent=0",
+            "whatsapp_url": "https://api.whatsapp.com/send/?phone=524774136612&text=Hola%2C+me+interesa+informaci%C3%B3n+sobre+Torre+40&type=phone_number&app_absent=0",
             "price": ""
           }
         },
@@ -151,7 +151,7 @@
             "cta_label": "Solicitar información",
             "cta_link": "#contacto",
             "whatsapp_label": "WhatsApp",
-            "whatsapp_url": "https:\/\/api.whatsapp.com\/send\/?phone=50369734492&text=Hola%2C+me+interesa+informaci%C3%B3n+sobre+Paradise+Bay&type=phone_number&app_absent=0",
+            "whatsapp_url": "https://api.whatsapp.com/send/?phone=50369734492&text=Hola%2C+me+interesa+informaci%C3%B3n+sobre+Paradise+Bay&type=phone_number&app_absent=0",
             "price": ""
           }
         },
@@ -175,7 +175,7 @@
             "cta_label": "Solicitar información",
             "cta_link": "#contacto",
             "whatsapp_label": "WhatsApp",
-            "whatsapp_url": "https:\/\/api.whatsapp.com\/send\/?phone=524774136612&text=Hola%2C+me+interesa+informaci%C3%B3n+sobre+Altarena&type=phone_number&app_absent=0",
+            "whatsapp_url": "https://api.whatsapp.com/send/?phone=524774136612&text=Hola%2C+me+interesa+informaci%C3%B3n+sobre+Altarena&type=phone_number&app_absent=0",
             "price": ""
           }
         }
@@ -188,7 +188,7 @@
         "eyebrow": "Nuestros Desarrollos",
         "title": "Ubicaciones Verificadas, Inversiones Seguras",
         "text": "Cada proyecto que presentamos ha sido verificado por nuestro equipo. Conocemos personalmente a los desarrolladores y supervisamos el avance de cada obra.",
-        "map_image": "shopify:\/\/shop_images\/mapofmexico.jpg",
+        "map_image": "shopify://shop_images/mapofmexico.jpg",
         "stat1_val": "3",
         "stat1_lbl": "Proyectos Verificados",
         "stat2_val": "2",
@@ -338,7 +338,7 @@
         "form_id": "8tPsdSSw70XYgG77oYYW",
         "form_height": 660,
         "whatsapp_label": "Chat en WhatsApp",
-        "whatsapp_url": "https:\/\/api.whatsapp.com\/send\/?phone=50373197601&text=Hola%2C+me+gustar%C3%ADa+agendar+una+consulta+gratuita+sobre+Global+Estates&type=phone_number&app_absent=0",
+        "whatsapp_url": "https://api.whatsapp.com/send/?phone=50373197601&text=Hola%2C+me+gustar%C3%ADa+agendar+una+consulta+gratuita+sobre+Global+Estates&type=phone_number&app_absent=0",
         "legal": "Aylesva actúa como facilitador independiente y proporciona información y orientación sobre oportunidades inmobiliarias ofrecidas por desarrolladores, corredores y socios externos. La disponibilidad de propiedades, precios, opciones de financiamiento y elegibilidad están sujetos a cambios sin previo aviso y pueden variar según la ubicación y el proveedor."
       },
       "block_order": [

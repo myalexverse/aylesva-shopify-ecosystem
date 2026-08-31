@@ -77,7 +77,7 @@
             "cta_label": "Solicitar Información",
             "cta_link": "#contacto",
             "whatsapp_label": "WhatsApp",
-            "whatsapp_url": "https:\/\/api.whatsapp.com\/send\/?phone=524774136612&text=Hola%2C+me+interesa+informaci%C3%B3n+sobre+log%C3%ADstica+mar%C3%ADtima+con+Aylesva+Direct&type=phone_number&app_absent=0",
+            "whatsapp_url": "https://api.whatsapp.com/send/?phone=524774136612&text=Hola%2C+me+interesa+informaci%C3%B3n+sobre+log%C3%ADstica+mar%C3%ADtima+con+Aylesva+Direct&type=phone_number&app_absent=0",
             "price": ""
           }
         },
@@ -93,7 +93,7 @@
             "cta_label": "Solicitar Asesoría",
             "cta_link": "#contacto",
             "whatsapp_label": "WhatsApp",
-            "whatsapp_url": "https:\/\/api.whatsapp.com\/send\/?phone=524774136612&text=Hola%2C+me+interesa+asesor%C3%ADa+en+gesti%C3%B3n+aduanal+con+Aylesva+Direct&type=phone_number&app_absent=0",
+            "whatsapp_url": "https://api.whatsapp.com/send/?phone=524774136612&text=Hola%2C+me+interesa+asesor%C3%ADa+en+gesti%C3%B3n+aduanal+con+Aylesva+Direct&type=phone_number&app_absent=0",
             "price": ""
           }
         }
@@ -293,7 +293,7 @@
         "text": "Un especialista revisa tu requerimiento y te responde con opciones de proveedor, costos y tiempos.",
         "form_id": "6kXVcb0baoRwx0UBBTsr",
         "form_height": 720,
-        "whatsapp_url": "https:\/\/api.whatsapp.com\/send\/?phone=524774136612&text=Hola%2C+me+interesa+informaci%C3%B3n+y+cotizaci%C3%B3n+para+importar+con+Aylesva+Direct&type=phone_number&app_absent=0",
+        "whatsapp_url": "https://api.whatsapp.com/send/?phone=524774136612&text=Hola%2C+me+interesa+informaci%C3%B3n+y+cotizaci%C3%B3n+para+importar+con+Aylesva+Direct&type=phone_number&app_absent=0",
         "whatsapp_label": "Hablar con un especialista por WhatsApp"
       },
       "block_order": [

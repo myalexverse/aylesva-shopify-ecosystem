@@ -15,11 +15,11 @@
             "overlay_color": "#000000",
             "overlay_opacity": 30,
             "btn1_txt": "Ver Despensa",
-            "btn1_link": "shopify://collections/alimentos-artesanales",
+            "btn1_link": "/collections/alimentos-artesanales",
             "btn_bg_color": "#ffb300",
             "btn_txt_color": "#000000",
             "btn2_txt": "Ver Bebidas",
-            "btn2_link": "shopify://collections/bebidas-artesanales"
+            "btn2_link": "/collections/bebidas-artesanales"
           }
         }
       },
@@ -42,7 +42,7 @@
           "settings": {
             "image": "shopify://shop_images/person-adds-milk-to-their-shopping-basket.jpg",
             "label": "Despensa",
-            "link": "shopify://collections/alimentos-artesanales"
+            "link": "/collections/alimentos-artesanales"
           }
         },
         "b2": {
@@ -50,7 +50,7 @@
           "settings": {
             "image": "shopify://shop_images/healthy-beet-juice.jpg",
             "label": "Bebidas",
-            "link": "shopify://collections/bebidas-artesanales"
+            "link": "/collections/bebidas-artesanales"
           }
         },
         "b3": {
@@ -66,7 +66,7 @@
           "settings": {
             "image": "shopify://shop_images/camera-looks-down-on-wooden-table-with-two-bao-buns.jpg",
             "label": "Gourmet",
-            "link": "/pages/canastas-y-regalos-gourmet-landing"
+            "link": "/collections/canastas-y-regalos-gourmet"
           }
         }
       },
@@ -89,7 +89,7 @@
           "settings": {
             "image": "shopify://shop_images/asparagus-on-white.jpg",
             "label": "Orgánicos",
-            "link": "/pages/productos-organicos-y-naturales-landing"
+            "link": "/collections/productos-organicos-y-naturales"
           }
         },
         "c2": {
@@ -97,7 +97,7 @@
           "settings": {
             "image": "shopify://shop_images/chocolate-cake-with-toffee-sauced-drizzled-over.jpg",
             "label": "Repostería",
-            "link": "/pages/reposteria-y-panaderia-landing"
+            "link": "/collections/reposteria-y-panaderia"
           }
         },
         "c3": {
@@ -105,7 +105,7 @@
           "settings": {
             "image": "shopify://shop_images/coffee-break.jpg",
             "label": "Café y Té",
-            "link": "/pages/bebidas-artesanales-landing"
+            "link": "/collections/bebidas-artesanales"
           }
         },
         "c4": {
@@ -113,7 +113,7 @@
           "settings": {
             "image": "shopify://shop_images/fresh-thyme-and-kitchen-scissors.jpg",
             "label": "Especias",
-            "link": "shopify://collections/especias-y-condimentos"
+            "link": "/collections/especias-y-condimentos"
           }
         }
       },

@@ -15,11 +15,11 @@
             "overlay_color": "#000000",
             "overlay_opacity": 25,
             "btn1_txt": "Cocina",
-            "btn1_link": "shopify://collections/cocina-y-comedor",
+            "btn1_link": "/collections/cocina-y-comedor",
             "btn_bg_color": "#ffb300",
             "btn_txt_color": "#000000",
             "btn2_txt": "Recámara",
-            "btn2_link": "/pages/recamara-y-ropa-de-cama-landing"
+            "btn2_link": "/collections/recamara-y-ropa-de-cama"
           }
         }
       },
@@ -42,7 +42,7 @@
           "settings": {
             "image": "shopify://shop_images/making-homemade-soup.jpg",
             "label": "Cocina",
-            "link": "shopify://collections/cocina-y-comedor"
+            "link": "/collections/cocina-y-comedor"
           }
         },
         "b2": {
@@ -50,7 +50,7 @@
           "settings": {
             "image": "shopify://shop_images/blush-pink-and-white-workspace.jpg",
             "label": "Muebles",
-            "link": "shopify://collections/muebles"
+            "link": "/collections/muebles"
           }
         },
         "b3": {
@@ -58,7 +58,7 @@
           "settings": {
             "image": "shopify://shop_images/bright-hotel-room-bed.jpg",
             "label": "Recámara",
-            "link": "/pages/recamara-y-ropa-de-cama-landing"
+            "link": "/collections/recamara-y-ropa-de-cama"
           }
         },
         "b4": {
@@ -66,7 +66,7 @@
           "settings": {
             "image": "shopify://shop_images/small-business-decor.jpg",
             "label": "Decoración",
-            "link": "shopify://collections/decoracion-del-hogar"
+            "link": "/collections/decoracion-del-hogar"
           }
         }
       },
@@ -89,7 +89,7 @@
           "settings": {
             "image": "shopify://shop_images/modern-white-bathroom.jpg",
             "label": "Baño",
-            "link": "shopify://collections/bano"
+            "link": "/collections/bano"
           }
         },
         "c2": {
@@ -97,7 +97,7 @@
           "settings": {
             "image": "shopify://shop_images/green-watering-can-pours-water-in-garden.jpg",
             "label": "Jardín",
-            "link": "/pages/jardin-y-exterior-landing"
+            "link": "/collections/jardin-y-exterior"
           }
         },
         "c3": {
@@ -105,7 +105,7 @@
           "settings": {
             "image": "shopify://shop_images/its-pasta-night.jpg",
             "label": "Iluminación",
-            "link": "shopify://collections/iluminacion"
+            "link": "/collections/iluminacion"
           }
         },
         "c4": {
@@ -113,7 +113,7 @@
           "settings": {
             "image": "shopify://shop_images/small-business-interior.jpg",
             "label": "Organización",
-            "link": "/pages/organizacion-y-almacenamiento-landing"
+            "link": "/collections/organizacion-y-almacenamiento"
           }
         }
       },

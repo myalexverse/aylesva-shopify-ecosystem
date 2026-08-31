@@ -79,7 +79,7 @@
             "cta_label": "Simular esta opción",
             "cta_link": "#contacto",
             "whatsapp_label": "WhatsApp",
-            "whatsapp_url": "https:\/\/api.whatsapp.com\/send\/?phone=524774136612&text=Hola%2C+me+interesa+informaci%C3%B3n+sobre+L%C3%ADneas+de+Cr%C3%A9dito+Comerciales+con+Aylesva+Recursos&type=phone_number&app_absent=0",
+            "whatsapp_url": "https://api.whatsapp.com/send/?phone=524774136612&text=Hola%2C+me+interesa+informaci%C3%B3n+sobre+L%C3%ADneas+de+Cr%C3%A9dito+Comerciales+con+Aylesva+Recursos&type=phone_number&app_absent=0",
             "price": ""
           }
         },
@@ -95,7 +95,7 @@
             "cta_label": "Simular esta opción",
             "cta_link": "#contacto",
             "whatsapp_label": "WhatsApp",
-            "whatsapp_url": "https:\/\/api.whatsapp.com\/send\/?phone=524774136612&text=Hola%2C+me+interesa+informaci%C3%B3n+sobre+Capital+de+Trabajo+con+Aylesva+Recursos&type=phone_number&app_absent=0",
+            "whatsapp_url": "https://api.whatsapp.com/send/?phone=524774136612&text=Hola%2C+me+interesa+informaci%C3%B3n+sobre+Capital+de+Trabajo+con+Aylesva+Recursos&type=phone_number&app_absent=0",
             "price": ""
           }
         },
@@ -111,7 +111,7 @@
             "cta_label": "Simular esta opción",
             "cta_link": "#contacto",
             "whatsapp_label": "WhatsApp",
-            "whatsapp_url": "https:\/\/api.whatsapp.com\/send\/?phone=524774136612&text=Hola%2C+me+interesa+informaci%C3%B3n+sobre+Financiamiento+de+Equipo+con+Aylesva+Recursos&type=phone_number&app_absent=0",
+            "whatsapp_url": "https://api.whatsapp.com/send/?phone=524774136612&text=Hola%2C+me+interesa+informaci%C3%B3n+sobre+Financiamiento+de+Equipo+con+Aylesva+Recursos&type=phone_number&app_absent=0",
             "price": ""
           }
         }
@@ -272,7 +272,7 @@
         "text": "Completa tus datos básicos para analizar tu perfil y conectarte con la mejor oferta de financiamiento disponible.",
         "form_id": "8biW0OIL5lKLx23bNZFO",
         "form_height": 720,
-        "whatsapp_url": "https:\/\/api.whatsapp.com\/send\/?phone=524774136612&text=Hola%2C+me+gustar%C3%ADa+solicitar+un+estudio+socioecon%C3%B3mico+y+financiero+con+Aylesva+Recursos&type=phone_number&app_absent=0",
+        "whatsapp_url": "https://api.whatsapp.com/send/?phone=524774136612&text=Hola%2C+me+gustar%C3%ADa+solicitar+un+estudio+socioecon%C3%B3mico+y+financiero+con+Aylesva+Recursos&type=phone_number&app_absent=0",
         "whatsapp_label": "Hablar con un asesor financiero por WhatsApp"
       },
       "block_order": [

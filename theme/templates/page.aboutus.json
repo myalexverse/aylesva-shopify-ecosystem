@@ -1,24 +1,15 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "wrapper": "div.page_content_wrapper",
   "sections": {
     "about": {
       "type": "about",
       "settings": {
-        "about_us": "shopify:\/\/shop_images\/about-us-01_04ec4557-0990-4571-aff3-6220d31cd2cd.jpg",
+        "about_us": "shopify://shop_images/about-us-01_04ec4557-0990-4571-aff3-6220d31cd2cd.jpg",
         "about_description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ligula velit, eleifend sed suscipit id, malesuada a orci. In gravida risus nec lacus molestie aliquam. Sed rutrum enim sapien, at semper sem mattis ut. In efficitur diam a ipsum egestas, in pellentesque massa porta. Morbi a lobortis ex, eget interdum eros. Morbi vestibulum tellus quis turpis iaculis iaculis. Suspendisse imperdiet, dui id convallis accumsan, mauris metus auctor elit, et vehicula ipsum sapien ut augue.",
-        "about_image1": "shopify:\/\/shop_images\/about-us-02_aa2ad59f-2906-410e-ad6c-b5594b53778b.jpg",
+        "about_image1": "shopify://shop_images/about-us-02_aa2ad59f-2906-410e-ad6c-b5594b53778b.jpg",
         "about_title1": "About our shop",
         "description_1": "Nulla vestibulum venenatis est, sit amet aliquam nulla efficitur vitae. Pellentesque sit amet libero ex. Phasellus gravida dui id dui lobortis, a porta dolor porta.",
-        "about_image2": "shopify:\/\/shop_images\/about-us-03_fdaa4e27-adac-4adc-8c61-9f2fb744eb54.jpg",
+        "about_image2": "shopify://shop_images/about-us-03_fdaa4e27-adac-4adc-8c61-9f2fb744eb54.jpg",
         "about_title2": "What we do",
         "description_2": "Nulla vestibulum venenatis est, sit amet aliquam nulla efficitur vitae. Pellentesque sit amet libero ex. Phasellus gravida dui id dui lobortis, a porta dolor porta."
       }
@@ -29,7 +20,7 @@
         "1528360103997": {
           "type": "text",
           "settings": {
-            "image_1": "shopify:\/\/shop_images\/01_351c3b3a-09db-4974-9b29-45e2923b3b17.jpg",
+            "image_1": "shopify://shop_images/01_351c3b3a-09db-4974-9b29-45e2923b3b17.jpg",
             "author_name": "JOHN BUFFER",
             "author_designation": "developer",
             "facebook": "",
@@ -40,7 +31,7 @@
         "1528360141184": {
           "type": "text",
           "settings": {
-            "image_1": "shopify:\/\/shop_images\/02_b77a3bbb-b355-415c-ace1-69878184dd68.jpg",
+            "image_1": "shopify://shop_images/02_b77a3bbb-b355-415c-ace1-69878184dd68.jpg",
             "author_name": "JOHN DOE",
             "author_designation": "web designer",
             "facebook": "",
@@ -51,7 +42,7 @@
         "1528360212670": {
           "type": "text",
           "settings": {
-            "image_1": "shopify:\/\/shop_images\/03_a0bf0a51-026b-4818-a513-a5622c97c6ef.jpg",
+            "image_1": "shopify://shop_images/03_a0bf0a51-026b-4818-a513-a5622c97c6ef.jpg",
             "author_name": "CRAIG WILSON",
             "author_designation": "Web developer",
             "facebook": "",
@@ -62,7 +53,7 @@
         "1528360161429": {
           "type": "text",
           "settings": {
-            "image_1": "shopify:\/\/shop_images\/04.jpg",
+            "image_1": "shopify://shop_images/04.jpg",
             "author_name": "web designer",
             "author_designation": "web developer",
             "facebook": "",
@@ -73,7 +64,7 @@
         "1528360187484": {
           "type": "text",
           "settings": {
-            "image_1": "shopify:\/\/shop_images\/07.jpg",
+            "image_1": "shopify://shop_images/07.jpg",
             "author_name": "JOHN SMITH",
             "author_designation": "graphics designer",
             "facebook": "",
@@ -84,7 +75,7 @@
         "1533711073249": {
           "type": "text",
           "settings": {
-            "image_1": "shopify:\/\/shop_images\/11.jpg",
+            "image_1": "shopify://shop_images/11.jpg",
             "author_name": "JOHN BUFFER",
             "author_designation": "tester",
             "facebook": "",
@@ -95,7 +86,7 @@
         "1533711083191": {
           "type": "text",
           "settings": {
-            "image_1": "shopify:\/\/shop_images\/12.jpg",
+            "image_1": "shopify://shop_images/12.jpg",
             "author_name": "JOHN GOAL",
             "author_designation": "system analyst",
             "facebook": "",
@@ -106,7 +97,7 @@
         "1533711104086": {
           "type": "text",
           "settings": {
-            "image_1": "shopify:\/\/shop_images\/04.jpg",
+            "image_1": "shopify://shop_images/04.jpg",
             "author_name": "SUZY ZEN",
             "author_designation": "database designer",
             "facebook": "",

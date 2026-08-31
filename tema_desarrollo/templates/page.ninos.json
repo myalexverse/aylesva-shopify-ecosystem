@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "wrapper": "div#main",
   "sections": {
@@ -16,7 +7,7 @@
         "slide1": {
           "type": "slide",
           "settings": {
-            "image": "shopify:\/\/shop_images\/little-boy-ready-for-school-looking-up.jpg",
+            "image": "shopify://shop_images/little-boy-ready-for-school-looking-up.jpg",
             "image_alignment": "center",
             "sub_title": "BOYS COLLECTION",
             "title": "AVENTURA Y\nESTILO NIÑOS",
@@ -24,17 +15,17 @@
             "overlay_color": "#000000",
             "overlay_opacity": 25,
             "btn1_txt": "Ver Ropa",
-            "btn1_link": "shopify:\/\/collections\/ropa-nino",
+            "btn1_link": "/collections/ropa-nino",
             "btn_bg_color": "#ffb300",
             "btn_txt_color": "#000000",
             "btn2_txt": "Ver Calzado",
-            "btn2_link": "shopify:\/\/collections\/calzado-nino"
+            "btn2_link": "/collections/calzado-nino"
           }
         },
         "slide2": {
           "type": "slide",
           "settings": {
-            "image": "shopify:\/\/shop_images\/girl-framed-by-heart.jpg",
+            "image": "shopify://shop_images/girl-framed-by-heart.jpg",
             "image_alignment": "center",
             "sub_title": "GIRLS COLLECTION",
             "title": "BRILLO Y\nESTILO NIÑAS",
@@ -42,17 +33,17 @@
             "overlay_color": "#000000",
             "overlay_opacity": 25,
             "btn1_txt": "Ver Ropa",
-            "btn1_link": "shopify:\/\/collections\/ropa-nina",
+            "btn1_link": "/collections/ropa-nina",
             "btn_bg_color": "#ffb300",
             "btn_txt_color": "#000000",
             "btn2_txt": "Ver Calzado",
-            "btn2_link": "shopify:\/\/collections\/calzado-nina"
+            "btn2_link": "/collections/calzado-nina"
           }
         },
         "slide3": {
           "type": "slide",
           "settings": {
-            "image": "shopify:\/\/shop_images\/cute-baby-girl-with-pink-bow-headband.jpg",
+            "image": "shopify://shop_images/cute-baby-girl-with-pink-bow-headband.jpg",
             "image_alignment": "center",
             "sub_title": "BABY COLLECTION",
             "title": "SUAVIDAD Y\nCONFORT BEBÉS",
@@ -60,11 +51,11 @@
             "overlay_color": "#000000",
             "overlay_opacity": 25,
             "btn1_txt": "Ver Ropa",
-            "btn1_link": "shopify:\/\/collections\/ropa-bebe",
+            "btn1_link": "/collections/ropa-bebe",
             "btn_bg_color": "#ffb300",
             "btn_txt_color": "#000000",
             "btn2_txt": "Ver Calzado",
-            "btn2_link": "shopify:\/\/collections\/calzado-bebe"
+            "btn2_link": "/collections/calzado-bebe"
           }
         }
       },
@@ -87,33 +78,33 @@
         "b1": {
           "type": "category",
           "settings": {
-            "image": "shopify:\/\/shop_images\/pomelli-image_53.png",
+            "image": "shopify://shop_images/pomelli-image_53.png",
             "label": "Ropa Niño",
-            "link": "shopify:\/\/collections\/ropa-nino"
+            "link": "/collections/ropa-nino"
           }
         },
         "b2": {
           "type": "category",
           "settings": {
-            "image": "shopify:\/\/shop_images\/pomelli-image_cd766c49-22f0-4171-859e-c22f786b7b86.png",
+            "image": "shopify://shop_images/pomelli-image_cd766c49-22f0-4171-859e-c22f786b7b86.png",
             "label": "Ropa Niña",
-            "link": "shopify:\/\/collections\/ropa-nina"
+            "link": "/collections/ropa-nina"
           }
         },
         "b3": {
           "type": "category",
           "settings": {
-            "image": "shopify:\/\/shop_images\/pomelli-image_67.png",
+            "image": "shopify://shop_images/pomelli-image_67.png",
             "label": "Calzado Niño/a",
-            "link": "shopify:\/\/collections\/calzado-nino"
+            "link": "/collections/calzado-nino"
           }
         },
         "b4": {
           "type": "category",
           "settings": {
-            "image": "shopify:\/\/shop_images\/cute-baby-girl-with-pink-bow-headband.jpg",
+            "image": "shopify://shop_images/cute-baby-girl-with-pink-bow-headband.jpg",
             "label": "Bebés",
-            "link": "shopify:\/\/collections\/bebe"
+            "link": "/collections/bebe"
           }
         }
       },
@@ -134,25 +125,25 @@
         "c1": {
           "type": "card",
           "settings": {
-            "image": "shopify:\/\/shop_images\/little-boy-ready-for-school-looking-up.jpg",
+            "image": "shopify://shop_images/little-boy-ready-for-school-looking-up.jpg",
             "label": "Colección Niño",
-            "link": "shopify:\/\/collections\/ropa-nino"
+            "link": "/collections/ropa-nino"
           }
         },
         "c2": {
           "type": "card",
           "settings": {
-            "image": "shopify:\/\/shop_images\/girl-framed-by-heart.jpg",
+            "image": "shopify://shop_images/girl-framed-by-heart.jpg",
             "label": "Colección Niña",
-            "link": "shopify:\/\/collections\/ropa-nina"
+            "link": "/collections/ropa-nina"
           }
         },
         "c3": {
           "type": "card",
           "settings": {
-            "image": "shopify:\/\/shop_images\/cute-baby-girl-with-pink-bow-headband.jpg",
+            "image": "shopify://shop_images/cute-baby-girl-with-pink-bow-headband.jpg",
             "label": "Colección Bebé",
-            "link": "shopify:\/\/collections\/bebe"
+            "link": "/collections/bebe"
           }
         }
       },

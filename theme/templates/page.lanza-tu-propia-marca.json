@@ -186,7 +186,7 @@
             "cta_label": "Solicitar mi tienda",
             "cta_link": "#contacto",
             "whatsapp_label": "WhatsApp",
-            "whatsapp_url": "https:\/\/api.whatsapp.com\/send\/?phone=524774136612&text=Hola%2C+me+interesa+crear+mi+p%C3%A1gina+web+con+Aylesva&type=phone_number&app_absent=0",
+            "whatsapp_url": "https://api.whatsapp.com/send/?phone=524774136612&text=Hola%2C+me+interesa+crear+mi+p%C3%A1gina+web+con+Aylesva&type=phone_number&app_absent=0",
             "price": ""
           }
         },
@@ -202,7 +202,7 @@
             "cta_label": "Conectar mi catálogo",
             "cta_link": "#contacto",
             "whatsapp_label": "WhatsApp",
-            "whatsapp_url": "https:\/\/api.whatsapp.com\/send\/?phone=524774136612&text=Hola%2C+tengo+mis+propios+productos+y+quiero+conectarlos+a+Aylesva&type=phone_number&app_absent=0",
+            "whatsapp_url": "https://api.whatsapp.com/send/?phone=524774136612&text=Hola%2C+tengo+mis+propios+productos+y+quiero+conectarlos+a+Aylesva&type=phone_number&app_absent=0",
             "price": ""
           }
         }
@@ -218,7 +218,7 @@
         "text": "Un especialista te contacta para definir catálogo, diseño y tiempos de lanzamiento.",
         "form_id": "ENbMAneKkZAPTdITGH2n",
         "form_height": 720,
-        "whatsapp_url": "https:\/\/api.whatsapp.com\/send\/?phone=524774136612&text=Hola%2C+me+gustar%C3%ADa+informaci%C3%B3n+para+lanzar+mi+tienda+en+l%C3%ADnea+con+Aylesva&type=phone_number&app_absent=0",
+        "whatsapp_url": "https://api.whatsapp.com/send/?phone=524774136612&text=Hola%2C+me+gustar%C3%ADa+informaci%C3%B3n+para+lanzar+mi+tienda+en+l%C3%ADnea+con+Aylesva&type=phone_number&app_absent=0",
         "whatsapp_label": "Hablar con un asesor por WhatsApp"
       },
       "block_order": [

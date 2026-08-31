@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
@@ -33,28 +24,28 @@
         "hero_img_1": {
           "type": "hero_image",
           "settings": {
-            "image_url": "https:\/\/images.unsplash.com\/photo-1556742044-3c52d6e88c62?auto=format&fit=crop&w=800&q=80",
+            "image_url": "https://images.unsplash.com/photo-1556742044-3c52d6e88c62?auto=format&fit=crop&w=800&q=80",
             "alt": "Negocio family business"
           }
         },
         "hero_img_2": {
           "type": "hero_image",
           "settings": {
-            "image_url": "https:\/\/images.unsplash.com\/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80",
+            "image_url": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80",
             "alt": "Firma de contrato financiero"
           }
         },
         "hero_img_3": {
           "type": "hero_image",
           "settings": {
-            "image_url": "https:\/\/images.unsplash.com\/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80",
+            "image_url": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80",
             "alt": "Asesora financiera trabajando"
           }
         },
         "hero_img_4": {
           "type": "hero_image",
           "settings": {
-            "image_url": "https:\/\/images.unsplash.com\/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80",
+            "image_url": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80",
             "alt": "Edificio corporativo moderno"
           }
         },
@@ -62,12 +53,12 @@
           "type": "solution_card",
           "settings": {
             "eyebrow": "ACCESO RÁPIDO A CAPITAL",
-            "title": "Crédito PyME \/ Inmediatos",
+            "title": "Crédito PyME / Inmediatos",
             "description": "Liquidez inmediata y capital de trabajo para cubrir necesidades operativas del día a día, adquisición de mercancía o pago a proveedores.",
             "icon": "credit",
             "btn_text": "Solicitar Información",
-            "image": "shopify:\/\/shop_images\/Captura_de_pantalla_2026-07-09_a_202607091127.jpg",
-            "image_url": "https:\/\/images.unsplash.com\/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800&q=80"
+            "image": "shopify://shop_images/Captura_de_pantalla_2026-07-09_a_202607091127.jpg",
+            "image_url": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800&q=80"
           }
         },
         "sol_2": {
@@ -78,8 +69,8 @@
             "description": "Créditos estructurados a mediano y largo plazo orientados a la expansión de tu negocio, compra de maquinaria y adquisición de activos.",
             "icon": "company",
             "btn_text": "Solicitar Información",
-            "image": "shopify:\/\/shop_images\/Captura_de_pantalla_2026-07-09_a_202607091128.jpg",
-            "image_url": "https:\/\/images.unsplash.com\/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80"
+            "image": "shopify://shop_images/Captura_de_pantalla_2026-07-09_a_202607091128.jpg",
+            "image_url": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800&q=80"
           }
         },
         "sol_3": {
@@ -90,8 +81,8 @@
             "description": "Asesoría y acceso a las mejores ofertas hipotecarias y de crédito personal del mercado mexicano con condiciones a tu medida.",
             "icon": "home",
             "btn_text": "Solicitar Información",
-            "image": "shopify:\/\/shop_images\/Captura_de_pantalla_2026-07-09_a_202607091129.jpg",
-            "image_url": "https:\/\/images.unsplash.com\/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=80"
+            "image": "shopify://shop_images/Captura_de_pantalla_2026-07-09_a_202607091129.jpg",
+            "image_url": "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=80"
           }
         },
         "step_1": {
@@ -149,7 +140,7 @@
         "color_accent": "#d97706",
         "hero_eyebrow": "INTERMEDIACIÓN FINANCIERA",
         "hero_headline": "Créditos PyME y Financiamiento Empresarial Ágil",
-        "hero_description": "<p>En Servicios Financieros Fink somos tus aliados estratégicos. Facilitamos el acceso a créditos empresariales, personales e hipotecarios con las mejores tasas y plazos del mercado, optimizando tus tiempos de respuesta.<\/p>",
+        "hero_description": "<p>En Servicios Financieros Fink somos tus aliados estratégicos. Facilitamos el acceso a créditos empresariales, personales e hipotecarios con las mejores tasas y plazos del mercado, optimizando tus tiempos de respuesta.</p>",
         "hero_btn1_text": "Solicitar Crédito",
         "hero_btn1_link": "",
         "hero_btn2_text": "Nuestras Soluciones",

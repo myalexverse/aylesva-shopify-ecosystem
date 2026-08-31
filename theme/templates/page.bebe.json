@@ -16,11 +16,11 @@
             "overlay_color": "#000000",
             "overlay_opacity": 25,
             "btn1_txt": "Ver Ropa",
-            "btn1_link": "shopify://collections/ropa-bebe",
+            "btn1_link": "/collections/ropa-bebe",
             "btn_bg_color": "#ffb300",
             "btn_txt_color": "#000000",
             "btn2_txt": "Pañales e Higiene",
-            "btn2_link": "shopify://collections/ropa-interior-y-panaleria"
+            "btn2_link": "/collections/ropa-interior-y-panaleria"
           }
         }
       },
@@ -43,7 +43,7 @@
           "settings": {
             "image": "shopify://shop_images/pomelli_photoshoot_image_9_16_0410.png",
             "label": "Ropa",
-            "link": "shopify://collections/ropa-bebe"
+            "link": "/collections/ropa-bebe"
           }
         },
         "b2": {
@@ -51,7 +51,7 @@
           "settings": {
             "image": "shopify://shop_images/swaddled-baby.jpg",
             "label": "Pañales e Higiene",
-            "link": "shopify://collections/ropa-interior-y-panaleria"
+            "link": "/collections/ropa-interior-y-panaleria"
           }
         },
         "b3": {
@@ -59,7 +59,7 @@
           "settings": {
             "image": "shopify://shop_images/bottle-feeding-baby.jpg",
             "label": "Alimentación",
-            "link": "/pages/higiene-y-cuidado-landing"
+            "link": "/collections/higiene-y-cuidado"
           }
         },
         "b4": {
@@ -98,7 +98,7 @@
           "settings": {
             "image": "shopify://shop_images/pomelli_photoshoot_image_9_16_0410_5.png",
             "label": "Juguetes Bebé",
-            "link": "/pages/accesorios-bebe-landing"
+            "link": "/collections/accesorios-bebe"
           }
         },
         "c3": {
@@ -106,7 +106,7 @@
           "settings": {
             "image": "shopify://shop_images/pomelli_photoshoot_image_9_16_0410_1.png",
             "label": "aprende",
-            "link": "/pages/ropa-bebe-landing"
+            "link": "/collections/ropa-bebe"
           }
         },
         "c4": {
@@ -114,7 +114,7 @@
           "settings": {
             "image": "shopify://shop_images/pomelli_photoshoot_image_9_16_0410_7.png",
             "label": "Regalos",
-            "link": "shopify://collections/bebe"
+            "link": "/collections/bebe"
           }
         }
       },

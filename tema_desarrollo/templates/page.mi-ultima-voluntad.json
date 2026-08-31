@@ -115,7 +115,7 @@
             "cta_label": "Obtener Membresía",
             "cta_link": "#contacto",
             "whatsapp_label": "WhatsApp",
-            "whatsapp_url": "https:\/\/api.whatsapp.com\/send\/?phone=524774136612&text=Hola%2C+me+interesa+informaci%C3%B3n+sobre+la+membres%C3%ADa+MUV+USA+-+M%C3%A9xico&type=phone_number&app_absent=0",
+            "whatsapp_url": "https://api.whatsapp.com/send/?phone=524774136612&text=Hola%2C+me+interesa+informaci%C3%B3n+sobre+la+membres%C3%ADa+MUV+USA+-+M%C3%A9xico&type=phone_number&app_absent=0",
             "price": ""
           }
         },
@@ -131,7 +131,7 @@
             "cta_label": "Obtener Membresía",
             "cta_link": "#contacto",
             "whatsapp_label": "WhatsApp",
-            "whatsapp_url": "https:\/\/api.whatsapp.com\/send\/?phone=524774136612&text=Hola%2C+me+interesa+informaci%C3%B3n+sobre+la+membres%C3%ADa+MUV+USA+-+Sudam%C3%A9rica&type=phone_number&app_absent=0",
+            "whatsapp_url": "https://api.whatsapp.com/send/?phone=524774136612&text=Hola%2C+me+interesa+informaci%C3%B3n+sobre+la+membres%C3%ADa+MUV+USA+-+Sudam%C3%A9rica&type=phone_number&app_absent=0",
             "price": ""
           }
         }
@@ -279,7 +279,7 @@
         "text": "Completa el formulario y un asesor especializado de Mi Última Voluntad se comunicará contigo.",
         "form_id": "DPfokHX747mbGaU8Fobk",
         "form_height": 720,
-        "whatsapp_url": "https:\/\/api.whatsapp.com\/send\/?phone=524774136612&text=Hola%2C+me+gustar%C3%ADa+informaci%C3%B3n+y+asesor%C3%ADa+sobre+Mi+%C3%9Altima+Voluntad+%28MUV%29&type=phone_number&app_absent=0",
+        "whatsapp_url": "https://api.whatsapp.com/send/?phone=524774136612&text=Hola%2C+me+gustar%C3%ADa+informaci%C3%B3n+y+asesor%C3%ADa+sobre+Mi+%C3%9Altima+Voluntad+%28MUV%29&type=phone_number&app_absent=0",
         "whatsapp_label": "Hablar con un asesor por WhatsApp"
       },
       "block_order": [

@@ -1,0 +1,3906 @@
+[
+  {
+    "id": "gid://shopify/Collection/483636215831",
+    "title": "Blusas y camisas",
+    "handle": "blusas-y-camisas",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483636248599",
+    "title": "Vestidos Mujer",
+    "handle": "vestidos-mujer",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483636281367",
+    "title": "Faldas Mujer",
+    "handle": "faldas-mujer",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483636314135",
+    "title": "Pantalones y jeans Mujer",
+    "handle": "pantalones-y-jeans-mujer",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483636346903",
+    "title": "Shorts y bermudas Mujer",
+    "handle": "shorts-y-bermudas-mujer",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483636379671",
+    "title": "Abrigos y chaquetas Mujer",
+    "handle": "abrigos-y-chaquetas-mujer",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483636412439",
+    "title": "Sudaderas y hoodies Mujer",
+    "handle": "sudaderas-y-hoodies-mujer",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483636445207",
+    "title": "Trajes y blazers Mujer",
+    "handle": "trajes-y-blazers-mujer",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483636477975",
+    "title": "Ropa deportiva Mujer",
+    "handle": "ropa-deportiva-mujer",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483636510743",
+    "title": "Ropa de playa / Trajes de ba\u00f1o Mujer",
+    "handle": "ropa-de-playa-trajes-de-bano-mujer",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483636609047",
+    "title": "Tacones y stilettos",
+    "handle": "tacones-y-stilettos",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483636641815",
+    "title": "Sandalias Mujer",
+    "handle": "sandalias-mujer",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483636674583",
+    "title": "Flats y bailarinas",
+    "handle": "flats-y-bailarinas",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483636707351",
+    "title": "Botas y botines Mujer",
+    "handle": "botas-y-botines-mujer",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483636740119",
+    "title": "Tenis y sneakers Mujer",
+    "handle": "tenis-y-sneakers-mujer",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483637067799",
+    "title": "Collares",
+    "handle": "collares",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483637100567",
+    "title": "Aretes y pendientes",
+    "handle": "aretes-y-pendientes",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483637133335",
+    "title": "Pulseras y brazaletes",
+    "handle": "pulseras-y-brazaletes",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483637166103",
+    "title": "Anillos Mujer",
+    "handle": "anillos-mujer",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483637198871",
+    "title": "Broches y pines",
+    "handle": "broches-y-pines",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483637231639",
+    "title": "Relojes Mujer",
+    "handle": "relojes-mujer",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483637264407",
+    "title": "Bolsas de mano",
+    "handle": "bolsas-de-mano",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483637297175",
+    "title": "Mochilas Mujer",
+    "handle": "mochilas-mujer",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483637329943",
+    "title": "Clutches y sobre",
+    "handle": "clutches-y-sobre",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483637362711",
+    "title": "Bolsas de playa",
+    "handle": "bolsas-de-playa",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483637395479",
+    "title": "Carteras y billeteras Mujer",
+    "handle": "carteras-y-billeteras-mujer",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483637428247",
+    "title": "Tote bags",
+    "handle": "tote-bags",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483637461015",
+    "title": "Cinturones Mujer",
+    "handle": "cinturones-mujer",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483637493783",
+    "title": "Bufandas y chales",
+    "handle": "bufandas-y-chales",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483637526551",
+    "title": "Gorros y sombreros Mujer",
+    "handle": "gorros-y-sombreros-mujer",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483637559319",
+    "title": "Lentes de sol Mujer",
+    "handle": "lentes-de-sol-mujer",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483637592087",
+    "title": "Diademas y accesorios para el cabello Mujer",
+    "handle": "diademas-y-accesorios-para-el-cabello-mujer",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483637624855",
+    "title": "Guantes",
+    "handle": "guantes",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483637657623",
+    "title": "Maquillaje",
+    "handle": "maquillaje",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483637690391",
+    "title": "Skincare / Cuidado de la piel",
+    "handle": "skincare-cuidado-de-la-piel",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483637723159",
+    "title": "Perfumes y fragancias",
+    "handle": "perfumes-y-fragancias",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483637755927",
+    "title": "Cuidado del cabello Mujer",
+    "handle": "cuidado-del-cabello-mujer",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483637788695",
+    "title": "Cuidado de u\u00f1as",
+    "handle": "cuidado-de-unas",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483637821463",
+    "title": "Ropa de embarazo",
+    "handle": "ropa-de-embarazo",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483637919767",
+    "title": "Camisas formales y casuales",
+    "handle": "camisas-formales-y-casuales",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483637952535",
+    "title": "Camisetas y polos Hombre",
+    "handle": "camisetas-y-polos-hombre",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483637985303",
+    "title": "Pantalones y jeans Hombre",
+    "handle": "pantalones-y-jeans-hombre",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483638018071",
+    "title": "Shorts y bermudas Hombre",
+    "handle": "shorts-y-bermudas-hombre",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483638050839",
+    "title": "Trajes y blazers Hombre",
+    "handle": "trajes-y-blazers-hombre",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483638083607",
+    "title": "Abrigos y chaquetas Hombre",
+    "handle": "abrigos-y-chaquetas-hombre",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483638116375",
+    "title": "Sudaderas y hoodies Hombre",
+    "handle": "sudaderas-y-hoodies-hombre",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483638149143",
+    "title": "Ropa deportiva Hombre",
+    "handle": "ropa-deportiva-hombre",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483638181911",
+    "title": "Ropa de playa / Trajes de ba\u00f1o Hombre",
+    "handle": "ropa-de-playa-trajes-de-bano-hombre",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483638247447",
+    "title": "Overoles y monos Hombre",
+    "handle": "overoles-y-monos-hombre",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483638280215",
+    "title": "Zapatos formales",
+    "handle": "zapatos-formales",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483638312983",
+    "title": "Botas y botines Hombre",
+    "handle": "botas-y-botines-hombre",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483638378519",
+    "title": "Sandalias y chanclas",
+    "handle": "sandalias-y-chanclas",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483638411287",
+    "title": "Mocasines y loafers",
+    "handle": "mocasines-y-loafers",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483638509591",
+    "title": "Camisetas interiores Hombre",
+    "handle": "camisetas-interiores-hombre",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483638607895",
+    "title": "Cinturones Hombre",
+    "handle": "cinturones-hombre",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483638640663",
+    "title": "Corbatas y pa\u00f1uelos",
+    "handle": "corbatas-y-panuelos",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483638673431",
+    "title": "Relojes Hombre",
+    "handle": "relojes-hombre",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483638706199",
+    "title": "Lentes de sol Hombre",
+    "handle": "lentes-de-sol-hombre",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483638738967",
+    "title": "Gorras y sombreros Hombre",
+    "handle": "gorras-y-sombreros-hombre",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483638771735",
+    "title": "Bufandas y guantes",
+    "handle": "bufandas-y-guantes",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483638804503",
+    "title": "Carteras y billeteras Hombre",
+    "handle": "carteras-y-billeteras-hombre",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483638837271",
+    "title": "Maletines y mochilas",
+    "handle": "maletines-y-mochilas",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483638870039",
+    "title": "Anillos Hombre",
+    "handle": "anillos-hombre",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483638902807",
+    "title": "Pulseras",
+    "handle": "pulseras",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483638935575",
+    "title": "Cadenas y collares",
+    "handle": "cadenas-y-collares",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483638968343",
+    "title": "Aretes",
+    "handle": "aretes",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483639001111",
+    "title": "Perfumes y colonias",
+    "handle": "perfumes-y-colonias",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483639033879",
+    "title": "Cuidado de la barba",
+    "handle": "cuidado-de-la-barba",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483639066647",
+    "title": "Skincare masculino",
+    "handle": "skincare-masculino",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483639132183",
+    "title": "Camisetas y polos Ni\u00f1o",
+    "handle": "camisetas-y-polos-nino",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483639164951",
+    "title": "Pantalones y jeans Ni\u00f1o",
+    "handle": "pantalones-y-jeans-nino",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483639230487",
+    "title": "Shorts Ni\u00f1o",
+    "handle": "shorts-nino",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483639263255",
+    "title": "Sudaderas y hoodies Ni\u00f1o",
+    "handle": "sudaderas-y-hoodies-nino",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483639296023",
+    "title": "Chaquetas y abrigos Ni\u00f1o",
+    "handle": "chaquetas-y-abrigos-nino",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483639328791",
+    "title": "Ropa deportiva Ni\u00f1o",
+    "handle": "ropa-deportiva-nino",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483639361559",
+    "title": "Ropa de playa / Trajes de ba\u00f1o Ni\u00f1o",
+    "handle": "ropa-de-playa-trajes-de-bano-nino",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483639394327",
+    "title": "Pijamas Ni\u00f1o",
+    "handle": "pijamas-nino",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483639427095",
+    "title": "Uniformes escolares Ni\u00f1o",
+    "handle": "uniformes-escolares-nino",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483639459863",
+    "title": "Trajes y ropa formal Ni\u00f1o",
+    "handle": "trajes-y-ropa-formal-nino",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483639492631",
+    "title": "Overoles Ni\u00f1o",
+    "handle": "overoles-nino",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483639525399",
+    "title": "Tenis y sneakers Ni\u00f1o",
+    "handle": "tenis-y-sneakers-nino",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483639558167",
+    "title": "Sandalias Ni\u00f1o",
+    "handle": "sandalias-nino",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483639590935",
+    "title": "Botas",
+    "handle": "botas",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483639623703",
+    "title": "Zapatos escolares Ni\u00f1o",
+    "handle": "zapatos-escolares-nino",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483639656471",
+    "title": "Pantuflas Ni\u00f1o",
+    "handle": "pantuflas-nino",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483639689239",
+    "title": "Calzoncillos",
+    "handle": "calzoncillos",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483639722007",
+    "title": "Camisetas interiores Ni\u00f1o",
+    "handle": "camisetas-interiores-nino",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483639754775",
+    "title": "Medias y calcetines Ni\u00f1o",
+    "handle": "medias-y-calcetines-nino",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483639787543",
+    "title": "Gorras y sombreros Ni\u00f1o",
+    "handle": "gorras-y-sombreros-nino",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483639820311",
+    "title": "Mochilas Ni\u00f1o",
+    "handle": "mochilas-nino",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483639853079",
+    "title": "Cinturones Ni\u00f1o",
+    "handle": "cinturones-nino",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483639885847",
+    "title": "Lentes de sol Ni\u00f1o",
+    "handle": "lentes-de-sol-nino",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483639918615",
+    "title": "Vestidos Ni\u00f1a",
+    "handle": "vestidos-nina",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483639951383",
+    "title": "Faldas Ni\u00f1a",
+    "handle": "faldas-nina",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483639984151",
+    "title": "Blusas y camisetas",
+    "handle": "blusas-y-camisetas",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483640016919",
+    "title": "Pantalones y jeans Ni\u00f1a",
+    "handle": "pantalones-y-jeans-nina",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483640049687",
+    "title": "Shorts Ni\u00f1a",
+    "handle": "shorts-nina",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483640082455",
+    "title": "Sudaderas y hoodies Ni\u00f1a",
+    "handle": "sudaderas-y-hoodies-nina",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483640115223",
+    "title": "Chaquetas y abrigos Ni\u00f1a",
+    "handle": "chaquetas-y-abrigos-nina",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483640147991",
+    "title": "Ropa deportiva Ni\u00f1a",
+    "handle": "ropa-deportiva-nina",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483640180759",
+    "title": "Ropa de playa / Trajes de ba\u00f1o Ni\u00f1a",
+    "handle": "ropa-de-playa-trajes-de-bano-nina",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483640213527",
+    "title": "Pijamas Ni\u00f1a",
+    "handle": "pijamas-nina",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483640246295",
+    "title": "Uniformes escolares Ni\u00f1a",
+    "handle": "uniformes-escolares-nina",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483640279063",
+    "title": "Trajes y ropa formal Ni\u00f1a",
+    "handle": "trajes-y-ropa-formal-nina",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483640311831",
+    "title": "Overoles Ni\u00f1a",
+    "handle": "overoles-nina",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483640344599",
+    "title": "Tenis y sneakers Ni\u00f1a",
+    "handle": "tenis-y-sneakers-nina",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483640377367",
+    "title": "Sandalias y ballerinas",
+    "handle": "sandalias-y-ballerinas",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483640410135",
+    "title": "Botas y botines Ni\u00f1a",
+    "handle": "botas-y-botines-nina",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483640442903",
+    "title": "Zapatos escolares Ni\u00f1a",
+    "handle": "zapatos-escolares-nina",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483640475671",
+    "title": "Pantuflas Ni\u00f1a",
+    "handle": "pantuflas-nina",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483640508439",
+    "title": "Calzones y panties",
+    "handle": "calzones-y-panties",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483640541207",
+    "title": "Camisetas interiores Ni\u00f1a",
+    "handle": "camisetas-interiores-nina",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483640573975",
+    "title": "Medias, calcetines y pantys",
+    "handle": "medias-calcetines-y-pantys",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483640606743",
+    "title": "Diademas y accesorios para el cabello Ni\u00f1a",
+    "handle": "diademas-y-accesorios-para-el-cabello-nina",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483640639511",
+    "title": "Mochilas Ni\u00f1a",
+    "handle": "mochilas-nina",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483640672279",
+    "title": "Bolsas y carteras peque\u00f1as",
+    "handle": "bolsas-y-carteras-pequenas",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483640705047",
+    "title": "Lentes de sol Ni\u00f1a",
+    "handle": "lentes-de-sol-nina",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483640737815",
+    "title": "Joyer\u00eda infantil",
+    "handle": "joyeria-infantil",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483640770583",
+    "title": "Tapetes y alfombras tejidas",
+    "handle": "tapetes-y-alfombras-tejidas",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483640803351",
+    "title": "Bolsas y mochilas artesanales",
+    "handle": "bolsas-y-mochilas-artesanales",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483640836119",
+    "title": "Manteles y caminos de mesa",
+    "handle": "manteles-y-caminos-de-mesa",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483640868887",
+    "title": "Ropa bordada y huipiles",
+    "handle": "ropa-bordada-y-huipiles",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483640901655",
+    "title": "Hamacas",
+    "handle": "hamacas",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483640934423",
+    "title": "Cobijas y rebozos",
+    "handle": "cobijas-y-rebozos",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483640967191",
+    "title": "Cinturones y fajas tejidas",
+    "handle": "cinturones-y-fajas-tejidas",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483640999959",
+    "title": "Vajillas y platos decorativos",
+    "handle": "vajillas-y-platos-decorativos",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483641032727",
+    "title": "Jarrones y floreros",
+    "handle": "jarrones-y-floreros",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483641065495",
+    "title": "Figuras y esculturas de barro",
+    "handle": "figuras-y-esculturas-de-barro",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483641098263",
+    "title": "Macetas artesanales",
+    "handle": "macetas-artesanales",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483641131031",
+    "title": "Ollas y cazuelas tradicionales",
+    "handle": "ollas-y-cazuelas-tradicionales",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483641163799",
+    "title": "Talavera",
+    "handle": "talavera",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483641196567",
+    "title": "Figuras y esculturas talladas",
+    "handle": "figuras-y-esculturas-talladas",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483641229335",
+    "title": "M\u00e1scaras de madera",
+    "handle": "mascaras-de-madera",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483641262103",
+    "title": "Muebles artesanales",
+    "handle": "muebles-artesanales",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483641294871",
+    "title": "Joyeros y cajas decorativas",
+    "handle": "joyeros-y-cajas-decorativas",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483641327639",
+    "title": "Utensilios de cocina Artesanal",
+    "handle": "utensilios-de-cocina-artesanal",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483641360407",
+    "title": "Juguetes de madera",
+    "handle": "juguetes-de-madera",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483641393175",
+    "title": "Joyer\u00eda de plata",
+    "handle": "joyeria-de-plata",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483641425943",
+    "title": "Joyer\u00eda de cobre y lat\u00f3n",
+    "handle": "joyeria-de-cobre-y-laton",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483641458711",
+    "title": "Joyer\u00eda con piedras naturales",
+    "handle": "joyeria-con-piedras-naturales",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483641491479",
+    "title": "Joyer\u00eda con semillas y materiales naturales",
+    "handle": "joyeria-con-semillas-y-materiales-naturales",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483641524247",
+    "title": "Accesorios con chaquira y bisuter\u00eda artesanal",
+    "handle": "accesorios-con-chaquira-y-bisuteria-artesanal",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483641557015",
+    "title": "Bolsas y carteras de cuero",
+    "handle": "bolsas-y-carteras-de-cuero",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483641589783",
+    "title": "Cinturones artesanales",
+    "handle": "cinturones-artesanales",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483641622551",
+    "title": "Huaraches y calzado artesanal",
+    "handle": "huaraches-y-calzado-artesanal",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483641655319",
+    "title": "Portafolios y agendas",
+    "handle": "portafolios-y-agendas",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483641688087",
+    "title": "Accesorios de cuero",
+    "handle": "accesorios-de-cuero",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483641720855",
+    "title": "Papel amate pintado",
+    "handle": "papel-amate-pintado",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483641753623",
+    "title": "Pi\u00f1atas tradicionales",
+    "handle": "pinatas-tradicionales",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483641786391",
+    "title": "Alebrijes de papel mach\u00e9",
+    "handle": "alebrijes-de-papel-mache",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483641819159",
+    "title": "Figuras de cart\u00f3n",
+    "handle": "figuras-de-carton",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483641851927",
+    "title": "Arte en papel artesanal",
+    "handle": "arte-en-papel-artesanal",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483641884695",
+    "title": "Vidrio soplado",
+    "handle": "vidrio-soplado",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483641917463",
+    "title": "Mosaicos de vidrio",
+    "handle": "mosaicos-de-vidrio",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483641950231",
+    "title": "Figuras decorativas de cristal",
+    "handle": "figuras-decorativas-de-cristal",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483641982999",
+    "title": "Vitrales artesanales",
+    "handle": "vitrales-artesanales",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483642015767",
+    "title": "Hojalata decorativa",
+    "handle": "hojalata-decorativa",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483642048535",
+    "title": "Cobre repujado",
+    "handle": "cobre-repujado",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483642081303",
+    "title": "Herrer\u00eda artesanal",
+    "handle": "herreria-artesanal",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483642114071",
+    "title": "L\u00e1mparas y faroles de metal",
+    "handle": "lamparas-y-faroles-de-metal",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483642146839",
+    "title": "Figuras de hierro forjado",
+    "handle": "figuras-de-hierro-forjado",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483642179607",
+    "title": "Esculturas en piedra",
+    "handle": "esculturas-en-piedra",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483642212375",
+    "title": "Joyer\u00eda de piedras semipreciosas",
+    "handle": "joyeria-de-piedras-semipreciosas",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483642245143",
+    "title": "Figuras decorativas",
+    "handle": "figuras-decorativas",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483642277911",
+    "title": "Utensilios (molcajetes, metates)",
+    "handle": "utensilios-molcajetes-metates",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483642310679",
+    "title": "Pinturas en tela y lienzo",
+    "handle": "pinturas-en-tela-y-lienzo",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483642343447",
+    "title": "Arte huichol (nierika)",
+    "handle": "arte-huichol-nierika",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483642376215",
+    "title": "Arte popular y na\u00edf",
+    "handle": "arte-popular-y-naif",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483642408983",
+    "title": "Pinturas en madera",
+    "handle": "pinturas-en-madera",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483642441751",
+    "title": "Arte en seda",
+    "handle": "arte-en-seda",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483642474519",
+    "title": "Velas decorativas",
+    "handle": "velas-decorativas",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483642507287",
+    "title": "Velas perfumadas artesanales",
+    "handle": "velas-perfumadas-artesanales",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483642540055",
+    "title": "Inciensos y sahumerios",
+    "handle": "inciensos-y-sahumerios",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483642572823",
+    "title": "Jabones artesanales",
+    "handle": "jabones-artesanales",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483642605591",
+    "title": "Mu\u00f1ecas de tela",
+    "handle": "munecas-de-tela",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483642638359",
+    "title": "Mu\u00f1ecas de trapo regionales",
+    "handle": "munecas-de-trapo-regionales",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483642671127",
+    "title": "Juguetes tradicionales de madera",
+    "handle": "juguetes-tradicionales-de-madera",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483642703895",
+    "title": "Alebrijes",
+    "handle": "alebrijes",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483642736663",
+    "title": "Guitarras y cord\u00f3fonos",
+    "handle": "guitarras-y-cordofonos",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483642769431",
+    "title": "Instrumentos de viento artesanales",
+    "handle": "instrumentos-de-viento-artesanales",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483642802199",
+    "title": "Percusiones tradicionales",
+    "handle": "percusiones-tradicionales",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483642834967",
+    "title": "Salas y sillones",
+    "handle": "salas-y-sillones",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483642867735",
+    "title": "Comedores y sillas",
+    "handle": "comedores-y-sillas",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483642900503",
+    "title": "Rec\u00e1maras y camas",
+    "handle": "recamaras-y-camas",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483642933271",
+    "title": "Muebles de oficina",
+    "handle": "muebles-de-oficina",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483642966039",
+    "title": "Muebles de jard\u00edn y exterior",
+    "handle": "muebles-de-jardin-y-exterior",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483642998807",
+    "title": "Estantes y libreros",
+    "handle": "estantes-y-libreros",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483643031575",
+    "title": "Muebles infantiles",
+    "handle": "muebles-infantiles",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483643064343",
+    "title": "Cuadros y pinturas",
+    "handle": "cuadros-y-pinturas",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483643097111",
+    "title": "Esculturas y figuras decorativas",
+    "handle": "esculturas-y-figuras-decorativas",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483643129879",
+    "title": "Espejos",
+    "handle": "espejos",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483643162647",
+    "title": "Relojes de pared",
+    "handle": "relojes-de-pared",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483643195415",
+    "title": "Velas y portavelas",
+    "handle": "velas-y-portavelas",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483643228183",
+    "title": "Floreros y centros de mesa",
+    "handle": "floreros-y-centros-de-mesa",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483643260951",
+    "title": "Cojines y almohadas decorativas",
+    "handle": "cojines-y-almohadas-decorativas",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483643293719",
+    "title": "Tapetes y alfombras",
+    "handle": "tapetes-y-alfombras",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483643326487",
+    "title": "L\u00e1mparas de techo",
+    "handle": "lamparas-de-techo",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483643359255",
+    "title": "L\u00e1mparas de pie",
+    "handle": "lamparas-de-pie",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483643392023",
+    "title": "L\u00e1mparas de mesa",
+    "handle": "lamparas-de-mesa",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483643424791",
+    "title": "Focos y accesorios",
+    "handle": "focos-y-accesorios",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483643457559",
+    "title": "Luces decorativas y LED",
+    "handle": "luces-decorativas-y-led",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483643490327",
+    "title": "Faroles y linternas",
+    "handle": "faroles-y-linternas",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483643523095",
+    "title": "Vajillas y platos",
+    "handle": "vajillas-y-platos",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483643555863",
+    "title": "Vasos y copas",
+    "handle": "vasos-y-copas",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483643588631",
+    "title": "Ollas y sartenes",
+    "handle": "ollas-y-sartenes",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483643621399",
+    "title": "Utensilios de cocina",
+    "handle": "utensilios-de-cocina",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483643654167",
+    "title": "Tablas y accesorios de corte",
+    "handle": "tablas-y-accesorios-de-corte",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483643686935",
+    "title": "Organizadores de cocina",
+    "handle": "organizadores-de-cocina",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483643719703",
+    "title": "Manteles y servilletas",
+    "handle": "manteles-y-servilletas",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483643752471",
+    "title": "Toallas y juegos de ba\u00f1o",
+    "handle": "toallas-y-juegos-de-bano",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483643785239",
+    "title": "Accesorios de ba\u00f1o",
+    "handle": "accesorios-de-bano",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483643818007",
+    "title": "Organizadores y estantes",
+    "handle": "organizadores-y-estantes",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483643850775",
+    "title": "Cortinas de ba\u00f1o",
+    "handle": "cortinas-de-bano",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483643883543",
+    "title": "Tapetes de ba\u00f1o",
+    "handle": "tapetes-de-bano",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483643916311",
+    "title": "S\u00e1banas y fundas",
+    "handle": "sabanas-y-fundas",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483643949079",
+    "title": "Cobijas y edredones",
+    "handle": "cobijas-y-edredones",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483643981847",
+    "title": "Almohadas",
+    "handle": "almohadas",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483644014615",
+    "title": "Protectores de colch\u00f3n",
+    "handle": "protectores-de-colchon",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483644047383",
+    "title": "Domos y cortinas",
+    "handle": "domos-y-cortinas",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483644080151",
+    "title": "Macetas y jardineras",
+    "handle": "macetas-y-jardineras",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483644112919",
+    "title": "Muebles de jard\u00edn",
+    "handle": "muebles-de-jardin",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483644145687",
+    "title": "Herramientas de jardiner\u00eda",
+    "handle": "herramientas-de-jardineria",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483644178455",
+    "title": "Fuentes y accesorios",
+    "handle": "fuentes-y-accesorios",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483644211223",
+    "title": "Iluminaci\u00f3n exterior",
+    "handle": "iluminacion-exterior",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483644243991",
+    "title": "Semillas y plantas",
+    "handle": "semillas-y-plantas",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483644276759",
+    "title": "Cajas y cestos organizadores",
+    "handle": "cajas-y-cestos-organizadores",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483644309527",
+    "title": "Perchas y organizadores de ropa",
+    "handle": "perchas-y-organizadores-de-ropa",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483644342295",
+    "title": "Estantes y repisas",
+    "handle": "estantes-y-repisas",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483644375063",
+    "title": "Organizadores de closet",
+    "handle": "organizadores-de-closet",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483644407831",
+    "title": "Pinturas y lienzos",
+    "handle": "pinturas-y-lienzos",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483644440599",
+    "title": "Fotograf\u00eda art\u00edstica",
+    "handle": "fotografia-artistica",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483644473367",
+    "title": "Esculturas",
+    "handle": "esculturas",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483644506135",
+    "title": "Art\u00edculos de colecci\u00f3n",
+    "handle": "articulos-de-coleccion",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483644538903",
+    "title": "Arte digital impreso",
+    "handle": "arte-digital-impreso",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483644571671",
+    "title": "Mermeladas y conservas",
+    "handle": "mermeladas-y-conservas",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483644604439",
+    "title": "Salsas y moles",
+    "handle": "salsas-y-moles",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483644637207",
+    "title": "Quesos artesanales",
+    "handle": "quesos-artesanales",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483644669975",
+    "title": "Embutidos y charcuter\u00eda",
+    "handle": "embutidos-y-charcuteria",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483644702743",
+    "title": "Pan y reposter\u00eda artesanal",
+    "handle": "pan-y-reposteria-artesanal",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483644735511",
+    "title": "Chocolates y dulces",
+    "handle": "chocolates-y-dulces",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483644768279",
+    "title": "Miel y derivados de abeja",
+    "handle": "miel-y-derivados-de-abeja",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483644801047",
+    "title": "Especias y condimentos",
+    "handle": "especias-y-condimentos",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483644833815",
+    "title": "Snacks y botanas artesanales",
+    "handle": "snacks-y-botanas-artesanales",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483644866583",
+    "title": "Caf\u00e9 de especialidad",
+    "handle": "cafe-de-especialidad",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483644899351",
+    "title": "T\u00e9 e infusiones",
+    "handle": "te-e-infusiones",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483644932119",
+    "title": "Cerveza artesanal",
+    "handle": "cerveza-artesanal",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483644964887",
+    "title": "Vinos y espumosos",
+    "handle": "vinos-y-espumosos",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483644997655",
+    "title": "Mezcal y destilados",
+    "handle": "mezcal-y-destilados",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483645030423",
+    "title": "Kombucha y fermentados",
+    "handle": "kombucha-y-fermentados",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483645063191",
+    "title": "Jugos y aguas frescas artesanales",
+    "handle": "jugos-y-aguas-frescas-artesanales",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483645095959",
+    "title": "Licores y cremas artesanales",
+    "handle": "licores-y-cremas-artesanales",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483645128727",
+    "title": "Frutas y verduras org\u00e1nicas",
+    "handle": "frutas-y-verduras-organicas",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483645161495",
+    "title": "Aceites y vinagres artesanales",
+    "handle": "aceites-y-vinagres-artesanales",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483645194263",
+    "title": "Superalimentos",
+    "handle": "superalimentos",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483645227031",
+    "title": "Productos sin gluten",
+    "handle": "productos-sin-gluten",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483645259799",
+    "title": "Productos veganos y vegetarianos",
+    "handle": "productos-veganos-y-vegetarianos",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483645292567",
+    "title": "Pasteles y tortas personalizadas",
+    "handle": "pasteles-y-tortas-personalizadas",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483645325335",
+    "title": "Galletas decoradas",
+    "handle": "galletas-decoradas",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483645358103",
+    "title": "Pan dulce tradicional",
+    "handle": "pan-dulce-tradicional",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483645390871",
+    "title": "Cupcakes y muffins",
+    "handle": "cupcakes-y-muffins",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483645456407",
+    "title": "Postres gourmet",
+    "handle": "postres-gourmet",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483645489175",
+    "title": "Canastas de regalo",
+    "handle": "canastas-de-regalo",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483645554711",
+    "title": "Sets de degustaci\u00f3n",
+    "handle": "sets-de-degustacion",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483645587479",
+    "title": "Cajas de temporada",
+    "handle": "cajas-de-temporada",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483645653015",
+    "title": "Regalos corporativos gourmet",
+    "handle": "regalos-corporativos-gourmet",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483645685783",
+    "title": "Smartphones y celulares",
+    "handle": "smartphones-y-celulares",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483645751319",
+    "title": "Tel\u00e9fonos b\u00e1sicos",
+    "handle": "telefonos-basicos",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483645784087",
+    "title": "Accesorios para celular (fundas, cargadores, aud\u00edfonos)",
+    "handle": "accesorios-para-celular-fundas-cargadores-audifonos",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483645816855",
+    "title": "Tel\u00e9fonos fijos e inal\u00e1mbricos",
+    "handle": "telefonos-fijos-e-inalambricos",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483645849623",
+    "title": "Walkie talkies y radios",
+    "handle": "walkie-talkies-y-radios",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483645882391",
+    "title": "Laptops y notebooks",
+    "handle": "laptops-y-notebooks",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483645915159",
+    "title": "Computadoras de escritorio",
+    "handle": "computadoras-de-escritorio",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483645947927",
+    "title": "Tablets y iPads",
+    "handle": "tablets-y-ipads",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483645980695",
+    "title": "Monitores",
+    "handle": "monitores",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483646013463",
+    "title": "Teclados y mouse",
+    "handle": "teclados-y-mouse",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483646046231",
+    "title": "Discos duros y almacenamiento",
+    "handle": "discos-duros-y-almacenamiento",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483646078999",
+    "title": "Memorias USB y tarjetas SD",
+    "handle": "memorias-usb-y-tarjetas-sd",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483646111767",
+    "title": "Accesorios para computadora",
+    "handle": "accesorios-para-computadora",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483646144535",
+    "title": "Aud\u00edfonos y auriculares",
+    "handle": "audifonos-y-auriculares",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483646177303",
+    "title": "Bocinas y altavoces",
+    "handle": "bocinas-y-altavoces",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483646210071",
+    "title": "Sistemas de sonido",
+    "handle": "sistemas-de-sonido",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483646242839",
+    "title": "Barras de sonido",
+    "handle": "barras-de-sonido",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483646275607",
+    "title": "Reproductores de m\u00fasica",
+    "handle": "reproductores-de-musica",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483646308375",
+    "title": "Micr\u00f3fonos",
+    "handle": "microfonos",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483646341143",
+    "title": "Amplificadores",
+    "handle": "amplificadores",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483646373911",
+    "title": "Televisores",
+    "handle": "televisores",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483646406679",
+    "title": "Proyectores",
+    "handle": "proyectores",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483646439447",
+    "title": "Reproductores de streaming (Fire TV, Chromecast, etc.)",
+    "handle": "reproductores-de-streaming-fire-tv-chromecast-etc",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483646472215",
+    "title": "Reproductores de DVD y Blu-ray",
+    "handle": "reproductores-de-dvd-y-blu-ray",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483646504983",
+    "title": "Soportes y accesorios para TV",
+    "handle": "soportes-y-accesorios-para-tv",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483646537751",
+    "title": "C\u00e1maras fotogr\u00e1ficas",
+    "handle": "camaras-fotograficas",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483646570519",
+    "title": "C\u00e1maras de video",
+    "handle": "camaras-de-video",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483646603287",
+    "title": "Drones",
+    "handle": "drones",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483646636055",
+    "title": "Accesorios para c\u00e1mara (lentes, tripies, memorias)",
+    "handle": "accesorios-para-camara-lentes-tripies-memorias",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483646668823",
+    "title": "C\u00e1maras de seguridad",
+    "handle": "camaras-de-seguridad",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483646701591",
+    "title": "Consolas (PlayStation, Xbox, Nintendo)",
+    "handle": "consolas-playstation-xbox-nintendo",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483646734359",
+    "title": "Videojuegos y t\u00edtulos",
+    "handle": "videojuegos-y-titulos",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483646767127",
+    "title": "Controles y accesorios",
+    "handle": "controles-y-accesorios",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483646799895",
+    "title": "Sillas gamer",
+    "handle": "sillas-gamer",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483646832663",
+    "title": "Headsets gamer",
+    "handle": "headsets-gamer",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483646865431",
+    "title": "Refrigeradores y congeladores",
+    "handle": "refrigeradores-y-congeladores",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483646898199",
+    "title": "Lavadoras y secadoras",
+    "handle": "lavadoras-y-secadoras",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483646930967",
+    "title": "Microondas y hornos",
+    "handle": "microondas-y-hornos",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483646963735",
+    "title": "Licuadoras y procesadores",
+    "handle": "licuadoras-y-procesadores",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483646996503",
+    "title": "Cafeteras y m\u00e1quinas de caf\u00e9",
+    "handle": "cafeteras-y-maquinas-de-cafe",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483647029271",
+    "title": "Aspiradoras y robots de limpieza",
+    "handle": "aspiradoras-y-robots-de-limpieza",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483647062039",
+    "title": "Aires acondicionados y ventiladores",
+    "handle": "aires-acondicionados-y-ventiladores",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483647094807",
+    "title": "Calentadores y estufas",
+    "handle": "calentadores-y-estufas",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483647127575",
+    "title": "Relojes inteligentes (smartwatches)",
+    "handle": "relojes-inteligentes-smartwatches",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483647160343",
+    "title": "Pulseras de actividad",
+    "handle": "pulseras-de-actividad",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483647193111",
+    "title": "Aud\u00edfonos inal\u00e1mbricos",
+    "handle": "audifonos-inalambricos",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483647225879",
+    "title": "Lentes inteligentes",
+    "handle": "lentes-inteligentes",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483647258647",
+    "title": "Gadgets y accesorios tecnol\u00f3gicos",
+    "handle": "gadgets-y-accesorios-tecnologicos",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483647291415",
+    "title": "Routers y m\u00f3dems",
+    "handle": "routers-y-modems",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483647324183",
+    "title": "Repetidores de se\u00f1al",
+    "handle": "repetidores-de-senal",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483647356951",
+    "title": "Cables y conectores",
+    "handle": "cables-y-conectores",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483647389719",
+    "title": "Switches y hubs",
+    "handle": "switches-y-hubs",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483647422487",
+    "title": "Bater\u00edas port\u00e1tiles (power banks)",
+    "handle": "baterias-portatiles-power-banks",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483647455255",
+    "title": "Cargadores inal\u00e1mbricos",
+    "handle": "cargadores-inalambricos",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483647488023",
+    "title": "Paneles solares port\u00e1tiles",
+    "handle": "paneles-solares-portatiles",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483647520791",
+    "title": "Extensiones y multicontactos",
+    "handle": "extensiones-y-multicontactos",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483647553559",
+    "title": "UPS y reguladores",
+    "handle": "ups-y-reguladores",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483647586327",
+    "title": "C\u00e1maras de vigilancia",
+    "handle": "camaras-de-vigilancia",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483647619095",
+    "title": "Alarmas y detectores",
+    "handle": "alarmas-y-detectores",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483647651863",
+    "title": "Cerraduras inteligentes",
+    "handle": "cerraduras-inteligentes",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483647684631",
+    "title": "Videoporteros",
+    "handle": "videoporteros",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483647717399",
+    "title": "Sedanes",
+    "handle": "sedanes",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483647750167",
+    "title": "SUV y camionetas",
+    "handle": "suv-y-camionetas",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483647782935",
+    "title": "Pickups y trocas",
+    "handle": "pickups-y-trocas",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483647815703",
+    "title": "Deportivos y cup\u00e9s",
+    "handle": "deportivos-y-cupes",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483647848471",
+    "title": "Convertibles",
+    "handle": "convertibles",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483647881239",
+    "title": "Vanes y minivans",
+    "handle": "vanes-y-minivans",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483647914007",
+    "title": "Autos el\u00e9ctricos e h\u00edbridos",
+    "handle": "autos-electricos-e-hibridos",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483647946775",
+    "title": "Autos cl\u00e1sicos y de colecci\u00f3n",
+    "handle": "autos-clasicos-y-de-coleccion",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483647979543",
+    "title": "Motos deportivas",
+    "handle": "motos-deportivas",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483648012311",
+    "title": "Motos de trabajo y utilitarias",
+    "handle": "motos-de-trabajo-y-utilitarias",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483648045079",
+    "title": "Scooters y motonetas",
+    "handle": "scooters-y-motonetas",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483648077847",
+    "title": "Motos de campo y enduro",
+    "handle": "motos-de-campo-y-enduro",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483648110615",
+    "title": "Motos el\u00e9ctricas",
+    "handle": "motos-electricas",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483648143383",
+    "title": "Cuatrimotos (ATVs)",
+    "handle": "cuatrimotos-atvs",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483648176151",
+    "title": "Camiones de carga",
+    "handle": "camiones-de-carga",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483648208919",
+    "title": "Camionetas de trabajo",
+    "handle": "camionetas-de-trabajo",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483648241687",
+    "title": "Tractores",
+    "handle": "tractores",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483648274455",
+    "title": "Maquinaria pesada",
+    "handle": "maquinaria-pesada",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483648307223",
+    "title": "Veh\u00edculos especiales",
+    "handle": "vehiculos-especiales",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483648339991",
+    "title": "Llantas y rines",
+    "handle": "llantas-y-rines",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483648372759",
+    "title": "Autopartes y refacciones",
+    "handle": "autopartes-y-refacciones",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483648405527",
+    "title": "Accesorios de interior (tapetes, fundas, etc.)",
+    "handle": "accesorios-de-interior-tapetes-fundas-etc",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483648438295",
+    "title": "Accesorios de exterior",
+    "handle": "accesorios-de-exterior",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483648471063",
+    "title": "Audio y GPS para veh\u00edculos",
+    "handle": "audio-y-gps-para-vehiculos",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483648503831",
+    "title": "Herramientas automotrices",
+    "handle": "herramientas-automotrices",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483648536599",
+    "title": "Aceites y lubricantes",
+    "handle": "aceites-y-lubricantes",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483648569367",
+    "title": "Art\u00edculos de limpieza automotriz",
+    "handle": "articulos-de-limpieza-automotriz",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483648602135",
+    "title": "Bicicletas",
+    "handle": "bicicletas",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483648634903",
+    "title": "Bicicletas el\u00e9ctricas",
+    "handle": "bicicletas-electricas",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483648667671",
+    "title": "Patinetas y scooters el\u00e9ctricos",
+    "handle": "patinetas-y-scooters-electricos",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483648700439",
+    "title": "Go-karts",
+    "handle": "go-karts",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483648733207",
+    "title": "Botes y lanchas",
+    "handle": "botes-y-lanchas",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483648765975",
+    "title": "Jet skis y motos acu\u00e1ticas",
+    "handle": "jet-skis-y-motos-acuaticas",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483648798743",
+    "title": "Casas rodantes y RVs",
+    "handle": "casas-rodantes-y-rvs",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483648831511",
+    "title": "Autobuses y microbuses",
+    "handle": "autobuses-y-microbuses",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483648864279",
+    "title": "Taxis y veh\u00edculos de transporte",
+    "handle": "taxis-y-vehiculos-de-transporte",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483648897047",
+    "title": "Veh\u00edculos de reparto",
+    "handle": "vehiculos-de-reparto",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483648929815",
+    "title": "Bodies y pa\u00f1aleros",
+    "handle": "bodies-y-panaleros",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483648962583",
+    "title": "Pijamas y sleepers",
+    "handle": "pijamas-y-sleepers",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483648995351",
+    "title": "Conjuntos y ajuares",
+    "handle": "conjuntos-y-ajuares",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483649028119",
+    "title": "Camisetas y tops",
+    "handle": "camisetas-y-tops",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483649060887",
+    "title": "Pantalones y joggers",
+    "handle": "pantalones-y-joggers",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483649093655",
+    "title": "Sudaderas y hoodies Beb\u00e9",
+    "handle": "sudaderas-y-hoodies-bebe",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483649126423",
+    "title": "Abrigos y chaquetas Beb\u00e9",
+    "handle": "abrigos-y-chaquetas-bebe",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483649159191",
+    "title": "Ropa para ocasiones especiales",
+    "handle": "ropa-para-ocasiones-especiales",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483649191959",
+    "title": "Mameluco y overoles",
+    "handle": "mameluco-y-overoles",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483649224727",
+    "title": "Zapatitos y botitas",
+    "handle": "zapatitos-y-botitas",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483649257495",
+    "title": "Sandalias Beb\u00e9",
+    "handle": "sandalias-bebe",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483649290263",
+    "title": "Tenis y sneakers Beb\u00e9",
+    "handle": "tenis-y-sneakers-bebe",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483649323031",
+    "title": "Pantuflas Beb\u00e9",
+    "handle": "pantuflas-bebe",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483649355799",
+    "title": "Pa\u00f1ales desechables",
+    "handle": "panales-desechables",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483649388567",
+    "title": "Pa\u00f1ales de tela",
+    "handle": "panales-de-tela",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483649421335",
+    "title": "Calzones de entrenamiento",
+    "handle": "calzones-de-entrenamiento",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483649454103",
+    "title": "Camisetas interiores Beb\u00e9",
+    "handle": "camisetas-interiores-bebe",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483649486871",
+    "title": "Medias y calcetines Beb\u00e9",
+    "handle": "medias-y-calcetines-bebe",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483649519639",
+    "title": "Gorros y sombreros Beb\u00e9",
+    "handle": "gorros-y-sombreros-bebe",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483649552407",
+    "title": "Baberos y pecheros",
+    "handle": "baberos-y-pecheros",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483649585175",
+    "title": "Guantes y manoplas",
+    "handle": "guantes-y-manoplas",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483649617943",
+    "title": "Cobijas y arrullo",
+    "handle": "cobijas-y-arrullo",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483649650711",
+    "title": "Portabeb\u00e9s y cargadores",
+    "handle": "portabebes-y-cargadores",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483649683479",
+    "title": "Diademas y accesorios para el cabello Beb\u00e9",
+    "handle": "diademas-y-accesorios-para-el-cabello-bebe",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483649716247",
+    "title": "Cremas y lociones",
+    "handle": "cremas-y-lociones",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483649749015",
+    "title": "Shampoo y jab\u00f3n",
+    "handle": "shampoo-y-jabon",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483649781783",
+    "title": "Toallitas h\u00famedas",
+    "handle": "toallitas-humedas",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483649814551",
+    "title": "Aceites para beb\u00e9",
+    "handle": "aceites-para-bebe",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483649847319",
+    "title": "Pomadas y cremas para pa\u00f1al",
+    "handle": "pomadas-y-cremas-para-panal",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483654762519",
+    "title": "Mujer",
+    "handle": "mujer",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483654795287",
+    "title": "Hombre",
+    "handle": "hombre",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483654828055",
+    "title": "Ni\u00f1o",
+    "handle": "nino",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483654860823",
+    "title": "Ni\u00f1a",
+    "handle": "nina",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483654893591",
+    "title": "Beb\u00e9",
+    "handle": "bebe",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483654926359",
+    "title": "Artesanal",
+    "handle": "artesanal",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483654959127",
+    "title": "Hogar",
+    "handle": "hogar",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483654991895",
+    "title": "Alimentos",
+    "handle": "alimentos",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483655024663",
+    "title": "Electr\u00f3nicos",
+    "handle": "electronicos",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483655057431",
+    "title": "Veh\u00edculos",
+    "handle": "vehiculos",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483655090199",
+    "title": "Ropa Mujer",
+    "handle": "ropa-mujer",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483655122967",
+    "title": "Calzado Mujer",
+    "handle": "calzado-mujer",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483655188503",
+    "title": "Joyer\u00eda y Accesorios",
+    "handle": "joyeria-y-accesorios",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483655221271",
+    "title": "Bolsas y Carteras",
+    "handle": "bolsas-y-carteras",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483655254039",
+    "title": "Accesorios de Moda",
+    "handle": "accesorios-de-moda",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483655319575",
+    "title": "Maternidad",
+    "handle": "maternidad",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483655352343",
+    "title": "Ropa Hombre",
+    "handle": "ropa-hombre",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483655385111",
+    "title": "Calzado Hombre",
+    "handle": "calzado-hombre",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483655450647",
+    "title": "Accesorios Hombre",
+    "handle": "accesorios-hombre",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483655483415",
+    "title": "Joyer\u00eda",
+    "handle": "joyeria",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483655516183",
+    "title": "Cuidado Personal",
+    "handle": "cuidado-personal",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483655548951",
+    "title": "Ropa Ni\u00f1o",
+    "handle": "ropa-nino",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483655581719",
+    "title": "Calzado Ni\u00f1o",
+    "handle": "calzado-nino",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483655647255",
+    "title": "Accesorios Ni\u00f1o",
+    "handle": "accesorios-nino",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483655680023",
+    "title": "Ropa Ni\u00f1a",
+    "handle": "ropa-nina",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483655712791",
+    "title": "Calzado Ni\u00f1a",
+    "handle": "calzado-nina",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483655778327",
+    "title": "Accesorios Ni\u00f1a",
+    "handle": "accesorios-nina",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483655811095",
+    "title": "Ropa Beb\u00e9",
+    "handle": "ropa-bebe",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483655843863",
+    "title": "Calzado Beb\u00e9",
+    "handle": "calzado-bebe",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483655876631",
+    "title": "Ropa Interior y Pa\u00f1aler\u00eda",
+    "handle": "ropa-interior-y-panaleria",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483655909399",
+    "title": "Accesorios Beb\u00e9",
+    "handle": "accesorios-bebe",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483655942167",
+    "title": "Higiene y Cuidado",
+    "handle": "higiene-y-cuidado",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483655974935",
+    "title": "Textiles y Tejidos",
+    "handle": "textiles-y-tejidos",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483656007703",
+    "title": "Cer\u00e1mica y Barro",
+    "handle": "ceramica-y-barro",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483656040471",
+    "title": "Madera",
+    "handle": "madera",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483656073239",
+    "title": "Joyer\u00eda Artesanal",
+    "handle": "joyeria-artesanal",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483656106007",
+    "title": "Cuero y Piel",
+    "handle": "cuero-y-piel",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483656138775",
+    "title": "Papel y Cart\u00f3n",
+    "handle": "papel-y-carton",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483656171543",
+    "title": "Vidrio y Cristal",
+    "handle": "vidrio-y-cristal",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483656204311",
+    "title": "Metal",
+    "handle": "metal",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483656237079",
+    "title": "Piedra",
+    "handle": "piedra",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483656269847",
+    "title": "Arte Decorativo y Pinturas",
+    "handle": "arte-decorativo-y-pinturas",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483656302615",
+    "title": "Velas y Aromaterapia Artesanal",
+    "handle": "velas-y-aromaterapia-artesanal",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483656335383",
+    "title": "Juguetes y Mu\u00f1ecos Tradicionales",
+    "handle": "juguetes-y-munecos-tradicionales",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483656400919",
+    "title": "Muebles",
+    "handle": "muebles",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483656433687",
+    "title": "Decoraci\u00f3n del Hogar",
+    "handle": "decoracion-del-hogar",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483656466455",
+    "title": "Iluminaci\u00f3n",
+    "handle": "iluminacion",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483656499223",
+    "title": "Cocina y Comedor",
+    "handle": "cocina-y-comedor",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483656531991",
+    "title": "Ba\u00f1o",
+    "handle": "bano",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483656564759",
+    "title": "Rec\u00e1mara y Ropa de Cama",
+    "handle": "recamara-y-ropa-de-cama",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483656597527",
+    "title": "Jard\u00edn y Exterior",
+    "handle": "jardin-y-exterior",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483656630295",
+    "title": "Organizaci\u00f3n y Almacenamiento",
+    "handle": "organizacion-y-almacenamiento",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483656663063",
+    "title": "Arte y Coleccionables",
+    "handle": "arte-y-coleccionables",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483656695831",
+    "title": "Alimentos Artesanales",
+    "handle": "alimentos-artesanales",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483656728599",
+    "title": "Bebidas Artesanales",
+    "handle": "bebidas-artesanales",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483656761367",
+    "title": "Productos Org\u00e1nicos y Naturales",
+    "handle": "productos-organicos-y-naturales",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483656794135",
+    "title": "Reposter\u00eda y Panader\u00eda",
+    "handle": "reposteria-y-panaderia",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483656826903",
+    "title": "Canastas y Regalos Gourmet",
+    "handle": "canastas-y-regalos-gourmet",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/483657089047",
+    "title": "Wearables y Gadgets",
+    "handle": "wearables-y-gadgets",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/484617224215",
+    "title": "Mujer Deporte",
+    "handle": "mujer-deporte",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/484617256983",
+    "title": "Hombre Deporte",
+    "handle": "hombre-deporte",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/484618010647",
+    "title": "Calzado Total",
+    "handle": "calzado-global",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/484618043415",
+    "title": "Cuidado Personal y Belleza",
+    "handle": "cuidado-personal-global",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/484753408023",
+    "title": "Yeti",
+    "handle": "yeti",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/484977803287",
+    "title": "C\u00e1maras",
+    "handle": "camaras-1",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/485516541975",
+    "title": "damas spot",
+    "handle": "damas-spot",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/485539774487",
+    "title": "Ofertas",
+    "handle": "saldos",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/485539872791",
+    "title": "2x1",
+    "handle": "2x1",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/485787402263",
+    "title": "Tenis",
+    "handle": "tenis",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/485787435031",
+    "title": "dji",
+    "handle": "dji",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/485791563799",
+    "title": "celulares",
+    "handle": "celulares",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/485987090455",
+    "title": "ropa interior mujer",
+    "handle": "ropa-interior-mujer",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/485987155991",
+    "title": "pijamas y lenceria",
+    "handle": "pijamas-y-lenceria",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/485987188759",
+    "title": "pijamas dama",
+    "handle": "pijamas-dama",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/485989187607",
+    "title": "Zapatos de Trabajo",
+    "handle": "zapatos-de-trabajo",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/486067306519",
+    "title": "autos",
+    "handle": "autos",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/486067339287",
+    "title": "motos",
+    "handle": "motos",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/486067896343",
+    "title": "veh\u00edculos de carga",
+    "handle": "vehiculos-de-carga",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/486072123415",
+    "title": "refacciones",
+    "handle": "refacciones",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/486239961111",
+    "title": "mayoreo productos",
+    "handle": "mayoreo-productos",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/486240059415",
+    "title": "mayoreo productos",
+    "handle": "mayoreo-productos-1",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/486240157719",
+    "title": "mayoreo productos",
+    "handle": "mayoreo-productos-2",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/486267944983",
+    "title": "Mayoreo - Botas",
+    "handle": "mayoreo-botas",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/486267977751",
+    "title": "Mayoreo - Sombreros y Accesorios",
+    "handle": "mayoreo-sombreros",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/486268010519",
+    "title": "Mayoreo - Chalecos y Chamarras",
+    "handle": "mayoreo-chalecos",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/486268043287",
+    "title": "Mayoreo - Camisas",
+    "handle": "mayoreo-camisas",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/486849675287",
+    "title": "Mayoreo - Botas Hombre",
+    "handle": "mayoreo-botas-hombre",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/486849708055",
+    "title": "Mayoreo - Botas Mujer",
+    "handle": "mayoreo-botas-mujer",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/486849740823",
+    "title": "Mayoreo - Camisas Hombre",
+    "handle": "mayoreo-camisas-hombre",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/486849773591",
+    "title": "Mayoreo - Camisas Mujer",
+    "handle": "mayoreo-camisas-mujer",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/486849806359",
+    "title": "Mayoreo - Camisas Ni\u00f1o",
+    "handle": "mayoreo-camisas-nino",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/486849839127",
+    "title": "Mayoreo - Chalecos Hombre",
+    "handle": "mayoreo-chalecos-hombre",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/486849871895",
+    "title": "Mayoreo - Chalecos Mujer",
+    "handle": "mayoreo-chalecos-mujer",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/486849904663",
+    "title": "Mayoreo - Sombreros Hombre",
+    "handle": "mayoreo-sombreros-hombre",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/486849937431",
+    "title": "Mayoreo - Sombreros Mujer",
+    "handle": "mayoreo-sombreros-mujer",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  },
+  {
+    "id": "gid://shopify/Collection/486881460247",
+    "title": "Crosscountry",
+    "handle": "crosscountry",
+    "productsCount": {
+      "precision": "EXACT"
+    }
+  }
+]

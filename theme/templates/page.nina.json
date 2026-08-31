@@ -15,11 +15,11 @@
             "overlay_color": "#000000",
             "overlay_opacity": 25,
             "btn1_txt": "Ver Vestidos",
-            "btn1_link": "shopify://collections/vestidos-nina",
+            "btn1_link": "/collections/vestidos-nina",
             "btn_bg_color": "#ffb300",
             "btn_txt_color": "#000000",
             "btn2_txt": "Ver Calzado",
-            "btn2_link": "shopify://collections/calzado-nina"
+            "btn2_link": "/collections/calzado-nina"
           }
         },
         "slide2": {
@@ -33,11 +33,11 @@
             "overlay_color": "#000000",
             "overlay_opacity": 30,
             "btn1_txt": "Explorar Ahora",
-            "btn1_link": "/pages/accesorios-nina-landing",
+            "btn1_link": "/collections/accesorios-nina",
             "btn_bg_color": "#ffb300",
             "btn_txt_color": "#000000",
             "btn2_txt": "Accesorios",
-            "btn2_link": "shopify://collections/accesorios-nina"
+            "btn2_link": "/collections/accesorios-nina"
           }
         }
       },
@@ -61,7 +61,7 @@
           "settings": {
             "image": "shopify://shop_images/pomelli-image_60.png",
             "label": "Ropa y Vestidos",
-            "link": "shopify://collections/vestidos-nina"
+            "link": "/collections/vestidos-nina"
           }
         },
         "b2": {
@@ -69,7 +69,7 @@
           "settings": {
             "image": "shopify://shop_images/dame_una_fotografia_202604061634_1.jpg",
             "label": "Calzado",
-            "link": "shopify://collections/calzado-nina"
+            "link": "/collections/calzado-nina"
           }
         },
         "b3": {
@@ -77,7 +77,7 @@
           "settings": {
             "image": "shopify://shop_images/dame_una_fotografia_202604061636.jpg",
             "label": "Juguetes",
-            "link": "/pages/accesorios-nina-landing"
+            "link": "/collections/accesorios-nina"
           }
         },
         "b4": {
@@ -85,7 +85,7 @@
           "settings": {
             "image": "shopify://shop_images/dame_una_fotografia_202604061636_1.jpg",
             "label": "Accesorios",
-            "link": "shopify://collections/accesorios-nina"
+            "link": "/collections/accesorios-nina"
           }
         }
       },
@@ -124,7 +124,7 @@
           "settings": {
             "image": "shopify://shop_images/dame_una_fotografia_202604061642.jpg",
             "label": "Joyería",
-            "link": "/pages/accesorios-nina-landing"
+            "link": "/collections/accesorios-nina"
           }
         },
         "c4": {
@@ -132,7 +132,7 @@
           "settings": {
             "image": "shopify://shop_images/dame_una_fotografia_202604061642_1.jpg",
             "label": "Ofertas",
-            "link": "/pages/ropa-nina-landing"
+            "link": "/collections/ropa-nina"
           }
         }
       },

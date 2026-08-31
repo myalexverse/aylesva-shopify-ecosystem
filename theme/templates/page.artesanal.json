@@ -16,11 +16,11 @@
             "overlay_color": "#000000",
             "overlay_opacity": 30,
             "btn1_txt": "Ver Textiles",
-            "btn1_link": "/pages/textiles-y-tejidos-landing",
+            "btn1_link": "/collections/textiles-y-tejidos",
             "btn_bg_color": "#ffb300",
             "btn_txt_color": "#000000",
             "btn2_txt": "Ver Joyería",
-            "btn2_link": "/pages/joyeria-artesanal-landing"
+            "btn2_link": "/collections/joyeria-artesanal"
           }
         }
       },
@@ -43,7 +43,7 @@
           "settings": {
             "image": "shopify://shop_images/Copia_de_pomelli-image_3_6217e464-1784-4999-b638-4a05ce0dcb8d.png",
             "label": "Decoración",
-            "link": "/pages/decoracion-del-hogar-landing"
+            "link": "/collections/decoracion-del-hogar"
           }
         },
         "b2": {
@@ -51,7 +51,7 @@
           "settings": {
             "image": "shopify://shop_images/pomelli-image_7.png",
             "label": "Joyería",
-            "link": "/pages/joyeria-artesanal-landing"
+            "link": "/collections/joyeria-artesanal"
           }
         },
         "b3": {
@@ -59,7 +59,7 @@
           "settings": {
             "image": "shopify://shop_images/Copia_de_pomelli-image_2_628b2941-d038-4821-9e09-cc031df25f20.png",
             "label": "Textiles",
-            "link": "/pages/textiles-y-tejidos-landing"
+            "link": "/collections/textiles-y-tejidos"
           }
         },
         "b4": {
@@ -67,7 +67,7 @@
           "settings": {
             "image": "shopify://shop_images/Copia_de_pomelli-image_65c619cb-0db7-4dc9-b197-52913fd8b2f9.png",
             "label": "Cerámica",
-            "link": "/pages/ceramica-y-barro-landing"
+            "link": "/collections/ceramica-y-barro"
           }
         }
       },
@@ -90,7 +90,7 @@
           "settings": {
             "image": "shopify://shop_images/Copia_de_pomelli-image_3_2.png",
             "label": "Madera",
-            "link": "/pages/madera-landing"
+            "link": "/collections/madera"
           }
         },
         "c2": {
@@ -98,7 +98,7 @@
           "settings": {
             "image": "shopify://shop_images/pomelli-image_11_df643ed5-a27a-413c-ac5f-3a5117989601.png",
             "label": "Vidrio",
-            "link": "/pages/vidrio-y-cristal-landing"
+            "link": "/collections/vidrio-y-cristal"
           }
         },
         "c3": {
@@ -106,7 +106,7 @@
           "settings": {
             "image": "shopify://shop_images/pomelli-image_1.png",
             "label": "Arte",
-            "link": "/pages/arte-decorativo-y-pinturas-landing"
+            "link": "/collections/arte-decorativo-y-pinturas"
           }
         },
         "c4": {

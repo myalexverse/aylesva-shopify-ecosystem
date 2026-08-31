@@ -81,7 +81,7 @@
             "cta_label": "Solicitar este plan",
             "cta_link": "#contacto",
             "whatsapp_label": "WhatsApp",
-            "whatsapp_url": "https:\/\/api.whatsapp.com\/send\/?phone=524774136612&text=Hola%2C+me+interesa+el+plan+Health+%26+Household+de+Aylesva+Care+para+Estados+Unidos&type=phone_number&app_absent=0"
+            "whatsapp_url": "https://api.whatsapp.com/send/?phone=524774136612&text=Hola%2C+me+interesa+el+plan+Health+%26+Household+de+Aylesva+Care+para+Estados+Unidos&type=phone_number&app_absent=0"
           }
         },
         "c2": {
@@ -98,7 +98,7 @@
             "cta_label": "Solicitar este plan",
             "cta_link": "#contacto",
             "whatsapp_label": "WhatsApp",
-            "whatsapp_url": "https:\/\/api.whatsapp.com\/send\/?phone=524774136612&text=Hola%2C+me+interesa+el+plan+Supplemental+Insurance+de+Aylesva+Care+para+Estados+Unidos&type=phone_number&app_absent=0"
+            "whatsapp_url": "https://api.whatsapp.com/send/?phone=524774136612&text=Hola%2C+me+interesa+el+plan+Supplemental+Insurance+de+Aylesva+Care+para+Estados+Unidos&type=phone_number&app_absent=0"
           }
         },
         "c3": {
@@ -115,7 +115,7 @@
             "cta_label": "Solicitar este plan",
             "cta_link": "#contacto",
             "whatsapp_label": "WhatsApp",
-            "whatsapp_url": "https:\/\/api.whatsapp.com\/send\/?phone=524774136612&text=Hola%2C+me+interesa+el+plan+Homezie+de+Aylesva+Care+para+Estados+Unidos&type=phone_number&app_absent=0"
+            "whatsapp_url": "https://api.whatsapp.com/send/?phone=524774136612&text=Hola%2C+me+interesa+el+plan+Homezie+de+Aylesva+Care+para+Estados+Unidos&type=phone_number&app_absent=0"
           }
         }
       }
@@ -207,7 +207,7 @@
         "text": "Compártenos tus datos para presentarte los planes de descuentos médicos y seguros suplementarios en Estados Unidos.",
         "form_id": "vDnep2WEYdM0V7jw95KX",
         "form_height": 720,
-        "whatsapp_url": "https:\/\/api.whatsapp.com\/send\/?phone=524774136612&text=Hola%2C+me+gustar%C3%ADa+informaci%C3%B3n+sobre+los+planes+de+Aylesva+Care+en+Estados+Unidos&type=phone_number&app_absent=0",
+        "whatsapp_url": "https://api.whatsapp.com/send/?phone=524774136612&text=Hola%2C+me+gustar%C3%ADa+informaci%C3%B3n+sobre+los+planes+de+Aylesva+Care+en+Estados+Unidos&type=phone_number&app_absent=0",
         "whatsapp_label": "Hablar con un asesor por WhatsApp"
       },
       "block_order": [

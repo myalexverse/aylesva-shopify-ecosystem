@@ -15,11 +15,11 @@
             "overlay_color": "#000000",
             "overlay_opacity": 30,
             "btn1_txt": "ver vehículos",
-            "btn1_link": "shopify://collections/autos",
+            "btn1_link": "/collections/autos",
             "btn_bg_color": "#ffb300",
             "btn_txt_color": "#000000",
             "btn2_txt": "motos",
-            "btn2_link": "shopify://collections/motos"
+            "btn2_link": "/collections/motos"
           }
         }
       },
@@ -42,7 +42,7 @@
           "settings": {
             "image": "shopify://shop_images/vintage-car-speedometer.jpg",
             "label": "Refacciones",
-            "link": "shopify://collections/refacciones"
+            "link": "/collections/refacciones"
           }
         },
         "b2": {
@@ -66,7 +66,7 @@
           "settings": {
             "image": "shopify://shop_images/photo-inception-in-the-camera-screen.jpg",
             "label": "Herramientas",
-            "link": "shopify://collections/herramientas-automotrices"
+            "link": "/collections/herramientas-automotrices"
           }
         }
       },
@@ -89,7 +89,7 @@
           "settings": {
             "image": "shopify://shop_images/black-white-motorcycle.jpg",
             "label": "Motos",
-            "link": "shopify://collections/motos"
+            "link": "/collections/motos"
           }
         },
         "c2": {
@@ -105,7 +105,7 @@
           "settings": {
             "image": "shopify://shop_images/purple-convertible-car.jpg",
             "label": "autos",
-            "link": "shopify://collections/autos"
+            "link": "/collections/autos"
           }
         },
         "c4": {
