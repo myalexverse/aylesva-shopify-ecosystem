@@ -1,61 +1,29 @@
 {%- if results.products_count == 0 -%}
 <style>
-  #ayl-empty-col{font-family:'Inter', sans-serif;min-height:50vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:50px 20px;background:#fff;}
-  .ayl-ei{font-size:58px;margin-bottom:14px;display:block;}
-  .ayl-ebadge{display:inline-block;background:#000;color:#fff;font-size:11px;font-weight:800;letter-spacing:3px;text-transform:uppercase;padding:6px 18px;border-radius:0px;margin-bottom:18px;}
-  .ayl-et{font-size:clamp(1.4rem,3vw,2.2rem);font-weight:900;color:#000;margin:0 0 12px;text-transform: uppercase;}
-  .ayl-es{font-size:.95rem;color:#666;max-width:480px;line-height:1.7;margin:0 auto 24px;}
-  .ayl-eb1{display:inline-flex;align-items:center;gap:8px;background:#000;color:#fff;text-decoration:none;padding:15px 30px;font-size:.9rem;font-weight:700;text-transform: uppercase;}
+  #ayl-empty-col{font-family:'Manrope', -apple-system, sans-serif;min-height:45vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:50px 20px;background:#fff;border-radius:8px;border:1px solid #f0f0f0;}
+  .ayl-ei{font-size:52px;margin-bottom:14px;display:block;}
+  .ayl-ebadge{display:inline-block;background:#0F172A;color:#C5A47E;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:6px 16px;border-radius:4px;margin-bottom:16px;}
+  .ayl-et{font-size:clamp(1.4rem,3vw,2rem);font-weight:800;color:#0F172A;margin:0 0 12px;text-transform:uppercase;font-family:'Sora',sans-serif;}
+  .ayl-es{font-size:.95rem;color:#64748B;max-width:480px;line-height:1.7;margin:0 auto 24px;}
+  .ayl-eb1{display:inline-flex;align-items:center;gap:8px;background:#0F172A;color:#fff;text-decoration:none;padding:12px 24px;font-size:.9rem;font-weight:700;border-radius:6px;transition:all .2s;}
+  .ayl-eb1:hover{background:#C5A47E;color:#fff;}
 </style>
 <div id="ayl-empty-col">
-  <span class="ayl-ei">&#128717;</span>
-  <div class="ayl-ebadge">&#10024; Proximamente</div>
-  <h2 class="ayl-et">{{ results.title }} &mdash;<br><span>en camino</span></h2>
-  <p class="ayl-es">Estamos seleccionando los mejores productos para esta coleccion. Muy pronto encontraras aqui piezas unicas que haran la diferencia. Vale la pena esperar!</p>
-  <div class="ayl-ed"><span></span><span></span><span></span></div>
+  <span class="ayl-ei">📦</span>
+  <div class="ayl-ebadge">Próximamente</div>
+  <h2 class="ayl-et">{{ results.title }}</h2>
+  <p class="ayl-es">Estamos actualizando el inventario para esta colección con los mejores productos de nuestra red de proveedores.</p>
   <div class="ayl-ebs">
-    <a href="/collections" class="ayl-eb1">&#128722; Ver todo el catalogo</a>
+    <a href="/pages/marketplace" class="ayl-eb1">Ver todo el catálogo →</a>
   </div>
 </div>
 {%- else -%}
-
-
-{% assign products_per_row = settings.collection_products_per_row %}
-{% assign short_list_view = '.short-list.btn.active' %}
-{% unless products_per_page  %}
-  {% assign products_per_page = settings.collection_page_products %}
-{% endunless %}
-
-
+{% assign products_per_row = settings.collection_products_per_row | default: '3' %}
+{% assign products_per_page = settings.collection_page_products | default: 16 %}
 
 <div id="ProductGridContainer">
   <div class="collection_template" id="product-grid" data-id="{{ section.id }}">
-    {% if settings.collection_sidebar_use == 'full_width' %}
-      {% if settings.collection_filter_pos == 'left_filter'
-        or settings.collection_filter_pos == 'right_filter'
-        or settings.collection_filter_pos == 'toggle_filter'
-      %}
-        <div class="container">
-      {% endif %}
-    {% endif %}
-    {% if search.performed %}
-      {% paginate search.results by products_per_page %}
-        {% render 'ayl-collection-grid-content', results: results, products_per_row: products_per_row, products_per_page: products_per_page, paginate: paginate %}
-      {% endpaginate %}
-    {% else %}
-      {% paginate collection.products by products_per_page %}
-        {% render 'ayl-collection-grid-content', results: results, products_per_row: products_per_row, products_per_page: products_per_page, paginate: paginate %}
-      {% endpaginate %}
-    {% endif %}
-    {% if settings.collection_sidebar_use == 'full_width' %}
-      {% if settings.collection_filter_pos == 'left_filter'
-        or settings.collection_filter_pos == 'right_filter'
-        or settings.collection_filter_pos == 'toggle_filter'
-      %}
-        </div>
-      {% endif %}
-    {% endif %}
+    {% render 'ayl-collection-grid-content', results: results, products_per_row: products_per_row, products_per_page: products_per_page, paginate: paginate %}
   </div>
 </div>
-
 {%- endif -%}
