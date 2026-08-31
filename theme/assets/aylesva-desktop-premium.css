@@ -29,13 +29,39 @@
     padding: 0 !important;
   }
 
-  /* 3. Sidebar Redesign - Unified Single Card Accordion Stack */
-  
-  /* Align sidebar with product grid */
-  .template-collection .left-sidebar.sidebar,
-  .template-collection .right-sidebar.sidebar {
-    margin-top: 30px !important;
-    padding-top: 0 !important;
+  /* 3. True 2-Column Grid Layout: Sidebar Left (280px), Products Right */
+  .template-collection .content_wrap.left-sidebar .container > .row,
+  .template-collection .content_wrap .row:first-of-type {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: flex-start !important;
+    gap: 25px !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100% !important;
+  }
+
+  .template-collection #left-column,
+  .template-collection .left-sidebar.sidebar {
+    flex: 0 0 270px !important;
+    width: 270px !important;
+    max-width: 270px !important;
+    margin-top: 0 !important;
+    padding: 0 !important;
+    float: none !important;
+    display: block !important;
+  }
+
+  .template-collection .collection_wrapper,
+  .template-collection .collection_right {
+    flex: 1 1 auto !important;
+    width: calc(100% - 295px) !important;
+    max-width: calc(100% - 295px) !important;
+    margin-top: 0 !important;
+    padding: 0 !important;
+    float: none !important;
+    display: block !important;
   }
 
   /* Parent Container for sidebar filters */
@@ -43,11 +69,10 @@
   .template-collection .sidebar-block {
     background-color: #fff !important;
     border-radius: 8px !important;
-    padding: 24px !important;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.08) !important;
+    padding: 20px !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06) !important;
     border: 1px solid #efefef !important;
     display: block !important;
-    float: left !important;
     width: 100% !important;
     box-sizing: border-box !important;
     margin-top: 0 !important;
