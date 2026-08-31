@@ -15,11 +15,11 @@
             "overlay_color": "#000000",
             "overlay_opacity": 35,
             "btn1_txt": "Celulares",
-            "btn1_link": "/pages/telefonos-y-comunicacion-landing",
+            "btn1_link": "/collections/celulares",
             "btn_bg_color": "#ffb300",
             "btn_txt_color": "#000000",
             "btn2_txt": "Laptops",
-            "btn2_link": "/pages/computadoras-y-laptops-landing"
+            "btn2_link": "/collections/laptops-y-notebooks"
           }
         }
       },
@@ -42,7 +42,7 @@
           "settings": {
             "image": "shopify://shop_images/cellphone-floats-above-pink-with-blue-below.jpg",
             "label": "Celulares",
-            "link": "/pages/telefonos-y-comunicacion-landing"
+            "link": "/collections/celulares"
           }
         },
         "b2": {
@@ -50,7 +50,7 @@
           "settings": {
             "image": "shopify://shop_images/laptop-at-the-table-with-tea-at-side.jpg",
             "label": "Laptops",
-            "link": "/pages/computadoras-y-laptops-landing"
+            "link": "/collections/laptops-y-notebooks"
           }
         },
         "b3": {
@@ -58,7 +58,7 @@
           "settings": {
             "image": "shopify://shop_images/smart-home-device-on-wooden-desk.jpg",
             "label": "Audio",
-            "link": "/pages/audio-y-sonido-landing"
+            "link": "/collections/audio-y-gps-para-vehiculos"
           }
         },
         "b4": {
@@ -66,7 +66,7 @@
           "settings": {
             "image": "shopify://shop_images/handheld-games-console.jpg",
             "label": "Gaming",
-            "link": "/pages/videojuegos-landing"
+            "link": "/collections/videojuegos-y-titulos"
           }
         }
       },
@@ -89,7 +89,7 @@
           "settings": {
             "image": "shopify://shop_images/smart-home-device-on-counter.jpg",
             "label": "Smart Home",
-            "link": "/pages/seguridad-electronica-landing"
+            "link": "/collections/camaras-de-seguridad"
           }
         },
         "c2": {
@@ -97,7 +97,7 @@
           "settings": {
             "image": "shopify://shop_images/vintage-film-camera-on-grey-background.jpg",
             "label": "Cámaras",
-            "link": "/pages/fotografia-y-video-landing"
+            "link": "/collections/camaras-fotograficas"
           }
         },
         "c3": {
@@ -105,7 +105,7 @@
           "settings": {
             "image": "shopify://shop_images/woman-using-waterproof-speaker.jpg",
             "label": "Gadgets",
-            "link": "/pages/wearables-y-gadgets-landing"
+            "link": "/collections/gadgets-y-accesorios-tecnologicos"
           }
         },
         "c4": {
@@ -113,7 +113,7 @@
           "settings": {
             "image": "shopify://shop_images/security-camera-on-patterned-building.jpg",
             "label": "Periféricos",
-            "link": "/pages/computadoras-y-laptops-landing"
+            "link": "/collections/accesorios-para-computadora"
           }
         }
       },
