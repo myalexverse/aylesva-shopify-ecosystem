@@ -58,7 +58,7 @@
           "settings": {
             "image": "shopify://shop_images/red-sports-car-wheel-close-up.jpg",
             "label": "Llantas",
-            "link": "/pages/vehiculos-de-carga-y-trabajo-landing"
+            "link": "/collections/llantas-y-rines"
           }
         },
         "b4": {
@@ -97,7 +97,7 @@
           "settings": {
             "image": "shopify://shop_images/batting-helmet-in-sand.jpg",
             "label": "Cascos",
-            "link": "/pages/vehiculos-recreativos-landing"
+            "link": "/collections/cuatrimotos-atvs"
           }
         },
         "c3": {
