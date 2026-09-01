@@ -1,4 +1,169 @@
 {{ 'aylesva-desktop-premium.css' | asset_url | stylesheet_tag }}
+
+<style>
+  /* --- COLLECTION DESKTOP 2-COLUMN GRID & CARD STYLES --- */
+  @media (min-width: 768px) {
+    body.template-collection .main-content,
+    body.template-collection #MainContent,
+    body.template-collection .content_wrap {
+      padding-top: 15px !important;
+      margin-top: 0 !important;
+      background-color: #f6f6f6 !important;
+    }
+
+    .content_wrap.left-sidebar .container > .row {
+      display: flex !important;
+      flex-direction: row !important;
+      flex-wrap: nowrap !important;
+      align-items: flex-start !important;
+      gap: 25px !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+      width: 100% !important;
+    }
+
+    #left-column.left-sidebar,
+    .left-sidebar.sidebar {
+      flex: 0 0 270px !important;
+      width: 270px !important;
+      max-width: 270px !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      float: none !important;
+      display: block !important;
+    }
+
+    .collection_wrapper.collection_right {
+      flex: 1 1 auto !important;
+      width: calc(100% - 295px) !important;
+      max-width: calc(100% - 295px) !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      float: none !important;
+      display: block !important;
+    }
+
+    .products-grid-view {
+      display: flex !important;
+      flex-wrap: wrap !important;
+      margin: 0 -8px !important;
+      padding: 0 !important;
+      width: calc(100% + 16px) !important;
+      box-sizing: border-box !important;
+    }
+
+    .products-grid-view > .grid-item {
+      width: 33.333333% !important;
+      max-width: 33.333333% !important;
+      flex: 0 0 33.333333% !important;
+      padding: 8px !important;
+      box-sizing: border-box !important;
+      margin: 0 !important;
+      float: left !important;
+      display: block !important;
+    }
+
+    @media (min-width: 1400px) {
+      .products-grid-view > .grid-item {
+        width: 25% !important;
+        max-width: 25% !important;
+        flex: 0 0 25% !important;
+      }
+    }
+
+    .ayl-premium-product-card {
+      background: #ffffff !important;
+      border-radius: 8px !important;
+      border: 1px solid #eaeaea !important;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06) !important;
+      overflow: hidden !important;
+      width: 100% !important;
+      height: 100% !important;
+      display: flex !important;
+      flex-direction: column !important;
+      margin: 0 !important;
+      transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+    }
+
+    .ayl-premium-product-card:hover {
+      transform: translateY(-3px) !important;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1) !important;
+    }
+
+    .ayl-premium-product-card .ayl-image-wrap {
+      width: 100% !important;
+      height: 220px !important;
+      position: relative !important;
+      overflow: hidden !important;
+      background: #ffffff !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+
+    .ayl-premium-product-card .ayl-image-wrap a {
+      width: 100% !important;
+      height: 100% !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+
+    .ayl-premium-product-card .ayl-image-wrap img {
+      max-width: 100% !important;
+      max-height: 100% !important;
+      width: auto !important;
+      height: auto !important;
+      object-fit: contain !important;
+      padding: 10px !important;
+      box-sizing: border-box !important;
+      display: block !important;
+    }
+
+    .ayl-premium-product-card .ayl-info-wrap {
+      padding: 12px 14px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      flex-grow: 1 !important;
+      background: #ffffff !important;
+      border-top: 1px solid #f2f2f2 !important;
+    }
+
+    .ayl-premium-product-card .ayl-title {
+      font-size: 13px !important;
+      font-weight: 600 !important;
+      color: #1a1a1a !important;
+      text-decoration: none !important;
+      line-height: 1.4 !important;
+      margin-bottom: 6px !important;
+      display: -webkit-box !important;
+      -webkit-line-clamp: 2 !important;
+      -webkit-box-orient: vertical !important;
+      overflow: hidden !important;
+      min-height: 36px !important;
+    }
+
+    .ayl-premium-product-card .ayl-price-wrap {
+      margin-top: auto !important;
+      display: flex !important;
+      align-items: baseline !important;
+      gap: 5px !important;
+    }
+
+    .ayl-premium-product-card .ayl-price {
+      font-size: 15px !important;
+      font-weight: 700 !important;
+      color: #C5A47E !important;
+    }
+
+    .ayl-premium-product-card .ayl-compare-price {
+      font-size: 12px !important;
+      color: #999 !important;
+      text-decoration: line-through !important;
+    }
+  }
+</style>
+
 <!-- /templates/collection.liquid -->
 {% comment %}The contents of the collection.liquid template can be found in /sections/collection-template.liquid{% endcomment %}
 {% if settings.collection_sidebar_use == "left_sidebar" %}

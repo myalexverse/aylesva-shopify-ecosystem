@@ -98,18 +98,7 @@
 <div class="grid-uniform product-grid col-main">
   <div class="row">
     <div class="products-grid-view">
-      {% case products_per_row %}
-        {% when '2' %}
-          {% assign grid_item_width = 'medium-up--one-third large-up--one-half' %}
-        {% when '3' %}
-          {% assign grid_item_width = 'medium-up--one-third large-up--one-third' %}
-        {% when '4' %}
-          {% assign grid_item_width = 'medium-up--one-third large-up--one-quarter' %}
-        {% when '5' %}
-          {% assign grid_item_width = 'medium-down--one-half large-up--one-fifth' %}
-        {% when '6' %}
-          {% assign grid_item_width = 'medium-down--one-half large-up--one-sixth' %}
-      {% endcase %}
+      {% assign grid_item_width = 'col-xs-6 col-sm-6 col-md-4 col-lg-4' %}
       
       {% assign items = results.products | default: results.results %}
       
