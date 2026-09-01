@@ -176,7 +176,9 @@
       </div>
       <div class="col-xs-12 col-sm-9 collection_wrapper collection_right">
         {% paginate collection.products by 16 %}
-          {% render 'ayl-definitive-mobile-grid', results: collection, paginate: paginate %}
+          <div class="visible-xs">
+            {% render 'ayl-definitive-mobile-grid', results: collection, paginate: paginate %}
+          </div>
           <div class="hidden-xs">
             {% if settings.collections_masonry %}  
             {% render 'product-masonry', results: collection, enable_sorting: section.settings.enable_sorting %}
@@ -197,7 +199,9 @@
     <div class="row">
       <div class="col-xs-12 col-sm-9 collection_wrapper collection_left">
         {% paginate collection.products by 16 %}
-          {% render 'ayl-definitive-mobile-grid', results: collection, paginate: paginate %}
+          <div class="visible-xs">
+            {% render 'ayl-definitive-mobile-grid', results: collection, paginate: paginate %}
+          </div>
           <div class="hidden-xs">
             {% if settings.collections_masonry %}  
             {% render 'product-masonry', results: collection, enable_sorting: section.settings.enable_sorting %}
@@ -225,7 +229,9 @@
       </div>
       <div class="col-xs-12 col-sm-6 collection_wrapper collection_left">
         {% paginate collection.products by 16 %}
-          {% render 'ayl-definitive-mobile-grid', results: collection, paginate: paginate %}
+          <div class="visible-xs">
+            {% render 'ayl-definitive-mobile-grid', results: collection, paginate: paginate %}
+          </div>
           <div class="hidden-xs">
             {% if settings.collections_masonry %}  
             {% render 'product-masonry', results: collection, enable_sorting: section.settings.enable_sorting %}
@@ -250,14 +256,18 @@
 {% paginate collection.products by 16 %}
 {% if settings.collections_masonry %}
 <div class="full-width col-sm-12">
-  {% render 'ayl-definitive-mobile-grid', results: collection, paginate: paginate %}
+  <div class="visible-xs">
+    {% render 'ayl-definitive-mobile-grid', results: collection, paginate: paginate %}
+  </div>
   <div class="hidden-xs">
     {% render 'product-masonry', results: collection, enable_sorting: section.settings.enable_sorting %}
   </div>
 </div>
 {% else %}
 <div class="full-width col-sm-12">
-  {% render 'ayl-definitive-mobile-grid', results: collection, paginate: paginate %}
+  <div class="visible-xs">
+    {% render 'ayl-definitive-mobile-grid', results: collection, paginate: paginate %}
+  </div>
   <div class="hidden-xs">
     {% render 'collection-template', results: collection, enable_sorting: section.settings.enable_sorting %}
   </div>

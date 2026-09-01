@@ -8,6 +8,12 @@
 {% endcomment %}
 
 <style>
+  @media (min-width: 768px) {
+    .ayl-mobile-container, #ayl-sort-overlay, .ayl-custom-filter-drawer, .ayl-mob-header {
+      display: none !important;
+    }
+  }
+
   @media (max-width: 767px) {
     /* VISIBILITY FIX - Ensure filter drawer remains accessible */
     .collection_wrapper > .hidden-xs, 
