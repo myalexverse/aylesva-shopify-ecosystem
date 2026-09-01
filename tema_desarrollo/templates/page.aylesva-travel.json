@@ -1,0 +1,426 @@
+{
+  "sections": {
+    "hero": {
+      "type": "aylesva-corp-hero",
+      "settings": {
+        "eyebrow": "Aylesva Travel · Club Exclusivo de Viajes & Recompensas",
+        "overlay": 78,
+        "focal": "center",
+        "image": "ay-ge-pb-beachclub.jpg",
+        "title": "Viaja Más, Ahorra Siempre y Disfruta al Nivel que Mereces",
+        "subtitle": "Tu membresía exclusiva con tarifas preferenciales, concierge de clase mundial, garantía de mejor precio y programa de recompensas B-Rewards en hoteles, vuelos, cruceros, golf y experiencias en todo el mundo.",
+        "cta1_label": "Solicitar Membresía VIP",
+        "cta1_link": "#contacto",
+        "cta2_label": "Portal de Socios",
+        "cta2_link": "https://www.aylesvatravel.com"
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ],
+      "blocks": {
+        "s1": {
+          "type": "stat",
+          "settings": {
+            "value": "1,000,000+",
+            "label": "Hoteles y Resorts"
+          }
+        },
+        "s2": {
+          "type": "stat",
+          "settings": {
+            "value": "100%",
+            "label": "Garantía de Mejor Precio"
+          }
+        },
+        "s3": {
+          "type": "stat",
+          "settings": {
+            "value": "24/7",
+            "label": "Concierge Personal"
+          }
+        },
+        "s4": {
+          "type": "stat",
+          "settings": {
+            "value": "B-Rewards",
+            "label": "Puntos y Créditos"
+          }
+        }
+      }
+    },
+    "servicios": {
+      "type": "aylesva-corp-cards",
+      "settings": {
+        "bg": "#FAFAF8",
+        "columns": 3,
+        "eyebrow": "Catálogo de Experiencias",
+        "title": "Todo tu Universo de Viajes en una Sola Membresía",
+        "intro": "Como socio VIP de Aylesva Travel, tienes acceso directo a una amplia gama de servicios turísticos con tarifas preferenciales, asistencia personalizada y acumulación de créditos Rewards."
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5",
+        "c6"
+      ],
+      "blocks": {
+        "c1": {
+          "type": "card",
+          "settings": {
+            "image": "ay-ge-pb-interior.jpg",
+            "tag": "Hospedaje VIP",
+            "eyebrow": "+1M Propiedades",
+            "title": "Hoteles y Resorts Exclusivos",
+            "text": "Accede a tarifas con descuento preferencial en las cadenas hoteleras y resorts más reconocidos de México, Estados Unidos y destinos internacionales.",
+            "bullets": "Garantía de tarifa más baja en hospedaje\nHabitaciones estándar, suites de lujo y villas privadas\nBeneficios exclusivos para socios del club",
+            "cta_label": "Cotizar Hospedaje",
+            "cta_link": "#contacto",
+            "whatsapp_label": "WhatsApp",
+            "whatsapp_url": "https://api.whatsapp.com/send/?phone=524774136612&text=Hola%2C+me+interesa+cotizar+hospedaje+con+Aylesva+Travel&type=phone_number&app_absent=0",
+            "price": ""
+          }
+        },
+        "c2": {
+          "type": "card",
+          "settings": {
+            "image": "ay-ge-alt-sunset.jpg",
+            "tag": "Boletos de Avión",
+            "eyebrow": "Rutas Globales",
+            "title": "Vuelos Comerciales y Privados",
+            "text": "Reserva conexiones aéreas con las principales aerolíneas del mundo a precios competitivos y acumula recompensas con cada trayecto.",
+            "bullets": "Vuelos nacionales e internacionales multiciudad\nGestión ágil de equipaje y asientos preferenciales\nAcumulación de puntos en el programa B-Rewards",
+            "cta_label": "Consultar Vuelos",
+            "cta_link": "#contacto",
+            "whatsapp_label": "WhatsApp",
+            "whatsapp_url": "https://api.whatsapp.com/send/?phone=524774136612&text=Hola%2C+deseo+consultar+vuelos+con+Aylesva+Travel&type=phone_number&app_absent=0",
+            "price": ""
+          }
+        },
+        "c3": {
+          "type": "card",
+          "settings": {
+            "image": "ay-ge-pb-sunset.jpg",
+            "tag": "Navieras Líderes",
+            "eyebrow": "Caribe, Europa & Alaska",
+            "title": "Cruceros y Travesías de Lujo",
+            "text": "Navega en los barcos más prestigiados (Royal Caribbean, Celebrity, Norwegian) con promociones exclusivas y créditos de consumo a bordo.",
+            "bullets": "Itinerarios por el Caribe, Mediterráneo y Fiordos\nCabinas interiores, con balcón y suites de lujo\nAtención personalizada para grupos y familias",
+            "cta_label": "Ver Cruceros",
+            "cta_link": "#contacto",
+            "whatsapp_label": "WhatsApp",
+            "whatsapp_url": "https://api.whatsapp.com/send/?phone=524774136612&text=Hola%2C+quiero+cotizar+un+crucero+con+Aylesva+Travel&type=phone_number&app_absent=0",
+            "price": ""
+          }
+        },
+        "c4": {
+          "type": "card",
+          "settings": {
+            "image": "ay-ge-alt-oasis.jpg",
+            "tag": "Lifestyle & Deporte",
+            "eyebrow": "PGA & Safaris",
+            "title": "Golf de Campeonato y Safaris",
+            "text": "Green fees en campos de golf de clase mundial, safaris en África y expediciones diseñadas a tu medida para experiencias inolvidables.",
+            "bullets": "Campos de golf selectos con reservas prioritarias\nSafaris guiados con operadores locales certificados\nExperiencias premium adaptadas a tus intereses",
+            "cta_label": "Explorar Experiencias",
+            "cta_link": "#contacto",
+            "whatsapp_label": "WhatsApp",
+            "whatsapp_url": "https://api.whatsapp.com/send/?phone=524774136612&text=Hola%2C+me+interesan+experiencias+de+golf+y+safaris+con+Aylesva+Travel&type=phone_number&app_absent=0",
+            "price": ""
+          }
+        },
+        "c5": {
+          "type": "card",
+          "settings": {
+            "image": "ay-ge-alt-villas.jpg",
+            "tag": "Atracciones & Guías",
+            "eyebrow": "Entradas VIP",
+            "title": "Tours, Excursiones y Parques",
+            "text": "Entradas y pases para las atracciones más famosas, parques temáticos (Xcaret, Disney, Universal) y tours guiados en cientos de destinos.",
+            "bullets": "Pases de acceso rápido en atracciones seleccionadas\nTours culturales, gastronómicos y de naturaleza\nGuías bilingües y transporte garantizado",
+            "cta_label": "Cotizar Tours",
+            "cta_link": "#contacto",
+            "whatsapp_label": "WhatsApp",
+            "whatsapp_url": "https://api.whatsapp.com/send/?phone=524774136612&text=Hola%2C+me+interesa+cotizar+tours+y+parques+con+Aylesva+Travel&type=phone_number&app_absent=0",
+            "price": ""
+          }
+        },
+        "c6": {
+          "type": "card",
+          "settings": {
+            "image": "ay-direct-worldwide.jpg",
+            "tag": "Movilidad Terrestre",
+            "eyebrow": "Sin Cargos Ocultos",
+            "title": "Renta de Autos y Transportación",
+            "text": "Vehículos de las mejores arrendadoras con seguros transparentes, kilometraje libre y traslados privados aeropuerto-hotel.",
+            "bullets": "Tarifas netas sin cobros sorpresa al recoger el auto\nFlotas de autos compactos, SUV familiares y de lujo\nServicio de chofer privado y traslados ejecutivos",
+            "cta_label": "Reservar Auto",
+            "cta_link": "#contacto",
+            "whatsapp_label": "WhatsApp",
+            "whatsapp_url": "https://api.whatsapp.com/send/?phone=524774136612&text=Hola%2C+deseo+rentar+un+auto+o+traslado+con+Aylesva+Travel&type=phone_number&app_absent=0",
+            "price": ""
+          }
+        }
+      }
+    },
+    "beneficios": {
+      "type": "aylesva-corp-features",
+      "settings": {
+        "bg": "#FFFFFF",
+        "eyebrow": "Ventajas del Club",
+        "title": "Por Qué los Socios Eligen Aylesva Travel",
+        "subtitle": "Una plataforma integral que combina tecnología avanzada, tarifas preferenciales y conserjería humana dedicada para elevar cada viaje."
+      },
+      "block_order": [
+        "f1",
+        "f2",
+        "f3",
+        "f4",
+        "f5",
+        "f6"
+      ],
+      "blocks": {
+        "f1": {
+          "type": "feature",
+          "settings": {
+            "icon": "<path d=\"M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z\"/>",
+            "title": "Garantía de Mejor Precio",
+            "text": "Te garantizamos la tarifa más baja del mercado en reservaciones de hoteles, resorts y excursiones frente a opciones públicas disponibles."
+          }
+        },
+        "f2": {
+          "type": "feature",
+          "settings": {
+            "icon": "<rect x=\"3\" y=\"10\" width=\"18\" height=\"11\"/><path d=\"M3 10 12 4l9 6\"/><path d=\"M9 21v-6h6v6\"/>",
+            "title": "Programa de Lealtad B-Rewards",
+            "text": "Recibe créditos al activar tu membresía, renueva puntos cada año y aplícalos como descuento directo en servicios de viaje en todo el mundo."
+          }
+        },
+        "f3": {
+          "type": "feature",
+          "settings": {
+            "icon": "<path d=\"M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2\"/><circle cx=\"9\" cy=\"7\" r=\"4\"/><path d=\"M22 21v-2a4 4 0 0 0-3-3.87\"/><path d=\"M16 3.13a4 4 0 0 1 0 7.75\"/>",
+            "title": "Luxury Concierge Personalizado",
+            "text": "Un asesor experto asignado te acompaña a planear itinerarios, gestionar reservas especiales y resolver cualquier eventualidad durante tu viaje."
+          }
+        },
+        "f4": {
+          "type": "feature",
+          "settings": {
+            "icon": "<path d=\"M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z\"/>",
+            "title": "Línea Gratuita Toll-Free",
+            "text": "Atención telefónica sin costo para EE. UU. y Canadá al 1-877-503-0417 con horarios extendidos y soporte por correo electrónico."
+          }
+        },
+        "f5": {
+          "type": "feature",
+          "settings": {
+            "icon": "<circle cx=\"12\" cy=\"12\" r=\"10\"/><line x1=\"2\" y1=\"12\" x2=\"22\" y2=\"12\"/><path d=\"M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z\"/>",
+            "title": "Portal Privado para Miembros",
+            "text": "Ingresa con tu clave personal a www.aylesvatravel.com para consultar tus créditos Rewards, comparar opciones y reservar las 24 horas del día."
+          }
+        },
+        "f6": {
+          "type": "feature",
+          "settings": {
+            "icon": "<path d=\"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z\"/>",
+            "title": "Alianzas y Respaldo Global",
+            "text": "Integración y alianzas con los operadores y consorcios turísticos más reconocidos de la industria (Xcaret, AMEX, ARDA, AMDETUR)."
+          }
+        }
+      }
+    },
+    "proceso": {
+      "type": "aylesva-corp-process",
+      "settings": {
+        "bg": "#FAFAF8",
+        "eyebrow": "Paso a Paso",
+        "title": "Cómo Funciona tu Membresía Aylesva Travel",
+        "subtitle": "Un proceso ágil y transparente desde la contratación hasta tu regreso."
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3",
+        "p4"
+      ],
+      "blocks": {
+        "p1": {
+          "type": "step",
+          "settings": {
+            "num": "01",
+            "title": "Registro & Contrato VIP",
+            "text": "Recibe tu número de contrato oficial y tu clave única de acceso al portal de socios www.aylesvatravel.com."
+          }
+        },
+        "p2": {
+          "type": "step",
+          "settings": {
+            "num": "02",
+            "title": "Asignación de Concierge",
+            "text": "Tu asesor personal se pone en contacto para conocer tus preferencias, destinos soñados y fechas previstas."
+          }
+        },
+        "p3": {
+          "type": "step",
+          "settings": {
+            "num": "03",
+            "title": "Cotización con Descuentos Rewards",
+            "text": "Seleccionas tu viaje y aplicamos tus créditos B-Rewards de inmediato garantizando el precio más bajo del mercado."
+          }
+        },
+        "p4": {
+          "type": "step",
+          "settings": {
+            "num": "04",
+            "title": "Disfruta & Genera Nuevos Puntos",
+            "text": "Viajas con asistencia continua y cada experiencia genera nuevas recompensas para tus próximas vacaciones."
+          }
+        }
+      }
+    },
+    "formulario": {
+      "type": "aylesva-corp-form",
+      "settings": {
+        "bg": "#0C0C0F",
+        "eyebrow": "Atención Inmediata",
+        "title": "Solicita tu Membresía o Habla con un Concierge",
+        "subtitle": "Déjanos tus datos para recibir asesoría sobre las membresías VIP de Aylesva Travel, consultar el programa de recompensas o planear tu próximo viaje.",
+        "phone": "+1 (877) 503-0417",
+        "email": "garantiadeprecio@serviciosdeviaje.mx",
+        "address": "Atención a Socios México, EE. UU. y Canadá · Toll-Free 1-877-503-0417",
+        "hours": "Lunes a Viernes 7:00 a 23:00 hrs · Sábado y Domingo 10:00 a 18:00 hrs (CDMX)",
+        "whatsapp_number": "524774136612",
+        "whatsapp_label": "WhatsApp Directo",
+        "whatsapp_text": "Hola, me interesa información sobre la membresía y beneficios de Aylesva Travel"
+      }
+    },
+    "faq": {
+      "type": "aylesva-corp-faq",
+      "settings": {
+        "bg": "#FFFFFF",
+        "eyebrow": "Preguntas Frecuentes",
+        "title": "Resolvemos tus Dudas sobre Aylesva Travel"
+      },
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5"
+      ],
+      "blocks": {
+        "q1": {
+          "type": "faq",
+          "settings": {
+            "q": "¿Cómo accedo al portal de socios de Aylesva Travel?",
+            "a": "Una vez activada tu membresía VIP, recibirás tus credenciales de acceso con tu usuario y contraseña privada para ingresar directamente a www.aylesvatravel.com y gestionar tus reservaciones las 24 horas del día."
+          }
+        },
+        "q2": {
+          "type": "faq",
+          "settings": {
+            "q": "¿Cómo funciona la Garantía de Mejor Precio?",
+            "a": "Si encuentras una tarifa pública disponible en línea más baja para el mismo hotel, fechas, tipo de habitación y condiciones de cancelación, nuestro equipo de soporte te iguala el precio conforme a las políticas del club."
+          }
+        },
+        "q3": {
+          "type": "faq",
+          "settings": {
+            "q": "¿Cómo se aplican los créditos y puntos B-Rewards?",
+            "a": "Los créditos otorgados al inicio de tu membresía y los puntos acumulados en tus viajes se aplican como descuento directo en el importe final de tus reservaciones participantes de hoteles, cruceros y excursiones."
+          }
+        },
+        "q4": {
+          "type": "faq",
+          "settings": {
+            "q": "¿Puedo reservar para mis familiares con mi membresía?",
+            "a": "Sí, como socio titular de Aylesva Travel puedes reservar vuelos, hospedajes, cruceros y actividades para tus familiares y acompañantes aprovechando los beneficios de tu membresía."
+          }
+        },
+        "q5": {
+          "type": "faq",
+          "settings": {
+            "q": "¿Cómo contacto a mi Asesor o Concierge de Viajes?",
+            "a": "Puedes comunicarte sin costo desde EE. UU. y Canadá al 1-877-503-0417 de lunes a viernes de 7:00 a 23:00 hrs y fines de semana de 10:00 a 18:00 hrs (CDMX), o bien enviar un correo a garantiadeprecio@serviciosdeviaje.mx."
+          }
+        }
+      }
+    },
+    "legal_disclaimer": {
+      "type": "aylesva-corp-legal",
+      "settings": {
+        "bg": "#FAFAF8",
+        "alignment": "left",
+        "title": "Términos de la Plataforma Aylesva Travel, Conserjería y Divulgaciones Regulatorias",
+        "text": "1. Estado Administrativo y de Conserjería de Viajes:\nAylesva Travel opera como una plataforma tecnológica de conserjería turística, facilitación administrativa y programa de recompensas para socios. Aylesva no es una aerolínea, operador marítimo directo, propietario hotelero ni transportista con licencia propia. Todos los servicios turísticos, vuelos, cruceros, hospedajes, rentas de autos y tours son ejecutados y garantizados de manera independiente por proveedores turísticos, aerolíneas, operadores hoteleros y navieras acreditadas bajo la legislación correspondiente.\n\n2. Garantía de Mejor Precio y Programa B-Rewards:\nLa Garantía de Mejor Precio aplica exclusivamente sobre tarifas públicas disponibles en línea para el público general bajo condiciones idénticas de reserva (mismas fechas, categoría de habitación, régimen de alimentos y políticas de cancelación). Los créditos y puntos de lealtad B-Rewards se rigen conforme a los términos y condiciones del programa del club y aplican en servicios participantes.\n\n3. Responsabilidad de Operadores Externos:\nLa prestación, horarios, políticas de equipaje, estándares de servicio y contingencias operativas de vuelos, cruceros y alojamientos son responsabilidad exclusiva de las empresas prestadoras finales. Aylesva no asume responsabilidad directa por cancelaciones, modificaciones de itinerario derivadas de condiciones meteorológicas, fuerza mayor o disposiciones de autoridades gubernamentales y aeroportuarias.\n\n4. Documentación y Requisitos Migratorios:\nEs responsabilidad exclusiva del usuario y de cada pasajero verificar y portar la documentación migratoria vigente (pasaportes, visas, permisos sanitarios y aduanales) requerida por los países de tránsito y destino."
+      }
+    },
+    "ramas": {
+      "type": "aylesva-corp-branches",
+      "settings": {
+        "bg": "#FFFFFF",
+        "eyebrow": "Ecosistema Corporativo Aylesva",
+        "title": "El mismo respaldo, en cada una de nuestras ramas"
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ],
+      "blocks": {
+        "b1": {
+          "type": "branch",
+          "settings": {
+            "icon": "<rect x=\"3\" y=\"4\" width=\"18\" height=\"5\"/><path d=\"M5 9v12h14V9\"/><path d=\"M9 13h6\"/>",
+            "title": "Lanza tu Marca",
+            "text": "Vende en línea con tu propia tienda. Catálogo, tienda y logística resueltos.",
+            "link": "/pages/lanza-tu-propia-marca"
+          }
+        },
+        "b2": {
+          "type": "branch",
+          "settings": {
+            "icon": "<rect x=\"3\" y=\"10\" width=\"18\" height=\"11\"/><path d=\"M3 10 12 4l9 6\"/><path d=\"M9 21v-6h6v6\"/>",
+            "title": "Aylesva Recursos",
+            "text": "Capital de trabajo y financiamiento de equipo para hacer crecer tu empresa.",
+            "link": "/pages/aylesva-recursos"
+          }
+        },
+        "b3": {
+          "type": "branch",
+          "settings": {
+            "icon": "<rect x=\"2\" y=\"8\" width=\"13\" height=\"9\"/><path d=\"M15 11h4l3 3v3h-7z\"/><circle cx=\"6\" cy=\"19\" r=\"2\"/><circle cx=\"18\" cy=\"19\" r=\"2\"/>",
+            "title": "Aylesva Direct",
+            "text": "Importación y abastecimiento empresarial desde China con acompañamiento aduanal.",
+            "link": "/pages/aylesva-direct"
+          }
+        },
+        "b4": {
+          "type": "branch",
+          "settings": {
+            "icon": "<path d=\"M3 21V9l6-4 6 4v12\"/><path d=\"M15 21V13h6v8\"/><path d=\"M7 13h2M7 17h2\"/>",
+            "title": "Global Estates",
+            "text": "Inversión inmobiliaria premium con desarrollos verificados en México y El Salvador.",
+            "link": "/pages/globalestates"
+          }
+        }
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "servicios",
+    "beneficios",
+    "proceso",
+    "formulario",
+    "faq",
+    "legal_disclaimer",
+    "ramas"
+  ]
+}
