@@ -27,7 +27,22 @@
   <link rel="preload" as="image" href="{{ 'aylesva-logo-mx-v1.png' | asset_url }}" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://cdn.tailwindcss.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@300;400;500;600;700;800&family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── GLOBAL LUXURY TYPOGRAPHY SYSTEM (LANDING PAGE FONTS ACROSS ENTIRE STORE) ── */
+    html, body, p, a, span, li, input, button, select, textarea, .main-content, .page-wrapper, .site-header, .ay-footer {
+      font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    }
+
+    h1, h2, h3, h4, h5, h6, .tt-title, .ay-h1, .ay-h2, .ay-h3, .section-header h2, .page-header h1, .recent-viewed-title, .ayl-related-title, .ay-footer-col-title {
+      font-family: 'Sora', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    }
+
+    .ay-eyebrow, .ay-badge, .tag-pill, .ay-link {
+      font-family: 'IBM Plex Mono', ui-monospace, monospace !important;
+    }
+  </style>
     <!-- Basic page needs ================================================== -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
