@@ -3,6 +3,14 @@
   Handles Size Chart and Notify Me modals.
 {% endcomment %}
 
+<style>
+  .modal:not(.in):not(.show),
+  #notify-content:not(.in):not(.show),
+  #myModal:not(.in):not(.show) {
+    display: none !important;
+  }
+</style>
+
 <!-- Size Chart Modal -->
 <div class="modal fade" id="myModal" role="dialog">
   <div class="modal-dialog">

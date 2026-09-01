@@ -219,10 +219,34 @@
 
       for (const handle of filteredHandles.slice(0, 8)) {
         try {
-          const response = await fetch(`/products/${handle}?view=ayl-card`);
-          const html = await response.text();
-          if (html.includes('ayl-premium-product-card')) {
-            grid.insertAdjacentHTML('beforeend', html);
+          const response = await fetch(`/products/${handle}.js`);
+          const p = await response.json();
+          if (p && p.title) {
+            const formattedPrice = '$ ' + (p.price / 100).toFixed(2);
+            const comparePriceHtml = (p.compare_at_price && p.compare_at_price > p.price)
+              ? `<span class="ayl-compare-price">$ ${(p.compare_at_price / 100).toFixed(2)}</span>` 
+              : '';
+            const imgUrl = p.featured_image ? p.featured_image : (p.images && p.images[0] ? p.images[0] : '');
+            
+            const card = `
+              <div class="ayl-premium-product-card">
+                <div class="ayl-image-wrap">
+                  <a href="${p.url}" class="ayl-main-link" aria-label="Ver ${p.title}">
+                    <img loading="lazy" src="${imgUrl}" alt="${p.title}">
+                  </a>
+                </div>
+                <div class="ayl-info-wrap">
+                  <span class="ayl-vendor">${p.vendor || ''}</span>
+                  <a href="${p.url}" class="ayl-title">${p.title}</a>
+                  <div class="ayl-price-wrap">
+                    <span class="ayl-price">${formattedPrice}</span>
+                    <span class="ayl-price-currency" style="font-size: 0.7em; font-weight: 700; color: #C5A47E; margin-left: 4px;">MXN</span>
+                    ${comparePriceHtml}
+                  </div>
+                </div>
+              </div>
+            `;
+            grid.insertAdjacentHTML('beforeend', card);
           }
         } catch (e) { console.error('Aylesva Recent error:', handle, e); }
       }
