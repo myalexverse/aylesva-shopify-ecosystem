@@ -1,4 +1,4 @@
-{% assign number_of_products = 10 %}
+{% assign number_of_products = 4 %}
 {% assign number_of_products_to_fetch = number_of_products | plus: 1 %}
 {% if collection == null or collection.handle == 'frontpage' or collection.handle == 'all' %}
 {% assign found_a_collection = false %}
@@ -10,48 +10,129 @@
 {% endfor %}
 {% endif %}
 {% if collection and collection.products_count > 1 %}
-<div class="related-products-container col-sm-12">
-  <div class="related-product">
-    <div class="section-header text-center">
-      <h2 class="tt-title">{{ "products.general.related_products_title" | t }}</h2>    
-    </div>
-    <div class="row">
-      <div class="product-grid related-products owl-carousel">
-        {% assign current_product = product %}
-        {% assign current_product_found = false %}
-        {% for product in collection.products limit: number_of_products_to_fetch  %}
-        {% if product.handle == current_product.handle %}
+<div class="ayl-related-products-wrapper" style="max-width: 1300px; margin: 40px auto; padding: 0 15px; width: 100%; box-sizing: border-box;">
+  <style>
+    .ayl-related-title {
+      font-size: 22px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #1a1a1a;
+      margin: 0 0 25px 0;
+      text-align: center;
+    }
+    .ayl-related-grid {
+      display: grid !important;
+      grid-template-columns: repeat(4, 1fr) !important;
+      gap: 20px !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+    @media (max-width: 991px) {
+      .ayl-related-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 15px !important;
+      }
+    }
+    .ayl-related-grid .ayl-premium-product-card {
+      background: #ffffff !important;
+      border: 1px solid #eaeaea !important;
+      border-radius: 8px !important;
+      overflow: hidden !important;
+      display: flex !important;
+      flex-direction: column !important;
+      height: 100% !important;
+      margin: 0 !important;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06) !important;
+      transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+    }
+    .ayl-related-grid .ayl-premium-product-card:hover {
+      transform: translateY(-3px) !important;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1) !important;
+    }
+    .ayl-related-grid .ayl-premium-product-card .ayl-image-wrap {
+      width: 100% !important;
+      height: 220px !important;
+      position: relative !important;
+      overflow: hidden !important;
+      background: #ffffff !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+    .ayl-related-grid .ayl-premium-product-card .ayl-image-wrap a {
+      width: 100% !important;
+      height: 100% !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+    .ayl-related-grid .ayl-premium-product-card .ayl-image-wrap img {
+      max-width: 100% !important;
+      max-height: 100% !important;
+      width: auto !important;
+      height: auto !important;
+      object-fit: contain !important;
+      padding: 10px !important;
+      box-sizing: border-box !important;
+      display: block !important;
+    }
+    .ayl-related-grid .ayl-premium-product-card .ayl-info-wrap {
+      padding: 12px 14px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      flex-grow: 1 !important;
+      background: #ffffff !important;
+      border-top: 1px solid #f2f2f2 !important;
+    }
+    .ayl-related-grid .ayl-premium-product-card .ayl-title {
+      font-size: 13px !important;
+      font-weight: 600 !important;
+      color: #1a1a1a !important;
+      text-decoration: none !important;
+      line-height: 1.4 !important;
+      margin-bottom: 6px !important;
+      display: -webkit-box !important;
+      -webkit-line-clamp: 2 !important;
+      -webkit-box-orient: vertical !important;
+      overflow: hidden !important;
+      min-height: 36px !important;
+    }
+    .ayl-related-grid .ayl-premium-product-card .ayl-price-wrap {
+      margin-top: auto !important;
+      display: flex !important;
+      align-items: baseline !important;
+      gap: 5px !important;
+    }
+    .ayl-related-grid .ayl-premium-product-card .ayl-price {
+      font-size: 15px !important;
+      font-weight: 700 !important;
+      color: #C5A47E !important;
+    }
+    .ayl-related-grid .ayl-premium-product-card .ayl-compare-price {
+      font-size: 12px !important;
+      color: #999 !important;
+      text-decoration: line-through !important;
+    }
+  </style>
+
+  <h2 class="ayl-related-title">{{ "products.general.related_products_title" | t | default: "Productos Relacionados" }}</h2>
+  <div class="ayl-related-grid">
+    {% assign current_product = product %}
+    {% assign current_product_found = false %}
+    {% assign rendered_count = 0 %}
+    {% for product in collection.products limit: number_of_products_to_fetch %}
+      {% if product.handle == current_product.handle %}
         {% assign current_product_found = true %}
-        {% else %}
-        {% unless current_product_found == false and forloop.last %}
-
-        {% unless same_vendor and current_product_found.vendor != product.vendor %}
-        {% unless same_type and current_product_found.type != product.type %}
-
-        <div class="grid-item">
-          {% render 'ayl-product-card-grid', product: product %}
-        </div>
-        {% endunless %}
-        {% endunless %}
-        {% endunless %}
+      {% else %}
+        {% if rendered_count < 4 %}
+          {% assign rendered_count = rendered_count | plus: 1 %}
+          <div class="ayl-related-item">
+            {% render 'ayl-product-card-grid', product: product %}
+          </div>
         {% endif %}
-        {% endfor %}
-      </div>
-    </div>
-    <div class="related_navigation customNavigation hideme">
-      <div class="navigation_wrap">
-        <a class="prev mdi-chevron-left">{{ 'general.slider.prev' | t }}</a>
-        <a class="next mdi-chevron-right">{{ 'general.slider.next' | t }}</a> 
-      </div>
-    </div>
+      {% endif %}
+    {% endfor %}
   </div>
 </div>
 {% endif %}
-<script type="text/javascript">function relatedowljs(){var related_count=$('.related-products .item-row').length;if(related_count>4){$('.related_navigation').css('display','block')}
-                                                       else{$('.related_navigation').css('display','none')}
-                                                       var related=$("body:not(.rtl) .related-products");var relatedrtl=$("body.rtl .related-products");related.owlCarousel({items:5,slidesToScroll:1,loop:!1,responsive:{100:{items:1},481:{items:2},1200:{items:3},1460:{items:4},1660:{items:4}},responsiveRefreshRate:200,responsiveBaseWidth:window,autoPlay:!1,stopOnHover:!0,nav:!0,dots:!1});if($('.related-products-container').find('.owl-nav').hasClass('disabled')){$('.related-products-container').find('.customNavigation').hide()}else{$('.related-products-container').find('.customNavigation').show()}
-                                                       $(".related_navigation .next").click(function(){related.trigger('next.owl')})
-                                                       $(".related_navigation .prev").click(function(){related.trigger('prev.owl')})
-                                                       relatedrtl.owlCarousel({items:5,loop:!1,rtl:!0,responsive:{100:{items:1},481:{items:2},1200:{items:3},1460:{items:4},1660:{items:4}},responsiveRefreshRate:200,responsiveBaseWidth:window,autoPlay:!1,stopOnHover:!0,nav:!0,dots:!1});$(".related_navigation .next").click(function(){relatedrtl.trigger('next.owl')})
-                                                       $(".related_navigation .prev").click(function(){relatedrtl.trigger('prev.owl')})}
-  $(document).ready(function(){relatedowljs()});$(window).resize(function(){relatedowljs()})</script>

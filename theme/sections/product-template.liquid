@@ -10,12 +10,33 @@
 <style>
   /* ── DUAL VIEWER TOGGLE ── */
   @media (max-width: 767px) {
-    .ayl-desktop-viewer-wrapper { display: none !important; }
-    .ayl-mobile-viewer-wrapper { display: block !important; }
+    .ayl-desktop-viewer-wrapper {
+      display: none !important;
+      visibility: hidden !important;
+      height: 0 !important;
+      overflow: hidden !important;
+    }
+    .ayl-mobile-viewer-wrapper {
+      display: block !important;
+      visibility: visible !important;
+    }
   }
   @media (min-width: 768px) {
-    .ayl-mobile-viewer-wrapper { display: none !important; }
-    .ayl-desktop-viewer-wrapper { display: block !important; }
+    .ayl-mobile-viewer-wrapper {
+      display: none !important;
+      visibility: hidden !important;
+      height: 0 !important;
+      overflow: hidden !important;
+    }
+    .ayl-desktop-viewer-wrapper {
+      display: block !important;
+      visibility: visible !important;
+    }
+    .product-single-wrap {
+      display: block !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
   }
 </style>
 
