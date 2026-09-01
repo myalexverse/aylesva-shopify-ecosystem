@@ -6,7 +6,7 @@
         "eyebrow": "Aylesva Travel · Club Exclusivo de Viajes & Recompensas",
         "overlay": 78,
         "focal": "center",
-        "image": "ay-ge-pb-beachclub.jpg",
+        "image": "ay-travel-hero.jpg",
         "title": "Viaja Más, Ahorra Siempre y Disfruta al Nivel que Mereces",
         "subtitle": "Tu membresía exclusiva con tarifas preferenciales, concierge de clase mundial, garantía de mejor precio y programa de recompensas B-Rewards en hoteles, vuelos, cruceros, golf y experiencias en todo el mundo.",
         "cta1_label": "Solicitar Membresía VIP",
@@ -72,7 +72,7 @@
         "c1": {
           "type": "card",
           "settings": {
-            "image": "ay-ge-pb-interior.jpg",
+            "image": "ay-travel-hotels.jpg",
             "tag": "Hospedaje VIP",
             "eyebrow": "+1M Propiedades",
             "title": "Hoteles y Resorts Exclusivos",
@@ -88,7 +88,7 @@
         "c2": {
           "type": "card",
           "settings": {
-            "image": "ay-ge-alt-sunset.jpg",
+            "image": "ay-travel-flights.jpg",
             "tag": "Boletos de Avión",
             "eyebrow": "Rutas Globales",
             "title": "Vuelos Comerciales y Privados",
@@ -104,7 +104,7 @@
         "c3": {
           "type": "card",
           "settings": {
-            "image": "ay-ge-pb-sunset.jpg",
+            "image": "ay-travel-cruises.jpg",
             "tag": "Navieras Líderes",
             "eyebrow": "Caribe, Europa & Alaska",
             "title": "Cruceros y Travesías de Lujo",
@@ -120,7 +120,7 @@
         "c4": {
           "type": "card",
           "settings": {
-            "image": "ay-ge-alt-oasis.jpg",
+            "image": "ay-travel-golf.jpg",
             "tag": "Lifestyle & Deporte",
             "eyebrow": "PGA & Safaris",
             "title": "Golf de Campeonato y Safaris",
@@ -136,7 +136,7 @@
         "c5": {
           "type": "card",
           "settings": {
-            "image": "ay-ge-alt-villas.jpg",
+            "image": "ay-travel-tours.jpg",
             "tag": "Atracciones & Guías",
             "eyebrow": "Entradas VIP",
             "title": "Tours, Excursiones y Parques",
@@ -152,7 +152,7 @@
         "c6": {
           "type": "card",
           "settings": {
-            "image": "ay-direct-worldwide.jpg",
+            "image": "ay-travel-cars.jpg",
             "tag": "Movilidad Terrestre",
             "eyebrow": "Sin Cargos Ocultos",
             "title": "Renta de Autos y Transportación",
