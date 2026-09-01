@@ -1045,84 +1045,6 @@
         "margin_top": 30,
         "margin_bottom": 30
       }
-    },
-    "1513236765628": {
-      "type": "our_brand",
-      "blocks": {
-        "1513236765628-3": {
-          "type": "brand_image",
-          "settings": {
-            "image": "shopify://shop_images/aylesvacare.avif",
-            "link": "/pages/aylesva-care"
-          }
-        },
-        "1513238013377": {
-          "type": "brand_image",
-          "settings": {
-            "image": "shopify://shop_images/elgeneral.jpg",
-            "link": "/collections/botas-y-botines-hombre"
-          }
-        },
-        "1513238403251": {
-          "type": "brand_image",
-          "settings": {
-            "image": "shopify://shop_images/mundo2.jpg",
-            "link": "/collections/mayoreo-productos"
-          }
-        },
-        "1513238453700": {
-          "type": "brand_image",
-          "settings": {
-            "image": "shopify://shop_images/ultima-voluntad.jpg",
-            "link": "/pages/mi-ultima-voluntad"
-          }
-        },
-        "1523515532537": {
-          "type": "brand_image",
-          "disabled": true,
-          "settings": {
-            "link": "#"
-          }
-        }
-      },
-      "block_order": [
-        "1513236765628-3",
-        "1513238013377",
-        "1513238403251",
-        "1513238453700",
-        "1523515532537"
-      ],
-      "settings": {
-        "product_col_desktop_pro": 6,
-        "product_col_mobile_pro": 2,
-        "addclass": "brands",
-        "title": "Marcas Asociadas",
-        "bg": "#ffffff"
-      }
-    },
-    "34b14819-17f0-4002-97cd-b39527dada7c": {
-      "type": "sticky-mobile-bar",
-      "settings": {
-        "mobile_bar": true,
-        "url_1": "",
-        "title_1": "Home",
-        "url_2": "",
-        "title_2": "Catogory",
-        "url_3": "",
-        "title_3": "Cart",
-        "url_4": "",
-        "title_4": "Account",
-        "url_5": "",
-        "title_5": "Wishlist"
-      }
-    },
-    "ayl_china_modal_anycNN": {
-      "type": "ayl-china-modal",
-      "name": "Aylesva China Modal",
-      "settings": {
-        "title": "ATENCIÓN ESPECIALIZADA: AYLESVA DIRECT",
-        "subtitle": "Conectamos tu negocio con proveedores y soluciones logísticas globales. Complete este formulario para una consulta personalizada."
-      }
     }
   },
   "order": [
@@ -1147,9 +1069,6 @@
     "aylesva_premium_tabs_nRi4Cm",
     "custom_duo_cooler_banner_home",
     "aylesva_premium_slider_r9xDxU",
-    "aylesva_cuadro_colecciones_AfU6R8",
-    "1513236765628",
-    "34b14819-17f0-4002-97cd-b39527dada7c",
-    "ayl_china_modal_anycNN"
+    "aylesva_cuadro_colecciones_AfU6R8"
   ]
 }
