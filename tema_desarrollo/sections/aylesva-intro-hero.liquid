@@ -1,56 +1,57 @@
 {%- style -%}
   #shopify-section-{{ section.id }} {
     overflow: hidden !important;
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-    margin-bottom: 0 !important;
-    padding-bottom: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: relative;
   }
   
   .aylesva-hero-slider-wrap {
     width: 100%;
     position: relative;
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
-    border-bottom: none !important;
+    margin: 0 !important;
+    background: #000;
+    overflow: hidden;
   }
 
   .aylesva-hero-slider {
-    width: 100%;
-    margin-bottom: 0;
-  }
-
-  .aylesva-hero-item {
     position: relative;
     width: 100%;
-    height: {{ section.settings.desktop_height }}vh;
-    min-height: 400px;
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
-    background-color: #000; /* Darker clean background */
-  }
-
-  /* FORCED FULL-SCREEN SEAL FOR DESKTOP ONLY */
-  @media screen and (min-width: 768px) {
-    .aylesva-hero-item {
-      height: {{ section.settings.desktop_height }}vh !important;
-      min-height: 100vh !important;
-    }
+    height: {{ section.settings.desktop_height | default: 80 }}vh;
+    min-height: 520px;
+    max-height: 750px;
   }
 
   @media (max-width: 767px) {
-    .aylesva-hero-slider-wrap {
-      width: 100%;
-      left: 0;
-      right: 0;
-      margin-left: 0;
-      margin-right: 0;
+    .aylesva-hero-slider {
+      height: {{ section.settings.mobile_height | default: 65 }}vh;
+      min-height: 440px;
+      max-height: 580px;
     }
-    .aylesva-hero-item {
-      height: {{ section.settings.mobile_height }}vh;
-      min-height: auto;
-    }
+  }
+
+  /* Slide Items: Strict single slide display, NO STACKING */
+  .aylesva-hero-item {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.7s ease !important;
+    z-index: 1 !important;
+  }
+
+  .aylesva-hero-item.is-active {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    z-index: 2 !important;
   }
 
   .aylesva-hero-bg {
@@ -83,173 +84,173 @@
     position: relative;
     z-index: 3;
     text-align: center;
-    color: #ffffff; /* Default, overridden by block settings */
-    max-width: 800px;
-    padding: 0 20px;
+    color: #ffffff;
+    max-width: 750px;
+    padding: 0 24px;
+    transform: translateY(12px);
+    transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  .aylesva-hero-item.is-active .aylesva-hero-content {
+    transform: translateY(0);
   }
 
   .aylesva-hero-subtitle {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
-    font-size: 14px;
-    font-weight: 700;
+    font-family: 'IBM Plex Mono', ui-monospace, monospace !important;
+    font-size: 12px;
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.2em;
-    margin-bottom: 10px;
-    display: block;
-    animation: fadeInUp 0.8s ease backwards;
-    color: inherit !important;
+    margin-bottom: 12px;
+    display: inline-block;
+    color: #C5A47E !important;
   }
 
   .aylesva-hero-title {
-    font-family: 'Impact', 'Arial Black', sans-serif !important;
-    font-size: calc(24px + 3vw);
-    font-weight: 900;
-    line-height: 1.1;
-    margin-bottom: 25px;
-    text-transform: uppercase;
-    animation: fadeInUp 0.8s ease 0.2s backwards;
-    color: inherit !important;
+    font-family: 'Sora', system-ui, sans-serif !important;
+    font-size: clamp(28px, 4.2vw, 50px);
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    margin: 0 0 24px;
+    color: #ffffff !important;
+    text-transform: none;
   }
 
   .aylesva-hero-buttons {
     display: flex;
-    gap: 15px;
+    gap: 14px;
     justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
-    animation: fadeInUp 0.8s ease 0.4s backwards;
   }
 
   .aylesva-hero-btn {
-    padding: 15px 35px;
-    border-radius: 50px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 30px;
+    font-family: 'Manrope', system-ui, sans-serif;
+    font-size: 14px;
     font-weight: 700;
-    text-transform: uppercase;
-    font-size: 13px;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.04em;
+    border-radius: 2px;
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: all 0.25s ease;
+    cursor: pointer;
   }
 
-  .btn-primary-hero {
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  .aylesva-hero-btn.btn-primary-hero {
+    background: #C5A47E !important;
+    color: #0F172A !important;
+    border: 1px solid #C5A47E;
   }
-
-  .btn-primary-hero:hover {
+  .aylesva-hero-btn.btn-primary-hero:hover {
+    background: #E3CCAE !important;
     transform: translateY(-2px);
-    filter: brightness(1.1);
   }
 
-  .btn-secondary-hero {
-    background: #fff;
-    color: #000;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  .aylesva-hero-btn.btn-secondary-hero {
+    background: rgba(255, 255, 255, 0.15) !important;
+    color: #ffffff !important;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
   }
-
-  .btn-secondary-hero:hover {
+  .aylesva-hero-btn.btn-secondary-hero:hover {
+    background: rgba(255, 255, 255, 0.3) !important;
+    border-color: #ffffff;
     transform: translateY(-2px);
-    background: #f8f8f8;
   }
 
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
+  /* Navigation Tabs at Bottom of Hero */
+  .aylesva-hero-tabs {
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    gap: 8px;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(12px);
+    padding: 5px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
   }
 
-  /* Slick Arrow Styles - Minimalist */
-  .aylesva-hero-slider .slick-arrow {
+  .aylesva-hero-tab-btn {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    padding: 7px 18px;
+    font-family: 'Manrope', system-ui, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    white-space: nowrap;
+  }
+
+  .aylesva-hero-tab-btn:hover {
+    color: #ffffff;
+  }
+
+  .aylesva-hero-tab-btn.is-active {
+    background: #ffffff;
+    color: #0F172A;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  }
+
+  /* Arrows */
+  .aylesva-hero-nav-arrow {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     z-index: 10;
-    background: transparent;
-    border: none;
-    width: 60px;
-    height: 60px;
-    display: flex !important;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: opacity 0.3s;
-    opacity: 0.5;
+    transition: all 0.2s ease;
   }
-
-  .aylesva-hero-slider:hover .slick-arrow {
-    opacity: 1;
+  .aylesva-hero-nav-arrow:hover {
+    background: rgba(0, 0, 0, 0.7);
+    border-color: #ffffff;
+    transform: translateY(-50%) scale(1.05);
   }
+  .aylesva-hero-nav-arrow.prev { left: 24px; }
+  .aylesva-hero-nav-arrow.next { right: 24px; }
 
-  .aylesva-hero-slider .slick-prev { left: 20px; }
-  .aylesva-hero-slider .slick-next { right: 20px; }
-
-  .aylesva-hero-slider .slick-arrow svg {
-    width: 30px;
-    height: 30px;
-    stroke: #fff;
-  }
-
-  /* Dots */
-  .aylesva-hero-slider .slick-dots {
-    bottom: 20px !important;
-    display: flex;
-    justify-content: center;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    width: 100%;
-    position: absolute;
-  }
-
-  .aylesva-hero-slider .slick-dots li {
-    margin: 0 5px;
-  }
-
-  .aylesva-hero-slider .slick-dots li button {
-    font-size: 0;
-    line-height: 0;
-    display: block;
-    width: 20px;
-    height: 20px;
-    padding: 5px;
-    cursor: pointer;
-    color: transparent;
-    border: 0;
-    outline: none;
-    background: transparent;
-  }
-
-  .aylesva-hero-slider .slick-dots li button:before {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 20px;
-    height: 20px;
-    content: '•';
-    text-align: center;
-    color: #fff;
-    font-size: 15px;
-    opacity: 0.3;
-    line-height: 20px;
-  }
-
-  .aylesva-hero-slider .slick-dots li.slick-active button:before {
-    opacity: 1;
-  }
-
-  @media (max-width: 480px) {
-    .aylesva-hero-title { font-size: 26px; margin-bottom: 20px; }
-    .aylesva-hero-buttons { flex-direction: column; gap: 10px; width: 100%; }
-    .aylesva-hero-btn { padding: 14px 25px; width: 100%; text-align: center; }
-    .aylesva-hero-slider .slick-arrow { display: none !important; }
+  @media (max-width: 767px) {
+    .aylesva-hero-nav-arrow { display: none; }
+    .aylesva-hero-tabs {
+      bottom: 16px;
+      gap: 4px;
+      padding: 4px;
+    }
+    .aylesva-hero-tab-btn {
+      padding: 6px 12px;
+      font-size: 11.5px;
+    }
   }
 {%- endstyle -%}
 
-<section class="aylesva-hero-slider-wrap">
-  <div class="aylesva-hero-slider" id="Hero-{{ section.id }}" 
-       data-autoplay="{{ section.settings.autoplay }}" 
-       data-speed="{{ section.settings.autoplay_speed | times: 1000 }}"
-       data-arrows="{{ section.settings.show_arrows }}">
+<section class="aylesva-hero-slider-wrap" id="HeroWrap-{{ section.id }}">
+  <div class="aylesva-hero-slider" id="Hero-{{ section.id }}">
     
     {%- for block in section.blocks -%}
-      <div class="aylesva-hero-item" {{ block.shopify_attributes }}>
+      <div class="aylesva-hero-item {% if forloop.first %}is-active{% endif %}" 
+           data-slide-index="{{ forloop.index0 }}"
+           {{ block.shopify_attributes }}>
+        
         <!-- Background -->
         <div class="aylesva-hero-bg">
           {%- if block.settings.image != blank -%}
@@ -259,7 +260,8 @@
               {%- endif -%}
               <img src="{{ block.settings.image | img_url: '1920x' }}" 
                    alt="{{ block.settings.title | escape }}" 
-                   style="object-position: {{ block.settings.image_alignment }};">
+                   style="object-position: {{ block.settings.image_alignment }};"
+                   loading="{% if forloop.first %}eager{% else %}lazy{% endif %}">
             </picture>
           {%- else -%}
             {%- capture current -%}{% cycle 1, 2 %}{%- endcapture -%}
@@ -269,11 +271,11 @@
 
         <!-- Overlay -->
         <div class="aylesva-hero-overlay" 
-             style="background: {{ block.settings.overlay_color }}; opacity: {{ block.settings.overlay_opacity | divided_by: 100.0 }};">
+             style="background: {{ block.settings.overlay_color | default: '#000000' }}; opacity: {{ block.settings.overlay_opacity | divided_by: 100.0 | default: 0.3 }};">
         </div>
 
         <!-- Content -->
-        <div class="aylesva-hero-content" style="color: {{ block.settings.text_color }};">
+        <div class="aylesva-hero-content" style="color: {{ block.settings.text_color | default: '#ffffff' }};">
           {%- if block.settings.sub_title != blank -%}
             <span class="aylesva-hero-subtitle">{{ block.settings.sub_title }}</span>
           {%- endif -%}
@@ -286,7 +288,7 @@
             {%- if block.settings.btn1_txt != blank -%}
               <a href="{{ block.settings.btn1_link }}" 
                  class="aylesva-hero-btn btn-primary-hero" 
-                 style="background: {{ block.settings.btn_bg_color }}; color: {{ block.settings.btn_txt_color }};">
+                 style="background: {{ block.settings.btn_bg_color | default: '#C5A47E' }}; color: {{ block.settings.btn_txt_color | default: '#0F172A' }};">
                 {{ block.settings.btn1_txt }}
               </a>
             {%- endif -%}
@@ -300,34 +302,116 @@
         </div>
       </div>
     {%- endfor -%}
+
+    {%- if section.blocks.size > 1 -%}
+      <!-- Arrows -->
+      <button class="aylesva-hero-nav-arrow prev" aria-label="Anterior" onclick="ayHeroPrev('{{ section.id }}')">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+      <button class="aylesva-hero-nav-arrow next" aria-label="Siguiente" onclick="ayHeroNext('{{ section.id }}')">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+
+      <!-- Tabs Navigation (Niños, Niñas, Bebés) -->
+      <div class="aylesva-hero-tabs" id="HeroTabs-{{ section.id }}">
+        {%- for block in section.blocks -%}
+          {%- assign tab_name = "Colección " | append: forloop.index -%}
+          {%- if block.settings.sub_title contains "BOY" or block.settings.title contains "NIÑO" or block.settings.title contains "Niño" -%}
+            {%- assign tab_name = "Niños" -%}
+          {%- elsif block.settings.sub_title contains "GIRL" or block.settings.title contains "NIÑA" or block.settings.title contains "Niña" -%}
+            {%- assign tab_name = "Niñas" -%}
+          {%- elsif block.settings.sub_title contains "BABY" or block.settings.title contains "BEB" or block.settings.title contains "Beb" -%}
+            {%- assign tab_name = "Bebés" -%}
+          {%- elsif block.settings.sub_title != blank -%}
+            {%- assign tab_name = block.settings.sub_title -%}
+          {%- endif -%}
+          <button class="aylesva-hero-tab-btn {% if forloop.first %}is-active{% endif %}" 
+                  onclick="ayHeroGoTo('{{ section.id }}', {{ forloop.index0 }})">
+            {{ tab_name }}
+          </button>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
   </div>
 </section>
 
 <script>
-  $(document).ready(function() {
-    var $heroSlider = $('#Hero-{{ section.id }}');
-    if ($heroSlider.length) {
-      $heroSlider.slick({
-        infinite: true,
-        autoplay: $heroSlider.data('autoplay'),
-        autoplaySpeed: $heroSlider.data('speed'),
-        arrows: $heroSlider.data('arrows'),
-        dots: true,
-        fade: true,
-        cssEase: 'linear',
-        prevArrow: '<button type="button" class="slick-prev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button>',
-        nextArrow: '<button type="button" class="slick-next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></button>'
+  (function() {
+    var sid = '{{ section.id }}';
+    var wrap = document.getElementById('HeroWrap-' + sid);
+    if (!wrap) return;
+
+    var slides = wrap.querySelectorAll('.aylesva-hero-item');
+    var tabs = wrap.querySelectorAll('.aylesva-hero-tab-btn');
+    var total = slides.length;
+    var current = 0;
+    var timer = null;
+    var autoplay = {{ section.settings.autoplay | default: true }};
+    var speed = {{ section.settings.autoplay_speed | default: 6 }} * 1000;
+
+    function showSlide(index) {
+      if (index < 0) index = total - 1;
+      if (index >= total) index = 0;
+      current = index;
+
+      slides.forEach(function(s, i) {
+        if (i === current) {
+          s.classList.add('is-active');
+        } else {
+          s.classList.remove('is-active');
+        }
       });
 
-      // Trigger animation on slide change
-      $heroSlider.on('beforeChange', function(event, slick, currentSlide, nextSlide) {
-         $(slick.$slides[nextSlide]).find('.aylesva-hero-content').css('animation', 'none');
-         setTimeout(function() {
-            $(slick.$slides[nextSlide]).find('.aylesva-hero-content').css('animation', '');
-         }, 10);
+      tabs.forEach(function(t, i) {
+        if (i === current) {
+          t.classList.add('is-active');
+        } else {
+          t.classList.remove('is-active');
+        }
       });
     }
-  });
+
+    window.ayHeroGoTo = function(id, index) {
+      if (id !== sid) return;
+      showSlide(index);
+      resetTimer();
+    };
+
+    window.ayHeroPrev = function(id) {
+      if (id !== sid) return;
+      showSlide(current - 1);
+      resetTimer();
+    };
+
+    window.ayHeroNext = function(id) {
+      if (id !== sid) return;
+      showSlide(current + 1);
+      resetTimer();
+    };
+
+    function startTimer() {
+      if (autoplay && total > 1) {
+        timer = setInterval(function() {
+          showSlide(current + 1);
+        }, speed);
+      }
+    }
+
+    function resetTimer() {
+      if (timer) clearInterval(timer);
+      startTimer();
+    }
+
+    startTimer();
+
+    wrap.addEventListener('mouseenter', function() {
+      if (timer) clearInterval(timer);
+    });
+    wrap.addEventListener('mouseleave', function() {
+      startTimer();
+    });
+  })();
 </script>
 
 {% schema %}
