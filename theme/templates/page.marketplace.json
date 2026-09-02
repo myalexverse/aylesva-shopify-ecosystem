@@ -1045,6 +1045,12 @@
         "margin_top": 30,
         "margin_bottom": 30
       }
+    },
+    "banner_raizdeplata": {
+      "type": "banner-raizdeplata",
+      "settings": {
+        "title": "Raíz de Plata Vinos Premium"
+      }
     }
   },
   "order": [
@@ -1060,6 +1066,7 @@
     "aylesva_cooler_carousel_AKRKWj",
     "banner_crosscountry_hFjCVm",
     "aylesva_cooler_carousel_kibjVn",
+    "banner_raizdeplata",
     "aylesva_cooler_carousel_PcUBHf",
     "slideshow_rHeJXJ",
     "banner_gemelas_home",
