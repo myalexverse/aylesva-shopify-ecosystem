@@ -1,0 +1,297 @@
+{
+  "sections": {
+    "hero": {
+      "type": "aylesva-corp-hero",
+      "settings": {
+        "eyebrow": "Aylesva · Servicios Migratorios & Trámites Consulares",
+        "overlay": 84,
+        "focal": "center",
+        "image": "ay-citizenship-hero.jpg",
+        "title": "Doble Ciudadanía México – Estados Unidos: Rápida, Segura y sin Salir de Casa",
+        "subtitle": "Acompañamos a familias y profesionistas mexicano-americanos en todo el proceso de obtención de su doble nacionalidad. Vota en México, viaja con tarifas locales, adquiere propiedades sin restricciones y desbloquea derechos plenos en ambos países con gestión directa desde EE. UU. o México.",
+        "cta1_label": "Iniciar mi Trámite",
+        "cta1_link": "#contacto",
+        "cta2_label": "Ver Beneficios",
+        "cta2_link": "#beneficios"
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ],
+      "blocks": {
+        "s1": {
+          "type": "stat",
+          "settings": {
+            "value": "500+",
+            "label": "Familias Respaldadas"
+          }
+        },
+        "s2": {
+          "type": "stat",
+          "settings": {
+            "value": "98%",
+            "label": "Tasa de Aprobación"
+          }
+        },
+        "s3": {
+          "type": "stat",
+          "settings": {
+            "value": "10+",
+            "label": "Años de Experiencia"
+          }
+        },
+        "s4": {
+          "type": "stat",
+          "settings": {
+            "value": "24h",
+            "label": "Tiempo de Respuesta"
+          }
+        }
+      }
+    },
+    "beneficios": {
+      "type": "aylesva-corp-features",
+      "settings": {
+        "bg": "#FFFFFF",
+        "columns": 3,
+        "eyebrow": "¿Por Qué Doble Ciudadanía?",
+        "title": "Desbloquea Todos tus Derechos en Ambas Naciones",
+        "intro": "La doble nacionalidad mexicana te otorga lo mejor de dos países: identidad cultural, libertad de movimiento, ventajas económicas exclusivas y certeza patrimonial para ti y tus generaciones."
+      },
+      "block_order": [
+        "f1",
+        "f2",
+        "f3",
+        "f4",
+        "f5",
+        "f6"
+      ],
+      "blocks": {
+        "f1": {
+          "type": "feature",
+          "settings": {
+            "tag": "Derechos Cívicos",
+            "title": "Vota y Participa en México",
+            "text": "Ejerce tu derecho cívico al voto en elecciones federales, estatales y municipales con tu credencial oficial para votar INE y pasaporte mexicano vigente."
+          }
+        },
+        "f2": {
+          "type": "feature",
+          "settings": {
+            "tag": "Movilidad & Vuelos",
+            "title": "Viaja a Tarifas Nacionales",
+            "text": "Viaja dentro de la República Mexicana a tarifas locales utilizando tu pasaporte nacional, sin pagar el cobro de turista (DNR) y ahorrando en cada trayecto."
+          }
+        },
+        "f3": {
+          "type": "feature",
+          "settings": {
+            "tag": "Educación & Empleo",
+            "title": "Estudia y Trabaja Legalmente",
+            "text": "Inscríbete en universidades e instituciones públicas mexicanas a costos de matrícula nacional y ejerce tu profesión en México sin visas ni trámites de residencia."
+          }
+        },
+        "f4": {
+          "type": "feature",
+          "settings": {
+            "tag": "Bienes Raíces",
+            "title": "Propiedad Directa sin Fideicomiso",
+            "text": "Sé dueño legítimo de tierras y bienes raíces en México sin restricciones de extranjero, comprando directamente en playas y zonas fronterizas sin costos bancarios anuales."
+          }
+        },
+        "f5": {
+          "type": "feature",
+          "settings": {
+            "tag": "Seguridad Jurídica",
+            "title": "Capacidad Legal Plena & Notarial",
+            "text": "Firma contratos, constituye empresas, hereda patrimonio familiar y realiza trámites notariales en territorio mexicano con plena capacidad jurídica binacional."
+          }
+        },
+        "f6": {
+          "type": "feature",
+          "settings": {
+            "tag": "Legado Familiar",
+            "title": "Herencia Ciudadana para tus Hijos",
+            "text": "Transmite la nacionalidad mexicana por consanguinidad a tus hijos y nietos nacidos en el extranjero, blindando su patrimonio e identidad para el futuro."
+          }
+        }
+      }
+    },
+    "proceso": {
+      "type": "aylesva-corp-process",
+      "settings": {
+        "bg": "#FAFAF8",
+        "eyebrow": "Metodología Aylesva",
+        "title": "Tu Doble Nacionalidad en 4 Simples Pasos",
+        "intro": "Eliminamos las trabas burocráticas y consulares. Gestionamos la búsqueda, certificación y registro de tus documentos con total transparencia y rapidez."
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3",
+        "p4"
+      ],
+      "blocks": {
+        "p1": {
+          "type": "step",
+          "settings": {
+            "step": "01",
+            "title": "Evaluación Gratuita de Elegibilidad",
+            "text": "Revisamos tu caso, actas de nacimiento de tus padres y documentación preliminar en menos de 24 horas hábiles para confirmar la viabilidad del trámite sin costo."
+          }
+        },
+        "p2": {
+          "type": "step",
+          "settings": {
+            "step": "02",
+            "title": "Búsqueda, Certificación & Apostilla",
+            "text": "Obtenemos actas certificadas en Estados Unidos o México, tramitamos la apostilla oficial del Departamento de Estado y coordinamos la traducción pericial autorizada."
+          }
+        },
+        "p3": {
+          "type": "step",
+          "settings": {
+            "step": "03",
+            "title": "Gestión Consular o Registro Civil",
+            "text": "Preparamos el expediente normativo y gestionamos tu cita ante el Consulado de México o tramitamos la inscripción directa ante el Registro Civil y RENAPO."
+          }
+        },
+        "p4": {
+          "type": "step",
+          "settings": {
+            "step": "04",
+            "title": "Entrega de Acta Mexicana, CURP & Pasaporte",
+            "text": "Recibes tu acta de nacimiento mexicana formalmente asentada, tu clave CURP y el acompañamiento para obtener tu pasaporte mexicano e INE en el consulado más cercano."
+          }
+        }
+      }
+    },
+    "formulario": {
+      "type": "aylesva-corp-form",
+      "settings": {
+        "eyebrow": "Atención Inmediata",
+        "title": "Inicia tu Trámite de Doble Ciudadanía",
+        "intro": "Completa el formulario y un asesor de Aylesva te contactará en menos de 24 horas hábiles con la lista de documentos y cotización personalizada.",
+        "phone": "+52 477 413 6612",
+        "whatsapp": "https://api.whatsapp.com/send/?phone=524774136612&text=Hola%2C+me+interesa+iniciar+mi+tr%C3%A1mite+de+Doble+Ciudadan%C3%ADa+con+Aylesva&type=phone_number&app_absent=0"
+      }
+    },
+    "faq": {
+      "type": "aylesva-corp-faq",
+      "settings": {
+        "bg": "#FAFAF8",
+        "eyebrow": "Resolución de Dudas",
+        "title": "Preguntas Frecuentes sobre la Doble Ciudadanía",
+        "intro": "Información clave sobre el marco legal binacional entre México y Estados Unidos."
+      },
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4"
+      ],
+      "blocks": {
+        "q1": {
+          "type": "faq",
+          "settings": {
+            "q": "¿Adquirir la ciudadanía mexicana pone en riesgo mi ciudadanía estadounidense?",
+            "a": "No. De conformidad con la ley vigente de Estados Unidos y la jurisprudencia de la Suprema Corte de EE. UU. (Afroyim v. Rusk), adquirir una segunda nacionalidad no afecta ni provoca la pérdida de la ciudadanía estadounidense. Ambos países reconocen plenamente la doble nacionalidad."
+          }
+        },
+        "q2": {
+          "type": "faq",
+          "settings": {
+            "q": "¿Cuánto tiempo toma completar el proceso de doble nacionalidad?",
+            "a": "El plazo promedio va de 4 a 10 semanas dependiendo del estado de la Unión Americana donde se expidió el acta de nacimiento original y los tiempos de emisión de la apostilla. En Aylesva optimizamos cada fase para reducir tiempos al mínimo."
+          }
+        },
+        "q3": {
+          "type": "faq",
+          "settings": {
+            "q": "¿Mis hijos nacidos en Estados Unidos tienen derecho a la nacionalidad mexicana?",
+            "a": "Sí. Según el Artículo 30 de la Constitución Política de los Estados Unidos Mexicanos, toda persona nacida en el extranjero de padre o madre mexicano por nacimiento tiene derecho inalienable a la nacionalidad mexicana por consanguinidad."
+          }
+        },
+        "q4": {
+          "type": "faq",
+          "settings": {
+            "q": "¿Necesito viajar a México para realizar este trámite?",
+            "a": "No es necesario viajar a México. Todo el proceso puede llevarse a cabo desde los Estados Unidos mediante la red de consulados mexicanos o a través de nuestra gestoría documental autorizada con validez oficial."
+          }
+        }
+      }
+    },
+    "legal_disclaimer": {
+      "type": "aylesva-corp-legal",
+      "settings": {
+        "bg": "#FFFFFF",
+        "alignment": "left",
+        "title": "Divulgaciones Legales y Términos de Facilitación Documental Migratoria",
+        "text": "1. Estado Administrativo y de Facilitación Documental:\nAylesva (aylesva.mx / aylesva.com) opera estrictamente como una plataforma privada de conserjería documental, gestoría administrativa y asistencia en trámites civiles. Aylesva no es un bufete de abogados, despacho de litigio migratorio ni un organismo oficial del gobierno. Ninguna información en este portal constituye asesoramiento legal personalizado.\n\n2. Determinación Soberana Gubernamental:\nLa resolución, registro e inscripción de la nacionalidad mexicana es facultad soberana y exclusiva del Estado Mexicano a través de la Secretaría de Relaciones Exteriores (SRE), RENAPO y las Oficialías del Registro Civil. Aylesva facilita la localización documental, cotejo, apostilla y conformación del expediente, pero las decisiones finales corresponden a las autoridades gubernamentales.\n\n3. Responsabilidad sobre la Documentación:\nEl solicitante garantiza que toda la información y documentos proporcionados son auténticos, legítimos y fidedignos. Aylesva no asume responsabilidad civil ni legal por retrasos burocráticos oficiales, rechazos atribuibles a inconsistencias documentales históricas o modificaciones normativas gubernamentales.\n\n4. Compatibilidad Binacional de Ciudadanía:\nBajo la legislación vigente de México y de los Estados Unidos, se reconoce la doble nacionalidad. Los solicitantes son responsables de cumplir con sus obligaciones tributarias y legales en ambas jurisdicciones según lo dispuesto por las leyes aplicables."
+      }
+    },
+    "ramas": {
+      "type": "aylesva-corp-branches",
+      "settings": {
+        "eyebrow": "Ecosistema Aylesva",
+        "title": "Otras Soluciones para tu Crecimiento",
+        "intro": "Descubre más divisiones diseñadas para impulsar tu negocio, tus viajes y tu patrimonio."
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ],
+      "blocks": {
+        "b1": {
+          "type": "branch",
+          "settings": {
+            "title": "Aylesva Travel",
+            "tag": "Club VIP",
+            "desc": "Tarifas preferenciales en más de 1M de hoteles, vuelos, cruceros y concierge exclusivo 24/7.",
+            "link": "/pages/aylesva-travel"
+          }
+        },
+        "b2": {
+          "type": "branch",
+          "settings": {
+            "title": "Aylesva Direct",
+            "tag": "Sourcing",
+            "desc": "Importación y logística directa desde fabricantes verificados en China para tu empresa.",
+            "link": "/pages/aylesva-direct"
+          }
+        },
+        "b3": {
+          "type": "branch",
+          "settings": {
+            "title": "Global Estates",
+            "tag": "Inversión",
+            "desc": "Propiedades exclusivas con alta plusvalía y estilo de vida en México y El Salvador.",
+            "link": "/pages/globalestates"
+          }
+        },
+        "b4": {
+          "type": "branch",
+          "settings": {
+            "title": "Aylesva Recursos",
+            "tag": "Capital",
+            "desc": "Financiamiento estratégico y capital de trabajo para la expansión de empresas.",
+            "link": "/pages/aylesva-recursos"
+          }
+        }
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "beneficios",
+    "proceso",
+    "formulario",
+    "faq",
+    "legal_disclaimer",
+    "ramas"
+  ]
+}
