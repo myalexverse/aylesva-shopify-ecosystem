@@ -1,801 +1,834 @@
 {% comment %}
   ============================================================
-  Raíz de Plata — De Haro | Banner Prémium para Marketplace
-  Bodega Boutique · Jerez, Zacatecas (Terroir de Altura)
-  Diseño moderno, dinámico y 100% responsive (Desktop & Mobile)
+  Raíz de Plata — De Haro | Banner Editorial de Lujo para Marketplace
+  Diseño refinado, atmósfera de cava y viñedo de altura, interactivo
+  100% Responsive (Desktop & Mobile)
   ============================================================
 {% endcomment %}
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<div id="rdp-banner-{{ section.id }}" class="rdp-section-root">
-  <div class="rdp-bg-wrapper">
-    <div class="rdp-bg-image" style="background-image: url('{{ 'rdp-vinedos-bg.jpg' | asset_url }}');"></div>
-    <div class="rdp-bg-overlay"></div>
-    <div class="rdp-ambient-glow"></div>
-  </div>
-
-  <div class="rdp-container">
+<section id="rdp-luxury-{{ section.id }}" class="rdp-editorial-wrapper">
+  <div class="rdp-editorial-frame">
     
-    <!-- HEADER MARCA -->
-    <div class="rdp-brand-header">
-      <div class="rdp-brand-logo-wrap">
-        <img src="{{ 'rdp-logo-gold.png' | asset_url }}" alt="Raíz de Plata — De Haro" class="rdp-brand-logo" width="180" height="90" loading="lazy">
-      </div>
-      <div class="rdp-eyebrow-pill">
-        <span class="rdp-pill-dot"></span>
-        <span>BODEGA BOUTIQUE · JEREZ, ZACATECAS · TERROIR DE ALTURA (2,000 MSNM)</span>
-      </div>
+    <!-- BACKGROUND ATMOSPHERE -->
+    <div class="rdp-bg-art">
+      <div class="rdp-bg-photo" style="background-image: url('{{ 'rdp-vinedos-bg.jpg' | asset_url }}');"></div>
+      <div class="rdp-bg-gradient"></div>
+      <div class="rdp-vignette"></div>
+      <div class="rdp-light-amber"></div>
+      <div class="rdp-light-wine"></div>
     </div>
 
-    <!-- MAIN SHOWCASE GRID -->
-    <div class="rdp-showcase-grid">
+    <!-- INNER CONTENT GRID -->
+    <div class="rdp-inner-grid">
       
-      <!-- COLUMNA IZQUIERDA: INFORMACIÓN & SELECTOR INTERACTIVO -->
-      <div class="rdp-content-col">
-        <h2 class="rdp-main-title">
-          Vinos Premium de <em>Terroir Zacatecano</em>
+      <!-- LEFT EDITORIAL NARRATIVE -->
+      <div class="rdp-narrative-side">
+        
+        <!-- BRAND BADGE -->
+        <div class="rdp-brand-row">
+          <img src="{{ 'rdp-logo-gold.png' | asset_url }}" alt="Raíz de Plata — De Haro" class="rdp-heraldic-logo" width="160" height="80" loading="lazy">
+          <div class="rdp-vertical-divider"></div>
+          <div class="rdp-terroir-badge">
+            <span class="rdp-gold-dot"></span>
+            <span>JEREZ, ZACATECAS · 2,000 MSNM</span>
+          </div>
+        </div>
+
+        <!-- MAIN TITLE -->
+        <h2 class="rdp-title">
+          El Arte del Vino en las <br>
+          <span class="rdp-title-italic">Alturas de Zacatecas</span>
         </h2>
-        <p class="rdp-main-desc">
-          Desde los valles de Jerez, Raíz de Plata nace del sueño de compartir con el mundo la riqueza vitivinícola de nuestra tierra. Cada botella es el reflejo de suelos minerales, sol generoso y crianza paciente en barrica de roble francés.
+
+        <p class="rdp-description">
+          Donde el sol generoso, la altitud y los suelos minerales dan origen a una expresión auténtica en cada racimo. Vinos artesanales de autor con crianza paciente en barricas de roble francés.
         </p>
 
-        <!-- SELECTOR DE VINOS (TABS DINÁMICOS) -->
-        <div class="rdp-selector-label">
-          <span>SELECCIONA UNA ETIQUETA PARA EXPLORAR</span>
+        <!-- WINE INTERACTIVE SELECTOR STRIP -->
+        <div class="rdp-selection-intro">
+          <span class="rdp-label-text">COLECCIÓN DISPONIBLE</span>
+          <span class="rdp-label-line"></span>
         </div>
-        <div class="rdp-wine-tabs" role="tablist" aria-label="Selección de vinos Raíz de Plata">
-          <button type="button" class="rdp-tab-btn is-active" data-wine="lvo" role="tab" aria-selected="true">
-            <span class="rdp-tab-name">L.V.O. 2022</span>
-            <span class="rdp-tab-grape">Blend Tintos</span>
+
+        <div class="rdp-vintage-selector" role="tablist">
+          <button type="button" class="rdp-vintage-btn is-selected" data-wine="lvo" role="tab" aria-selected="true">
+            <span class="rdp-btn-tag">Tinto Ensamble</span>
+            <span class="rdp-btn-name">L.V.O. 2022</span>
           </button>
-          <button type="button" class="rdp-tab-btn" data-wine="cabernet" role="tab" aria-selected="false">
-            <span class="rdp-tab-name">Cabernet Sauvignon</span>
-            <span class="rdp-tab-grape">Cosecha 2020</span>
+          <button type="button" class="rdp-vintage-btn" data-wine="cabernet" role="tab" aria-selected="false">
+            <span class="rdp-btn-tag">Tinto Roble</span>
+            <span class="rdp-btn-name">Cabernet Sauvignon</span>
           </button>
-          <button type="button" class="rdp-tab-btn" data-wine="syrah" role="tab" aria-selected="false">
-            <span class="rdp-tab-name">Syrah 2021</span>
-            <span class="rdp-tab-grape">100% Syrah</span>
+          <button type="button" class="rdp-vintage-btn" data-wine="syrah" role="tab" aria-selected="false">
+            <span class="rdp-btn-tag">Tinto Mineral</span>
+            <span class="rdp-btn-name">Syrah 2021</span>
           </button>
-          <button type="button" class="rdp-tab-btn" data-wine="rose" role="tab" aria-selected="false">
-            <span class="rdp-tab-name">Rosé 2023</span>
-            <span class="rdp-tab-grape">Syrah · Cariñan</span>
+          <button type="button" class="rdp-vintage-btn" data-wine="rose" role="tab" aria-selected="false">
+            <span class="rdp-btn-tag">Rosado</span>
+            <span class="rdp-btn-name">Rosé 2023</span>
           </button>
-          <button type="button" class="rdp-tab-btn" data-wine="semillon" role="tab" aria-selected="false">
-            <span class="rdp-tab-name">Semillón 2023</span>
-            <span class="rdp-tab-grape">Blanco de Altura</span>
+          <button type="button" class="rdp-vintage-btn" data-wine="semillon" role="tab" aria-selected="false">
+            <span class="rdp-btn-tag">Blanco</span>
+            <span class="rdp-btn-name">Semillón 2023</span>
           </button>
         </div>
 
-        <!-- FICHA DINÁMICA DEL VINO ACTIVO -->
-        <div class="rdp-wine-details-box">
-          <div class="rdp-details-badge-wrap">
-            <span id="rdp-active-badge" class="rdp-badge-pill">Edición de Autor · Selección de Barrica</span>
-            <span id="rdp-active-vintage" class="rdp-badge-vintage">Valle de Barranquillas</span>
-          </div>
-
-          <h3 id="rdp-active-title" class="rdp-active-title">L.V.O. Cosecha 2022</h3>
-          
-          <div class="rdp-specs-grid">
-            <div class="rdp-spec-item">
-              <span class="rdp-spec-k">Varietal / Ensamble</span>
-              <span id="rdp-active-grapes" class="rdp-spec-v">40% Tempranillo · 40% Cariñan · 20% Nebbiolo</span>
+        <!-- CURRENT WINE INFO PANEL -->
+        <div class="rdp-tasting-card">
+          <div class="rdp-card-header">
+            <div>
+              <span id="rdp-wine-type" class="rdp-wine-category">GRAN RESERVA · TINTO</span>
+              <h3 id="rdp-wine-name" class="rdp-wine-heading">L.V.O. Cosecha 2022</h3>
             </div>
-            <div class="rdp-spec-item">
-              <span class="rdp-spec-k">Crianza</span>
-              <span id="rdp-active-aging" class="rdp-spec-v">12 meses en barrica de roble francés</span>
-            </div>
-            <div class="rdp-spec-item full-width">
-              <span class="rdp-spec-k">Notas de Cata</span>
-              <span id="rdp-active-notes" class="rdp-spec-v">Notas de ciruela negra madura, moras silvestres, café tostado y cacao con un final aterciopelado y persistente.</span>
-            </div>
-            <div class="rdp-spec-item full-width">
-              <span class="rdp-spec-k">Maridaje Recomendado</span>
-              <span id="rdp-active-pairing" class="rdp-spec-v">Cortes marmoleados a las brasas, cordero al romero y quesos madurados.</span>
+            <div class="rdp-price-wrap">
+              <span class="rdp-price-currency">DESDE</span>
+              <span id="rdp-wine-price" class="rdp-price-val">$400 <small>MXN</small></span>
             </div>
           </div>
 
-          <!-- BOTONES DE ACCIÓN -->
-          <div class="rdp-actions-wrap">
-            <a id="rdp-cta-primary" href="https://www.raizdeplata.com/collections/all" target="_blank" rel="noopener noreferrer" class="rdp-btn-gold">
-              <span>Explorar en Raíz de Plata</span>
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <div class="rdp-card-body">
+            <div class="rdp-detail-cell">
+              <span class="rdp-detail-lbl">Ensamble & Uvas</span>
+              <p id="rdp-wine-blend" class="rdp-detail-txt">40% Tempranillo · 40% Cariñan · 20% Nebbiolo</p>
+            </div>
+            <div class="rdp-detail-cell">
+              <span class="rdp-detail-lbl">Crianza</span>
+              <p id="rdp-wine-barrel" class="rdp-detail-txt">12 meses en barrica de roble francés</p>
+            </div>
+            <div class="rdp-detail-cell full-span">
+              <span class="rdp-detail-lbl">Perfil & Notas de Cata</span>
+              <p id="rdp-wine-profile" class="rdp-detail-txt">Ciruela negra madura, moras silvestres, café tostado y cacao. Final aterciopelado con taninos redondos y gran permanencia.</p>
+            </div>
+          </div>
+
+          <!-- CTAS -->
+          <div class="rdp-buttons-row">
+            <a id="rdp-btn-buy" href="https://www.raizdeplata.com/collections/all" target="_blank" rel="noopener noreferrer" class="rdp-cta-primary">
+              <span>Explorar Selección Raíz de Plata</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
             </a>
-            <a id="rdp-cta-whatsapp" href="https://wa.me/524941044143?text=Hola%2C%20vi%20los%20vinos%20de%20Ra%C3%ADz%20de%20Plata%20en%20Aylesva%20Marketplace%20y%20me%20gustar%C3%ADa%20hacer%20un%20pedido." target="_blank" rel="noopener noreferrer" class="rdp-btn-outline">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824z"/></svg>
-              <span>Consultar por WhatsApp</span>
+            <a id="rdp-btn-wa" href="https://wa.me/524941044143?text=Hola%2C%20me%20interesa%20adquirir%20vinos%20de%20Ra%C3%ADz%20de%20Plata%20en%20Aylesva%20Marketplace." target="_blank" rel="noopener noreferrer" class="rdp-cta-wa">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824z"/></svg>
+              <span>Atención WhatsApp</span>
             </a>
           </div>
         </div>
+
       </div>
 
-      <!-- COLUMNA DERECHA: FOTOGRAFÍA ESTUDIO DINÁMICA -->
-      <div class="rdp-visual-col">
-        <div class="rdp-stage-card">
-          <div class="rdp-stage-glow"></div>
-          <div class="rdp-stage-tag">CATA DE AUTOR · COSECHA SELECCIONADA</div>
-          <div class="rdp-image-container">
-            <img id="rdp-bottle-image" src="{{ 'rdp-botella-lvo.jpg' | asset_url }}" alt="Vino Raíz de Plata LVO" class="rdp-bottle-img" width="819" height="1024" loading="lazy">
+      <!-- RIGHT EDITORIAL BOTTLE STAGE -->
+      <div class="rdp-stage-side">
+        <div class="rdp-bottle-canvas">
+          <div class="rdp-stage-aura"></div>
+          <div class="rdp-stage-pedestal"></div>
+          
+          <div class="rdp-bottle-frame">
+            <img id="rdp-main-bottle-img" src="{{ 'rdp-botella-lvo.jpg' | asset_url }}" alt="Raíz de Plata L.V.O." class="rdp-stage-bottle" width="819" height="1024" loading="lazy">
           </div>
-          <div class="rdp-stage-footer">
-            <span class="rdp-stage-origin">📍 Los Haro, Jerez, Zacatecas · México</span>
-            <span class="rdp-stage-secure">Garantía Artesanal</span>
+
+          <!-- FLOATING TASTING PILL -->
+          <div class="rdp-floating-pill">
+            <span class="rdp-pill-icon">🍇</span>
+            <div class="rdp-pill-text">
+              <span id="rdp-pill-title" class="rdp-pill-main">Valle de Barranquillas</span>
+              <span id="rdp-pill-sub" class="rdp-pill-sub">Cosecha Seleccionada a Mano</span>
+            </div>
           </div>
         </div>
       </div>
 
     </div>
 
-    <!-- BARRA INFERIOR DE SELLOS DE CALIDAD -->
-    <div class="rdp-pillars-bar">
-      <div class="rdp-pillar-item">
-        <div class="rdp-pillar-icon">🍇</div>
-        <div class="rdp-pillar-content">
-          <h4>Uvas Seleccionadas</h4>
-          <p>Cosecha manual con riguroso control de calidad en racimo.</p>
-        </div>
+    <!-- BOTTOM DELICATE ATTRIBUTES BAR -->
+    <div class="rdp-attributes-bar">
+      <div class="rdp-attr-item">
+        <span class="rdp-attr-symbol">✦</span>
+        <span class="rdp-attr-label">Terroir a 2,000 metros de altitud</span>
       </div>
-      <div class="rdp-pillar-item">
-        <div class="rdp-pillar-icon">⛰️</div>
-        <div class="rdp-pillar-content">
-          <h4>Terruño a 2,000 MSNM</h4>
-          <p>Suelos calcáreos y gran amplitud térmica que concentran aromas.</p>
-        </div>
+      <div class="rdp-attr-item">
+        <span class="rdp-attr-symbol">✦</span>
+        <span class="rdp-attr-label">Suelos calcáreos de gran pureza mineral</span>
       </div>
-      <div class="rdp-pillar-item">
-        <div class="rdp-pillar-icon">🍷</div>
-        <div class="rdp-pillar-content">
-          <h4>Crianza en Roble</h4>
-          <p>Maduración en barricas francesas para taninos sedosos y guarda.</p>
-        </div>
+      <div class="rdp-attr-item">
+        <span class="rdp-attr-symbol">✦</span>
+        <span class="rdp-attr-label">Crianza noble en barrica de roble francés</span>
       </div>
-      <div class="rdp-pillar-item">
-        <div class="rdp-pillar-icon">🇲🇽</div>
-        <div class="rdp-pillar-content">
-          <h4>Orgullo de Zacatecas</h4>
-          <p>Vitivinicultura mexicana de autor con proyección internacional.</p>
-        </div>
+      <div class="rdp-attr-item">
+        <span class="rdp-attr-symbol">✦</span>
+        <span class="rdp-attr-label">Orgullo vitivinícola de Los Haro, Jerez</span>
       </div>
     </div>
 
   </div>
-</div>
+</section>
 
 <style>
-  #rdp-banner-{{ section.id }} {
+  #rdp-luxury-{{ section.id }} {
     --rdp-gold: #C5A47E;
-    --rdp-gold-light: #E7D2B8;
-    --rdp-gold-dark: #8F6D44;
-    --rdp-wine: #7A1C28;
-    --rdp-wine-dark: #3D0C13;
-    --rdp-dark: #0B0A0D;
-    --rdp-card-bg: rgba(18, 15, 20, 0.72);
-    --rdp-border: rgba(197, 164, 126, 0.28);
-    --rdp-border-light: rgba(255, 255, 255, 0.1);
+    --rdp-gold-bright: #E2C79E;
+    --rdp-gold-deep: #967448;
+    --rdp-wine: #5A131E;
+    --rdp-wine-dark: #2E070D;
+    --rdp-obsidian: #0D0B0E;
+    --rdp-charcoal: #17141A;
+    --rdp-card: rgba(23, 20, 26, 0.78);
+    --rdp-border-gold: rgba(197, 164, 126, 0.32);
+    --rdp-border-soft: rgba(255, 255, 255, 0.08);
+    --rdp-text-light: #F7F4EF;
+    --rdp-text-muted: rgba(247, 244, 239, 0.72);
     
-    position: relative;
     width: 100%;
-    margin: 36px 0;
-    overflow: hidden;
-    font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
-    color: #F5F1EC;
-    background-color: var(--rdp-dark);
+    margin: 44px 0 54px;
+    padding: 0 24px;
+    box-sizing: border-box;
+    font-family: 'Montserrat', -apple-system, sans-serif;
+    color: var(--rdp-text-light);
   }
 
-  #rdp-banner-{{ section.id }} * {
+  #rdp-luxury-{{ section.id }} * {
     box-sizing: border-box;
   }
 
-  /* BACKGROUND AMBIENT */
-  #rdp-banner-{{ section.id }} .rdp-bg-wrapper {
+  /* CONTAINED LUXURY FRAME */
+  #rdp-luxury-{{ section.id }} .rdp-editorial-frame {
+    position: relative;
+    max-width: 1380px;
+    margin: 0 auto;
+    border-radius: 28px;
+    overflow: hidden;
+    background-color: var(--rdp-obsidian);
+    border: 1px solid var(--rdp-border-gold);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45), 0 0 40px rgba(197, 164, 126, 0.12);
+  }
+
+  /* ATMOSPHERIC BACKGROUND */
+  #rdp-luxury-{{ section.id }} .rdp-bg-art {
     position: absolute;
     inset: 0;
     pointer-events: none;
     z-index: 0;
   }
-  #rdp-banner-{{ section.id }} .rdp-bg-image {
+  #rdp-luxury-{{ section.id }} .rdp-bg-photo {
     position: absolute;
     inset: 0;
     background-size: cover;
-    background-position: center center;
-    filter: brightness(0.6) contrast(1.1);
-    transform: scale(1.03);
-    transition: transform 12s ease-out;
+    background-position: center 40%;
+    filter: brightness(0.42) contrast(1.18);
+    transform: scale(1.02);
+    transition: transform 10s ease;
   }
-  #rdp-banner-{{ section.id }}:hover .rdp-bg-image {
-    transform: scale(1.07);
+  #rdp-luxury-{{ section.id }}:hover .rdp-bg-photo {
+    transform: scale(1.05);
   }
-  #rdp-banner-{{ section.id }} .rdp-bg-overlay {
+  #rdp-luxury-{{ section.id }} .rdp-bg-gradient {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(11, 10, 13, 0.94) 0%, rgba(28, 15, 23, 0.88) 45%, rgba(10, 9, 12, 0.94) 100%);
+    background: linear-gradient(120deg, rgba(13, 11, 14, 0.95) 0%, rgba(26, 17, 22, 0.88) 45%, rgba(13, 11, 14, 0.94) 100%);
   }
-  #rdp-banner-{{ section.id }} .rdp-ambient-glow {
+  #rdp-luxury-{{ section.id }} .rdp-vignette {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 75% 50%, transparent 20%, rgba(13, 11, 14, 0.85) 85%);
+  }
+  #rdp-luxury-{{ section.id }} .rdp-light-amber {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    right: 8%;
+    top: 15%;
+    background: radial-gradient(circle, rgba(197, 164, 126, 0.22) 0%, transparent 70%);
+    filter: blur(70px);
+  }
+  #rdp-luxury-{{ section.id }} .rdp-light-wine {
     position: absolute;
     width: 600px;
     height: 600px;
-    right: 5%;
-    top: 20%;
-    background: radial-gradient(circle, rgba(197, 164, 126, 0.18) 0%, rgba(122, 28, 40, 0.15) 50%, transparent 70%);
-    filter: blur(80px);
+    left: -100px;
+    bottom: -100px;
+    background: radial-gradient(circle, rgba(90, 19, 30, 0.28) 0%, transparent 65%);
+    filter: blur(90px);
   }
 
-  /* CONTAINER */
-  #rdp-banner-{{ section.id }} .rdp-container {
+  /* INNER GRID */
+  #rdp-luxury-{{ section.id }} .rdp-inner-grid {
     position: relative;
     z-index: 1;
-    max-width: 1360px;
-    margin: 0 auto;
-    padding: 56px 28px 48px;
-  }
-
-  /* BRAND HEADER */
-  #rdp-banner-{{ section.id }} .rdp-brand-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 20px;
-    margin-bottom: 38px;
-    padding-bottom: 24px;
-    border-bottom: 1px solid var(--rdp-border-light);
-  }
-  #rdp-banner-{{ section.id }} .rdp-brand-logo-wrap {
-    display: flex;
-    align-items: center;
-  }
-  #rdp-banner-{{ section.id }} .rdp-brand-logo {
-    height: 68px;
-    width: auto;
-    object-fit: contain;
-    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.6));
-  }
-  #rdp-banner-{{ section.id }} .rdp-eyebrow-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 8px 18px;
-    background: rgba(197, 164, 126, 0.1);
-    border: 1px solid var(--rdp-border);
-    border-radius: 999px;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    color: var(--rdp-gold-light);
-    text-transform: uppercase;
-  }
-  #rdp-banner-{{ section.id }} .rdp-pill-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background-color: var(--rdp-gold);
-    box-shadow: 0 0 8px var(--rdp-gold);
-  }
-
-  /* GRID */
-  #rdp-banner-{{ section.id }} .rdp-showcase-grid {
     display: grid;
     grid-template-columns: 1.15fr 0.85fr;
-    gap: 48px;
+    gap: 40px;
     align-items: center;
-    margin-bottom: 50px;
+    padding: 56px 56px 44px;
   }
 
-  /* TITLES & TEXT */
-  #rdp-banner-{{ section.id }} .rdp-main-title {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: clamp(32px, 3.6vw, 48px);
-    font-weight: 700;
-    line-height: 1.15;
-    letter-spacing: -0.015em;
-    color: #FFFFFF;
-    margin: 0 0 18px 0;
-  }
-  #rdp-banner-{{ section.id }} .rdp-main-title em {
-    font-style: italic;
-    color: var(--rdp-gold-light);
-    font-weight: 400;
-    text-shadow: 0 2px 14px rgba(197, 164, 126, 0.25);
-  }
-  #rdp-banner-{{ section.id }} .rdp-main-desc {
-    font-size: 14.5px;
-    line-height: 1.65;
-    color: rgba(245, 241, 236, 0.8);
-    max-width: 60ch;
-    margin: 0 0 30px 0;
-  }
-
-  /* SELECTOR TABS */
-  #rdp-banner-{{ section.id }} .rdp-selector-label {
-    font-family: 'Cinzel', serif;
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    color: var(--rdp-gold);
-    margin-bottom: 12px;
-    font-weight: 600;
-  }
-  #rdp-banner-{{ section.id }} .rdp-wine-tabs {
+  /* NARRATIVE SIDE (LEFT) */
+  #rdp-luxury-{{ section.id }} .rdp-narrative-side {
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+    flex-direction: column;
+  }
+
+  /* BRAND ROW */
+  #rdp-luxury-{{ section.id }} .rdp-brand-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
     margin-bottom: 24px;
   }
-  #rdp-banner-{{ section.id }} .rdp-tab-btn {
+  #rdp-luxury-{{ section.id }} .rdp-heraldic-logo {
+    height: 64px;
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 10px rgba(0,0,0,0.5));
+  }
+  #rdp-luxury-{{ section.id }} .rdp-vertical-divider {
+    width: 1px;
+    height: 36px;
+    background: linear-gradient(180deg, transparent, var(--rdp-border-gold), transparent);
+  }
+  #rdp-luxury-{{ section.id }} .rdp-terroir-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 10.5px;
+    letter-spacing: 0.16em;
+    font-weight: 600;
+    color: var(--rdp-gold-bright);
+    text-transform: uppercase;
+  }
+  #rdp-luxury-{{ section.id }} .rdp-gold-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--rdp-gold);
+    box-shadow: 0 0 6px var(--rdp-gold);
+  }
+
+  /* TITLES */
+  #rdp-luxury-{{ section.id }} .rdp-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(34px, 3.8vw, 50px);
+    font-weight: 600;
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    color: #FFFFFF;
+    margin: 0 0 16px 0;
+  }
+  #rdp-luxury-{{ section.id }} .rdp-title-italic {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--rdp-gold-bright);
+    text-shadow: 0 0 20px rgba(197, 164, 126, 0.3);
+  }
+  #rdp-luxury-{{ section.id }} .rdp-description {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--rdp-text-muted);
+    max-width: 58ch;
+    margin: 0 0 28px 0;
+  }
+
+  /* SELECTOR STRIP */
+  #rdp-luxury-{{ section.id }} .rdp-selection-intro {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 12px;
+  }
+  #rdp-luxury-{{ section.id }} .rdp-label-text {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    font-weight: 700;
+    color: var(--rdp-gold);
+    text-transform: uppercase;
+  }
+  #rdp-luxury-{{ section.id }} .rdp-label-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--rdp-border-gold), transparent);
+  }
+
+  /* VINTAGE SELECTOR (BUTTONS) */
+  #rdp-luxury-{{ section.id }} .rdp-vintage-selector {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 22px;
+  }
+  #rdp-luxury-{{ section.id }} .rdp-vintage-btn {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 10px 16px;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 8px 14px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.09);
     border-radius: 8px;
-    color: #E6E1DA;
     cursor: pointer;
-    transition: all 0.25s ease;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    color: #E2DDD6;
     text-align: left;
   }
-  #rdp-banner-{{ section.id }} .rdp-tab-btn:hover {
+  #rdp-luxury-{{ section.id }} .rdp-vintage-btn:hover {
     background: rgba(197, 164, 126, 0.12);
     border-color: var(--rdp-gold);
     transform: translateY(-2px);
   }
-  #rdp-banner-{{ section.id }} .rdp-tab-btn.is-active {
-    background: linear-gradient(135deg, rgba(197, 164, 126, 0.25) 0%, rgba(122, 28, 40, 0.25) 100%);
-    border-color: var(--rdp-gold);
-    box-shadow: 0 4px 16px rgba(197, 164, 126, 0.2);
+  #rdp-luxury-{{ section.id }} .rdp-vintage-btn.is-selected {
+    background: linear-gradient(135deg, rgba(197, 164, 126, 0.22) 0%, rgba(90, 19, 30, 0.35) 100%);
+    border-color: var(--rdp-gold-bright);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
   }
-  #rdp-banner-{{ section.id }} .rdp-tab-name {
-    font-family: 'Cinzel', serif;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    color: #FFFFFF;
-  }
-  #rdp-banner-{{ section.id }} .rdp-tab-btn.is-active .rdp-tab-name {
-    color: var(--rdp-gold-light);
-  }
-  #rdp-banner-{{ section.id }} .rdp-tab-grape {
-    font-size: 11px;
-    color: rgba(245, 241, 236, 0.6);
-    margin-top: 2px;
-  }
-
-  /* DETAILS BOX */
-  #rdp-banner-{{ section.id }} .rdp-wine-details-box {
-    background: var(--rdp-card-bg);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border: 1px solid var(--rdp-border);
-    border-radius: 16px;
-    padding: 28px 26px;
-    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
-    transition: all 0.3s ease;
-  }
-  #rdp-banner-{{ section.id }} .rdp-details-badge-wrap {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 12px;
-    flex-wrap: wrap;
-  }
-  #rdp-banner-{{ section.id }} .rdp-badge-pill {
-    font-size: 11px;
-    font-weight: 700;
+  #rdp-luxury-{{ section.id }} .rdp-btn-tag {
+    font-size: 9.5px;
     text-transform: uppercase;
     letter-spacing: 0.08em;
+    color: var(--rdp-gold);
+    font-weight: 600;
+  }
+  #rdp-luxury-{{ section.id }} .rdp-btn-name {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 15px;
+    font-weight: 600;
     color: #FFFFFF;
-    background: var(--rdp-wine);
-    padding: 4px 12px;
+    margin-top: 1px;
+  }
+  #rdp-luxury-{{ section.id }} .rdp-vintage-btn.is-selected .rdp-btn-name {
+    color: var(--rdp-gold-bright);
+  }
+
+  /* TASTING CARD */
+  #rdp-luxury-{{ section.id }} .rdp-tasting-card {
+    background: var(--rdp-card);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--rdp-border-gold);
+    border-radius: 18px;
+    padding: 24px 26px;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+  }
+  #rdp-luxury-{{ section.id }} .rdp-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-bottom: 14px;
+    margin-bottom: 14px;
+    border-bottom: 1px solid var(--rdp-border-soft);
+    gap: 16px;
+  }
+  #rdp-luxury-{{ section.id }} .rdp-wine-category {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    font-weight: 700;
+    color: var(--rdp-gold-bright);
+    background: rgba(90, 19, 30, 0.6);
+    border: 1px solid rgba(197, 164, 126, 0.3);
+    padding: 3px 10px;
     border-radius: 4px;
+    margin-bottom: 6px;
   }
-  #rdp-banner-{{ section.id }} .rdp-badge-vintage {
-    font-size: 11.5px;
-    color: var(--rdp-gold-light);
-    font-weight: 500;
-    letter-spacing: 0.05em;
-  }
-  #rdp-banner-{{ section.id }} .rdp-active-title {
-    font-family: 'Playfair Display', Georgia, serif;
+  #rdp-luxury-{{ section.id }} .rdp-wine-heading {
+    font-family: 'Cormorant Garamond', Georgia, serif;
     font-size: 26px;
     font-weight: 700;
     color: #FFFFFF;
-    margin: 0 0 18px 0;
+    margin: 0;
   }
-  #rdp-banner-{{ section.id }} .rdp-specs-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px 20px;
-    margin-bottom: 26px;
-    padding-bottom: 22px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  #rdp-luxury-{{ section.id }} .rdp-price-wrap {
+    text-align: right;
+    flex-shrink: 0;
   }
-  #rdp-banner-{{ section.id }} .rdp-spec-item.full-width {
-    grid-column: 1 / -1;
-  }
-  #rdp-banner-{{ section.id }} .rdp-spec-k {
+  #rdp-luxury-{{ section.id }} .rdp-price-currency {
     display: block;
-    font-size: 10.5px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
+    font-size: 9px;
+    letter-spacing: 0.16em;
     color: var(--rdp-gold);
     font-weight: 600;
-    margin-bottom: 4px;
   }
-  #rdp-banner-{{ section.id }} .rdp-spec-v {
-    display: block;
-    font-size: 13.5px;
-    line-height: 1.5;
-    color: rgba(245, 241, 236, 0.9);
+  #rdp-luxury-{{ section.id }} .rdp-price-val {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--rdp-gold-bright);
+  }
+  #rdp-luxury-{{ section.id }} .rdp-price-val small {
+    font-size: 12px;
+    font-family: 'Montserrat', sans-serif;
+    color: rgba(255, 255, 255, 0.6);
   }
 
-  /* ACTIONS */
-  #rdp-banner-{{ section.id }} .rdp-actions-wrap {
+  /* DETAILS BODY */
+  #rdp-luxury-{{ section.id }} .rdp-card-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 20px;
+    margin-bottom: 20px;
+  }
+  #rdp-luxury-{{ section.id }} .rdp-detail-cell.full-span {
+    grid-column: 1 / -1;
+  }
+  #rdp-luxury-{{ section.id }} .rdp-detail-lbl {
+    display: block;
+    font-size: 9.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--rdp-gold);
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  #rdp-luxury-{{ section.id }} .rdp-detail-txt {
+    font-size: 13px;
+    line-height: 1.45;
+    color: var(--rdp-text-muted);
+    margin: 0;
+  }
+
+  /* BUTTONS ROW */
+  #rdp-luxury-{{ section.id }} .rdp-buttons-row {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 14px;
     flex-wrap: wrap;
+    padding-top: 14px;
+    border-top: 1px solid var(--rdp-border-soft);
   }
-  #rdp-banner-{{ section.id }} .rdp-btn-gold {
+  #rdp-luxury-{{ section.id }} .rdp-cta-primary {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    padding: 13px 26px;
-    background: linear-gradient(135deg, #D4AF37 0%, #C5A47E 50%, #A67C52 100%);
-    color: #0B0A0D;
-    font-size: 13.5px;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #D6B27C 0%, #C5A47E 50%, #9B784C 100%);
+    color: #0E0C10;
+    font-size: 12.5px;
     font-weight: 700;
-    letter-spacing: 0.04em;
-    border-radius: 6px;
+    letter-spacing: 0.05em;
+    border-radius: 999px;
     text-decoration: none;
     transition: all 0.25s ease;
-    box-shadow: 0 6px 20px rgba(197, 164, 126, 0.35);
+    box-shadow: 0 4px 18px rgba(197, 164, 126, 0.35);
   }
-  #rdp-banner-{{ section.id }} .rdp-btn-gold:hover {
+  #rdp-luxury-{{ section.id }} .rdp-cta-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(197, 164, 126, 0.55);
+    box-shadow: 0 6px 24px rgba(197, 164, 126, 0.55);
     filter: brightness(1.08);
   }
-  #rdp-banner-{{ section.id }} .rdp-btn-outline {
+  #rdp-luxury-{{ section.id }} .rdp-cta-wa {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    padding: 12px 22px;
-    background: rgba(37, 211, 102, 0.1);
-    border: 1px solid rgba(37, 211, 102, 0.4);
+    gap: 8px;
+    padding: 11px 20px;
+    background: rgba(37, 211, 102, 0.12);
+    border: 1px solid rgba(37, 211, 102, 0.38);
     color: #25D366;
-    font-size: 13.5px;
+    font-size: 12.5px;
     font-weight: 600;
-    border-radius: 6px;
+    border-radius: 999px;
     text-decoration: none;
     transition: all 0.25s ease;
   }
-  #rdp-banner-{{ section.id }} .rdp-btn-outline:hover {
-    background: rgba(37, 211, 102, 0.2);
+  #rdp-luxury-{{ section.id }} .rdp-cta-wa:hover {
+    background: rgba(37, 211, 102, 0.22);
     border-color: #25D366;
     transform: translateY(-2px);
   }
 
-  /* VISUAL COLUMN (RIGHT) */
-  #rdp-banner-{{ section.id }} .rdp-visual-col {
+  /* STAGE SIDE (RIGHT) */
+  #rdp-luxury-{{ section.id }} .rdp-stage-side {
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  #rdp-banner-{{ section.id }} .rdp-stage-card {
+  #rdp-luxury-{{ section.id }} .rdp-bottle-canvas {
     position: relative;
     width: 100%;
-    max-width: 440px;
-    background: rgba(14, 12, 16, 0.8);
-    backdrop-filter: blur(16px);
-    border: 1px solid var(--rdp-border);
-    border-radius: 20px;
-    padding: 24px 20px 20px;
-    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.6), 0 0 32px rgba(197, 164, 126, 0.15);
-    overflow: hidden;
-    text-align: center;
+    max-width: 420px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
-  #rdp-banner-{{ section.id }} .rdp-stage-glow {
+  #rdp-luxury-{{ section.id }} .rdp-stage-aura {
     position: absolute;
-    width: 280px;
-    height: 280px;
-    top: 35%;
+    width: 320px;
+    height: 320px;
+    top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: radial-gradient(circle, rgba(197, 164, 126, 0.35) 0%, rgba(122, 28, 40, 0.2) 60%, transparent 80%);
-    filter: blur(50px);
+    background: radial-gradient(circle, rgba(197, 164, 126, 0.3) 0%, rgba(90, 19, 30, 0.2) 50%, transparent 75%);
+    filter: blur(45px);
     pointer-events: none;
   }
-  #rdp-banner-{{ section.id }} .rdp-stage-tag {
+  #rdp-luxury-{{ section.id }} .rdp-bottle-frame {
     position: relative;
-    z-index: 1;
-    font-family: 'Cinzel', serif;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-    color: var(--rdp-gold-light);
-    margin-bottom: 14px;
-  }
-  #rdp-banner-{{ section.id }} .rdp-image-container {
-    position: relative;
-    z-index: 1;
-    height: 440px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    border-radius: 12px;
-  }
-  #rdp-banner-{{ section.id }} .rdp-bottle-img {
-    max-height: 100%;
+    z-index: 2;
     width: 100%;
-    object-fit: cover;
-    border-radius: 12px;
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
-    transition: opacity 0.35s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid var(--rdp-border-gold);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.55), 0 0 30px rgba(197, 164, 126, 0.12);
+    background-color: rgba(14, 12, 16, 0.5);
   }
-  #rdp-banner-{{ section.id }} .rdp-stage-footer {
+  #rdp-luxury-{{ section.id }} .rdp-stage-bottle {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    transition: opacity 0.35s ease, transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  #rdp-luxury-{{ section.id }} .rdp-floating-pill {
+    position: absolute;
+    bottom: -16px;
+    right: -12px;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(18, 15, 20, 0.9);
+    border: 1px solid var(--rdp-border-gold);
+    border-radius: 999px;
+    padding: 8px 18px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+    backdrop-filter: blur(10px);
+  }
+  #rdp-luxury-{{ section.id }} .rdp-pill-icon {
+    font-size: 16px;
+  }
+  #rdp-luxury-{{ section.id }} .rdp-pill-main {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--rdp-gold-bright);
+    line-height: 1;
+  }
+  #rdp-luxury-{{ section.id }} .rdp-pill-sub {
+    display: block;
+    font-size: 9.5px;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1;
+    margin-top: 3px;
+  }
+
+  /* ATTRIBUTES BOTTOM BAR */
+  #rdp-luxury-{{ section.id }} .rdp-attributes-bar {
     position: relative;
     z-index: 1;
-    margin-top: 16px;
-    padding-top: 14px;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-    font-size: 11px;
-    color: rgba(245, 241, 236, 0.6);
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 20px 32px;
+    background: rgba(14, 12, 16, 0.65);
+    border-top: 1px solid var(--rdp-border-soft);
   }
-  #rdp-banner-{{ section.id }} .rdp-stage-secure {
-    color: var(--rdp-gold);
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  /* PILLARS BOTTOM BAR */
-  #rdp-banner-{{ section.id }} .rdp-pillars-bar {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    padding-top: 36px;
-    border-top: 1px solid var(--rdp-border-light);
-  }
-  #rdp-banner-{{ section.id }} .rdp-pillar-item {
+  #rdp-luxury-{{ section.id }} .rdp-attr-item {
     display: flex;
-    align-items: flex-start;
-    gap: 14px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    border-radius: 12px;
-    padding: 16px 18px;
-    transition: all 0.25s ease;
+    align-items: center;
+    gap: 8px;
   }
-  #rdp-banner-{{ section.id }} .rdp-pillar-item:hover {
-    background: rgba(197, 164, 126, 0.08);
-    border-color: var(--rdp-border);
-    transform: translateY(-2px);
+  #rdp-luxury-{{ section.id }} .rdp-attr-symbol {
+    color: var(--rdp-gold);
+    font-size: 11px;
   }
-  #rdp-banner-{{ section.id }} .rdp-pillar-icon {
-    font-size: 24px;
-    line-height: 1;
-    flex-shrink: 0;
-  }
-  #rdp-banner-{{ section.id }} .rdp-pillar-content h4 {
-    font-family: 'Cinzel', serif;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    color: #FFFFFF;
-    margin: 0 0 4px 0;
-  }
-  #rdp-banner-{{ section.id }} .rdp-pillar-content p {
-    font-size: 12px;
-    line-height: 1.45;
-    color: rgba(245, 241, 236, 0.65);
-    margin: 0;
+  #rdp-luxury-{{ section.id }} .rdp-attr-label {
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    color: rgba(247, 244, 239, 0.8);
+    text-transform: uppercase;
+    font-weight: 500;
   }
 
-  /* RESPONSIVE BREAKPOINTS */
-  @media (max-width: 1024px) {
-    #rdp-banner-{{ section.id }} .rdp-showcase-grid {
+  /* RESPONSIVE */
+  @media (max-width: 1080px) {
+    #rdp-luxury-{{ section.id }} .rdp-inner-grid {
       grid-template-columns: 1fr;
+      padding: 40px 32px;
       gap: 36px;
     }
-    #rdp-banner-{{ section.id }} .rdp-visual-col {
+    #rdp-luxury-{{ section.id }} .rdp-stage-side {
       order: -1;
     }
-    #rdp-banner-{{ section.id }} .rdp-stage-card {
-      max-width: 100%;
+    #rdp-luxury-{{ section.id }} .rdp-bottle-canvas {
+      max-width: 360px;
     }
-    #rdp-banner-{{ section.id }} .rdp-image-container {
-      height: 380px;
-    }
-    #rdp-banner-{{ section.id }} .rdp-pillars-bar {
-      grid-template-columns: repeat(2, 1fr);
+    #rdp-luxury-{{ section.id }} .rdp-floating-pill {
+      right: 0;
+      bottom: -10px;
     }
   }
 
   @media (max-width: 768px) {
-    #rdp-banner-{{ section.id }} {
-      margin: 20px 0;
+    #rdp-luxury-{{ section.id }} {
+      padding: 0 12px;
+      margin: 24px 0 36px;
     }
-    #rdp-banner-{{ section.id }} .rdp-container {
-      padding: 36px 18px 32px;
+    #rdp-luxury-{{ section.id }} .rdp-editorial-frame {
+      border-radius: 20px;
     }
-    #rdp-banner-{{ section.id }} .rdp-brand-header {
+    #rdp-luxury-{{ section.id }} .rdp-inner-grid {
+      padding: 28px 18px 24px;
+    }
+    #rdp-luxury-{{ section.id }} .rdp-brand-row {
       flex-direction: column;
       align-items: flex-start;
-      gap: 16px;
-      margin-bottom: 24px;
+      gap: 12px;
     }
-    #rdp-banner-{{ section.id }} .rdp-brand-logo {
-      height: 54px;
+    #rdp-luxury-{{ section.id }} .rdp-heraldic-logo {
+      height: 48px;
     }
-    #rdp-banner-{{ section.id }} .rdp-eyebrow-pill {
-      font-size: 9.5px;
-      padding: 6px 14px;
-      width: 100%;
-      justify-content: center;
+    #rdp-luxury-{{ section.id }} .rdp-vertical-divider {
+      display: none;
     }
-    #rdp-banner-{{ section.id }} .rdp-main-title {
-      font-size: 28px;
+    #rdp-luxury-{{ section.id }} .rdp-title {
+      font-size: 32px;
     }
-    #rdp-banner-{{ section.id }} .rdp-main-desc {
-      font-size: 13.5px;
-    }
-    #rdp-banner-{{ section.id }} .rdp-wine-tabs {
+    #rdp-luxury-{{ section.id }} .rdp-vintage-selector {
       overflow-x: auto;
       flex-wrap: nowrap;
       padding-bottom: 8px;
       -webkit-overflow-scrolling: touch;
-      margin-bottom: 18px;
     }
-    #rdp-banner-{{ section.id }} .rdp-tab-btn {
+    #rdp-luxury-{{ section.id }} .rdp-vintage-btn {
       flex: 0 0 auto;
-      padding: 8px 14px;
     }
-    #rdp-banner-{{ section.id }} .rdp-wine-details-box {
+    #rdp-luxury-{{ section.id }} .rdp-tasting-card {
       padding: 20px 16px;
     }
-    #rdp-banner-{{ section.id }} .rdp-active-title {
-      font-size: 22px;
-    }
-    #rdp-banner-{{ section.id }} .rdp-specs-grid {
+    #rdp-luxury-{{ section.id }} .rdp-card-body {
       grid-template-columns: 1fr;
-      gap: 12px;
     }
-    #rdp-banner-{{ section.id }} .rdp-actions-wrap {
+    #rdp-luxury-{{ section.id }} .rdp-buttons-row {
       flex-direction: column;
       width: 100%;
     }
-    #rdp-banner-{{ section.id }} .rdp-btn-gold,
-    #rdp-banner-{{ section.id }} .rdp-btn-outline {
+    #rdp-luxury-{{ section.id }} .rdp-cta-primary,
+    #rdp-luxury-{{ section.id }} .rdp-cta-wa {
       width: 100%;
       justify-content: center;
-      padding: 13px 20px;
     }
-    #rdp-banner-{{ section.id }} .rdp-image-container {
-      height: 300px;
-    }
-    #rdp-banner-{{ section.id }} .rdp-pillars-bar {
-      grid-template-columns: 1fr;
-      gap: 12px;
+    #rdp-luxury-{{ section.id }} .rdp-attributes-bar {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 16px 20px;
+      gap: 10px;
     }
   }
 </style>
 
 <script>
   (function(){
-    var root = document.getElementById('rdp-banner-{{ section.id }}');
+    var root = document.getElementById('rdp-luxury-{{ section.id }}');
     if (!root) return;
 
-    var wineData = {
+    var wineCatalog = {
       lvo: {
-        title: "L.V.O. Cosecha 2022",
-        badge: "Edición de Autor · Selección de Barrica",
-        vintage: "Valle de Barranquillas",
-        grapes: "40% Tempranillo · 40% Cariñan · 20% Nebbiolo",
-        aging: "12 meses en barrica de roble francés",
-        notes: "Notas de ciruela negra madura, moras silvestres, café tostado y cacao con un final aterciopelado y persistente.",
-        pairing: "Cortes marmoleados a las brasas, cordero al romero y quesos madurados.",
+        category: "GRAN RESERVA · TINTO",
+        name: "L.V.O. Cosecha 2022",
+        price: "$450 <small>MXN</small>",
+        blend: "40% Tempranillo · 40% Cariñan · 20% Nebbiolo",
+        barrel: "12 meses en barrica de roble francés",
+        profile: "Ciruela negra madura, moras silvestres, café tostado y cacao. Final aterciopelado con taninos redondos y gran permanencia.",
         image: "{{ 'rdp-botella-lvo.jpg' | asset_url }}",
-        alt: "Vino Raíz de Plata LVO 2022",
-        tag: "BLEND DE TINTOS · COSECHA 2022"
+        alt: "Raíz de Plata L.V.O. 2022",
+        pillTitle: "Valle de Barranquillas",
+        pillSub: "Cosecha Seleccionada a Mano"
       },
       cabernet: {
-        title: "Cabernet Sauvignon 2020",
-        badge: "Gran Reserva de Guarda",
-        vintage: "Valle de Barranquillas",
-        grapes: "100% Cabernet Sauvignon",
-        aging: "14 meses en barrica de roble francés",
-        notes: "Estructura potente y taninos elegantes. Aromas a cassis, pimienta negra, cacao amargo, sutiles notas de vainilla y tabaco.",
-        pairing: "Ribeye a las brasas, cortes premium New York y estofados de larga cocción.",
+        category: "VARIETAL TINTO · ROBLE",
+        name: "Cabernet Sauvignon 2020",
+        price: "$480 <small>MXN</small>",
+        blend: "100% Cabernet Sauvignon",
+        barrel: "14 meses en barrica de roble francés",
+        profile: "Estructura potente y taninos elegantes. Aromas a cassis, pimienta negra, cacao amargo, sutiles notas de vainilla y tabaco dulce.",
         image: "{{ 'rdp-botella-cabernet.jpg' | asset_url }}",
-        alt: "Vino Raíz de Plata Cabernet Sauvignon 2020",
-        tag: "100% CABERNET SAUVIGNON · 2020"
+        alt: "Raíz de Plata Cabernet Sauvignon 2020",
+        pillTitle: "Valle de Barranquillas",
+        pillSub: "Gran Reserva de Guarda"
       },
       syrah: {
-        title: "Syrah Cosecha 2021",
-        badge: "Terroir Mineral de Altura",
-        vintage: "Viñedo Martínez",
-        grapes: "100% Syrah",
-        aging: "10 meses en barrica de roble",
-        notes: "Mineralidad vibrante y frescura aromática. Notas de higo maduro, lavanda silvestre, pimienta rosa y trufa negra con cuerpo sedoso.",
-        pairing: "Carnes de caza, lechón al horno, magret de pato y charcutería fina.",
+        category: "VARIETAL TINTO · ALTURA",
+        name: "Syrah Cosecha 2021",
+        price: "$450 <small>MXN</small>",
+        blend: "100% Syrah",
+        barrel: "10 meses en barrica de roble",
+        profile: "Mineralidad vibrante y frescura aromática. Notas de higo maduro, lavanda silvestre, pimienta rosa y trufa negra con cuerpo sedoso.",
         image: "{{ 'rdp-botella-syrah.jpg' | asset_url }}",
-        alt: "Vino Raíz de Plata Syrah 2021",
-        tag: "100% SYRAH · COSECHA 2021"
+        alt: "Raíz de Plata Syrah 2021",
+        pillTitle: "Viñedo Martínez",
+        pillSub: "Terroir Mineral de Altura"
       },
       rose: {
-        title: "Rosé Cosecha 2023",
-        badge: "Fresco, Floral & Vibrante",
-        vintage: "Viñedo Martínez",
-        grapes: "56% Syrah · 44% Cariñan",
-        aging: "Fermentación en frío sin barrica",
-        notes: "Color salmón pálido provenzal. Aromas de fresas silvestres, pétalos de rosa, toronja rubí y una acidez vibrante y crujiente.",
-        pairing: "Mariscos frescos, pastas ligeras, ceviches gourmet y tapas mediterráneas.",
+        category: "ROSADO PROVENZAL",
+        name: "Rosé Cosecha 2023",
+        price: "$400 <small>MXN</small>",
+        blend: "56% Syrah · 44% Cariñan",
+        barrel: "Fermentación en frío sin barrica",
+        profile: "Color salmón pálido provenzal. Aromas de fresas silvestres, pétalos de rosa, toronja rubí y una acidez fresca y crujiente.",
         image: "{{ 'rdp-botella-rose.jpg' | asset_url }}",
-        alt: "Vino Raíz de Plata Rosé 2023",
-        tag: "ROSÉ PROVENZAL · COSECHA 2023"
+        alt: "Raíz de Plata Rosé 2023",
+        pillTitle: "Viñedo Martínez",
+        pillSub: "Fresco, Floral & Vibrante"
       },
       semillon: {
-        title: "Semillón Cosecha 2023",
-        badge: "Blanco de Altura Mineral",
-        vintage: "Viñedo Martínez",
-        grapes: "100% Semillón",
-        aging: "Lías finas en tanque de acero inoxidable",
-        notes: "Blanco de gran complejidad y pureza mineral. Aromas de lima kaffir, manzana verde, cera de abeja y jazmín con textura untuosa.",
-        pairing: "Pescados grasos, mariscos al vapor, comida asiática y aves con salsas cremosas.",
+        category: "BLANCO MINERAL",
+        name: "Semillón Cosecha 2023",
+        price: "$400 <small>MXN</small>",
+        blend: "100% Semillón",
+        barrel: "Lías finas en tanque de acero inoxidable",
+        profile: "Blanco de gran complejidad y pureza mineral. Aromas de lima kaffir, manzana verde, cera de abeja y jazmín con textura untuosa.",
         image: "{{ 'rdp-botella-semillon.jpg' | asset_url }}",
-        alt: "Vino Raíz de Plata Semillón 2023",
-        tag: "BLANCO MINERAL · COSECHA 2023"
+        alt: "Raíz de Plata Semillón 2023",
+        pillTitle: "Viñedo Martínez",
+        pillSub: "Blanco de Altura Mineral"
       }
     };
 
-    var tabBtns = root.querySelectorAll('.rdp-tab-btn');
-    var elBadge = root.querySelector('#rdp-active-badge');
-    var elVintage = root.querySelector('#rdp-active-vintage');
-    var elTitle = root.querySelector('#rdp-active-title');
-    var elGrapes = root.querySelector('#rdp-active-grapes');
-    var elAging = root.querySelector('#rdp-active-aging');
-    var elNotes = root.querySelector('#rdp-active-notes');
-    var elPairing = root.querySelector('#rdp-active-pairing');
-    var elImage = root.querySelector('#rdp-bottle-image');
-    var elStageTag = root.querySelector('.rdp-stage-tag');
+    var buttons = root.querySelectorAll('.rdp-vintage-btn');
+    var elType = root.querySelector('#rdp-wine-type');
+    var elName = root.querySelector('#rdp-wine-name');
+    var elPrice = root.querySelector('#rdp-wine-price');
+    var elBlend = root.querySelector('#rdp-wine-blend');
+    var elBarrel = root.querySelector('#rdp-wine-barrel');
+    var elProfile = root.querySelector('#rdp-wine-profile');
+    var elImage = root.querySelector('#rdp-main-bottle-img');
+    var elPillTitle = root.querySelector('#rdp-pill-title');
+    var elPillSub = root.querySelector('#rdp-pill-sub');
 
-    tabBtns.forEach(function(btn){
+    buttons.forEach(function(btn){
       btn.addEventListener('click', function(){
-        var wineKey = this.getAttribute('data-wine');
-        var data = wineData[wineKey];
-        if (!data) return;
+        var key = this.getAttribute('data-wine');
+        var wine = wineCatalog[key];
+        if (!wine) return;
 
-        tabBtns.forEach(function(b){
-          b.classList.remove('is-active');
+        buttons.forEach(function(b){
+          b.classList.remove('is-selected');
           b.setAttribute('aria-selected', 'false');
         });
-        this.classList.add('is-active');
+        this.classList.add('is-selected');
         this.setAttribute('aria-selected', 'true');
 
-        // Smooth image swap with fade transition
+        // Smooth bottle image transition
         elImage.style.opacity = '0';
         elImage.style.transform = 'scale(0.96)';
 
         setTimeout(function(){
-          elImage.src = data.image;
-          elImage.alt = data.alt;
-          if (elStageTag) elStageTag.textContent = data.tag;
-          if (elBadge) elBadge.textContent = data.badge;
-          if (elVintage) elVintage.textContent = data.vintage;
-          if (elTitle) elTitle.textContent = data.title;
-          if (elGrapes) elGrapes.textContent = data.grapes;
-          if (elAging) elAging.textContent = data.aging;
-          if (elNotes) elNotes.textContent = data.notes;
-          if (elPairing) elPairing.textContent = data.pairing;
+          elImage.src = wine.image;
+          elImage.alt = wine.alt;
+          if (elType) elType.textContent = wine.category;
+          if (elName) elName.textContent = wine.name;
+          if (elPrice) elPrice.innerHTML = wine.price;
+          if (elBlend) elBlend.textContent = wine.blend;
+          if (elBarrel) elBarrel.textContent = wine.barrel;
+          if (elProfile) elProfile.textContent = wine.profile;
+          if (elPillTitle) elPillTitle.textContent = wine.pillTitle;
+          if (elPillSub) elPillSub.textContent = wine.pillSub;
 
           elImage.style.opacity = '1';
           elImage.style.transform = 'scale(1)';
-        }, 180);
+        }, 160);
       });
     });
 
