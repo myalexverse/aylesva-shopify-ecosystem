@@ -22,7 +22,8 @@
       ],
       "settings": {
         "show_cart_note": true
-      }
+      },
+      "disabled": true
     }
   },
   "order": [

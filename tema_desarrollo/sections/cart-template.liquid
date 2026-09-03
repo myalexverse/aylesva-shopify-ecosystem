@@ -278,13 +278,17 @@
         </div>
         <div class="ayl-summary-row">
           <span>Envío</span>
-          <span>Gratis</span>
+          <span style="font-size: 13px; color: #666; font-weight: 500;">Calculado en el checkout</span>
         </div>
         <div class="ayl-summary-row total">
           <span>Total</span>
           <span>{{ cart.total_price | money }}</span>
         </div>
         
+        <p style="font-size: 12px; color: #777; margin: 12px 0 16px; line-height: 1.4; text-align: center;">
+          Los costos de envío e impuestos se calculan al ingresar tu dirección de entrega.
+        </p>
+
         <button type="submit" name="checkout" class="ayl-checkout-btn">
           Finalizar Compra
         </button>

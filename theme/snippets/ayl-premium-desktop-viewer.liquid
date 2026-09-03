@@ -236,7 +236,7 @@
         </button>
       </form>
       
-      <button type="button" class="ayl-btn-main ayl-btn-buy" id="direct-buy-desktop">
+      <button type="button" class="ayl-btn-main ayl-btn-buy" id="direct-buy-desktop" onclick="aylDirectBuyDesktop(this)">
         Comprar ahora
       </button>
     </div>
@@ -257,46 +257,76 @@
       </div>
     </div>
 
-
   </div>
 
 </div>
 
 <script>
-  $(document).ready(function() {
-    // 1. INICIALIZAR ZOOM (Solo en Desktop)
-    if (typeof $.fn.zoom !== 'undefined') {
-      $('.zoom-trigger').each(function() {
-        var $this = $(this);
-        var imgUrl = $this.find('img').attr('src');
-        $this.zoom({
-          url: imgUrl,
-          magnify: 1.5,
-          on: 'mouseover'
-        });
-      });
+  function aylDirectBuyDesktop(btn) {
+    var input = document.querySelector('#atc-form-desktop input[name="id"]');
+    var variantId = input ? input.value : '{{ current_variant.id }}';
+    if (!variantId) {
+      alert('Por favor selecciona una variante antes de continuar.');
+      return;
+    }
+    
+    if (btn) {
+      btn.textContent = 'Procesando...';
+      btn.disabled = true;
+      btn.style.opacity = '0.7';
     }
 
-    // 2. BOTÓN COMPRAR AHORA (Directo a Checkout)
-    $('#direct-buy-desktop').on('click', function() {
-      var variantId = $('#atc-form-desktop input[name="id"]').val();
-      var $btn = $(this);
-      
-      $btn.text('Procesando...').prop('disabled', true).css('opacity', '0.7');
-
-      fetch('/cart/add.js', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id: variantId, quantity: 1 })
-      })
-      .then(res => res.json())
-      .then(() => {
-        window.location.href = '/checkout';
-      })
-      .catch(err => {
-        console.error('Error:', err);
-        $btn.text('Comprar ahora').prop('disabled', false).css('opacity', '1');
-      });
+    fetch('/cart/add.js', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ id: Number(variantId) || variantId, quantity: 1 })
+    })
+    .then(function(res) {
+      window.location.href = '/checkout';
+    })
+    .catch(function(err) {
+      console.warn('Fallback direct checkout:', err);
+      window.location.href = '/cart/' + variantId + ':1';
     });
+  }
+
+  // Redundant event listener binding
+  (function() {
+    function bindDesktopBuy() {
+      var btn = document.getElementById('direct-buy-desktop');
+      if (btn && !btn.dataset.bound) {
+        btn.dataset.bound = 'true';
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          aylDirectBuyDesktop(this);
+        });
+      }
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', bindDesktopBuy);
+    } else {
+      bindDesktopBuy();
+    }
+  })();
+
+  // Zoom safely isolated
+  $(document).ready(function() {
+    try {
+      if (typeof $.fn !== 'undefined' && typeof $.fn.zoom !== 'undefined') {
+        $('.zoom-trigger').each(function() {
+          var $this = $(this);
+          var imgUrl = $this.find('img').attr('src');
+          if (imgUrl) {
+            $this.zoom({
+              url: imgUrl,
+              magnify: 1.5,
+              on: 'mouseover'
+            });
+          }
+        });
+      }
+    } catch(e) {
+      console.warn('Zoom initialization skipped:', e);
+    }
   });
 </script>

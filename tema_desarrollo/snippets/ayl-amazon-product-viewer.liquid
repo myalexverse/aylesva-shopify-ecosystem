@@ -234,7 +234,7 @@
         <form action="/cart/add" method="post" enctype="multipart/form-data" id="amz-form-{{ product.id }}">
           <input type="hidden" name="id" value="{{ current_variant.id }}" id="amz-variant-id-{{ product.id }}">
           <button type="submit" class="amz-btn amz-btn-add" style="margin-bottom: 10px;">Agregar al carrito</button>
-          <button type="button" class="amz-btn amz-btn-buy" id="amz-buy-btn-{{ product.id }}">Comprar ahora</button>
+          <button type="button" class="amz-btn amz-btn-buy" id="amz-buy-btn-{{ product.id }}" onclick="aylDirectBuyMobile_{{ product.id }}(this)">Comprar ahora</button>
         </form>
       </div>
 
@@ -283,54 +283,51 @@
     if (document.readyState === 'complete') setTimeout(initAmzSlider, 500);
     document.addEventListener('shopify:section:load', function() { setTimeout(initAmzSlider, 200); });
 
-    /* ── Botón "Comprar ahora" — Fix Bug ─────────────────────── */
-    /*
-     * PROBLEMA: el botón iba directo a /checkout sin agregar el producto
-     *           al carrito → Shopify redirigía al inicio (carrito vacío).
-     * SOLUCIÓN: fetch POST a /cart/add con la variante seleccionada,
-     *           luego redirect a /checkout.
-     */
-    document.addEventListener('DOMContentLoaded', function() {
-      var buyBtn = document.getElementById('amz-buy-btn-{{ product.id }}');
-      if (!buyBtn) return;
+    /* ── Botón "Comprar ahora" — Fix Robusto ─────────────────── */
+    window.aylDirectBuyMobile_{{ product.id }} = function(btn) {
+      var variantInput = document.getElementById('amz-variant-id-{{ product.id }}');
+      var variantId = variantInput ? variantInput.value : '{{ current_variant.id }}';
 
-      buyBtn.addEventListener('click', function() {
-        /* Obtener la variante del input oculto (puede haber cambiado si el usuario eligió variante) */
-        var variantInput = document.getElementById('amz-variant-id-{{ product.id }}');
-        var variantId = variantInput ? variantInput.value : '{{ current_variant.id }}';
+      if (!variantId) {
+        alert('Por favor selecciona una variante antes de continuar.');
+        return;
+      }
 
-        if (!variantId) {
-          alert('Por favor selecciona una variante antes de continuar.');
-          return;
-        }
+      if (btn) {
+        btn.textContent = 'Procesando...';
+        btn.disabled = true;
+        btn.style.opacity = '0.7';
+      }
 
-        /* Estado de carga en el botón */
-        buyBtn.textContent = 'Procesando...';
-        buyBtn.disabled = true;
-        buyBtn.style.opacity = '0.7';
-
-        /* Agregar al carrito mediante Fetch */
-        fetch('/cart/add.js', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify({ id: variantId, quantity: 1 })
-        })
-        .then(function(res) {
-          if (!res.ok) throw new Error('No se pudo agregar al carrito');
-          return res.json();
-        })
-        .then(function() {
-          /* Éxito: ir a checkout */
-          window.location.href = '/checkout';
-        })
-        .catch(function(err) {
-          console.error('Error al agregar al carrito:', err);
-          buyBtn.textContent = 'Comprar ahora';
-          buyBtn.disabled = false;
-          buyBtn.style.opacity = '1';
-          alert('Hubo un problema al procesar tu compra. Inténtalo de nuevo.');
-        });
+      fetch('/cart/add.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ id: Number(variantId) || variantId, quantity: 1 })
+      })
+      .then(function(res) {
+        window.location.href = '/checkout';
+      })
+      .catch(function(err) {
+        console.warn('Fallback mobile direct checkout:', err);
+        window.location.href = '/cart/' + variantId + ':1';
       });
-    });
+    };
+
+    function bindMobileBuy() {
+      var buyBtn = document.getElementById('amz-buy-btn-{{ product.id }}');
+      if (buyBtn && !buyBtn.dataset.bound) {
+        buyBtn.dataset.bound = 'true';
+        buyBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          window.aylDirectBuyMobile_{{ product.id }}(this);
+        });
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', bindMobileBuy);
+    } else {
+      bindMobileBuy();
+    }
   })();
 </script>
