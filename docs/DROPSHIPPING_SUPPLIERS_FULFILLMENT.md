@@ -70,7 +70,19 @@ flowchart TD
 
 ---
 
-### B. Relojería Curren (Almacén México & Envío Choice)
+### B. Bebé, Niños & Maternidad (Stock Nacional México)
+
+| Producto | SKU Aylesva | Enlace Proveedor Directo (Stock en México) | Costo Proveedor MX | Precio Venta Aylesva | Tiempo Entrega |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Monitor y Cámara Inalámbrica Auto Bebé 5" Visión Nocturna**<br>*(ID: 8947103268887)* | • `CAM-BABY-CAR-5IN` | [AliExpress México: Cámara Bebé Auto Monitor 5"](https://www.aliexpress.com/wholesale?SearchText=baby+car+camera+5+inch+monitor+night+vision&shipFrom=MX)<br>• *Respaldo:* [Mercado Libre Full: Monitor Cámara Auto Bebé](https://listado.mercadolibre.com.mx/camara-bebe-auto-pantalla#shipping_origin=full) | $480 - $550 MXN | **$1,290.00 MXN** *(+60%)* | **2 - 4 días** |
+| **Máquina Portátil Ruido Blanco Bebé con Luz LED y Batería**<br>*(ID: 8947104382999)* | • `SND-BABY-WHT`<br>• `SND-BABY-BLK` | [AliExpress México: Ruido Blanco Bebé Portátil](https://www.aliexpress.com/wholesale?SearchText=baby+white+noise+machine+portable+night+light&shipFrom=MX)<br>• *Respaldo:* [Mercado Libre Full: Máquina Ruido Blanco Bebé](https://listado.mercadolibre.com.mx/maquina-ruido-blanco-bebe#shipping_origin=full) | $220 - $270 MXN | **$580.00 MXN** *(+58%)* | **2 - 4 días** |
+| **Tapete y Gimnasio Sensorial Acolchado Convertible (5 Juguetes)**<br>*(ID: 8947104710679)* | • `MAT-BABY-GN` | [AliExpress México: Tapete Gimnasio Bebé Didáctico](https://www.aliexpress.com/wholesale?SearchText=baby+play+mat+gym+activity+center&shipFrom=MX)<br>• *Respaldo:* [Mercado Libre Full: Gimnasio Bebé Tapete](https://listado.mercadolibre.com.mx/gimnasio-tapete-bebe-didactico#shipping_origin=full) | $340 - $420 MXN | **$890.00 MXN** *(+57%)* | **2 - 4 días** |
+| **Mochila Pañalera Multifuncional Térmica e Impermeable USB**<br>*(ID: 8947105300503)* | • `BAG-DIAP-GRY`<br>• `BAG-DIAP-BLK` | [AliExpress México: Mochila Pañalera Térmica USB](https://www.aliexpress.com/wholesale?SearchText=diaper+bag+backpack+thermal+usb+waterproof&shipFrom=MX)<br>• *Respaldo:* [Mercado Libre Full: Mochila Pañalera](https://listado.mercadolibre.com.mx/mochila-panalera-termica-usb#shipping_origin=full) | $290 - $360 MXN | **$790.00 MXN** *(+59%)* | **2 - 3 días** |
+| **Set de 16 Broches y Moños Florales Suaves para Cabello Niña**<br>*(ID: 8947105398807)* | • `CLP-GRL-PNK`<br>• `CLP-GRL-YEL`<br>• `CLP-GRL-LAV` | [AliExpress México: Set Broches Cabello Niña](https://www.aliexpress.com/wholesale?SearchText=baby+girls+hair+clips+bows+set&shipFrom=MX)<br>• *Respaldo:* [Mercado Libre Full: Broches Moños Cabello Niña](https://listado.mercadolibre.com.mx/broches-monos-cabello-nina-set#shipping_origin=full) | $110 - $150 MXN | **$340.00 MXN** *(+62%)* | **2 - 4 días** |
+
+---
+
+### C. Relojería Curren (Almacén México & Envío Choice)
 
 | Producto | SKU Aylesva | Enlace Proveedor Directo | Costo Proveedor | Precio Venta Aylesva | Tiempo Entrega |
 | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -81,7 +93,7 @@ flowchart TD
 
 ---
 
-### C. Marroquinería & Cuero Exótico (Distribución Nacional León, Guanajuato)
+### D. Marroquinería & Cuero Exótico (Distribución Nacional León, Guanajuato)
 
 | Producto | SKU Aylesva | Abastecimiento Nacional | Costo Proveedor | Precio Venta Aylesva | Tiempo Entrega |
 | :--- | :--- | :--- | :--- | :--- | :--- |
