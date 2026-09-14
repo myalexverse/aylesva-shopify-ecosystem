@@ -188,7 +188,7 @@
     <div class="amz-gallery-outer">
       <div class="amz-main-slider" id="AmzSlider-{{ product.id }}">
         {% for media in product.media %}
-          <div class="amz-slide">
+          <div class="amz-slide" data-media-id="{{ media.id }}" data-slide-index="{{ forloop.index0 }}">
             <img src="{{ media | img_url: '1024x1024' }}" alt="{{ media.alt }}">
           </div>
         {% endfor %}
@@ -205,7 +205,23 @@
             <div class="amz-var-label">{{ option.name }}: <b>{{ option.selected_value }}</b></div>
             <div class="amz-var-grid" style="margin-bottom: 20px;">
               {% for value in option.values %}
-                <div class="amz-var-chip {% if option.selected_value == value %}active{% endif %}" onclick="location.href='?variant={{ product.variants[forloop.index0].id }}'">
+                {%- assign variant_for_value = product.variants | where: "option1", value | first -%}
+                {% if variant_for_value == blank %}
+                  {%- assign variant_for_value = product.variants | where: "option2", value | first -%}
+                {% endif %}
+                {% if variant_for_value == blank %}
+                  {%- assign variant_for_value = product.variants | where: "option3", value | first -%}
+                {% endif %}
+                {%- assign var_media_id = variant_for_value.featured_media.id | default: variant_for_value.image.id -%}
+                {%- assign price_parts = variant_for_value.price | money_without_currency | split: '.' -%}
+                <div class="amz-var-chip {% if option.selected_value == value %}active{% endif %}"
+                     data-variant-id="{{ variant_for_value.id }}"
+                     data-media-id="{{ var_media_id }}"
+                     data-price-dollars="{{ price_parts[0] }}"
+                     data-price-cents="{{ price_parts[1] | default: '00' }}"
+                     data-msi="{{ variant_for_value.price | divided_by: 15 | money_without_currency }}"
+                     data-value="{{ value }}"
+                     onclick="aylSelectMobileVariant_{{ product.id }}(this)">
                   {{ value }}
                 </div>
               {% endfor %}
@@ -276,12 +292,82 @@
           swipe: true,
           touchMove: true
         });
+
+        {% if current_variant.featured_media %}
+          var $initSlide = $slider.find('.amz-slide[data-media-id="{{ current_variant.featured_media.id }}"]');
+          if ($initSlide.length) {
+            var sIdx = $initSlide.data('slick-index');
+            if (typeof sIdx !== 'undefined') $slider.slick('slickGoTo', sIdx);
+          }
+        {% endif %}
       }
     }
     $(document).ready(initAmzSlider);
     window.addEventListener('load', initAmzSlider);
     if (document.readyState === 'complete') setTimeout(initAmzSlider, 500);
     document.addEventListener('shopify:section:load', function() { setTimeout(initAmzSlider, 200); });
+
+    /* ── Cambio Dinámico de Variante y Color en Móvil ───────── */
+    window.aylSelectMobileVariant_{{ product.id }} = function(chip) {
+      if (!chip) return;
+      var variantId = chip.getAttribute('data-variant-id');
+      var mediaId = chip.getAttribute('data-media-id');
+      var dollars = chip.getAttribute('data-price-dollars');
+      var cents = chip.getAttribute('data-price-cents');
+      var msi = chip.getAttribute('data-msi');
+      var valName = chip.getAttribute('data-value');
+
+      // 1. Activar chip visualmente
+      var parentGrid = chip.closest('.amz-var-grid');
+      if (parentGrid) {
+        parentGrid.querySelectorAll('.amz-var-chip').forEach(function(c) { c.classList.remove('active'); });
+        chip.classList.add('active');
+      }
+
+      // 2. Actualizar nombre en la etiqueta
+      var card = chip.closest('.amz-variants-card');
+      if (card) {
+        var labelBold = card.querySelector('.amz-var-label b');
+        if (labelBold && valName) labelBold.textContent = valName;
+      }
+
+      // 3. Actualizar ID en formulario
+      var input = document.getElementById('amz-variant-id-{{ product.id }}');
+      if (input && variantId) input.value = variantId;
+
+      // 4. Actualizar Precios
+      if (dollars) {
+        var dEl = document.querySelector('#AylAmazon .amz-price-dollars');
+        if (dEl) dEl.textContent = dollars;
+      }
+      if (cents) {
+        var cEl = document.querySelector('#AylAmazon .amz-price-cents');
+        if (cEl) cEl.textContent = cents;
+      }
+      if (msi) {
+        var msiEl = document.querySelector('#AylAmazon .amz-msi-tag');
+        if (msiEl) msiEl.textContent = 'Hasta 15 meses sin intereses de $ ' + msi;
+      }
+
+      // 5. Deslizar imagen al color seleccionado
+      if (mediaId) {
+        var $slider = $('#AmzSlider-{{ product.id }}');
+        if ($slider.length && typeof $.fn.slick !== 'undefined' && $slider.hasClass('slick-initialized')) {
+          var $targetSlide = $slider.find('.amz-slide[data-media-id="' + mediaId + '"]');
+          if ($targetSlide.length) {
+            var slickIdx = $targetSlide.data('slick-index');
+            if (typeof slickIdx !== 'undefined') {
+              $slider.slick('slickGoTo', slickIdx);
+            }
+          }
+        }
+      }
+
+      // 6. Actualizar URL
+      if (variantId) {
+        window.history.replaceState(null, null, '?variant=' + variantId);
+      }
+    };
 
     /* ── Botón "Comprar ahora" — Fix Robusto ─────────────────── */
     window.aylDirectBuyMobile_{{ product.id }} = function(btn) {

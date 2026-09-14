@@ -190,7 +190,7 @@
   <!-- 1. GALERÍA STICKY (IZQUIERDA) -->
   <div class="ayl-gallery-sticky">
     {% for media in product.media %}
-      <div class="ayl-gallery-item zoom-trigger">
+      <div class="ayl-gallery-item zoom-trigger" data-media-id="{{ media.id }}" id="desktop-media-{{ media.id }}">
         <img src="{{ media | img_url: '1200x' }}" alt="{{ media.alt }}" loading="lazy">
       </div>
     {% endfor %}
@@ -217,8 +217,18 @@
                 {% if variant_for_value == blank %}
                   {%- assign variant_for_value = product.variants | where: "option2", value | first -%}
                 {% endif %}
+                {% if variant_for_value == blank %}
+                  {%- assign variant_for_value = product.variants | where: "option3", value | first -%}
+                {% endif %}
+                {%- assign var_media_id = variant_for_value.featured_media.id | default: variant_for_value.image.id -%}
                 <div class="ayl-chip {% if option.selected_value == value %}selected{% endif %}"
-                     onclick="location.href='?variant={{ variant_for_value.id }}'">
+                     data-variant-id="{{ variant_for_value.id }}"
+                     data-media-id="{{ var_media_id }}"
+                     data-price="{{ variant_for_value.price | money }}"
+                     data-available="{{ variant_for_value.available }}"
+                     data-option-name="{{ option.name }}"
+                     data-option-value="{{ value }}"
+                     onclick="aylSelectDesktopVariant(this)">
                   {{ value }}
                 </div>
               {% endfor %}
@@ -262,6 +272,83 @@
 </div>
 
 <script>
+  function aylSelectDesktopVariant(chip) {
+    if (!chip) return;
+    var variantId = chip.getAttribute('data-variant-id');
+    var mediaId = chip.getAttribute('data-media-id');
+    var priceMoney = chip.getAttribute('data-price');
+    var isAvailable = chip.getAttribute('data-available') === 'true';
+
+    // 1. Highlight clicked chip
+    var container = chip.closest('.ayl-chip-container');
+    if (container) {
+      container.querySelectorAll('.ayl-chip').forEach(function(c) { c.classList.remove('selected'); });
+      chip.classList.add('selected');
+    }
+
+    // 2. Update hidden form input
+    var atcInput = document.querySelector('#atc-form-desktop input[name="id"]');
+    if (atcInput && variantId) {
+      atcInput.value = variantId;
+    }
+
+    // 3. Update Price
+    if (priceMoney) {
+      var priceContainer = document.querySelector('.ayl-p-price');
+      if (priceContainer) {
+        priceContainer.innerHTML = priceMoney + ' <span class="ayl-price-currency" style="font-size: 0.75em; font-weight: 700; color: #C5A47E; margin-left: 6px; vertical-align: baseline; letter-spacing: 0.05em;">{{ cart.currency.iso_code }}</span>';
+      }
+    }
+
+    // 4. Update ATC button text if unavailable
+    var atcBtn = document.querySelector('.ayl-btn-atc');
+    var buyBtn = document.querySelector('#direct-buy-desktop');
+    if (atcBtn) {
+      if (!isAvailable) {
+        atcBtn.textContent = 'Agotado';
+        atcBtn.disabled = true;
+        if (buyBtn) buyBtn.style.display = 'none';
+      } else {
+        atcBtn.textContent = 'Agregar al carrito';
+        atcBtn.disabled = false;
+        if (buyBtn) buyBtn.style.display = 'flex';
+      }
+    }
+
+    // 5. CAMBIAR IMAGEN AL COLOR DEL PRODUCTO
+    if (mediaId) {
+      var targetMedia = document.getElementById('desktop-media-' + mediaId);
+      var gallery = document.querySelector('.ayl-gallery-sticky');
+      if (targetMedia && gallery) {
+        if (gallery.firstElementChild !== targetMedia) {
+          gallery.prepend(targetMedia);
+        }
+        targetMedia.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        targetMedia.style.transition = 'opacity 0.25s ease';
+        targetMedia.style.opacity = '0.6';
+        setTimeout(function() {
+          targetMedia.style.opacity = '1';
+        }, 150);
+      }
+    }
+
+    // 6. Update URL in browser
+    if (variantId) {
+      window.history.replaceState(null, null, '?variant=' + variantId);
+    }
+  }
+
+  // Ensure current variant image is on top on initial load
+  (function() {
+    {% if current_variant.featured_media %}
+      var initMedia = document.getElementById('desktop-media-{{ current_variant.featured_media.id }}');
+      var gallery = document.querySelector('.ayl-gallery-sticky');
+      if (initMedia && gallery && gallery.firstElementChild !== initMedia) {
+        gallery.prepend(initMedia);
+      }
+    {% endif %}
+  })();
+
   function aylDirectBuyDesktop(btn) {
     var input = document.querySelector('#atc-form-desktop input[name="id"]');
     var variantId = input ? input.value : '{{ current_variant.id }}';
