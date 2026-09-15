@@ -748,10 +748,10 @@
         },
         "text_collection_CxYaGF": {
           "type": "text_collection",
-          "disabled": true,
           "settings": {
+            "image_1": "https://cdn.shopify.com/s/files/1/0569/0526/9388/files/fresh-element-solo-mobile-connection.png?v=1762930206",
             "collection_cat_id": "petshop",
-            "collection_desc": ""
+            "collection_desc": "Mascotas y Pet Shop"
           }
         },
         "text_collection_LwHRwH": {

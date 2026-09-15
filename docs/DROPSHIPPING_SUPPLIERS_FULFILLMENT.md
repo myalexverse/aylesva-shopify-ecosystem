@@ -82,7 +82,19 @@ flowchart TD
 
 ---
 
-### C. Relojería Curren (Almacén México & Envío Choice)
+### C. Mascotas & Pet Shop (Stock Nacional México)
+
+| Producto | SKU Aylesva | Enlace Proveedor Directo (Stock en México) | Costo Proveedor MX | Precio Venta Aylesva | Tiempo Entrega |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Comedero Automático Inteligente Mascotas 4L Wi-Fi con Voz**<br>*(ID: 8947850805271)* | • `PET-FEED-WHT`<br>• `PET-FEED-GRY` | [AliExpress México: Comedero Automático Wi-Fi](https://www.aliexpress.com/wholesale?SearchText=automatic+pet+feeder+wifi+voice+4l&shipFrom=MX)<br>• *Respaldo:* [Mercado Libre Full: Comedero Inteligente](https://listado.mercadolibre.com.mx/comedero-automatico-mascotas-wifi#shipping_origin=full) | $390 - $460 MXN | **$1,090.00 MXN** *(+60%)* | **2 - 4 días** |
+| **Fuente de Agua Inalámbrica para Mascotas 3.2L Silenciosa**<br>*(ID: 8947853721623)* | • `PET-FOUNT-3L` | [AliExpress México: Fuente Agua Mascotas Inalámbrica](https://www.aliexpress.com/wholesale?SearchText=wireless+pet+water+fountain+cordless&shipFrom=MX)<br>• *Respaldo:* [Mercado Libre Full: Fuente Mascotas](https://listado.mercadolibre.com.mx/fuente-agua-gatos-perros-inalambrica#shipping_origin=full) | $280 - $330 MXN | **$790.00 MXN** *(+60%)* | **2 - 4 días** |
+| **Mochila Transportadora Panorámica Transpirable Breezy**<br>*(ID: 8947853983767)* | • `PET-BAG-WHT`<br>• `PET-BAG-PNK` | [AliExpress México: Mochila Transportadora Mascota](https://www.aliexpress.com/wholesale?SearchText=pet+carrier+backpack+panoramic+breathable&shipFrom=MX)<br>• *Respaldo:* [Mercado Libre Full: Mochila Mascota](https://listado.mercadolibre.com.mx/mochila-transportadora-gato-perro#shipping_origin=full) | $320 - $380 MXN | **$890.00 MXN** *(+59%)* | **2 - 4 días** |
+| **Arenero Automático Autolimpiable Purobot Sensor Anti-Olor**<br>*(ID: 8947854016535)* | • `PET-LIT-WHT`<br>• `PET-LIT-GRY` | [AliExpress México: Arenero Automático Gatos](https://www.aliexpress.com/wholesale?SearchText=automatic+cat+litter+box+self+cleaning&shipFrom=MX)<br>• *Respaldo:* [Mercado Libre Full: Arenero Automático](https://listado.mercadolibre.com.mx/arenero-automatico-gato#shipping_origin=full) | $980 - $1,200 MXN | **$2,490.00 MXN** *(+55%)* | **2 - 4 días** |
+| **Cepillo Masajeador a Vapor 3 en 1 para Perros y Gatos**<br>*(ID: 8947854049303)* | • `PET-BRSH-GRN`<br>• `PET-BRSH-YEL` | [AliExpress México: Cepillo Vapor Mascotas 3 en 1](https://www.aliexpress.com/wholesale?SearchText=steamy+pet+brush+cats+dogs+rechargeable&shipFrom=MX)<br>• *Respaldo:* [Mercado Libre Full: Cepillo Vapor Mascota](https://listado.mercadolibre.com.mx/cepillo-vapor-mascotas-gato-perro#shipping_origin=full) | $110 - $145 MXN | **$360.00 MXN** *(+63%)* | **2 - 3 días** |
+
+---
+
+### D. Relojería Curren (Almacén México & Envío Choice)
 
 | Producto | SKU Aylesva | Enlace Proveedor Directo | Costo Proveedor | Precio Venta Aylesva | Tiempo Entrega |
 | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -93,7 +105,7 @@ flowchart TD
 
 ---
 
-### D. Marroquinería & Cuero Exótico (Distribución Nacional León, Guanajuato)
+### E. Marroquinería & Cuero Exótico (Distribución Nacional León, Guanajuato)
 
 | Producto | SKU Aylesva | Abastecimiento Nacional | Costo Proveedor | Precio Venta Aylesva | Tiempo Entrega |
 | :--- | :--- | :--- | :--- | :--- | :--- |

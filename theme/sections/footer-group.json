@@ -52,7 +52,7 @@
             "text_LWt8Pz": {
               "type": "text",
               "settings": {
-                "text": "<h2>Join our email list</h2>",
+                "text": "<h2>Únete a nuestra comunidad</h2>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
@@ -76,7 +76,7 @@
             "text_f9CFLH": {
               "type": "text",
               "settings": {
-                "text": "<p>Get exclusive deals and early access to new products.</p>",
+                "text": "<p>Recibe promociones exclusivas, lanzamientos y novedades directamente en tu correo.</p>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
@@ -119,7 +119,7 @@
             "input_type_preset": "paragraph",
             "style_class": "button-unstyled",
             "display_type": "arrow",
-            "label": "Sign up",
+            "label": "Suscribirme",
             "integrated_button": true,
             "button_type_preset": "paragraph",
             "padding-block-start": 0,
