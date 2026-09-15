@@ -94,7 +94,19 @@ flowchart TD
 
 ---
 
-### D. Relojería Curren (Almacén México & Envío Choice)
+### D. Alimentos & Gourmet Tradicional Mexicano (Abastecimiento Nacional)
+
+| Producto | SKU Aylesva | Enlace Proveedor / Productor Directo (México) | Costo Proveedor MX | Precio Venta Aylesva | Tiempo Entrega |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Café Chiapas de Altura 100% Arábica Gourmet (1 Kg)**<br>*(ID: 8947950845975)* | • `CAF-CHIAP-GRN`<br>• `CAF-CHIAP-MOL` | [Mercado Libre Full: Café Chiapas Altura 1Kg](https://listado.mercadolibre.com.mx/cafe-chiapas-altura-1kg-grano-molido#shipping_origin=full)<br>• *Respaldo:* Cooperativa Cafetalera Chiapas / CDMX | $170 - $210 MXN | **$420.00 MXN** *(+55%)* | **24 - 72 hrs** |
+| **Café Veracruz con Chocolate de Mesa y Canela**<br>*(ID: 8947950911511)* | • `CAF-CHOC-250G`<br>• `CAF-CHOC-500G` | [Mercado Libre Full: Café con Chocolate Artesanal](https://listado.mercadolibre.com.mx/cafe-con-chocolate-artesanal-mesa#shipping_origin=full)<br>• *Respaldo:* Tresso Café Veracruz | $110 - $190 MXN | **$260 - $460 MXN** *(+58%)* | **24 - 72 hrs** |
+| **Granos de Café Cubiertos con Chocolate Amargo 70% Cacao**<br>*(ID: 8947950977047)* | • `CHOC-BEANS-150G`<br>• `CHOC-BEANS-300G` | [Mercado Libre Full: Granos de Café con Chocolate](https://listado.mercadolibre.com.mx/granos-cafe-cubiertos-chocolate-amargo#shipping_origin=full)<br>• *Respaldo:* Productor Chocolatero Gourmet | $95 - $170 MXN | **$240 - $420 MXN** *(+60%)* | **24 - 72 hrs** |
+| **Caja Canasta de Regalo Gourmet "Sabores de México"**<br>*(ID: 8947951042583)* | • `GIFT-BOX-GRN`<br>• `GIFT-BOX-MOL` | [Mercado Libre Full: Canasta Regalo Café Tisanas](https://listado.mercadolibre.com.mx/canasta-regalo-gourmet-cafe-tisanas#shipping_origin=full)<br>• *Respaldo:* Taller Gourmet de Regalos | $390 - $460 MXN | **$980.00 MXN** *(+58%)* | **24 - 72 hrs** |
+| **Set Tisanas Frutales Mexicanas con Infusor de Acero**<br>*(ID: 8947951075351)* | • `TIS-SET-MRA-PCH`<br>• `TIS-SET-PFX-MRA` | [Mercado Libre Full: Set Tisanas Frutales con Infusor](https://listado.mercadolibre.com.mx/set-tisanas-frutales-infusor-acero#shipping_origin=full)<br>• *Respaldo:* Tresso Tisanas | $210 - $250 MXN | **$540.00 MXN** *(+58%)* | **24 - 72 hrs** |
+
+---
+
+### E. Relojería Curren (Almacén México & Envío Choice)
 
 | Producto | SKU Aylesva | Enlace Proveedor Directo | Costo Proveedor | Precio Venta Aylesva | Tiempo Entrega |
 | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -105,7 +117,7 @@ flowchart TD
 
 ---
 
-### E. Marroquinería & Cuero Exótico (Distribución Nacional León, Guanajuato)
+### F. Marroquinería & Cuero Exótico (Distribución Nacional León, Guanajuato)
 
 | Producto | SKU Aylesva | Abastecimiento Nacional | Costo Proveedor | Precio Venta Aylesva | Tiempo Entrega |
 | :--- | :--- | :--- | :--- | :--- | :--- |
